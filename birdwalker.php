@@ -4,6 +4,7 @@ function globalMenu()
 { ?>
 	<div class="contentleft">
       <p><img src="./images/bill.jpg"></p>
+      <p><img src="./images/mary.jpg"></p>
 	  <div><a href="./tripindex.php">trips</a></div>
 	  <div><a href="./speciesindex.php">birds</a></div>
 	  <div><a href="./locationindex.php">locations</a></div>
@@ -343,7 +344,8 @@ function speciesViewLinks($speciesID)
 ?>
       <a href="./speciesdetail.php?id=<?=$speciesID?>">list</a> |
       <a href="./speciesdetailbymonth.php?id=<?=$speciesID?>">by month</a> |
-      <a href="./speciesdetailbyyear.php?id=<?=$speciesID?>">by year</a>
+      <a href="./speciesdetailbyyear.php?id=<?=$speciesID?>">by year</a> |
+      <a href="./speciesdetailphoto.php?id=<?=$speciesID?>">photo</a>
 <?
 }
 
@@ -928,7 +930,8 @@ function locationViewLinks($locationID)
 ?>
       <a href="./locationdetail.php?id=<?=$locationID?>">list</a> |
       <a href="./locationdetailbymonth.php?id=<?=$locationID?>">by month</a> |
-      <a href="./locationdetailbyyear.php?id=<?=$locationID?>">by year</a>
+      <a href="./locationdetailbyyear.php?id=<?=$locationID?>">by year</a> |
+      <a href="./locationdetailphoto.php?id=<?=$locationID?>">photos</a>
 <?
 }
 

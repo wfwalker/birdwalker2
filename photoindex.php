@@ -25,7 +25,11 @@ navTrailPhotos();
     <div class=contentright>
       <div class="titleblock">	  
 	    <div class=pagetitle>Photo Index</div>
-        <div class=metadata><a href="./photoindextaxo.php">by species</a> | by date</div>
+        <div class=metadata>
+          <a href="./photoindextaxo.php">by species<a/> |
+          <a href="./photoindex.php">by date</a> |
+          <a href="./photoindexlocation.php">by location</a>
+        </div>
       </div>
 
 <div class=heading><?= $photoCount . " photos covering " . $photoSpeciesCount . " species"; ?></div>
