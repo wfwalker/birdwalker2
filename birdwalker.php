@@ -82,7 +82,7 @@ function referenceURL($info)
 <? }
 }
 
-function rightThumbnail($photoQueryString)
+function rightThumbnail($photoQueryString, $addLink)
 {
 	$photoQuery = performQuery($photoQueryString);
 
@@ -95,19 +95,48 @@ function rightThumbnail($photoQueryString)
 		$sizeAttributes = "";
 
 		if ($width > 0) { $sizeAttributes = $sizeAttributes . " width=" . $width; }
-		if ($height > 0) { $sizeAttributes = $sizeAttributes . "  height=" . $height; } ?>
+		if ($height > 0) { $sizeAttributes = $sizeAttributes . "  height=" . $height; }
 
-        <a href="./photodetail.php?id=<?= $photoInfo["objectid"] ?>">
+		if ($addLink == true) { ?> <a href="./photodetail.php?id=<?= $photoInfo["objectid"] ?>">  <? } ?>
            <img <?= $sizeAttributes ?> src="./images/thumb/<?= $filename ?>" border=0 align="left" class="inlinepict">
-        </a>
-<?	}
+<?		if ($addLink == true) { ?> </a> <? }
+	}
 }
 
 function rightThumbnailAll()
 {
-	rightThumbnail("SELECT *, rand() AS shuffle FROM sighting WHERE Photo='1' ORDER BY shuffle LIMIT 1");
+	rightThumbnail("SELECT *, rand() AS shuffle FROM sighting WHERE Photo='1' ORDER BY shuffle LIMIT 1", true);
 }
 
+function formatPhotos($query)
+{
+	$dbQuery = $query->getPhotos();
+
+	while ($sightingInfo = mysql_fetch_array($dbQuery))
+	{
+		$tripInfo = getTripInfoForDate($sightingInfo["TripDate"]);
+		$tripYear =  substr($tripInfo["Date"], 0, 4);
+		$locationInfo = getLocationInfoForName($sightingInfo["LocationName"]); ?>
+
+        <div class=heading>
+          <div class=pagesubtitle>
+            <a href="./tripdetail.php?id=<?= $tripInfo["objectid"] ?>"><?= $tripInfo["niceDate"] ?></a>
+<?          editLink("./sightingedit.php?id=" . $sightingInfo["objectid"]); ?>
+          </div>
+          <div class=metadata>
+            <a href="./locationdetail.php?id=<?= $locationInfo["objectid"] ?>"><?= $locationInfo["Name"] ?></a>
+          </div>
+        </div>
+
+<?	    if ($sightingInfo["Photo"] == "1") {
+			$photoFilename = getPhotoFilename($sightingInfo);
+
+			list($width, $height, $type, $attr) = getimagesize("./images/photo/" . $photoFilename); ?>
+
+			<img width=<?= $width ?> height=<?= $height ?> src="<?= getPhotoURLForSightingInfo($sightingInfo) ?>">
+<?      }
+	}
+}
 
 function navTrailBirds($extra = "")
 {
@@ -332,16 +361,6 @@ function getFirstYearSightings($theYear)
 // ---------------------------- SPECIES ---------------------------
 //
 
-function speciesViewLinks($speciesID)
-{
-?>
-      <a href="./speciesdetail.php?id=<?=$speciesID?>">list</a> |
-      <a href="./speciesdetailbymonth.php?id=<?=$speciesID?>">by month</a> |
-      <a href="./speciesdetailbyyear.php?id=<?=$speciesID?>">by year</a> |
-      <a href="./speciesdetailphoto.php?id=<?=$speciesID?>">photo</a>
-<?
-}
-
 /**
  * Get information about a specific species entry.
  */
@@ -384,7 +403,7 @@ function speciesBrowseButtons($speciesID, $viewMode)
       WHERE sighting.SpeciesAbbreviation=species.Abbreviation
       AND species.objectid<" . $speciesID . " LIMIT 1");
 
-	browseButtons("./speciesdetail" . $viewMode . ".php?id=", $speciesID, $firstSpeciesID, $prevSpeciesID, $nextSpeciesID, $lastSpeciesID);
+	browseButtons("./speciesdetail.php?view=" . $viewMode . "&id=", $speciesID, $firstSpeciesID, $prevSpeciesID, $nextSpeciesID, $lastSpeciesID);
 
 }
 
@@ -394,6 +413,8 @@ function speciesBrowseButtons($speciesID, $viewMode)
  */
 function formatTwoColumnSpeciesList($speciesQuery, $firstSightings = "", $firstYearSightings = "")
 {
+	// todo what about $speciesQuery->performQuery()
+
 	$dbQuery = performQuery(
 			$speciesQuery->getSelectClause() . " " .
 			$speciesQuery->getFromClause() . " " .
@@ -593,13 +614,13 @@ function formatSpeciesByMonthTable($sightingQuery, $extraSightingListParams, $mo
 /**
  * Show locations as rows, years as columns
  */
-function formatLocationByYearTable($whereClause, $urlPrefix, $countyHeadingsOK = true)
+function formatLocationByYearTable($locationQuery, $urlPrefix, $countyHeadingsOK = true)
 {
 	$lastStateHeading="";
     $gridQueryString="
-      SELECT distinct(LocationName), County, State, location.objectid as locationid, bit_or(1 << (year(TripDate) - 1995)) as mask
-        FROM sighting, location " .
-		$whereClause . " 
+      SELECT distinct(LocationName), County, State, location.objectid as locationid, bit_or(1 << (year(TripDate) - 1995)) as mask " . 
+      $locationQuery->getFromClause() . " " .
+      $locationQuery->getWhereClause() . " 
         GROUP BY sighting.LocationName
         ORDER BY location.State, location.County, location.Name;";
 	$gridQuery = performQuery($gridQueryString); ?>
@@ -630,7 +651,7 @@ function formatLocationByYearTable($whereClause, $urlPrefix, $countyHeadingsOK =
 			<td class=bordered align=center>
 <?			if (($theMask >> $index) & 1)
 			{ ?>
-				<a href="<?= $urlPrefix ?>locationid= <?= $info["locationid"] ?>&year=<?= (1995 + $index) ?>">X</a>
+				<a href="<?= $urlPrefix . $locationQuery->getParams() ?>&locationid= <?= $info["locationid"] ?>&year=<?= (1995 + $index) ?>">X</a>
 <?			}
 			else
 			{ ?>
@@ -652,14 +673,14 @@ function formatLocationByYearTable($whereClause, $urlPrefix, $countyHeadingsOK =
 /**
  * Show locations as rows, months as columns
  */
-function formatLocationByMonthTable($whereClause, $urlPrefix, $countyHeadingsOK = true)
+function formatLocationByMonthTable($locationQuery, $urlPrefix, $countyHeadingsOK = true)
 {
 	$lastStateHeading="";
 
     $gridQueryString="
-      SELECT distinct(LocationName), County, State, location.objectid AS locationid, bit_or(1 << month(TripDate)) AS mask
-        FROM sighting, location " .
-        $whereClause . "
+      SELECT distinct(LocationName), County, State, location.objectid AS locationid, bit_or(1 << month(TripDate)) AS mask " .
+      $locationQuery->getFromClause() . " " .
+      $locationQuery->getWhereClause() . " 
         GROUP BY sighting.LocationName
         ORDER BY location.State, location.County, location.Name;";
 
@@ -691,7 +712,7 @@ function formatLocationByMonthTable($whereClause, $urlPrefix, $countyHeadingsOK 
 			<td class=bordered align=center>
 <?			if (($theMask >> $index) & 1)
 			{ ?>
-				<a href="<?= $urlPrefix ?>locationid= <?= $info["locationid"] ?>&month=<?= $index ?>">X</a>
+				<a href="<?= $urlPrefix . $locationQuery->getParams() ?>&locationid= <?= $info["locationid"] ?>&month=<?= $index ?>">X</a>
 <?			}
 			else
 			{ ?>
@@ -767,6 +788,11 @@ function getTripInfo($objectid)
 	return performOneRowQuery("SELECT *, date_format(Date, '%W,  %M %e, %Y') as niceDate FROM trip where objectid=" . $objectid);
 }
 
+function getTripInfoForDate($inDate)
+{
+	return performOneRowQuery("SELECT *, date_format(Date, '%W,  %M %e, %Y') as niceDate FROM trip where Date='" . $inDate . "'");
+}
+
 function tripBrowseButtons($tripID, $viewMode)
 {
 	$tripInfo = getTripInfo($tripID);
@@ -791,9 +817,9 @@ function tripBrowseButtons($tripID, $viewMode)
 	browseButtons("./trip" . $viewMode . ".php?id=", $tripID, $firstTripID, $prevTripID, $nextTripID, $lastTripID);
 }
 
-function formatTwoColumnTripList($tripListQuery)
+function formatTwoColumnTripList($tripQuery)
 {
-	$tripCount = mysql_num_rows($tripListQuery);
+	$tripCount = $tripQuery->getTripCount();
     $subdivideByYears = $tripCount > 20;
 	$prevYear = "";
 	$counter = round($tripCount  * 0.52); ?>
@@ -801,7 +827,8 @@ function formatTwoColumnTripList($tripListQuery)
    <table class=report-content columns="2" width="100%">
       <tr valign=top><td>
 
-<?	while($info = mysql_fetch_array($tripListQuery))
+<?	$dbQuery = $tripQuery->performQuery();
+	while($info = mysql_fetch_array($dbQuery))
 	{
 		$thisYear =  substr($info["Date"], 0, 4);
 		
@@ -831,6 +858,11 @@ function formatTwoColumnTripList($tripListQuery)
 function getLocationInfo($objectid)
 {
 	return performOneRowQuery("SELECT * FROM location where objectid=" . $objectid);
+}
+
+function getLocationInfoForName($inLocationName)
+{
+	return performOneRowQuery("SELECT * FROM location WHERE Name='" . $inLocationName . "'");
 }
 
 function locationBrowseButtons($siteInfo, $locationID, $viewMode)
@@ -890,8 +922,8 @@ function stateBrowseButtons($stateID, $viewMode)
 
 function navTrailCounty($state, $county)
 {
-	$items[]="<a href=\"./statespecies.php?state=" . $state . "\">" . strtolower(getStateNameForAbbreviation($state)) . "</a>";
-	//	$items[] = strtolower($county . " county");
+	$stateInfo = getStateInfoForAbbreviation($state);
+	$items[]="<a href=\"./statedetail.php?id=" . $stateInfo["objectid"] . "\">" . strtolower($stateInfo["Name"]) . "</a>";
 	navTrailLocations($items);
 }
 
@@ -904,7 +936,7 @@ function navTrailLocationDetail($siteInfo)
 		strtolower(getStateNameForAbbreviation($siteInfo["State"])) . "
     </a>";
 	$items[] = "
-    <a href=\"./countylocations.php?county=" . $siteInfo["County"] . "&state=" . $siteInfo["State"] . "\">" .
+    <a href=\"./countydetail.php?view=locations&county=" . $siteInfo["County"] . "&state=" . $siteInfo["State"] . "\">" .
 		 strtolower($siteInfo["County"]) . " county
     </a>";
 // 	$items[] =
@@ -920,7 +952,8 @@ function rightThumbnailSpecies($abbrev)
       FROM sighting
       WHERE sighting.Photo='1' AND sighting.SpeciesAbbreviation='" . $abbrev . "'
       ORDER BY shuffle
-      LIMIT 1");
+      LIMIT 1",
+	  true);
 }
 
 function rightThumbnailCounty($countyName)
@@ -930,7 +963,8 @@ function rightThumbnailCounty($countyName)
       FROM sighting, location
       WHERE sighting.Photo='1' AND sighting.LocationName=location.Name AND location.County='" . $countyName . "'
       ORDER BY shuffle
-      LIMIT 1");
+      LIMIT 1",
+      true);
 }
 
 function rightThumbnailState($stateCode)
@@ -939,7 +973,8 @@ function rightThumbnailState($stateCode)
       "SELECT sighting.*, rand() AS shuffle
         FROM sighting, location
         WHERE sighting.Photo='1' AND sighting.LocationName=location.Name AND location.State='" . $stateCode . "'
-        ORDER BY shuffle LIMIT 1");
+        ORDER BY shuffle LIMIT 1",
+        true);
 }
 
 function rightThumbnailLocation($locationName)
@@ -948,7 +983,8 @@ function rightThumbnailLocation($locationName)
     SELECT *, rand() AS shuffle
       FROM sighting
       WHERE Photo='1' AND LocationName='" . $locationName . "'
-      ORDER BY shuffle LIMIT 1");
+      ORDER BY shuffle LIMIT 1",
+      true);
 }
 
 function mapLink($siteInfo)
@@ -974,13 +1010,13 @@ function countyViewLinks($state, $county)
 {
 ?>
         locations:
-        <a href="./countylocations.php?state=<?= $state ?>&county=<?= urlencode($county) ?>">list</a> |
-	    <a href="./countylocationsbymonth.php?state=<?= $state ?>&county=<?= urlencode($county) ?>">by month</a> |
-	    <a href="./countylocationsbyyear.php?state=<?= $state ?>&county=<?= urlencode($county) ?>">by year</a><br/>
+        <a href="./countydetail.php?view=locations&state=<?= $state ?>&county=<?= $county ?>">list</a> |
+	    <a href="./countydetail.php?view=locationsbymonth&state=<?= $state ?>&county=<?= $county ?>">by month</a> |
+	    <a href="./countydetail.php?view=locationsbyyear&state=<?= $state ?>&county=<?= $county ?>">by year</a><br/>
         species:	
-        <a href="./countyspecies.php?state=<?= $state ?>&county=<?= urlencode($county) ?>">list</a> |
-	    <a href="./countyspeciesbymonth.php?state=<?= $state ?>&county=<?= urlencode($county) ?>">by month</a> |
-	    <a href="./countyspeciesbyyear.php?state=<?= $state ?>&county=<?= urlencode($county) ?>">by year</a><br/>
+        <a href="./countydetail.php?view=species&state=<?= $state ?>&county=<?= $county ?>">list</a> |
+	    <a href="./countydetail.php?view=speciesbymonth&state=<?= $state ?>&county=<?= $county ?>">by month</a> |
+	    <a href="./countydetail.php?view=speciesbyyear&state=<?= $state ?>&county=<?= $county ?>">by year</a><br/>
 <?
 }
 
@@ -999,18 +1035,23 @@ function stateViewLinks($id)
 }
 
 
-function formatTwoColumnLocationList($locationListQuery, $countyHeadingsOK = true)
+function formatTwoColumnLocationList($locationQuery, $countyHeadingsOK = true)
 {
+	$dbQuery = performQuery(
+			$locationQuery->getSelectClause() . " " .
+			$locationQuery->getFromClause() . " " .
+			$locationQuery->getWhereClause() . " ORDER BY location.State, location.County, location.Name");
+
 	$lastStateHeading="";
 	$prevInfo=null;
-	$locationCount = mysql_num_rows($locationListQuery);
+	$locationCount = mysql_num_rows($dbQuery);
 	$divideByCounties = ($locationCount > 20);
 	$counter = round($locationCount  * 0.5); ?>
 
     <table class=report-content width="100%">
       <tr valign=top><td width="50%">
 
-<?	while($info = mysql_fetch_array($locationListQuery))
+<?	while($info = mysql_fetch_array($dbQuery))
 	{
 		if ($countyHeadingsOK && $divideByCounties && (($prevInfo["State"] != $info["State"]) || ($prevInfo["County"] != $info["County"])))
 		{ ?>
