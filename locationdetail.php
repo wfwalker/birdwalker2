@@ -12,13 +12,6 @@ $view = param($_GET, 'view', 'list');
 
 $siteInfo = getLocationInfo($locationID);
 
-$speciesQuery = new SpeciesQuery;
-$speciesQuery->setFromRequest($_GET);
-
-$tripQuery = new TripQuery;
-$tripQuery->setFromRequest($_GET);
-$tripCount = $tripQuery->getTripCount();
-
 $locationSightings = performQuery("
     SELECT sighting.objectid FROM sighting, location
       WHERE sighting.LocationName=location.Name
@@ -80,6 +73,13 @@ navTrailLocationDetail($siteInfo);
 <?
 	if ($view == "list")
 	{
+		$tripQuery = new TripQuery;
+		$tripQuery->setFromRequest($_GET);
+		$tripCount = $tripQuery->getTripCount();
+
+		$speciesQuery = new SpeciesQuery;
+		$speciesQuery->setFromRequest($_GET);
+
 		doubleCountHeading($speciesQuery->getSpeciesCount(), "species", $locationFirstSightings, "life bird");
 		$speciesQuery->formatTwoColumnSpeciesList();
 		countHeading($tripCount, "trip");
@@ -87,11 +87,15 @@ navTrailLocationDetail($siteInfo);
 	}
 	else if ($view == "bymonth")
 	{
+		$speciesQuery = new SpeciesQuery;
+		$speciesQuery->setFromRequest($_GET);
 		doubleCountHeading($speciesQuery->getSpeciesCount(), "species", $locationFirstSightings, "life bird");
 		$speciesQuery->formatSpeciesByMonthTable();
 	}
 	else if ($view == "byyear")
 	{
+		$speciesQuery = new SpeciesQuery;
+		$speciesQuery->setFromRequest($_GET);
 		doubleCountHeading($speciesQuery->getSpeciesCount(), "species", $locationFirstSightings, "life bird");
 		$speciesQuery->formatSpeciesByYearTable();
 	}
