@@ -37,6 +37,15 @@ $prevSpecies = performCount("
       WHERE sighting.SpeciesAbbreviation=species.Abbreviation
       AND species.objectid<" . $speciesID);
 
+$speciesLocationListQuery = performQuery( "
+    SELECT distinct(location.objectid), location.*
+      FROM location, sighting
+      WHERE sighting.SpeciesAbbreviation='" . $speciesInfo["Abbreviation"] . "'
+      AND sighting.LocationName=location.Name
+      ORDER BY State, County, Name");
+
+$speciesLocationCount = mysql_num_rows($speciesLocationListQuery);
+
 ?>
 
 <html>
@@ -74,8 +83,9 @@ if ($speciesTripCount >= 5)
       FROM sighting
       WHERE sighting.SpeciesAbbreviation='" . $speciesInfo["Abbreviation"] . "'"); ?>
 
-    <div class=metadata>observed on <?= $speciesTripCount ?> trips in <?= $speciesLocationCount ?> locations</div>
-    <div class=metadata>first seen <?= $sightingDates["earliest"] ?>, last seen <?= $sightingDates["latest"] ?></div>
+    <div class=metadata><?= $sightingDates["earliest"] ?> - <?= $sightingDates["latest"] ?></div>
+    <div class=metadata><?= $speciesTripCount ?> trips, <?= $speciesLocationCount ?> locations</div>
+
 <?
 }
 if (strlen($speciesInfo["ReferenceURL"]) > 0) {
@@ -97,16 +107,8 @@ if ($speciesInfo["ABACountable"] == '0') {
 <?php
 	  if ($speciesTripCount < 5)
 	  {
-          $speciesLocationListQuery = performQuery( "
-              SELECT distinct(location.objectid), location.*
-                FROM location, sighting
-                WHERE sighting.SpeciesAbbreviation='" . $speciesInfo["Abbreviation"] . "'
-                AND sighting.LocationName=location.Name
-                ORDER BY State, County, Name");
-
-          $speciesLocationCount = mysql_num_rows($speciesLocationListQuery);
 ?>
-		  <div class=heading>Observed on <?= $speciesTripCount ?> trips</div>
+          <div class=heading><?= $speciesTripCount ?> trip<? if ($speciesTripCount > 1) echo 's' ?></div>
 
 <?
 		  // list the trips that included this species
@@ -120,7 +122,7 @@ if ($speciesInfo["ABACountable"] == '0') {
 <?
 		  }
 ?>
-		  <div class=heading>Observed at <?= $speciesLocationCount ?> locations</div>
+          <div class=heading><?= $speciesLocationCount ?> location<? if ($speciesLocationCount > 1) echo 's' ?></div>
 <?
 		  $prevInfo=null;
 
