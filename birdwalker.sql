@@ -86,7 +86,7 @@ CREATE TABLE sighting (
   LocationName varchar(255),
   Notes text,
   Exclude varchar(16) default NULL,
-  PhotoURL text,
+  Photo varchar(16) default NULL,
   TripDate date default NULL,
   PRIMARY KEY  (objectid),
   KEY SpeciesAbbreviationIndex (SpeciesAbbreviation),
