@@ -57,35 +57,35 @@ $extrema = $locationQuery->findExtrema();
 if ($view == 'species')
 {
 	$speciesQuery = new SpeciesQuery;
-	$speciesQuery->setCounty($county);
+	$speciesQuery->setFromRequest($_GET);
 	countHeading( $speciesQuery->getSpeciesCount(), "species");
 	$speciesQuery->formatTwoColumnSpeciesList(); 
 }
 elseif ($view == 'speciesbyyear')
 {
 	$speciesQuery = new SpeciesQuery;
-	$speciesQuery->setCounty($county);
+	$speciesQuery->setFromRequest($_GET);
 	countHeading( $speciesQuery->getSpeciesCount(), "species");
 	$speciesQuery->formatSpeciesByYearTable(); 
 }
 elseif ($view == 'speciesbymonth')
 {
 	$speciesQuery = new SpeciesQuery;
-	$speciesQuery->setCounty($county);
+	$speciesQuery->setFromRequest($_GET);
 	countHeading( $speciesQuery->getSpeciesCount(), "species");
 	$speciesQuery->formatSpeciesByMonthTable(); 
 }
 elseif ($view == 'locations')
 {
     $locationQuery = new LocationQuery;
-	$locationQuery->setCounty($county);
+	$locationQuery->setFromRequest($_GET);
 	countHeading( $locationQuery->getLocationCount(), "location");
 	$locationQuery->formatTwoColumnLocationList();
 }
 elseif ($view == 'locationsbyyear')
 {
     $locationQuery = new LocationQuery;
-	$locationQuery->setCounty($county);
+	$locationQuery->setFromRequest($_GET);
 	countHeading( $locationQuery->getLocationCount(), "location");
 	$locationQuery->formatLocationByYearTable();
 }
@@ -99,7 +99,7 @@ elseif ($view == 'locationsbymonth')
 else if ($view == "map")
 {
     $locationQuery = new LocationQuery;
-	$locationQuery->setCounty($county);
+	$locationQuery->setFromRequest($_GET);
 	$map = new Map("./countydetail.php");
 	$map->setFromRequest($_GET);
 	$map->draw();
