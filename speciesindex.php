@@ -3,31 +3,26 @@
 
 require("./birdwalker.php");
 
-$lifeCount = getSpeciesCount();
+$speciesQuery = getSpeciesQuery();
 
 ?>
 
 <html>
   <head>
     <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-    <title>birdWalker | Life List</title>
+    <title>birdWalker | Speciess</title>
   </head>
   <body>
 
-<?php navigationHeader() ?>
+<?php globalMenu(); disabledBrowseButtons(); navTrailBirds("&gt; list | <a href=\"./speciesindexbyyear.php\">by year</a>"); ?>
 
     <div class=contentright>
       <div class="titleblock">	  
-	  <div class=pagetitle>Mary and Bill&rsquo;s Life List</div>
-        <div class=pagesubtitle><?php echo $lifeCount ?> Species</div>
+	  <div class=pagetitle>Species Index</div>
+	  <div class=pagesubtitle><?php echo mysql_num_rows($speciesQuery) ?> Species</div>
       </div>
 
-<?
-$gridQueryString="select distinct(CommonName), species.objectid as speciesid, bit_or(1 << (year(TripDate) - 1995)) as mask from sighting, species where sighting.SpeciesAbbreviation=species.Abbreviation and sighting.Exclude=0 group by sighting.SpeciesAbbreviation order by speciesid";
-
-formatSpeciesByYearTable($gridQueryString, "");
-
-?>
+<?php formatTwoColumnSpeciesList($speciesQuery); ?>
 
     </div>
   </body>
