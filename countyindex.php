@@ -66,7 +66,7 @@ while ($info = mysql_fetch_array($countyStats))
 			</a>
 			</td>
 
-<?	for ($year = 1996; $year <= 2004; $year++)
+<?	for ($year = getEarliestYear(); $year <= getLatestYear(); $year++)
 	{ ?>
         <td class=bordered align=right>
             <a href="./specieslist.php?county=<?= urlEncode($countyToAccumulate) ?>&year=<?= $year ?>">

@@ -3,7 +3,7 @@
 
 require("./birdwalker.php");
 
-$theYear = param($_GET, "year", "1996");
+$theYear = param($_GET, "year", getEarliestYear());
 
 performQuery("CREATE TEMPORARY TABLE tmp (
       SpeciesAbbreviation varchar(16) default NULL,
@@ -52,7 +52,7 @@ $speciesCount = mysql_num_rows($firstSightingQuery);
 
 <?php
 globalMenu();
-browseButtons("./chronocayearlist.php?year=", $theYear, 1996, $theYear - 1, $theYear + 1, 2004);
+browseButtons("./chronocayearlist.php?year=", $theYear, getEarliestYear(), $theYear - 1, $theYear + 1, getLatestYear());
 navTrailBirds();
 ?>
 
