@@ -3,11 +3,11 @@
 
 require("./birdwalker.php");
 require("./locationquery.php");
-
-$minLat = param($_GET, "minlat", 37);
+//minlong=121.923024&maxlong=122.054096&minlat=37.334464&maxlat=37.465536
+$minLat = param($_GET, "minlat", 37.3);
 $maxLat = param($_GET, "maxlat", 37.5);
-$minLong = param($_GET, "minlong", 121);
-$maxLong = param($_GET, "maxlong", 121.5);
+$minLong = param($_GET, "minlong", 121.9);
+$maxLong = param($_GET, "maxlong", 122.1);
 
 $longRange = $maxLong - $minLong;
 $latRange = $maxLat - $minLat;
@@ -52,24 +52,24 @@ navTrailLocations();
 
 
 
-	<a href="./location-map.php?minlong=<?= $centerLong-0.6*$longRange ?>&maxlong=<?= $centerLong+0.6*$longRange ?>&minlat=<?=$centerLat-0.6*$latRange?>&maxlat=<?=$centerLat+0.6*$latRange?>">Out</a>
-	<a href="./location-map.php?minlong=<?= $centerLong-0.4*$longRange ?>&maxlong=<?= $centerLong+0.4*$longRange ?>&minlat=<?=$centerLat-0.4*$latRange?>&maxlat=<?=$centerLat+0.4*$latRange?>">In</a>
+	<a href="./locationmap.php?minlong=<?= $centerLong-0.6*$longRange ?>&maxlong=<?= $centerLong+0.6*$longRange ?>&minlat=<?=$centerLat-0.6*$latRange?>&maxlat=<?=$centerLat+0.6*$latRange?>">Out</a>
+	<a href="./locationmap.php?minlong=<?= $centerLong-0.4*$longRange ?>&maxlong=<?= $centerLong+0.4*$longRange ?>&minlat=<?=$centerLat-0.4*$latRange?>&maxlat=<?=$centerLat+0.4*$latRange?>">In</a>
 	<p>&nbsp;</p>
 
 
 	<div style="position: relative; border: 1px solid; background-image: url(http://terraserver.microsoft.com/ogcmap.ashx?version=1.1.1&request=GetMap&Layers=DOQ&Styles=&SRS=EPSG:4326&BBOX=-<?=$maxLong?>,<?=$minLat?>,-<?=$minLong?>,<?=$maxLat?>&width=500&height=500&format=image/jpeg&Exceptions=se_xml); height:500px; width: 500px;">
 
 	<div style="position: absolute; left: 250px; top: -20px; color: red">
-	  <a href="./location-map.php?minlat=<?= $minLat+$latPan ?>&maxlat=<?= $maxLat+$latPan ?>&minlong=<?=$minLong?>&maxlong=<?=$maxLong?>">N</a>
+	  <a href="./locationmap.php?minlat=<?= $minLat+$latPan ?>&maxlat=<?= $maxLat+$latPan ?>&minlong=<?=$minLong?>&maxlong=<?=$maxLong?>">N</a>
 	</div>
 	<div style="position: absolute; left: 250px; top: 510px; color: red">
-	  <a href="./location-map.php?minlat=<?= $minLat-$latPan ?>&maxlat=<?= $maxLat-$latPan ?>&minlong=<?=$minLong?>&maxlong=<?=$maxLong?>">S</a>
+	  <a href="./locationmap.php?minlat=<?= $minLat-$latPan ?>&maxlat=<?= $maxLat-$latPan ?>&minlong=<?=$minLong?>&maxlong=<?=$maxLong?>">S</a>
 	</div>
 	<div style="position: absolute; left: -20px; top: 250px; color: red">
-	  <a href="./location-map.php?minlong=<?= $minLong+$longPan ?>&maxlong=<?= $maxLong+$longPan ?>&minlat=<?=$minLat?>&maxlat=<?=$maxLat?>">W</a>
+	  <a href="./locationmap.php?minlong=<?= $minLong+$longPan ?>&maxlong=<?= $maxLong+$longPan ?>&minlat=<?=$minLat?>&maxlat=<?=$maxLat?>">W</a>
 	</div>
 	<div style="position: absolute; left: 510px; top: 250px; color: red">
-	  <a href="./location-map.php?minlong=<?= $minLong-$longPan ?>&maxlong=<?= $maxLong-$longPan ?>&minlat=<?=$minLat?>&maxlat=<?=$maxLat?>">E</a>
+	  <a href="./locationmap.php?minlong=<?= $minLong-$longPan ?>&maxlong=<?= $maxLong-$longPan ?>&minlat=<?=$minLat?>&maxlat=<?=$maxLat?>">E</a>
 	</div>
 <?
 	while($info = mysql_fetch_array($dbQuery))
