@@ -296,11 +296,9 @@ function getSpeciesInfo($objectid)
 function insertYearLabels()
 {
 	for ($year = 1996; $year <= 2004; $year++)
-	{
-?>
-		<td class=yearcell align=center><a href="./yeardetail.php?year=<?= $year ?>"><?= $year ?></a></td>
-<?
-	}
+	{ ?>
+		<td class=yearcell align=center><?= $year ?></td>
+<?	}
 }
 
 function formatTwoColumnSpeciesList($query)
@@ -357,7 +355,9 @@ function formatSpeciesByYearTable($gridQueryString, $extraSightingListParams, $y
 	{
 		if ($info["year"] == 1995 + $index)
 		{ ?>
-			<td class=bordered align=center><?= $info["count"] ?></td>
+			<td class=bordered align=center>
+                <a href="./specieslist.php?year=<?= 1995 + $index ?><?= $extraSightingListParams ?>"><?= $info["count"] ?></a>
+            </td>
 <?			$info = mysql_fetch_array($yearTotals);
 		}
 		else
