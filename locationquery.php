@@ -113,6 +113,17 @@ class LocationQuery
 		return $whereClause;
 	}
 
+	function setFromRequest($get)
+	{
+		$this->setCounty(param($_GET, "county", ""));
+		$this->setState(param($_GET, "state", ""));
+		$this->setSpeciesID(param($_GET, "speciesid", ""));
+		$this->setFamily(param($_GET, "family", ""));
+		$this->setOrder(param($_GET, "order", ""));
+		$this->setMonth(param($_GET, "month", ""));
+		$this->setYear(param($_GET, "year", ""));
+	}
+
 	function getParams()
 	{
 		$params = "";
@@ -161,6 +172,11 @@ class LocationQuery
 		// todo need to add species, family, order
 		$pageTitle = "";
 
+		if ($this->mSpeciesID != "") {
+			$speciesInfo = getSpeciesInfo($this->mSpeciesID);
+			$pageTitle = $speciesInfo["CommonName"];
+		}
+
 		if ($this->mCounty != "") {
 			$pageTitle = $this->mCounty . " County";
 		} elseif ($this->mState != "") {
@@ -180,12 +196,24 @@ class LocationQuery
 
 	function findExtrema()
 	{
-		return performOneRowQuery("
+		$extrema = performOneRowQuery("
           SELECT
             max(location.Latitude) as maxLat, 
             min(location.Latitude) as minLat, 
             max(location.Longitude) as maxLong, 
-            min(location.Longitude) as minLong " . $this->getFromClause() . " " . $this->getWhereClause() . " AND location.Latitude<>'' AND location.Longitude<>''"); 
+            min(location.Longitude) as minLong " .
+			$this->getFromClause() . " " .
+			$this->getWhereClause() . " " .
+			"AND location.Latitude<>'' AND location.Longitude<>''"); 
+
+		$midLat = ($extrema["maxLat"] + $extrema["minLat"]) / 2.0;
+		$midLong = ($extrema["maxLong"] + $extrema["minLong"]) / 2.0;
+		$maxRadius = 0.1 + 1.1 * max($extrema["maxLong"] - $extrema["minLong"], $extrema["maxLat"] - $extrema["minLat"]) / 2.0;
+
+		$box["minLat"] = $midLat - $maxRadius; $box["maxLat"] = $midLat + $maxRadius;
+		$box["minLong"] = $midLong - $maxRadius; $box["maxLong"] = $midLong + $maxRadius;
+
+		return $box;
 	}
 
 	function rightThumbnail()
