@@ -31,7 +31,7 @@ INSERT INTO location VALUES (30,'Coyote Point Marina','http://www.cpyc.com/','Bu
 INSERT INTO location VALUES (31,'Crittenden Marsh','','Mountain View','Santa Clara','CA','','',37.4369,-122.062);
 INSERT INTO location VALUES (32,'Crown Memorial State Beach','http://www.parks.ca.gov/allpages/default.asp?page_id=526','Alameda','Alameda','CA','','',37.7658,-122.274);
 INSERT INTO location VALUES (33,'Don Edwards Center','http://www.r1.fws.gov/sfbnwr/default.htm','Alviso','Santa Clara','CA','','WGS 84',37.4327,-121.962);
-INSERT INTO location VALUES (34,'Drawbridge','http://www.slip.net/~bobk/','Fremont','Santa Clara','CA','An abandoned town along the amtrak tracks in the marshes of Fremont. We got to go there during a San Jose christmas bird count','mapblast',37.4664,-121.974);
+INSERT INTO location VALUES (34,'Drawbridge','http://www.slip.net/~bobk/','Fremont','Santa Clara','CA','An abandoned town along the Amtrak tracks in the marshes of Fremont. We got to go there during a San Jose Christmas Bird Count.','mapblast',37.4664,-121.974);
 INSERT INTO location VALUES (35,'Ed Levin State Park','http://santaclaracounty.org/parks/prkpages/levndch.htm','Milpitas','Santa Clara','CA','Lat: 37.445855 Lon: -121.857762','mapblast',37.4459,-121.858);
 INSERT INTO location VALUES (36,'Elkhorn Slough','http://www.elkhornslough.org/','Santa Cruz','Monterey','CA','a lovely estuary south of Santa Cruz. Unfortunately, the slough\'s limited access hours have prevented us from exploring it in depth.','mapblast',36.8044,-121.786);
 INSERT INTO location VALUES (37,'Fairhaven','','Arcata','Humboldt','CA','','',40.7853,-124.202);

@@ -163,7 +163,7 @@ INSERT INTO trip VALUES (159,'Bill','','Coffee Run','','2001-12-03');
 INSERT INTO trip VALUES (160,'Bill','','Coffee Run','','2001-12-10');
 INSERT INTO trip VALUES (161,'Mike and Mary','','Lunchtime Stroll','','2001-12-11');
 INSERT INTO trip VALUES (162,'Mary and Bill and Rich and Bracey','','San Jose Christmas Bird Count','','2001-12-16');
-INSERT INTO trip VALUES (163,'John and Bill','','Christmas Owling','','2001-12-27');
+INSERT INTO trip VALUES (163,'John and Bill','','Christmas Owling','Bill and John strapped on their special owling shoes and headed out to a UIUC demonstration forest where the Great Horned Owls were known to be roosting.','2001-12-27');
 INSERT INTO trip VALUES (164,'Mary and Bill','','Calero Christmas Bird Count','Count data: wesgre 1 amwpel 3 doccor 44 grbher 1 greegr 1 cangoo 9 mallar 47 gadwal 5 rudduc 19 funky duck 16 funky geese 10 gwfgoo 1 turvul 4 whtkit 1 coohaw 1 reshaw 2 rethaw 6 amekes 1 amecoo 160 ribgul 12 calgul 3 gull sp 323 rocdov 12 moudov 7 annhum 18 nutwoo 4 dowwoo 2 norfli 11 blkpho 7 saypho 1 stejay 4 wesjay 13 amecro 15 chbchi 13 oaktit 5 bushti 67 whbnut 4 ruckin 15 herthr 2 amerob 149 normoc 2 eursta 19 cedwax 20 yerwar 26 towwar 2 caltow 10 sonspa 4 whcspa 19 gocspa 52 daejun 27 houfin 19 lesgol 3','2001-12-29');
 INSERT INTO trip VALUES (165,'Bill','','Coffee Run','','2002-01-03');
 INSERT INTO trip VALUES (166,'Mary and Bill','','Saturday Stroll','The weather was cool and cloudy, and the light was fading. It was quite cool.','2002-01-05');
@@ -228,10 +228,10 @@ INSERT INTO trip VALUES (224,'Mary and Bill','','Saturday Stroll','','2003-02-15
 INSERT INTO trip VALUES (225,'Mary and Bill','','Sunday Stroll','','2003-03-02');
 INSERT INTO trip VALUES (226,'Steve Shunk','http://www.paradisebirding.com/BorregoSp03.html','Borrego Day One','We met Steve at the San Diego airport around noon, watched Illinois suffer a crushing defeat in the NCAA men\'s basketball tournament. Still, picking up two new life birds does ease the pain.','2003-03-22');
 INSERT INTO trip VALUES (227,'Steve Shunk','http://www.paradisebirding.com/BorregoSp03.html','Borrego Day Two','We had a great time touring around the Visitor\'s Center, sewage ponds, and other important parts of the park.','2003-03-23');
-INSERT INTO trip VALUES (228,'Steve Shunk','http://www.paradisebirding.com/BorregoSp03.html','Borrego Day Three','','2003-03-24');
+INSERT INTO trip VALUES (228,'Steve Shunk','http://www.paradisebirding.com/BorregoSp03.html','Borrego Day Three','Our first time at the Salton Sea, a very surreal place. Hot, smelly, brimming with bird life.','2003-03-24');
 INSERT INTO trip VALUES (229,'Steve Shunk','http://www.paradisebirding.com/BorregoSp03.html','Borrego Day Four','This was a wild day, starting with another disappointing search for Le Conte\'s Thrasher, but ending with a sighting of said thrasher at Bull Willows, along with Common Poorwill\'s sighted (and heard) along the road back to the resort.','2003-03-25');
 INSERT INTO trip VALUES (230,'Steve Shunk','http://www.paradisebirding.com/BorregoSp03.html','Borrego Day Five','Today we had our last visit to the desert for this trip, and it was hotter than ever. We were reminded that the desert is not to be trifled with. The high meadows on our way to Julian were festooned with desert flowers, and the weather in Julian itself was delightful.','2003-03-26');
-INSERT INTO trip VALUES (231,'Steve Shunk','http://www.paradisebirding.com/BorregoSp03.html','Borrego Day Six','','2003-03-27');
+INSERT INTO trip VALUES (231,'Steve Shunk','http://www.paradisebirding.com/BorregoSp03.html','Borrego Day Six','Having left the desert, we spent the day in the mountains on the way to San Diego. Wonderful wildflowers, new habitats.','2003-03-27');
 INSERT INTO trip VALUES (232,'Steve Shunk','http://www.paradisebirding.com/BorregoSp03.html','Borrego Day Seven','','2003-03-28');
 INSERT INTO trip VALUES (233,'Steve Shunk','http://www.paradisebirding.com/BorregoSp03.html','Borrego Day Eight','','2003-03-29');
 INSERT INTO trip VALUES (234,'Mary and Bill','','Salt Pond Hearings','','2003-04-05');
