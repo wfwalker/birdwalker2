@@ -9666,3 +9666,4 @@ INSERT INTO sighting VALUES (9697,'margod','2138 King Court','','0','0','2004-11
 INSERT INTO sighting VALUES (9698,'ameavo','2138 King Court','','0','0','2004-11-05');
 INSERT INTO sighting VALUES (9699,'bknsti','2138 King Court','','0','0','2004-11-05');
 INSERT INTO sighting VALUES (9700,'clcspa','2138 King Court','','1','1','2004-11-05');
+INSERT INTO sighting VALUES (9702,'turvul','Don Edwards Center','','','1','2004-09-06');

@@ -5,6 +5,7 @@ require("./birdwalker.php");
 
 $id = $_GET["id"];
 $view = $_GET["view"];
+if ($view == "") $view = "species";
 $info = getStateInfo($id);
 
 ?>

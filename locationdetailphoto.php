@@ -37,6 +37,8 @@ navTrailLocationDetail($siteInfo);
       locationViewLinks($locationID); ?>
   </div>
 
+  <div class="heading"><?= mysql_num_rows($sightingQuery) ?> Photo<?= mysql_num_rows($sightingQuery) != 1 ? 's': '' ?></div>
+
 <?
 while ($sightingInfo = mysql_fetch_array($sightingQuery))
 {

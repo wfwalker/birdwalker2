@@ -3,7 +3,7 @@
 
 require("./birdwalker.php");
 
-$randomPhotoSightings = performQuery("select *, rand() as shuffle from sighting where Photo='1' order by shuffle");
+$randomPhotoSightings = performQuery("SELECT *, rand() AS shuffle FROM sighting WHERE Photo='1' ORDER BY shuffle LIMIT 5");
  ?>
 
 <html>
@@ -22,7 +22,9 @@ disabledBrowseButtons();
 
     <div class=contentright>
 
-	  <p>&nbsp;</p>
+	  <p>Welcome to <code>birdWalker</code>! This website contains Bill and Mary&#39;s birding field notes, including
+	  trip, county, state, and year lists. Our latest trips are listed below, other indices
+	  are available from the links on the left.</p>
 
       <table width="100%"><tr>
 

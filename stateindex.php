@@ -14,7 +14,12 @@ $stateStats = performQuery("SELECT
   ORDER BY State, theyear");
 
 $years = array(1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004);
-$states = array("AZ", "CA", "IA", "IL", "MA", "NJ", "OR", "PA", "TX", "WI");
+
+// todo could build some kind of set of visited sets while running through the stateStats?
+$visitedStatesQuery = performQuery("
+    SELECT DISTINCT(state.objectid)
+      FROM state, location, sighting
+      WHERE state.Abbreviation=location.State and location.Name=sighting.LocationName ORDER BY state.Name");
 
 while ($info = mysql_fetch_array($stateStats))
 {
@@ -49,10 +54,12 @@ navTrailLocations();
 
   <tr><td></td><? insertYearLabels() ?></tr>
 
-<? foreach ($states as $state)
-   { ?>
+<? while ($info = mysql_fetch_array($visitedStatesQuery))
+   { $id = $info["objectid"];
+	 $info = getStateInfo($id);
+     $state = $info["Abbreviation"]; ?>
     <tr>
-      <td class=firstcell><a href="./statespecies.php?state=<?= $state ?>"><?= getStateNameForAbbreviation($state) ?></a></td>
+      <td class=firstcell><a href="./statedetail.php?id=<?= $info["objectid"] ?>"><?= getStateNameForAbbreviation($state) ?></a></td>
 <?	  foreach ($years as $year)
 	  { ?>
 		  <td class=bordered align=right>
