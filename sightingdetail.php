@@ -10,7 +10,7 @@ $tripYear =  substr($tripInfo["Date"], 0, 4);
 $locationInfo = performOneRowQuery("select * from location where Name='" . $sightingInfo["LocationName"] . "'");
 $firstSightings = getFirstSightings();
 $firstYearSightings = getFirstYearSightings($tripYear);
-$sightingCount = performCount("select count(*) from sighting");
+$sightingCount = performCount("select max(objectid) from sighting");
 ?>
 
 <html>
