@@ -47,8 +47,9 @@ if ($save == "Save")
 		{
 			$sightingID++;
 			performQuery("\nINSERT INTO sighting VALUES (" . $sightingID . ", '" . trim($abbrev) . "', '" . $locationName . "', '', '0', '0', '" . $tripDate . "');\n");
-			$abbrev = strtok(" \n");
 		}
+
+		$abbrev = strtok(" \n");
 	}
 
 	performQuery("INSERT INTO trip VALUES (" . ($tripID + 1) . ", '" . $leader . "', '', '" . $tripName . "', '" . $notes . "', '" . $tripDate . "');");
