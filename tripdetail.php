@@ -73,7 +73,11 @@ while($locationInfo = mysql_fetch_array($locationListQuery))
 		if ($info["Exclude"] == "1") {
 			echo "<span class=sighting-notes> excluded</span>";
 		}
- 
+
+		if ($info["Photo"] == "1") {
+			echo "<span class=sighting-notes> <a href=\"./photodetail.php?id=" . $info["objectid"] . "\">PHOTO</a></span>";
+		}
+
 		$sightingID = $info["objectid"];
  
 		if ($firstSightings[$sightingID] != null) echo "<span class=sighting-notes> first life sighting</span>";
