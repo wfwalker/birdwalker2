@@ -39,12 +39,7 @@ navTrailBirds($items);
 	  <div class="titleblock">
 	    <div class=pagetitle><?php echo $familyInfo["CommonName"] ?></div>
         <div class=pagesubtitle><?php echo $familyInfo["LatinName"] ?></div>
-        <div class="metadata">
-	      <a href="./orderdetail.php?order=<?php echo $orderid ?>">
-	        Order <?php echo $orderInfo["LatinName"] ?>, <?php echo $orderInfo["CommonName"] ?>
-          </a>
-          <div class=metadata> <?php echo $familyCount ?> species</div>
-        </div>
+        <div class=metadata> <?php echo $familyCount ?> species</div>
       </div>
 
 
