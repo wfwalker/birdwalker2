@@ -16,8 +16,8 @@ $tripName = $_POST['TripName'];
 $locationList = performQuery("select Name, objectid from location");
 $dateArray = getdate();
 $dateString = $dateArray["year"] . "-" . $dateArray["mon"] . "-" .  $dateArray["mday"];
-$sightingCount = performCount("select count(*) from sighting;");
-$tripCount = performCount("select count(*) from trip;");
+$sightingID = performCount("select max(objectid) from sighting;");
+$tripID = performCount("select max(objectid) from trip;");
 
 ?>
 
@@ -40,17 +40,20 @@ $tripCount = performCount("select count(*) from trip;");
 <?
 if ($save == "Save")
 {
-	performQuery("INSERT INTO trip VALUES (" . ($tripCount + 1) . ", '" . $leader . "', '', '" . $tripName . "', '" . $notes . "', '" . $tripDate . "');");
-
 	$abbrev = strtok($abbreviations, " \n");
 	while ($abbrev)
 	{
-		$sightingCount++;
-		performQuery("\nINSERT INTO sighting VALUES (" . $sightingCount . ", '" . trim($abbrev) . "', '" . $locationName . "', '', '0', '0', '" . $tripDate . "');\n");
-		$abbrev = strtok(" \n");
+		if (trim($abbrev) != "")
+		{
+			$sightingID++;
+			performQuery("\nINSERT INTO sighting VALUES (" . $sightingID . ", '" . trim($abbrev) . "', '" . $locationName . "', '', '0', '0', '" . $tripDate . "');\n");
+			$abbrev = strtok(" \n");
+		}
 	}
 
-	echo "<a href=\"./tripdetail.php?id=" . ($tripCount + 1) . "\">Trip Created</a>";
+	performQuery("INSERT INTO trip VALUES (" . ($tripID + 1) . ", '" . $leader . "', '', '" . $tripName . "', '" . $notes . "', '" . $tripDate . "');");
+
+	echo "<a href=\"./tripdetail.php?id=" . ($tripID + 1) . "\">Trip Created</a>";
 }
 ?>
 
