@@ -39,7 +39,7 @@ $firstYearSightings = getFirstYearSightings(substr($tripInfo["Date"], 0, 4));
       <div class=pagesubtitle> <?php echo $tripInfo["niceDate"] ?></div>
       <div class=metadata>Led by  <?php echo $tripInfo["Leader"] ?></div>
 <?php if (strlen($tripInfo["ReferenceURL"]) > 0) {
-      echo "<div><a href=\"" . $tripInfo["ReferenceURL"] . "\">Trip Website</a></div>";
+      echo "<div><a href=\"" . $tripInfo["ReferenceURL"] . "\">See also...</a></div>";
 } ?>
     </div>
 
