@@ -48,7 +48,7 @@
 
 .titleblock { border-top: solid 1px #AAAAAA; padding-top: 5px; margin-bottom: 5px }
 
-.inlinepict { margin-right: 10px; margin-bottom: 10px }
+.inlinepict { margin-left: 10px; margin-bottom: 10px }
 
 .report-content {font: 10pt "Gill Sans", "Gill Sans MT", SansSerif}
 .firstcell {padding-left: 15px; white-space: nowrap; }

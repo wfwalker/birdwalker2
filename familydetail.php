@@ -43,9 +43,10 @@ navTrailBirds($items);
  ?>
 
     <div class=contentright>
-      <div class=pagesubtitle><?= $familyInfo["LatinName"] ?></div>
+      <div class=pagesubtitle>Family Detail</div>
 	  <div class="titleblock">
 	    <div class=pagetitle><?= $familyInfo["CommonName"] ?></div>
+        <div class=metadata><?= $familyInfo["LatinName"] ?></div>
       </div>
 
 

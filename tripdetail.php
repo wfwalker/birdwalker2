@@ -55,7 +55,7 @@ navTrailTrips($items);
 
 	  <div class=titleblock>
 
-<?      if ($view != "photo") { $sightingQuery->rightThumbnail(true); }?>
+<?      if (($view != "map") && ($view != "photo")) { $sightingQuery->rightThumbnail(true); }?>
         <div class=pagetitle>
             <?= $tripInfo["Name"] ?>
             <?= editLink("./tripedit.php?tripid=" . $tripID); ?>

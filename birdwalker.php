@@ -135,7 +135,7 @@ function rightThumbnail($photoQueryString, $addLink)
 		if ($height > 0) { $sizeAttributes = $sizeAttributes . "  height=" . $height; }
 
 		if ($addLink == true) { ?> <a href="./photodetail.php?id=<?= $photoInfo["objectid"] ?>">  <? } ?>
-           <img <?= $sizeAttributes ?> src="./images/thumb/<?= $filename ?>" border=0 align="left" class="inlinepict" alt="bird">
+           <img <?= $sizeAttributes ?> src="./images/thumb/<?= $filename ?>" border=0 align="right" class="inlinepict" alt="bird">
 <?		if ($addLink == true) { ?> </a> <? }
 	}
 }

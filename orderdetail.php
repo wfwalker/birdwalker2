@@ -28,9 +28,10 @@ navTrailBirds($items);
 ?>
 
     <div class=contentright>
-      <div class=pagesubtitle> <?= $orderInfo["LatinName"] ?></div>
+      <div class=pagesubtitle>Order Detail</div>
 	  <div class="titleblock">
         <div class=pagetitle><?= $orderInfo["CommonName"] ?></div>
+        <div class=metadata> <?= $orderInfo["LatinName"] ?></div>
       </div>
 
 <div class=heading><?= $speciesQuery->getSpeciesCount() ?> species</div>
