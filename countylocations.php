@@ -20,10 +20,8 @@ $locationCount = mysql_num_rows($locationQuery);
 <?php
 globalMenu();
 disabledBrowseButtons();
-$items[]="<a href=\"./statelocations.php?state=" . $state . "\">" . strtolower(getStateNameForAbbreviation($state)) . "</a>";
-$items[]=strtolower($county) . " county";
-navTrailLocations($items);
-pageThumbnail("select *, rand() as shuffle from sighting, location where Photo='1' and sighting.LocationName=location.Name and location.County='" . $county . "' order by shuffle");
+navTrailCounty($state, $county);
+pageThumbnailCounty($county);
 ?>
 
     <div class=contentright>
@@ -32,12 +30,7 @@ pageThumbnail("select *, rand() as shuffle from sighting, location where Photo='
         <div class=pagesubtitle><?= mysql_num_rows($locationQuery) ?> Locations</div>
 
       <div class=metadata>
-        locations:
-        list |
-	    <a href="./countylocationsbyyear.php?state=<?= $state ?>&county=<?= urlencode($county) ?>">by year</a>
-        species:	
-        <a href="./countyspecies.php?state=<?= $state ?>&county=<?= urlencode($county) ?>">list</a> |
-	    <a href="./countyspeciesbyyear.php?state=<?= $state ?>&county=<?= urlencode($county) ?>">by year</a>
+<?        countyViewLinks($state, $county); ?>
       </div>
     </div>
 

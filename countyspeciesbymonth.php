@@ -7,7 +7,7 @@ $countyName = $_GET["county"];
 $state = $_GET["state"];
 $countyCount = performCount("select count(distinct species.objectid) from species, sighting, location where species.Abbreviation=sighting.SpeciesAbbreviation and sighting.LocationName=location.Name and location.County='" . $countyName . "'");
 
-$annualCountyTotal = performQuery("select count(distinct sighting.SpeciesAbbreviation) as count, year(sighting.TripDate) as year from sighting, location where sighting.LocationName=location.Name and location.County='" . $countyName . "' and location.State='" . $state . "' group by year");
+$monthlyCountyTotal = performQuery("select count(distinct sighting.SpeciesAbbreviation) as count, month(sighting.TripDate) as month from sighting, location where sighting.LocationName=location.Name and location.County='" . $countyName . "' and location.State='" . $state . "' group by month");
 
 ?>
 
@@ -38,9 +38,15 @@ pageThumbnailCounty($countyName);
       </div>
 
 <?
-$gridQueryString="select distinct(CommonName), species.objectid as speciesid, bit_or(1 << (year(TripDate) - 1995)) as mask from sighting, species, location where sighting.SpeciesAbbreviation=species.Abbreviation and sighting.LocationName=location.Name and location.County='". $countyName . "' group by sighting.SpeciesAbbreviation order by speciesid";
+$gridQueryString="
+    SELECT DISTINCT(CommonName), species.objectid AS speciesid, bit_or(1 << month(TripDate)) AS mask
+      FROM sighting, species, location
+      WHERE sighting.SpeciesAbbreviation=species.Abbreviation
+        AND sighting.LocationName=location.Name AND location.County='". $countyName . "'
+      GROUP BY sighting.SpeciesAbbreviation
+      ORDER BY speciesid";
 
-formatSpeciesByYearTable($gridQueryString, "&county=" . $countyName, $annualCountyTotal);
+formatSpeciesByMonthTable($gridQueryString, "&county=" . $countyName, $monthlyCountyTotal);
 
 ?>
 

@@ -23,9 +23,8 @@ $divideByTaxo = ($speciesCount > 30);
 <?php
 globalMenu();
 disabledBrowseButtons();
-$items[]="<a href=\"./statespecies.php?state=" . $abbrev . "\">" . strtolower($stateName) . "</a>";
-navTrailLocations($items);
-pageThumbnail("select sighting.*, rand() as shuffle from sighting, location where sighting.Photo='1' and sighting.LocationName=location.Name and location.State='" . $abbrev . "' order by shuffle");
+navTrailCounty($abbrev, $county);
+pageThumbnailCounty( $abbrev);
  ?>
 
     <div class=contentright>
@@ -34,12 +33,7 @@ pageThumbnail("select sighting.*, rand() as shuffle from sighting, location wher
       <div class=pagesubtitle><?= $speciesCount ?> Species</div>
 
       <div class=metadata>
-        locations:
-        <a href="./countylocations.php?state=<?= $abbrev ?>&county=<?= urlencode($county) ?>">list</a> |
-	    <a href="./countylocationsbyyear.php?state=<?= $abbrev ?>&county=<?= urlencode($county) ?>">by year</a>
-        species:	
-        list |
-	    <a href="./countyspeciesbyyear.php?state=<?= $abbrev ?>&county=<?= urlencode($county) ?>">by year</a>
+<?        countyViewLinks($abbrev, $county); ?>
       </div>
 
       </div>
