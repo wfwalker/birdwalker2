@@ -25,7 +25,6 @@ $prevTripID = performCount("
 if ($nextTripID == "") { $nextTripID = $sightingID; }
 if ($prevTripID == "") { $prevTripID = $sightingID; }
 
-
 $locationListQuery = performQuery("SELECT distinct(location.objectid), location.Name
   FROM location, sighting
   WHERE location.Name=sighting.LocationName and sighting.TripDate='". $tripInfo["Date"] . "'");
@@ -80,25 +79,25 @@ navTrailTrips($items);
         </div>
         <div class=metadata>Led by  <?= $tripInfo["Leader"] ?></div>
 
-<? if ($locationCount > 1) { ?>
-          <div class=metadata><?= $tripSpeciesCount ?> species<? if ($tripFirstSightings > 0) { ?>,
-          <?= $tripFirstSightings ?> first sightings <? } ?>
-          </div>
-<? }
-   if (strlen($tripInfo["ReferenceURL"]) > 0) { ?>
+<? if (strlen($tripInfo["ReferenceURL"]) > 0) { ?>
           <div><a href="<?= $tripInfo["ReferenceURL"] ?>">See also...</a></div>
-<? }
- ?>
+<? } ?>
 
-         <div class=report-content> <?= $tripInfo["Notes"] ?></div>
+         <div class=report-content><p><?= $tripInfo["Notes"] ?></p></div>
       </div>
 
 
-<?
+<? if ($locationCount > 1) { ?>
+          <div class=heading>Grand total, <?= $tripSpeciesCount ?> species<? if ($tripFirstSightings > 0) { ?>,
+          <?= $tripFirstSightings ?> first sightings <? } ?>
+          </div>
+<? }
+
 while($locationInfo = mysql_fetch_array($locationListQuery))
 {
 	$tripLocationQuery = performQuery("SELECT
-        species.CommonName, species.ABACountable, species.objectid, sighting.Notes, sighting.Photo, sighting.objectid as sightingid
+        species.CommonName, species.ABACountable, species.objectid, sighting.Notes, sighting.Exclude,
+        sighting.Photo, sighting.objectid AS sightingid
       FROM species, sighting
       WHERE sighting.SpeciesAbbreviation=species.Abbreviation AND
         sighting.TripDate='". $tripInfo["Date"] . "' AND
@@ -107,7 +106,7 @@ while($locationInfo = mysql_fetch_array($locationListQuery))
 
 	$locationFirstSightings = 0;
 	while($sightingInfo = mysql_fetch_array($tripLocationQuery)) {
-		if ($firstSightings[$sightingInfo['objectid']] != null) { $locationFirstSightings++; }
+		if ($firstSightings[$sightingInfo['sightingid']] != null) { $locationFirstSightings++; }
 	}
 	mysql_data_seek($tripLocationQuery, 0);
 
