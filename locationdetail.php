@@ -48,6 +48,7 @@ navTrailLocationDetail($siteInfo);
 ?>
 
 <div class="contentright">
+  <div class="pagesubtitle">Location Detail</div>
   <div class="titleblock">
 <?  if ($view != "photo") { rightThumbnailLocation($siteInfo["Name"]); } ?>
     <div class=pagetitle>

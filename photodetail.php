@@ -45,17 +45,16 @@ navTrailPhotos();
 ?>
 
 <div class="contentright">
-  <div class=report-content>
-    <a href="./tripdetail.php?tripid=<?= $tripInfo["objectid"] ?>"><?= $tripInfo["niceDate"] ?>
-  </div>
+  <div class=pagesubtitle>Photo Detail</div>
 
-<div class="titleblock">
+  <div class="titleblock">
 	  <div class=pagetitle>
           <a href="./speciesdetail.php?speciesid=<?= $speciesInfo["objectid"] ?>"><?= $speciesInfo["CommonName"] ?></a>
 <?        editLink("./sightingedit.php?id=" . $sightingID); ?>
       </div>
       <div class=metadata>
-          <a href="./locationdetail.php?id=<?= $locationInfo["objectid"] ?>"><?= $locationInfo["Name"] ?>, <?= $locationInfo["State"] ?></a> 
+          <a href="./locationdetail.php?id=<?= $locationInfo["objectid"] ?>"><?= $locationInfo["Name"] ?>, <?= $locationInfo["State"] ?></a><br/>
+          <a href="./tripdetail.php?tripid=<?= $tripInfo["objectid"] ?>"><?= $tripInfo["niceDate"] ?></a>
       </div>
 </div>
 

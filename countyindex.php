@@ -15,8 +15,9 @@ navTrailLocations();
 
 
     <div class=contentright>
+      <div class="pagesubtitle">Index</div>
       <div class="titleblock">	  
-        <div class=pagetitle>County Reports</div>
+        <div class=pagetitle>Counties</div>
       </div>
 
 <table columns=11 class=metadata cellpadding=0 cellspacing=0 width="100%">

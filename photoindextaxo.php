@@ -28,9 +28,10 @@ navTrailPhotos();
 ?>
 
     <div class=contentright>
+	  <div class="pagesubtitle">Index</div>
       <div class="titleblock">
 <?      rightThumbnailAll(); ?>
-	    <div class=pagetitle>Photo Index</div>
+	    <div class=pagetitle>Photos</div>
         <div class=metadata>
           <a href="./photoindextaxo.php">by species<a/> |
           <a href="./photoindex.php">by date</a> |

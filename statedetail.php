@@ -30,6 +30,7 @@ $extrema = $locationQuery->findExtrema();
 ?>
 
     <div class=contentright>
+      <div class="pagesubtitle">State Detail</div>
       <div class="titleblock">	  
 <?    rightThumbnailState($info["Abbreviation"]); ?>
 	  <div class=pagetitle><?= $info["Name"] ?></div>

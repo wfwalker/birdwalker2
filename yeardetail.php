@@ -28,6 +28,7 @@ navTrailBirds();
 ?>
 
     <div class=contentright>
+      <div class="pagesubtitle">Year Detail</div>
       <div class="titleblock">	  
 <?      rightThumbnail("
             SELECT sighting.*, rand() AS shuffle

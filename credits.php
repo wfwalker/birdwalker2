@@ -14,7 +14,7 @@ $randomPhotoSightings = performQuery("SELECT *, rand() AS shuffle FROM sighting 
 
 <?php
 globalMenu();
-$items[] = "";
+$items[] = "about";
 navTrail($items);
 disabledBrowseButtons();
 ?>

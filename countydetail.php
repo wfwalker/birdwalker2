@@ -35,6 +35,7 @@ $extrema = $locationQuery->findExtrema();
 ?>
 
     <div class=contentright>
+	  <div class=pagesubtitle>County Detail</div>
       <div class="titleblock">	  
 <?    if ($view != "photo") { rightThumbnailCounty($county); } ?>
 	  <div class=pagetitle> <?= $county ?> County</div>

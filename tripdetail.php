@@ -51,7 +51,7 @@ navTrailTrips($items);
 
 
     <div class="contentright">
-      <div class=pagesubtitle> <?= $tripInfo["niceDate"] ?></div>
+      <div class=pagesubtitle>Trip Detail</div>
 
 	  <div class=titleblock>
 
@@ -61,6 +61,7 @@ navTrailTrips($items);
             <?= editLink("./tripedit.php?tripid=" . $tripID); ?>
         </div>
         <div class=metadata>
+          <?= $tripInfo["niceDate"] ?><br/>
           Led by  <?= $tripInfo["Leader"] ?>
 <?        referenceURL($tripInfo); ?>
         </div>

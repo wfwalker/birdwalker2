@@ -24,6 +24,7 @@ navTrailLocations();
 ?>
 
     <div class=contentright>
+	  <div class="pagesubtitle">Index</div>
       <div class="titleblock">	  
 <?    rightThumbnailAll(); ?>
 	  <div class=pagetitle>Locations</div>

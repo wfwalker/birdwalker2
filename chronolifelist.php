@@ -37,6 +37,7 @@ navTrailBirds();
 ?>
 
 <div class=contentright>
+  <div class="pagesubtitle">Index</div>
   <div class="titleblock">	  
     <div class=pagetitle>ABA Life List</div>
       <div class=pagesubtitle><? echo $speciesCount ?> Species</div>
