@@ -39,6 +39,7 @@ if ($prevPhotoSightingID == "") { $prevPhotoSightingID = $sightingID; }
         <a href="./countydetail.php?county=<?php echo $locationInfo["County"] ?>"><?php echo $locationInfo["County"] ?> County</a>,
         <a href="./statedetail.php?state=<?php echo $locationInfo["State"] ?>"><?php echo getStateNameForAbbreviation($locationInfo["State"]) ?></a>
       </div>
+<?php if (getEnableEdit()) { echo "<div><a href=\"./sightingedit.php?id=" . $sightingID . "\">edit</a></div>"; } ?>
 </div>
 
 <?php
