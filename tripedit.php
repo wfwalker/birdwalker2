@@ -86,7 +86,7 @@ $tripInfo = getTripInfo($tripID);
 	<td><input type="text" name="Date" value="<?= $tripInfo["Date"] ?>" size=20/></td>
   </tr>
   <tr>
-	<td><input type="hidden" name="id" value="<?= $tripID ?>"/></td>
+	<td><input type="hidden" name="tripid" value="<?= $tripID ?>"/></td>
 	<td><input type="submit" name="Save" value="Save"/></td>
   </tr>
 </table>
