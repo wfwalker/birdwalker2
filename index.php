@@ -5,7 +5,7 @@ require_once("./birdwalker.php");
 
 $numberOfTrips = 10;
 $latestTrips = performQuery("select *, date_format(Date, '%M %e, %Y') AS niceDate from trip order by Date desc LIMIT " . $numberOfTrips);
-$randomPhotoSightings = performQuery("SELECT *, rand(" . $randomNumberSeed . ") AS shuffle FROM sighting WHERE Photo='1' ORDER BY shuffle LIMIT 5");
+$randomPhotoSightings = performQuery("SELECT *, " . dailyRandomSeedColumn() . " FROM sighting WHERE Photo='1' ORDER BY shuffle LIMIT 5");
 
 htmlHead("Home");
 
