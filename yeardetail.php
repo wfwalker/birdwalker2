@@ -14,15 +14,8 @@ $view = param($_GET, "view", "species");
 $speciesQuery = new SpeciesQuery;
 $speciesQuery->setFromRequest($_GET);
 
-?>
+htmlHead($year);
 
-<html>
-
-  <? htmlHead($year) ?>
-
-  <body>
-
-<?
 globalMenu();
 browseButtons("./yeardetail.php?view=" . $view . "&year=", $year, getEarliestYear(), $year - 1, $year + 1, getLatestYear());
 navTrailBirds();

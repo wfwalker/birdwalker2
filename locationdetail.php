@@ -26,15 +26,8 @@ while($sightingInfo = mysql_fetch_array($locationSightings)) {
 	}
 }
 
-?>
+htmlHead($siteInfo["Name"]);
 
-<html>
-
-  <? htmlHead($siteInfo["Name"]); ?>
-
-  <body>
-
-<?php
 globalMenu();
 locationBrowseButtons("./locationdetail.php", $locationID, $view);
 navTrailLocationDetail($siteInfo);
