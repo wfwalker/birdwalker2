@@ -7,7 +7,7 @@ class BirdWalkerQuery
 	// constrain this query to a particular county
 	var $mCounty;
 	// constrain this query to a particular state
-	var $mState;
+	var $mStateID;
 
 	// constrain this query to a trip
 	var $mTripID;
@@ -27,7 +27,7 @@ class BirdWalkerQuery
 	{
 		$this->setLocationID("");
 		$this->setCounty("");
-		$this->setState("");
+		$this->setStateID("");
 
 		$this->setTripID("");
 		$this->setMonth("");
@@ -39,7 +39,7 @@ class BirdWalkerQuery
 
 	function setLocationID($inValue) { $this->mLocationID = $inValue; }
 	function setCounty($inValue) { $this->mCounty = $inValue; }
-	function setState($inValue) { $this->mState = $inValue; }
+	function setStateID($inValue) { $this->mStateID = $inValue; }
 
 	function setTripID($inValue) { $this->mTripID = $inValue; }
 	function setMonth($inValue) { $this->mMonth = $inValue; }
@@ -58,6 +58,14 @@ class BirdWalkerQuery
 		$this->setYear(param($_GET, "year", ""));
 		$this->setMonth(param($_GET, "month", ""));
 		$this->setCounty(param($_GET, "county", ""));
-		$this->setState(param($_GET, "state", ""));
+		$this->setStateID(param($_GET, "stateid", ""));
+	}
+
+	function debug()
+	{
+		echo "\n<!-- locationid " . $this->mLocationID . " county " . $this->mCounty .
+			" stateid " . $this->mStateID . " tripid " . $this->mTripID .
+			" month " . $this->mMonth . " year " . $this->mYear . 
+			" speciesid " . $this->mSpeciesID . " family " . $this->mFamily . " order " . $this->mOrder . " -->\n\n";
 	}
 }
