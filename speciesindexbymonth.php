@@ -9,10 +9,10 @@ $lifeCount = performCount("
       WHERE species.Abbreviation=sighting.SpeciesAbbreviation");
 
 $annualTotal = performQuery("
-    SELECT count(distinct sighting.SpeciesAbbreviation) as count, year(sighting.TripDate) as year
+    SELECT count(distinct sighting.SpeciesAbbreviation) as count, month(sighting.TripDate) as month
       FROM sighting, species
       WHERE species.Abbreviation=sighting.SpeciesAbbreviation
-      GROUP BY year");
+      GROUP BY month");
 
 ?>
 
@@ -35,18 +35,18 @@ pageThumbnail("SELECT *, rand() AS shuffle FROM sighting WHERE Photo='1' ORDER B
       <div class="titleblock">	  
 	  <div class=pagetitle>Species</div>
         <div class=pagesubtitle><?= $lifeCount ?> Species</div>
-	  <div class=metadata><a href="./speciesindex.php">list</a> | <a href="./speciesindexbymonth.php">by month</a> | by year</div>
+	  <div class=metadata><a href="./speciesindex.php">list</a> | by month | <a href="./speciesindexbyyear.php">by year</a></div>
       </div>
 
 <?
 $gridQueryString="
-    SELECT distinct(CommonName), species.objectid AS speciesid, bit_or(1 << (year(TripDate) - 1995)) AS mask
+    SELECT distinct(CommonName), species.objectid AS speciesid, bit_or(1 << month(TripDate)) AS mask
       FROM sighting, species
-      WHERE sighting.SpeciesAbbreviation=species.Abbreviation and sighting.Exclude!='1'
+      WHERE sighting.SpeciesAbbreviation=species.Abbreviation
       GROUP BY sighting.SpeciesAbbreviation
       ORDER BY speciesid";
 
-formatSpeciesByYearTable($gridQueryString, "", $annualTotal);
+formatSpeciesByMonthTable($gridQueryString, "", $annualTotal);
 
 ?>
 

@@ -25,7 +25,7 @@ pageThumbnail("SELECT *, rand() as shuffle FROM sighting WHERE Photo='1' ORDER B
       <div class="titleblock">	  
 	  <div class=pagetitle>Species</div>
 	  <div class=pagesubtitle><?= mysql_num_rows($speciesQuery) ?> Species</div>
-	  <div class=metadata>list | <a href="./speciesindexbyyear.php">by year</a></div>
+	  <div class=metadata>list | <a href="./speciesindexbymonth.php">by month</a> | <a href="./speciesindexbyyear.php">by year</a></div>
       </div>
 
 <?php formatTwoColumnSpeciesList($speciesQuery); ?>
