@@ -14,6 +14,14 @@ $locationListQuery = performQuery("select distinct(location.objectid), location.
 
 $firstSightings = getFirstSightings();
 $firstYearSightings = getFirstYearSightings(substr($tripInfo["Date"], 0, 4));
+
+// how many first sightings were on this trip?
+$tripSightings = performQuery("select objectid from sighting where TripDate='" . $tripInfo['Date'] . "' and Exclude!='1'");
+$tripFirstSightings = 0;
+while($sightingInfo = mysql_fetch_array($tripSightings)) {
+	if ($firstSightings[$sightingInfo['objectid']] != null) { $tripFirstSightings++; }
+}
+
 ?>
 
 <html>
@@ -45,7 +53,7 @@ $firstYearSightings = getFirstYearSightings(substr($tripInfo["Date"], 0, 4));
 
       <div class=sighting-notes> <?php echo $tripInfo["Notes"] ?></div>
 
-      <div class=titleblock>Observed  <?php echo $tripSpeciesCount ?> species on this trip</div>
+	<div class=titleblock>Observed  <?php echo $tripSpeciesCount ?> species on this trip<? if ($tripFirstSightings > 0) echo ", including " . $tripFirstSightings . " first sightings" ?></div>
 
 <?php
 
