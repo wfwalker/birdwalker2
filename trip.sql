@@ -294,3 +294,4 @@ INSERT INTO trip VALUES (293,'Steve Shunk','','Paradise Birding Texas Day 2','',
 INSERT INTO trip VALUES (294,'Steve Shunk','','Paradise Birding Texas Day 3','','2004-04-15');
 INSERT INTO trip VALUES (295,'Steve Shunk','','Paradise Birding Texas Day 5','Sabal Palm Grove Sanctuary, Laguna Madre Nature Trail, Hwy 100, Old Port Isabel Road','2004-04-17');
 INSERT INTO trip VALUES (296,'Steve Shunk','','Paradise Birding Texas Day 4','Mustang Island, S Nuences Co., Kingsville, Baffin Bay, Laguna Atascosa','2004-04-16');
+INSERT INTO trip VALUES (297,'Steve Shunk','','Paradise Birding Texas Day 6','Santa Ana NWR, Bentsen Rio Grande River State Park','2004-04-18');
