@@ -1070,10 +1070,15 @@ function rightThumbnailLocation($locationName)
 
 function mapLink($siteInfo)
 {
-   if ($siteInfo["Latitude"] > 0) { ?>
+   if ($siteInfo["Latitude"] > 0)
+   {
+	   $lat = $siteInfo["Latitude"];
+	   $long = $siteInfo["Longitude"];
+?>
    <div>maps: 
-      <a href="http://www.mapquest.com/maps/map.adp?latlongtype=decimal&latitude=<?= $siteInfo["Latitude"] ?>&longitude=-<?= $siteInfo["Longitude"] ?>">mapquest</a>
-      <a href="http://terraserver.microsoft.com/image.aspx?Lon=-<?=$siteInfo["Longitude"]?>&Lat=<?=$siteInfo["Latitude"]?>&w=1">terraserver</a>
+      <a href="http://www.mapquest.com/maps/map.adp?latlongtype=decimal&latitude=<?= $lat ?>&longitude=-<?= $long ?>">mapquest</a> |
+      <a href="http://terraserver.microsoft.com/image.aspx?Lon=-<?=$long?>&Lat=<?=$lat?>&w=1">terraserver</a> |
+      <a href="./locationmap.php?minlat=<?=$lat-0.1?>&maxlat=<?=$lat+0.1?>&minlong=<?=$long-0.1?>&maxlong=<?=$long+0.1?>">opengis</a>
     </div>
 <? }
 }
