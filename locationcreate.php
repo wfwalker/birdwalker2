@@ -1,5 +1,5 @@
 
-<?php
+<?
 
 require("./birdwalker.php");
 
@@ -74,7 +74,11 @@ $locationInfo = getLocationInfo($locationID);
 
 <body>
 
-<?php globalMenu(); disabledBrowseButtons(); navTrailLocations(); ?>
+<?
+globalMenu();
+disabledBrowseButtons();
+navTrailLocations();
+?>
 
     <div class="navigationleft">
 	  <a href="./locationcreate.php?id=1">first</a>

@@ -18,11 +18,11 @@ $locationCount = performCount("SELECT COUNT(DISTINCT location.objectid) FROM loc
 globalMenu();
 disabledBrowseButtons();
 navTrailLocations();
-pageThumbnail("SELECT *, rand() AS shuffle FROM sighting WHERE Photo='1' ORDER BY shuffle");
 ?>
 
 <div class=contentright>
   <div class="titleblock">	  
+<?    rightThumbnailAll(); ?>
     <div class=pagetitle>Locations</div>
     <div class=pagesubtitle><?= $locationCount ?> Locations</div>
     <div class=metadata><a href="./locationindex.php">list</a> | by year</div>

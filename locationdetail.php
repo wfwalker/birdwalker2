@@ -51,36 +51,18 @@ while($sightingInfo = mysql_fetch_array($locationSightings)) {
 <?php
 globalMenu();
 locationBrowseButtons($siteInfo, $locationID, "");
-
-$items[] = "
-    <a href=\"./statelocations.php?state=" .  $siteInfo["State"] . "\">" .
-      strtolower(getStateNameForAbbreviation($siteInfo["State"])) . "
-    </a>";
-$items[] = "
-    <a href=\"./countylocations.php?county=" . $siteInfo["County"] . "&state=" . $siteInfo["State"] . "\">" .
-      strtolower($siteInfo["County"]) . " county
-    </a>";
-$items[] =
-    strtolower($siteInfo["Name"]);
-
-navTrailLocations($items);
-pageThumbnail("
-    SELECT *, rand() AS shuffle
-      FROM sighting
-      WHERE Photo='1' AND LocationName='" . $siteInfo["Name"] . "'
-      ORDER BY shuffle");
+navTrailLocationDetail($siteInfo);
 ?>
 
 <div class="contentright">
   <div class="titleblock">
-    <div class=pagetitle><?= $siteInfo["Name"] ?></div>
+<?  rightThumbnailLocation($siteInfo["Name"]); ?>
+    <div class=pagetitle>
+        <?= $siteInfo["Name"] ?>
+        <? editLink("./locationcreate.php?id=" . $locationID); ?>
+    </div>
 
 <?    referenceURL($siteInfo);
-
-      if (getEnableEdit()) { ?>
-	     <div><a href="./locationcreate.php?id=<?= $locationID ?>">edit</a></div>
-<?    }
-
       mapLink($siteInfo);
       locationViewLinks($locationID); ?>
     </div>
@@ -100,7 +82,7 @@ pageThumbnail("
    </div>
 
 <? formatTwoColumnSpeciesList(performQuery("
-        SELECT distinct(species.objectid), species.*
+        SELECT distinct(species.objectid), species.CommonName, sighting.objectid as sightingid
           FROM species, sighting
           WHERE species.Abbreviation=sighting.SpeciesAbbreviation
           AND sighting.LocationName='" . $siteInfo["Name"]. "'
