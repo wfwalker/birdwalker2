@@ -59,15 +59,9 @@ $speciesInfo = performOneRowQuery("select * from species where Abbreviation='" .
 $tripInfo = performOneRowQuery("select *, date_format(Date, '%W,  %M %e, %Y') as niceDate from trip where Date='" . $sightingInfo["TripDate"] . "'");
 $locationInfo = performOneRowQuery("select * from location where Name='" . $sightingInfo["LocationName"] . "'");
 $locationList = performQuery("select Name, objectid from location");
-?>
 
-<html>
+htmlHead($speciesInfo["CommonName"] . ", " . $tripInfo["niceDate"]);
 
-  <? htmlHead($speciesInfo["CommonName"] . ", " . $tripInfo["niceDate"]); ?>
-
-  <body>
-
-<?php
 globalMenu();
 browseButtons("./sightingedit.php?id=", $sightingID, 1, $sightingID - 1, $sightingID + 1, $sightingCount);
 navTrailBirds();

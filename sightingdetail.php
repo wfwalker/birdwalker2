@@ -10,15 +10,9 @@ $tripInfo = performOneRowQuery("select *, date_format(Date, '%W,  %M %e, %Y') as
 $tripYear =  substr($tripInfo["Date"], 0, 4);
 $locationInfo = performOneRowQuery("select * from location where Name='" . $sightingInfo["LocationName"] . "'");
 $sightingCount = performCount("select max(objectid) from sighting");
-?>
 
-<html>
+htmlHead($speciesInfo["CommonName"] . ", " . $tripInfo["niceDate"]);
 
-  <? htmlHead($speciesInfo["CommonName"] . ", " . $tripInfo["niceDate"]) ?>
-
-  <body>
-
-<?php
 globalMenu();
 browseButtons("./sightingdetail.php?id=", $sightingID, 1, $sightingID - 1, $sightingID + 1, $sightingCount);
 navTrailBirds();

@@ -13,15 +13,8 @@ $photoCount = performCount("
 
 $thresholdTime = strtotime("-1 month");
 
-?>
+htmlHead("Photo List");
 
-<html>
-
-  <? htmlHead("Photo List"); ?>
-
-  <body>
-
-<?php
 globalMenu();
 disabledBrowseButtons();
 navTrailPhotos();

@@ -16,15 +16,8 @@ $photoCount = performQuery("select species.CommonName, species.objectid, sum(sig
 
 $speciesCount = 0;
 
-?>
+htmlHead("Birds in need of photos");
 
-<html>
-
-  <? htmlHead("Birds in need of photos"); ?>
-
-  <body>
-
-<?php
 globalMenu();
 disabledBrowseButtons();
 navTrailPhotos("missing");

@@ -11,15 +11,8 @@ $aQuery->setFromRequest($_GET);
 
 $view = param($_GET, "view", "list");
 
-?>
+htmlHead($aQuery->getPageTitle());
 
-<html>
-
-  <? htmlHead($aQuery->getPageTitle()); ?>
-
-  <body>
-
-<?
 globalMenu();
 disabledBrowseButtons();
 navTrailBirds();

@@ -7,15 +7,8 @@ require_once("./speciesquery.php");
 $speciesQuery = new SpeciesQuery;
 $view = param($_GET, "view", "");
 
-?>
+htmlHead("Species");
 
-<html>
-
-  <? htmlHead("Species"); ?>
-
-  <body>
-
-<?php
 globalMenu();
 disabledBrowseButtons();
 navTrailBirds();

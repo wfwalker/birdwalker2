@@ -32,15 +32,9 @@ if (($postSpeciesID != "") && ($save == "Save"))
 }
 
 $speciesInfo = getSpeciesInfo($speciesID);
-?>
 
-<html>
+htmlHead($speciesInfo["Name"] . ", " . $speciesInfo["niceDate"]);
 
-  <? htmlHead($speciesInfo["Name"] . ", " . $speciesInfo["niceDate"]); ?>
-
-  <body>
-
-<?php
 globalMenu();
 speciesBrowseButtons("./speciesedit.php", $speciesID, "edit");
 navTrailSpecies($speciesID);

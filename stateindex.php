@@ -28,15 +28,8 @@ while ($info = mysql_fetch_array($stateStats))
 	$table[$state][$year] = $speciesCount;
 }
 
-?>
+htmlHead("States");
 
-<html>
-
-  <? htmlHead("States"); ?>
-
-  <body>
-
-<?php
 globalMenu();
 disabledBrowseButtons();
 navTrailLocations();

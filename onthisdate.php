@@ -13,15 +13,10 @@ $tripsOnThisDate = performQuery("
       WHERE Month(Date)='" . ($localtimearray["tm_mon"] + 1) . "' AND
         DayOfYear(Date)>='" . $dayStart . "' AND DayOfYear(Date)<='" . $dayStop . "'
         AND Year(Date)<" . getLatestYear() . "
-      ORDER BY Date DESC"); ?>
+      ORDER BY Date DESC");
 
-<html>
+htmlHead("This Week in Birding History");
 
-  <? htmlHead("This Week in Birding History"); ?>
-
-  <body>
-
-<?php
 globalMenu();
 $items[] = "";
 navTrail($items);

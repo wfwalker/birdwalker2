@@ -8,15 +8,8 @@ $map = new Map("./locationmap.php");
 
 $map->setFromRequest($_GET);
 
-?>
+htmlHead("OpenGIS");
 
-<html>
-
-  <? htmlHead("OpenGIS"); ?>
-
-  <body>
-
-<?php
 globalMenu();
 disabledBrowseButtons();
 navTrailLocations();

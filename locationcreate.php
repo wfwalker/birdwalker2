@@ -61,15 +61,8 @@ if ($postLocationID != "") {
 
 $locationInfo = getLocationInfo($locationID);
 
-?>
+htmlHead($locationInfo["Name"] . ", " .  $locationInfo["State"]);
 
-<html>
-
-  <? htmlHead($locationInfo["Name"] . ", " .  $locationInfo["State"]); ?>
-
-  <body>
-
-<?
 globalMenu();
 locationBrowseButtons("./locationcreate.php", $locationID, $view);
 navTrailLocationDetail($locationInfo);

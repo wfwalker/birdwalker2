@@ -7,15 +7,9 @@ $sightingQuery = new SightingQuery;
 $sightingQuery->setFromRequest($_GET);
 
 $dbQuery = $sightingQuery->performQuery();
-?>
 
-<html>
+htmlHead($sightingQuery->getPageTitle());
 
-  <? htmlHead($sightingQuery->getPageTitle()); ?>
-
-  <body>
-
-<?php
 globalMenu();
 disabledBrowseButtons();
 navTrailBirds();
@@ -77,6 +71,11 @@ while($sightingInfo = mysql_fetch_array($dbQuery)) {
 	$prevSightingInfo = $sightingInfo;
 }
 
+?>
+
+  <table>
+
+<?
 footer();
 ?>
 

@@ -22,15 +22,9 @@ $firstSightingQuery = performQuery("SELECT
   ORDER BY TripDate DESC, LocationName;");
 
 $speciesCount = mysql_num_rows($firstSightingQuery);
-?>
 
-<html>
+htmlHead("Chronological ABA Life List");
 
-  <? htmlHead("Chronological ABA Life List"); ?>
-
-  <body>
-
-<?php
 globalMenu();
 disabledBrowseButtons();
 navTrailBirds();

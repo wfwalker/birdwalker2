@@ -12,17 +12,10 @@ performQuery("insert into tmp select species.CommonName, 0 from species");
 performQuery("INSERT INTO tmp SELECT species.CommonName, count(sighting.objectid) as sightingCount FROM sighting, species, location where species.Abbreviation=sighting.SpeciesAbbreviation AND sighting.LocationName=location.Name and location.State='CA' and Exclude!='1' and Year(TripDate)='". $theYear . "' GROUP BY SpeciesAbbreviation;");
 
 
-$latestSightingQuery = performQuery("select countyfrequency.Frequency, tmp.CommonName, max(sightingCount) as sightingCount from tmp, countyfrequency where tmp.CommonName=countyfrequency.CommonName group by tmp.CommonName order by countyfrequency.Frequency");
+$latestSightingQuery = performQuery("SELECT countyfrequency.Frequency, tmp.CommonName, max(sightingCount) AS sightingCount FROM tmp, countyfrequency WHERE tmp.CommonName=countyfrequency.CommonName GROUP BY tmp.CommonName ORDER BY countyfrequency.Frequency");
 
-?>
+htmlHead("Target Year Birds");
 
-<html>
-
-  <? htmlHead("Target Year Birds"); ?>
-
-  <body>
-
-<?php
 globalMenu();
 browseButtons("./santaclarayearlist.php?year=", $theYear, getEarliestYear(), $theYear - 1, $theYear + 1, getLatestYear());
 navTrailBirds(); ?>

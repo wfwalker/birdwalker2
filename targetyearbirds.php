@@ -25,15 +25,8 @@ $latestSightingQuery = performQuery("
 
 $sightingThreshold = 10;
 
-?>
+htmlHead("Target CA Year Birds");
 
-<html>
-
-  <? htmlHead("Target CA Year Birds"); ?>
-
-  <body>
-
-<?php
 globalMenu();
 disabledBrowseButtons();
 navTrailBirds();

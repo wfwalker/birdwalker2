@@ -11,15 +11,9 @@ $photoLocations = performQuery("
 $photoCount = performCount("
     SELECT COUNT(*) FROM sighting WHERE Photo='1'");
 
-?>
 
-<html>
+htmlHead("Photo List");
 
-  <? htmlHead("Photo List"); ?>
-
-  <body>
-
-<?php
 globalMenu();
 disabledBrowseButtons();
 navTrailPhotos();
