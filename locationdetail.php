@@ -4,7 +4,7 @@
 require("./birdwalker.php");
 
 $siteInfo = getLocationInfo($_GET['id']);
-
+$locationCount = getLocationCount();
 $whereClause = "species.Abbreviation=sighting.SpeciesAbbreviation and sighting.LocationName='" . $siteInfo["Name"]. "'";
 $siteListQuery = getSpeciesQuery($whereClause);
 $siteListCount = getSpeciesCount($whereClause);
@@ -26,12 +26,17 @@ $firstSightings = getFirstSightings();
 
 <?php navigationHeader() ?>
 
+    <div class="navigationleft">
+	  <a href="./locationdetail.php?id=1">first</a>
+	  <a href="./locationdetail.php?id=<?php echo $_GET['id'] - 1 ?>">prev</a>
+      <a href="./locationdetail.php?id=<?php echo $_GET['id'] + 1 ?>">next</a>
+      <a href="./locationdetail.php?id=<?php echo $locationCount ?>">last</a>
+    </div>
+
 <div class="contentright">
       <div class="titleblock">
 	  <div class=pagetitle><?php echo $siteInfo["Name"] ?></div>
-<div class=pagesubtitle><?php echo $siteInfo["County"] ?> County</div>
-<div class=metadata><?php echo $siteInfo["City"] ?>, <?php echo $siteInfo["State"] ?></div>
-<div class=metadata><?php echo $siteListCount . " Species seen on " . $tripCount . " trips" ?></div>
+<div class=pagesubtitle><?php echo $siteInfo["County"] ?> County, <?php echo getStateNameForAbbreviation($siteInfo["State"]) ?></div>
 
 <?php
 if (strlen($siteInfo["ReferenceURL"]) > 0) {

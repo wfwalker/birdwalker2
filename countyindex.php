@@ -40,7 +40,7 @@ while ($info = mysql_fetch_array($countyStats))
 
 	if ($lastStateAccumulated != $prevState)
 	{
-		echo "<tr><td colspan=11 class=titleblock>" . $prevState . "</td></tr>";
+		echo "<tr><td colspan=11 class=titleblock><a href=\"statedetail.php?state=" . $prevState . "\">" . getStateNameForAbbreviation($prevState) . "</a></td></tr>";
 		$lastStateAccumulated = $prevState;
 	}
 		
