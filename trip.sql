@@ -289,9 +289,9 @@ INSERT INTO trip VALUES (288,'Bill and Mary','','Sunday Stroll','Walking around 
 INSERT INTO trip VALUES (289,'Bill','','Early Morning Walk','I went to see if I could get a look at the Clapper Rail with the new camera, and was granted an audience.','2003-12-03');
 INSERT INTO trip VALUES (290,'Bill','','Early Morning Walk','','2004-03-31');
 INSERT INTO trip VALUES (291,'Mary and Bill','','Saturday Stroll','We wanted to get warmed up before our big trip to Texas','2004-04-10');
-INSERT INTO trip VALUES (292,'Steve Shunk','','Paradise Birding Texas Day 1','','2004-04-13');
-INSERT INTO trip VALUES (293,'Steve Shunk','','Paradise Birding Texas Day 2','','2004-04-14');
-INSERT INTO trip VALUES (294,'Steve Shunk','','Paradise Birding Texas Day 3','','2004-04-15');
+INSERT INTO trip VALUES (292,'Steve Shunk','','Paradise Birding Texas Day 1','Highway 181, Redfish Bay','2004-04-13');
+INSERT INTO trip VALUES (293,'Steve Shunk','','Paradise Birding Texas Day 2','Port Aransas, Rockport, Aransas NWR','2004-04-14');
+INSERT INTO trip VALUES (294,'Steve Shunk','','Paradise Birding Texas Day 3','Port Aransas, Mustang Island, Corpus Christi (Blucher, Hilltop, Hazel Bazelmore, Pollywog Pond)','2004-04-15');
 INSERT INTO trip VALUES (295,'Steve Shunk','','Paradise Birding Texas Day 5','Sabal Palm Grove Sanctuary, Laguna Madre Nature Trail, Hwy 100, Old Port Isabel Road','2004-04-17');
 INSERT INTO trip VALUES (296,'Steve Shunk','','Paradise Birding Texas Day 4','Mustang Island, S Nuences Co., Kingsville, Baffin Bay, Laguna Atascosa','2004-04-16');
 INSERT INTO trip VALUES (297,'Steve Shunk','','Paradise Birding Texas Day 6','Santa Ana NWR, Bentsen Rio Grande River State Park','2004-04-18');
@@ -300,3 +300,6 @@ INSERT INTO trip VALUES (299,'Steve Shunk','','Paradise Birding Texas Day 8','',
 INSERT INTO trip VALUES (300,'Steve Shunk','','Paradise Birding Texas Day 9','Kickapoo State Park, Lost Maples Nature Area. We worked really hard to find and see these three Vireos.','2004-04-21');
 INSERT INTO trip VALUES (301,'Steve Shunk','','Paradise Birding Texas Day 10','','2004-04-22');
 INSERT INTO trip VALUES (302,'Steve Shunk','','Paradise Birding Texas Day 11','','2004-04-23');
+INSERT INTO trip VALUES (303,'Bill','','Quick Photo Stop','','2003-11-29');
+INSERT INTO trip VALUES (304,'Bill','','Walk to Train','','2003-10-10');
+INSERT INTO trip VALUES (305,'Mary and Bill','','Strolling in the Park','','2003-11-02');
