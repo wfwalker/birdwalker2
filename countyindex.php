@@ -61,7 +61,7 @@ while ($info = mysql_fetch_array($countyStats))
 	{ ?>
 
 		<tr><td class=firstcell>
-			<a href="./countydetail.php?state=<?= $prevState ?>&county=<?= urlencode($countyToAccumulate) ?>"/>
+			<a href="./countydetail.php?state=<?= $prevState ?>&county=<?= urlencode($countyToAccumulate) ?>">
 			<?= $countyToAccumulate ?> County
 			</a>
 			</td>

@@ -26,7 +26,7 @@ navTrailPhotos();
       <div class="titleblock">	  
 	    <div class=pagetitle>Photo Index</div>
         <div class=metadata>
-          <a href="./photoindextaxo.php">by species<a/> |
+          <a href="./photoindextaxo.php">by species</a> |
           <a href="./photoindex.php">by date</a> |
           <a href="./photoindexlocation.php">by location</a>
         </div>
@@ -68,6 +68,8 @@ while($info = mysql_fetch_array($photoQuery))
     $counter++;
 }
 ?>
+
+</table>
 
     </div>
   </body>
