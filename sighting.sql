@@ -9900,7 +9900,7 @@ INSERT INTO sighting VALUES (9933,'brebla','Drawbridge','36 birds','','','2004-1
 INSERT INTO sighting VALUES (9934,'houfin','Drawbridge','26 birds','','','2004-12-19');
 INSERT INTO sighting VALUES (9935,'houspa','Drawbridge','13 birds','','','2004-12-19');
 INSERT INTO sighting VALUES (9936,'sander','Drawbridge','1 bird','','','2004-12-19');
-INSERT INTO sighting VALUES (9937,'glagul','Drawbridge','1 bird, seen sleeping out on the marsh. At first, we mistook it for a white Goose, much bigger and whiter than the other gulls in the flock.','','','2004-12-19');
+INSERT INTO sighting VALUES (9937,'glagul','Drawbridge','1 bird, seen sleeping on a berm in the salt ponds. At first, we mistook it for a white Goose, much bigger and whiter than the other gulls in the flock.','','','2004-12-19');
 INSERT INTO sighting VALUES (9938,'glwgul','Drawbridge','1 bird','','','2004-12-19');
 INSERT INTO sighting VALUES (9939,'rewbla','Drawbridge','26 birds','','','2004-12-19');
 INSERT INTO sighting VALUES (9940,'whcspa','Ulistac Natural Area','','','1','2004-11-28');
