@@ -19,7 +19,7 @@ $photoSpeciesCount = performCount("select count(distinct(sighting.SpeciesAbbrevi
 globalMenu();
 disabledBrowseButtons();
 navTrailPhotos("<a href=\"./photoindextaxo.php\">by species</a> | by date");
- ?>
+?>
 
 
     <div class=contentright>

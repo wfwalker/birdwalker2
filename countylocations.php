@@ -13,7 +13,7 @@ $locationCount = mysql_num_rows($locationQuery);
 <html>
   <head>
     <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-    <title>birdWalker | <?php echo $county ?> County Locations</title>
+    <title>birdWalker | <?php echo $county ?> County</title>
   </head>
   <body>
 
@@ -28,12 +28,20 @@ pageThumbnail("select *, rand() as shuffle from sighting, location where Photo='
 
     <div class=contentright>
       <div class="titleblock">	  
-	  <div class=pagetitle><?php echo $county ?> County</div>
-	  <div class=pagesubtitle><?php echo mysql_num_rows($locationQuery) ?> Locations</div>
-      <div class=metadata>list | <a href="./countylocationsbyyear.php?state=<?php echo $state ?>&county=<?php echo urlencode($county) ?>">by year</a></div>
-      </div>
+        <div class=pagetitle><?php echo $county ?> County</div>
+        <div class=pagesubtitle><?php echo mysql_num_rows($locationQuery) ?> Locations</div>
 
-	<?php formatTwoColumnLocationList($locationQuery, false); ?>
+      <div class=metadata>
+        locations:
+        list |
+	    <a href="./countylocationsbyyear.php?state=<?= $state ?>&county=<?= urlencode($county) ?>">by year</a>
+        species:	
+        <a href="./countyspecies.php?state=<?= $state ?>&county=<?= urlencode($county) ?>">list</a> |
+	    <a href="./countyspeciesbyyear.php?state=<?= $state ?>&county=<?= urlencode($county) ?>">by year</a>
+      </div>
+    </div>
+
+   <? formatTwoColumnLocationList($locationQuery, false); ?>
 
     </div>
   </body>

@@ -1,9 +1,5 @@
 
-<?php
-
-require("./birdwalker.php");
-
-?>
+<? require("./birdwalker.php"); ?>
 
 <html>
   <head>
@@ -31,7 +27,9 @@ $prevState = "NONE";
 $countyToAccumulate = "NONE";
 $countyStats = performQuery("select location.County, location.State, location.objectid, count(distinct sighting.SpeciesAbbreviation) as SpeciesCount, year(sighting.TripDate) as theyear from location, sighting where sighting.LocationName=location.Name group by location.County, theyear order by State, County, theyear");
 
-echo "<tr><td></td>"; insertYearLabels(); echo "</tr>";
+?>
+    <tr><td></td><? insertYearLabels(); ?></tr>
+<?
 
 while ($info = mysql_fetch_array($countyStats))
 {
@@ -42,21 +40,34 @@ while ($info = mysql_fetch_array($countyStats))
 
 	if ($lastStateAccumulated != $prevState)
 	{
-		echo "<tr><td colspan=11 class=titleblock><a href=\"statedetail.php?state=" . $prevState . "\">" . getStateNameForAbbreviation($prevState) . "</a></td></tr>";
+		echo "<tr><td colspan=11 class=heading><a href=\"statespecies.php?state=" . $prevState . "\">" . getStateNameForAbbreviation($prevState) . "</a></td></tr>";
 		$lastStateAccumulated = $prevState;
 	}
 		
 	if (($yearArray != null) && ($countyToAccumulate != $county))
 	{
-		echo "<tr><td class=firstcell><a href=\"./countydetail.php?county=" . urlencode($countyToAccumulate) . "\"/>" . $countyToAccumulate . " County</a></td>";
-		for ($year = 1996; $year <= 2004; $year++)
-		{
-			echo "<td class=bordered align=right>";
-			echo "<a href=\"./specieslist.php?county=" . urlEncode($countyToAccumulate) . "&year=" . $year . "\">";
-			echo "&nbsp;" . $yearArray[$year] . "<a/></td>";
-		}
-		echo "</tr>";
+?>
+		<tr><td class=firstcell>
+			<a href="./countyspecies.php?state=<?= $prevState ?>&county=<?= urlencode($countyToAccumulate) ?>"/>
+			<?= $countyToAccumulate ?> County
+			</a>
+			</td>
 
+<?
+	for ($year = 1996; $year <= 2004; $year++)
+	{
+?>
+ 
+        <td class=bordered align=right>
+            <a href="./specieslist.php?county=<?= urlEncode($countyToAccumulate) ?>&year=<?= $year ?>">
+				&nbsp; <?= $yearArray[$year] ?>
+            <a/>
+        </td>
+<?
+	}
+?>
+		</tr>
+<?
 		$yearArray = null;
 	}
 

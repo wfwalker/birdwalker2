@@ -13,7 +13,12 @@ $randomPhotoSightings = performQuery("select *, rand() as shuffle from sighting 
   </head>
   <body>
 
-<?php globalMenu(); ?>
+<?php
+globalMenu();
+$items[] = "";
+navTrail($items);
+disabledBrowseButtons();
+?>
 
     <div class=contentright>
       <div class="titleblock">	  
