@@ -86,7 +86,7 @@ if ($speciesInfo["ABACountable"] == '0') {
 		  {
 ?>
 			  <div class=firstcell>
-                  <a href="./tripdetail.php?id=<?= $tripInfo["objectid"] ?>"><?= $tripInfo["Name"] ?>(<?= $tripInfo["niceDate"] ?>)</a>
+                  <a href="./tripdetail.php?id=<?= $tripInfo["objectid"] ?>"><?= $tripInfo["Name"] ?> (<?= $tripInfo["niceDate"] ?>)</a>
               </div>
 			  <div class=sighting-notes><?= $tripInfo["sightingNotes"] ?></div>
 <?
