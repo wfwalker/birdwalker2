@@ -38,12 +38,10 @@ navTrailCounty($state, $countyName);
 
  <div class=heading><?= $countyCount ?> species</div>
 
-<?
-$gridQueryString="select distinct(CommonName), species.objectid as speciesid, bit_or(1 << (year(TripDate) - 1995)) as mask from sighting, species, location where sighting.SpeciesAbbreviation=species.Abbreviation and sighting.LocationName=location.Name and location.County='". $countyName . "' group by sighting.SpeciesAbbreviation order by speciesid";
-
-formatSpeciesByYearTable($gridQueryString, "&county=" . $countyName, $annualCountyTotal);
-
-?>
+<? formatSpeciesByYearTable(
+      "WHERE sighting.SpeciesAbbreviation=species.Abbreviation
+          AND sighting.LocationName=location.Name AND location.County='". $countyName . "'",
+      "&county=" . $countyName, $annualCountyTotal); ?>
 
     </div>
   </body>
