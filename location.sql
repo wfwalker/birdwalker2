@@ -15,7 +15,7 @@ INSERT INTO location VALUES (14,'Calero Reservoir','http://claraweb.co.santa-cla
 INSERT INTO location VALUES (15,'Cape May','','Cape May','Cape May','NJ','','','','');
 INSERT INTO location VALUES (16,'Carmel','','Carmel','Monterey','CA','','','','');
 INSERT INTO location VALUES (17,'Carmel River','','Carmel','Monterey','CA','','','','');
-INSERT INTO location VALUES (18,'Champaign County','http://www.web-makers.com/Audubon/','Champaign','Champaign','IL','','','40.113','88.264949');
+INSERT INTO location VALUES (18,'Champaign County','','Champaign','Champaign','IL','Our ancestral home.','Unknown','40.113','88.264949');
 INSERT INTO location VALUES (19,'Charleston Slough','http://www.calmanac.com/paw/paonline/things_do/baylands.shtml','Palo Alto','Santa Clara','CA','Our most visited and most productive site.','mapblast','37.461','122.115');
 INSERT INTO location VALUES (20,'Chesboro Reservoir','','Morgan Hill','Santa Clara','CA','','','','');
 INSERT INTO location VALUES (21,'Chez Frankel','','Big Sur','Monterey','CA','Between Gorda and Ragged Point','WGS 84','35.83825','121.39863');
@@ -50,7 +50,7 @@ INSERT INTO location VALUES (49,'Las Galinas Sewage Ponds','','San Rafael','Mari
 INSERT INTO location VALUES (50,'Lithia Park','','Ashland','Jefferson','OR','','NAD-27','42.187581','122.68575');
 INSERT INTO location VALUES (51,'Los Alamitos Water Recharge Pond','','San Jose','Santa Clara','CA','','','','');
 INSERT INTO location VALUES (52,'Lower Klamath NWR','http://www.klamathnwr.org/lowerklamath.html','Tulelake','Siskiyou','CA','','mapblast','41.954152','121.474804');
-INSERT INTO location VALUES (53,'Magic Brush Pile','','San Francisco','San Francisco','CA','','','','');
+INSERT INTO location VALUES (53,'Magic Brush Pile','','San Francisco','San Francisco','CA','Well, this is what Steve and Bob called it!','','','');
 INSERT INTO location VALUES (54,'Malheur NWR','','Burns','Harney','OR','','','','');
 INSERT INTO location VALUES (55,'Marin County','','Marin','Marin','CA','denotes birds seen while driving the roads of Marin County.','','','');
 INSERT INTO location VALUES (56,'McClellan Ranch','http://www.cupertino.org/update/rec/facility.htm','Cupertino','Santa Clara','CA','the home of the Santa Clara Valley Audubon Society','','','');
@@ -134,3 +134,4 @@ INSERT INTO location VALUES (133,'Brownsville','','Brownsville','','TX','','',''
 INSERT INTO location VALUES (134,'Port Aransas','','Port Aransas','Neuces','TX','','','','');
 INSERT INTO location VALUES (135,'Laredo','','Laredo','','TX','','','','');
 INSERT INTO location VALUES (136,'Corpus Christi','','Corpus Christi','Neuces','TX','','','','');
+INSERT INTO location VALUES (137,'Palmetta State Park','','San Antonio','','TX','','','','');
