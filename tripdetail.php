@@ -2,6 +2,7 @@
 
 <?php
 
+require("./birdwalker.php");
 require("./speciesquery.php");
 
 $tripID = param($_GET, 'id', 343);
@@ -55,7 +56,7 @@ navTrailTrips($items);
 
 <?rightThumbnail("SELECT *, rand() AS shuffle
     FROM sighting WHERE Photo='1' AND TripDate='" . $tripInfo["Date"] . "'
-    ORDER BY shuffle LIMIT 1");?>
+    ORDER BY shuffle LIMIT 1", true);?>
         <div class=pagetitle>
             <?= $tripInfo["Name"] ?>
             <?= editLink("./tripedit.php?id=" . $tripID); ?>
