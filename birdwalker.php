@@ -1098,7 +1098,7 @@ function navTrailLocationDetail($siteInfo)
 		strtolower(getStateNameForAbbreviation($siteInfo["State"])) . "
     </a>";
 	$items[] = "
-    <a href=\"./countydetail.php?view=locations&county=" . $siteInfo["County"] . "&state=" . $siteInfo["State"] . "\">" .
+    <a href=\"./countydetail.php?view=locations&county=" . $siteInfo["County"] . "&stateid=" . $stateInfo["objectid"] . "\">" .
 		 strtolower($siteInfo["County"]) . " county
     </a>";
 
@@ -1173,7 +1173,7 @@ function formatTwoColumnLocationList($locationQuery, $countyHeadingsOK = true)
 			    <a href="./statedetail.php?stateid=<?= $stateInfo["objectid"]?>"><?= $stateInfo["Name"] ?></a>,
 <?              $lastStateHeading = $info["State"];
             } ?>
-			<a href="./countydetail.php?state=<?= $info["State"]?>&county=<?= $info["County"] ?>"><?= $info["County"] ?> County</a>
+			<a href="./countydetail.php?stateid=<?= $stateInfo["objectid"]?>&county=<?= $info["County"] ?>"><?= $info["County"] ?> County</a>
             </div>
 <?		} ?>
 

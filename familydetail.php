@@ -44,14 +44,14 @@ navTrailBirds($items);
         <div class=metadata><?= $familyInfo["LatinName"] ?></div>
         <div class=metadata>
           locations:
-            <a href="./familydetail.php?view=locations&state=<?= $state ?>&family=<?= $familyid ?>">list</a> |
-            <a href="./familydetail.php?view=locationsbymonth&state=<?= $state ?>&family=<?= $familyid ?>">by month</a> |
-	        <a href="./familydetail.php?view=locationsbyyear&state=<?= $state ?>&family=<?= $familyid ?>">by year</a> |
-	        <a href="./familydetail.php?view=map&state=<?= $state ?>&family=<?= $familyid ?>">map</a> <br/>
+            <a href="./familydetail.php?view=locations&family=<?= $familyid ?>">list</a> |
+            <a href="./familydetail.php?view=locationsbymonth&family=<?= $familyid ?>">by month</a> |
+	        <a href="./familydetail.php?view=locationsbyyear&family=<?= $familyid ?>">by year</a> |
+	        <a href="./familydetail.php?view=map&family=<?= $familyid ?>">map</a> <br/>
           species:	
-            <a href="./familydetail.php?view=species&state=<?= $state ?>&family=<?= $familyid ?>">list</a> |
-	        <a href="./familydetail.php?view=speciesbymonth&state=<?= $state ?>&family=<?= $familyid ?>">by month</a> |
-	        <a href="./familydetail.php?view=speciesbyyear&state=<?= $state ?>&family=<?= $familyid ?>">by year</a><br/>
+            <a href="./familydetail.php?view=species&family=<?= $familyid ?>">list</a> |
+	        <a href="./familydetail.php?view=speciesbymonth&family=<?= $familyid ?>">by month</a> |
+	        <a href="./familydetail.php?view=speciesbyyear&family=<?= $familyid ?>">by year</a><br/>
 	    </div>
       </div>
 

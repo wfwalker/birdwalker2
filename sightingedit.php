@@ -58,6 +58,8 @@ $sightingInfo = getSightingInfo($sightingID);
 $speciesInfo = performOneRowQuery("select * from species where Abbreviation='" . $sightingInfo["SpeciesAbbreviation"] . "'");
 $tripInfo = performOneRowQuery("select *, date_format(Date, '%W,  %M %e, %Y') as niceDate from trip where Date='" . $sightingInfo["TripDate"] . "'");
 $locationInfo = performOneRowQuery("select * from location where Name='" . $sightingInfo["LocationName"] . "'");
+$stateInfo = getStateInfoForAbbreviation($locationInfo["State"]);
+
 $locationList = performQuery("select Name, objectid from location");
 
 htmlHead($speciesInfo["CommonName"] . ", " . $tripInfo["niceDate"]);
@@ -77,8 +79,8 @@ navTrailBirds();
     <a href="./speciesdetail.php?speciesid=<?= $speciesInfo["objectid"] ?>"><?= $speciesInfo["CommonName"] ?></a>
   </div>
   <div class=metadata>
-    <a href="./countydetail.php?county=<?= $locationInfo["County"] ?>"><?= $locationInfo["County"] ?> County</a>,
-    <a href="./statedetail.php?state=<?= $locationInfo["State"] ?>"><?= getStateNameForAbbreviation($locationInfo["State"]) ?></a>
+    <a href="./countydetail.php?stateid=<?= $stateInfo["objectid"] ?>&county=<?= $locationInfo["County"] ?>"><?= $locationInfo["County"] ?> County</a>,
+    <a href="./statedetail.php?stateid=<?= $stateInfo["objectid"] ?>"><?= $stateInfo["Name"] ?></a>
   </div>
 </div>
 

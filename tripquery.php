@@ -47,7 +47,7 @@ class TripQuery extends BirdWalkerQuery
 			$otherTables = $otherTables . ", location";
 		} elseif ($this->mCounty != "") {
 			$otherTables = $otherTables . ", location";
-		} elseif ($this->mState != "") {
+		} elseif ($this->mStateID != "") {
 			$otherTables = $otherTables . ", location";
 		}
 
@@ -66,7 +66,7 @@ class TripQuery extends BirdWalkerQuery
 		} elseif ($this->mCounty != "") {
 			$whereClause = $whereClause . " AND location.County='" . $this->mCounty . "'";
 			$whereClause = $whereClause . " AND location.Name=sighting.LocationName"; 
-		} elseif ($this->mState != "") {
+		} elseif ($this->mStateID != "") {
 			$whereClause = $whereClause . " AND location.State='" . $this->mState . "'";
 			$whereClause = $whereClause . " AND location.Name=sighting.LocationName"; 
 		}
@@ -104,8 +104,8 @@ class TripQuery extends BirdWalkerQuery
 			$params = $params . "&locationid=" . $this->mLocationID;
 		} elseif ($this->mCounty != "") {
 			$params = $params . "&county=" . $this->mCounty;
-		} elseif ($this->mState != "") {
-			$params = $params . "&state=" . $this->mState;
+		} elseif ($this->mStateID != "") {
+			$params = $params . "&stateid=" . $this->mStateID;
 		}
 
 		if ($this->mSpeciesID != "") {
@@ -151,8 +151,9 @@ class TripQuery extends BirdWalkerQuery
 			$pageTitle = $locationInfo["Name"];
 		} elseif ($this->mCounty != "") {
 			$pageTitle = $this->mCounty . " County";
-		} elseif ($this->mState != "") {
-			$pageTitle = getStateNameForAbbreviation($this->mState);
+		} elseif ($this->mStateID != "") {
+			$stateInfo = getStateInfo($this->mStateID);
+			$pageTitle = $stateInfo["Name"];
 		}
 
 		if ($this->mMonth !="") {

@@ -26,10 +26,10 @@ $lastStateAccumulated = "NONE";
 $prevState = "NONE";
 $countyToAccumulate = "NONE";
 $countyStats = performQuery("
-    SELECT location.County, location.State, location.objectid, COUNT(DISTINCT sighting.SpeciesAbbreviation) AS
+    SELECT location.County, location.State, state.objectid as StateID, location.objectid, COUNT(DISTINCT sighting.SpeciesAbbreviation) AS
       SpeciesCount, year(sighting.TripDate) AS theyear
-      FROM location, sighting
-      WHERE sighting.LocationName=location.Name
+      FROM location, sighting, state
+      WHERE sighting.LocationName=location.Name AND state.Abbreviation=location.State
       GROUP BY location.County, theyear
       ORDER BY State, County, theyear"); ?>
 
@@ -39,15 +39,19 @@ $countyStats = performQuery("
 while ($info = mysql_fetch_array($countyStats))
 {
 	$county = $info["County"];
-	$state = $info["State"];
+	$stateid = $info["StateID"];
 	$theYear = $info["theyear"];
 	$speciesCount = $info["SpeciesCount"];
 
+?><!-- <?= $lastStateAccumulated ?> is <?= $prevState ?> --> <?
+
 	if ($lastStateAccumulated != $prevState)
-	{ ?>
+	{
+		$stateInfo = getStateInfo($stateid); ?>
+
 		<tr>
             <td colspan=11 class=heading>
-                <a href="statespecies.php?state=<?= $prevState ?>"><?= getStateNameForAbbreviation($prevState) ?></a>
+                <a href="statedetail.php?stateid=<?= $prevState ?>"><?= $stateInfo["Name"] ?></a>
             </td>
         </tr>
 
@@ -58,7 +62,7 @@ while ($info = mysql_fetch_array($countyStats))
 	{ ?>
 
 		<tr><td class=firstcell>
-			<a href="./countydetail.php?state=<?= $prevState ?>&county=<?= urlencode($countyToAccumulate) ?>">
+			<a href="./countydetail.php?stateid=<?= $prevState ?>&county=<?= urlencode($countyToAccumulate) ?>">
 			<?= $countyToAccumulate ?> County
 			</a>
 			</td>
@@ -66,7 +70,7 @@ while ($info = mysql_fetch_array($countyStats))
 <?	for ($year = getEarliestYear(); $year <= getLatestYear(); $year++)
 	{ ?>
         <td class=bordered align=right>
-            <a href="./specieslist.php?county=<?= urlEncode($countyToAccumulate) ?>&year=<?= $year ?>">
+            <a href="./specieslist.php?stateid=<?= $stateid ?>&county=<?= urlEncode($countyToAccumulate) ?>&year=<?= $year ?>">
 				&nbsp; <?= $yearArray[$year] ?>
             </a>
         </td>
@@ -77,7 +81,7 @@ while ($info = mysql_fetch_array($countyStats))
 <?		$yearArray = null;
 	}
 
-	$prevState = $state;	
+	$prevState = $stateid;	
 	$countyToAccumulate = $county;
 	$yearArray[$theYear] = $speciesCount;
 }

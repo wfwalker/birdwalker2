@@ -8,22 +8,22 @@ require_once("./sightingquery.php");
 require_once("./tripquery.php");
 
 $county = reqParam($_GET, "county");
-$state = reqParam($_GET, "state");
+$stateid = reqParam($_GET, "stateid");
 $view = param($_GET, "view", "species");
-
-$stateName = getStateNameForAbbreviation($state);
 
 htmlHead($county . " County");
 
 globalMenu();
 disabledBrowseButtons();
 
-$stateInfo = getStateInfoForAbbreviation($state);
+$stateInfo = getStateInfo($stateid);
+$stateName = $stateInfo["Name"];
+
 $items[]="<a href=\"./statedetail.php?view=" . $view . "&stateid=" . $stateInfo["objectid"] . "\">" . strtolower($stateInfo["Name"]) . "</a>";
 navTrailLocations($items);
 
 $locationQuery = new LocationQuery;
-$locationQuery->setCounty($county);
+$locationQuery->setFromRequest($_GET);
 $extrema = $locationQuery->findExtrema();
 
 ?>
@@ -35,15 +35,15 @@ $extrema = $locationQuery->findExtrema();
 	  <div class=pagetitle> <?= $county ?> County</div>
       <div class=metadata>
         locations:
-        <a href="./countydetail.php?view=locations&state=<?= $state ?>&county=<?= $county ?>">list</a> |
-	    <a href="./countydetail.php?view=locationsbymonth&state=<?= $state ?>&county=<?= $county ?>">by month</a> |
-	    <a href="./countydetail.php?view=locationsbyyear&state=<?= $state ?>&county=<?= $county ?>">by year</a> |
-	    <a href="./countydetail.php?view=map&state=<?= $state ?>&county=<?= $county ?>">map</a> <br/>
+        <a href="./countydetail.php?view=locations&stateid=<?= $stateid ?>&county=<?= $county ?>">list</a> |
+	    <a href="./countydetail.php?view=locationsbymonth&stateid=<?= $stateid ?>&county=<?= $county ?>">by month</a> |
+	    <a href="./countydetail.php?view=locationsbyyear&stateid=<?= $stateid ?>&county=<?= $county ?>">by year</a> |
+	    <a href="./countydetail.php?view=map&stateid=<?= $stateid ?>&county=<?= $county ?>">map</a> <br/>
         species:	
-        <a href="./countydetail.php?view=species&state=<?= $state ?>&county=<?= $county ?>">list</a> |
-	    <a href="./countydetail.php?view=speciesbymonth&state=<?= $state ?>&county=<?= $county ?>">by month</a> |
-	    <a href="./countydetail.php?view=speciesbyyear&state=<?= $state ?>&county=<?= $county ?>">by year</a> | 
-        <a href="./countydetail.php?view=species&view=photo&state=<?= $state ?>&county=<?= $county ?>">photo</a><br/>
+        <a href="./countydetail.php?view=species&stateid=<?= $stateid ?>&county=<?= $county ?>">list</a> |
+	    <a href="./countydetail.php?view=speciesbymonth&stateid=<?= $stateid ?>&county=<?= $county ?>">by month</a> |
+	    <a href="./countydetail.php?view=speciesbyyear&stateid=<?= $stateid ?>&county=<?= $county ?>">by year</a> | 
+        <a href="./countydetail.php?view=species&view=photo&stateid=<?= $stateid ?>&county=<?= $county ?>">photo</a><br/>
 	          </div>
       </div>
 

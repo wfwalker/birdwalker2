@@ -100,7 +100,7 @@ class SightingQuery extends BirdWalkerQuery
 		} elseif ($this->mCounty != "") {
 			$params = $params . "&county=" . $this->mCounty . "'";
 		} elseif ($this->mState != "") {
-			$params = $params . "&state=" . $this->mState . "'";
+			$params = $params . "&stateid=" . $this->mStateID . "'";
 		}
 
 		if ($this->mSpeciesID != "") {

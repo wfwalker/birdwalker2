@@ -55,7 +55,7 @@ navTrailLocations();
 	  { ?>
 		  <td class=bordered align=right>
               &nbsp;
-              <a href="./specieslist.php?state=<?= urlencode($state) ?>&year=<?= $year ?>"><?= $table[$state][$year] ?></a>
+              <a href="./specieslist.php?stateid=<?= $id ?>&year=<?= $year ?>"><?= $table[$state][$year] ?></a>
           </td>
 <?	  } ?>
     </tr>
