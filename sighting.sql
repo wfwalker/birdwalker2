@@ -861,7 +861,7 @@ INSERT INTO sighting VALUES (860,'pifshe','Monterey Bay','','1','0','1998-08-29'
 INSERT INTO sighting VALUES (861,'renpha','Monterey Bay','','0','0','1998-08-29');
 INSERT INTO sighting VALUES (862,'sabgul','Monterey Bay','','0','0','1998-08-29');
 INSERT INTO sighting VALUES (863,'sooshe','Monterey Bay','saw thousands of them circling over the water','0','0','1998-08-29');
-INSERT INTO sighting VALUES (864,'wantat','Monterey Bay','','0','0','1998-08-29');
+INSERT INTO sighting VALUES (864,'wantat','Monterey Bay','wandering around on a levee as we headed out to sea','','','1998-08-29');
 INSERT INTO sighting VALUES (865,'wesgul','Monterey Bay','','0','0','1998-08-29');
 INSERT INTO sighting VALUES (866,'acowoo','Elkhorn Slough','','0','0','1998-08-30');
 INSERT INTO sighting VALUES (867,'blkpho','Elkhorn Slough','','0','0','1998-08-30');
