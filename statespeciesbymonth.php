@@ -27,31 +27,24 @@ $annualStateTotal = performQuery("
 <?php
 globalMenu();
 disabledBrowseButtons();
-$items[] = strtolower($stateName);
-navTrailLocations($items);
+navTrailLocations();
 ?>
 
     <div class=contentright>
 	  <div class="titleblock">
 <?      rightThumbnailState("$abbrev"); ?>
         <div class=pagetitle><?= $stateName ?></div>
-        <div class=pagesubtitle> <?= $stateListCount ?> species</div>
       <div class=metadata>
         <? stateViewLinks($abbrev) ?>
       </div>
       </div>
 
-<?
-$gridQueryString="
-    SELECT DISTINCT(CommonName), species.objectid AS speciesid, bit_or(1 << month(TripDate)) AS mask
-      FROM sighting, species, location
+  <div class=heading> <?= $stateListCount ?> species</div>
+
+<? formatSpeciesByMonthTable("
       WHERE sighting.SpeciesAbbreviation=species.Abbreviation AND sighting.LocationName=location.Name
-      AND location.State='". $abbrev . "'
-      GROUP BY sighting.SpeciesAbbreviation ORDER BY speciesid";
-
-formatSpeciesByMonthTable($gridQueryString, "&state=" . $abbrev, $annualStateTotal);
-
-?>
+      AND location.State='". $abbrev . "'",
+      "&state=" . $abbrev, $annualStateTotal); ?>
 
     </div>
   </body>

@@ -39,17 +39,9 @@ navTrailBirds();
 
  <div class=heading><?= $lifeCount ?> Species</div>
 
-<?
-$gridQueryString="
-    SELECT distinct(CommonName), species.objectid AS speciesid, bit_or(1 << month(TripDate)) AS mask
-      FROM sighting, species
-      WHERE sighting.SpeciesAbbreviation=species.Abbreviation
-      GROUP BY sighting.SpeciesAbbreviation
-      ORDER BY speciesid";
-
-formatSpeciesByMonthTable($gridQueryString, "", $annualTotal);
-
-?>
+<? formatSpeciesByMonthTable("
+    WHERE sighting.SpeciesAbbreviation=species.Abbreviation AND sighting.LocationName=location.Name",
+      "", $annualTotal); ?>
 
     </div>
   </body>

@@ -71,21 +71,17 @@ navTrailLocationDetail($siteInfo);
           <?= $locationFirstSightings ?> first sighting<? if ($locationFirstSightings > 1) echo 's'; } ?>
       </div>
 
-<?   $gridQueryString="
-        SELECT DISTINCT(CommonName), species.objectid AS speciesid, bit_or(1 << month(TripDate)) AS mask
-          FROM sighting, species
-          WHERE sighting.LocationName='" . $siteInfo["Name"] . "' AND sighting.SpeciesAbbreviation=species.Abbreviation
-          GROUP BY sighting.SpeciesAbbreviation
-          ORDER BY speciesid";
-
-	  $monthlyLocationTotal = performQuery("
+<?	$monthlyLocationTotal = performQuery("
         SELECT COUNT(DISTINCT sighting.SpeciesAbbreviation) AS count, month(sighting.TripDate) AS month
           FROM sighting, location, species
           WHERE sighting.LocationName='" . $siteInfo["Name"] . "'
           AND sighting.SpeciesAbbreviation=species.Abbreviation
           GROUP BY month");
 
-	  formatSpeciesByMonthTable($gridQueryString, "&locationid=" . $siteInfo["objectid"], $monthlyLocationTotal); ?>
+	formatSpeciesByMonthTable(
+      "WHERE sighting.LocationName='" . $siteInfo["Name"] . "'
+       AND sighting.SpeciesAbbreviation=species.Abbreviation",
+      "&locationid=" . $siteInfo["objectid"], $monthlyLocationTotal); ?>
 
 </div>
 </body>
