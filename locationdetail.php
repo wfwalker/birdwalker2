@@ -73,7 +73,7 @@ navTrailLocationDetail($siteInfo);
          <?= $tripCount ?> trip<? if ($tripCount > 1) echo 's' ?>
      </div>
 
-<? formatTwoColumnTripList($tripQuery); ?>
+		  <? formatTwoColumnTripList($tripQuery, $firstSightings); ?>
 
 
    <div class=heading>
@@ -82,11 +82,11 @@ navTrailLocationDetail($siteInfo);
    </div>
 
 <? formatTwoColumnSpeciesList(performQuery("
-        SELECT distinct(species.objectid), species.CommonName, sighting.objectid as sightingid
+        SELECT distinct(species.objectid), species.CommonName, species.ABACountable
           FROM species, sighting
           WHERE species.Abbreviation=sighting.SpeciesAbbreviation
           AND sighting.LocationName='" . $siteInfo["Name"]. "'
-          ORDER BY species.objectid")); ?>
+          GROUP BY species.objectid ORDER BY species.objectid")); ?>
 
 </div>
 </body>

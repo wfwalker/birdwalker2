@@ -9,8 +9,10 @@ performQuery("
 performQuery("
     INSERT INTO tmp
       SELECT SpeciesAbbreviation, MIN(TripDate)
-      FROM sighting where Exclude!='1'
-      GROUP BY SpeciesAbbreviation;");
+      FROM sighting, species
+      WHERE Exclude!='1' and species.Abbreviation=sighting.SpeciesAbbreviation
+      GROUP BY SpeciesAbbreviation
+      ORDER BY species.objectid;");
 
 $firstSightingQuery = performQuery("SELECT
      date_format(sighting.TripDate, '%M %e, %Y') as niceDate,
