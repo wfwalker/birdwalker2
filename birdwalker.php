@@ -8,9 +8,11 @@ function globalMenu()
 	  <div><a href="./tripindex.php">trips</a></div>
 	  <div><a href="./speciesindex.php">birds</a></div>
 	  <div><a href="./locationindex.php">locations</a></div>
-	  <div><a href="./chronolifelist.php">life list</a></div>
 	  <div><a href="./photoindex.php">photos</a></div>
 	  <div><a href="./credits.php">about</a></div>
+      <div>&nbsp;</div>
+	  <div><a href="./slideshow.php">slideshow</a></div>
+	  <div><a href="./chronolifelist.php">life list</a></div>
 
 <?	if (getEnableEdit())
 	{ ?>
@@ -212,6 +214,16 @@ function navTrail($extra)
 function getEnableEdit()
 {
 	return true;
+}
+
+function getEarliestYear()
+{
+	return 1996;
+}
+
+function getLatestYear()
+{
+	return 2005;
 }
 
 /**
@@ -445,7 +457,8 @@ function formatTwoColumnSpeciesList($speciesQuery, $firstSightings = "", $firstY
 	$dbQuery = performQuery(
 			$speciesQuery->getSelectClause() . " " .
 			$speciesQuery->getFromClause() . " " .
-			$speciesQuery->getWhereClause() . " ORDER BY species.objectid");
+			$speciesQuery->getWhereClause() . " " .
+			$speciesQuery->getGroupByClause() . " ORDER BY species.objectid");
 
 	if ($firstSightings == "") $firstSightings = getFirstSightings();
 
@@ -456,9 +469,12 @@ function formatTwoColumnSpeciesList($speciesQuery, $firstSightings = "", $firstY
 	<table columns=2 width="100%" class=report-content>
       <tr valign=top><td width="50%">
 
-<?	while($info = mysql_fetch_array($dbQuery))
+<?
+	while($info = mysql_fetch_array($dbQuery))
 	{
 		$orderNum =  floor($info["objectid"] / pow(10, 9));
+		$temp = $info["earliestsighting"];
+		$earliestsightingid = round(substr($temp, 10));
 		
 		if ($divideByTaxo && (getBestTaxonomyID($prevInfo["objectid"]) != getBestTaxonomyID($info["objectid"])))
 		{
@@ -472,9 +488,11 @@ function formatTwoColumnSpeciesList($speciesQuery, $firstSightings = "", $firstY
 <?      if ($info["Photo"] == "1") { ?><?= getPhotoLinkForSightingInfo($info, "sightingid") ?><? } ?>
 <?		if ($info["ABACountable"] == "0") { ?>NOT ABA COUNTABLE<? } ?>
 <?		if ($info["Exclude"] == "1") { ?>excluded<? } ?>
+
 <? 		if ($firstSightings[$info["sightingid"]] != null) { ?> life bird <? }
-		else if ($firstYearSightings[$info["sightingid"]] != null) { ?> year bird <? } ?>
-<?		if (strlen($info["Notes"]) > 0) { ?><div class=sighting-notes><?= $info["Notes"] ?></div><? } ?>
+		else if ($firstSightings[$earliestsightingid] != null) { ?> life bird <? }
+		else if ($firstYearSightings[$sightingid] != null) { ?> year bird <? }
+		if (strlen($info["Notes"]) > 0) { ?><div class=sighting-notes><?= $info["Notes"] ?></div><? } ?>
 
 		</div>
 
@@ -488,6 +506,40 @@ function formatTwoColumnSpeciesList($speciesQuery, $firstSightings = "", $firstY
 
 	</td></tr></table>
 <?
+}
+
+function formatSpeciesListWithPhoto($speciesQuery)
+{
+	?><table columns=2><?
+
+	$dbQuery = $speciesQuery->performQuery();
+
+	while($info = mysql_fetch_array($dbQuery))
+	{
+		$photoQuery = performQuery("select * from sighting where SpeciesAbbreviation='" . $info["Abbreviation"] . "' and Photo='1' order by TripDate desc");
+
+		?><tr><?
+
+		?><td class=report-content align=right> <?
+			   
+		if ($photoInfo = mysql_fetch_array($photoQuery))
+		{
+			echo getThumbForSightingInfo($photoInfo);
+		}
+
+		?> <br/><br/></td>
+
+		<td class=report-content valign=top>
+            <a href="./speciesdetail.php?id=<?= $info["objectid"] ?>"><?= $info["CommonName"] ?></a><br>
+            <i><?= $info["LatinName"] ?></i><br><br>
+        </td><?
+
+		?></tr><?
+
+		$leftFlag = (! $leftFlag);
+	}
+
+	?></table><?
 }
 
 /**
@@ -864,7 +916,11 @@ function formatTwoColumnTripList($tripQuery)
 			<div class="subheading"><a name="<?= $thisYear ?>"></a><?= $thisYear ?></div>
 <?		} ?>
 
-			 <div><a href="./tripdetail.php?id=<?= $info["objectid"] ?>"><?= $info["Name"] ?>, <?= $info["niceDate"] ?></a></div>
+			 <div>
+                <a href="./tripdetail.php?id=<?= $info["objectid"] ?>"><?= $info["Name"] ?>, <?= $info["niceDate"] ?></a>
+                <? if ($info["Photo"] == "1") { ?><?= getPhotoLinkForSightingInfo($info, "sightingid") ?><? } ?>
+                <? if ($info["Exclude"] == "1") { ?>excluded<? } ?>
+             </div>
              <? if ($info["sightingNotes"] != "") { ?> <div class=sighting-notes><?= $info["sightingNotes"] ?></div> <? } ?>
 
 <?		$prevYear = $thisYear;
@@ -966,8 +1022,6 @@ function navTrailLocationDetail($siteInfo)
     <a href=\"./countydetail.php?view=locations&county=" . $siteInfo["County"] . "&state=" . $siteInfo["State"] . "\">" .
 		 strtolower($siteInfo["County"]) . " county
     </a>";
-// 	$items[] =
-// 		 strtolower($siteInfo["Name"]);
 
 	navTrailLocations($items);
 }
@@ -1072,7 +1126,7 @@ function formatTwoColumnLocationList($locationQuery, $countyHeadingsOK = true)
 
 function insertYearLabels()
 {
-	for ($year = 1996; $year <= 2004; $year++)
+	for ($year = 1996; $year <= getLatestYear(); $year++)
 	{ ?>
 		<td class=yearcell align=center><?= $year ?></td>
 <?	}
