@@ -8148,7 +8148,7 @@ INSERT INTO sighting VALUES (8154,'neocor','Brownsville','','','1','2004-04-17')
 INSERT INTO sighting VALUES (8155,'buwtea','Brownsville','','','1','2004-04-17');
 INSERT INTO sighting VALUES (8156,'commoo','Brownsville','','','1','2004-04-17');
 INSERT INTO sighting VALUES (8157,'rinkin','Brownsville','Seen from the photo blind at the Resaca at Sabal Palm.','','','2004-04-17');
-INSERT INTO sighting VALUES (8158,'grnkin','Brownsville','Seen from the photo blind at the Resaca at Sabal Palm.','','','2004-04-17');
+INSERT INTO sighting VALUES (8158,'grnkin','Brownsville','Seen from the photo blind at the Resaca at Sabal Palm.','','1','2004-04-17');
 INSERT INTO sighting VALUES (8159,'ycnher','Brownsville','','0','0','2004-04-17');
 INSERT INTO sighting VALUES (8160,'grnher','Brownsville','','0','0','2004-04-17');
 INSERT INTO sighting VALUES (8161,'whtdov','Brownsville','','','1','2004-04-17');
@@ -10463,3 +10463,14 @@ INSERT INTO sighting VALUES (10497,'gocspa','Charleston Slough','','0','0','2005
 INSERT INTO sighting VALUES (10498,'houfin','Charleston Slough','','0','0','2005-02-04');
 INSERT INTO sighting VALUES (10499,'pibgre','Charleston Slough','','0','0','2005-02-04');
 INSERT INTO sighting VALUES (10500,'ribgul','Charleston Slough','','','1','2005-02-04');
+INSERT INTO sighting VALUES (10501,'sursco','Charleston Slough','','','1','2005-02-09');
+INSERT INTO sighting VALUES (10502,'willet','Charleston Slough','','0','0','2005-02-09');
+INSERT INTO sighting VALUES (10503,'glwgul','Charleston Slough','','0','0','2005-02-09');
+INSERT INTO sighting VALUES (10504,'eargre','Charleston Slough','','0','0','2005-02-09');
+INSERT INTO sighting VALUES (10505,'ribgul','Charleston Slough','','0','0','2005-02-09');
+INSERT INTO sighting VALUES (10506,'wesgul','Charleston Slough','','0','0','2005-02-09');
+INSERT INTO sighting VALUES (10507,'amecoo','Charleston Slough','','0','0','2005-02-09');
+INSERT INTO sighting VALUES (10508,'doccor','Charleston Slough','','0','0','2005-02-09');
+INSERT INTO sighting VALUES (10509,'comgol','Charleston Slough','','0','0','2005-02-09');
+INSERT INTO sighting VALUES (10510,'bargol','Charleston Slough','','','1','2005-02-09');
+INSERT INTO sighting VALUES (10511,'canvas','Charleston Slough','','0','0','2005-02-09');

@@ -283,7 +283,7 @@ INSERT INTO trip VALUES (279,'Steve Shunk','http://www.paradisebirding.com/','Wi
 INSERT INTO trip VALUES (280,'Steve Shunk','','Wings over Point Reyes','','2004-01-24');
 INSERT INTO trip VALUES (281,'Steve Shunk','','Wings over Point Reyes 2','','2004-01-25');
 INSERT INTO trip VALUES (282,'Bill','','Photo trip','','2004-01-31');
-INSERT INTO trip VALUES (283,'Mary and Bill','','Birding with Mike and Anne','','2004-02-08');
+INSERT INTO trip VALUES (283,'Mary and Bill','','Birding with Mike and Anne','We had a nice time wandering the levees at the end of the day.','2004-02-08');
 INSERT INTO trip VALUES (284,'Mary','','Birding with Thaine','Thaine was visiting from Minnesota, Mary showed him the Clapper Rail.','2004-02-18');
 INSERT INTO trip VALUES (285,'Mary and Bill','','Sunday Stroll','','2004-02-22');
 INSERT INTO trip VALUES (286,'Bill','','Early Morning Walk','We scouted the park on the weekend, and decided it would be worth coming back to try to photograph Ruddy Duck.','2004-03-02');
@@ -388,3 +388,4 @@ INSERT INTO trip VALUES (388,'Mary and Bill','','Watching the feeders','','2004-
 INSERT INTO trip VALUES (389,'Anne Hanson','','Survey Bair Island','We volunteered to help out with an SFBBO survey of plant and bird populations on Bair Island. What a cool experience!','2005-01-22');
 INSERT INTO trip VALUES (390,'Mary','','Rainy Day At Home','Mary found unprecedented numbers of passerines at our house on this rainy day','2005-01-26');
 INSERT INTO trip VALUES (391,'Bill','','Morning Photo Safari','I was out shooting this morning and saw that the Common Goldeneye are starting to do their wacky mating behavoirs. As one bird was showing off I got a nice action shot. Then, a Ring-billed Gull landed right next to me and started screaming. I grabbed a quick portrait before he flew off again.','2005-02-04');
+INSERT INTO trip VALUES (392,'Bill','','Morning Photo Safari','I drove around to the boat dock side of Shoreline Lake, and got some nice chances to shoot pictures with the sun behind me. The Goldeneye are really starting to get jiggy with it.','2005-02-09');
