@@ -1,20 +1,20 @@
 INSERT INTO location VALUES (1,'2138 King Court','','Santa Clara','Santa Clara','CA','in the back we have a peanut feeder, a thistle feeder, and a general purpose seed feeder','NAD-27',37.3615,121.994);
 INSERT INTO location VALUES (2,'Alviso Marina','http://santaclaracounty.org/parks/prkpages/alviso.htm','Alviso','Santa Clara','CA','the marina parking lot provides access to many miles of levees suitable for biking or walking. the open water right near the parking lot sometimes yields interesting birds.','WGS 84',37.4296,121.978);
 INSERT INTO location VALUES (3,'Andrew Molera','http://parks.ca.gov/central/monterey/amsp.htm','Monterey','Monterey','CA','you can hike in less than a mile to a campground near the beach.','mapblast',36.2727,121.842);
-INSERT INTO location VALUES (4,'Anza Borrego Desert State Park','http://www.parks.ca.gov/default.asp?page_id=638','Borrego Springs','San Diego','CA','','',0,0);
+INSERT INTO location VALUES (4,'Anza Borrego Desert State Park','http://www.parks.ca.gov/default.asp?page_id=638','Borrego Springs','San Diego','CA','','',33.2692,116.406);
 INSERT INTO location VALUES (5,'Arastradero Preserve','http://www.arastradero.org/','Mountain View','Santa Clara','CA','','mapblast',37.4267,122.139);
-INSERT INTO location VALUES (6,'Arcata Marsh','http://www.arcatacityhall.org/birding.html','Arcata','Humboldt','CA','an amazing artificial marsh created by the City of Arcata to process its sewage.','',0,0);
-INSERT INTO location VALUES (7,'Azelea State Reserve','http://parks.ca.gov/allpages/default.asp?page_id=420','McKinleyville','Humboldt','CA','a lovely park full of wild azeleas growing in forest clearings','',0,0);
+INSERT INTO location VALUES (6,'Arcata Marsh','http://www.arcatacityhall.org/birding.html','Arcata','Humboldt','CA','an amazing artificial marsh created by the City of Arcata to process its sewage.','',40.8578,124.089);
+INSERT INTO location VALUES (7,'Azelea State Reserve','http://parks.ca.gov/allpages/default.asp?page_id=420','McKinleyville','Humboldt','CA','a lovely park full of wild azeleas growing in forest clearings','',40.9186,124.077);
 INSERT INTO location VALUES (8,'Bend Wastewater Treatment Plant','','Bend','Deschutes','OR','Bill visited this site with Steve. Steve was checking it for a book about Oregon\'s sewage ponds.','Unknown',44.0586,121.314);
-INSERT INTO location VALUES (9,'Big Sur','http://www.bigsurcalifornia.org/','Big Sur','Monterey','CA','','',0,0);
-INSERT INTO location VALUES (10,'Bodega Bay','','Bodega','Sonoma','CA','','',0,0);
+INSERT INTO location VALUES (9,'Big Sur','http://www.bigsurcalifornia.org/','Big Sur','Monterey','CA','','',36.2703,121.806);
+INSERT INTO location VALUES (10,'Bodega Bay','','Bodega','Sonoma','CA','','',38.2736,123.005);
 INSERT INTO location VALUES (11,'Bolinas Lagoon','http://www.marin.org/mc/pos/osdboli.html','Bolinas','Marin','CA','','Unknown',37.928,122.689);
 INSERT INTO location VALUES (12,'Burney Falls','http://www.burneyfalls.com/pages/burnyfls.html','Burney','Shasta','CA','','Unknown',40.9066,121.658);
 INSERT INTO location VALUES (13,'Butte Valley Wildlife Area','http://www.buttevalleychamber.com/','Macdoel','Siskiyou','CA','','Unknown',41.6701,121.875);
 INSERT INTO location VALUES (14,'Calero Reservoir','http://claraweb.co.santa-clara.ca.us/parks/prkpages/calero.htm','San Jose','Santa Clara','CA','A reservoir south of San Jose, said to be a reliable spot for Bald Eagles','mapblast',37.2016,121.828);
-INSERT INTO location VALUES (15,'Cape May','','Cape May','Cape May','NJ','','',0,0);
+INSERT INTO location VALUES (15,'Cape May','','Cape May','Cape May','NJ','','',38.935,74.9064);
 INSERT INTO location VALUES (16,'Carmel','','Carmel','Monterey','CA','','',36.555,121.924);
-INSERT INTO location VALUES (17,'Carmel River','','Carmel','Monterey','CA','','',0,0);
+INSERT INTO location VALUES (17,'Carmel River','','Carmel','Monterey','CA','','',36.5361,121.927);
 INSERT INTO location VALUES (18,'Champaign County','','Champaign','Champaign','IL','Our ancestral home.','Unknown',40.113,88.2649);
 INSERT INTO location VALUES (19,'Charleston Slough','http://www.calmanac.com/paw/paonline/things_do/baylands.shtml','Palo Alto','Santa Clara','CA','Our most visited and most productive site.','mapblast',37.461,122.115);
 INSERT INTO location VALUES (20,'Chesboro Reservoir','','Morgan Hill','Santa Clara','CA','','',0,0);
@@ -51,12 +51,12 @@ INSERT INTO location VALUES (50,'Lithia Park','','Ashland','Jefferson','OR','','
 INSERT INTO location VALUES (51,'Los Alamitos Water Recharge Pond','','San Jose','Santa Clara','CA','','',0,0);
 INSERT INTO location VALUES (52,'Lower Klamath NWR','http://www.klamathnwr.org/lowerklamath.html','Tulelake','Siskiyou','CA','','mapblast',41.9542,121.475);
 INSERT INTO location VALUES (53,'Magic Brush Pile','','San Francisco','San Francisco','CA','Well, this is what Steve and Bob called it!','',0,0);
-INSERT INTO location VALUES (54,'Malheur NWR','','Burns','Harney','OR','','',0,0);
+INSERT INTO location VALUES (54,'Malheur NWR','','Burns','Harney','OR','','',43.2658,118.843);
 INSERT INTO location VALUES (55,'Marin County','','Marin','Marin','CA','denotes birds seen while driving the roads of Marin County.','',0,0);
 INSERT INTO location VALUES (56,'McClellan Ranch','http://www.cupertino.org/update/rec/facility.htm','Cupertino','Santa Clara','CA','the home of the Santa Clara Valley Audubon Society','',37.3139,122.062);
 INSERT INTO location VALUES (57,'Merced County','','Los Banos','Merced','CA','','',0,0);
 INSERT INTO location VALUES (58,'Merced NWR','http://www.gorp.com/gorp/resource/us_nwr/ca_merce.htm','Merced','Merced','CA','','mapblast',37.2963,120.484);
-INSERT INTO location VALUES (59,'Monte Bello Open Space Preserve','http://www.openspace.org/MBELLO.html','Saratoga','Santa Clara','CA','','',0,0);
+INSERT INTO location VALUES (59,'Monte Bello Open Space Preserve','http://www.openspace.org/MBELLO.html','Saratoga','Santa Clara','CA','','',37.3167,122.147);
 INSERT INTO location VALUES (60,'Monterey Bay','http://www.shearwaterjourneys.com/','Monterey','Monterey','CA','This location denotes pelagic trips out of Monterey Bay, especially with Debra Shearwater.','mapblast',36.6013,121.882);
 INSERT INTO location VALUES (61,'Morro Bay','http://www.morro-bay.net','Morro Bay','San Luis Obispo','CA','includes Morro Bay estuary, Montana de Oro state park, San Simeon Hearst Memorial beach, etc. The latitude and longitude coordinates given are for our rental house in Baywood Park','NAD-27',35.3318,120.841);
 INSERT INTO location VALUES (62,'Moss Landing State Beach','','Moss Landing','Santa Cruz','CA','','',36.8136,121.789);
@@ -80,7 +80,7 @@ INSERT INTO location VALUES (78,'Pillar Point','http://www.smharbor.com/pillarpo
 INSERT INTO location VALUES (79,'Point Pinos','','Monterey','Monterey','CA','','',36.6336,121.933);
 INSERT INTO location VALUES (80,'Point Reyes National Seashore','http://www.nps.gov/pore/','Point Reyes','Marin','CA','','Unknown',37.9958,123.022);
 INSERT INTO location VALUES (81,'Portola Redwoods State Park','http://www.parks.ca.gov/default.asp?page_id=539','Portola','Santa Clara','CA','','',0,0);
-INSERT INTO location VALUES (82,'Prairie Creek Redwoods State Park','http://www.parks.ca.gov/allpages/default.asp?page_id=415','Orick','Humboldt','CA','','',0,0);
+INSERT INTO location VALUES (82,'Prairie Creek Redwoods State Park','http://www.parks.ca.gov/allpages/default.asp?page_id=415','Orick','Humboldt','CA','','',41.4072,124.019);
 INSERT INTO location VALUES (83,'Prairie du Chien','http://www.prairieduchien.org/','Prairie du Chien','Crawford','WI','','Unknown',43.0519,91.1481);
 INSERT INTO location VALUES (84,'Princeton Harbor','','Princeton','San Mateo','CA','','',0,0);
 INSERT INTO location VALUES (85,'Rancho San Antonio','http://www.openspace.org/RANCHO.html','Cupertino','Santa Clara','CA','','',37.3311,122.092);
@@ -95,7 +95,7 @@ INSERT INTO location VALUES (93,'San Antonio Valley','','Larwrence','Alameda','C
 INSERT INTO location VALUES (94,'San Diego','','San Diego','San Diego','CA','','',32.7,117.167);
 INSERT INTO location VALUES (95,'San Francisco','','San Francisco','San Francisco','CA','','',37.7833,122.433);
 INSERT INTO location VALUES (96,'San Francisco Zoo','http://www.sfzoo.org/','San Francisco','San Francisco','CA','','',0,0);
-INSERT INTO location VALUES (97,'San Gregorio State Beach','http://www.parks.ca.gov/default.asp?page_id=529','Pescadero','San Mateo','CA','','',0,0);
+INSERT INTO location VALUES (97,'San Gregorio State Beach','http://www.parks.ca.gov/default.asp?page_id=529','Pescadero','San Mateo','CA','','',37.3233,122.402);
 INSERT INTO location VALUES (98,'San Luis NWR','http://sanluis.fws.gov/','Los Banos','Merced','CA','','',0,0);
 INSERT INTO location VALUES (99,'San Mateo County','','San Mateo','San Mateo','CA','A catch-all location for birds seen on the road in San Mateo County','',0,0);
 INSERT INTO location VALUES (100,'Santa Clara County','','Santa Clara','Santa Clara','CA','This page shows all the birds we\'ve seen in Santa Clara county but don\'t remember exactly where they were.','',0,0);
@@ -112,7 +112,7 @@ INSERT INTO location VALUES (110,'Starbucks Pond','','Belmont','San Mateo','CA',
 INSERT INTO location VALUES (111,'State and Speckles Pond','http://www.stanford.edu/~kendric/birds/PondMaps/Alviso3.html','Alviso','Santa Clara','CA','','WGS 84',37.4327,121.966);
 INSERT INTO location VALUES (112,'Stevens Creek County Park','http://www.parkhere.org/prkpages/stcrk.htm','Cupertino','Santa Clara','CA','','NAD-27',37.3114,122.068);
 INSERT INTO location VALUES (113,'Stowe Lake','','San Francisco','San Francisco','CA','','',0,0);
-INSERT INTO location VALUES (114,'Sunnyvale Baylands','http://www.ci.sunnyvale.ca.us/baylands/','Sunnyvale','Santa Clara','CA','','WGS 84',37.4011,121.993);
+INSERT INTO location VALUES (114,'Sunnyvale Baylands','http://www.ci.sunnyvale.ca.us/baylands/','Sunnyvale','Santa Clara','CA','','',37.4133,121.995);
 INSERT INTO location VALUES (115,'Sunnyvale Water Treatment Plant','','Sunnyvale','Santa Clara','CA','','mapblast',37.4198,122.017);
 INSERT INTO location VALUES (116,'Sutro Baths','','San Francisco','San Francisco','CA','','',0,0);
 INSERT INTO location VALUES (117,'Table Rock','http://nature.org/wherewework/northamerica/states/oregon/preserves/art6805.html','Medford','Jackson','OR','','',0,0);
@@ -129,8 +129,8 @@ INSERT INTO location VALUES (127,'Vasona Creek','http://claraweb.co.santa-clara.
 INSERT INTO location VALUES (128,'Wellfleet Bay','http://www.wellfleetbay.org/default.htm','South Wellfleet','Barnstable','MA','','Unknown',41.9196,69.9971);
 INSERT INTO location VALUES (129,'Woodbridge Ecological Preserve','http://www.sacbee.com/ourtown/diversions/wildlife_view.html','Lodi','San Joaquin','CA','A piece of land owned by the Nature Conservancy.','mapblast',38.1232,121.294);
 INSERT INTO location VALUES (130,'Yosemite','','Yosemite National Park','Mono','CA','','',37.85,119.567);
-INSERT INTO location VALUES (132,'Leakey','','Leaky','Real','TX','','',0,0);
-INSERT INTO location VALUES (133,'Brownsville','','Brownsville','Cameron','TX','','',0,0);
+INSERT INTO location VALUES (132,'Leakey','','Leaky','Real','TX','','',29.7286,99.7611);
+INSERT INTO location VALUES (133,'Brownsville','','Brownsville','Cameron','TX','','',25.9014,97.4972);
 INSERT INTO location VALUES (134,'Port Aransas','','Port Aransas','Nueces','TX','','',0,0);
 INSERT INTO location VALUES (135,'Laredo','','Laredo','Webb','TX','','',0,0);
 INSERT INTO location VALUES (136,'Corpus Christi','','Corpus Christi','Nueces','TX','','',0,0);
@@ -138,5 +138,5 @@ INSERT INTO location VALUES (137,'Palmetto State Park','http://www.tpwd.state.tx
 INSERT INTO location VALUES (138,'Other San Benito','','','San Benito','CA','','',0,0);
 INSERT INTO location VALUES (139,'Big Basin State Park','','Ben Lomond','Santa Cruz','CA','','',0,0);
 INSERT INTO location VALUES (140,'Arrowhead Marsh','http://baytrail.abag.ca.gov/vtour/map5/access/arrow.htm','Oakland','Alameda','CA','','',37.7444,122.213);
-INSERT INTO location VALUES (141,'Lake Merritt','','Oakland','Alameda','CA','','',0,0);
+INSERT INTO location VALUES (141,'Lake Merritt','','Oakland','Alameda','CA','','',37.8064,122.254);
 INSERT INTO location VALUES (142,'Bair Island','','Redwood City','San Mateo','CA','','',37.53,122.221);
