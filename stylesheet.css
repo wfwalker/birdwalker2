@@ -43,8 +43,9 @@
 
 .metadata {font: 9pt "Gill Sans", "Gill Sans MT", SansSerif}
 
-.heading {font-weight: bold; margin-top: 20px; margin-bottom: 10px; clear: both; }
-.subheading { margin-top: 7px; margin-bottom: 2px; color: #999999 }
+.heading { font-weight: bold; margin-top: 20px; margin-bottom: 10px; clear: both; color: #484393 }
+.subheading {  font-weight: bold; margin-top: 7px; margin-bottom: 2px; color: #484393 }
+
 .titleblock { border-top: solid 1px #AAAAAA; padding-top: 5px; margin-bottom: 5px }
 
 .inlinepict { margin-right: 10px; margin-bottom: 10px }
@@ -53,7 +54,7 @@
 .firstcell {padding-left: 15px; white-space: nowrap; }
 .fieldlabel {padding-left: 15px; font: 9pt Courier, Fixed; text-align: right; vertical-align: top}
 .bordered {border-left: solid 1px #DDDDDD; border-bottom: solid 1px #DDDDDD; width: 25px}
-.yearcell {width: 20px; border-left: solid 1px lightgray; border-bottom: solid 1px lightgray; color: gray}
+.yearcell {width: 20px; border-left: solid 1px lightgray; border-bottom: solid 1px lightgray; color: #999999}
 
 .copyright { font: 8pt "Gill Sans", "Gill Sans MT", SansSerif }
 
