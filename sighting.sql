@@ -9018,7 +9018,7 @@ INSERT INTO sighting VALUES (9039,'eursta','Point Reyes National Seashore','','0
 INSERT INTO sighting VALUES (9040,'wlswar','Point Reyes National Seashore','','','1','2004-07-05');
 INSERT INTO sighting VALUES (9041,'spotow','Point Reyes National Seashore','','0','0','2004-07-05');
 INSERT INTO sighting VALUES (9042,'caltow','Point Reyes National Seashore','','0','0','2004-07-05');
-INSERT INTO sighting VALUES (9043,'savspa','Point Reyes National Seashore','','0','0','2004-07-05');
+INSERT INTO sighting VALUES (9043,'savspa','Point Reyes National Seashore','','','1','2004-07-05');
 INSERT INTO sighting VALUES (9044,'sonspa','Point Reyes National Seashore','','0','0','2004-07-05');
 INSERT INTO sighting VALUES (9045,'foxspa','Point Reyes National Seashore','','0','0','2004-07-05');
 INSERT INTO sighting VALUES (9046,'daejun','Point Reyes National Seashore','','0','0','2004-07-05');
@@ -9321,3 +9321,12 @@ INSERT INTO sighting VALUES (9349,'nrwswa','Other San Benito','Seen by all but M
 INSERT INTO sighting VALUES (9350,'barswa','Other San Benito','','','','2004-09-18');
 INSERT INTO sighting VALUES (9351,'herwar','Other San Benito','Seen by Mary only','','','2004-09-18');
 INSERT INTO sighting VALUES (9352,'blkpho','Other San Benito','','','','2004-09-18');
+INSERT INTO sighting VALUES (9353,'rocdov','Charleston Slough','','0','0','2004-09-10');
+INSERT INTO sighting VALUES (9354,'margod','Charleston Slough','','','1','2004-09-10');
+INSERT INTO sighting VALUES (9355,'ameavo','Charleston Slough','','0','0','2004-09-10');
+INSERT INTO sighting VALUES (9356,'cangoo','Charleston Slough','','0','0','2004-09-10');
+INSERT INTO sighting VALUES (9357,'bknsti','Charleston Slough','','0','0','2004-09-10');
+INSERT INTO sighting VALUES (9358,'amecoo','Charleston Slough','','0','0','2004-09-10');
+INSERT INTO sighting VALUES (9359,'willet','Charleston Slough','','0','0','2004-09-10');
+INSERT INTO sighting VALUES (9360,'coohaw','Palo Alto Duck Pond','','','1','2004-07-20');
+INSERT INTO sighting VALUES (9361,'snoegr','Palo Alto Duck Pond','','0','0','2004-07-20');
