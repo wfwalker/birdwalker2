@@ -1,6 +1,6 @@
 <?php
 
-require("/Users/walker/Sites/birdwalker/birdwalker.php");
+require("./birdwalker.php");
 
 $tripInfo = getTripInfo($_GET['id']);
 
@@ -17,7 +17,7 @@ $firstSightings = getFirstSightings();
 
 <html>
   <head>
-    <link title="Style" href="/~walker/birdwalker/stylesheet.css" type="text/css" rel="stylesheet">
+    <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
     <title>birdWalker | <?php echo $tripInfo["Name"] ?></title>
   </head>
 
@@ -48,7 +48,7 @@ while($speciesInfo = mysql_fetch_array($tripSpeciesQuery)) {
     echo "<div class=\"titleblock\"><a href=\"./locationdetail.php?id=" . $speciesInfo["locationid"] . "\">" . $speciesInfo["LocationName"] . "</a></div>";
   }
 
-  echo "<div class=firstcell><a href=/~walker/birdwalker/speciesdetail.php?id=" . $speciesInfo["objectid"] . ">" . $speciesInfo["CommonName"] . "</a>";
+  echo "<div class=firstcell><a href=\"./speciesdetail.php?id=" . $speciesInfo["objectid"] . "\">" . $speciesInfo["CommonName"] . "</a>";
 
   if (strlen($speciesInfo["Notes"]) > 0) {
     echo "<div class=sighting-notes>" . $speciesInfo["Notes"] . "</div>";

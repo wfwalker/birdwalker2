@@ -1,7 +1,7 @@
 
 <?php
 
-require("/Users/walker/Sites/birdwalker/birdwalker.php");
+require("./birdwalker.php");
 
 $countyName = $_GET["county"];
 $whereClause =  "species.Abbreviation=sighting.SpeciesAbbreviation and sighting.LocationName=location.Name and location.County='" . $countyName . "'";
@@ -11,7 +11,7 @@ $countyListCount = getFancySpeciesCount($whereClause);
 
 <html>
   <head>
-    <link title="Style" href="/~walker/birdwalker/stylesheet.css" type="text/css" rel="stylesheet">
+    <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
 	  <title>birdWalker | <?php echo $countyName ?> County List</title>
   </head>
 

@@ -1,7 +1,7 @@
 
 <?php
 
-require("/Users/walker/Sites/birdwalker/birdwalker.php");
+require("./birdwalker.php");
 
 $familyid = $_GET["family"];
 $orderid = floor($familyid / 100);
@@ -17,7 +17,7 @@ $orderInfo = getOrderInfo($orderid * pow(10, 9));
 
 <html>
   <head>
-    <link title="Style" href="/~walker/birdwalker/stylesheet.css" type="text/css" rel="stylesheet">
+    <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
 	  <title>birdWalker | <?php echo $familyInfo["LatinName"] ?></title>
   </head>
 
@@ -42,7 +42,7 @@ $orderInfo = getOrderInfo($orderid * pow(10, 9));
 <?php
 
 while($info = mysql_fetch_array($familyQuery)) {
-  echo "<div class=firstcell><a href=/~walker/birdwalker/speciesdetail.php?id=".$info["objectid"].">".$info["CommonName"]."</a></div>";
+  echo "<div class=firstcell><a href=\"./speciesdetail.php?id=".$info["objectid"]."\">".$info["CommonName"]."</a></div>";
   $prevInfo = $info;
 }
 

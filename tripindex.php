@@ -1,7 +1,7 @@
 
 <?php
 
-require("/Users/walker/Sites/birdwalker/birdwalker.php");
+require("./birdwalker.php");
 
 $tripListCount = getTripCount();
 $tripListQuery = getTripQuery();
@@ -10,7 +10,7 @@ $tripListQuery = getTripQuery();
 
 <html>
   <head>
-    <link title="Style" href="/~walker/birdwalker/stylesheet.css" type="text/css" rel="stylesheet">
+    <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
     <title>birdWalker | Trips</title>
   </head>
 
@@ -37,7 +37,7 @@ while($info = mysql_fetch_array($tripListQuery)) {
             <a href=\"./yearindex.php?year=" . $thisYear . "\">" . $thisYear . "</a></td></tr>";
   }
 
-  echo "<tr><td class=firstcell><a href=/~walker/birdwalker/tripdetail.php?id=".$info["objectid"].">" . $info["Name"] . " (" . $info["niceDate"] . ")</a></td><td align=right>" . $info["tripCount"] . "</td></tr>";
+  echo "<tr><td class=firstcell><a href=\"./tripdetail.php?id=".$info["objectid"]."\">" . $info["Name"] . " (" . $info["niceDate"] . ")</a></td><td align=right>" . $info["tripCount"] . "</td></tr>";
   $prevYear = $thisYear;
 }
 

@@ -1,7 +1,7 @@
 
 <?php
 
-require("/Users/walker/Sites/birdwalker/birdwalker.php");
+require("./birdwalker.php");
 
 $stateName = $_GET["state"];
 $whereClause =  "species.Abbreviation=sighting.SpeciesAbbreviation and sighting.LocationName=location.Name and location.State='" . $stateName . "'";
@@ -12,7 +12,7 @@ $stateListQuery = getFancySpeciesQuery($whereClause);
 
 <html>
   <head>
-    <link title="Style" href="/~walker/birdwalker/stylesheet.css" type="text/css" rel="stylesheet">
+    <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
 	  <title>birdWalker | <?php echo $stateName ?> State List</title>
   </head>
 

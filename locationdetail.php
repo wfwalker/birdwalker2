@@ -1,7 +1,7 @@
 
 <?php
 
-require("/Users/walker/Sites/birdwalker/birdwalker.php");
+require("./birdwalker.php");
 
 $siteInfo = getLocationInfo($_GET['id']);
 
@@ -16,7 +16,7 @@ $tripCount = getTripCount("sighting.LocationName='" . $siteInfo["Name"]. "' and 
 <html>
 
 <head>
-<link title="Style" href="/~walker/birdwalker/stylesheet.css" type="text/css" rel="stylesheet">
+<link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
 	  <title>birdWalker | <?php echo $siteInfo["Name"] ?></title>
 </head>
 
@@ -51,7 +51,7 @@ if (strlen($siteInfo["ReferenceURL"]) > 0) {
 
 	  // list the trips that included this location
 	  while($tripInfo = mysql_fetch_array($tripQuery)) {
-		  echo "<div class=firstcell><a href=/~walker/birdwalker/tripdetail.php?id=" . $tripInfo["objectid"] . ">" . $tripInfo["Name"] . " (" . $tripInfo["Date"] .  ")</a></div>";
+		  echo "<div class=firstcell><a href=\"./tripdetail.php?id=" . $tripInfo["objectid"] . "\">" . $tripInfo["Name"] . " (" . $tripInfo["Date"] .  ")</a></div>";
 	  }
   }
   else

@@ -183,7 +183,7 @@ function formatSpeciesList($speciesCount, $speciesQuery)
       echo "<div class=\"titleblock\">" . $orderInfo["CommonName"] . "</div>";
     }
 
-    echo "<div class=firstcell><a href=/~walker/birdwalker/speciesdetail.php?id=".$info["objectid"].">".$info["CommonName"]."</a></div>";
+    echo "<div class=firstcell><a href=\"./speciesdetail.php?id=".$info["objectid"]."\">".$info["CommonName"]."</a></div>";
     $prevOrderNum = $orderNum;
   }
 }
@@ -390,11 +390,11 @@ function formatLocationList($locationListCount, $locationListQuery)
     if ($divideByCounties && (($prevInfo["State"] != $info["State"]) || ($prevInfo["County"] != $info["County"])))
     {
 	  echo "<div class=\"titleblock\">
-              <a href=\"/~walker/birdwalker/countyindex.php?county=" . urlencode($info["County"]) . "\">" . $info["County"] . " County</a>,
-              <a href=\"/~walker/birdwalker/stateindex.php?state=" . urlencode($info["State"]) . "\">" . $info["State"] . "</a></div>";
+              <a href=\"./countyindex.php?county=" . urlencode($info["County"]) . "\">" . $info["County"] . " County</a>,
+              <a href=\"./stateindex.php?state=" . urlencode($info["State"]) . "\">" . $info["State"] . "</a></div>";
     }
 
-    echo "<div class=firstcell><a href=/~walker/birdwalker/locationdetail.php?id=".$info["objectid"].">".$info["Name"]."</a></div>";
+    echo "<div class=firstcell><a href=\"./locationdetail.php?id=".$info["objectid"]."\">".$info["Name"]."</a></div>";
     $prevInfo = $info;   
   }
 }

@@ -1,7 +1,7 @@
 
 <?php
 
-require("/Users/walker/Sites/birdwalker/birdwalker.php");
+require("./birdwalker.php");
 
 $theYear = $_GET["year"];
 
@@ -10,7 +10,7 @@ $yearCount = getSpeciesCount("species.Abbreviation=sighting.SpeciesAbbreviation 
 
 <html>
   <head>
-    <link title="Style" href="/~walker/birdwalker/stylesheet.css" type="text/css" rel="stylesheet">
+    <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
     <title>birdWalker | <?php echo $theYear ?> Report</title>
   </head>
   <body>

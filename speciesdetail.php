@@ -1,7 +1,7 @@
 
 <?php
 
-require("/Users/walker/Sites/birdwalker/birdwalker.php");
+require("./birdwalker.php");
 
 $speciesInfo = getSpeciesInfo($_GET['id']);
 $orderInfo = getOrderInfo($_GET['id']);
@@ -20,7 +20,7 @@ $speciesLocationCount = getLocationCount($locationWhereClause);
 <html>
 
 <head>
-  <link title="Style" href="/~walker/birdwalker/stylesheet.css" type="text/css" rel="stylesheet">
+  <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
   <title>birdWalker | <?php echo $speciesInfo["CommonName"] ?></title>
 </head>
 
@@ -59,7 +59,7 @@ $speciesLocationCount = getLocationCount($locationWhereClause);
 
 	  // list the trips that included this species
 	  while($tripInfo = mysql_fetch_array($speciesTripListQuery)) {
-		  echo "<div class=firstcell><a href=/~walker/birdwalker/tripdetail.php?id=" . $tripInfo["objectid"] . ">" . $tripInfo["Name"] . " (" . $tripInfo["niceDate"] .  ")</a></div>";
+		  echo "<div class=firstcell><a href=\"./tripdetail.php?id=" . $tripInfo["objectid"] . "\">" . $tripInfo["Name"] . " (" . $tripInfo["niceDate"] .  ")</a></div>";
 	  }
 
 	  echo "<div class=\"titleblock\">Seen in ". $speciesLocationCount . " locations</div>";
