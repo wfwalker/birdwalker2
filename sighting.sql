@@ -10474,3 +10474,10 @@ INSERT INTO sighting VALUES (10508,'doccor','Charleston Slough','','0','0','2005
 INSERT INTO sighting VALUES (10509,'comgol','Charleston Slough','','0','0','2005-02-09');
 INSERT INTO sighting VALUES (10510,'bargol','Charleston Slough','','','1','2005-02-09');
 INSERT INTO sighting VALUES (10511,'canvas','Charleston Slough','','0','0','2005-02-09');
+INSERT INTO sighting VALUES (10512,'pibgre','Charleston Slough','','','1','2005-02-09');
+INSERT INTO sighting VALUES (10513,'cangoo','Palo Alto Duck Pond','','','1','2005-02-10');
+INSERT INTO sighting VALUES (10514,'rudduc','Palo Alto Duck Pond','','0','0','2005-02-10');
+INSERT INTO sighting VALUES (10515,'rewbla','Palo Alto Duck Pond','','0','0','2005-02-10');
+INSERT INTO sighting VALUES (10516,'mallar','Palo Alto Duck Pond','','0','0','2005-02-10');
+INSERT INTO sighting VALUES (10517,'ruckin','Palo Alto Duck Pond','','0','0','2005-02-10');
+INSERT INTO sighting VALUES (10518,'glwgul','Palo Alto Duck Pond','','0','0','2005-02-10');
