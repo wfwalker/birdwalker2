@@ -1,7 +1,7 @@
 
 <?php
 
-require("./birdwalker.php");
+require_once("./birdwalker.php");
 
 
 buildFirstSightingsTable("WHERE Exclude!='1'");

@@ -1,7 +1,7 @@
 
 <?php
 
-require("./birdwalker.php");
+require_once("./birdwalker.php");
 
 $badAbbrevs = performQuery("
     SELECT species.*,sighting.*, sighting.objectid AS sightingid

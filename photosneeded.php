@@ -1,6 +1,6 @@
 <?php
 
-require("./birdwalker.php");
+require_once("./birdwalker.php");
 
 $threshold = 10;
 

@@ -1,7 +1,7 @@
 
 <?php
 
-require("./birdwalker.php");
+require_once("./birdwalker.php");
 
 $randomPhotoSightings = performQuery("SELECT *, rand() AS shuffle FROM sighting WHERE Photo='1' ORDER BY shuffle LIMIT 5");
  ?>

@@ -1,8 +1,8 @@
 
 <?php
 
-require("./birdwalker.php");
-require("./speciesquery.php");
+require_once("./birdwalker.php");
+require_once("./speciesquery.php");
 
 $familyid = param($_GET, "family", 701);
 $orderid = floor($familyid / 100);

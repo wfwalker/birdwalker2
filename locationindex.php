@@ -1,8 +1,8 @@
 
 <?php
 
-require("./birdwalker.php");
-require("./map.php");
+require_once("./birdwalker.php");
+require_once("./map.php");
 
 $view = param($_GET, "view", "list");
 

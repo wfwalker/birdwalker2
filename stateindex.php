@@ -1,7 +1,7 @@
 
 <?php
 
-require("./birdwalker.php");
+require_once("./birdwalker.php");
 
 $yearArray = null;
 $stateStats = performQuery("SELECT

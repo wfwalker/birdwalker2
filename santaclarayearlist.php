@@ -1,7 +1,7 @@
 
 <?php
 
-require("./birdwalker.php");
+require_once("./birdwalker.php");
 
 $theYear = param($_GET, "year", 2004);
 

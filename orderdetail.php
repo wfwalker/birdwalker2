@@ -1,8 +1,8 @@
 
 <?php
 
-require("./birdwalker.php");
-require("./speciesquery.php");
+require_once("./birdwalker.php");
+require_once("./speciesquery.php");
 
 $orderid = param($_GET, "order", 21);
 

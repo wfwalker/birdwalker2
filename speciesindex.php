@@ -1,8 +1,8 @@
 
 <?php
 
-require("./birdwalker.php");
-require("./speciesquery.php");
+require_once("./birdwalker.php");
+require_once("./speciesquery.php");
 
 $speciesQuery = new SpeciesQuery;
 $view = param($_GET, "view", "");

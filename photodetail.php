@@ -1,7 +1,8 @@
 
 <?php
 
-require("./birdwalker.php");
+require_once("./birdwalker.php");
+
 $sightingID = $_GET['id'];
 
 $sightingInfo = getSightingInfo($sightingID);

@@ -1,10 +1,10 @@
 
 <?php
 
-require("./birdwalker.php");
-require("./sightingquery.php");
-require("./map.php");
-require("./tripquery.php");
+require_once("./birdwalker.php");
+require_once("./sightingquery.php");
+require_once("./map.php");
+require_once("./tripquery.php");
 
 $view = param($_GET, "view", "lists");
 

@@ -1,7 +1,7 @@
 
 <?php
 
-require("./birdwalker.php");
+require_once("./birdwalker.php");
 
 $speciesID = $_GET['speciesid'];
 $postSpeciesID = $_POST['speciesid'];

@@ -1,7 +1,7 @@
 
 <?php
 
-require("./birdwalker.php");
+require_once("./birdwalker.php");
 
 performQuery("CREATE TEMPORARY TABLE tmp ( CommonName varchar(32) default NULL, tripdate date default NULL, sightingCount varchar(32));");
 

@@ -1,8 +1,8 @@
 
 <?php
 
-require("./birdwalker.php");
-require("./speciesquery.php");
+require_once("./birdwalker.php");
+require_once("./speciesquery.php");
 
 $locationList = performQuery("select Name, objectid from location order by Name");
 

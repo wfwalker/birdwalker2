@@ -1,10 +1,10 @@
 
 <?php
 
-require("./birdwalker.php");
-require("./speciesquery.php");
-require("./sightingquery.php");
-require("./tripquery.php");
+require_once("./birdwalker.php");
+require_once("./speciesquery.php");
+require_once("./sightingquery.php");
+require_once("./tripquery.php");
 
 $locationID = param($_GET, 'id', 1);
 $view = param($_GET, 'view', 'list');

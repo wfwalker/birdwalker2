@@ -1,6 +1,6 @@
 <?php
 
-require("./birdwalker.php");
+require_once("./birdwalker.php");
 
 $localtimearray = localtime(time(), 1);
 $monthNum = $localtimearray["tm_mon"] + 1;

@@ -1,7 +1,7 @@
 
 <?php
 
-require("./birdwalker.php");
+require_once("./birdwalker.php");
 
 $photoLocations = performQuery("
     SELECT DISTINCT location.*, COUNT(DISTINCT sighting.objectid) AS photoCount

@@ -1,7 +1,7 @@
 
 <?php
 
-require("./birdwalker.php");
+require_once("./birdwalker.php");
 
 $randomPhotoSightings = performQuery("
     SELECT *, date_format(TripDate, '%W,  %M %e, %Y') as niceDate, rand() AS shuffle

@@ -1,7 +1,7 @@
 
 <?php
 
-require("./locationquery.php");
+require_once("./locationquery.php");
 
 class Map
 {
@@ -107,6 +107,13 @@ class Map
 			 "&WIDTH=" . $this->mMapWidth . "&HEIGHT=" . $this->mMapHeight .
 			 "&LAYERS=US_NED_Shaded_Relief&STYLES=reference&FORMAT=GIF&BGCOLOR=0xffffff&TRANSPARENT=TRUE&EXCEPTIONS=INIMAGE";
 
+		$landsat = 
+			 "http://ims.cr.usgs.gov:80/servlet/com.esri.wms.Esrimap/USGS_WMS_LANDSAT7?" . 
+			 "servicename=WMS&reaspect=True&REQUEST=map&SRS=EPSG:4326&BBOX=" . 
+			 "-" . $this->mMaximumLongitude . "," . $this->mMinimumLatitude. ",-" . $this->mMinimumLongitude . "," . $this->mMaximumLatitude .
+			 "&WIDTH=" . $this->mMapWidth . "&HEIGHT=" . $this->mMapHeight .
+			 "&LAYERS=LANDSAT7&STYLES=reference&FORMAT=GIF&BGCOLOR=0xffffff&TRANSPARENT=TRUE&EXCEPTIONS=INIMAGE";
+
 		$terraserver =
 			 "http://terraserver.microsoft.com/ogcmap.ashx?" .
 			 "version=1.1.1&request=GetMap&Layers=DOQ&Styles=GeoGrid&SRS=EPSG:4326&BBOX=" .
@@ -118,6 +125,7 @@ class Map
 		else if ($this->mBackground == "relief") return $relief2;
 		else if ($this->mBackground == "landcover") return $landcover;
 		else return $terraserver;
+		//		else return $terraserver;
 	}
 
 	function linkToSelf($minLat, $maxLat, $minLong, $maxLong, $backgnd, $anchorText, $style = "")

@@ -1,10 +1,10 @@
 
 <?php
 
-require("./birdwalker.php");
-require("./map.php");
-require("./sightingquery.php");
-require("./speciesquery.php");
+require_once("./birdwalker.php");
+require_once("./map.php");
+require_once("./sightingquery.php");
+require_once("./speciesquery.php");
 
 $tripID = param($_GET, 'tripid', 343);
 $view = param($_GET, 'view', 'list');

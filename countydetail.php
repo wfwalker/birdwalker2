@@ -1,10 +1,10 @@
 
 <?php
 
-require("./birdwalker.php");
-require("./speciesquery.php");
-require("./map.php");
-require("./sightingquery.php");
+require_once("./birdwalker.php");
+require_once("./speciesquery.php");
+require_once("./map.php");
+require_once("./sightingquery.php");
 
 $county = param($_GET, "county", "San Mateo");
 $state = param($_GET, "state", "CA");
