@@ -64,7 +64,7 @@ navTrailSpecies($speciesID);
 		  countHeading($tripCount, "trip");
 		  $tripQuery->formatTwoColumnTripList();
 		  countHeading($locationCount, "location");
-		  $locationQuery->formatTwoColumnLocationList();
+		  $locationQuery->formatTwoColumnLocationList(true);
 	  } elseif ($view == "bymonth") {
 		  doubleCountHeading($tripCount, "trip", $locationCount, "location");
 		  $locationQuery->formatLocationByMonthTable();

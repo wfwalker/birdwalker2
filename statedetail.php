@@ -10,15 +10,8 @@ $view = param($_GET, "view", "species");
 
 $info = getStateInfo($id);
 
-?>
+htmlHead($info["Name"]);
 
-<html>
-
-  <? htmlHead($info["Name"]); ?>
-
-  <body>
-
-<?php
 globalMenu();
 stateBrowseButtons($id, $view);
 navTrailLocations();
@@ -74,7 +67,7 @@ elseif ($view == 'locations')
     $locationQuery = new LocationQuery;
 	$locationQuery->setFromRequest($_GET);
 	countHeading($locationQuery->getLocationCount(), "location");
-	$locationQuery->formatTwoColumnLocationList();
+	$locationQuery->formatTwoColumnLocationList(true);
 }
 elseif ($view == 'locationsbyyear')
 {
