@@ -5,7 +5,7 @@ function navigationHeader()
 	echo "
 
 	<div class=\"contentleft\">
-      <div style=\"height: 50px\"><a href=\"http://www.shout.net/~walker/\">birdWalker</div>
+      <div style=\"height: 50px\"><a href=\"./index.php\">birdWalker</div>
 	  <div class=\"leftsubtitle\"><a href=\"./tripindex.php\">Trip Lists</a></div>
 	  <div class=\"leftsubtitle\"><a href=\"./speciesindex.php\">Species Reports</a></div>
 	  <div class=\"leftsubtitle\"><a href=\"./locationindex.php\">Location Reports</a></div>
