@@ -11,6 +11,8 @@ $siteListCount = getSpeciesCount($whereClause);
 
 $tripQuery = getTripQuery("sighting.LocationName='" . $siteInfo["Name"]. "' and sighting.TripDate=trip.Date");
 $tripCount = getTripCount("sighting.LocationName='" . $siteInfo["Name"]. "' and sighting.TripDate=trip.Date");
+$firstSightings = getFirstSightings();
+
 ?>
 
 <html>
@@ -46,7 +48,24 @@ if (strlen($siteInfo["ReferenceURL"]) > 0) {
   {
 	  echo "
 	  <div class=\"titleblock\">Seen ". $siteListCount . " species at this location</div>";
-	  formatSpeciesList($siteListCount, $siteListQuery);
+
+	  $divideByTaxo = ($siteListCount > 30);
+	
+	  while($info = mysql_fetch_array($siteListQuery))
+	  {
+		  $orderNum =  floor($info["objectid"] / pow(10, 9));
+		
+		  if ($divideByTaxo && (getBestTaxonomyID($prevInfo["objectid"]) != getBestTaxonomyID($info["objectid"])))
+		  {
+			  $taxoInfo = getBestTaxonomyInfo($info["objectid"]);
+			  echo "<div class=\"titleblock\">" . $taxoInfo["CommonName"] . "</div>";
+		  }
+
+		  echo "<div class=firstcell><a href=\"./speciesdetail.php?id=".$info["objectid"]."\">".$info["CommonName"]."</a></div>";
+		
+		  $prevInfo = $info;
+	  }
+
 	  echo "<div class=\"titleblock\">Visited on " . $tripCount . " trips</div>";
 
 	  // list the trips that included this location
