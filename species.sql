@@ -20,7 +20,7 @@ INSERT INTO species VALUES (3010030100,'wanalb','Diomedea exulans','Wandering Al
 INSERT INTO species VALUES (3010040100,'layalb','Phoebastria immutabilis','Laysan Albatross','','',1);
 INSERT INTO species VALUES (3010040200,'bkfalb','Phoebastria nigripes','Black-footed Albatross','','http://www.mbr-pwrc.usgs.gov/id/framlst/i0810id.html',1);
 INSERT INTO species VALUES (3010040300,'shtalb','Phoebastria albatrus','Short-tailed Albatross','','',1);
-INSERT INTO species VALUES (3020010100,'norful','Fulmarus glacialis','Northern Fulmar','','',1);
+INSERT INTO species VALUES (3020010100,'norful','Fulmarus glacialis','Northern Fulmar','','http://www.mbr-pwrc.usgs.gov/Infocenter/i0860id.html',1);
 INSERT INTO species VALUES (3020010101,'pacful','Fulmarus glacialis 1','Pacific Fulmar','','',1);
 INSERT INTO species VALUES (3020020100,'cappet','Daption capense','Cape Petrel','','',1);
 INSERT INTO species VALUES (3020030100,'kerpet','Pterodroma neglecta','Kermadec Petrel','','',1);
@@ -169,9 +169,9 @@ INSERT INTO species VALUES (7012040500,'whoswa','Cygnus cygnus','Whooper Swan','
 INSERT INTO species VALUES (7013010100,'rudshe','Tadorna ferruginea','Ruddy Shelduck','','',1);
 INSERT INTO species VALUES (7013010200,'comshe','Tadorna tadorna','Common Shelduck','','',1);
 INSERT INTO species VALUES (7013020100,'musduc','Cairina moschata','Muscovy Duck','','',1);
-INSERT INTO species VALUES (7013030100,'wooduc','Aix sponsa','Wood Duck','','',1);
+INSERT INTO species VALUES (7013030100,'wooduc','Aix sponsa','Wood Duck','','http://www.mbr-pwrc.usgs.gov/id/framlst/i1440id.html',1);
 INSERT INTO species VALUES (7013030200,'manduc','Aix galericulata','Mandarin Duck','','',1);
-INSERT INTO species VALUES (7013040100,'gadwal','Anas strepera','Gadwall','','',1);
+INSERT INTO species VALUES (7013040100,'gadwal','Anas strepera','Gadwall','','http://www.mbr-pwrc.usgs.gov/Infocenter/i1350id.html',1);
 INSERT INTO species VALUES (7013040200,'falduc','Anas falcata','Falcated Duck','','',1);
 INSERT INTO species VALUES (7013040300,'eurwig','Anas penelope','Eurasian Wigeon','','',1);
 INSERT INTO species VALUES (7013040400,'amewig','Anas americana','American Wigeon','','http://www.mbr-pwrc.usgs.gov/id/framlst/i1370id.html',1);
