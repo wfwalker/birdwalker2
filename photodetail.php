@@ -57,7 +57,7 @@ navTrailPhotos();
 
 	    list($width, $height, $type, $attr) = getimagesize("./images/photo/" . $photoFilename); ?>
 
-	    <img width=<?= $width ?> height=<?= $height ?> src="<?= getPhotoURLForSightingInfo($sightingInfo) ?>">
+	    <img width=<?= $width ?> height=<?= $height ?> src="<?= getPhotoURLForSightingInfo($sightingInfo) ?>" alt="<?= $speciesInfo['CommonName'] ?>">
         <div class=copyright>@<?= $tripYear ?> W. F. Walker</div>
 <?  }
 
