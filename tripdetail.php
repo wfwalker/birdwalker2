@@ -65,7 +65,7 @@ if (getEnableEdit()) {
 
 while($locationInfo = mysql_fetch_array($locationListQuery))
 {
-	$tripLocationQuery = performQuery("select species.CommonName, species.objectid as speciesid, sighting.* from species, sighting where sighting.SpeciesAbbreviation=species.Abbreviation and sighting.TripDate='". $tripInfo["Date"] . "' and sighting.LocationName='" . $locationInfo["Name"] . "' order by species.objectid");
+	$tripLocationQuery = performQuery("select species.CommonName, species.ABACountable, species.objectid as speciesid, sighting.* from species, sighting where sighting.SpeciesAbbreviation=species.Abbreviation and sighting.TripDate='". $tripInfo["Date"] . "' and sighting.LocationName='" . $locationInfo["Name"] . "' order by species.objectid");
 	$tripLocationCount = mysql_num_rows($tripLocationQuery);
 	$divideByTaxo = ($tripLocationCount > 30);
 
@@ -101,7 +101,8 @@ while($locationInfo = mysql_fetch_array($locationListQuery))
 
 		if ($firstSightings[$sightingID] != null) echo " first life sighting";
 		else if ($firstYearSightings[$sightingID] != null) echo " first " . $tripYear . " sighting";
-		
+
+		if ($info["ABACountable"] == '0') echo " NOT ABA COUNTABLE";
 		echo "\n</div>";
 
 		if (strlen($info["Notes"]) > 0) {
