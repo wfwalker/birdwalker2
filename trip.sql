@@ -291,3 +291,4 @@ INSERT INTO trip VALUES (290,'Bill','','Early Morning Walk','','2004-03-31');
 INSERT INTO trip VALUES (291,'Mary and Bill','','Saturday Stroll','We wanted to get warmed up before our big trip to Texas','2004-04-10');
 INSERT INTO trip VALUES (292,'Steve Shunk','','Paradise Birding Texas Day 1','','2004-04-13');
 INSERT INTO trip VALUES (293,'Steve Shunk','','Paradise Birding Texas Day 2','','2004-04-14');
+INSERT INTO trip VALUES (294,'Steve Shunk','','Paradise Birding Texas Day 3','','2004-04-15');
