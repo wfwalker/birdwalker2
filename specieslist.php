@@ -9,7 +9,12 @@ $month = $_GET["month"];
 $county = $_GET["county"];
 $state = $_GET["state"];
 
-$speciesListQueryString = "SELECT distinct species.* FROM sighting, species, location, trip WHERE species.Abbreviation=sighting.SpeciesAbbreviation AND location.Name=sighting.LocationName AND trip.Date=sighting.TripDate ";
+$speciesListQueryString = "
+    SELECT distinct species.*
+      FROM sighting, species, location, trip
+      WHERE species.Abbreviation=sighting.SpeciesAbbreviation
+      AND location.Name=sighting.LocationName
+      AND trip.Date=sighting.TripDate ";
 
 $pageTitle = "";
 
@@ -27,8 +32,8 @@ if ($locationid != "") {
 
 if ($month !="") {
 	$speciesListQueryString = $speciesListQueryString . " AND Month(TripDate)=" . $month;
-	if ($pageTitle == "") $pageTitle = $month;
-	else $pageTitle = $pageTitle . ", " . $month;
+	if ($pageTitle == "") $pageTitle = getMonthNameForNumber($month);
+	else $pageTitle = $pageTitle . ", " . getMonthNameForNumber($month);
 }
 if ($year !="") {
 	$speciesListQueryString = $speciesListQueryString . " AND Year(TripDate)=" . $year;
