@@ -375,3 +375,4 @@ INSERT INTO trip VALUES (375,'Mary and Bill','','Thanksgiving Photo Safari 2','O
 INSERT INTO trip VALUES (376,'Bill','','Morning Photo Safari','I stopped by the pond to see what was up, and had a chance to practice sneaking up on a Curlew.','2004-12-05');
 INSERT INTO trip VALUES (377,'Bill','','Morning Photo Safari','My continuing quest to photograph the Yellow-rumped Warbler and Common Yellowthroat','2004-11-30');
 INSERT INTO trip VALUES (378,'Mary and Bill','','Christmas Bird Count','Also saw: 69 sparrows, 106 dowitchers, 483 gulls','2004-12-19');
+INSERT INTO trip VALUES (379,'Bill','','Photo Safari','','2004-11-28');
