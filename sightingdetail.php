@@ -38,13 +38,15 @@ $sightingCount = performCount("select count(*) from sighting");
       <div class=metadata><?php echo $locationInfo["County"] ?> County, <?php echo getStateNameForAbbreviation($locationInfo["State"]) ?></div>
 </div>
 
+<?php if ($sightingInfo["Photo"] == "1") { echo "<a href=\"". getPhotoURLForSightingInfo($sightingInfo) . "\"><img src=\"" . getPhotoThumbURLForSightingInfo($sightingInfo) . "\"></a>"; } ?>
+
 <table class=report-content columns=2 width=100%>
   <tr><td class=titleblock colspan=2>Sighting</td></tr>
   <tr><td class=fieldlabel>SpeciesAbbreviation</td><td><?php echo $sightingInfo["SpeciesAbbreviation"] ?></td></tr>
   <tr><td class=fieldlabel>LocationName</td><td><?php echo $sightingInfo["LocationName"] ?></td></tr>
   <tr><td class=fieldlabel>Notes</td><td><?php echo $sightingInfo["Notes"] ?></td></tr>
   <tr><td class=fieldlabel>Exclude</td><td><?php echo $sightingInfo["Exclude"] ?></td></tr>
-  <tr><td class=fieldlabel>PhotoURL</td><td><?php echo $sightingInfo["PhotoURL"] ?></td></tr>
+  <tr><td class=fieldlabel>Photo</td><td><?php echo $sightingInfo["Photo"] ?></td></tr>
   <tr><td class=fieldlabel>TripDate</td><td><?php echo $sightingInfo["TripDate"] ?></td></tr>
 
   <tr><td class=titleblock colspan=2>Species</td></tr>
