@@ -25,7 +25,7 @@ $randomPhotoSightings = performQuery("select *, rand() as shuffle from sighting 
       for ($index = 0; $index < 5; $index++)
 	  {
 		  $info = mysql_fetch_array($randomPhotoSightings);
-		  echo "<td><img src=\"" . getPhotoThumbURLForSightingInfo($info) . "\"/></td>";
+		  echo "<td>" . getThumbForSightingInfo($info) . "</td>";
 	  }
 ?>
       </tr></table>

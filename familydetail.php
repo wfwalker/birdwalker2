@@ -37,15 +37,26 @@ $orderInfo = getOrderInfo($orderid * pow(10, 9));
       </div>
 
       <div class=titleblock> <?php echo $familyCount ?> species</div>
-		
+
+<table columns=2>		
 <?php
 
 while($info = mysql_fetch_array($familyQuery)) {
-  echo "<div class=firstcell><a href=\"./speciesdetail.php?id=".$info["objectid"]."\">".$info["CommonName"]."</a></div>";
-  $prevInfo = $info;
+  $photoQuery = performQuery("select * from sighting where SpeciesAbbreviation='" . $info["Abbreviation"] . "' and Photo='1' order by TripDate desc");
+  echo "<tr><td class=report-content>";
+  if ($photoInfo = mysql_fetch_array($photoQuery)) {
+	  echo getThumbForSightingInfo($photoInfo);
+  }
+  echo "</td>";
+
+  echo "<td class=report-content valign=top>";
+  echo "<a href=\"./speciesdetail.php?id=".$info["objectid"]."\">".$info["CommonName"]."</a><br>";
+  echo "more<br>more<br>";
+  echo "</td></tr>";
 }
 
 ?>
+</table>
 
     </div>
   </body>

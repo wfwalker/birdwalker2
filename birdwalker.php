@@ -47,9 +47,9 @@ function getPhotoURLForSightingInfo($sightingInfo)
 	return "./images/photo/" . $sightingInfo["TripDate"] . "-" . $sightingInfo["SpeciesAbbreviation"] . ".jpg";
 }
 
-function getPhotoThumbURLForSightingInfo($sightingInfo)
+function getThumbForSightingInfo($sightingInfo)
 {
-	return "./images/thumb/" . $sightingInfo["TripDate"] . "-" . $sightingInfo["SpeciesAbbreviation"] . ".jpg";
+	return "<a href=\"./photodetail.php?id=" . $sightingInfo["objectid"] . "\"><img src=\"./images/thumb/" . $sightingInfo["TripDate"] . "-" . $sightingInfo["SpeciesAbbreviation"] . ".jpg\" align=right border=0></a>";
 }
 
 /**
@@ -161,8 +161,7 @@ function getSpeciesCount($whereClause = "species.Abbreviation=sighting.SpeciesAb
 function getSpeciesQuery($whereClause = "species.Abbreviation=sighting.SpeciesAbbreviation and sighting.Exclude=0", $orderClause = "species.objectid")
 {
 	$speciesQueryString =
-		"SELECT distinct species.objectid, species.CommonName " . $additionalFields . "
-     FROM species, sighting
+		"SELECT distinct species.objectid, species.CommonName, species.Abbreviation FROM species, sighting
      where " . $whereClause . "
      order by " . $orderClause;
 
