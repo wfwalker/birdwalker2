@@ -942,7 +942,7 @@ function tripBrowseButtons($url, $tripID, $viewMode)
 function formatTwoColumnTripList($tripQuery)
 {
 	$tripCount = $tripQuery->getTripCount();
-    $subdivideByYears = $tripCount > 20;
+    $subdivideByYears = ($tripCount > 20) && ($tripQuery->mYear == "");
 	$prevYear = "";
 	$counter = round($tripCount  * 0.52); ?>
 	

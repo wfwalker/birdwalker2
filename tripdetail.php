@@ -13,10 +13,10 @@ $tripInfo = getTripInfo($tripID);
 $tripYear = substr($tripInfo["Date"], 0, 4);
 
 $sightingQuery = new SightingQuery;
-$sightingQuery->setTripID($tripID);
+$sightingQuery->setFromRequest($_GET);
 
 $locationQuery = new LocationQuery;
-$locationQuery->setTripID($tripID);
+$locationQuery->setFromRequest($_GET);
 $locationCount = $locationQuery->getLocationCount();
 
 $firstSightings = getFirstSightings();
