@@ -70,17 +70,9 @@ navTrailSpecies($speciesID);
 
    <div class=heading><?= $speciesTripCount ?> trips, <?= $speciesLocationCount ?> locations</div>
 
-<?  $gridQueryString="
-              SELECT distinct(LocationName), County, State,
-                location.objectid as locationid, bit_or(1 << (year(TripDate) - 1995)) as mask
-                FROM sighting, location
-                WHERE sighting.LocationName=location.Name
-                AND sighting.SpeciesAbbreviation='" . $speciesInfo["Abbreviation"] . "'
-                GROUP BY sighting.LocationName
-                ORDER BY location.State, location.County, location.Name;";
-
-		  formatLocationByYearTable($gridQueryString, "./sightinglist.php?speciesid=" . $speciesID . "&");
-?>
+<? formatLocationByYearTable(
+     "WHERE sighting.LocationName=location.Name AND sighting.SpeciesAbbreviation='" . $speciesInfo["Abbreviation"] . "'",
+     "./sightinglist.php?speciesid=" . $speciesID . "&"); ?>
 
 </body>
 </html>

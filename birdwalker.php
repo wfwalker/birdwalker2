@@ -575,9 +575,15 @@ function formatSpeciesByMonthTable($gridQueryString, $extraSightingListParams, $
 /**
  * Show locations as rows, years as columns
  */
-function formatLocationByYearTable($gridQueryString, $urlPrefix, $countyHeadingsOK = true)
+function formatLocationByYearTable($whereClause, $urlPrefix, $countyHeadingsOK = true)
 {
 	$lastStateHeading="";
+    $gridQueryString="
+      SELECT distinct(LocationName), County, State, location.objectid as locationid, bit_or(1 << (year(TripDate) - 1995)) as mask
+        FROM sighting, location " .
+		$whereClause . " 
+        GROUP BY sighting.LocationName
+        ORDER BY location.State, location.County, location.Name;";
 	$gridQuery = performQuery($gridQueryString); ?>
 
     <table cellpadding=0 cellspacing=0 cols=11 class="report-content" width="100%">
@@ -631,6 +637,7 @@ function formatLocationByYearTable($gridQueryString, $urlPrefix, $countyHeadings
 function formatLocationByMonthTable($whereClause, $urlPrefix, $countyHeadingsOK = true)
 {
 	$lastStateHeading="";
+
     $gridQueryString="
       SELECT distinct(LocationName), County, State, location.objectid AS locationid, bit_or(1 << month(TripDate)) AS mask
         FROM sighting, location " .
