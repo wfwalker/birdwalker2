@@ -2,6 +2,8 @@
 
 require("./birdwalker.php");
 
+$threshold = 30;
+
 $sortCriteria = $_GET['sort'];
 $localtimearray = localtime(time(), 1);
 $monthNum = $localtimearray["tm_mon"] + 1;
@@ -29,7 +31,7 @@ $speciesCount = 0;
     <div class="contentright">
 	  <div class=titleblock>
 	    <div class=pagetitle>Birds in need of photos</div>
-        <div class=pagesubtitle>Birds seen at least 50 times with no photo</div>
+        <div class=pagesubtitle>Birds seen at least <?php echo $threshold ?> times with no photo</div>
       </div>
 
 <a href="./photosneeded.php?sort=objectid">taxo</a>
@@ -42,7 +44,7 @@ $speciesCount = 0;
 
 	while($info = mysql_fetch_array($photoCount))
 	{
-		if (($info["theSum"] == "0") && ($info["theCount"] > 50))
+		if (($info["theSum"] == "0") && ($info["theCount"] >= $threshold))
 		{
 			echo "<tr><td><a href=\"./speciesdetail.php?id=" . $info["objectid"] . "\">". $info["CommonName"] . "</td><td align=right>" . $info["theCount"] . "</a></td></tr>";
 			$speciesCount++;
