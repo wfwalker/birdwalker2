@@ -52,6 +52,7 @@ $prevSpecies = performCount("select max(species.objectid) from species, sighting
         </a>
 
         <?php if (strlen($speciesInfo["ReferenceURL"]) > 0) { echo "<div><a href=\"" . $speciesInfo["ReferenceURL"] . "\">See also...</a></div>"; } ?>
+        <?php if ($speciesInfo["ABACountable"] == '0') { echo "<div>NOT ABA COUNTABLE</div>"; } ?>
       </div>
       <div class=metadata>
 <?php
@@ -90,7 +91,7 @@ $prevSpecies = performCount("select max(species.objectid) from species, sighting
 	  {
 		  $gridQueryString="select distinct(LocationName), County, State, location.objectid as locationid, bit_or(1 << (year(TripDate) - 1995)) as mask from sighting, location where sighting.LocationName=location.Name and sighting.SpeciesAbbreviation='" . $speciesInfo["Abbreviation"] . "' group by sighting.LocationName order by location.State, location.County, location.Name;";
 
-		  formatLocationByYearTable($gridQueryString, "&speciesid=" . $speciesID);
+		  formatLocationByYearTable($gridQueryString, "./sightinglist.php?speciesid=" . $speciesID . "&");
 	  }
 ?>
 
