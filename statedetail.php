@@ -1,7 +1,9 @@
 
 <?php
 
+require("./birdwalker.php");
 require("./speciesquery.php");
+require("./locationquery.php");
 
 $id = param($_GET, "id", 3);
 $view = param($_GET, "view", "species");
@@ -59,30 +61,27 @@ elseif ($view == 'speciesbymonth')
 }
 elseif ($view == 'locations')
 {
-    $locationQuery = performQuery("
-        SELECT * FROM location WHERE state='" . $info["Abbreviation"] . "' ORDER BY State, County, Name"); ?>
+    $locationQuery = new LocationQuery;
+	$locationQuery->setState($info['Abbreviation']); ?>
 
-    <div class=heading><?= mysql_num_rows($locationQuery) ?> Locations</div>
-<?  formatTwoColumnLocationList($locationQuery);
+    <div class=heading><?= $locationQuery->getLocationCount() ?> Locations</div>
+<?  $locationQuery->formatTwoColumnLocationList();
 }
 elseif ($view == 'locationsbyyear')
-{ ?>
-    <div class=heading>
-        <?= performCount("SELECT COUNT(DISTINCT objectid) from location where state='" . $info["Abbreviation"] . "'") ?> Locations
-    </div>
-<?  formatLocationByYearTable("
-        WHERE sighting.LocationName=location.Name
-        AND State='" . $info["Abbreviation"] . "'", "./specieslist.php?");
+{
+    $locationQuery = new LocationQuery;
+	$locationQuery->setState($info['Abbreviation']); ?>
+
+    <div class=heading><?= $locationQuery->getLocationCount() ?> Locations</div>
+<?  $locationQuery->formatLocationByYearTable();
 }
 elseif ($view == 'locationsbymonth')
 { ?>
-    <div class=heading>
-        <?= performCount("SELECT COUNT(DISTINCT objectid) from location where state='" . $info["Abbreviation"] . "'") ?> Locations
-    </div>
+    $locationQuery = new LocationQuery;
+	$locationQuery->setState($info['Abbreviation']); ?>
 
-<?  formatLocationByMonthTable("
-        WHERE sighting.LocationName=location.Name
-        AND State='" . $info["Abbreviation"] . "'", "./specieslist.php?");
+    <div class=heading><?= $locationQuery->getLocationCount() ?> Locations</div>
+<?  $locationQuery->formatLocationByMonthTable();
 }
 ?>
 

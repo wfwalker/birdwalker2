@@ -1,6 +1,7 @@
 
 <?php
 
+require("./birdwalker.php");
 require("./speciesquery.php");
 
 $aQuery = new SpeciesQuery;
@@ -35,7 +36,7 @@ navTrailBirds();
 
 	  <div class=heading><?= $aQuery->getSpeciesCount() ?> Species</div>
 
-<? $aQuery->formatSpeciesByYearTable(); ?>
+<? $aQuery->formatTwoColumnSpeciesList(); ?>
 
     </div>
   </body>

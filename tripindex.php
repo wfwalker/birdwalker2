@@ -2,14 +2,10 @@
 <?php
 
 require("./birdwalker.php");
+require("./tripquery.php");
 
-$tripListQuery = performQuery("
-    SELECT trip.*, date_format(Date, '%M %e') AS niceDate
-      FROM trip, sighting WHERE sighting.TripDate=trip.Date
-      GROUP BY trip.Date
-      ORDER BY trip.Date desc");
-
-$tripListCount = mysql_num_rows($tripListQuery); ?>
+$tripQuery = new TripQuery;
+?>
 
 <html>
   <head>
@@ -31,10 +27,10 @@ navTrailTrips("");
         <div class=pagetitle>Trips</div>
 	  </div>
 
-    <div class=heading> <?= $tripListCount ?> trips</div>
+	<div class=heading> <?= $tripQuery->getTripCount() ?> trips</div>
 
 
-<? formatTwoColumnTripList($tripListQuery); ?>
+<? $tripQuery->formatTwoColumnTripList(); ?>
 
       </div>
     </div>

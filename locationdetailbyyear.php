@@ -1,6 +1,7 @@
 
 <?php
 
+require("./birdwalker.php");
 require("./speciesquery.php");
 
 $locationID = param($_GET, 'id', 1);

@@ -1,6 +1,7 @@
 
 <?php
 
+require("./birdwalker.php");
 require("./speciesquery.php");
 
 $locationID = param($_GET, 'id', 1);
@@ -53,9 +54,7 @@ navTrailLocationDetail($siteInfo);
 
     </div>
 
-<? referenceURL($siteInfo);
-
-
+<?    referenceURL($siteInfo);
       mapLink($siteInfo);
       locationViewLinks($locationID); ?>
     </div>

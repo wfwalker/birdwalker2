@@ -2,8 +2,11 @@
 <?php
 
 require("./birdwalker.php");
+require("./locationquery.php");
 
-$locationQuery = performQuery("SELECT * FROM location ORDER BY State, County, Name");
+$view = param($_GET, "view", "");
+
+$locationQuery = new LocationQuery;
 
 ?>
 
@@ -26,14 +29,20 @@ navTrailLocations();
 	  <div class=pagetitle>Locations</div>
     <div class=metadata>
       <a href="./locationindex.php">list</a> |
-      <a href="./locationindexbymonth.php">by month</a> |
-	  <a href="./locationindexbyyear.php">by year<a/>
+      <a href="./locationindex.php?view=bymonth">by month</a> |
+	  <a href="./locationindex.php?view=byyear">by year<a/>
     </div>
 	</div>
 
-  <div class=heading><?= mysql_num_rows($locationQuery) ?> Locations</div>
+    <div class=heading><?= $locationQuery->getLocationCount() ?> Locations</div>
 
-<?php formatTwoColumnLocationList($locationQuery); ?>
+<? if ($view == "") {
+	  $locationQuery->formatTwoColumnLocationList();
+   } else if ($view == "bymonth") {
+      $locationQuery->formatLocationByMonthTable();
+   } else if ($view == "byyear") {
+      $locationQuery->formatLocationByYearTable();
+   } ?>
 
     </div>
   </body>

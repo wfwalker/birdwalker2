@@ -1,7 +1,9 @@
 
 <?php
 
-require("./speciesQuery.php");
+require("./birdwalker.php");
+require("./speciesquery.php");
+require("./tripquery.php");
 
 $locationID = param($_GET, 'id', 1);
 $siteInfo = getLocationInfo($locationID);
@@ -10,16 +12,9 @@ $speciesQuery = new SpeciesQuery;
 
 $speciesQuery->setLocationID($locationID);
 
-$tripQuery = performQuery("
-    SELECT DISTINCT trip.objectid, trip.*, date_format(Date, '%M %e, %Y') AS niceDate,
-      COUNT(DISTINCT sighting.SpeciesAbbreviation) AS tripCount
-      FROM trip, sighting
-      WHERE sighting.LocationName='" . $siteInfo["Name"]. "'
-      AND sighting.TripDate=trip.Date
-      GROUP BY trip.Date
-      ORDER BY trip.Date DESC");
-
-$tripCount = mysql_num_rows($tripQuery);
+$tripQuery = new TripQuery;
+$tripQuery->setLocationID($locationID);
+$tripCount = $tripQuery->getTripCount();
 
 $locationSightings = performQuery("
     SELECT sighting.objectid FROM sighting, location
@@ -68,10 +63,10 @@ navTrailLocationDetail($siteInfo);
     <p class=sighting-notes><?= $siteInfo["Notes"] ?></p>
 
      <div class="heading">
-         <?= $tripCount ?> trip<? if ($tripCount > 1) echo 's' ?>
+	  <?= $tripCount ?> trip<? if ($tripCount > 1) echo 's' ?>
      </div>
 
-   <? formatTwoColumnTripList($tripQuery, $firstSightings); ?>
+<?  $tripQuery->formatTwoColumnTripList(); ?>
 
    <div class=heading>
      <?= $speciesQuery->getSpeciesCount() ?> species<? if ($locationFirstSightings > 0) { ?>,
