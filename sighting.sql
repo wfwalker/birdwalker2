@@ -8860,7 +8860,7 @@ INSERT INTO sighting VALUES (8880,'cangoo','Sunnyvale Baylands','','0','0','2004
 INSERT INTO sighting VALUES (8881,'mallar','Sunnyvale Baylands','','0','0','2004-05-19');
 INSERT INTO sighting VALUES (8901,'wesgul','San Francisco Zoo','','','1','2004-05-08');
 INSERT INTO sighting VALUES (8900,'wewpew','Mount Hamilton','','','1','2004-05-15');
-INSERT INTO sighting VALUES (8899,'dowwoo','San Mateo County','Palo Alto train station','','1','2004-03-16');
+INSERT INTO sighting VALUES (8899,'dowwoo','Downtown Palo Alto','Palo Alto train station','','1','2004-03-16');
 INSERT INTO sighting VALUES (8898,'bushti','Lithia Park','','0','0','2004-06-05');
 INSERT INTO sighting VALUES (8897,'stejay','Lithia Park','','0','0','2004-06-05');
 INSERT INTO sighting VALUES (8896,'amedip','Lithia Park','','0','0','2004-06-05');
@@ -10469,7 +10469,7 @@ INSERT INTO sighting VALUES (10503,'glwgul','Charleston Slough','','0','0','2005
 INSERT INTO sighting VALUES (10504,'eargre','Charleston Slough','','0','0','2005-02-09');
 INSERT INTO sighting VALUES (10505,'ribgul','Charleston Slough','','0','0','2005-02-09');
 INSERT INTO sighting VALUES (10506,'wesgul','Charleston Slough','','0','0','2005-02-09');
-INSERT INTO sighting VALUES (10507,'amecoo','Charleston Slough','','0','0','2005-02-09');
+INSERT INTO sighting VALUES (10507,'amecoo','Charleston Slough','','','1','2005-02-09');
 INSERT INTO sighting VALUES (10508,'doccor','Charleston Slough','','0','0','2005-02-09');
 INSERT INTO sighting VALUES (10509,'comgol','Charleston Slough','','0','0','2005-02-09');
 INSERT INTO sighting VALUES (10510,'bxcgol','Charleston Slough','This bird was originally identified as a Barrow\'s, but after correspondence with the Steve Shunk and Les Chibana, I\'m going to mark this bird as a hybrid.','','1','2005-02-09');
@@ -10497,3 +10497,4 @@ INSERT INTO sighting VALUES (10531,'whcspa','Ulistac Natural Area','','0','0','2
 INSERT INTO sighting VALUES (10532,'gocspa','Ulistac Natural Area','','0','0','2005-02-21');
 INSERT INTO sighting VALUES (10533,'houfin','Ulistac Natural Area','','0','0','2005-02-21');
 INSERT INTO sighting VALUES (10534,'bushti','Ulistac Natural Area','','0','0','2005-02-21');
+INSERT INTO sighting VALUES (10535,'whtswi','Downtown Palo Alto','','0','0','2005-03-17');

@@ -140,3 +140,4 @@ INSERT INTO location VALUES (139,'Big Basin State Park','','Ben Lomond','Santa C
 INSERT INTO location VALUES (140,'Arrowhead Marsh','http://baytrail.abag.ca.gov/vtour/map5/access/arrow.htm','Oakland','Alameda','CA','','',37.7444,-122.213);
 INSERT INTO location VALUES (141,'Lake Merritt','','Oakland','Alameda','CA','','',37.8064,-122.254);
 INSERT INTO location VALUES (142,'Bair Island','','Redwood City','San Mateo','CA','','',37.53,-122.221);
+INSERT INTO location VALUES (143,'Downtown Palo Alto','','Palo Alto','Santa Clara','CA','','',37.4444,-122.159);

@@ -143,8 +143,8 @@ INSERT INTO species VALUES (7012020202,'bxsgoo','Chen caerulescens 2','blue-whit
 INSERT INTO species VALUES (7012020203,'grsgoo','Chen caerulescens 3','Greater Snow Goose','','',1);
 INSERT INTO species VALUES (7012020204,'lesgoo','Chen caerulescens 4','Lesser Snow Goose','','',1);
 INSERT INTO species VALUES (7012020205,'whsgoo','Chen caerulescens 5','white Snow Goose','','',1);
-INSERT INTO species VALUES (7012020300,'rosgoo','Chen rossii','Ross\' Goose','','',1);
-INSERT INTO species VALUES (7012020301,'burgoo','Chen rossii 1','blue phase Ross\' Goose','','',1);
+INSERT INTO species VALUES (7012020300,'rosgoo','Chen rossii','Ross\'s Goose','','',1);
+INSERT INTO species VALUES (7012020301,'burgoo','Chen rossii 1','blue phase Ross\'s Goose','','',0);
 INSERT INTO species VALUES (7012030100,'cangoo','Branta canadensis','Canada Goose','','',1);
 INSERT INTO species VALUES (7012030101,'alcgoo','Branta canadensis 1','(Aleutian) Canada Goose','','',1);
 INSERT INTO species VALUES (7012030102,'cacgoo','Branta canadensis 2','Cackling Goose','','',1);
@@ -251,7 +251,7 @@ INSERT INTO species VALUES (8012080403,'wesgos','Accipiter gentilis 3','Western 
 INSERT INTO species VALUES (8012090100,'crahaw','Geranospiza caerulescens','Crane Hawk','','',1);
 INSERT INTO species VALUES (8012100100,'gryhaw','Asturina nitidus','Gray Hawk','','',1);
 INSERT INTO species VALUES (8012110100,'cobhaw','Buteogallus anthracinus','Common Black-Hawk','','',1);
-INSERT INTO species VALUES (8012120100,'hrshaw','Parabuteo unicinctus','Harris\' Hawk','','',1);
+INSERT INTO species VALUES (8012120100,'hrshaw','Parabuteo unicinctus','Harris\'s Hawk','','',1);
 INSERT INTO species VALUES (8012130100,'roahaw','Buteo magnirostris','Roadside Hawk','','',1);
 INSERT INTO species VALUES (8012130200,'reshaw','Buteo lineatus','Red-shouldered Hawk','','',1);
 INSERT INTO species VALUES (8012130201,'irshaw','Buteo lineatus 1','Insular Red-shouldered Hawk','','',1);
@@ -525,7 +525,7 @@ INSERT INTO species VALUES (11082020100,'sabgul','Xema sabini','Sabine\'s Gull',
 INSERT INTO species VALUES (11082030100,'bklkit','Rissa tridactyla','Black-legged Kittiwake','','',1);
 INSERT INTO species VALUES (11082030101,'packit','Rissa tridactyla 1','Pacific Kittiwake','','',1);
 INSERT INTO species VALUES (11082030200,'relkit','Rissa brevirostris','Red-legged Kittiwake','','',1);
-INSERT INTO species VALUES (11082040100,'rosgul','Rhodostethia rosea','Ross\' Gull','','',1);
+INSERT INTO species VALUES (11082040100,'rosgul','Rhodostethia rosea','Ross\'s Gull','','',1);
 INSERT INTO species VALUES (11082050100,'ivogul','Pagophila eburnea','Ivory Gull','','',1);
 INSERT INTO species VALUES (11083010100,'gubter','Sterna nilotica','Gull-billed Tern','','',1);
 INSERT INTO species VALUES (11083010200,'caster','Sterna caspia','Caspian Tern','','',1);
@@ -565,7 +565,7 @@ INSERT INTO species VALUES (11090050200,'piggui','Cepphus columba','Pigeon Guill
 INSERT INTO species VALUES (11090060100,'lobmur','Brachyramphus perdix','Long-billed Murrelet','','',1);
 INSERT INTO species VALUES (11090060200,'marmur','Brachyramphus marmoratus','Marbled Murrelet','','',1);
 INSERT INTO species VALUES (11090060300,'kitmur','Brachyramphus brevirostris','Kittlitz\'s Murrelet','','',1);
-INSERT INTO species VALUES (11090070100,'xanmur','Synthliboramphus hypoleucus','Xantus\' Murrelet','','',1);
+INSERT INTO species VALUES (11090070100,'xanmur','Synthliboramphus hypoleucus','Xantus\'s Murrelet','','',1);
 INSERT INTO species VALUES (11090070200,'cramur','Synthliboramphus craveri','Craveri\'s Murrelet','','',1);
 INSERT INTO species VALUES (11090070300,'ancmur','Synthliboramphus antiquus','Ancient Murrelet','','',1);
 INSERT INTO species VALUES (11090080100,'casauk','Ptychoramphus aleuticus','Cassin\'s Auklet','','',1);
@@ -745,7 +745,7 @@ INSERT INTO species VALUES (20011010201,'eabkin','Ceryle alcyon 1','Eastern Belt
 INSERT INTO species VALUES (20011010202,'webkin','Ceryle alcyon 2','Western Belted Kingfisher','','',1);
 INSERT INTO species VALUES (20011020100,'grnkin','Chloroceryle americana','Green Kingfisher','','',1);
 INSERT INTO species VALUES (21011010100,'eurwry','Jynx torquilla','Eurasian Wryneck','','',1);
-INSERT INTO species VALUES (21012010100,'lewwoo','Melanerpes lewis','Lewis\' Woodpecker','','http://www.mbr-pwrc.usgs.gov/Infocenter/i4080id.html',1);
+INSERT INTO species VALUES (21012010100,'lewwoo','Melanerpes lewis','Lewis\'s Woodpecker','','http://www.mbr-pwrc.usgs.gov/Infocenter/i4080id.html',1);
 INSERT INTO species VALUES (21012010200,'rehwoo','Melanerpes erythrocephalus','Red-headed Woodpecker','','',1);
 INSERT INTO species VALUES (21012010300,'acowoo','Melanerpes formicivorus','Acorn Woodpecker','','http://www.mbr-pwrc.usgs.gov/id/framlst/i4070id.html',1);
 INSERT INTO species VALUES (21012010301,'calwoo','Melanerpes formicivorus 1','California Woodpecker','','',1);
@@ -774,10 +774,10 @@ INSERT INTO species VALUES (21012040305,'nodwoo','Picoides pubescens 5','Norther
 INSERT INTO species VALUES (21012040306,'sodwoo','Picoides pubescens 6','Southern Downy Woodpecker','','',1);
 INSERT INTO species VALUES (21012040307,'wilwoo','Picoides pubescens 7','Willow Woodpecker','','',1);
 INSERT INTO species VALUES (21012040400,'haiwoo','Picoides villosus','Hairy Woodpecker','','',1);
-INSERT INTO species VALUES (21012040401,'cabwoo','Picoides villosus 1','Cabanis\' Woodpecker','','',1);
+INSERT INTO species VALUES (21012040401,'cabwoo','Picoides villosus 1','Cabanis\'s Woodpecker','','',1);
 INSERT INTO species VALUES (21012040402,'chiwoo','Picoides villosus 2','Chihuahua Woodpecker','','',1);
 INSERT INTO species VALUES (21012040403,'eahwoo','Picoides villosus 3','Eastern Hairy Woodpecker','','',1);
-INSERT INTO species VALUES (21012040404,'harwoo','Picoides villosus 4','Harris\' Woodpecker','','',1);
+INSERT INTO species VALUES (21012040404,'harwoo','Picoides villosus 4','Harris\'s Woodpecker','','',1);
 INSERT INTO species VALUES (21012040405,'modwoo','Picoides villosus 5','Modoc Woodpecker','','',1);
 INSERT INTO species VALUES (21012040406,'nohwoo','Picoides villosus 6','Northern Hairy Woodpecker','','',1);
 INSERT INTO species VALUES (21012040407,'rmhwoo','Picoides villosus 7','Rocky Mountain Hairy Woodpecker','','',1);
@@ -1373,7 +1373,7 @@ INSERT INTO species VALUES (22330160201,'forspa','Melospiza lincolnii 1','Forbus
 INSERT INTO species VALUES (22330160300,'swaspa','Melospiza georgiana','Swamp Sparrow','','',1);
 INSERT INTO species VALUES (22330160301,'nswspa','Melospiza georgiana 1','Northern Swamp Sparrow','','',1);
 INSERT INTO species VALUES (22330170100,'whtspa','Zonotrichia albicollis','White-throated Sparrow','','',1);
-INSERT INTO species VALUES (22330170200,'harspa','Zonotrichia querula','Harris\' Sparrow','','',1);
+INSERT INTO species VALUES (22330170200,'harspa','Zonotrichia querula','Harris\'s Sparrow','','',1);
 INSERT INTO species VALUES (22330170300,'whcspa','Zonotrichia leucophrys','White-crowned Sparrow','','',1);
 INSERT INTO species VALUES (22330170301,'ewcspa','Zonotrichia leucophrys 1','Eastern White-crowned Sparrow','','',1);
 INSERT INTO species VALUES (22330170302,'gwcspa','Zonotrichia leucophrys 2','Gambel\'s White-crowned Sparrow','','',1);
@@ -1406,7 +1406,7 @@ INSERT INTO species VALUES (22330200200,'litbun','Emberiza pusilla','Little Bunt
 INSERT INTO species VALUES (22330200300,'rusbun','Emberiza rustica','Rustic Bunting','','',1);
 INSERT INTO species VALUES (22330200400,'yebbun','Emberiza aureola','Yellow-breasted Bunting','','',1);
 INSERT INTO species VALUES (22330200500,'grybun','Emberiza variabilis','Gray Bunting','','',1);
-INSERT INTO species VALUES (22330200600,'palbun','Emberiza pallasi','Pallas\' Bunting','','',1);
+INSERT INTO species VALUES (22330200600,'palbun','Emberiza pallasi','Pallas\'s Bunting','','',1);
 INSERT INTO species VALUES (22330200700,'reebun','Emberiza schoeniclus','Reed Bunting','','',1);
 INSERT INTO species VALUES (22330210100,'snobun','Plectrophenax nivalis','Snow Bunting','','',1);
 INSERT INTO species VALUES (22330210200,'mckbun','Plectrophenax hyperboreus','McKay\'s Bunting','','',1);
