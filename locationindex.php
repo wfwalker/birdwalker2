@@ -14,7 +14,7 @@ $locationQuery = performQuery("select * from location order by State, County, Na
   </head>
   <body>
 
-<?php globalMenu(); disabledBrowseButtons(); navTrailLocations("&gt; list | <a href=\"./locationindexbyyear.php\">by year</a>"); ?>
+<?php globalMenu(); disabledBrowseButtons(); navTrailLocations("list | <a href=\"./locationindexbyyear.php\">by year</a>"); ?>
 
     <div class=contentright>
       <div class="titleblock">	  

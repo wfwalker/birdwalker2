@@ -14,7 +14,11 @@ $locationCount = performCount("select count(distinct location.objectid) from loc
   </head>
   <body>
 
-<?php globalMenu(); disabledBrowseButtons(); navTrailLocations("&gt; <a href=\"./locationindex.php\">list<a/> | by year"); ?>
+<?php
+globalMenu();
+disabledBrowseButtons();
+navTrailLocations("<a href=\"./locationindex.php\">list<a/> | by year");
+?>
 
     <div class=contentright>
       <div class="titleblock">	  

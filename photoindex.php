@@ -15,9 +15,12 @@ $photoSpeciesCount = performCount("select count(distinct(sighting.SpeciesAbbrevi
   </head>
   <body>
 
-<?php globalMenu(); disabledBrowseButtons(); ?>
+<?php
+globalMenu();
+disabledBrowseButtons();
+navTrailPhotos("<a href=\"./photoindextaxo.php\">by species</a> | by date");
+ ?>
 
-<div class=navigationright><a href="./index.php">birdWalker</a> &gt; <a href="./photoindex.php">photo</a> &gt; <a href="./photoindextaxo.php">by species</a> | by date</div>
 
     <div class=contentright>
       <div class="titleblock">	  

@@ -11,6 +11,8 @@ $orderQuery = getSpeciesQuery($whereClause);
 $orderCount = mysql_num_rows($orderQuery);
 $orderInfo = getOrderInfo($orderid * pow(10, 9));
 
+$randomPhotoSightings = performQuery("select sighting.*, rand() as shuffle from sighting, species where Photo='1' and " . $whereClause . " order by shuffle");
+
 ?>
 
 <html>
@@ -21,9 +23,15 @@ $orderInfo = getOrderInfo($orderid * pow(10, 9));
 
   <body>
 
-<?php globalMenu(); disabledBrowseButtons(); ?>
+<div class=thumb><?php  if (mysql_num_rows($randomPhotoSightings) > 0) { $photoInfo = mysql_fetch_array($randomPhotoSightings); if (mysql_num_rows($randomPhotoSightings) > 0) echo "<td>" . getThumbForSightingInfo($photoInfo) . "</td>"; } ?></div>
 
-<div class=navigationright><a href="./index.php">birdWalker<a/> &gt; <a href="./speciesindex.php">birds</a></div>
+<?php
+globalMenu();
+disabledBrowseButtons();
+browseButtons("./orderdetail.php?order=", $orderid, 1, $orderid - 1, $orderid + 1, $orderCount);
+$items[] = strtolower($orderInfo["LatinName"]);
+navTrailBirds($items);
+ ?>
 
     <div class=contentright>
 	  <div class="titleblock">
@@ -47,7 +55,6 @@ while($info = mysql_fetch_array($orderQuery))
 		$familyInfo = getFamilyInfo($familyNum * pow(10, 7));
 		echo "<div class=\"heading\"><i>" . $familyInfo["LatinName"] . "</i>, " . $familyInfo["CommonName"] . "</div>";
     }
-	
 	
 	echo "<div class=firstcell><a href=\"./speciesdetail.php?id=".$info["objectid"]."\">".$info["CommonName"] . "</a></div>";
 	$prevFamilyNum = $familyNum;

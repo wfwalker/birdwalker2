@@ -27,7 +27,13 @@ $prevFamily = performCount("select floor(max(species.objectid)/pow(10,7)) from s
 
   <body>
 
-<?php globalMenu(); browseButtons("./familydetail.php?family=", $familyid, $firstFamily, $prevFamily, $nextFamily, $lastFamily); navTrailBirds(); ?>
+<?php
+globalMenu();
+browseButtons("./familydetail.php?family=", $familyid, $firstFamily, $prevFamily, $nextFamily, $lastFamily);
+$items[] = "<a href=\"./orderdetail.php?order=" . $orderInfo["objectid"] / pow(10, 9) . "\">" . strtolower($orderInfo["LatinName"]) . "</a>";
+$items[] = strtolower($familyInfo["LatinName"]);
+navTrailBirds($items);
+ ?>
 
     <div class=contentright>
 	  <div class="titleblock">
