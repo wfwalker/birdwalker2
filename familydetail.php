@@ -3,15 +3,15 @@
 
 require_once("./birdwalker.php");
 require_once("./speciesquery.php");
+require_once("./locationquery.php");
+require_once("./map.php");
 
 $familyid = param($_GET, "family", 701);
 $orderid = floor($familyid / 100);
+$view = param($_GET, "view", "species");
 
 $familyInfo = getFamilyInfo($familyid * pow(10, 7));
 $orderInfo = getOrderInfo($orderid * pow(10, 9));
-
-$speciesQuery = new SpeciesQuery;
-$speciesQuery->setFamily($familyid);
 
 $firstFamily = performCount("
     SELECT FLOOR(MIN(species.objectid)/pow(10,7)) FROM species, sighting
@@ -37,7 +37,7 @@ $prevFamily = performCount("
 
 <?php
 globalMenu();
-browseButtons("./familydetail.php?family=", $familyid, $firstFamily, $prevFamily, $nextFamily, $lastFamily);
+browseButtons("./familydetail.php?view=".$view."&family=", $familyid, $firstFamily, $prevFamily, $nextFamily, $lastFamily);
 $items[] = "<a href=\"./orderdetail.php?order=" . $orderInfo["objectid"] / pow(10, 9) . "\">" . strtolower($orderInfo["LatinName"]) . "</a>";
 navTrailBirds($items);
  ?>
@@ -47,12 +47,73 @@ navTrailBirds($items);
 	  <div class="titleblock">
 	    <div class=pagetitle><?= $familyInfo["CommonName"] ?></div>
         <div class=metadata><?= $familyInfo["LatinName"] ?></div>
+        <div class=metadata>
+          locations:
+            <a href="./familydetail.php?view=locations&state=<?= $state ?>&family=<?= $familyid ?>">list</a> |
+            <a href="./familydetail.php?view=locationsbymonth&state=<?= $state ?>&family=<?= $familyid ?>">by month</a> |
+	        <a href="./familydetail.php?view=locationsbyyear&state=<?= $state ?>&family=<?= $familyid ?>">by year</a> |
+	        <a href="./familydetail.php?view=map&state=<?= $state ?>&family=<?= $familyid ?>">map</a> <br/>
+          species:	
+            <a href="./familydetail.php?view=species&state=<?= $state ?>&family=<?= $familyid ?>">list</a> |
+	        <a href="./familydetail.php?view=speciesbymonth&state=<?= $state ?>&family=<?= $familyid ?>">by month</a> |
+	        <a href="./familydetail.php?view=speciesbyyear&state=<?= $state ?>&family=<?= $familyid ?>">by year</a><br/>
+	    </div>
       </div>
 
 
-<div class=heading><?= $speciesQuery->getSpeciesCount() ?> species</div>
-
-	<? formatSpeciesListWithPhoto($speciesQuery); ?>
+<?
+if ($view == 'species')
+{
+	$speciesQuery = new SpeciesQuery;
+	$speciesQuery->setFamily($familyid);
+	countHeading($speciesQuery->getSpeciesCount(), "species");
+    formatSpeciesListWithPhoto($speciesQuery);
+}
+elseif ($view == 'speciesbyyear')
+{
+	$speciesQuery = new SpeciesQuery;
+	$speciesQuery->setFamily($familyid);
+	countHeading( $speciesQuery->getSpeciesCount(), "species");
+	$speciesQuery->formatSpeciesByYearTable(); 
+}
+elseif ($view == 'speciesbymonth')
+{
+	$speciesQuery = new SpeciesQuery;
+	$speciesQuery->setFamily($familyid);
+	countHeading( $speciesQuery->getSpeciesCount(), "species");
+	$speciesQuery->formatSpeciesByMonthTable(); 
+}
+elseif ($view == 'locations')
+{
+    $locationQuery = new LocationQuery;
+	$locationQuery->setFamily($familyid);
+	countHeading( $locationQuery->getLocationCount(), "location");
+	$locationQuery->formatTwoColumnLocationList();
+}
+elseif ($view == 'locationsbyyear')
+{
+    $locationQuery = new LocationQuery;
+	$locationQuery->setFamily($familyid);
+	countHeading( $locationQuery->getLocationCount(), "location");
+	$locationQuery->formatLocationByYearTable();
+}
+elseif ($view == 'locationsbymonth')
+{
+    $locationQuery = new LocationQuery;
+	$locationQuery->setFamily($familyid);
+	countHeading($locationQuery->getLocationCount(), "location");
+	$locationQuery->formatLocationByMonthTable();
+}
+else if ($view == "map")
+{
+    $locationQuery = new LocationQuery;
+	$locationQuery->setFamily($familyid);
+	countHeading($locationQuery->getLocationCount(), "location");
+	$map = new Map("./countydetail.php");
+	$map->setFromRequest($_GET);
+	$map->draw();
+}
+?>
 
     </div>
   </body>
