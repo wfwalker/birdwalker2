@@ -476,7 +476,7 @@ INSERT INTO species VALUES (11061150100,'ruff','Philomachus pugnax','Ruff','',''
 INSERT INTO species VALUES (11061160100,'shbdow','Limnodromus griseus','Short-billed Dowitcher','','',1);
 INSERT INTO species VALUES (11061160200,'lobdow','Limnodromus scolopaceus','Long-billed Dowitcher','','',1);
 INSERT INTO species VALUES (11061170100,'jacsni','Lymnocryptes minimus','Jack Snipe','','',1);
-INSERT INTO species VALUES (11061180100,'comsni','Gallinago gallinago','Common Snipe','','',1);
+INSERT INTO species VALUES (11061180100,'comsni','Gallinago gallinago','Wilson\'s Snipe','','',1);
 INSERT INTO species VALUES (11061180101,'wilsni','Gallinago gallinago 1','Wilson\'s Snipe','','',1);
 INSERT INTO species VALUES (11061180200,'pitsni','Gallinago stenura','Pin-tailed Snipe','','',1);
 INSERT INTO species VALUES (11061190100,'eurwoo','Scolopax rusticola','Eurasian Woodcock','','',1);
@@ -577,7 +577,7 @@ INSERT INTO species VALUES (11090110100,'atlpuf','Fratercula arctica','Atlantic 
 INSERT INTO species VALUES (11090110200,'horpuf','Fratercula corniculata','Horned Puffin','','',1);
 INSERT INTO species VALUES (11090110300,'tufpuf','Fratercula cirrhata','Tufted Puffin','','',1);
 INSERT INTO species VALUES (12010010100,'chbsan','Pterocles exustus','Chestnut-bellied Sandgrouse','','',1);
-INSERT INTO species VALUES (12020010100,'rocdov','Columba livia','Rock Dove','','',1);
+INSERT INTO species VALUES (12020010100,'rocdov','Columba livia','Rock Pigeon','','',1);
 INSERT INTO species VALUES (12020010200,'scnpig','Columba squamosa','Scaly-naped Pigeon','','',1);
 INSERT INTO species VALUES (12020010300,'whcpig','Columba leucocephala','White-crowned Pigeon','','',1);
 INSERT INTO species VALUES (12020010400,'rebpig','Columba flavirostris','Red-billed Pigeon','','',1);
