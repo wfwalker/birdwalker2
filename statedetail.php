@@ -3,10 +3,10 @@
 
 require("./birdwalker.php");
 
-$stateName = $_GET["state"];
-$whereClause =  "species.Abbreviation=sighting.SpeciesAbbreviation and sighting.LocationName=location.Name and location.State='" . $stateName . "'";
+$abbrev = $_GET["state"];
+$stateName = getStateNameForAbbreviation($abbrev);
+$whereClause =  "species.Abbreviation=sighting.SpeciesAbbreviation and sighting.LocationName=location.Name and location.State='" . $abbrev . "'";
 $stateListCount = getFancySpeciesCount($whereClause);
-$stateListQuery = getFancySpeciesQuery($whereClause);
 
 ?>
 
@@ -25,30 +25,11 @@ $stateListQuery = getFancySpeciesQuery($whereClause);
         <div class=pagetitle><?php echo $stateName ?> State List</div>
         <div class=pagesubtitle> <?php echo $stateListCount ?> species</div>
       </div>
-		
-<?php
 
-	$divideByTaxo = ($stateListCount > 30);
-	
-	while($info = mysql_fetch_array($stateListQuery))
-	{
-		$orderNum =  floor($info["objectid"] / pow(10, 9));
-		
-		if ($divideByTaxo && (getBestTaxonomyID($prevInfo["objectid"]) != getBestTaxonomyID($info["objectid"])))
-		{
-			$taxoInfo = getBestTaxonomyInfo($info["objectid"]);
-			echo "<div class=\"titleblock\">" . $taxoInfo["CommonName"] . "</div>";
-		}
+<?
+$gridQueryString="select distinct(CommonName), species.objectid as speciesid, bit_or(1 << (year(TripDate) - 1995)) as mask from sighting, species, location where sighting.SpeciesAbbreviation=species.Abbreviation and sighting.LocationName=location.Name and location.State='". $abbrev . "' group by sighting.SpeciesAbbreviation order by speciesid";
 
-		echo "<div class=firstcell><a href=\"./speciesdetail.php?id=".$info["objectid"]."\">".$info["CommonName"]."</a></div>";
-
-		if (strlen($info["Notes"]) > 0) {
-			echo "<div class=sighting-notes>" . $info["Notes"] . "</div>";
-		}
-		
-		$prevInfo = $info;
-	}
-
+formatSpeciesByYearTable($stateListCount, $gridQueryString);
 
 ?>
 
