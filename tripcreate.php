@@ -13,7 +13,7 @@ $leader = $_POST['Leader'];
 $tripDate = $_POST['TripDate'];
 $tripName = $_POST['TripName'];
 
-$locationList = performQuery("select Name, objectid from location");
+$locationList = performQuery("select Name, objectid from location order by Name");
 $dateArray = getdate();
 $dateString = $dateArray["year"] . "-" . $dateArray["mon"] . "-" .  $dateArray["mday"];
 $sightingID = performCount("select max(objectid) from sighting;");
@@ -40,11 +40,26 @@ $tripID = performCount("select max(objectid) from trip;");
 <?
 if ($save == "Save")
 {
+	// FIRST ensure all abbrevs are valid
 	$abbrev = strtok($abbreviations, " \n");
 	while ($abbrev)
 	{
 		if (trim($abbrev) != "")
 		{
+			// check for valid species abbrev
+			performCount("select count(*) from species where Abbreviation='" . trim($abbrev) . "'") or die ("This is not a valid abbreviation " . $abbrev);
+		}
+
+		$abbrev = strtok(" \n");
+	}
+
+	// SECOND insert them
+	$abbrev = strtok($abbreviations, " \n");
+	while ($abbrev)
+	{
+		if (trim($abbrev) != "")
+		{
+			// insert this species
 			$sightingID++;
 			performQuery("\nINSERT INTO sighting VALUES (" . $sightingID . ", '" . trim($abbrev) . "', '" . $locationName . "', '', '0', '0', '" . $tripDate . "');\n");
 		}
@@ -52,6 +67,7 @@ if ($save == "Save")
 		$abbrev = strtok(" \n");
 	}
 
+	// FINALLY insert the trip record
 	performQuery("INSERT INTO trip VALUES (" . ($tripID + 1) . ", '" . $leader . "', '', '" . $tripName . "', '" . $notes . "', '" . $tripDate . "');");
 
 	echo "<a href=\"./tripdetail.php?id=" . ($tripID + 1) . "\">Trip Created</a>";
