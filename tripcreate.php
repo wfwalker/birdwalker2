@@ -30,7 +30,7 @@ $tripID = performCount("select max(objectid) from trip;");
 
 <body>
 
-<?php navigationHeader() ?>
+<?php globalMenu(); disabledBrowseButtons(); navTrailTrips(); ?>
 
 <div class="contentright">
 <div class="titleblock">

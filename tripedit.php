@@ -17,7 +17,7 @@ getEnableEdit() or die("Editing disabled");
 
 <body>
 
-<?php navigationHeader() ?>
+<?php globalMenu(); disabledBrowseButtons(); navTrailTrips(); ?>
 
     <div class="navigationleft">
 	  <a href="./tripedit.php?id=1">first</a>
