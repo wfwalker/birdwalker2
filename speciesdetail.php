@@ -8,22 +8,35 @@ $speciesInfo = getSpeciesInfo($speciesID);
 $orderInfo = getOrderInfo($speciesID);
 $familyInfo = getFamilyInfo($speciesID);
 
-$tripWhereClause = "'" . $speciesInfo["Abbreviation"] . "'=sighting.SpeciesAbbreviation and sighting.TripDate=trip.Date";
-$speciesTripQuery = performQuery( "select sighting.Notes as sightingNotes, trip.*, date_format(Date, '%M %e, %Y') as niceDate from trip, sighting where " . $tripWhereClause . " order by trip.Date desc");
+$speciesTripQuery = performQuery("
+    SELECT sighting.Notes as sightingNotes, trip.*, date_format(Date, '%M %e, %Y') as niceDate
+      FROM trip, sighting
+      WHERE '" . $speciesInfo["Abbreviation"] . "'=sighting.SpeciesAbbreviation
+      AND sighting.TripDate=trip.Date
+      ORDER BY trip.Date desc");
 $speciesTripCount = mysql_num_rows($speciesTripQuery);
 
-$locationWhereClause = " '" . $speciesInfo["Abbreviation"] . "'=sighting.SpeciesAbbreviation and sighting.LocationName=location.Name";
-$speciesLocationListQuery = performQuery( "select distinct(location.objectid), location.* from location, sighting where " . $locationWhereClause . " order by State, County, Name");
-$speciesLocationCount = mysql_num_rows($speciesLocationListQuery);
 
+$firstAndLastSpecies = performOneRowQuery("
+    SELECT min(species.objectid) as firstOne, max(species.objectid) as lastOne
+      FROM sighting, species
+      WHERE sighting.SpeciesAbbreviation=species.Abbreviation");
 
-$firstAndLastSpecies = performOneRowQuery("select min(species.objectid) as firstOne, max(species.objectid) as lastOne from sighting, species where sighting.SpeciesAbbreviation=species.Abbreviation");
 $firstSpecies = $firstAndLastSpecies["firstOne"];
 $lastSpecies = $firstAndLastSpecies["lastOne"];
-$nextSpecies = performCount("select min(species.objectid) from species, sighting where sighting.SpeciesAbbreviation=species.Abbreviation and species.objectid>" . $speciesID);
-$prevSpecies = performCount("select max(species.objectid) from species, sighting where sighting.SpeciesAbbreviation=species.Abbreviation and species.objectid<" . $speciesID);
 
-$sightingDates = performOneRowQuery("select min(TripDate) as earliest, max(TripDate) as latest from sighting where sighting.SpeciesAbbreviation='" . $speciesInfo["Abbreviation"] . "'");
+$nextSpecies = performCount("
+    SELECT min(species.objectid)
+      FROM species, sighting
+      WHERE sighting.SpeciesAbbreviation=species.Abbreviation
+      AND species.objectid>" . $speciesID);
+
+$prevSpecies = performCount("
+    SELECT max(species.objectid)
+      FROM species, sighting
+      WHERE sighting.SpeciesAbbreviation=species.Abbreviation
+      AND species.objectid<" . $speciesID);
+
 ?>
 
 <html>
@@ -42,7 +55,9 @@ $items[] = "<a href=\"./orderdetail.php?order=" . $orderInfo["objectid"] / pow(1
 $items[] = "<a href=\"./familydetail.php?family=" . $familyInfo["objectid"] / pow(10, 7) . "\">" . strtolower($familyInfo["LatinName"]) . "</a>";
 $items[] = strtolower($speciesInfo["CommonName"]);
 navTrailBirds($items);
-pageThumbnail("select * from sighting where SpeciesAbbreviation='" . $speciesInfo["Abbreviation"] . "' and Photo='1' order by TripDate desc");
+pageThumbnail("
+    SELECT * from sighting
+      WHERE SpeciesAbbreviation='" . $speciesInfo["Abbreviation"] . "' and Photo='1' order by TripDate desc");
 ?>
 
   <div class=contentright>
@@ -53,7 +68,12 @@ pageThumbnail("select * from sighting where SpeciesAbbreviation='" . $speciesInf
 <?php
 if ($speciesTripCount >= 5)
 {
-?>
+    $sightingDates = performOneRowQuery("SELECT
+        date_format(min(TripDate), '%M %e, %Y') as earliest,
+        date_format(max(TripDate), '%M %e, %Y') as latest
+      FROM sighting
+      WHERE sighting.SpeciesAbbreviation='" . $speciesInfo["Abbreviation"] . "'"); ?>
+
     <div class=metadata>observed on <?= $speciesTripCount ?> trips in <?= $speciesLocationCount ?> locations</div>
     <div class=metadata>first seen <?= $sightingDates["earliest"] ?>, last seen <?= $sightingDates["latest"] ?></div>
 <?
@@ -77,6 +97,14 @@ if ($speciesInfo["ABACountable"] == '0') {
 <?php
 	  if ($speciesTripCount < 5)
 	  {
+          $speciesLocationListQuery = performQuery( "
+              SELECT distinct(location.objectid), location.*
+                FROM location, sighting
+                WHERE sighting.SpeciesAbbreviation='" . $speciesInfo["Abbreviation"] . "'
+                AND sighting.LocationName=location.Name
+                ORDER BY State, County, Name");
+
+          $speciesLocationCount = mysql_num_rows($speciesLocationListQuery);
 ?>
 		  <div class=heading>Observed on <?= $speciesTripCount ?> trips</div>
 
@@ -108,7 +136,14 @@ if ($speciesInfo["ABACountable"] == '0') {
 	  }
 	  else
 	  {
-		  $gridQueryString="select distinct(LocationName), County, State, location.objectid as locationid, bit_or(1 << (year(TripDate) - 1995)) as mask from sighting, location where sighting.LocationName=location.Name and sighting.SpeciesAbbreviation='" . $speciesInfo["Abbreviation"] . "' group by sighting.LocationName order by location.State, location.County, location.Name;";
+		  $gridQueryString="
+              SELECT distinct(LocationName), County, State,
+                location.objectid as locationid, bit_or(1 << (year(TripDate) - 1995)) as mask
+                FROM sighting, location
+                WHERE sighting.LocationName=location.Name
+                AND sighting.SpeciesAbbreviation='" . $speciesInfo["Abbreviation"] . "'
+                GROUP BY sighting.LocationName
+                ORDER BY location.State, location.County, location.Name;";
 
 		  formatLocationByYearTable($gridQueryString, "./sightinglist.php?speciesid=" . $speciesID . "&");
 	  }
