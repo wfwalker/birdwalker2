@@ -34,13 +34,16 @@ $firstSightings = getFirstSightings();
     </div>
 
 <div class="contentright">
-      <div class="titleblock">
-	  <div class=pagetitle><?php echo $siteInfo["Name"] ?></div>
-<div class=pagesubtitle><?php echo $siteInfo["County"] ?> County, <?php echo getStateNameForAbbreviation($siteInfo["State"]) ?></div>
+  <div class="titleblock">
+  <div class=pagetitle><?php echo $siteInfo["Name"] ?></div>
+  <div class=pagesubtitle>
+    <a href="./countydetail.php?county=<?php echo $siteInfo["County"] ?>"><?php echo $siteInfo["County"] ?> County</a>,
+    <a href="./statedetail.php?state=<?php echo $siteInfo["State"] ?>"><?php echo getStateNameForAbbreviation($siteInfo["State"]) ?>
+  </div>
 
 <?php
 if (strlen($siteInfo["ReferenceURL"]) > 0) {
-	echo "<div><a href=\"" . $siteInfo["ReferenceURL"] . "\">Location Website</a></div>";
+	echo "<div><a href=\"" . $siteInfo["ReferenceURL"] . "\">See also...</a></div>";
 }
 ?>
 
