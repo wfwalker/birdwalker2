@@ -95,7 +95,7 @@ INSERT INTO sighting VALUES (94,'amewig','Unknown','','0','0','1996-03-15');
 INSERT INTO sighting VALUES (95,'annhum','Unknown','','0','0','1996-03-15');
 INSERT INTO sighting VALUES (96,'bcnher','Unknown','','0','0','1996-03-15');
 INSERT INTO sighting VALUES (97,'bknsti','Unknown','','0','0','1996-03-15');
-INSERT INTO sighting VALUES (98,'cabpel','Unknown','','0','0','1996-03-15');
+INSERT INTO sighting VALUES (98,'brnpel','Unknown','','0','0','1996-03-15');
 INSERT INTO sighting VALUES (99,'commoo','Unknown','','0','0','1996-03-15');
 INSERT INTO sighting VALUES (100,'doccor','Unknown','','0','0','1996-03-15');
 INSERT INTO sighting VALUES (101,'gadwal','Unknown','','0','0','1996-03-15');
@@ -109,7 +109,7 @@ INSERT INTO sighting VALUES (108,'rudduc','Unknown','','0','0','1996-03-15');
 INSERT INTO sighting VALUES (109,'snoegr','Unknown','','0','0','1996-03-15');
 INSERT INTO sighting VALUES (110,'amerob','Crown Memorial State Beach','','0','0','1996-07-06');
 INSERT INTO sighting VALUES (111,'amwpel','Crown Memorial State Beach','','0','0','1996-07-06');
-INSERT INTO sighting VALUES (112,'cabpel','Crown Memorial State Beach','','0','0','1996-07-06');
+INSERT INTO sighting VALUES (112,'brnpel','Crown Memorial State Beach','','0','0','1996-07-06');
 INSERT INTO sighting VALUES (113,'caster','Crown Memorial State Beach','','0','0','1996-07-06');
 INSERT INTO sighting VALUES (114,'grbher','Crown Memorial State Beach','','0','0','1996-07-06');
 INSERT INTO sighting VALUES (115,'greegr','Crown Memorial State Beach','','0','0','1996-07-06');
@@ -130,7 +130,7 @@ INSERT INTO sighting VALUES (129,'blkpho','Andrew Molera','','0','0','1996-10-26
 INSERT INTO sighting VALUES (130,'blktur','Andrew Molera','','0','0','1996-10-26');
 INSERT INTO sighting VALUES (131,'btywar','Andrew Molera','','0','0','1996-10-26');
 INSERT INTO sighting VALUES (132,'bushti','Andrew Molera','','0','0','1996-10-26');
-INSERT INTO sighting VALUES (133,'cabpel','Andrew Molera','','0','0','1996-10-26');
+INSERT INTO sighting VALUES (133,'brnpel','Andrew Molera','','0','0','1996-10-26');
 INSERT INTO sighting VALUES (134,'chbchi','Andrew Molera','','0','0','1996-10-26');
 INSERT INTO sighting VALUES (135,'comyel','Andrew Molera','','0','0','1996-10-26');
 INSERT INTO sighting VALUES (136,'daejun','Andrew Molera','','0','0','1996-10-26');
@@ -183,7 +183,7 @@ INSERT INTO sighting VALUES (182,'whtkit','Charleston Slough','','0','0','1996-1
 INSERT INTO sighting VALUES (183,'blkoys','Big Sur','','0','0','1997-02-06');
 INSERT INTO sighting VALUES (184,'blkpho','Big Sur','','0','0','1997-02-06');
 INSERT INTO sighting VALUES (185,'blktur','Big Sur','','0','0','1997-02-06');
-INSERT INTO sighting VALUES (186,'cabpel','Big Sur','','0','0','1997-02-06');
+INSERT INTO sighting VALUES (186,'brnpel','Big Sur','','0','0','1997-02-06');
 INSERT INTO sighting VALUES (187,'doccor','Big Sur','','0','0','1997-02-06');
 INSERT INTO sighting VALUES (188,'pelcor','Big Sur','','0','0','1997-02-06');
 INSERT INTO sighting VALUES (189,'rethaw','Big Sur','','0','0','1997-02-06');
@@ -198,7 +198,7 @@ INSERT INTO sighting VALUES (197,'blkoys','Point Reyes National Seashore','','0'
 INSERT INTO sighting VALUES (198,'blkpho','Point Reyes National Seashore','','0','0','1997-05-24');
 INSERT INTO sighting VALUES (199,'brebla','Point Reyes National Seashore','','0','0','1997-05-24');
 INSERT INTO sighting VALUES (200,'brncre','Point Reyes National Seashore','','0','0','1997-05-24');
-INSERT INTO sighting VALUES (201,'cabpel','Point Reyes National Seashore','','0','0','1997-05-24');
+INSERT INTO sighting VALUES (201,'brnpel','Point Reyes National Seashore','','0','0','1997-05-24');
 INSERT INTO sighting VALUES (202,'calqua','Point Reyes National Seashore','','0','0','1997-05-24');
 INSERT INTO sighting VALUES (203,'caltow','Point Reyes National Seashore','','0','0','1997-05-24');
 INSERT INTO sighting VALUES (204,'cangoo','Point Reyes National Seashore','','0','0','1997-05-24');
@@ -561,7 +561,7 @@ INSERT INTO sighting VALUES (560,'snoegr','Palo Alto Duck Pond','','0','0','1998
 INSERT INTO sighting VALUES (561,'blkoys','Pillar Point','','0','0','1998-01-24');
 INSERT INTO sighting VALUES (562,'brant','Pillar Point','','0','0','1998-01-24');
 INSERT INTO sighting VALUES (563,'buffle','Pillar Point','','0','0','1998-01-24');
-INSERT INTO sighting VALUES (564,'cabpel','Pillar Point','','0','0','1998-01-24');
+INSERT INTO sighting VALUES (564,'brnpel','Pillar Point','','0','0','1998-01-24');
 INSERT INTO sighting VALUES (565,'comloo','Pillar Point','','0','0','1998-01-24');
 INSERT INTO sighting VALUES (566,'commur','Pillar Point','','0','0','1998-01-24');
 INSERT INTO sighting VALUES (567,'doccor','Pillar Point','','0','0','1998-01-24');
@@ -743,7 +743,7 @@ INSERT INTO sighting VALUES (742,'rewbla','Palo Alto Duck Pond','','0','0','1998
 INSERT INTO sighting VALUES (743,'snoegr','Palo Alto Duck Pond','','0','0','1998-05-19');
 INSERT INTO sighting VALUES (744,'turvul','Palo Alto Duck Pond','','0','0','1998-05-19');
 INSERT INTO sighting VALUES (745,'willet','Palo Alto Duck Pond','','0','0','1998-05-19');
-INSERT INTO sighting VALUES (746,'cabpel','San Gregorio State Beach','','0','0','1998-06-03');
+INSERT INTO sighting VALUES (746,'brnpel','San Gregorio State Beach','','0','0','1998-06-03');
 INSERT INTO sighting VALUES (747,'caster','San Gregorio State Beach','','0','0','1998-06-03');
 INSERT INTO sighting VALUES (748,'forter','San Gregorio State Beach','','0','0','1998-06-03');
 INSERT INTO sighting VALUES (749,'heegul','San Gregorio State Beach','','0','0','1998-06-03');
@@ -756,7 +756,7 @@ INSERT INTO sighting VALUES (755,'swallo','San Gregorio State Beach','','1','0',
 INSERT INTO sighting VALUES (756,'turvul','San Gregorio State Beach','','0','0','1998-06-03');
 INSERT INTO sighting VALUES (757,'ameavo','Palo Alto Duck Pond','','0','0','1998-06-12');
 INSERT INTO sighting VALUES (758,'bknsti','Palo Alto Duck Pond','','0','0','1998-06-12');
-INSERT INTO sighting VALUES (759,'cabpel','Palo Alto Duck Pond','','0','0','1998-06-12');
+INSERT INTO sighting VALUES (759,'brnpel','Palo Alto Duck Pond','','0','0','1998-06-12');
 INSERT INTO sighting VALUES (760,'forter','Palo Alto Duck Pond','','0','0','1998-06-12');
 INSERT INTO sighting VALUES (761,'greegr','Palo Alto Duck Pond','','0','0','1998-06-12');
 INSERT INTO sighting VALUES (762,'houfin','Palo Alto Duck Pond','','0','0','1998-06-12');
@@ -847,7 +847,7 @@ INSERT INTO sighting VALUES (846,'bkfalb','Monterey Bay','the albatross landed b
 INSERT INTO sighting VALUES (847,'bkvshe','Monterey Bay','','1','0','1998-08-29');
 INSERT INTO sighting VALUES (848,'bracor','Monterey Bay','','0','0','1998-08-29');
 INSERT INTO sighting VALUES (849,'bulshe','Monterey Bay','','1','0','1998-08-29');
-INSERT INTO sighting VALUES (850,'cabpel','Monterey Bay','','0','0','1998-08-29');
+INSERT INTO sighting VALUES (850,'brnpel','Monterey Bay','','0','0','1998-08-29');
 INSERT INTO sighting VALUES (851,'comloo','Monterey Bay','','0','0','1998-08-29');
 INSERT INTO sighting VALUES (852,'commur','Monterey Bay','','0','0','1998-08-29');
 INSERT INTO sighting VALUES (853,'comter','Monterey Bay','','1','0','1998-08-29');
@@ -866,7 +866,7 @@ INSERT INTO sighting VALUES (865,'wesgul','Monterey Bay','','0','0','1998-08-29'
 INSERT INTO sighting VALUES (866,'acowoo','Elkhorn Slough','','0','0','1998-08-30');
 INSERT INTO sighting VALUES (867,'blkpho','Elkhorn Slough','','0','0','1998-08-30');
 INSERT INTO sighting VALUES (868,'bknsti','Elkhorn Slough','','0','0','1998-08-30');
-INSERT INTO sighting VALUES (869,'cabpel','Elkhorn Slough','','0','0','1998-08-30');
+INSERT INTO sighting VALUES (869,'brnpel','Elkhorn Slough','','0','0','1998-08-30');
 INSERT INTO sighting VALUES (870,'calqua','Elkhorn Slough','','0','0','1998-08-30');
 INSERT INTO sighting VALUES (871,'caltow','Elkhorn Slough','','0','0','1998-08-30');
 INSERT INTO sighting VALUES (872,'chbchi','Elkhorn Slough','','0','0','1998-08-30');
@@ -1164,7 +1164,7 @@ INSERT INTO sighting VALUES (1163,'rethaw','Calero Reservoir','','0','0','1999-0
 INSERT INTO sighting VALUES (1164,'turvul','Calero Reservoir','','0','0','1999-01-31');
 INSERT INTO sighting VALUES (1165,'whtkit','Calero Reservoir','','0','0','1999-01-31');
 INSERT INTO sighting VALUES (1166,'bracor','Carmel','','0','0','1999-01-31');
-INSERT INTO sighting VALUES (1167,'cabpel','Carmel','','0','0','1999-01-31');
+INSERT INTO sighting VALUES (1167,'brnpel','Carmel','','0','0','1999-01-31');
 INSERT INTO sighting VALUES (1168,'doccor','Carmel','','0','0','1999-01-31');
 INSERT INTO sighting VALUES (1169,'sptsan','Carmel','','0','0','1999-01-31');
 INSERT INTO sighting VALUES (1170,'towwar','Carmel','','0','0','1999-01-31');
@@ -1400,7 +1400,7 @@ INSERT INTO sighting VALUES (1399,'amerob','San Francisco','','0','0','1999-05-3
 INSERT INTO sighting VALUES (1400,'banswa','San Francisco','','0','0','1999-05-30');
 INSERT INTO sighting VALUES (1401,'blkpho','San Francisco','','0','0','1999-05-30');
 INSERT INTO sighting VALUES (1402,'brebla','San Francisco','','0','0','1999-05-30');
-INSERT INTO sighting VALUES (1403,'cabpel','San Francisco','','0','0','1999-05-30');
+INSERT INTO sighting VALUES (1403,'brnpel','San Francisco','','0','0','1999-05-30');
 INSERT INTO sighting VALUES (1404,'calqua','San Francisco','','0','0','1999-05-30');
 INSERT INTO sighting VALUES (1405,'doccor','San Francisco','','0','0','1999-05-30');
 INSERT INTO sighting VALUES (1406,'greegr','San Francisco','','0','0','1999-05-30');
@@ -1491,7 +1491,7 @@ INSERT INTO sighting VALUES (1490,'easblu','Prairie du Chien','','0','0','1999-0
 INSERT INTO sighting VALUES (1491,'houfin','Prairie du Chien','','0','0','1999-07-29');
 INSERT INTO sighting VALUES (1492,'houspa','Prairie du Chien','','0','0','1999-07-29');
 INSERT INTO sighting VALUES (1493,'turvul','Prairie du Chien','','0','0','1999-07-29');
-INSERT INTO sighting VALUES (1494,'cabpel','Moss Landing State Beach','','0','0','1999-08-08');
+INSERT INTO sighting VALUES (1494,'brnpel','Moss Landing State Beach','','0','0','1999-08-08');
 INSERT INTO sighting VALUES (1495,'doccor','Moss Landing State Beach','','0','0','1999-08-08');
 INSERT INTO sighting VALUES (1496,'margod','Moss Landing State Beach','','0','0','1999-08-08');
 INSERT INTO sighting VALUES (1497,'piggui','Moss Landing State Beach','','0','0','1999-08-08');
@@ -1702,7 +1702,7 @@ INSERT INTO sighting VALUES (1701,'blksco','Point Reyes National Seashore','','0
 INSERT INTO sighting VALUES (1702,'bkbplo','Point Reyes National Seashore','','0','0','1999-11-13');
 INSERT INTO sighting VALUES (1703,'buffle','Point Reyes National Seashore','','0','0','1999-11-13');
 INSERT INTO sighting VALUES (1704,'bushti','Point Reyes National Seashore','','0','0','1999-11-13');
-INSERT INTO sighting VALUES (1705,'cabpel','Point Reyes National Seashore','','0','0','1999-11-13');
+INSERT INTO sighting VALUES (1705,'brnpel','Point Reyes National Seashore','','0','0','1999-11-13');
 INSERT INTO sighting VALUES (1706,'caltow','Point Reyes National Seashore','','0','0','1999-11-13');
 INSERT INTO sighting VALUES (1707,'clagre','Point Reyes National Seashore','','0','0','1999-11-13');
 INSERT INTO sighting VALUES (1708,'comrav','Point Reyes National Seashore','','0','0','1999-11-13');
@@ -1965,7 +1965,7 @@ INSERT INTO sighting VALUES (1964,'allhum','Santa Cruz','','0','0','2000-03-04')
 INSERT INTO sighting VALUES (1965,'blkoys','Santa Cruz','','0','0','2000-03-04');
 INSERT INTO sighting VALUES (1966,'blkpho','Santa Cruz','','0','0','2000-03-04');
 INSERT INTO sighting VALUES (1967,'brebla','Santa Cruz','','0','0','2000-03-04');
-INSERT INTO sighting VALUES (1968,'cabpel','Santa Cruz','','0','0','2000-03-04');
+INSERT INTO sighting VALUES (1968,'brnpel','Santa Cruz','','0','0','2000-03-04');
 INSERT INTO sighting VALUES (1969,'calgul','Santa Cruz','','0','0','2000-03-04');
 INSERT INTO sighting VALUES (1970,'doccor','Santa Cruz','','0','0','2000-03-04');
 INSERT INTO sighting VALUES (1971,'gocspa','Santa Cruz','','0','0','2000-03-04');
@@ -2004,7 +2004,7 @@ INSERT INTO sighting VALUES (2003,'scaup','Pillar Point','','1','0','2000-03-11'
 INSERT INTO sighting VALUES (2004,'blkoys','Pillar Point','','0','0','2000-03-11');
 INSERT INTO sighting VALUES (2005,'brant','Pillar Point','','0','0','2000-03-11');
 INSERT INTO sighting VALUES (2006,'buffle','Pillar Point','','0','0','2000-03-11');
-INSERT INTO sighting VALUES (2007,'cabpel','Pillar Point','','0','0','2000-03-11');
+INSERT INTO sighting VALUES (2007,'brnpel','Pillar Point','','0','0','2000-03-11');
 INSERT INTO sighting VALUES (2008,'comloo','Pillar Point','','0','0','2000-03-11');
 INSERT INTO sighting VALUES (2009,'doccor','Pillar Point','','0','0','2000-03-11');
 INSERT INTO sighting VALUES (2010,'horgre','Pillar Point','','0','0','2000-03-11');
@@ -2057,7 +2057,7 @@ INSERT INTO sighting VALUES (2056,'bkbplo','Pillar Point','','0','0','2000-04-02
 INSERT INTO sighting VALUES (2057,'brant','Pillar Point','','0','0','2000-04-02');
 INSERT INTO sighting VALUES (2058,'brebla','Pillar Point','','0','0','2000-04-02');
 INSERT INTO sighting VALUES (2059,'buffle','Pillar Point','female bird','0','0','2000-04-02');
-INSERT INTO sighting VALUES (2060,'cabpel','Pillar Point','','0','0','2000-04-02');
+INSERT INTO sighting VALUES (2060,'brnpel','Pillar Point','','0','0','2000-04-02');
 INSERT INTO sighting VALUES (2061,'caltow','Pillar Point','','0','0','2000-04-02');
 INSERT INTO sighting VALUES (2062,'caster','Pillar Point','','0','0','2000-04-02');
 INSERT INTO sighting VALUES (2063,'cintea','Pillar Point','','0','0','2000-04-02');
@@ -2087,7 +2087,7 @@ INSERT INTO sighting VALUES (2086,'barswa','Pigeon Point','','0','0','2000-05-13
 INSERT INTO sighting VALUES (2087,'blkoys','Pigeon Point','','0','0','2000-05-13');
 INSERT INTO sighting VALUES (2088,'bkhgro','Pigeon Point','','1','0','2000-05-13');
 INSERT INTO sighting VALUES (2089,'bracor','Pigeon Point','','0','0','2000-05-13');
-INSERT INTO sighting VALUES (2090,'cabpel','Pigeon Point','','0','0','2000-05-13');
+INSERT INTO sighting VALUES (2090,'brnpel','Pigeon Point','','0','0','2000-05-13');
 INSERT INTO sighting VALUES (2091,'caster','Pigeon Point','','0','0','2000-05-13');
 INSERT INTO sighting VALUES (2092,'cedwax','Pigeon Point','','0','0','2000-05-13');
 INSERT INTO sighting VALUES (2093,'chbchi','Pigeon Point','','0','0','2000-05-13');
@@ -2124,7 +2124,7 @@ INSERT INTO sighting VALUES (2123,'yelwar','Pigeon Point','','0','0','2000-05-13
 INSERT INTO sighting VALUES (2124,'yebcha','Pigeon Point','heard but not seen','0','0','2000-05-13');
 INSERT INTO sighting VALUES (2125,'mallar','Palo Alto Duck Pond','','','','2000-06-09');
 INSERT INTO sighting VALUES (2126,'brebla','Moss Landing State Beach','','0','0','2000-06-10');
-INSERT INTO sighting VALUES (2127,'cabpel','Moss Landing State Beach','','0','0','2000-06-10');
+INSERT INTO sighting VALUES (2127,'brnpel','Moss Landing State Beach','','0','0','2000-06-10');
 INSERT INTO sighting VALUES (2128,'commur','Moss Landing State Beach','','0','0','2000-06-10');
 INSERT INTO sighting VALUES (2129,'comrav','Moss Landing State Beach','','0','0','2000-06-10');
 INSERT INTO sighting VALUES (2130,'doccor','Moss Landing State Beach','','0','0','2000-06-10');
@@ -2177,7 +2177,7 @@ INSERT INTO sighting VALUES (2176,'blkpho','Bolinas Lagoon','','0','0','2000-08-
 INSERT INTO sighting VALUES (2177,'bkbplo','Bolinas Lagoon','','0','0','2000-08-26');
 INSERT INTO sighting VALUES (2178,'bcnher','Bolinas Lagoon','','0','0','2000-08-26');
 INSERT INTO sighting VALUES (2179,'bushti','Bolinas Lagoon','','0','0','2000-08-26');
-INSERT INTO sighting VALUES (2180,'cabpel','Bolinas Lagoon','','0','0','2000-08-26');
+INSERT INTO sighting VALUES (2180,'brnpel','Bolinas Lagoon','','0','0','2000-08-26');
 INSERT INTO sighting VALUES (2181,'calqua','Bolinas Lagoon','','0','0','2000-08-26');
 INSERT INTO sighting VALUES (2182,'chbchi','Bolinas Lagoon','','0','0','2000-08-26');
 INSERT INTO sighting VALUES (2183,'doccor','Bolinas Lagoon','','0','0','2000-08-26');
@@ -2361,7 +2361,7 @@ INSERT INTO sighting VALUES (2360,'blkoys','Coyote Point Marina','','0','0','200
 INSERT INTO sighting VALUES (2361,'blkpho','Coyote Point Marina','','0','0','2001-01-10');
 INSERT INTO sighting VALUES (2362,'bkbplo','Coyote Point Marina','','0','0','2001-01-10');
 INSERT INTO sighting VALUES (2363,'buffle','Coyote Point Marina','','0','0','2001-01-10');
-INSERT INTO sighting VALUES (2364,'cabpel','Coyote Point Marina','','0','0','2001-01-10');
+INSERT INTO sighting VALUES (2364,'brnpel','Coyote Point Marina','','0','0','2001-01-10');
 INSERT INTO sighting VALUES (2365,'calgul','Coyote Point Marina','','0','0','2001-01-10');
 INSERT INTO sighting VALUES (2366,'comgol','Coyote Point Marina','','0','0','2001-01-10');
 INSERT INTO sighting VALUES (2367,'comyel','Coyote Point Marina','','0','0','2001-01-10');
@@ -2623,7 +2623,7 @@ INSERT INTO sighting VALUES (2622,'wesgul','Chez Frankel','','0','0','2001-03-23
 INSERT INTO sighting VALUES (2623,'blkoys','Chez Frankel','','0','0','2001-03-24');
 INSERT INTO sighting VALUES (2624,'blktur','Chez Frankel','','0','0','2001-03-24');
 INSERT INTO sighting VALUES (2625,'bushti','Chez Frankel','','0','0','2001-03-24');
-INSERT INTO sighting VALUES (2626,'cabpel','Chez Frankel','','0','0','2001-03-24');
+INSERT INTO sighting VALUES (2626,'brnpel','Chez Frankel','','0','0','2001-03-24');
 INSERT INTO sighting VALUES (2627,'grbher','Chez Frankel','','0','0','2001-03-24');
 INSERT INTO sighting VALUES (2628,'purfin','Chez Frankel','','0','0','2001-03-24');
 INSERT INTO sighting VALUES (2629,'ruckin','Chez Frankel','','0','0','2001-03-24');
@@ -2727,7 +2727,7 @@ INSERT INTO sighting VALUES (2726,'barswa','Trinidad State Beach','','0','0','20
 INSERT INTO sighting VALUES (2727,'blkoys','Trinidad State Beach','','0','0','2001-06-16');
 INSERT INTO sighting VALUES (2728,'brebla','Trinidad State Beach','','0','0','2001-06-16');
 INSERT INTO sighting VALUES (2729,'bushti','Trinidad State Beach','','0','0','2001-06-16');
-INSERT INTO sighting VALUES (2730,'cabpel','Trinidad State Beach','','0','0','2001-06-16');
+INSERT INTO sighting VALUES (2730,'brnpel','Trinidad State Beach','','0','0','2001-06-16');
 INSERT INTO sighting VALUES (2731,'cedwax','Trinidad State Beach','','0','0','2001-06-16');
 INSERT INTO sighting VALUES (2732,'chbchi','Trinidad State Beach','','0','0','2001-06-16');
 INSERT INTO sighting VALUES (2733,'commur','Trinidad State Beach','','0','0','2001-06-16');
@@ -2780,7 +2780,7 @@ INSERT INTO sighting VALUES (2779,'bewwre','Morro Bay','','0','0','2001-07-16');
 INSERT INTO sighting VALUES (2780,'blkpho','Morro Bay','','0','0','2001-07-16');
 INSERT INTO sighting VALUES (2781,'brebla','Morro Bay','','0','0','2001-07-16');
 INSERT INTO sighting VALUES (2782,'bushti','Morro Bay','','0','0','2001-07-16');
-INSERT INTO sighting VALUES (2783,'cabpel','Morro Bay','','0','0','2001-07-16');
+INSERT INTO sighting VALUES (2783,'brnpel','Morro Bay','','0','0','2001-07-16');
 INSERT INTO sighting VALUES (2784,'caster','Morro Bay','','0','0','2001-07-16');
 INSERT INTO sighting VALUES (2785,'comloo','Morro Bay','','0','0','2001-07-16');
 INSERT INTO sighting VALUES (2786,'doccor','Morro Bay','','0','0','2001-07-16');
@@ -2947,7 +2947,7 @@ INSERT INTO sighting VALUES (2946,'blkoys','Pescadero Marsh','','0','0','2001-09
 INSERT INTO sighting VALUES (2947,'blkpho','Pescadero Marsh','','0','0','2001-09-15');
 INSERT INTO sighting VALUES (2948,'blktur','Pescadero Marsh','','0','0','2001-09-15');
 INSERT INTO sighting VALUES (2949,'bcnher','Pescadero Marsh','','0','0','2001-09-15');
-INSERT INTO sighting VALUES (2950,'cabpel','Pescadero Marsh','included one bird squatting in the middle of the marsh, glaring at us from behind some reeds; very strange behavior.','0','0','2001-09-15');
+INSERT INTO sighting VALUES (2950,'brnpel','Pescadero Marsh','included one bird squatting in the middle of the marsh, glaring at us from behind some reeds; very strange behavior.','0','0','2001-09-15');
 INSERT INTO sighting VALUES (2951,'calqua','Pescadero Marsh','','0','0','2001-09-15');
 INSERT INTO sighting VALUES (2952,'comyel','Pescadero Marsh','','0','0','2001-09-15');
 INSERT INTO sighting VALUES (2953,'doccor','Pescadero Marsh','','0','0','2001-09-15');
@@ -2975,7 +2975,7 @@ INSERT INTO sighting VALUES (2974,'annhum','Pigeon Point','','0','0','2001-09-23
 INSERT INTO sighting VALUES (2975,'blkpho','Pigeon Point','','0','0','2001-09-23');
 INSERT INTO sighting VALUES (2976,'blktur','Pigeon Point','','0','0','2001-09-23');
 INSERT INTO sighting VALUES (2977,'brebla','Pigeon Point','','0','0','2001-09-23');
-INSERT INTO sighting VALUES (2978,'cabpel','Pigeon Point','','0','0','2001-09-23');
+INSERT INTO sighting VALUES (2978,'brnpel','Pigeon Point','','0','0','2001-09-23');
 INSERT INTO sighting VALUES (2979,'commur','Pigeon Point','','0','0','2001-09-23');
 INSERT INTO sighting VALUES (2980,'doccor','Pigeon Point','','0','0','2001-09-23');
 INSERT INTO sighting VALUES (2981,'eursta','Pigeon Point','','0','0','2001-09-23');
@@ -3104,7 +3104,7 @@ INSERT INTO sighting VALUES (3103,'blktur','Monterey Bay','','0','0','2001-10-27
 INSERT INTO sighting VALUES (3104,'bongul','Monterey Bay','','0','0','2001-10-27');
 INSERT INTO sighting VALUES (3105,'bracor','Monterey Bay','','0','0','2001-10-27');
 INSERT INTO sighting VALUES (3106,'bulshe','Monterey Bay','','0','0','2001-10-27');
-INSERT INTO sighting VALUES (3107,'cabpel','Monterey Bay','','0','0','2001-10-27');
+INSERT INTO sighting VALUES (3107,'brnpel','Monterey Bay','','0','0','2001-10-27');
 INSERT INTO sighting VALUES (3108,'casauk','Monterey Bay','Described by Luke the Shearwater Trip leader as a \"fuzzy little softball flying directly away from the boat\". We actually saw the white crescents around its eye at the end of the trip, very gratifyingly.','0','0','2001-10-27');
 INSERT INTO sighting VALUES (3109,'comloo','Monterey Bay','','0','0','2001-10-27');
 INSERT INTO sighting VALUES (3110,'commur','Monterey Bay','','0','0','2001-10-27');
@@ -3138,7 +3138,7 @@ INSERT INTO sighting VALUES (3137,'towwar','Monterey Bay','','0','0','2001-11-03
 INSERT INTO sighting VALUES (3138,'blkpho','Moss Landing State Beach','','0','0','2001-11-03');
 INSERT INTO sighting VALUES (3139,'bkbplo','Moss Landing State Beach','','0','0','2001-11-03');
 INSERT INTO sighting VALUES (3140,'brebla','Moss Landing State Beach','','0','0','2001-11-03');
-INSERT INTO sighting VALUES (3141,'cabpel','Moss Landing State Beach','','0','1','2001-11-03');
+INSERT INTO sighting VALUES (3141,'brnpel','Moss Landing State Beach','','0','1','2001-11-03');
 INSERT INTO sighting VALUES (3142,'grbher','Moss Landing State Beach','','0','0','2001-11-03');
 INSERT INTO sighting VALUES (3143,'heegul','Moss Landing State Beach','','0','0','2001-11-03');
 INSERT INTO sighting VALUES (3144,'margod','Moss Landing State Beach','','0','0','2001-11-03');
@@ -3510,7 +3510,7 @@ INSERT INTO sighting VALUES (3509,'blkski','Charleston Slough','','0','0','2002-
 INSERT INTO sighting VALUES (3510,'bcnher','Charleston Slough','','0','0','2002-01-13');
 INSERT INTO sighting VALUES (3511,'bknsti','Charleston Slough','','0','0','2002-01-13');
 INSERT INTO sighting VALUES (3512,'buffle','Charleston Slough','','0','0','2002-01-13');
-INSERT INTO sighting VALUES (3513,'cabpel','Charleston Slough','','0','0','2002-01-13');
+INSERT INTO sighting VALUES (3513,'brnpel','Charleston Slough','','0','0','2002-01-13');
 INSERT INTO sighting VALUES (3514,'cangoo','Charleston Slough','','0','0','2002-01-13');
 INSERT INTO sighting VALUES (3515,'canvas','Charleston Slough','','0','0','2002-01-13');
 INSERT INTO sighting VALUES (3516,'cintea','Charleston Slough','','0','0','2002-01-13');
@@ -3626,7 +3626,7 @@ INSERT INTO sighting VALUES (3625,'bracor','San Mateo County','','0','0','2002-0
 INSERT INTO sighting VALUES (3626,'brebla','San Mateo County','','0','0','2002-01-25');
 INSERT INTO sighting VALUES (3627,'buffle','San Mateo County','','0','0','2002-01-25');
 INSERT INTO sighting VALUES (3628,'bushti','San Mateo County','','0','0','2002-01-25');
-INSERT INTO sighting VALUES (3629,'cabpel','San Mateo County','','0','0','2002-01-25');
+INSERT INTO sighting VALUES (3629,'brnpel','San Mateo County','','0','0','2002-01-25');
 INSERT INTO sighting VALUES (3630,'calgul','San Mateo County','','0','0','2002-01-25');
 INSERT INTO sighting VALUES (3631,'chbchi','San Mateo County','','0','0','2002-01-25');
 INSERT INTO sighting VALUES (3632,'cintea','San Mateo County','','0','0','2002-01-25');
@@ -3674,7 +3674,7 @@ INSERT INTO sighting VALUES (3673,'whtkit','San Mateo County','','0','0','2002-0
 INSERT INTO sighting VALUES (3674,'willet','San Mateo County','','0','0','2002-01-25');
 INSERT INTO sighting VALUES (3675,'yerwar','San Mateo County','','0','0','2002-01-25');
 INSERT INTO sighting VALUES (3676,'brant','Bodega Bay','','0','0','2002-01-26');
-INSERT INTO sighting VALUES (3677,'cabpel','Bodega Bay','','0','0','2002-01-26');
+INSERT INTO sighting VALUES (3677,'brnpel','Bodega Bay','','0','0','2002-01-26');
 INSERT INTO sighting VALUES (3678,'empgoo','Bodega Bay','We worked pretty hard for this one, scanning through an immense flock of Canada Geese and ducks to find the solitary Emperor Goose. It was worth the trouble!','0','0','2002-01-26');
 INSERT INTO sighting VALUES (3679,'horgre','Bodega Bay','','0','0','2002-01-26');
 INSERT INTO sighting VALUES (3680,'rudtur','Bodega Bay','','0','0','2002-01-26');
@@ -4253,7 +4253,7 @@ INSERT INTO sighting VALUES (4252,'spotow','Lithia Park','','0','0','2002-06-26'
 INSERT INTO sighting VALUES (4253,'stejay','Lithia Park','','0','0','2002-06-26');
 INSERT INTO sighting VALUES (4254,'wooduc','Lithia Park','','0','0','2002-06-26');
 INSERT INTO sighting VALUES (4255,'blkoys','Humboldt County','','0','0','2002-06-29');
-INSERT INTO sighting VALUES (4256,'cabpel','Humboldt County','','0','0','2002-06-29');
+INSERT INTO sighting VALUES (4256,'brnpel','Humboldt County','','0','0','2002-06-29');
 INSERT INTO sighting VALUES (4257,'doccor','Humboldt County','','0','0','2002-06-29');
 INSERT INTO sighting VALUES (4258,'osprey','Humboldt County','','0','0','2002-06-29');
 INSERT INTO sighting VALUES (4259,'piggui','Humboldt County','','0','0','2002-06-29');
@@ -4359,7 +4359,7 @@ INSERT INTO sighting VALUES (4359,'blkoys','Andrew Molera','','0','1','2002-08-3
 INSERT INTO sighting VALUES (4360,'blkpho','Andrew Molera','','0','0','2002-08-31');
 INSERT INTO sighting VALUES (4361,'blktur','Andrew Molera','','0','0','2002-08-31');
 INSERT INTO sighting VALUES (4362,'bracor','Andrew Molera','','0','0','2002-08-31');
-INSERT INTO sighting VALUES (4363,'cabpel','Andrew Molera','','0','0','2002-08-31');
+INSERT INTO sighting VALUES (4363,'brnpel','Andrew Molera','','0','0','2002-08-31');
 INSERT INTO sighting VALUES (4364,'calqua','Andrew Molera','','0','0','2002-08-31');
 INSERT INTO sighting VALUES (4365,'caltow','Andrew Molera','','0','0','2002-08-31');
 INSERT INTO sighting VALUES (4366,'chbchi','Andrew Molera','','0','0','2002-08-31');
@@ -4422,7 +4422,7 @@ INSERT INTO sighting VALUES (4422,'amecoo','Point Pinos','','0','0','2002-09-01'
 INSERT INTO sighting VALUES (4423,'blkoys','Point Pinos','','0','0','2002-09-01');
 INSERT INTO sighting VALUES (4424,'blktur','Point Pinos','','0','0','2002-09-01');
 INSERT INTO sighting VALUES (4425,'bracor','Point Pinos','','0','0','2002-09-01');
-INSERT INTO sighting VALUES (4426,'cabpel','Point Pinos','','0','0','2002-09-01');
+INSERT INTO sighting VALUES (4426,'brnpel','Point Pinos','','0','0','2002-09-01');
 INSERT INTO sighting VALUES (4427,'bknsti','Calero Reservoir','','0','0','2002-09-02');
 INSERT INTO sighting VALUES (4428,'forter','Calero Reservoir','','0','0','2002-09-02');
 INSERT INTO sighting VALUES (4429,'grbher','Calero Reservoir','','0','0','2002-09-02');
@@ -4519,7 +4519,7 @@ INSERT INTO sighting VALUES (4519,'blkpho','Arcata Marsh','','0','0','2002-10-10
 INSERT INTO sighting VALUES (4520,'bkbplo','Arcata Marsh','','0','0','2002-10-10');
 INSERT INTO sighting VALUES (4521,'bkcchi','Arcata Marsh','','0','0','2002-10-10');
 INSERT INTO sighting VALUES (4522,'bongul','Arcata Marsh','','0','0','2002-10-10');
-INSERT INTO sighting VALUES (4523,'cabpel','Arcata Marsh','','0','0','2002-10-10');
+INSERT INTO sighting VALUES (4523,'brnpel','Arcata Marsh','','0','0','2002-10-10');
 INSERT INTO sighting VALUES (4524,'calgul','Arcata Marsh','','0','0','2002-10-10');
 INSERT INTO sighting VALUES (4525,'cangoo','Arcata Marsh','','0','0','2002-10-10');
 INSERT INTO sighting VALUES (4526,'canvas','Arcata Marsh','','0','0','2002-10-10');
@@ -4598,7 +4598,7 @@ INSERT INTO sighting VALUES (4598,'bkcchi','Arcata Marsh','','0','0','2002-10-11
 INSERT INTO sighting VALUES (4599,'bcnher','Arcata Marsh','','0','0','2002-10-11');
 INSERT INTO sighting VALUES (4600,'buwtea','Arcata Marsh','','0','0','2002-10-11');
 INSERT INTO sighting VALUES (4601,'bongul','Arcata Marsh','','0','0','2002-10-11');
-INSERT INTO sighting VALUES (4602,'cabpel','Arcata Marsh','','0','0','2002-10-11');
+INSERT INTO sighting VALUES (4602,'brnpel','Arcata Marsh','','0','0','2002-10-11');
 INSERT INTO sighting VALUES (4603,'canvas','Arcata Marsh','','0','0','2002-10-11');
 INSERT INTO sighting VALUES (4604,'cedwax','Arcata Marsh','We were immersed in a flock of 500 waxwings at sunset, litting about, eating berries.','0','0','2002-10-11');
 INSERT INTO sighting VALUES (4605,'cintea','Arcata Marsh','','0','0','2002-10-11');
@@ -4694,7 +4694,7 @@ INSERT INTO sighting VALUES (4694,'buwtea','Humboldt County','','0','0','2002-10
 INSERT INTO sighting VALUES (4695,'bracor','Humboldt County','','0','0','2002-10-12');
 INSERT INTO sighting VALUES (4696,'brncre','Humboldt County','','0','0','2002-10-12');
 INSERT INTO sighting VALUES (4697,'bulshe','Humboldt County','','0','0','2002-10-12');
-INSERT INTO sighting VALUES (4698,'cabpel','Humboldt County','','0','0','2002-10-12');
+INSERT INTO sighting VALUES (4698,'brnpel','Humboldt County','','0','0','2002-10-12');
 INSERT INTO sighting VALUES (4699,'calgul','Humboldt County','','0','0','2002-10-12');
 INSERT INTO sighting VALUES (4700,'calqua','Humboldt County','','0','0','2002-10-12');
 INSERT INTO sighting VALUES (4701,'cangoo','Humboldt County','','0','0','2002-10-12');
@@ -4784,7 +4784,7 @@ INSERT INTO sighting VALUES (4784,'barswa','Humboldt County','','0','0','2002-10
 INSERT INTO sighting VALUES (4785,'bewwre','Humboldt County','','0','0','2002-10-13');
 INSERT INTO sighting VALUES (4786,'bkcchi','Humboldt County','','0','0','2002-10-13');
 INSERT INTO sighting VALUES (4787,'brebla','Humboldt County','','0','0','2002-10-13');
-INSERT INTO sighting VALUES (4788,'cabpel','Humboldt County','','0','0','2002-10-13');
+INSERT INTO sighting VALUES (4788,'brnpel','Humboldt County','','0','0','2002-10-13');
 INSERT INTO sighting VALUES (4789,'caster','Humboldt County','','0','0','2002-10-13');
 INSERT INTO sighting VALUES (4790,'cedwax','Humboldt County','','0','0','2002-10-13');
 INSERT INTO sighting VALUES (4791,'chbchi','Humboldt County','','0','0','2002-10-13');
@@ -5052,7 +5052,7 @@ INSERT INTO sighting VALUES (5052,'bkbplo','Princeton Harbor','','0','1','2003-0
 INSERT INTO sighting VALUES (5053,'brebla','Princeton Harbor','','0','0','2003-01-05');
 INSERT INTO sighting VALUES (5054,'brnboo','Princeton Harbor','On our second visit to the harbor in as many days, we spotted this famous bird in amongst the Cormorants.','','1','2003-01-05');
 INSERT INTO sighting VALUES (5055,'buffle','Princeton Harbor','','0','1','2003-01-05');
-INSERT INTO sighting VALUES (5056,'cabpel','Princeton Harbor','','0','0','2003-01-05');
+INSERT INTO sighting VALUES (5056,'brnpel','Princeton Harbor','','0','0','2003-01-05');
 INSERT INTO sighting VALUES (5057,'calgul','Princeton Harbor','','0','0','2003-01-05');
 INSERT INTO sighting VALUES (5058,'comgol','Princeton Harbor','','0','0','2003-01-05');
 INSERT INTO sighting VALUES (5059,'comloo','Princeton Harbor','','0','1','2003-01-05');
@@ -5294,7 +5294,7 @@ INSERT INTO sighting VALUES (5294,'bracor','Coast Guard Wharf','','0','0','2003-
 INSERT INTO sighting VALUES (5295,'brebla','Coast Guard Wharf','','0','0','2003-01-18');
 INSERT INTO sighting VALUES (5296,'bnhcow','Coast Guard Wharf','','0','0','2003-01-18');
 INSERT INTO sighting VALUES (5297,'buffle','Coast Guard Wharf','','0','0','2003-01-18');
-INSERT INTO sighting VALUES (5298,'cabpel','Coast Guard Wharf','','0','0','2003-01-18');
+INSERT INTO sighting VALUES (5298,'brnpel','Coast Guard Wharf','','0','0','2003-01-18');
 INSERT INTO sighting VALUES (5299,'calgul','Coast Guard Wharf','','0','0','2003-01-18');
 INSERT INTO sighting VALUES (5300,'caltow','Coast Guard Wharf','','0','0','2003-01-18');
 INSERT INTO sighting VALUES (5301,'cangoo','Coast Guard Wharf','','0','0','2003-01-18');
@@ -5379,7 +5379,7 @@ INSERT INTO sighting VALUES (5379,'brebla','San Mateo County','','0','0','2003-0
 INSERT INTO sighting VALUES (5380,'brnboo','San Mateo County','','0','0','2003-01-19');
 INSERT INTO sighting VALUES (5381,'buffle','San Mateo County','','0','0','2003-01-19');
 INSERT INTO sighting VALUES (5382,'bushti','San Mateo County','','0','0','2003-01-19');
-INSERT INTO sighting VALUES (5383,'cabpel','San Mateo County','','0','0','2003-01-19');
+INSERT INTO sighting VALUES (5383,'brnpel','San Mateo County','','0','0','2003-01-19');
 INSERT INTO sighting VALUES (5384,'calgul','San Mateo County','','0','0','2003-01-19');
 INSERT INTO sighting VALUES (5385,'calqua','San Mateo County','','0','0','2003-01-19');
 INSERT INTO sighting VALUES (5386,'caltow','San Mateo County','','0','0','2003-01-19');
@@ -5513,7 +5513,7 @@ INSERT INTO sighting VALUES (5513,'whtkit','Charleston Slough','','0','0','2003-
 INSERT INTO sighting VALUES (5514,'willet','Charleston Slough','','0','0','2003-03-02');
 INSERT INTO sighting VALUES (5515,'amecro','Anza Borrego Desert State Park','','0','0','2003-03-22');
 INSERT INTO sighting VALUES (5516,'annhum','Anza Borrego Desert State Park','','0','0','2003-03-22');
-INSERT INTO sighting VALUES (5517,'cabpel','Anza Borrego Desert State Park','','0','0','2003-03-22');
+INSERT INTO sighting VALUES (5517,'brnpel','Anza Borrego Desert State Park','','0','0','2003-03-22');
 INSERT INTO sighting VALUES (5518,'coshum','Anza Borrego Desert State Park','','0','0','2003-03-22');
 INSERT INTO sighting VALUES (5519,'greegr','Anza Borrego Desert State Park','','0','0','2003-03-22');
 INSERT INTO sighting VALUES (5520,'moudov','Anza Borrego Desert State Park','','0','0','2003-03-22');
@@ -5572,7 +5572,7 @@ INSERT INTO sighting VALUES (5572,'bongul','Salton Sea','','0','0','2003-03-24')
 INSERT INTO sighting VALUES (5573,'brebla','Salton Sea','','0','0','2003-03-24');
 INSERT INTO sighting VALUES (5574,'burowl','Salton Sea','','0','0','2003-03-24');
 INSERT INTO sighting VALUES (5575,'cacwre','Salton Sea','','0','0','2003-03-24');
-INSERT INTO sighting VALUES (5576,'cabpel','Salton Sea','','0','0','2003-03-24');
+INSERT INTO sighting VALUES (5576,'brnpel','Salton Sea','','0','0','2003-03-24');
 INSERT INTO sighting VALUES (5577,'calgul','Salton Sea','','0','0','2003-03-24');
 INSERT INTO sighting VALUES (5578,'caster','Salton Sea','','0','0','2003-03-24');
 INSERT INTO sighting VALUES (5579,'categr','Salton Sea','','','1','2003-03-24');
@@ -5781,7 +5781,7 @@ INSERT INTO sighting VALUES (5781,'annhum','Cleveland National Forest','','0','0
 INSERT INTO sighting VALUES (5782,'batpig','Cleveland National Forest','','0','0','2003-03-27');
 INSERT INTO sighting VALUES (5783,'bewwre','Cleveland National Forest','heard only','0','0','2003-03-27');
 INSERT INTO sighting VALUES (5784,'bushti','Cleveland National Forest','','0','0','2003-03-27');
-INSERT INTO sighting VALUES (5785,'cabpel','Cleveland National Forest','','0','0','2003-03-27');
+INSERT INTO sighting VALUES (5785,'brnpel','Cleveland National Forest','','0','0','2003-03-27');
 INSERT INTO sighting VALUES (5786,'calthr','Cleveland National Forest','','0','0','2003-03-27');
 INSERT INTO sighting VALUES (5787,'caltow','Cleveland National Forest','','0','0','2003-03-27');
 INSERT INTO sighting VALUES (5788,'cangoo','Cleveland National Forest','','0','0','2003-03-27');
@@ -5837,7 +5837,7 @@ INSERT INTO sighting VALUES (5837,'brant','San Diego','saw from very very far aw
 INSERT INTO sighting VALUES (5838,'brebla','San Diego','','0','0','2003-03-28');
 INSERT INTO sighting VALUES (5839,'buffle','San Diego','','0','0','2003-03-28');
 INSERT INTO sighting VALUES (5840,'bushti','San Diego','','0','0','2003-03-28');
-INSERT INTO sighting VALUES (5841,'cabpel','San Diego','','0','0','2003-03-28');
+INSERT INTO sighting VALUES (5841,'brnpel','San Diego','','0','0','2003-03-28');
 INSERT INTO sighting VALUES (5842,'calgna','San Diego','After ten or twenty minutes of watching two or three of these bouncing up and down in the scrub, a male finally popped out in the open and displayed all his glorious, metallic blues and greys.','0','0','2003-03-28');
 INSERT INTO sighting VALUES (5843,'calgul','San Diego','','0','0','2003-03-28');
 INSERT INTO sighting VALUES (5844,'calqua','San Diego','heard only','0','0','2003-03-28');
@@ -5921,7 +5921,7 @@ INSERT INTO sighting VALUES (5921,'brant','San Diego','','0','0','2003-03-29');
 INSERT INTO sighting VALUES (5922,'brebla','San Diego','','0','0','2003-03-29');
 INSERT INTO sighting VALUES (5923,'buffle','San Diego','','0','0','2003-03-29');
 INSERT INTO sighting VALUES (5924,'bushti','San Diego','','0','0','2003-03-29');
-INSERT INTO sighting VALUES (5925,'cabpel','San Diego','','0','0','2003-03-29');
+INSERT INTO sighting VALUES (5925,'brnpel','San Diego','','0','0','2003-03-29');
 INSERT INTO sighting VALUES (5926,'caltow','San Diego','heard only','0','0','2003-03-29');
 INSERT INTO sighting VALUES (5927,'caster','San Diego','','0','0','2003-03-29');
 INSERT INTO sighting VALUES (5928,'caskin','San Diego','','0','0','2003-03-29');
@@ -6305,7 +6305,7 @@ INSERT INTO sighting VALUES (6305,'bracor','Point Reyes National Seashore','','0
 INSERT INTO sighting VALUES (6306,'brebla','Point Reyes National Seashore','','0','0','2003-07-05');
 INSERT INTO sighting VALUES (6307,'brncre','Point Reyes National Seashore','','0','0','2003-07-05');
 INSERT INTO sighting VALUES (6308,'bushti','Point Reyes National Seashore','','0','0','2003-07-05');
-INSERT INTO sighting VALUES (6309,'cabpel','Point Reyes National Seashore','','0','0','2003-07-05');
+INSERT INTO sighting VALUES (6309,'brnpel','Point Reyes National Seashore','','0','0','2003-07-05');
 INSERT INTO sighting VALUES (6310,'calqua','Point Reyes National Seashore','','0','0','2003-07-05');
 INSERT INTO sighting VALUES (6311,'caltow','Point Reyes National Seashore','','0','0','2003-07-05');
 INSERT INTO sighting VALUES (6312,'caster','Point Reyes National Seashore','','0','0','2003-07-05');
@@ -6386,7 +6386,7 @@ INSERT INTO sighting VALUES (6386,'blkski','Don Edwards Center','','0','0','2003
 INSERT INTO sighting VALUES (6387,'bcnher','Don Edwards Center','','0','0','2003-07-27');
 INSERT INTO sighting VALUES (6388,'bknsti','Don Edwards Center','','0','0','2003-07-27');
 INSERT INTO sighting VALUES (6389,'burowl','Don Edwards Center','','0','0','2003-07-27');
-INSERT INTO sighting VALUES (6390,'cabpel','Don Edwards Center','','0','0','2003-07-27');
+INSERT INTO sighting VALUES (6390,'brnpel','Don Edwards Center','','0','0','2003-07-27');
 INSERT INTO sighting VALUES (6391,'calgul','Don Edwards Center','','0','0','2003-07-27');
 INSERT INTO sighting VALUES (6392,'caltow','Don Edwards Center','','0','0','2003-07-27');
 INSERT INTO sighting VALUES (6393,'cangoo','Don Edwards Center','','0','0','2003-07-27');
@@ -6482,7 +6482,7 @@ INSERT INTO sighting VALUES (6482,'barswa','Farallon Islands','','0','0','2003-0
 INSERT INTO sighting VALUES (6483,'bkfalb','Farallon Islands','','0','0','2003-08-10');
 INSERT INTO sighting VALUES (6484,'bracor','Farallon Islands','','0','0','2003-08-10');
 INSERT INTO sighting VALUES (6485,'brebla','Farallon Islands','','0','0','2003-08-10');
-INSERT INTO sighting VALUES (6486,'cabpel','Farallon Islands','','0','0','2003-08-10');
+INSERT INTO sighting VALUES (6486,'brnpel','Farallon Islands','','0','0','2003-08-10');
 INSERT INTO sighting VALUES (6487,'caster','Farallon Islands','','0','0','2003-08-10');
 INSERT INTO sighting VALUES (6488,'casauk','Farallon Islands','','0','0','2003-08-10');
 INSERT INTO sighting VALUES (6489,'comloo','Farallon Islands','','0','0','2003-08-10');
@@ -6775,7 +6775,7 @@ INSERT INTO sighting VALUES (6775,'bracor','San Mateo County','','0','0','2003-1
 INSERT INTO sighting VALUES (6776,'brebla','San Mateo County','','0','0','2003-10-05');
 INSERT INTO sighting VALUES (6777,'brncre','San Mateo County','heard only','0','0','2003-10-05');
 INSERT INTO sighting VALUES (6778,'bushti','San Mateo County','','0','0','2003-10-05');
-INSERT INTO sighting VALUES (6779,'cabpel','San Mateo County','','0','0','2003-10-05');
+INSERT INTO sighting VALUES (6779,'brnpel','San Mateo County','','0','0','2003-10-05');
 INSERT INTO sighting VALUES (6780,'calgul','San Mateo County','','0','0','2003-10-05');
 INSERT INTO sighting VALUES (6781,'calqua','San Mateo County','','0','0','2003-10-05');
 INSERT INTO sighting VALUES (6782,'caltow','San Mateo County','','0','0','2003-10-05');

@@ -111,7 +111,7 @@ INSERT INTO species VALUES (4030000000,'','Pelecanidae','Pelicans','','');
 INSERT INTO species VALUES (4030010000,'','Pelecanus','Pelecanus','','');
 INSERT INTO species VALUES (4030010100,'amwpel','Pelecanus erythrorhynchos','American White Pelican','','http://www.mbr-pwrc.usgs.gov/id/framlst/i1250id.html');
 INSERT INTO species VALUES (4030010200,'brnpel','Pelecanus occidentalis','Brown Pelican','','');
-INSERT INTO species VALUES (4030010201,'cabpel','Pelecanus occidentalis 1','California Brown Pelican','','');
+INSERT INTO species VALUES (4030010201,'','Pelecanus occidentalis 1','California Brown Pelican','','');
 INSERT INTO species VALUES (4040000000,'','Phalacrocoracidae','Cormorants','','');
 INSERT INTO species VALUES (4040010000,'','Phalacrocorax','Phalacrocorax','','');
 INSERT INTO species VALUES (4040010100,'bracor','Phalacrocorax penicillatus','Brandt\'s Cormorant','','');
