@@ -4,7 +4,7 @@
 require("./birdwalker.php");
 
 $siteInfo = getLocationInfo($_GET['id']);
-$locationCount = getLocationCount();
+$locationCount = performCount("select count(distinct(objectid)) from location");
 $whereClause = "species.Abbreviation=sighting.SpeciesAbbreviation and sighting.LocationName='" . $siteInfo["Name"]. "'";
 $siteListQuery = getSpeciesQuery($whereClause);
 $siteListCount = getSpeciesCount($whereClause);

@@ -17,15 +17,22 @@ $yearCount = getSpeciesCount("sighting.Exclude='0' and species.Abbreviation=sigh
 
 <?php navigationHeader() ?>
 
+    <div class="navigationleft">
+	  <a href="./yeardetail.php?year=1996">first</a>
+	  <a href="./yeardetail.php?year=<?php echo $_GET['year'] - 1 ?>">prev</a>
+      <a href="./yeardetail.php?year=<?php echo $_GET['year'] + 1 ?>">next</a>
+      <a href="./yeardetail.php?year=2004">last</a>
+    </div>
+
     <div class=contentright>
       <div class="titleblock">	  
         <div class=pagetitle> <?php echo $theYear ?> List</div>
         <div class=pagesubtitle><?php echo $yearCount ?> species</div>
       </div>
 
-<table cell-padding=0 cellpadding=0 cellspacing=0 columns=14 class="report-content" width="100%">
+<table cell-padding=0 cellpadding=0 cellspacing=0 columns=13 class="report-content" width="100%">
 
-<tr><td class="yearcell">Order</td><td class="yearcell">Species</td>
+<tr><td></td>
   <td class=yearcell align=center>Jan</td>
   <td class=yearcell align=center>Feb</td>
   <td class=yearcell align=center>Mar</td>
@@ -53,20 +60,14 @@ while ($info = mysql_fetch_array($gridQuery))
 	$orderNum =  floor($info["speciesid"] / pow(10, 9));
 	$theMask = $info["mask"];
 
-	echo "<tr>";
 
 	if ($prevOrderNum != $orderNum)
     {
 		$orderInfo = getOrderInfo($info["speciesid"]);
-		echo "<td class=\"bordered\">" . $orderInfo["CommonName"] . "</td>";
+		echo "<tr><td class=titleblock colspan=13>" . $orderInfo["CommonName"] . "</td></tr>";
     }
-	else
-	{
-		echo "<td>&nbsp;</td>";
-	}
 
-
-	echo "<td class=bordered><a href=\"./speciesdetail.php?id=" . $info["speciesid"] . "\">" . $info["CommonName"] . "</a></td>";
+	echo "<tr><td class=firstcell><a href=\"./speciesdetail.php?id=" . $info["speciesid"] . "\">" . $info["CommonName"] . "</a></td>";
 	for ($index = 1; $index <= 12; $index++) echo "<td class=bordered align=center>" . bitToString($theMask, $index) . "</td>";
     echo "</tr>";
     $prevOrderNum = $orderNum;

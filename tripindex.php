@@ -34,7 +34,7 @@ while($info = mysql_fetch_array($tripListQuery)) {
   if (strcmp($thisYear, $prevYear))
   {
     echo "<tr class=\"titleblock\"><td colspan=2>
-            <a href=\"./yearindex.php?year=" . $thisYear . "\">" . $thisYear . "</a></td></tr>";
+            <a href=\"./yeardetail.php?year=" . $thisYear . "\">" . $thisYear . "</a></td></tr>";
   }
 
   echo "<tr><td class=firstcell><a href=\"./tripdetail.php?id=".$info["objectid"]."\">" . $info["Name"] . " (" . $info["niceDate"] . ")</a></td><td align=right>" . $info["tripCount"] . "</td></tr>";
