@@ -296,3 +296,4 @@ INSERT INTO trip VALUES (295,'Steve Shunk','','Paradise Birding Texas Day 5','Sa
 INSERT INTO trip VALUES (296,'Steve Shunk','','Paradise Birding Texas Day 4','Mustang Island, S Nuences Co., Kingsville, Baffin Bay, Laguna Atascosa','2004-04-16');
 INSERT INTO trip VALUES (297,'Steve Shunk','','Paradise Birding Texas Day 6','Santa Ana NWR, Bentsen Rio Grande River State Park','2004-04-18');
 INSERT INTO trip VALUES (298,'Steve Shunk','','Paradise Birding Texas Day 7','Santa Ana NWR, Chapeno, Falcon State Park, Zapata, San Ignacio','2004-04-19');
+INSERT INTO trip VALUES (299,'Steve Shunk','','Paradise Birding Texas Day 8','','2004-04-20');

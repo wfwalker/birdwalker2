@@ -129,7 +129,8 @@ INSERT INTO location VALUES (127,'Vasona Creek','http://claraweb.co.santa-clara.
 INSERT INTO location VALUES (128,'Wellfleet Bay','http://www.wellfleetbay.org/default.htm','South Wellfleet','Barnstable','MA','','Unknown','41.9196','69.9971');
 INSERT INTO location VALUES (129,'Woodbridge Ecological Preserve','http://www.sacbee.com/ourtown/diversions/wildlife_view.html','Lodi','San Joaquin','CA','A piece of land owned by the Nature Conservancy.','mapblast','38.12325','121.294424');
 INSERT INTO location VALUES (130,'Yosemite','','Yosemite National Park','Mono','CA','','','','');
-INSERT INTO location VALUES (132,'Corpus Christi','','Corpus Christi','Neuces','TX','','','','');
+INSERT INTO location VALUES (132,'Leakey','','Leaky','Real','TX','','','','');
 INSERT INTO location VALUES (133,'Brownsville','','Brownsville','','TX','','','','');
 INSERT INTO location VALUES (134,'Port Aransas','','Port Aransas','Neuces','TX','','','','');
 INSERT INTO location VALUES (135,'Laredo','','Laredo','','TX','','','','');
+INSERT INTO location VALUES (136,'Corpus Christi','','Corpus Christi','Neuces','TX','','','','');
