@@ -311,3 +311,8 @@ INSERT INTO trip VALUES (310,'Mary and Bill','','Strolling around the Zoo','','2
 INSERT INTO trip VALUES (311,'John Cang','','Bird Photography Workshop','','2004-05-23');
 INSERT INTO trip VALUES (312,'Bill Walker','','Photo Safari','','2004-05-25');
 INSERT INTO trip VALUES (313,'Bill Walker','','Photo Safari','','2004-05-19');
+INSERT INTO trip VALUES (314,'Mary and Bill','','Saturday Stroll','','2002-07-27');
+INSERT INTO trip VALUES (315,'Mary and Bill','','Mission College Owl Safari','','2000-07-23');
+INSERT INTO trip VALUES (316,'Mary and Bill','','Saturday Stroll','','2004-06-05');
+INSERT INTO trip VALUES (317,'Bill','','Waiting for Train','','2004-03-16');
+INSERT INTO trip VALUES (318,'Bill ','','Rookery Visit','','2004-05-22');
