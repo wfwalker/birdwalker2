@@ -35,7 +35,7 @@
 /* Styles for section headers, page titles, and overall report content */
 
 .pagetitle {font: 18pt Times, Serif}
-.pagesubtitle {font: 14pt Times, Serif; font-style: italic}
+.pagesubtitle {font: 12pt Times, Serif; font-style: italic}
 .metadata {font: 10pt Arial, Serif}
 .titleblock {margin-top: 5px; margin-bottom: 5px; padding: 5pt; background-color: #EEEEEE}
 
