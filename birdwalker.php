@@ -149,6 +149,15 @@ function referenceURL($info)
 <? }
 }
 
+
+function dailyRandomSeedColumn()
+{
+	$localtimearray = localtime(time(), 1);
+	$yearNum = $localtimearray["tm_year"];
+	$dayNum = $localtimearray["tm_yday"];
+	return "rand(" . ($yearNum * 366 + $dayNum) . ") AS shuffle";
+}
+
 function rightThumbnail($photoQueryString, $addLink)
 {
 	$photoQuery = performQuery($photoQueryString);
@@ -172,7 +181,7 @@ function rightThumbnail($photoQueryString, $addLink)
 
 function rightThumbnailAll()
 {
-	rightThumbnail("SELECT *, rand() AS shuffle FROM sighting WHERE Photo='1' ORDER BY shuffle LIMIT 1", true);
+	rightThumbnail("SELECT *, " . dailyRandomSeedColumn() . " FROM sighting WHERE Photo='1' ORDER BY shuffle LIMIT 1", true);
 }
 
 function formatPhotos($query)
@@ -1104,7 +1113,7 @@ function navTrailLocationDetail($siteInfo)
 function rightThumbnailSpecies($abbrev)
 {
 	rightThumbnail(
-    "SELECT sighting.*, rand() AS shuffle
+    "SELECT sighting.*, " . dailyRandomSeedColumn() . "
       FROM sighting
       WHERE sighting.Photo='1' AND sighting.SpeciesAbbreviation='" . $abbrev . "'
       ORDER BY shuffle
@@ -1115,7 +1124,7 @@ function rightThumbnailSpecies($abbrev)
 function rightThumbnailCounty($countyName)
 {
 	rightThumbnail(
-    "SELECT sighting.*, rand() AS shuffle
+    "SELECT sighting.*, " . dailyRandomSeedColumn() . "
       FROM sighting, location
       WHERE sighting.Photo='1' AND sighting.LocationName=location.Name AND location.County='" . $countyName . "'
       ORDER BY shuffle
@@ -1126,7 +1135,7 @@ function rightThumbnailCounty($countyName)
 function rightThumbnailState($stateCode)
 {
 	rightThumbnail(
-      "SELECT sighting.*, rand() AS shuffle
+      "SELECT sighting.*, " . dailyRandomSeedColumn() . "
         FROM sighting, location
         WHERE sighting.Photo='1' AND sighting.LocationName=location.Name AND location.State='" . $stateCode . "'
         ORDER BY shuffle LIMIT 1",
@@ -1136,7 +1145,7 @@ function rightThumbnailState($stateCode)
 function rightThumbnailLocation($locationName)
 {
   rightThumbnail("
-    SELECT *, rand() AS shuffle
+    SELECT *, " . dailyRandomSeedColumn() . "
       FROM sighting
       WHERE Photo='1' AND LocationName='" . $locationName . "'
       ORDER BY shuffle LIMIT 1",

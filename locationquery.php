@@ -193,7 +193,7 @@ class LocationQuery extends BirdWalkerQuery
 	function rightThumbnail()
 	{
 		rightThumbnail("
-          SELECT sighting.*, rand() AS shuffle " .
+          SELECT sighting.*, " . dailyRandomSeedColumn() . " " .
 			$this->getFromClause() . "  " .
 			$this->getWhereClause() . "
             AND sighting.Photo='1'

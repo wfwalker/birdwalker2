@@ -5,7 +5,7 @@ require_once("./birdwalker.php");
 
 $numberOfTrips = 10;
 $latestTrips = performQuery("select *, date_format(Date, '%M %e, %Y') AS niceDate from trip order by Date desc LIMIT " . $numberOfTrips);
-$randomPhotoSightings = performQuery("SELECT *, rand() AS shuffle FROM sighting WHERE Photo='1' ORDER BY shuffle LIMIT 5");
+$randomPhotoSightings = performQuery("SELECT *, rand(" . $randomNumberSeed . ") AS shuffle FROM sighting WHERE Photo='1' ORDER BY shuffle LIMIT 5");
 
 htmlHead("Home");
 
@@ -19,7 +19,7 @@ disabledBrowseButtons();
 	  trip, county, state, and year lists. Our latest trips are listed below, other indices
 	  are available from the links on the left.</p>
 
-	  <div class="heading">Featured Photos</div>
+	  <div class="heading">Today&#39;s Featured Photos</div>
 
       <table width="100%"><tr>
 

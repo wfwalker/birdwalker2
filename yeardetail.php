@@ -26,7 +26,7 @@ navTrailBirds();
       <div class="titleblock">	  
 <?    if ($view != "map")
          rightThumbnail("
-            SELECT sighting.*, rand() AS shuffle
+            SELECT sighting.*, " . dailyRandomSeedColumn() . "
                 FROM sighting
                 WHERE sighting.Photo='1' AND Year(TripDate)='" . $year . "'
                 ORDER BY shuffle LIMIT 1", true); ?>

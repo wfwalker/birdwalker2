@@ -188,7 +188,7 @@ class SightingQuery extends BirdWalkerQuery
 	function rightThumbnail($anchorFlag)
 	{
 		rightThumbnail("
-          SELECT sighting.*, rand() AS shuffle " .
+          SELECT sighting.*, " . dailyRandomSeedColumn() . " " .
 			$this->getFromClause() . "  " .
 			$this->getWhereClause() . "
             AND sighting.Photo='1'

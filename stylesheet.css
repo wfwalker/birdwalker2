@@ -2,10 +2,10 @@
 .contentleft
 {
     font: 9pt "Gill Sans", "Gill Sans MT", SansSerif;
-	left: 2%; width: 80px; top: 50px;
+	left: 2%; width: 75px; top: 48px;
 	padding-left: 10px;
-	border-left: 1px solid lightgray;
-	border-right: 1px solid lightgray;
+	border-left: 5px solid lightgray;
+	border-right: 5px solid lightgray;
 	position: absolute;
     text-decoration: none;
 	padding-bottom: 30px;
@@ -14,11 +14,11 @@
 .navigationleft
 {
     font: 9pt "Gill Sans", "Gill Sans MT", SansSerif;
-	left: 2%; width: 80px; top: 20px;
+	left: 2%; width: 75px; top: 18px;
 	padding-left: 10px;
-	border-left: 1px solid lightgray;
-	border-right: 1px solid lightgray;
-	position: absolute; text-decoration: none
+	border-left: 5px solid lightgray;
+	border-right: 5px solid lightgray;
+	position: absolute; text-decoration: none;
  }
 
 .navigationright

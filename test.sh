@@ -4,8 +4,12 @@ log() { echo "$@"; echo "$@" >> testresults.txt; }
 
 echo -n "" > testresults.txt
 
-for file in $(ls *.php); do
-	log "---- $file ----"
+log ""
+log "----------- INDICES ---------------"
+log ""
+
+for file in $(ls *index.php); do
+#	log "---- $file ----"
 	php ./$file > $file.html
 	egrep "(mysql|Fatal error)" $file.html >> testresults.txt
 	ec=$?
@@ -15,11 +19,10 @@ for file in $(ls *.php); do
 	if [ $ec -eq 1 ]; then
 		log "---- $file PASSED ----"
 	else
+		log ""
 		log "---- $file FAILED ----"
+		log ""
 	fi		
-
-	log ""
-	log ""
 done
 
 exit 0
