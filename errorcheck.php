@@ -35,7 +35,11 @@ $missingLatLong = performQuery("
   </head>
   <body>
 
-<?php globalMenu(); disabledBrowseButtons(); ?>
+<?
+globalMenu();
+disabledBrowseButtons();
+navTrailBirds();
+?>
 
     <div class=contentright>
       <div class="titleblock">	  
