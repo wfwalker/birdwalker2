@@ -21,17 +21,15 @@ $locationQuery->setTripID($tripID);
 $locationCount = $locationQuery->getLocationCount();
 
 $firstSightings = getFirstSightings();
-$firstYearSightings = getFirstYearSightings(substr($tripInfo["Date"], 0, 4));
+$firstYearSightings = getFirstYearSightings($tripYear);
 
-// how many life birds were on this trip?
-$tripSightings = performQuery("
-    SELECT sighting.objectid FROM sighting, species
-      WHERE sighting.SpeciesAbbreviation=species.Abbreviation
-      AND TripDate='" . $tripInfo['Date'] . "'");
+// how many  birds were on this trip?
+$tripSightings = $sightingQuery->performQuery();
 
 // total species count for this trip
 $tripSpeciesCount = mysql_num_rows($tripSightings);
 
+// how many life birds were on this trip?
 $tripFirstSightings = 0;
 while($sightingInfo = mysql_fetch_array($tripSightings)) {
 	if ($firstSightings[$sightingInfo['objectid']] != null) { $tripFirstSightings++; }
@@ -96,23 +94,20 @@ else
 		$speciesQuery = new SpeciesQuery;
 		$speciesQuery->setTripID($tripID);
 		$speciesQuery->setLocationID($locationInfo["objectid"]);
-		
-		$tripLocationQuery = performQuery("SELECT
-          species.CommonName, species.ABACountable, species.objectid, sighting.Notes, sighting.Exclude,
-          sighting.Photo, sighting.objectid AS sightingid
-            FROM species, sighting
-            WHERE sighting.SpeciesAbbreviation=species.Abbreviation AND
-              sighting.TripDate='". $tripInfo["Date"] . "' AND
-              sighting.LocationName='" . $locationInfo["Name"] . "'
-            ORDER BY species.objectid");
+
+		$locationSightingQuery = new SightingQuery;
+		$locationSightingQuery->setTripID($tripID);
+		$locationSightingQuery->setLocationID($locationInfo["objectid"]);
+
+		$dbQuery = $locationSightingQuery->performQuery();
+
+		$tripLocationCount = mysql_num_rows($dbQuery);
 
 		$locationFirstSightings = 0;
-		while($sightingInfo = mysql_fetch_array($tripLocationQuery)) {
+		while($sightingInfo = mysql_fetch_array($dbQuery)) {
 			if ($firstSightings[$sightingInfo['sightingid']] != null) { $locationFirstSightings++; }
 		}
-		mysql_data_seek($tripLocationQuery, 0);
-		
-		$tripLocationCount = mysql_num_rows($tripLocationQuery); ?>
+ ?>
 
     <div class="heading">
         <a href="./locationdetail.php?id=<?= $locationInfo["objectid"]?>"><?= $locationInfo["Name"] ?></a>,
