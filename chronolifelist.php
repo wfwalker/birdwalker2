@@ -17,13 +17,18 @@ $speciesCount = mysql_num_rows($firstSightingQuery);
   </head>
   <body>
 
-<?php globalMenu(); disabledBrowseButtons(); navTrailBirds(); ?>
+<?php
+globalMenu();
+disabledBrowseButtons();
+navTrailBirds();
+pageThumbnail("select *, rand() as shuffle from sighting where Photo='1' order by shuffle");
+?>
 
-    <div class=contentright>
-      <div class="titleblock">	  
-	  <div class=pagetitle>ABA Life List</div>
-        <div class=pagesubtitle><? echo $speciesCount ?> Species</div>
-      </div>
+<div class=contentright>
+  <div class="titleblock">	  
+    <div class=pagetitle>ABA Life List</div>
+      <div class=pagesubtitle><? echo $speciesCount ?> Species</div>
+    </div>
 
 <p class=sighting-notes>
 Note: within a single day, the order of sightings is not
@@ -31,6 +36,7 @@ preserved.
 </p>
 
 <table class=report-content columns=4 width="600px">
+
 <?php
 $counter = 1;
 while($sightingInfo = mysql_fetch_array($firstSightingQuery)) {
@@ -63,6 +69,9 @@ while($sightingInfo = mysql_fetch_array($firstSightingQuery)) {
 performQuery("DROP TABLE tmp;");
 
 ?>
+
+</table>
+
     </div>
   </body>
 </html>
