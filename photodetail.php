@@ -24,7 +24,7 @@ if ($prevPhotoSightingID == "") { $prevPhotoSightingID = $sightingID; }
 
 <head>
 <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-	  <title>birdWalker | <?php echo $speciesInfo["CommonName"] ?>,  <?php echo $tripInfo["niceDate"] ?></title>
+	  <title>birdWalker | <?= $speciesInfo["CommonName"] ?>,  <?= $tripInfo["niceDate"] ?></title>
 </head>
 
 <body>
@@ -33,10 +33,10 @@ if ($prevPhotoSightingID == "") { $prevPhotoSightingID = $sightingID; }
 
 <div class="contentright">
 <div class="titleblock">
-	  <div class=pagetitle><a href="./speciesdetail.php?id=<?php echo $speciesInfo["objectid"] ?>"><?php echo $speciesInfo["CommonName"] ?></a></div>
-      <div class=pagesubtitle><a href="./tripdetail.php?id=<?php echo $tripInfo["objectid"] ?>"><?php echo $tripInfo["niceDate"] ?></div>
+	  <div class=pagetitle><a href="./speciesdetail.php?id=<?= $speciesInfo["objectid"] ?>"><?= $speciesInfo["CommonName"] ?></a></div>
+      <div class=pagesubtitle><a href="./tripdetail.php?id=<?= $tripInfo["objectid"] ?>"><?= $tripInfo["niceDate"] ?></div>
       <div class=metadata>
-        <a href="./locationdetail.php?id=<?php echo $locationInfo["objectid"] ?>"><?php echo $locationInfo["Name"] ?></a> 
+        <a href="./locationdetail.php?id=<?= $locationInfo["objectid"] ?>"><?= $locationInfo["Name"] ?></a> 
       </div>
 <?php if (getEnableEdit()) { echo "<div><a href=\"./sightingedit.php?id=" . $sightingID . "\">edit</a></div>"; } ?>
 </div>

@@ -22,7 +22,7 @@ $prevFamily = performCount("select floor(max(species.objectid)/pow(10,7)) from s
 <html>
   <head>
     <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-	  <title>birdWalker | <?php echo $familyInfo["LatinName"] ?></title>
+	  <title>birdWalker | <?= $familyInfo["LatinName"] ?></title>
   </head>
 
   <body>
@@ -37,9 +37,9 @@ navTrailBirds($items);
 
     <div class=contentright>
 	  <div class="titleblock">
-	    <div class=pagetitle><?php echo $familyInfo["CommonName"] ?></div>
-        <div class=pagesubtitle><?php echo $familyInfo["LatinName"] ?></div>
-        <div class=metadata> <?php echo $familyCount ?> species</div>
+	    <div class=pagetitle><?= $familyInfo["CommonName"] ?></div>
+        <div class=pagesubtitle><?= $familyInfo["LatinName"] ?></div>
+        <div class=metadata> <?= $familyCount ?> species</div>
       </div>
 
 
@@ -48,20 +48,27 @@ navTrailBirds($items);
 
 while($info = mysql_fetch_array($familyQuery)) {
   $photoQuery = performQuery("select * from sighting where SpeciesAbbreviation='" . $info["Abbreviation"] . "' and Photo='1' order by TripDate desc");
-  echo "<tr><td class=report-content>";
+?>
+
+  <tr><td class=report-content>
+
+<?
   if ($photoInfo = mysql_fetch_array($photoQuery)) {
 	  echo getThumbForSightingInfo($photoInfo);
   }
-  echo "<br><br>";
-  echo "</td>";
-
-  echo "<td class=report-content valign=top>";
-  echo "<a href=\"./speciesdetail.php?id=".$info["objectid"]."\">".$info["CommonName"]."</a><br>";
-  echo "<i>" . $info["LatinName"] . "</i><br><br>";
-  echo "</td></tr>";
-}
-
 ?>
+
+  <br><br>
+  </td>
+
+  <td class=report-content valign=top>
+  <a href="./speciesdetail.php?id=<?= $info["objectid"] ?>"><?= $info["CommonName"] ?></a><br>
+  <i><?= $info["LatinName"] ?></i><br><br>
+  </td></tr>
+<?
+}
+?>
+
 </table>
 
     </div>

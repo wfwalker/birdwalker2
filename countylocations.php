@@ -13,7 +13,7 @@ $locationCount = mysql_num_rows($locationQuery);
 <html>
   <head>
     <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-    <title>birdWalker | <?php echo $county ?> County</title>
+    <title>birdWalker | <?= $county ?> County</title>
   </head>
   <body>
 
@@ -28,8 +28,8 @@ pageThumbnail("select *, rand() as shuffle from sighting, location where Photo='
 
     <div class=contentright>
       <div class="titleblock">	  
-        <div class=pagetitle><?php echo $county ?> County</div>
-        <div class=pagesubtitle><?php echo mysql_num_rows($locationQuery) ?> Locations</div>
+        <div class=pagetitle><?= $county ?> County</div>
+        <div class=pagesubtitle><?= mysql_num_rows($locationQuery) ?> Locations</div>
 
       <div class=metadata>
         locations:

@@ -57,7 +57,7 @@ $sightingListQuery = performQuery($sightingListQueryString);
 <html>
   <head>
     <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-    <title>birdWalker | <?php echo $pageTitle ?></title>
+    <title>birdWalker | <?= $pageTitle ?></title>
   </head>
   <body>
 
@@ -65,47 +65,57 @@ $sightingListQuery = performQuery($sightingListQueryString);
 
     <div class=contentright>
       <div class="titleblock">	  
-	  <div class=pagetitle><?php echo $pageTitle ?></div>
-	  <div class=pagesubtitle><?php echo $pageSubtitle ?></div>
-      <div class=metadata><?php echo mysql_num_rows($sightingListQuery) ?> Sightings</div>
+	  <div class=pagetitle><?= $pageTitle ?></div>
+	  <div class=pagesubtitle><?= $pageSubtitle ?></div>
+      <div class=metadata><?= mysql_num_rows($sightingListQuery) ?> Sightings</div>
       </div>
 
 <table class=report-content columns=4 width="600px">
 <?php
 while($sightingInfo = mysql_fetch_array($sightingListQuery)) {
-	echo "<tr>";
-	// date
-	echo "<td nowrap>";
+?>
+    <tr>
+    <td nowrap>
+<?
 	if ($prevSightingInfo['TripDate'] != $sightingInfo['TripDate']) {
-		echo "<a href=\"./tripdetail.php?id=" . $sightingInfo['tripid'] . "\">" . $sightingInfo['niceDate'] . "</a>";
+?>
+        <a href="./tripdetail.php?id=<?= $sightingInfo['tripid'] ?>"><?= $sightingInfo['niceDate'] ?></a>
+<?
 	}
-		// edit link
-	if (getEnableEdit()) { echo " <a href=\"./sightingedit.php?id=" . $sightingInfo['objectid'] . "\">edit</a>"; }
-
-	// photo
-	if ($sightingInfo["Photo"] == "1") { echo getPhotoLinkForSightingInfo($sightingInfo); }
-
-	echo" </td>";
-
-	// location
-	echo "<td>";
+	if (getEnableEdit()) {
+?>
+        <a href="./sightingedit.php?id=<?= $sightingInfo['objectid'] ?>">edit</a>
+<?
+    }
+	if ($sightingInfo["Photo"] == "1") {
+?>
+        <?= getPhotoLinkForSightingInfo($sightingInfo) ?>
+<?
+    }
+?>
+    </td>
+    <td>
+<?
 	if ($prevSightingInfo['LocationName'] != $sightingInfo['LocationName']) {
-		echo $sightingInfo['LocationName'] . ", " . $sightingInfo['County'] . " County, " . $sightingInfo['State'];
+?>
+		<?= $sightingInfo['LocationName'] ?>, <?= $sightingInfo['County'] ?> County, <?= $sightingInfo['State'] ?>
+<?
 	}
-	echo "</td>";
-
-	echo "</tr>";
-	
-	// notes
-	if ($sightingInfo["Notes"] != "") { echo "<tr><td></td><td class=sighting-notes>" . $sightingInfo["Notes"] . "</td></tr>"; }
-
+?>
+	</td>
+    </tr>
+<?	
+	if ($sightingInfo["Notes"] != "") {
+?>
+    <tr><td></td><td class=sighting-notes><?= $sightingInfo["Notes"] ?></td></tr>
+<?
+    }
 
 	$counter++;
 	$prevSightingInfo = $sightingInfo;
 }
-
-
 ?>
+
     </div>
   </body>
 </html>

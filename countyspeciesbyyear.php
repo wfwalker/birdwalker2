@@ -14,7 +14,7 @@ $annualCountyTotal = performQuery("select count(distinct sighting.SpeciesAbbrevi
 <html>
   <head>
     <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-	  <title>birdWalker | <?php echo $countyName ?> County</title>
+	  <title>birdWalker | <?= $countyName ?> County</title>
   </head>
 
   <body>

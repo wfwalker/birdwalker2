@@ -27,7 +27,7 @@ pageThumbnail("select *, rand() as shuffle from sighting where Photo='1' order b
     <div class=contentright>
       <div class="titleblock">	  
 	  <div class=pagetitle>Species</div>
-        <div class=pagesubtitle><?php echo $lifeCount ?> Species</div>
+        <div class=pagesubtitle><?= $lifeCount ?> Species</div>
 	  <div class=metadata><a href="./speciesindex.php">list</a> | by year</div>
       </div>
 

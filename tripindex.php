@@ -26,7 +26,7 @@ pageThumbnail("select *, rand() as shuffle from sighting where Photo='1' order b
     <div class=contentright>
 	  <div class="titleblock">
         <div class=pagetitle>Trips</div>
-        <div class=pagesubtitle> <?php echo $tripListCount ?> trips</div>
+        <div class=pagesubtitle> <?= $tripListCount ?> trips</div>
 	  </div>
 
 
@@ -40,15 +40,18 @@ while($info = mysql_fetch_array($tripListQuery))
   $thisYear =  substr($info["Date"], 0, 4);
   if (strcmp($thisYear, $prevYear))
   {
-    echo "<tr><td colspan=4 class=\"heading\">
-            <a name=\"" . $thisYear . "\"></a>" . $thisYear . "</td></tr>";
+?>
+    <tr><td colspan=4 class="heading"><a name="<?= $thisYear ?>"></a><?= $thisYear ?></td></tr>
+<?
   }
 
-  if (($counter % 2) == 0) echo "\n<tr>";
+  if (($counter % 2) == 0) { ?><tr><? } ?>
 
-  echo "<td class=firstcell><a href=\"./tripdetail.php?id=".$info["objectid"]."\">" . $info["Name"] . ", " . $info["niceDate"] . "</a></td>";
-  echo "</td>";
-  if (($counter % 2) == 1) echo "</tr>";
+  <td class=firstcell><a href="./tripdetail.php?id=<?= $info["objectid"] ?>"><?= $info["Name"] ?>, <?= $info["niceDate"] ?></a></td>
+  </td>
+
+<?
+  if (($counter % 2) == 1) { ?></tr><? }
 
   $prevYear = $thisYear;
   $counter++;

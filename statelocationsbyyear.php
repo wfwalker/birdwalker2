@@ -13,7 +13,7 @@ $locationCount = performCount("select count(distinct location.objectid) from loc
 <html>
   <head>
     <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-    <title>birdWalker | <?php echo $stateName ?></title>
+    <title>birdWalker | <?= $stateName ?></title>
   </head>
   <body>
 
@@ -27,15 +27,15 @@ pageThumbnail("select *, rand() as shuffle from sighting, location where Photo='
 
     <div class=contentright>
       <div class="titleblock">	  
-	  <div class=pagetitle><?php echo $stateName ?></div>
-        <div class=pagesubtitle><?php echo $locationCount ?> Locations</div>
+	  <div class=pagetitle><?= $stateName ?></div>
+        <div class=pagesubtitle><?= $locationCount ?> Locations</div>
       <div class=metadata>
         locations:
-        <a href="./statelocations.php?state=<?php echo $abbrev ?>">list</a> |
+        <a href="./statelocations.php?state=<?= $abbrev ?>">list</a> |
 	    by year
         species:	
-        <a href="./statespecies.php?state=<?php echo $abbrev ?>">list</a> |
-	    <a href="./statespeciesbyyear.php?state=<?php echo $abbrev ?>">by year</a>
+        <a href="./statespecies.php?state=<?= $abbrev ?>">list</a> |
+	    <a href="./statespeciesbyyear.php?state=<?= $abbrev ?>">by year</a>
       </div>
 
       </div>

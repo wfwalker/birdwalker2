@@ -25,33 +25,43 @@ pageThumbnail("select *, rand() as shuffle from sighting where Photo='1' order b
     <div class=contentright>
       <div class="titleblock">	  
 	    <div class=pagetitle>Photo Index</div>
-<div class=pagesubtitle><?php echo $photoCount . " photos covering " . mysql_num_rows($photoSpecies) . " species"; ?></div>
+        <div class=pagesubtitle><?= $photoCount ?> photos covering <?= mysql_num_rows($photoSpecies) ?> species</div>
       </div>
 
-<table cellpadding=4 columns=2>
+<div class=col1>
+
 <?
+$counter = round(mysql_num_rows($photoSpecies)  * 0.6);
 
-while($info = mysql_fetch_array($photoSpecies)) {
-		  $orderNum =  floor($info["objectid"] / pow(10, 9));
-		
-		  if (getBestTaxonomyID($prevInfo["objectid"]) != getBestTaxonomyID($info["objectid"]))
-		  {
-			  $taxoInfo = getBestTaxonomyInfo($info["objectid"]);
-			  echo "<div class=\"heading\">" . $taxoInfo["CommonName"] . "</div>";
-		  }
+while($info = mysql_fetch_array($photoSpecies))
+{
+	$orderNum =  floor($info["objectid"] / pow(10, 9));
+	
+	if (getBestTaxonomyID($prevInfo["objectid"]) != getBestTaxonomyID($info["objectid"]))
+	{
+		$taxoInfo = getBestTaxonomyInfo($info["objectid"]);
+?>
+        <div class="heading"><?= $taxoInfo["CommonName"] ?></div>
+<?
+	}
 
-		  if ($info["photoCount"] > 1)
-		  {
-			  echo "<div class=firstcell><a href=\"./speciesphotos.php?id=".$info["objectid"]."\">".$info["CommonName"]."</a> (" . $info["photoCount"] . ")</div>";
-		  }
-		  else
-		  {
-			  echo "<div class=firstcell><a href=\"./speciesphotos.php?id=".$info["objectid"]."\">".$info["CommonName"]."</a></div>";
-		  }
+	if ($info["photoCount"] > 1)
+	{
+?>
+        <div class=firstcell><a href="./speciesphotos.php?id=<?= $info["objectid"] ?>"><?= $info["CommonName"] ?></a> (<?= $info["photoCount"] ?>)</div>
+<?
+	}
+	else
+	{
+?>
+        <div class=firstcell><a href="./speciesphotos.php?id=<?= $info["objectid"] ?>"><?= $info["CommonName"] ?></a></div>
+<?
+	}
 		
-		  $prevInfo = $info;
+	$prevInfo = $info;
+    $counter--;
+    if ($counter == 0) echo "\n</div><div class=col2>";
 }
-
 ?>
 
     </div>

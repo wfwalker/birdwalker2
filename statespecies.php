@@ -15,7 +15,7 @@ $divideByTaxo = ($speciesCount > 30);
 <html>
   <head>
     <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-    <title>birdWalker | <?php echo $stateName ?></title>
+    <title>birdWalker | <?= $stateName ?></title>
   </head>
   <body>
 
@@ -28,15 +28,15 @@ pageThumbnail("select sighting.*, rand() as shuffle from sighting, location wher
 
     <div class=contentright>
       <div class="titleblock">	  
-	  <div class=pagetitle><?php echo $stateName ?></div>
-      <div class=pagesubtitle><?php echo $speciesCount ?> Species</div>
+	  <div class=pagetitle><?= $stateName ?></div>
+      <div class=pagesubtitle><?= $speciesCount ?> Species</div>
       <div class=metadata>
         locations:
-        <a href="./statelocations.php?state=<?php echo $abbrev ?>">list</a> |
-	    <a href="./statelocationsbyyear.php?state=<?php echo $abbrev ?>">by year</a>
+        <a href="./statelocations.php?state=<?= $abbrev ?>">list</a> |
+	    <a href="./statelocationsbyyear.php?state=<?= $abbrev ?>">by year</a>
         species:	
         list |
-	    <a href="./statespeciesbyyear.php?state=<?php echo $abbrev ?>">by year</a>
+	    <a href="./statespeciesbyyear.php?state=<?= $abbrev ?>">by year</a>
       </div>
       </div>
 

@@ -14,7 +14,7 @@ $randomPhotoSightings = performQuery("select *, rand() as shuffle from sighting,
 <html>
   <head>
     <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-    <title>birdWalker | <?php echo $stateName ?></title>
+    <title>birdWalker | <?= $stateName ?></title>
   </head>
   <body>
 
@@ -29,15 +29,15 @@ pageThumbnail("select *, rand() as shuffle from sighting, location where Photo='
 
     <div class=contentright>
       <div class="titleblock">	  
-	<div class=pagetitle><?php echo $stateName ?></div>
-	  <div class=pagesubtitle><?php echo mysql_num_rows($locationQuery) ?> Locations</div>
+	<div class=pagetitle><?= $stateName ?></div>
+	  <div class=pagesubtitle><?= mysql_num_rows($locationQuery) ?> Locations</div>
       <div class=metadata>
         locations:
         list |
-	    <a href="./statelocationsbyyear.php?state=<?php echo $abbrev ?>">by year</a>
+	    <a href="./statelocationsbyyear.php?state=<?= $abbrev ?>">by year</a>
         species:	
-        <a href="./statespecies.php?state=<?php echo $abbrev ?>">list</a> |
-	    <a href="./statespeciesbyyear.php?state=<?php echo $abbrev ?>">by year</a>
+        <a href="./statespecies.php?state=<?= $abbrev ?>">list</a> |
+	    <a href="./statespeciesbyyear.php?state=<?= $abbrev ?>">by year</a>
       </div>
 
 

@@ -26,12 +26,16 @@ $speciesCount = 0;
 
   <body>
 
-<?php globalMenu(); disabledBrowseButtons(); navTrailPhotos(" &gt;missing"); ?>
+<?php
+globalMenu();
+disabledBrowseButtons();
+navTrailPhotos(" &gt;missing");
+?>
 
     <div class="contentright">
 	  <div class=titleblock>
 	    <div class=pagetitle>Birds in need of photos</div>
-        <div class=pagesubtitle>Birds seen at least <?php echo $threshold ?> times with no photo</div>
+        <div class=pagesubtitle>Birds seen at least <?= $threshold ?> times with no photo</div>
       </div>
 
 <a href="./photosneeded.php?sort=objectid">taxo</a>
@@ -40,13 +44,18 @@ $speciesCount = 0;
 
 <table columns=2 class=report-content>
 <tr class=titleblock><td>Species</td><td>Sightings</td></tr>
+
 <?php
 
 	while($info = mysql_fetch_array($photoCount))
 	{
 		if (($info["theSum"] == "0") && ($info["theCount"] >= $threshold))
 		{
-			echo "<tr><td><a href=\"./speciesdetail.php?id=" . $info["objectid"] . "\">". $info["CommonName"] . "</td><td align=right>" . $info["theCount"] . "</a></td></tr>";
+?>
+        <tr><td>
+          <a href="./speciesdetail.php?id=<?= $info["objectid"] ?>"><?= $info["CommonName"] ?></td><td align=right><?= $info["theCount"] ?></a>
+        </td></tr>
+<?
 			$speciesCount++;
 		}
 	}
@@ -54,7 +63,7 @@ $speciesCount = 0;
 
 </table>
 
-<p><?php echo $speciesCount . " species in need of photos" ?></p>
+<p><?= $speciesCount . " species in need of photos" ?></p>
 
     </div>
   </body>

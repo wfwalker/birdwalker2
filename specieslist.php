@@ -43,7 +43,7 @@ $divideByTaxo = ($speciesCount > 30);
 <html>
   <head>
     <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-    <title>birdWalker | <?php echo $pageTitle ?></title>
+    <title>birdWalker | <?= $pageTitle ?></title>
   </head>
   <body>
 
@@ -51,9 +51,9 @@ $divideByTaxo = ($speciesCount > 30);
 
     <div class=contentright>
       <div class="titleblock">	  
-	  <div class=pagetitle><?php echo $pageTitle ?></div>
-	  <div class=pagesubtitle><?php echo $pageSubtitle ?></div>
-      <div class=metadata><?php echo $speciesCount ?> Species</div>
+	  <div class=pagetitle><?= $pageTitle ?></div>
+	  <div class=pagesubtitle><?= $pageSubtitle ?></div>
+      <div class=metadata><?= $speciesCount ?> Species</div>
       </div>
 
 <?php

@@ -12,7 +12,7 @@ $yearCount = performCount("select count(distinct species.objectid) from species,
 <html>
   <head>
     <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-    <title>birdWalker | <?php echo $theYear ?> Report</title>
+    <title>birdWalker | <?= $theYear ?> Report</title>
   </head>
   <body>
 
@@ -25,8 +25,8 @@ pageThumbnail("select sighting.*, rand() as shuffle from sighting where sighting
 
     <div class=contentright>
       <div class="titleblock">	  
-        <div class=pagetitle> <?php echo $theYear ?> List</div>
-        <div class=pagesubtitle><?php echo $yearCount ?> species</div>
+        <div class=pagetitle> <?= $theYear ?> List</div>
+        <div class=pagesubtitle><?= $yearCount ?> species</div>
       </div>
 
 <table cell-padding=0 cellpadding=0 cellspacing=0 columns=13 class="report-content" width="100%">
@@ -63,28 +63,39 @@ while ($info = mysql_fetch_array($gridQuery))
 	if ($prevOrderNum != $orderNum)
     {
 		$orderInfo = getOrderInfo($info["speciesid"]);
-		echo "<tr><td class=heading colspan=13>" . $orderInfo["CommonName"] . "</td></tr>";
+?>
+		<tr><td class=heading colspan=13><?= $orderInfo["CommonName"] ?></td></tr>
+<?
     }
-
-	echo "<tr><td class=firstcell><a href=\"./speciesdetail.php?id=" . $info["speciesid"] . "\">" . $info["CommonName"] . "</a></td>";
+?>
+	<tr><td class=firstcell><a href="./speciesdetail.php?id=<?= $info["speciesid"] ?>"><?= $info["CommonName"] ?></a></td>
+<?
 	for ($index = 1; $index <= 12; $index++)
 	{
-		echo "<td class=bordered align=center>";
+?>
+		<td class=bordered align=center>
+<?
 		if (($theMask >> $index) & 1)
-		{
-			echo "<a href=\"./sightinglist.php?speciesid=" . $info["speciesid"] . "&year=" . $theYear . "&month=" . $index . "\">X</a>";
+        {
+?>
+            <a href="./sightinglist.php?speciesid=<?= $info["speciesid"] ?>&year=<?= $theYear ?>&month=<?= $index ?>">X</a>
+<?
 		}
 		else
 		{
-			echo "&nbsp;" ;
+?>
+			&nbsp;
+<?
 		}
-		echo "</td>";
+?>
+		</td>
+<?
 	}
-    echo "</tr>";
+?>
+    </tr>
+<?
     $prevOrderNum = $orderNum;
 }
-
-
 ?>
 
 </table>

@@ -87,7 +87,7 @@ if ($save == "Save")
   </tr>
   <tr>
 	<td class=fieldlabel>TripDate</td>
-	<td><input type="text" name="TripDate" value="<?php echo $dateString; ?>" size=20/></td>
+	<td><input type="text" name="TripDate" value="<?= $dateString; ?>" size=20/></td>
   </tr>
   <tr>
 	<td class=fieldlabel>Location</td>

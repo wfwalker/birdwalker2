@@ -13,7 +13,7 @@ $annualStateTotal = performQuery("select count(distinct sighting.SpeciesAbbrevia
 <html>
   <head>
     <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-	  <title>birdWalker | <?php echo $stateName ?> State List</title>
+	  <title>birdWalker | <?= $stateName ?> State List</title>
   </head>
 
   <body>
@@ -28,14 +28,14 @@ pageThumbnail("select sighting.*, rand() as shuffle from sighting, location wher
 
     <div class=contentright>
 	  <div class="titleblock">
-        <div class=pagetitle><?php echo $stateName ?></div>
-        <div class=pagesubtitle> <?php echo $stateListCount ?> species</div>
+        <div class=pagetitle><?= $stateName ?></div>
+        <div class=pagesubtitle> <?= $stateListCount ?> species</div>
       <div class=metadata>
         locations:
-        <a href="./statelocations.php?state=<?php echo $abbrev ?>">list</a> |
-	    <a href="./statelocationsbyyear.php?state=<?php echo $abbrev ?>">by year</a>
+        <a href="./statelocations.php?state=<?= $abbrev ?>">list</a> |
+	    <a href="./statelocationsbyyear.php?state=<?= $abbrev ?>">by year</a>
         species:	
-        <a href="./statespecies.php?state=<?php echo $abbrev ?>">list</a> |
+        <a href="./statespecies.php?state=<?= $abbrev ?>">list</a> |
 	    by year
       </div>
       </div>

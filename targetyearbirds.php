@@ -20,13 +20,17 @@ $targetYear = 2004;
 
 <body>
 
-<?php globalMenu(); disabledBrowseButtons(); navTrailBirds(); ?>
+<?php
+globalMenu();
+disabledBrowseButtons();
+navTrailBirds();
+?>
 
 <div class="contentright">
 
 <div class="titleblock">
-    <div class="pagetitle">Target CA birds for <?php echo $targetYear ?></div>
-	<div class=metadata>Birds we have seen at least <?php echo $sightingThreshold ?> times, but not seen yet in <?php echo $targetYear ?></div>
+    <div class="pagetitle">Target CA birds for <?= $targetYear ?></div>
+	<div class=metadata>Birds we have seen at least <?= $sightingThreshold ?> times, but not seen yet in <?= $targetYear ?></div>
 </div>
 
 <table>
@@ -36,15 +40,17 @@ while ($info = mysql_fetch_array($latestSightingQuery))
 {
 	if ($info["latestYear"] < $targetYear && $info["sightingCount"] >= $sightingThreshold)
 	{
-		echo "<tr class=report-content>";
-		echo "<td align=right>" . $info["sightingCount"] . "</td><td> " . $info["CommonName"] . "</td><td> " . $info["tripdate"] . "</td>";
-		echo "</tr>";
+?>
+		<tr class=report-content>
+		<td align=right><?= $info["sightingCount"] ?></td><td> <?= $info["CommonName"] ?></td><td><?= $info["tripdate"] ?></td>
+		</tr>
+<?
 	}
 }
 
 performQuery("DROP TABLE tmp;");
-
 ?>
+
 </table>
 
 </div>

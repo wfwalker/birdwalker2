@@ -30,7 +30,7 @@ $sightingDates = performOneRowQuery("select min(TripDate) as earliest, max(TripD
 
 <head>
   <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet"/>
-  <title>birdWalker | <?php echo $speciesInfo["CommonName"] ?></title>
+  <title>birdWalker | <?= $speciesInfo["CommonName"] ?></title>
 </head>
 
 <body>
@@ -47,43 +47,60 @@ pageThumbnail("select * from sighting where SpeciesAbbreviation='" . $speciesInf
 
   <div class=contentright>
 	<div class="titleblock">
-      <div class="pagetitle"><?php echo $speciesInfo["CommonName"] ?></div>
-      <div class="pagesubtitle"><?php echo $speciesInfo["LatinName"] ?></div>
+      <div class="pagetitle"><?= $speciesInfo["CommonName"] ?></div>
+      <div class="pagesubtitle"><?= $speciesInfo["LatinName"] ?></div>
       <div class=metadata>
 <?php
 if ($speciesTripCount >= 5)
 {
-	echo "<div class=metadata>observed on " . $speciesTripCount . " trips  in " . $speciesLocationCount . " locations</div>";
-	echo "<div class=metadata>first seen " . $sightingDates["earliest"] . ", last seen " . $sightingDates["latest"] . "</div>";
-}
-
-if (strlen($speciesInfo["ReferenceURL"]) > 0) { echo "<div><a href=\"" . $speciesInfo["ReferenceURL"] . "\">See also...</a></div>"; }
-if ($speciesInfo["ABACountable"] == '0') { echo "<div>NOT ABA COUNTABLE</div>"; }
 ?>
-      </div>
+    <div class=metadata>observed on <?= $speciesTripCount ?> trips in <?= $speciesLocationCount ?> locations</div>
+    <div class=metadata>first seen <?= $sightingDates["earliest"] ?>, last seen <?= $sightingDates["latest"] ?></div>
+<?
+}
+if (strlen($speciesInfo["ReferenceURL"]) > 0) {
+?>
+    <div><a href="<?= $speciesInfo["ReferenceURL"] ?>">See also...</a></div>
+<?
+}
+if ($speciesInfo["ABACountable"] == '0') {
+?>
+    <div>NOT ABA COUNTABLE</div>
+<?
+}
+?>
+    </div>
     </div>
 
-    <div class=sighting-notes><?php echo $speciesInfo["Notes"] ?></div>
+    <div class=sighting-notes><?= $speciesInfo["Notes"] ?></div>
 
 <?php
 	  if ($speciesTripCount < 5)
 	  {
-		  echo "<div class=heading>Observed on " . $speciesTripCount . " trips</div>";
+?>
+		  <div class=heading>Observed on <?= $speciesTripCount ?> trips</div>
 
+<?
 		  // list the trips that included this species
 		  while($tripInfo = mysql_fetch_array($speciesTripQuery))
 		  {
-			  echo "<div class=firstcell><a href=\"./tripdetail.php?id=" . $tripInfo["objectid"] . "\">" . $tripInfo["Name"] . " (" . $tripInfo["niceDate"] .  ")</a></div>";
-			  echo "<div class=sighting-notes>" . $tripInfo["sightingNotes"] . "</div>";
+?>
+			  <div class=firstcell>
+                  <a href="./tripdetail.php?id=<?= $tripInfo["objectid"] ?>"><?= $tripInfo["Name"] ?>(<?= $tripInfo["niceDate"] ?>)</a>
+              </div>
+			  <div class=sighting-notes><?= $tripInfo["sightingNotes"] ?></div>
+<?
 		  }
-
-		  echo "<div class=heading>Observed at " . $speciesLocationCount . " locations</div>";
-
+?>
+		  <div class=heading>Observed at <?= $speciesLocationCount ?> locations</div>
+<?
 		  $prevInfo=null;
 
 		  while($info = mysql_fetch_array($speciesLocationListQuery))
 		  {
-			  echo "<div class=firstcell><a href=\"./locationdetail.php?id=".$info["objectid"]."\">".$info["Name"]."</a></div>";
+?>
+			  <div class=firstcell><a href="./locationdetail.php?id=<?= $info["objectid"] ?>"><?= $info["Name"] ?></a></div>
+<?
 			  $prevInfo = $info;   
 		  }
 

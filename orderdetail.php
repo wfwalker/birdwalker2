@@ -17,7 +17,7 @@ $orderInfo = getOrderInfo($orderid * pow(10, 9));
 <html>
   <head>
     <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-	  <title>birdWalker | <?php echo $orderInfo["LatinName"] ?></title>
+	  <title>birdWalker | <?= $orderInfo["LatinName"] ?></title>
   </head>
 
   <body>
@@ -29,13 +29,13 @@ browseButtons("./orderdetail.php?order=", $orderid, 1, $orderid - 1, $orderid + 
 $items[] = strtolower($orderInfo["LatinName"]);
 navTrailBirds($items);
 pageThumbnail("select sighting.*, rand() as shuffle from sighting, species where Photo='1' and " . $whereClause . " order by shuffle");
- ?>
+?>
 
     <div class=contentright>
 	  <div class="titleblock">
-        <div class=pagetitle><?php echo $orderInfo["CommonName"] ?></div>
-        <div class=pagesubtitle> <?php echo $orderInfo["LatinName"] ?></div>
-        <div class=metadata> <?php echo $orderCount ?> species</div>
+        <div class=pagetitle><?= $orderInfo["CommonName"] ?></div>
+        <div class=pagesubtitle> <?= $orderInfo["LatinName"] ?></div>
+        <div class=metadata> <?= $orderCount ?> species</div>
       </div>
 
 		
@@ -51,13 +51,17 @@ while($info = mysql_fetch_array($orderQuery))
 	if ($divideByFamilys && ($prevFamilyNum != $familyNum))
     {
 		$familyInfo = getFamilyInfo($familyNum * pow(10, 7));
-		echo "<div class=\"heading\"><i>" . $familyInfo["LatinName"] . "</i>, " . $familyInfo["CommonName"] . "</div>";
+?>
+        <div class="heading"><i><?= $familyInfo["LatinName"] ?></i>, <?= $familyInfo["CommonName"] ?></div>
+<?
     }
-	
-	echo "<div class=firstcell><a href=\"./speciesdetail.php?id=".$info["objectid"]."\">".$info["CommonName"] . "</a></div>";
+?>	
+
+	<div class=firstcell><a href="./speciesdetail.php?id=<?= $info["objectid"] ?>"><?= $info["CommonName"] ?></a></div>
+
+<?
 	$prevFamilyNum = $familyNum;
 }
-
 ?>
 
     </div>

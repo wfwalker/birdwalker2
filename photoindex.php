@@ -25,27 +25,38 @@ navTrailPhotos("<a href=\"./photoindextaxo.php\">by species</a> | by date");
     <div class=contentright>
       <div class="titleblock">	  
 	    <div class=pagetitle>Photo Index</div>
-        <div class=pagesubtitle><?php echo $photoCount . " photos covering " . $photoSpeciesCount . " species"; ?></div>
+        <div class=pagesubtitle><?= $photoCount . " photos covering " . $photoSpeciesCount . " species"; ?></div>
       </div>
 
 <table cellpadding=4 columns=2>
-<?
+
+<?php
 $photoQuery = performQuery("select concat(sighting.TripDate, sighting.objectid) as photoOrder, sighting.*, species.CommonName, date_format(sighting.TripDate, '%M %e, %Y') as niceDate from sighting, species where Photo='1' and sighting.SpeciesAbbreviation=species.Abbreviation order by photoOrder desc");
 
 
 $counter = 0;
 
-while($info = mysql_fetch_array($photoQuery)) {
-	if (($counter % 2) == 0) echo "\n<tr>";
-	echo "<td>" . getThumbForSightingInfo($info) . "</td>";
-	echo "<td class=report-content valign=top>" . $info["CommonName"] . "<br/>";
-	echo $info["niceDate"] . "<br/>";
-	echo $info["LocationName"] .  "<br/>";
-	echo $info[""] . "</td>";
-	if (($counter % 2) == 1) echo "</tr>";
-	$counter++;
-}
+while($info = mysql_fetch_array($photoQuery))
+{
+	if (($counter % 2) == 0)
+	{
+?>      <tr> <?
+    }
+?>
+    <td valign=top align=right><?= getThumbForSightingInfo($info) ?></td>
+    <td class=report-content valign=top>
+	    <?= $info["CommonName"] ?><br/>
+        <?= $info["niceDate"] ?><br/>
+        <?= $info["LocationName"] ?><br/>
+        <?= $info[""] ?></td>
+<?
+    if (($counter % 4) == 1)
+	{
+?>      </tr> <?
+    }
 
+    $counter++;
+}
 ?>
 
     </div>

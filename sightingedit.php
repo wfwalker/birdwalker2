@@ -61,7 +61,7 @@ $locationList = performQuery("select Name, objectid from location");
 
 <head>
 <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-	  <title>birdWalker | <?php echo $speciesInfo["CommonName"] ?>,  <?php echo $tripInfo["niceDate"] ?></title>
+	  <title>birdWalker | <?= $speciesInfo["CommonName"] ?>,  <?= $tripInfo["niceDate"] ?></title>
 </head>
 
 <body>
@@ -75,9 +75,9 @@ pageThumbnail("select * from sighting where Photo='1' and objectid='" . $sightin
 
     <div class="navigationleft">
 	  <a href="./sightingedit.php?id=1">first</a>
-	  <a href="./sightingedit.php?id=<?php echo $_GET['id'] - 1 ?>">prev</a>
-      <a href="./sightingedit.php?id=<?php echo $_GET['id'] + 1 ?>">next</a>
-      <a href="./sightingedit.php?id=<?php echo $sightingCount ?>">last</a>
+	  <a href="./sightingedit.php?id=<?= $_GET['id'] - 1 ?>">prev</a>
+      <a href="./sightingedit.php?id=<?= $_GET['id'] + 1 ?>">next</a>
+      <a href="./sightingedit.php?id=<?= $sightingCount ?>">last</a>
     </div>
 
 <div class="contentright">
@@ -86,23 +86,23 @@ pageThumbnail("select * from sighting where Photo='1' and objectid='" . $sightin
 
 
   <div class=pagetitle>
-    <a href="./speciesdetail.php?id=<?php echo $speciesInfo["objectid"] ?>"><?php echo $speciesInfo["CommonName"] ?></a>
+    <a href="./speciesdetail.php?id=<?= $speciesInfo["objectid"] ?>"><?= $speciesInfo["CommonName"] ?></a>
   </div>
   <div class=pagesubtitle>
-    <a href="./tripdetail.php?id=<?php echo $tripInfo["objectid"] ?>"><?php echo $tripInfo["niceDate"] ?>
+    <a href="./tripdetail.php?id=<?= $tripInfo["objectid"] ?>"><?= $tripInfo["niceDate"] ?>
   </div>
   <div class=metadata>
-    <a href="./countydetail.php?county=<?php echo $locationInfo["County"] ?>"><?php echo $locationInfo["County"] ?> County</a>,
-    <a href="./statedetail.php?state=<?php echo $locationInfo["State"] ?>"><?php echo getStateNameForAbbreviation($locationInfo["State"]) ?></a>
+    <a href="./countydetail.php?county=<?= $locationInfo["County"] ?>"><?= $locationInfo["County"] ?> County</a>,
+    <a href="./statedetail.php?state=<?= $locationInfo["State"] ?>"><?= getStateNameForAbbreviation($locationInfo["State"]) ?></a>
   </div>
 </div>
 
-<form method="post" action="./sightingedit.php?id=<?php echo $sightingID ?>">
+<form method="post" action="./sightingedit.php?id=<?= $sightingID ?>">
 
 <table class=report-content columns=2 width=100%>
   <tr>
 	<td class=fieldlabel>Abbreviation</td>
-	<td><input type="text" name="SpeciesAbbreviation" value="<?php echo $sightingInfo["SpeciesAbbreviation"] ?>" size=6/></td>
+	<td><input type="text" name="SpeciesAbbreviation" value="<?= $sightingInfo["SpeciesAbbreviation"] ?>" size=6/></td>
   </tr>
   <tr>
 	<td class=fieldlabel>Location</td>
@@ -120,7 +120,7 @@ pageThumbnail("select * from sighting where Photo='1' and objectid='" . $sightin
   </tr>
   <tr>
 	<td class=fieldlabel>Notes</td>
-	<td><textarea name="Notes" cols=60 rows=20><?php echo $sightingInfo["Notes"] ?></textarea></td>
+	<td><textarea name="Notes" cols=60 rows=20><?= $sightingInfo["Notes"] ?></textarea></td>
   </tr>
   <tr>
 	<td class=fieldlabel>Exclude</td>
@@ -132,10 +132,10 @@ pageThumbnail("select * from sighting where Photo='1' and objectid='" . $sightin
   </tr>
   <tr>
 	<td class=fieldlabel>TripDate</td>
-	<td><input type="text" name="TripDate" value="<?php echo $sightingInfo["TripDate"] ?>" size=20/></td>
+	<td><input type="text" name="TripDate" value="<?= $sightingInfo["TripDate"] ?>" size=20/></td>
   </tr>
   <tr>
-	<td><input type="hidden" name="id" value="<?php echo $sightingID ?>"/></td>
+	<td><input type="hidden" name="id" value="<?= $sightingID ?>"/></td>
 	<td><input type="submit" name="Save" value="Save"/><input type="submit" name="New" value="New"/></td>
   </tr>
 </table>

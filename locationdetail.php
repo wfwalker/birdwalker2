@@ -19,7 +19,7 @@ $tripCount = mysql_num_rows($tripQuery);
 
 <head>
 <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-	  <title>birdWalker | <?php echo $siteInfo["Name"] ?></title>
+	  <title>birdWalker | <?= $siteInfo["Name"] ?></title>
 </head>
 
 <body>
@@ -36,45 +36,53 @@ pageThumbnail("select *, rand() as shuffle from sighting where Photo='1' and Loc
 
 <div class="contentright">
   <div class="titleblock">
-    <div class=pagetitle><?php echo $siteInfo["Name"] ?></div>
+    <div class=pagetitle><?= $siteInfo["Name"] ?></div>
 
 <?php
 if (strlen($siteInfo["ReferenceURL"]) > 0) {
-	echo "<div><a href=\"" . $siteInfo["ReferenceURL"] . "\">See also...</a></div>";
+?>
+	<div><a href="<?= $siteInfo["ReferenceURL"] ?>">See also...</a></div>
+<?
 }
 if (getEnableEdit()) {
-	echo "<div><a href=\"./locationcreate.php?id=" . $locationID . "\">edit</a></div>";
+?>
+	<div><a href="./locationcreate.php?id=<?= $locationID ?>">edit</a></div>
+<?
 }
 if (strlen($siteInfo["Latitude"]) > 0) {
-	echo "<div><a href=\"http://www.mapquest.com/maps/map.adp?latlongtype=decimal&latitude=" . $siteInfo["Latitude"] . "&longitude=-" . $siteInfo["Longitude"] . "\">Map...</a></div>";
+?>
+	<div><a href="http://www.mapquest.com/maps/map.adp?latlongtype=decimal&latitude=<?= $siteInfo["Latitude"] ?>&longitude=-<?= $siteInfo["Longitude"] ?>">Map...</a></div>
+<?
 }
 ?>
 
-  </div>
+    </div>
 
-<p class=sighting-notes><?php echo $siteInfo["Notes"] ?></p>
+<p class=sighting-notes><?= $siteInfo["Notes"] ?></p>
 
 <?php
-  if ($tripCount < 5)
+  if ($tripCount < 5) // PART ONE, TRIPS
   {
-	  // PART ONE, TRIPS
-	  echo "<div class=\"heading\">Visited on " . $tripCount . " trips</div>";
-
-	  while($tripInfo = mysql_fetch_array($tripQuery))
-	  {
-		  echo "<div class=firstcell><a href=\"./tripdetail.php?id=" . $tripInfo["objectid"] . "\">" . $tripInfo["Name"] . " (" . $tripInfo["niceDate"] .  ")</a></div>";
+?>
+    <div class="heading">Visited on <?= $tripCount ?> trips</div>
+<?
+    while($tripInfo = mysql_fetch_array($tripQuery))
+    {
+?>
+    <div class=firstcell><a href="./tripdetail.php?id=<?= $tripInfo["objectid"] ?>"><?= $tripInfo["Name"] ?> (<?= $tripInfo["niceDate"] ?>)</a></div>
+<?
 	  }
-
-	  echo "<div class=heading>Observed " . $speciesCount . " species at this location</div>";
-
-	  formatTwoColumnSpeciesList(performQuery("select distinct(species.objectid), species.* from species, sighting where species.Abbreviation=sighting.SpeciesAbbreviation and sighting.LocationName='" . $siteInfo["Name"]. "' order by species.objectid"));
+?>
+	<div class=heading>Observed <?= $speciesCount ?> species at this location</div>
+<?
+    formatTwoColumnSpeciesList(performQuery("select distinct(species.objectid), species.* from species, sighting where species.Abbreviation=sighting.SpeciesAbbreviation and sighting.LocationName='" . $siteInfo["Name"]. "' order by species.objectid"));
   }
   else
   {
 	  $gridQueryString="select distinct(CommonName), species.objectid as speciesid, bit_or(1 << (year(TripDate) - 1995)) as mask from sighting, species where sighting.LocationName='" . $siteInfo["Name"] . "' and sighting.SpeciesAbbreviation=species.Abbreviation group by sighting.SpeciesAbbreviation order by speciesid";
-
-	  echo "<div class=heading>Observed " . $speciesCount . " species at this location on " . $tripCount . " trips</div>";
-
+?>
+	  <div class=heading>Observed <?= $speciesCount ?> species at this location on <?= $tripCount ?> trips</div>
+<?
 	  $annualLocationTotal = performQuery("select count(distinct sighting.SpeciesAbbreviation) as count, year(sighting.TripDate) as year from sighting, location where sighting.LocationName='" . $siteInfo["Name"] . "' group by year");
 
 	  formatSpeciesByYearTable($gridQueryString, "&locationid=" . $siteInfo["objectid"], $annualLocationTotal);
