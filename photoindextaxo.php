@@ -17,7 +17,12 @@ $randomPhotoSightings = performQuery("select *, rand() as shuffle from sighting 
   </head>
   <body>
 
-<?php globalMenu(); disabledBrowseButtons(); navTrailPhotos("&gt; by species | <a href=\"./photoindex.php\">by date</a>"); ?>
+<?php
+globalMenu();
+disabledBrowseButtons();
+navTrailPhotos("by species | <a href=\"./photoindex.php\">by date</a>");
+?>
+
 
 <div class=thumb><?php  if (mysql_num_rows($randomPhotoSightings) > 0) { $photoInfo = mysql_fetch_array($randomPhotoSightings); if (mysql_num_rows($randomPhotoSightings) > 0) echo "<td>" . getThumbForSightingInfo($photoInfo) . "</td>"; } ?></div>
 

@@ -14,7 +14,7 @@ $speciesQuery = getSpeciesQuery();
   </head>
   <body>
 
-<?php globalMenu(); disabledBrowseButtons(); navTrailBirds("&gt; list | <a href=\"./speciesindexbyyear.php\">by year</a>"); ?>
+<?php globalMenu(); disabledBrowseButtons(); navTrailBirds("list | <a href=\"./speciesindexbyyear.php\">by year</a>"); ?>
 
     <div class=contentright>
       <div class="titleblock">	  

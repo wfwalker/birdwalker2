@@ -18,10 +18,13 @@ $speciesLocationCount = mysql_num_rows($speciesLocationListQuery);
 
 $photoQuery = performQuery("select * from sighting where SpeciesAbbreviation='" . $speciesInfo["Abbreviation"] . "' and Photo='1' order by TripDate desc");
 
-$firstSpecies = performCount("select min(species.objectid) from species, sighting where sighting.SpeciesAbbreviation=species.Abbreviation");
-$lastSpecies = performCount("select max(species.objectid) from species, sighting where sighting.SpeciesAbbreviation=species.Abbreviation");
+$firstAndLastSpecies = performOneRowQuery("select min(species.objectid) as firstOne, max(species.objectid) as lastOne from sighting, species where sighting.SpeciesAbbreviation=species.Abbreviation");
+$firstSpecies = $firstAndLastSpecies["firstOne"];
+$lastSpecies = $firstAndLastSpecies["lastOne"];
 $nextSpecies = performCount("select min(species.objectid) from species, sighting where sighting.SpeciesAbbreviation=species.Abbreviation and species.objectid>" . $speciesID);
 $prevSpecies = performCount("select max(species.objectid) from species, sighting where sighting.SpeciesAbbreviation=species.Abbreviation and species.objectid<" . $speciesID);
+
+$sightingDates = performOneRowQuery("select min(TripDate) as earliest, max(TripDate) as latest from sighting where sighting.SpeciesAbbreviation='" . $speciesInfo["Abbreviation"] . "'");
 ?>
 
 <html>
@@ -33,7 +36,14 @@ $prevSpecies = performCount("select max(species.objectid) from species, sighting
 
 <body>
 
-<?php globalMenu(); browseButtons("./speciesdetail.php?id=", $speciesID, $firstSpecies, $prevSpecies, $nextSpecies, $lastSpecies); navTrailBirds(); ?>
+<?php
+globalMenu();
+browseButtons("./speciesdetail.php?id=", $speciesID, $firstSpecies, $prevSpecies, $nextSpecies, $lastSpecies);
+$items[] = "<a href=\"./orderdetail.php?order=" . $orderInfo["objectid"] / pow(10, 9) . "\">" . strtolower($orderInfo["LatinName"]) . "</a>";
+$items[] = "<a href=\"./familydetail.php?family=" . $familyInfo["objectid"] / pow(10, 7) . "\">" . strtolower($familyInfo["LatinName"]) . "</a>";
+$items[] = strtolower($speciesInfo["CommonName"]);
+navTrailBirds($items);
+?>
 
 <div class=thumb><?php if ($photoInfo = mysql_fetch_array($photoQuery)){ echo getThumbForSightingInfo($photoInfo); } ?></div>
 
@@ -41,23 +51,17 @@ $prevSpecies = performCount("select max(species.objectid) from species, sighting
 	<div class="titleblock">
       <div class="pagetitle"><?php echo $speciesInfo["CommonName"] ?></div>
       <div class="pagesubtitle"><?php echo $speciesInfo["LatinName"] ?></div>
-      <div class="metadata">
-	    <a href="./familydetail.php?family=<?php echo $familyInfo["objectid"] / pow(10, 7) ?>">
-          Family <?php echo $familyInfo["LatinName"] ?>, <?php echo $familyInfo["CommonName"] ?>
-        </a>
-      </div>
-      <div class=metadata>
-	    <a href="./orderdetail.php?order=<?php echo $orderInfo["objectid"] / pow(10, 9) ?>">
-	      Order <?php echo $orderInfo["LatinName"] ?>, <?php echo $orderInfo["CommonName"] ?>
-        </a>
-
-        <?php if (strlen($speciesInfo["ReferenceURL"]) > 0) { echo "<div><a href=\"" . $speciesInfo["ReferenceURL"] . "\">See also...</a></div>"; } ?>
-        <?php if ($speciesInfo["ABACountable"] == '0') { echo "<div>NOT ABA COUNTABLE</div>"; } ?>
-      </div>
       <div class=metadata>
 <?php
-  if ($speciesTripCount >= 5) { echo  "Observed on " . $speciesTripCount . " trips  in " . $speciesLocationCount . " locations"; }
- ?>
+if ($speciesTripCount >= 5)
+{
+	echo "<div class=metadata>observed on " . $speciesTripCount . " trips  in " . $speciesLocationCount . " locations</div>";
+	echo "<div class=metadata>first seen " . $sightingDates["earliest"] . ", last seen " . $sightingDates["latest"] . "</div>";
+}
+
+if (strlen($speciesInfo["ReferenceURL"]) > 0) { echo "<div><a href=\"" . $speciesInfo["ReferenceURL"] . "\">See also...</a></div>"; }
+if ($speciesInfo["ABACountable"] == '0') { echo "<div>NOT ABA COUNTABLE</div>"; }
+?>
       </div>
     </div>
 
