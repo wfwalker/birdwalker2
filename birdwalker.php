@@ -148,7 +148,7 @@ function rightThumbnailAll()
 function formatPhotos($query)
 {
 	// TODO, the labels here should show values not fixed by the query!
-	$dbQuery = $query->getPhotos();
+	$dbQuery = $query->performPhotoQuery();
 
     countHeading(mysql_num_rows($dbQuery), "photo");
 
@@ -160,11 +160,11 @@ function formatPhotos($query)
 
         <div class=heading>
           <div class=pagesubtitle>
-            <a href="./tripdetail.php?tripid=<?= $tripInfo["objectid"] ?>"><?= $tripInfo["niceDate"] ?></a>
-<?          editLink("./sightingedit.php?id=" . $sightingInfo["objectid"]); ?>
+			<?= $query->getSightingTitle($sightingInfo) ?>
+<?          editLink("./sightingedit.php?id=" . $sightingInfo["sightingid"]); ?>
           </div>
           <div class=metadata>
-            <a href="./locationdetail.php?id=<?= $locationInfo["objectid"] ?>"><?= $locationInfo["Name"] ?></a>
+			<?= $query->getSightingSubtitle($sightingInfo) ?>
           </div>
         </div>
 

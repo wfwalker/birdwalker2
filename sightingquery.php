@@ -15,8 +15,21 @@ class SightingQuery extends BirdWalkerQuery
 		$this->setMonth("");
 		$this->setYear("");
 
+		$this->setSpeciesID("");
 		$this->setFamily("");
 		$this->setOrder("");
+	}
+
+	function getSightingTitle($sightingInfo)
+	{
+		if ($this->mSpeciesID == "") return $sightingInfo["CommonName"];
+		if ($this->mTripID == "") return $sightingInfo["niceDate"];
+	}
+
+	function getSightingSubtitle($sightingInfo)
+	{
+		if ($this->mLocationID == "") return $sightingInfo["LocationName"];
+		else return $sightingInfo["niceDate"];
 	}
 
 	function getSelectClause()
@@ -121,6 +134,19 @@ class SightingQuery extends BirdWalkerQuery
 			$this->getWhereClause() . " ORDER BY sighting.objectid");
 	}
 
+	function performPhotoQuery()
+	{
+		if (($this->mLocationID == "") && ($this->mCounty == "") && ($this->mState == "") &&
+			($this->mTripID == "") && ($this->mMonth == "") && ($this->mYear == "") &&
+			($this->mFamily == "") && ($this->mOrder == "") && ($this->mSpeciesID == ""))
+			die("No query parameters for sighting query");
+
+		return performQuery(
+			$this->getSelectClause() . " " .
+			$this->getFromClause() . " " .
+			$this->getWhereClause() . " AND sighting.Photo='1' ORDER BY sighting.objectid");
+	}
+
 	function getPageTitle()
 	{
 		// todo add species, family, order
@@ -196,24 +222,24 @@ class SightingQuery extends BirdWalkerQuery
 		formatSpeciesByMonthTable($this, $this->getParams(), $monthlyTotal);
 	}
 
-	function getPhotos()
-	{
-		return performQuery("
-          SELECT sighting.* " .
-			$this->getFromClause() . "  " .
-			$this->getWhereClause() . "
-            AND sighting.Photo='1'
-            ORDER BY sighting.TripDate DESC");
-	}
+// 	function getPhotos()
+// 	{
+// 		return performQuery("
+//           SELECT sighting.* " .
+// 			$this->getFromClause() . "  " .
+// 			$this->getWhereClause() . "
+//             AND sighting.Photo='1'
+//             ORDER BY sighting.TripDate DESC");
+// 	}
 
-	function getPhotoCount()
-	{
-		return performCount("
-          SELECT COUNT(DISTINCT sighting.objectid) " .
-			$this->getFromClause() . "  " .
-			$this->getWhereClause() . "
-            AND sighting.Photo='1'");
-	}
+// 	function getPhotoCount()
+// 	{
+// 		return performCount("
+//           SELECT COUNT(DISTINCT sighting.objectid) " .
+// 			$this->getFromClause() . "  " .
+// 			$this->getWhereClause() . "
+//             AND sighting.Photo='1'");
+// 	}
 
 	function formatPhotos()
 	{
