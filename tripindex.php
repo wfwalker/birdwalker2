@@ -3,8 +3,8 @@
 
 require("./birdwalker.php");
 
-$tripListCount = getTripCount();
-$tripListQuery = getTripQuery();
+$tripListQuery = performQuery("select trip.*, date_format(Date, '%M %e') as niceDate, count(distinct sighting.SpeciesAbbreviation) as tripCount from trip, sighting where sighting.TripDate=trip.Date group by trip.Date order by trip.Date desc");
+$tripListCount = mysql_num_rows($tripListQuery);
 
 ?>
 
@@ -16,7 +16,7 @@ $tripListQuery = getTripQuery();
 
   <body>
 
-<?php navigationHeader() ?>
+<?php globalMenu(); disabledBrowseButtons(); navTrailTrips(); ?>
 
     <div class=contentright>
 	  <div class="titleblock">
@@ -29,19 +29,26 @@ $tripListQuery = getTripQuery();
 <?php
 
 $prevYear = "";
-while($info = mysql_fetch_array($tripListQuery)) {
+$counter = 0;
+while($info = mysql_fetch_array($tripListQuery))
+{
   $thisYear =  substr($info["Date"], 0, 4);
   if (strcmp($thisYear, $prevYear))
   {
-    echo "<tr class=\"titleblock\"><td colspan=2>
+    echo "<tr><td colspan=4 class=\"heading\">
             <a href=\"./yeardetail.php?year=" . $thisYear . "\">" . $thisYear . "</a></td></tr>";
   }
 
-  echo "<tr><td class=firstcell><a href=\"./tripdetail.php?id=".$info["objectid"]."\">" . $info["Name"] . " (" . $info["niceDate"] . ")</a></td><td align=right>" . $info["tripCount"];
+  if (($counter % 2) == 0) echo "\n<tr>";
+
+  echo "<td align=right>" . $info["tripCount"];
+  echo "<td class=firstcell><a href=\"./tripdetail.php?id=".$info["objectid"]."\">" . $info["Name"] . " (" . $info["niceDate"] . ")</a></td>";
   if (getEnableEdit()) { echo "\n <a href=\"./tripedit.php?id=" . $info["objectid"] . "\">edit</a>"; }
-  echo "</td></tr>";
+  echo "</td>";
+  if (($counter % 2) == 1) echo "</tr>";
 
   $prevYear = $thisYear;
+  $counter++;
 }
 
 ?>

@@ -8,8 +8,8 @@ $orderid = floor($familyid / 100);
 
 $whereClause = "species.Abbreviation = sighting.SpeciesAbbreviation and species.objectid >= " . $familyid * pow(10, 7) . " and species.objectid < " . ($familyid + 1) * pow(10, 7);
 
-$familyCount = getSpeciesCount($whereClause);
 $familyQuery = getSpeciesQuery($whereClause);
+$familyCount = mysql_num_rows($familyQuery);
 $familyInfo = getFamilyInfo($familyid * pow(10, 7));
 $orderInfo = getOrderInfo($orderid * pow(10, 9));
 
@@ -27,7 +27,7 @@ $prevFamily = performCount("select floor(max(species.objectid)/pow(10,7)) from s
 
   <body>
 
-<?php navigationHeader(); navigationButtons("./familydetail.php?family=", $familyid, $firstFamily, $prevFamily, $nextFamily, $lastFamily) ?>
+<?php globalMenu(); browseButtons("./familydetail.php?family=", $familyid, $firstFamily, $prevFamily, $nextFamily, $lastFamily); navTrailBirds(); ?>
 
     <div class=contentright>
 	  <div class="titleblock">
@@ -37,10 +37,10 @@ $prevFamily = performCount("select floor(max(species.objectid)/pow(10,7)) from s
 	      <a href="./orderdetail.php?order=<?php echo $orderid ?>">
 	        Order <?php echo $orderInfo["LatinName"] ?>, <?php echo $orderInfo["CommonName"] ?>
           </a>
+          <div class=metadata> <?php echo $familyCount ?> species</div>
         </div>
       </div>
 
-      <div class=titleblock> <?php echo $familyCount ?> species</div>
 
 <table columns=2>		
 <?php

@@ -26,7 +26,7 @@ $speciesCount = 0;
 
   <body>
 
-<?php navigationHeader() ?>
+<?php globalMenu(); disabledBrowseButtons(); navTrailPhotos(" &gt;missing"); ?>
 
     <div class="contentright">
 	  <div class=titleblock>

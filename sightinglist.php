@@ -6,6 +6,7 @@ require("./birdwalker.php");
 $speciesid = $_GET["speciesid"];
 $locationid = $_GET["locationid"];
 $year = $_GET["year"];
+$month = $_GET["month"];
 $county = $_GET["county"];
 $state = $_GET["state"];
 
@@ -14,7 +15,7 @@ $sightingListQueryString = "SELECT date_format(sighting.TripDate, '%M %e, %Y') a
 if ($speciesid !="") {
 	$sightingListQueryString = $sightingListQueryString . " AND species.objectid=" . $speciesid;
 	$speciesInfo = getSpeciesInfo($speciesid);
-	$pageTitle = $speciesInfo["CommonName"] . " sightings";
+	$pageTitle = $speciesInfo["CommonName"];
 } else {
 	$pageTitle = "Sightings";
 }
@@ -31,6 +32,14 @@ if ($locationid != "") {
 	  $pageSubtitle = getStateNameForAbbreviation($state);
 }
 
+if ($month !="") {
+	$sightingListQueryString = $sightingListQueryString . " AND Month(TripDate)=" . $month;
+	if ($pageSubtitle == "" ) {
+		$pageTitle = $pageTitle . ", " . getMonthNameForNumber($month);
+	} else {
+		$pageSubtitle = $pageSubtitle . ", " . getMonthNameForNumber($month);
+	}
+}
 if ($year !="") {
 	$sightingListQueryString = $sightingListQueryString . " AND Year(TripDate)=" . $year;
 	if ($pageSubtitle == "" ) {
@@ -52,12 +61,13 @@ $sightingListQuery = performQuery($sightingListQueryString);
   </head>
   <body>
 
-<?php navigationHeader() ?>
+<?php globalMenu(); disabledBrowseButtons(); navTrailBirds(); ?>
 
     <div class=contentright>
       <div class="titleblock">	  
 	  <div class=pagetitle><?php echo $pageTitle ?></div>
 	  <div class=pagesubtitle><?php echo $pageSubtitle ?></div>
+      <div class=metadata><?php echo mysql_num_rows($sightingListQuery) ?> Sightings</div>
       </div>
 
 <table class=report-content columns=4 width="600px">

@@ -12,7 +12,9 @@ require("./birdwalker.php");
   </head>
   <body>
 
-<?php navigationHeader() ?>
+<?php globalMenu(); disabledBrowseButtons(); ?>
+
+<div class=navigationright><a href="./index.php">birdWalker</a> &gt; <a href="./locationindex.php">locations</a> &gt; counties by year</div>
 
     <div class=contentright>
       <div class="titleblock">	  
@@ -49,7 +51,9 @@ while ($info = mysql_fetch_array($countyStats))
 		echo "<tr><td class=firstcell><a href=\"./countydetail.php?county=" . urlencode($countyToAccumulate) . "\"/>" . $countyToAccumulate . " County</a></td>";
 		for ($year = 1996; $year <= 2004; $year++)
 		{
-			echo "<td class=bordered align=right>&nbsp;" . $yearArray[$year] . "</td>";
+			echo "<td class=bordered align=right>";
+			echo "<a href=\"./specieslist.php?county=" . urlEncode($countyToAccumulate) . "&year=" . $year . "\">";
+			echo "&nbsp;" . $yearArray[$year] . "<a/></td>";
 		}
 		echo "</tr>";
 

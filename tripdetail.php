@@ -1,3 +1,5 @@
+<html>
+
 <?php
 
 require("./birdwalker.php");
@@ -5,8 +7,7 @@ require("./birdwalker.php");
 $tripID = $_GET['id'];
 $tripInfo = getTripInfo($tripID);
 $tripYear = substr($tripInfo["Date"], 0, 4);
-$tripCount = getTripCount();
-$whereClause = "sighting.LocationName=location.Name and species.Abbreviation=sighting.SpeciesAbbreviation and sighting.TripDate='" . $tripInfo["Date"]. "'";
+$tripCount = performCount("select max(objectid) from trip");
 
 $locationListQuery = performQuery("select distinct(location.objectid), location.Name from location, sighting where location.Name=sighting.LocationName and sighting.TripDate='". $tripInfo["Date"] . "'");
 
@@ -24,9 +25,10 @@ while($sightingInfo = mysql_fetch_array($tripSightings)) {
 	if ($firstSightings[$sightingInfo['objectid']] != null) { $tripFirstSightings++; }
 }
 
+$randomPhotoSightings = performQuery("select *, rand() as shuffle from sighting where Photo='1' and TripDate='" . $tripInfo["Date"] . "' order by shuffle");
+
 ?>
 
-<html>
   <head>
     <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
     <title>birdWalker | <?php echo $tripInfo["Name"] ?></title>
@@ -34,13 +36,18 @@ while($sightingInfo = mysql_fetch_array($tripSightings)) {
 
   <body>
 
-<?php navigationHeader(); navigationButtons("./tripdetail.php?id=", $tripID, 1, $tripID - 1, $tripID + 1, $tripCount); ?>
+  <?php globalMenu(); browseButtons("./tripdetail.php?id=", $tripID, 1, $tripID - 1, $tripID + 1, $tripCount);  navTrailTrips(); ?>
+
+<div class=thumb><?php  if (mysql_num_rows($randomPhotoSightings) > 0) { $photoInfo = mysql_fetch_array($randomPhotoSightings); if (mysql_num_rows($randomPhotoSightings) > 0) echo "<td>" . getThumbForSightingInfo($photoInfo) . "</td>"; } ?></div>
+
+<div class=navigationright><a href="./index.php">birdWalker</a> &gt; <a href="./tripindex.php">trips</a></div>
 
     <div class="contentright">
 	  <div class=titleblock>
-      <div class=pagetitle> <?php echo $tripInfo["Name"] ?> Trip List</div>
+      <div class=pagetitle> <?php echo $tripInfo["Name"] ?></div>
       <div class=pagesubtitle> <?php echo $tripInfo["niceDate"] ?></div>
       <div class=metadata>Led by  <?php echo $tripInfo["Leader"] ?></div>
+      <div class=metadata>Observed  <?php echo $tripSpeciesCount ?> species on this trip<? if ($tripFirstSightings > 0) echo ", including " . $tripFirstSightings . " first sightings" ?></div>
 <?php
 if (strlen($tripInfo["ReferenceURL"]) > 0) {
     echo "<div><a href=\"" . $tripInfo["ReferenceURL"] . "\">See also...</a></div>";
@@ -53,7 +60,6 @@ if (getEnableEdit()) {
 
       <div class=sighting-notes> <?php echo $tripInfo["Notes"] ?></div>
 
-	<div class=titleblock>Observed  <?php echo $tripSpeciesCount ?> species on this trip<? if ($tripFirstSightings > 0) echo ", including " . $tripFirstSightings . " first sightings" ?></div>
 
 <?php
 
@@ -63,7 +69,7 @@ while($locationInfo = mysql_fetch_array($locationListQuery))
 	$tripLocationCount = mysql_num_rows($tripLocationQuery);
 	$divideByTaxo = ($tripLocationCount > 30);
 
-	echo "<div class=\"titleblock\"><a href=\"./locationdetail.php?id=" . $locationInfo["objectid"] . "\">" . $locationInfo["Name"] . "</a>, " . $tripLocationCount . " species</div>";
+	echo "<div class=\"heading\"><a href=\"./locationdetail.php?id=" . $locationInfo["objectid"] . "\">" . $locationInfo["Name"] . "</a>, " . $tripLocationCount . " species</div>";
 	echo "<div style=\"padding-left: 20px\">";
 	
 	while($info = mysql_fetch_array($tripLocationQuery))
@@ -73,7 +79,7 @@ while($locationInfo = mysql_fetch_array($locationListQuery))
 		if ($divideByTaxo && (getBestTaxonomyID($prevInfo["speciesid"]) != getBestTaxonomyID($info["speciesid"])))
 		{
 			$taxoInfo = getBestTaxonomyInfo($info["speciesid"]);
-			echo "<div class=\"titleblock\">" . $taxoInfo["CommonName"] . "</div>";
+			echo "<div class=\"heading\">" . $taxoInfo["CommonName"] . "</div>";
 		}
 
 		echo "\n<div class=firstcell><a href=\"./speciesdetail.php?id=".$info["speciesid"]."\">" .

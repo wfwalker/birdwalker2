@@ -6,13 +6,14 @@ require("./birdwalker.php");
 $locationID = $_GET['id'];
 $siteInfo = getLocationInfo($locationID);
 $locationCount = performCount("select count(distinct(objectid)) from location");
-$whereClause = "species.Abbreviation=sighting.SpeciesAbbreviation and sighting.LocationName='" . $siteInfo["Name"]. "'";
-$siteListQuery = getSpeciesQuery($whereClause);
-$siteListCount = getSpeciesCount($whereClause);
+$speciesCount = performCount("select count(distinct species.objectid) from species, sighting where species.Abbreviation=sighting.SpeciesAbbreviation and sighting.LocationName='" . $siteInfo["Name"]. "'");
 
 $tripQuery = getTripQuery("sighting.LocationName='" . $siteInfo["Name"]. "' and sighting.TripDate=trip.Date");
 $tripCount = mysql_num_rows($tripQuery);
-$firstSightings = getFirstSightings();
+// $firstSightings = getFirstSightings(); // NOT CURRENTLY IN USE
+//http://www.mapquest.com/maps/map.adp?latlongtype=decimal&latitude=41.9196&longitude=-69.9971
+
+$randomPhotoSightings = performQuery("select *, rand() as shuffle from sighting where Photo='1' and LocationName='" . $siteInfo["Name"] . "' order by shuffle");
 
 ?>
 
@@ -25,15 +26,17 @@ $firstSightings = getFirstSightings();
 
 <body>
 
-<?php navigationHeader(); navigationButtons("./locationdetail.php?id=", $locationID, 1, $locationID - 1, $locationID + 1, $locationCount); ?>
+<?php globalMenu(); browseButtons("./locationdetail.php?id=", $locationID, 1, $locationID - 1, $locationID + 1, $locationCount); navTrailLocations(); ?>
+
+<div class=thumb><?php  if (mysql_num_rows($randomPhotoSightings) > 0) { $photoInfo = mysql_fetch_array($randomPhotoSightings); if (mysql_num_rows($randomPhotoSightings) > 0) echo "<td>" . getThumbForSightingInfo($photoInfo) . "</td>"; } ?></div>
 
 <div class="contentright">
   <div class="titleblock">
-  <div class=pagetitle><?php echo $siteInfo["Name"] ?></div>
-  <div class=pagesubtitle>
-    <a href="./countydetail.php?county=<?php echo $siteInfo["County"] ?>"><?php echo $siteInfo["County"] ?> County</a>,
-    <a href="./statedetail.php?state=<?php echo $siteInfo["State"] ?>"><?php echo getStateNameForAbbreviation($siteInfo["State"]) ?></a>
-  </div>
+    <div class=pagetitle><?php echo $siteInfo["Name"] ?></div>
+    <div class=pagesubtitle>
+      <a href="./countydetail.php?county=<?php echo $siteInfo["County"] ?>"><?php echo $siteInfo["County"] ?> County</a>,
+      <a href="./statedetail.php?state=<?php echo $siteInfo["State"] ?>"><?php echo getStateNameForAbbreviation($siteInfo["State"]) ?></a>
+    </div>
 
 <?php
 if (strlen($siteInfo["ReferenceURL"]) > 0) {
@@ -42,48 +45,38 @@ if (strlen($siteInfo["ReferenceURL"]) > 0) {
 if (getEnableEdit()) {
 	echo "<div><a href=\"./locationcreate.php?id=" . $locationID . "\">edit</a></div>";
 }
+if (strlen($siteInfo["Latitude"]) > 0) {
+	echo "<div><a href=\"http://www.mapquest.com/maps/map.adp?latlongtype=decimal&latitude=" . $siteInfo["Latitude"] . "&longitude=-" . $siteInfo["Longitude"] . "\">Map...</a></div>";
+}
 ?>
 
-</div>
+  </div>
 
 <p class=sighting-notes><?php echo $siteInfo["Notes"] ?></p>
 
-<div class=titleblock>Seen <?php echo $siteListCount ?> species at this location</div>
-
-  <?php
+<?php
   if ($tripCount < 5)
   {
-	  $divideByTaxo = ($siteListCount > 30);
-	
-	  while($info = mysql_fetch_array($siteListQuery))
+	  // PART ONE, TRIPS
+	  echo "<div class=\"heading\">Visited on " . $tripCount . " trips</div>";
+
+	  while($tripInfo = mysql_fetch_array($tripQuery))
 	  {
-		  $orderNum =  floor($info["objectid"] / pow(10, 9));
-		
-		  if ($divideByTaxo && (getBestTaxonomyID($prevInfo["objectid"]) != getBestTaxonomyID($info["objectid"])))
-		  {
-			  $taxoInfo = getBestTaxonomyInfo($info["objectid"]);
-			  echo "<div class=\"titleblock\">" . $taxoInfo["CommonName"] . "</div>";
-		  }
-
-		  echo "<div class=firstcell><a href=\"./speciesdetail.php?id=".$info["objectid"]."\">".$info["CommonName"]."</a></div>";
-		
-		  $prevInfo = $info;
-	  }
-
-	  echo "<div class=\"titleblock\">Visited on " . $tripCount . " trips</div>";
-
-	  // list the trips that included this location
-	  while($tripInfo = mysql_fetch_array($tripQuery)) {
 		  echo "<div class=firstcell><a href=\"./tripdetail.php?id=" . $tripInfo["objectid"] . "\">" . $tripInfo["Name"] . " (" . $tripInfo["niceDate"] .  ")</a></div>";
 	  }
+
+	  echo "<div class=heading>Observed " . $speciesCount . " species at this location</div>";
+
+	  formatTwoColumnSpeciesList(performQuery("select distinct(species.objectid), species.* from species, sighting where species.Abbreviation=sighting.SpeciesAbbreviation and sighting.LocationName='" . $siteInfo["Name"]. "' order by species.objectid"));
   }
   else
   {
 	  $gridQueryString="select distinct(CommonName), species.objectid as speciesid, bit_or(1 << (year(TripDate) - 1995)) as mask from sighting, species where sighting.LocationName='" . $siteInfo["Name"] . "' and sighting.SpeciesAbbreviation=species.Abbreviation group by sighting.SpeciesAbbreviation order by speciesid";
 
-	  formatSpeciesByYearTable($gridQueryString, "&locationid=" . $siteInfo["objectid"]);
-   }
+	  echo "<div class=heading>Observed " . $speciesCount . " species at this location on " . $tripCount . " trips</div>";
 
+	  formatSpeciesByYearTable($gridQueryString, "&locationid=" . $siteInfo["objectid"]);
+  }
 ?>
 
 </div>

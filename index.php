@@ -13,7 +13,7 @@ $randomPhotoSightings = performQuery("select *, rand() as shuffle from sighting 
   </head>
   <body>
 
-	<?php navigationHeader() ?>
+<?php globalMenu(); ?>
 
     <div class=contentright>
       <div class="titleblock">	  
@@ -44,7 +44,7 @@ $randomPhotoSightings = performQuery("select *, rand() as shuffle from sighting 
 		<p>- Bill Walker</p>
 	  </div>
 
-	  <div class=titleblock>References</div>
+	  <div class=heading>References</div>
 
 	  <DIV CLASS="report-content">
 		<P>

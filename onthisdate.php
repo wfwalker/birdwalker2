@@ -19,7 +19,7 @@ $tripsOnThisDate = performQuery("select * from trip where Month(Date)='" . ($loc
 
   <body>
 
-<?php navigationHeader() ?>
+<?php globalMenu(); disabledBrowseButtons(); ?>
 
     <div class="contentright">
 	  <div class=titleblock>

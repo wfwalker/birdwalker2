@@ -5,7 +5,9 @@ require("./birdwalker.php");
 
 $theYear = $_GET["year"];
 
-$yearCount = getSpeciesCount("sighting.Exclude='0' and species.Abbreviation=sighting.SpeciesAbbreviation and year(sighting.TripDate)='" . $theYear . "'");
+$yearCount = performCount("select count(distinct species.objectid) from species, sighting where sighting.Exclude!='1' and species.Abbreviation=sighting.SpeciesAbbreviation and year(sighting.TripDate)='" . $theYear . "'");
+$randomPhotoSightings = performQuery("select sighting.*, rand() as shuffle from sighting where sighting.Photo='1' and Year(TripDate)='" . $theYear . "' order by shuffle");
+
 ?>
 
 <html>
@@ -15,7 +17,9 @@ $yearCount = getSpeciesCount("sighting.Exclude='0' and species.Abbreviation=sigh
   </head>
   <body>
 
-<?php navigationHeader(); navigationButtons("./yeardetail.php?year=", $theYear, 1996, $theYear - 1, $theYear + 1, 2004); ?>
+<?php globalMenu(); browseButtons("./yeardetail.php?year=", $theYear, 1996, $theYear - 1, $theYear + 1, 2004); navTrailBirds(); ?>
+
+<div class=thumb><?php  if (mysql_num_rows($randomPhotoSightings) > 0) { $photoInfo = mysql_fetch_array($randomPhotoSightings); if (mysql_num_rows($randomPhotoSightings) > 0) echo "<td>" . getThumbForSightingInfo($photoInfo) . "</td>"; } ?></div>
 
     <div class=contentright>
       <div class="titleblock">	  
@@ -57,11 +61,23 @@ while ($info = mysql_fetch_array($gridQuery))
 	if ($prevOrderNum != $orderNum)
     {
 		$orderInfo = getOrderInfo($info["speciesid"]);
-		echo "<tr><td class=titleblock colspan=13>" . $orderInfo["CommonName"] . "</td></tr>";
+		echo "<tr><td class=heading colspan=13>" . $orderInfo["CommonName"] . "</td></tr>";
     }
 
 	echo "<tr><td class=firstcell><a href=\"./speciesdetail.php?id=" . $info["speciesid"] . "\">" . $info["CommonName"] . "</a></td>";
-	for ($index = 1; $index <= 12; $index++) echo "<td class=bordered align=center>" . bitToString($theMask, $index) . "</td>";
+	for ($index = 1; $index <= 12; $index++)
+	{
+		echo "<td class=bordered align=center>";
+		if (($theMask >> $index) & 1)
+		{
+			echo "<a href=\"./sightinglist.php?speciesid=" . $info["speciesid"] . "&year=" . $theYear . "&month=" . $index . "\">X</a>";
+		}
+		else
+		{
+			echo "&nbsp;" ;
+		}
+		echo "</td>";
+	}
     echo "</tr>";
     $prevOrderNum = $orderNum;
 }

@@ -14,7 +14,7 @@ $badAbbrevs = performQuery("select species.*,sighting.*, sighting.objectid as si
   </head>
   <body>
 
-<?php navigationHeader() ?>
+<?php globalMenu(); disabledBrowseButtons(); ?>
 
     <div class=contentright>
       <div class="titleblock">	  

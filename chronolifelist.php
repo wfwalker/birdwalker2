@@ -3,12 +3,11 @@
 
 require("./birdwalker.php");
 
-$speciesCount = getSpeciesCount();
-
 performQuery("CREATE TEMPORARY TABLE tmp ( abbrev varchar(16) default NULL, tripdate date default NULL);");
 performQuery("INSERT INTO tmp SELECT SpeciesAbbreviation, MIN(TripDate) FROM sighting where Exclude!='1' GROUP BY SpeciesAbbreviation;");
 $firstSightingQuery = performQuery("SELECT date_format(sighting.TripDate, '%M %e, %Y') as niceDate, sighting.*, species.CommonName, species.objectid as speciesid, trip.objectid as tripid, location.County, location.State FROM sighting, tmp, species, location, trip WHERE sighting.SpeciesAbbreviation=tmp.abbrev AND species.Abbreviation=sighting.SpeciesAbbreviation AND sighting.TripDate=tmp.tripdate AND location.Name=sighting.LocationName AND trip.Date=sighting.TripDate order by TripDate, LocationName;");
 
+$speciesCount = mysql_num_rows($firstSightingQuery);
 ?>
 
 <html>
@@ -18,7 +17,7 @@ $firstSightingQuery = performQuery("SELECT date_format(sighting.TripDate, '%M %e
   </head>
   <body>
 
-<?php navigationHeader() ?>
+<?php globalMenu(); disabledBrowseButtons(); navTrailBirds(); ?>
 
     <div class=contentright>
       <div class="titleblock">	  
@@ -51,14 +50,6 @@ while($sightingInfo = mysql_fetch_array($firstSightingQuery)) {
 	// edit link
 	if (getEnableEdit()) { echo " <a href=\"./sightingedit.php?id=" . $sightingInfo['objectid'] . "\">edit</a>"; }
 	echo" </td>";
-
-	// location
-	echo "<td>";
-	//if ($prevSightingInfo['LocationName'] != $sightingInfo['LocationName']) {
-	//	echo $sightingInfo['LocationName'] . ", " . $sightingInfo['County'] . " County, " . $sightingInfo['State'];
-	//}
-	echo "</td>";
-
 	echo "</tr>";
 	
 	// notes

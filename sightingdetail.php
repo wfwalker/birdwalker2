@@ -22,18 +22,12 @@ $sightingCount = performCount("select max(objectid) from sighting");
 
 <body>
 
-<?php navigationHeader() ?>
+<?php globalMenu(); browseButtons("./sightingdetail.php?id=", $sightingID, 1, $sightingID - 1, $sightingID + 1, $sightingCount);  ?>
 
-    <div class="navigationleft">
-	  <a href="./sightingdetail.php?id=1">first</a>
-	  <a href="./sightingdetail.php?id=<?php echo $_GET['id'] - 1 ?>">prev</a>
-      <a href="./sightingdetail.php?id=<?php echo $_GET['id'] + 1 ?>">next</a>
-      <a href="./sightingdetail.php?id=<?php echo $sightingCount ?>">last</a>
-    </div>
+<div class=thumb><?php if ($sightingInfo["Photo"] == "1") { echo getThumbForSightingInfo($sightingInfo); } ?></div>
 
 <div class="contentright">
 <div class="titleblock">
-<?php if ($sightingInfo["Photo"] == "1") { echo getThumbForSightingInfo($sightingInfo); } ?>
 	  <div class=pagetitle> <?php echo $speciesInfo["CommonName"] ?></div>
       <div class=pagesubtitle><?php echo $tripInfo["niceDate"] ?></div>
       <div class=metadata><?php echo $locationInfo["County"] ?> County, <?php echo getStateNameForAbbreviation($locationInfo["State"]) ?></div>
@@ -41,7 +35,7 @@ $sightingCount = performCount("select max(objectid) from sighting");
 
 
 <table class=report-content columns=2 width=100%>
-  <tr><td class=titleblock colspan=2>Sighting</td></tr>
+  <tr><td class=heading colspan=2>Sighting</td></tr>
   <tr><td class=fieldlabel>SpeciesAbbreviation</td><td><?php echo $sightingInfo["SpeciesAbbreviation"] ?></td></tr>
   <tr><td class=fieldlabel>LocationName</td><td><?php echo $sightingInfo["LocationName"] ?></td></tr>
   <tr><td class=fieldlabel>Notes</td><td><?php echo $sightingInfo["Notes"] ?></td></tr>
@@ -49,14 +43,14 @@ $sightingCount = performCount("select max(objectid) from sighting");
   <tr><td class=fieldlabel>Photo</td><td><?php echo $sightingInfo["Photo"] ?></td></tr>
   <tr><td class=fieldlabel>TripDate</td><td><?php echo $sightingInfo["TripDate"] ?></td></tr>
 
-  <tr><td class=titleblock colspan=2>Species</td></tr>
+  <tr><td class=heading colspan=2>Species</td></tr>
   <tr><td class=fieldlabel>Abbreviation</td><td><?php echo $speciesInfo["Abbreviation"] ?></td></tr>
   <tr><td class=fieldlabel>LatinName</td><td><?php echo $speciesInfo["LatinName"] ?></td></tr>
   <tr><td class=fieldlabel>CommonName</td><td><?php echo $speciesInfo["CommonName"] ?></td></tr>
   <tr><td class=fieldlabel>Notes</td><td><?php echo $speciesInfo["Notes"] ?></td></tr>
   <tr><td class=fieldlabel>ReferenceURL</td><td><?php echo $speciesInfo["ReferenceURL"] ?></td></tr>
 
-  <tr><td class=titleblock colspan=2>Trip</td></tr>
+  <tr><td class=heading colspan=2>Trip</td></tr>
   <tr><td class=fieldlabel>Name</td><td><?php echo $tripInfo["Name"] ?></td></tr>
   <tr><td class=fieldlabel>Leader</td><td><?php echo $tripInfo["Leader"] ?></td></tr>
   <tr><td class=fieldlabel>ReferenceURL</td><td><?php echo $tripInfo["ReferenceURL"] ?></td></tr>
@@ -64,7 +58,7 @@ $sightingCount = performCount("select max(objectid) from sighting");
   <tr><td class=fieldlabel>Notes</td><td><?php echo $tripInfo["Notes"] ?></td></tr>
   <tr><td class=fieldlabel>Date</td><td><?php echo $tripInfo["Date"] ?></td></tr>
 
-  <tr><td class=titleblock colspan=2>Location</td></tr>
+  <tr><td class=heading colspan=2>Location</td></tr>
   <tr><td class=fieldlabel>Name</td><td><?php echo $locationInfo["Name"] ?></td></tr>
   <tr><td class=fieldlabel>Reference URL</td><td><?php echo $locationInfo["ReferenceURL"] ?></td></tr>
   <tr><td class=fieldlabel>City</td><td><?php echo $locationInfo["City"] ?></td></tr>

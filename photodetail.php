@@ -29,13 +29,14 @@ if ($prevPhotoSightingID == "") { $prevPhotoSightingID = $sightingID; }
 
 <body>
 
-<?php navigationHeader(); navigationButtons("./photodetail.php?id=", $sightingID, $firstPhotoSightingID, $prevPhotoSightingID, $nextPhotoSightingID, $lastPhotoSightingID); ?>
+<?php globalMenu(); browseButtons("./photodetail.php?id=", $sightingID, $firstPhotoSightingID, $prevPhotoSightingID, $nextPhotoSightingID, $lastPhotoSightingID); navTrailPhotos(); ?>
 
 <div class="contentright">
 <div class="titleblock">
 	  <div class=pagetitle><a href="./speciesdetail.php?id=<?php echo $speciesInfo["objectid"] ?>"><?php echo $speciesInfo["CommonName"] ?></a></div>
       <div class=pagesubtitle><a href="./tripdetail.php?id=<?php echo $tripInfo["objectid"] ?>"><?php echo $tripInfo["niceDate"] ?></div>
       <div class=metadata>
+        <a href="./locationdetail.php?id=<?php echo $locationInfo["objectid"] ?>"><?php echo $locationInfo["Name"] ?></a>, 
         <a href="./countydetail.php?county=<?php echo $locationInfo["County"] ?>"><?php echo $locationInfo["County"] ?> County</a>,
         <a href="./statedetail.php?state=<?php echo $locationInfo["State"] ?>"><?php echo getStateNameForAbbreviation($locationInfo["State"]) ?></a>
       </div>
@@ -56,17 +57,17 @@ if (strlen($sightingInfo["Notes"]) > 0) {
 }
 
 if (strlen($tripInfo["Notes"]) > 0) {
-	echo "<div class=titleblock>" . $tripInfo["Name"] . "</div>";
+	echo "<div class=heading>" . $tripInfo["Name"] . "</div>";
 	echo "<p class=sighting-notes>" . $tripInfo["Notes"] . "</p>";
 }
 
 if (strlen($locationInfo["Notes"]) > 0) {
-	echo "<div class=titleblock>" . $locationInfo["Name"] . "</div>";
+	echo "<div class=heading>" . $locationInfo["Name"] . "</div>";
 	echo "<p class=sighting-notes>" . $locationInfo["Notes"] . "</p>";
 }
 
 if (strlen($speciesInfo["Notes"]) > 0) {
-	echo "<div class=titleblock>" . $speciesInfo["CommonName"] . "</div>";
+	echo "<div class=heading>" . $speciesInfo["CommonName"] . "</div>";
 	echo "<p class=sighting-notes>" . $speciesInfo["Notes"] . "</p>";
 }
 

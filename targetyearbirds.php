@@ -12,12 +12,12 @@ $lastSightingQuery = performQuery("select species.CommonName, species.objectid a
 
 <head>
 <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-	  <title>birdWalker | Target Year Birds<?php echo $siteInfo["Name"] ?></title>
+	  <title>birdWalker | Target Year Birds</title>
 </head>
 
 <body>
 
-<?php navigationHeader() ?>
+<?php globalMenu(); disabledBrowseButtons(); navTrailBirds(); ?>
 
 <div class="contentright">
 
