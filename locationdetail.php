@@ -3,7 +3,8 @@
 
 require("./birdwalker.php");
 
-$siteInfo = getLocationInfo($_GET['id']);
+$locationID = $_GET['id'];
+$siteInfo = getLocationInfo($locationID);
 $locationCount = performCount("select count(distinct(objectid)) from location");
 $whereClause = "species.Abbreviation=sighting.SpeciesAbbreviation and sighting.LocationName='" . $siteInfo["Name"]. "'";
 $siteListQuery = getSpeciesQuery($whereClause);
@@ -24,14 +25,7 @@ $firstSightings = getFirstSightings();
 
 <body>
 
-<?php navigationHeader() ?>
-
-    <div class="navigationleft">
-	  <a href="./locationdetail.php?id=1">first</a>
-	  <a href="./locationdetail.php?id=<?php echo $_GET['id'] - 1 ?>">prev</a>
-      <a href="./locationdetail.php?id=<?php echo $_GET['id'] + 1 ?>">next</a>
-      <a href="./locationdetail.php?id=<?php echo $locationCount ?>">last</a>
-    </div>
+<?php navigationHeader(); navigationButtons("./locationdetail.php?id=", $locationID, 1, $locationID - 1, $locationID + 1, $locationCount); ?>
 
 <div class="contentright">
   <div class="titleblock">
@@ -51,12 +45,11 @@ if (strlen($siteInfo["ReferenceURL"]) > 0) {
 
 <p class=sighting-notes><?php echo $siteInfo["Notes"] ?></p>
 
+<div class=titleblock>Seen <?php echo $siteListCount ?> species at this location</div>
+
   <?php
   if ($tripCount < 5)
   {
-	  echo "
-	  <div class=\"titleblock\">Seen ". $siteListCount . " species at this location</div>";
-
 	  $divideByTaxo = ($siteListCount > 30);
 	
 	  while($info = mysql_fetch_array($siteListQuery))

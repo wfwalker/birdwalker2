@@ -13,6 +13,10 @@ $familyQuery = getSpeciesQuery($whereClause);
 $familyInfo = getFamilyInfo($familyid * pow(10, 7));
 $orderInfo = getOrderInfo($orderid * pow(10, 9));
 
+$firstFamily = performCount("select floor(min(species.objectid)/pow(10,7)) from species, sighting where sighting.SpeciesAbbreviation=species.Abbreviation");
+$lastFamily = performCount("select floor(max(species.objectid)/pow(10,7)) from species, sighting where sighting.SpeciesAbbreviation=species.Abbreviation");
+$nextFamily = performCount("select floor(min(species.objectid)/pow(10,7)) from species, sighting where sighting.SpeciesAbbreviation=species.Abbreviation and species.objectid>" . ($familyid + 1) * pow(10, 7));
+$prevFamily = performCount("select floor(max(species.objectid)/pow(10,7)) from species, sighting where sighting.SpeciesAbbreviation=species.Abbreviation and species.objectid<" . ($familyid - 1) * pow(10, 7));
 ?>
 
 <html>
@@ -23,7 +27,7 @@ $orderInfo = getOrderInfo($orderid * pow(10, 9));
 
   <body>
 
-<?php navigationHeader() ?>
+<?php navigationHeader(); navigationButtons("./familydetail.php?family=", $familyid, $firstFamily, $prevFamily, $nextFamily, $lastFamily) ?>
 
     <div class=contentright>
 	  <div class="titleblock">
@@ -47,6 +51,7 @@ while($info = mysql_fetch_array($familyQuery)) {
   if ($photoInfo = mysql_fetch_array($photoQuery)) {
 	  echo getThumbForSightingInfo($photoInfo);
   }
+  echo "<br><br>";
   echo "</td>";
 
   echo "<td class=report-content valign=top>";
