@@ -23,14 +23,15 @@ $tripListCount = mysql_num_rows($tripListQuery); ?>
 globalMenu();
 disabledBrowseButtons();
 navTrailTrips("");
-pageThumbnail("select *, rand() as shuffle from sighting where Photo='1' order by shuffle");
 ?>
 
     <div class=contentright>
 	  <div class="titleblock">
+<?       rightThumbnailAll(); ?>
         <div class=pagetitle>Trips</div>
-        <div class=pagesubtitle> <?= $tripListCount ?> trips</div>
 	  </div>
+
+    <div class=heading> <?= $tripListCount ?> trips</div>
 
 
 <? formatTwoColumnTripList($tripListQuery); ?>

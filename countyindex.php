@@ -11,7 +11,6 @@
 <?php
 globalMenu();
 disabledBrowseButtons();
-pageThumbnail("SELECT *, rand() AS shuffle FROM sighting WHERE Photo='1' ORDER BY shuffle");
 ?>
 
 <div class=navigationright><a href="./index.php">birdWalker</a> &gt; <a href="./locationindex.php">locations</a> &gt; counties by year</div>

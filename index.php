@@ -3,7 +3,7 @@
 
 require("./birdwalker.php");
 
-$randomPhotoSightings = performQuery("select *, rand() as shuffle from sighting where Photo='1' order by shuffle");
+$latestTrips = performQuery("select *, date_format(Date, '%M %e, %Y') AS niceDate from trip order by Date desc limit 5");
  ?>
 
 <html>
@@ -21,66 +21,23 @@ disabledBrowseButtons();
 ?>
 
     <div class=contentright>
-      <div class="titleblock">	  
-	    <div class=pagetitle>Welcome to birdWalker</div>
-      </div>
-
-      <table width="100%"><tr>
 
 <?    for ($index = 0; $index < 5; $index++)
 	  {
-		  $info = mysql_fetch_array($randomPhotoSightings); ?>
-		  <td><?= getThumbForSightingInfo($info) ?></td>
+		  $info = mysql_fetch_array($latestTrips); ?>
+
+		  <p>&nbsp;</p>
+
+
+          <div class="pagesubtitle"><?= $info["niceDate"] ?></div>
+
+		  <div class="titleblock">
+<?         rightThumbnail("SELECT * FROM sighting WHERE Photo='1' AND TripDate='" . $info["Date"] . "' LIMIT 1"); ?>
+              <span class="pagetitle"><a href="./tripdetail.php?id=<?=$info["objectid"]?>"/><?= $info["Name"] ?></a></span>
+          </div>
+
+          <div class=report-content><?= $info["Notes"] ?><br clear="all"/></div>
 <?	  } ?>
 
-      </tr></table>
-
-	  <p>&nbsp;</p>
-
-	  <div class="report-content">
-		<p>I built birdWalker as a way to collect, organize, and present
-		  my birding field notes. I wanted to be able to keep track of
-		  year, county, and life lists without doing very much
-          record-keeping by hand.</p>
-
-		<p>If you have bird sightings that you'd like to report,
-		  please take a look at Cornell University's excellent <a href="http://www.ebird.com/">eBird</a> site.</p>
-
-		<p>- Bill Walker</p>
-	  </div>
-
-	  <div class=heading>References</div>
-
-	  <DIV CLASS="report-content">
-		<P>
-		  <A HREF="http://www.nmt.edu/~shipman/z/nom/6home.html">
-			<I>A robust bird code system: the six-letter code</I>, John Shipman<BR/>
-			http://www.nmt.edu/~shipman/z/nom/6home.html
-		  </A>
-		</P>
-
-		<P>
-		  <A HREF="http://www.aou.org/aou/birdlist.html">
-			Americal Ornithological Union Checklist of North American Birds<BR/>
-			http://www.aou.org/aou/birdlist.html
-		  </A>
-		</P>
-
-		<P>
-		  <A HREF="http://www.paradisebirding.com/sys-tmpl/door/">
-			Steve Shunk, Paradise Birding<BR/>
-			http://www.paradisebirding.com/sys-tmpl/door/
-		  </A>
-		</P>
-
-		<p>
-		  <a href="http://www.mbr-pwrc.usgs.gov/Infocenter/infocenter.html">
-			Patuxent Bird Identification InfoCenter<br/>
-			http://www.mbr-pwrc.usgs.gov/Infocenter/infocenter.html
-		  </a>
-		</p>
-	  </DIV>
-
-    </div>
   </body>
 </html>

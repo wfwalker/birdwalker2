@@ -16,7 +16,6 @@ require("./birdwalker.php");
 globalMenu();
 disabledBrowseButtons();
 navTrailBirds();
-pageThumbnail("select *, rand() as shuffle from sighting where Photo='1' order by shuffle");
 ?>
 
     <div class=contentright>

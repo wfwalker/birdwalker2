@@ -18,15 +18,16 @@ $speciesQuery = getSpeciesQuery();
 globalMenu();
 disabledBrowseButtons();
 navTrailBirds();
-pageThumbnail("SELECT *, rand() as shuffle FROM sighting WHERE Photo='1' ORDER BY shuffle");
 ?>
 
     <div class=contentright>
       <div class="titleblock">	  
+<?    rightThumbnailAll(); ?>
 	  <div class=pagetitle>Species</div>
-	  <div class=pagesubtitle><?= mysql_num_rows($speciesQuery) ?> Species</div>
 	  <div class=metadata>list | <a href="./speciesindexbymonth.php">by month</a> | <a href="./speciesindexbyyear.php">by year</a></div>
       </div>
+
+    <div class=heading><?= mysql_num_rows($speciesQuery) ?> Species</div>
 
 <?php formatTwoColumnSpeciesList($speciesQuery); ?>
 
