@@ -60,7 +60,7 @@ navTrailLocationDetail($siteInfo);
 
 <?    referenceURL($siteInfo);
       mapLink($siteInfo); ?>
-      <a href="./locationdetail.php?id=<?=$locationID?>">list</a> |
+      species: <a href="./locationdetail.php?id=<?=$locationID?>">list</a> |
       <a href="./locationdetail.php?view=bymonth&id=<?=$locationID?>">by month</a> |
       <a href="./locationdetail.php?view=byyear&id=<?=$locationID?>">by year</a> |
       <a href="./locationdetail.php?view=photo&id=<?=$locationID?>">photos</a>
