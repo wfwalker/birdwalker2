@@ -37,7 +37,10 @@ while($info = mysql_fetch_array($tripListQuery)) {
             <a href=\"./yeardetail.php?year=" . $thisYear . "\">" . $thisYear . "</a></td></tr>";
   }
 
-  echo "<tr><td class=firstcell><a href=\"./tripdetail.php?id=".$info["objectid"]."\">" . $info["Name"] . " (" . $info["niceDate"] . ")</a></td><td align=right>" . $info["tripCount"] . "</td></tr>";
+  echo "<tr><td class=firstcell><a href=\"./tripdetail.php?id=".$info["objectid"]."\">" . $info["Name"] . " (" . $info["niceDate"] . ")</a></td><td align=right>" . $info["tripCount"];
+  if (getEnableEdit()) { echo "\n <a href=\"./tripedit.php?id=" . $info["objectid"] . "\">edit</a>"; }
+  echo "</td></tr>";
+
   $prevYear = $thisYear;
 }
 
