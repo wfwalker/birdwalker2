@@ -8,12 +8,12 @@ $orderInfo = getOrderInfo($_GET['id']);
 $familyInfo = getFamilyInfo($_GET['id']);
 
 $tripWhereClause = "'" . $speciesInfo["Abbreviation"] . "'=sighting.SpeciesAbbreviation and sighting.TripDate=trip.Date";
-$speciesTripListQuery = getTripQuery($tripWhereClause);
+$speciesTripQuery = performQuery( "select sighting.Notes as sightingNotes, trip.*, date_format(Date, '%M %e, %Y') as niceDate from trip, sighting where " . $tripWhereClause . " order by trip.Date desc");
 $speciesTripCount = getTripCount($tripWhereClause);
 
 $locationWhereClause = " '" . $speciesInfo["Abbreviation"] . "'=sighting.SpeciesAbbreviation and sighting.LocationName=location.Name";
-$speciesLocationListQuery = getLocationQuery($locationWhereClause);
-$speciesLocationCount = getLocationCount($locationWhereClause);
+$speciesLocationListQuery = performQuery( "select distinct(location.objectid), location.* from location, sighting where " . $locationWhereClause . " order by State, County, Name");
+$speciesLocationCount = performCount("select count(distinct location.objectid) from location, sighting where " . $locationWhereClause);
 
 ?>
 
@@ -38,7 +38,7 @@ $speciesLocationCount = getLocationCount($locationWhereClause);
         </a>
       </div>
       <div class="metadata">
-	    <a href="./orderindex.php?order=<?php echo $orderInfo["objectid"] / pow(10, 9) ?>">
+	    <a href="./orderdetail.php?order=<?php echo $orderInfo["objectid"] / pow(10, 9) ?>">
 	      Order <?php echo $orderInfo["LatinName"] ?>, <?php echo $orderInfo["CommonName"] ?>
         </a>
 <?php if (strlen($speciesInfo["ReferenceURL"]) > 0) {
@@ -49,20 +49,26 @@ $speciesLocationCount = getLocationCount($locationWhereClause);
 
     <div class=sighting-notes><?php echo $speciesInfo["Notes"] ?></div>
 
+    <div class=titleblock>Seen on <?php echo $speciesTripCount ?> trips at <?php echo $speciesLocationCount ?> locations</div>
 
 <?php
   if ($speciesTripCount < 5)
   {
-	  echo "<div class=\"titleblock\">Seen on " . $speciesTripCount . " trips</div>";
-
 	  // list the trips that included this species
-	  while($tripInfo = mysql_fetch_array($speciesTripListQuery)) {
+	  while($tripInfo = mysql_fetch_array($speciesTripQuery)) {
 		  echo "<div class=firstcell><a href=\"./tripdetail.php?id=" . $tripInfo["objectid"] . "\">" . $tripInfo["Name"] . " (" . $tripInfo["niceDate"] .  ")</a></div>";
+		  echo "<div class=sighting-notes>" . $tripInfo["sightingNotes"] . "</div>";
 	  }
 
 	  echo "<div class=\"titleblock\">Seen in ". $speciesLocationCount . " locations</div>";
 
-	  formatLocationList($speciesLocationCount, $speciesLocationListQuery);
+	  $prevInfo=null;
+
+	  while($info = mysql_fetch_array($speciesLocationListQuery))
+	  {
+		  echo "<div class=firstcell><a href=\"./locationdetail.php?id=".$info["objectid"]."\">".$info["Name"]."</a></div>";
+		  $prevInfo = $info;   
+	  }
 
 	  echo "</div>";
   }

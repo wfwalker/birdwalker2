@@ -3,7 +3,7 @@
 
 require("./birdwalker.php");
 
-$locationCount = getLocationCount();
+$locationCount = performCount("select count(distinct location.objectid) from location");
 
 ?>
 
