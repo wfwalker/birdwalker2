@@ -3,8 +3,14 @@
 
 require("./birdwalker.php");
 
-performQuery("CREATE TEMPORARY TABLE tmp ( abbrev varchar(16) default NULL, tripdate date default NULL);");
-performQuery("INSERT INTO tmp SELECT SpeciesAbbreviation, MIN(TripDate) FROM sighting where Exclude!='1' GROUP BY SpeciesAbbreviation;");
+performQuery("
+    CREATE TEMPORARY TABLE tmp ( abbrev varchar(16) default NULL, tripdate date default NULL);");
+
+performQuery("
+    INSERT INTO tmp
+      SELECT SpeciesAbbreviation, MIN(TripDate)
+      FROM sighting where Exclude!='1'
+      GROUP BY SpeciesAbbreviation;");
 
 $firstSightingQuery = performQuery("SELECT
      date_format(sighting.TripDate, '%M %e, %Y') as niceDate,
