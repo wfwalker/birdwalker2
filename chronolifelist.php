@@ -73,7 +73,11 @@ while($sightingInfo = mysql_fetch_array($firstSightingQuery))
 	<td align=right><?= $counter ?></td>
     <td><a href="./speciesdetail.php?id=<?= $sightingInfo['speciesid'] ?>"><?= $sightingInfo['CommonName'] ?></a>
 
-<?	if (getEnableEdit())
+<?  if ($sightingInfo["Photo"] == "1") { ?>
+        <?= getPhotoLinkForSightingInfo($sightingInfo) ?>
+<?
+    }
+    if (getEnableEdit())
 	{ ?>
 	    <a href="./sightingedit.php?id=<?= $sightingInfo['objectid'] ?>">edit</a>
 <?  } ?>
