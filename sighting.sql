@@ -8098,7 +8098,7 @@ INSERT INTO sighting VALUES (8104,'houspa','Corpus Christi','','0','0','2004-04-
 INSERT INTO sighting VALUES (8105,'bncfly','Corpus Christi','','0','0','2004-04-15');
 INSERT INTO sighting VALUES (8106,'labwoo','Corpus Christi','','0','0','2004-04-15');
 INSERT INTO sighting VALUES (8107,'grekis','Corpus Christi','','0','0','2004-04-15');
-INSERT INTO sighting VALUES (8108,'comnig','Corpus Christi','','','1','2004-04-15');
+INSERT INTO sighting VALUES (8108,'comnig','Corpus Christi','Spotted sleeping in a tree near the picnic area where we stopped for lunch. A very lucky find.','','1','2004-04-15');
 INSERT INTO sighting VALUES (8109,'blkvul','Corpus Christi','','0','0','2004-04-15');
 INSERT INTO sighting VALUES (8110,'weskin','Corpus Christi','','','1','2004-04-15');
 INSERT INTO sighting VALUES (8111,'paibun','Corpus Christi','','0','0','2004-04-15');
@@ -9076,9 +9076,11 @@ INSERT INTO sighting VALUES (9097,'mallar','Palo Alto Duck Pond','','','','2004-
 INSERT INTO sighting VALUES (9098,'rocdov','Palo Alto Duck Pond','','','','2004-05-23');
 INSERT INTO sighting VALUES (9099,'willet','Palo Alto Duck Pond','','','','2004-05-23');
 INSERT INTO sighting VALUES (9100,'lobdow','Palo Alto Duck Pond','','','','2004-05-23');
+INSERT INTO sighting VALUES (9130,'houspa','2138 King Court','','0','0','2004-07-27');
 INSERT INTO sighting VALUES (9102,'rewbla','Palo Alto Duck Pond','','','','2004-05-23');
 INSERT INTO sighting VALUES (9103,'caltow','Palo Alto Duck Pond','','','','2004-05-23');
 INSERT INTO sighting VALUES (9104,'killde','Palo Alto Duck Pond','','','','2004-05-23');
+INSERT INTO sighting VALUES (9129,'caltow','2138 King Court','','0','0','2004-07-27');
 INSERT INTO sighting VALUES (9106,'moudov','Palo Alto Duck Pond','','','','2004-05-23');
 INSERT INTO sighting VALUES (9107,'margod','Palo Alto Duck Pond','','','','2004-05-23');
 INSERT INTO sighting VALUES (9108,'lobcur','Palo Alto Duck Pond','','','','2004-05-23');
@@ -9099,3 +9101,9 @@ INSERT INTO sighting VALUES (9123,'rudduc','Palo Alto Duck Pond','','','','2004-
 INSERT INTO sighting VALUES (9124,'lessca','Palo Alto Duck Pond','','','','2004-05-23');
 INSERT INTO sighting VALUES (9125,'doccor','Palo Alto Duck Pond','','','','2004-05-23');
 INSERT INTO sighting VALUES (9126,'houfin','Palo Alto Duck Pond','','','','2004-05-23');
+INSERT INTO sighting VALUES (9131,'houfin','2138 King Court','','0','0','2004-07-27');
+INSERT INTO sighting VALUES (9132,'lesgol','2138 King Court','','0','0','2004-07-27');
+INSERT INTO sighting VALUES (9133,'moudov','2138 King Court','','0','0','2004-07-27');
+INSERT INTO sighting VALUES (9134,'wesjay','2138 King Court','','0','0','2004-07-27');
+INSERT INTO sighting VALUES (9135,'chbchi','2138 King Court','','0','0','2004-07-27');
+INSERT INTO sighting VALUES (9136,'annhum','2138 King Court','','0','0','2004-07-27');
