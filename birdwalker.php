@@ -2,7 +2,7 @@
 
 function navigationHeader()
 {
-  echo "
+	echo "
 
 	<div class=\"contentleft\">
       <div style=\"height: 50px\"><a href=\"http://www.shout.net/~walker/\">birdWalker</div>
@@ -11,7 +11,7 @@ function navigationHeader()
 	  <div class=\"leftsubtitle\"><a href=\"./locationindex.php\">Location Reports</a></div>
 	  <div class=\"leftsubtitle\"><a href=\"./countyindex.php\">County Reports</a></div>
 	</div>
-";
+ ";
 }
 
 //
@@ -23,17 +23,17 @@ function navigationHeader()
  */
 function selectDatabase()
 {
-  // MySQL info variables
-  $mysql["host"] = "localhost";
-  $mysql["user"] = "birdwalker";
-  $mysql["pass"] = "birdwalker";
-  $mysql["database"] = "birdwalker";
+	// MySQL info variables
+	$mysql["host"] = "localhost";
+	$mysql["user"] = "birdwalker";
+	$mysql["pass"] = "birdwalker";
+	$mysql["database"] = "birdwalker";
 
-  // Connect to MySQL
-  mysql_connect($mysql["host"], $mysql["user"], $mysql["pass"]) or die("MySQL connection failed. Some info is wrong");
+	// Connect to MySQL
+	mysql_connect($mysql["host"], $mysql["user"], $mysql["pass"]) or die("MySQL connection failed. Some info is wrong");
 
-  // Select database
-  mysql_select_db($mysql["database"]) or die("Could not connect to DataBase");
+	// Select database
+	mysql_select_db($mysql["database"]) or die("Could not connect to DataBase");
 }
 
 /**
@@ -41,9 +41,9 @@ function selectDatabase()
  */
 function performQuery($queryString)
 {
-  selectDatabase();
-  $theQuery = mysql_query($queryString) or die("query error " . $queryString);
-  return $theQuery;
+	selectDatabase();
+	$theQuery = mysql_query($queryString) or die("query error " . $queryString);
+	return $theQuery;
 }
 
 /**
@@ -51,10 +51,10 @@ function performQuery($queryString)
  */
 function performCount($queryString)
 {
-  selectDatabase();
-  $theQuery = mysql_query($queryString) or die("count query error " . $queryString);
-  $theCount = mysql_fetch_array($theQuery);
-  return $theCount[0];
+	selectDatabase();
+	$theQuery = mysql_query($queryString) or die("count query error " . $queryString);
+	$theCount = mysql_fetch_array($theQuery);
+	return $theCount[0];
 }
 
 /**
@@ -62,10 +62,10 @@ function performCount($queryString)
  */
 function performOneRowQuery($queryString)
 {
-  selectDatabase();
-  $theQuery = mysql_query($queryString) or die("single row query error " . $queryString);
-  $theFirstRow = mysql_fetch_array($theQuery);
-  return $theFirstRow;
+	selectDatabase();
+	$theQuery = mysql_query($queryString) or die("single row query error " . $queryString);
+	$theFirstRow = mysql_fetch_array($theQuery);
+	return $theFirstRow;
 }
 
 function bitToString($aBitVector, $anIndex)
@@ -73,11 +73,33 @@ function bitToString($aBitVector, $anIndex)
 	if (($aBitVector >> $anIndex) & 1) { return "X"; } else { return "&nbsp;" ; }
 }
 
+/**
+ * Find the first sighting for each species.
+ */
 function getFirstSightings()
 {
 	$firstSightings = null;
 
 	$firstSightingQuery = performQuery("select objectid, min(TripDate) as firstDate from sighting where Exclude='0' group by SpeciesAbbreviation order by firstDate");
+
+	while ($info = mysql_fetch_array($firstSightingQuery))
+	{
+		$firstSightingID = $info["objectid"];
+		$firstSightingDate = $info["firstDate"];
+		$firstSightings[$firstSightingID] = $firstSightingDate;
+	}
+
+	return $firstSightings;
+}
+
+/**
+ * Find the first sighting for each species in the given year
+ */
+function getFirstYearSightings($theYear)
+{
+	$firstSightings = null;
+
+	$firstSightingQuery = performQuery("select objectid, min(TripDate) as firstDate from sighting where Exclude='0' and year(TripDate)='" . $theYear . "' group by SpeciesAbbreviation order by firstDate");
 
 	while ($info = mysql_fetch_array($firstSightingQuery))
 	{
@@ -99,12 +121,12 @@ function getFirstSightings()
  */
 function getSpeciesCount($whereClause = "species.Abbreviation=sighting.SpeciesAbbreviation and sighting.Exclude=0")
 {
-  $speciesCountQueryString =
-    "SELECT count(distinct species.objectid)
+	$speciesCountQueryString =
+		"SELECT count(distinct species.objectid)
      FROM species, sighting
      where " . $whereClause;
 
-  return performCount($speciesCountQueryString);
+	return performCount($speciesCountQueryString);
 }
 
 /**
@@ -112,15 +134,15 @@ function getSpeciesCount($whereClause = "species.Abbreviation=sighting.SpeciesAb
  */
 function getSpeciesQuery($whereClause = "species.Abbreviation=sighting.SpeciesAbbreviation and sighting.Exclude=0", $orderClause = "species.objectid")
 {
-  $speciesQueryString =
-    "SELECT distinct species.objectid, species.CommonName " . $additionalFields . "
+	$speciesQueryString =
+		"SELECT distinct species.objectid, species.CommonName " . $additionalFields . "
      FROM species, sighting
      where " . $whereClause . "
      order by " . $orderClause;
 
-  $speciesQuery = performQuery($speciesQueryString);
+	$speciesQuery = performQuery($speciesQueryString);
 
-  return $speciesQuery;
+	return $speciesQuery;
 }
 
 /**
@@ -128,12 +150,12 @@ function getSpeciesQuery($whereClause = "species.Abbreviation=sighting.SpeciesAb
  */
 function getFancySpeciesCount($whereClause = "species.Abbreviation=sighting.SpeciesAbbreviation")
 {
-  $speciesCountQueryString =
-    "SELECT count(distinct species.objectid)
+	$speciesCountQueryString =
+		"SELECT count(distinct species.objectid)
      FROM species, sighting, location
      where " . $whereClause;
 
-  return performCount($speciesCountQueryString);
+	return performCount($speciesCountQueryString);
 }
 
 /**
@@ -141,15 +163,32 @@ function getFancySpeciesCount($whereClause = "species.Abbreviation=sighting.Spec
  */
 function getFancySpeciesQuery($whereClause = "species.Abbreviation=sighting.SpeciesAbbreviation", $orderClause = "species.objectid", $additionalFields = "")
 {
-  $speciesQueryString =
-    "SELECT distinct species.objectid, species.CommonName " . $additionalFields . "
+	$speciesQueryString =
+		"SELECT distinct species.objectid, species.CommonName " . $additionalFields . "
      FROM species, sighting, location
      where " . $whereClause . "
      order by " . $orderClause;
 
-  $speciesQuery = performQuery($speciesQueryString);
+	$speciesQuery = performQuery($speciesQueryString);
 
-  return $speciesQuery;
+	return $speciesQuery;
+}
+
+function getBestTaxonomyInfo($speciesid)
+{
+	return performOneRowQuery("select * from taxonomy where objectid='" . getBestTaxonomyID($speciesid) . "'");
+}
+
+function getBestTaxonomyID($speciesid)
+{
+	if ($speciesid >= 22000000000)
+	{
+		return floor($speciesid / pow(10,7)) * pow(10, 7);
+	}
+	else
+	{
+		return floor($speciesid / pow(10,9)) * pow(10, 9);
+	}
 }
 
 /**
@@ -157,7 +196,7 @@ function getFancySpeciesQuery($whereClause = "species.Abbreviation=sighting.Spec
  */
 function getSpeciesInfo($objectid)
 {
-  return performOneRowQuery("SELECT * FROM species where objectid=" . $objectid);
+	return performOneRowQuery("SELECT * FROM species where objectid=" . $objectid);
 }
 
 function insertYearLabels()
@@ -166,61 +205,32 @@ function insertYearLabels()
 }
 
 /**
- * Show a list of species, subdivided by orders.
- */
-function formatSpeciesList($speciesCount, $speciesQuery)
-{
-  $prevOrderNum = -1;
-  $divideByOrders = ($speciesCount > 20);
-
-  while($info = mysql_fetch_array($speciesQuery))
-  {
-	$orderNum =  floor($info["objectid"] / pow(10, 9));
-
-	if ($divideByOrders && ($prevOrderNum != $orderNum))
-    {
-      $orderInfo = getOrderInfo($info["objectid"]);
-      echo "<div class=\"titleblock\">" . $orderInfo["CommonName"] . "</div>";
-    }
-
-    echo "<div class=firstcell><a href=\"./speciesdetail.php?id=".$info["objectid"]."\">".$info["CommonName"]."</a></div>";
-    $prevOrderNum = $orderNum;
-  }
-}
-
-/**
  * Show a set of sightings, species by rows, years by columns.
  */
 function formatSpeciesByYearTable($speciesCount, $gridQueryString)
 {
 	$gridQuery = performQuery($gridQueryString);
-	$divideByOrders = ($speciesCount > 30);
-	$reprintYears = 100;
 
-	echo "<table columns=10 cellpadding=0 cellspacing=0 class=\"report-content\" width=\"100%\">";
+	echo "<table columns=11 cellpadding=0 cellspacing=0 class=\"report-content\" width=\"100%\">";
 
-	echo "<tr><td width=\"20%\"></td><td class=yearcell>Species</td>"; insertYearLabels(); echo "</tr>";
+	echo "<tr><td></td>"; insertYearLabels(); echo "</tr>";
 
 	while ($info = mysql_fetch_array($gridQuery))
 	{
-		$orderNum =  floor($info["speciesid"] / pow(10, 9));
 		$theMask = $info["mask"];
 
-		echo "<tr><td class=bordered>";
-
-		if ($prevOrderNum != $orderNum) {
-			$orderInfo = getOrderInfo($info["speciesid"]); echo $orderInfo["CommonName"];
-		} else {
-			echo "&nbsp;";
+		if (getBestTaxonomyID($prevInfo["speciesid"]) != getBestTaxonomyID($info["speciesid"]))
+		{
+			$taxoInfo = getBestTaxonomyInfo($info["speciesid"]);
+			echo "<tr><td class=titleblock colspan=11>" . $taxoInfo["LatinName"] . "</td></tr>";
 		}
 
-		echo "</td>";
-		echo "<td class=bordered><a href=\"./speciesdetail.php?id=" . $info["speciesid"] . "\">" . $info["CommonName"] . "</a></td> ";
-
+		echo "<tr><td class=firstcell><a href=\"./speciesdetail.php?id=" . $info["speciesid"] . "\">" . $info["CommonName"] . "</a></td> ";
+		
 		for ($index = 1; $index <= 9; $index++) echo "<td class=bordered align=center>" . bitToString($theMask, $index) . "</td>";
 		echo "</tr>";
 
-		$prevOrderNum = $orderNum;
+		$prevInfo = $info;
 		$reprintYears++;
 	}
 
@@ -234,23 +244,19 @@ function formatLocationByYearTable($locationCount, $gridQueryString)
 {
 	$gridQuery = performQuery($gridQueryString);
 
-	echo "<table cellpadding=0 cellspacing=0 columns=10 class=\"report-content\" width=\"100%\">";
-	echo "<tr><td></td><td class=yearcell>Location</td>"; insertYearLabels(); echo "</tr>";
+	echo "<table cellpadding=0 cellspacing=0 columns=11 class=\"report-content\" width=\"100%\">";
+	echo "<tr><td></td>"; insertYearLabels(); echo "</tr>";
 
 	while ($info = mysql_fetch_array($gridQuery))
 	{
 		$county = $info["County"];
 		$theMask = $info["mask"];
 
-		echo "<tr><td class=bordered>";
-
 		if ($prevCounty != $county) {
-			echo $county;
-		} else {
-			echo "&nbsp;";
+			echo "<tr><td class=titleblock colspan=11>" .  $county . " County</td></tr>";
 		}
 
-		echo "</td><td class=bordered><a href=\"./locationdetail.php?id=" . $info["locationid"] . "\">" . $info["LocationName"] . "</a></td> ";
+		echo "<tr><td class=firstcell><a href=\"./locationdetail.php?id=" . $info["locationid"] . "\">" . $info["LocationName"] . "</a></td> ";
 		for ($index = 1; $index <= 9; $index++) echo "<td class=bordered align=center>" . bitToString($theMask, $index) . "</td>";
 		echo "</tr>";
 
@@ -286,11 +292,11 @@ function getFamilyInfo($objectid)
  */
 function getTaxonomyInfo($objectid, $blankDigits)
 {
-  $shift = pow(10, $blankDigits - 1);
-  $taxonomyID = floor($objectid / $shift) * $shift;
-  $taxonomyQueryString = "SELECT * FROM taxonomy where objectid=" . $taxonomyID;
+	$shift = pow(10, $blankDigits - 1);
+	$taxonomyID = floor($objectid / $shift) * $shift;
+	$taxonomyQueryString = "SELECT * FROM taxonomy where objectid=" . $taxonomyID;
 
-  return performOneRowQuery($taxonomyQueryString);
+	return performOneRowQuery($taxonomyQueryString);
 }
 
 //
@@ -302,37 +308,37 @@ function getTaxonomyInfo($objectid, $blankDigits)
  */
 function getTripQuery($whereClause = "")
 {
-  if (strlen($whereClause) > 0)
-  {
-    $tripListQueryString = "select distinct trip.objectid, trip.*, date_format(Date, '%M %e, %Y') as niceDate, count(distinct sighting.SpeciesAbbreviation) as tripCount from trip, sighting where " . $whereClause . " group by trip.Date order by trip.Date desc";
-  }
-  else
-  {
-    $tripListQueryString = "select trip.*, date_format(Date, '%M %e, %Y') as niceDate, count(distinct sighting.SpeciesAbbreviation) as tripCount from trip, sighting where sighting.TripDate=trip.Date group by trip.Date order by trip.Date desc";
-  }
+	if (strlen($whereClause) > 0)
+	{
+		$tripListQueryString = "select distinct trip.objectid, trip.*, date_format(Date, '%M %e, %Y') as niceDate, count(distinct sighting.SpeciesAbbreviation) as tripCount from trip, sighting where " . $whereClause . " group by trip.Date order by trip.Date desc";
+	}
+	else
+	{
+		$tripListQueryString = "select trip.*, date_format(Date, '%M %e, %Y') as niceDate, count(distinct sighting.SpeciesAbbreviation) as tripCount from trip, sighting where sighting.TripDate=trip.Date group by trip.Date order by trip.Date desc";
+	}
 
-  return performQuery($tripListQueryString);
+	return performQuery($tripListQueryString);
 }
 /**
  * Select the birdwalker database, count trips according to where clause, return the count.
  */
 function getTripCount($whereClause = "")
 {
-  if (strlen($whereClause) > 0)
-  {
-    $tripCountQueryString = "select count(distinct trip.objectid) from trip, sighting where " . $whereClause;
-  }
-  else
-  {
-    $tripCountQueryString = "select count(distinct trip.objectid) from trip";
-  }
+	if (strlen($whereClause) > 0)
+	{
+		$tripCountQueryString = "select count(distinct trip.objectid) from trip, sighting where " . $whereClause;
+	}
+	else
+	{
+		$tripCountQueryString = "select count(distinct trip.objectid) from trip";
+	}
 
-  return performCount($tripCountQueryString);
+	return performCount($tripCountQueryString);
 }
 
 function getTripInfo($objectid)
 {
-  return performOneRowQuery("SELECT *, date_format(Date, '%W,  %M %e, %Y') as niceDate FROM trip where objectid=" . $objectid);
+	return performOneRowQuery("SELECT *, date_format(Date, '%W,  %M %e, %Y') as niceDate FROM trip where objectid=" . $objectid);
 }
 
 
@@ -346,16 +352,16 @@ function getTripInfo($objectid)
  */
 function getLocationQuery($whereClause = "")
 {
-  if (strlen($whereClause) > 0)
-  {
-    $locationListQueryString = "select distinct(location.objectid), location.* from location, sighting where " . $whereClause . " order by State, County, Name";
-  }
-  else
-  {
-    $locationListQueryString = "select * from location order by State, County, Name";
-  }
+	if (strlen($whereClause) > 0)
+	{
+		$locationListQueryString = "select distinct(location.objectid), location.* from location, sighting where " . $whereClause . " order by State, County, Name";
+	}
+	else
+	{
+		$locationListQueryString = "select * from location order by State, County, Name";
+	}
 
-  return performQuery($locationListQueryString);
+	return performQuery($locationListQueryString);
 }
 
 /**
@@ -363,40 +369,40 @@ function getLocationQuery($whereClause = "")
  */
 function getLocationCount($whereClause = "")
 {
-  if (strlen($whereClause) > 0)
-  {
-    $locationCountQueryString = "select count(distinct location.objectid) from location, sighting where " . $whereClause;
-  }
-  else
-  {
-    $locationCountQueryString = "select count(distinct location.objectid) from location";
-  }
+	if (strlen($whereClause) > 0)
+	{
+		$locationCountQueryString = "select count(distinct location.objectid) from location, sighting where " . $whereClause;
+	}
+	else
+	{
+		$locationCountQueryString = "select count(distinct location.objectid) from location";
+	}
 
-  return performCount($locationCountQueryString);
+	return performCount($locationCountQueryString);
 }
 
 function getLocationInfo($objectid)
 {
-  return performOneRowQuery("SELECT * FROM location where objectid=" . $objectid);
+	return performOneRowQuery("SELECT * FROM location where objectid=" . $objectid);
 }
 
 function formatLocationList($locationListCount, $locationListQuery)
 {
-  $prevInfo=null;
-  $divideByCounties = ($locationListCount > 20);
+	$prevInfo=null;
+	$divideByCounties = ($locationListCount > 20);
 
-  while($info = mysql_fetch_array($locationListQuery))
-  {
-    if ($divideByCounties && (($prevInfo["State"] != $info["State"]) || ($prevInfo["County"] != $info["County"])))
-    {
-	  echo "<div class=\"titleblock\">
+	while($info = mysql_fetch_array($locationListQuery))
+	{
+		if ($divideByCounties && (($prevInfo["State"] != $info["State"]) || ($prevInfo["County"] != $info["County"])))
+		{
+			echo "<div class=\"titleblock\">
               <a href=\"./countyindex.php?county=" . urlencode($info["County"]) . "\">" . $info["County"] . " County</a>,
               <a href=\"./stateindex.php?state=" . urlencode($info["State"]) . "\">" . $info["State"] . "</a></div>";
-    }
+		}
 
-    echo "<div class=firstcell><a href=\"./locationdetail.php?id=".$info["objectid"]."\">".$info["Name"]."</a></div>";
-    $prevInfo = $info;   
-  }
+		echo "<div class=firstcell><a href=\"./locationdetail.php?id=".$info["objectid"]."\">".$info["Name"]."</a></div>";
+		$prevInfo = $info;   
+	}
 }
 
 ?>
