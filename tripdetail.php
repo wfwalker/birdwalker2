@@ -117,7 +117,7 @@ else if ($view="list")
  ?>
 
     <div class="heading">
-        <a href="./locationdetail.php?id=<?= $locationInfo["objectid"]?>"><?= $locationInfo["Name"] ?></a>,
+        <a href="./locationdetail.php?locationid=<?= $locationInfo["objectid"]?>"><?= $locationInfo["Name"] ?></a>,
         <?= $tripLocationCount ?> species<? if ($locationFirstSightings > 0) { ?>,
         <?= $locationFirstSightings ?> life bird<? if ($locationFirstSightings > 1) echo 's'; } ?>
     </div>

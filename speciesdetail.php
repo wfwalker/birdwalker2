@@ -12,7 +12,7 @@ $speciesID = param($_GET, 'speciesid', 22330150100);
 $speciesInfo = getSpeciesInfo($speciesID);
 
 $locationQuery = new LocationQuery;
-$locationQuery->setSpeciesID($speciesID);
+$locationQuery->setFromRequest($_GET);
 $extrema = $locationQuery->findExtrema();
 
 if ($view != "photo")

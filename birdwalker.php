@@ -860,7 +860,7 @@ function getBestTaxonomyLink($speciesid)
 
 	if ($speciesid >= 22000000000)
 	{
-		return "<a href=\"./familydetail.php?order=" . floor($speciesid / pow(10,7)) . "\">" .
+		return "<a href=\"./familydetail.php?family=" . floor($speciesid / pow(10,7)) . "\">" .
 			$taxoInfo["LatinName"] . 
 			"</a>";
 	}
