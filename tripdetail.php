@@ -85,7 +85,6 @@ if ($view == "photo")
 }
 else if ($view == "map")
 {
-	countHeading($locationCount, "location");
 	$map = new Map("./tripdetail.php");
 	$map->setFromRequest($_GET);
 	$map->draw();

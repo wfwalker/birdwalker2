@@ -79,7 +79,6 @@ navTrailSpecies($speciesID);
 		  doubleCountHeading($tripCount, "trip", $locationCount, "location");
 		  $locationQuery->formatLocationByYearTable();
 	  } else if ($view == "map") {
-		  countHeading($locationCount, "location");
 		  $map = new Map("./speciesdetail.php");
 		  //		echo "<br clear=\"all\">";
 		  $map->setFromRequest($_GET);
