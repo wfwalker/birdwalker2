@@ -54,23 +54,19 @@ while($info = mysql_fetch_array($photoSpecies))
 	{
 		$taxoInfo = getBestTaxonomyInfo($info["objectid"]); ?>
 		<div class="subheading"><?= strtolower($taxoInfo["LatinName"]) ?></div>
-<?	}
+<?	} ?>
 
-	if ($info["photoCount"] > 1)
-	{ ?>
-        <div>
-            <a href="./speciesdetail.php?view=photo&speciesid=<?= $info["objectid"] ?>">
-                 <?= $info["CommonName"] ?>
-            </a> (<?= $info["photoCount"] ?>)
-			<? if (strtotime($info["latestPhoto"]) > $thresholdTime) echo "NEW"; ?>
-        </div>
-<?	}
-	else
-	{ ?>
-        <div><a href="./speciesdetail.php?view=photo&id=<?= $info["objectid"] ?>"><?= $info["CommonName"] ?></a></div>
-<?	}
-		
-	$prevInfo = $info;
+    <div>
+        <a href="./speciesdetail.php?view=photo&speciesid=<?= $info["objectid"] ?>">
+             <?= $info["CommonName"] ?>
+        </a>
+        <? if (strtotime($info["latestPhoto"]) > $thresholdTime) echo "NEW"; ?>
+
+<?  if ($info["photoCount"] > 1) echo "(" . $info["photoCount"] . ")"; ?>
+
+	</div>
+
+<?	$prevInfo = $info;
     $counter--;
     if ($counter == 0) { ?></td><td width="50%" class=report-content> <? }
 } ?>
