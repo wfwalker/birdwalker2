@@ -16,6 +16,7 @@ $postSightingID = $_POST['id'];
 // The SAVE and NEW buttons determine whether to update or createa a new record
 $save = $_POST['Save'];
 $new = $_POST['New'];
+$delete = $_POST['Delete'];
 
 // if NEW, set the POST id to a new unique sighting objectid
 if ($new == "New") { $postSightingID = 1 + performCount("select max(objectid) from sighting"); }
@@ -45,6 +46,9 @@ if ($postSightingID != "") {
 					 "', '" . $exclude . 
 					 "', '" . $photo . 
 					 "', '" . $tripDate . "');");
+	} else if ($delete != "") {
+		performQuery("delete from sighting where objectid='" . $postSightingID . "'");
+		$postSightingID--;
 	}
 
 	$sightingID = $postSightingID;			   
@@ -101,6 +105,10 @@ pageThumbnail("select * from sighting where Photo='1' and objectid='" . $sightin
 
 <table class=report-content columns=2 width=100%>
   <tr>
+	<td></td>
+	<td><input type="submit" name="New" value="New"/></td>
+  </tr>
+  <tr>
 	<td class=fieldlabel>Abbreviation</td>
 	<td><input type="text" name="SpeciesAbbreviation" value="<?= $sightingInfo["SpeciesAbbreviation"] ?>" size=6/></td>
   </tr>
@@ -136,9 +144,11 @@ pageThumbnail("select * from sighting where Photo='1' and objectid='" . $sightin
   </tr>
   <tr>
 	<td><input type="hidden" name="id" value="<?= $sightingID ?>"/></td>
-	<td><input type="submit" name="Save" value="Save"/><input type="submit" name="New" value="New"/></td>
+	<td><input type="submit" name="Save" value="Save"/></td>
   </tr>
 </table>
+
+<p><input type="submit" name="Delete" value="Delete"/></p>
 
 </form>
 
