@@ -64,16 +64,9 @@ navTrailSpecies($speciesID);
 		<?= $speciesTripCount ?> trips, <?= $speciesLocationCount ?> locations
     </div>
 
-<?  $gridQueryString="
-              SELECT distinct(LocationName), County, State,
-                location.objectid as locationid, bit_or(1 << month(TripDate)) as mask
-                FROM sighting, location
-                WHERE sighting.LocationName=location.Name
-                AND sighting.SpeciesAbbreviation='" . $speciesInfo["Abbreviation"] . "'
-                GROUP BY sighting.LocationName
-                ORDER BY location.State, location.County, location.Name;";
-
-    formatLocationByMonthTable($gridQueryString, "./sightinglist.php?speciesid=" . $speciesID . "&"); ?>
+<? formatLocationByMonthTable(
+    "WHERE sighting.LocationName=location.Name AND sighting.SpeciesAbbreviation='" . $speciesInfo["Abbreviation"] . "'",
+    "./sightinglist.php?speciesid=" . $speciesID . "&"); ?>
 
 </body>
 </html>

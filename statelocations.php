@@ -27,15 +27,14 @@ navTrailLocations($items);
 
     <div class=contentright>
       <div class="titleblock">	  
-<?    rightThumbnailState("$abbrev"); ?>
-	<div class=pagetitle><?= $stateName ?></div>
-	  <div class=pagesubtitle><?= mysql_num_rows($locationQuery) ?> Locations</div>
-      <div class=metadata>
-        <? stateViewLinks($abbrev) ?>
-      </div>
+<?      rightThumbnailState("$abbrev"); ?>
+        <div class=pagetitle><?= $stateName ?></div>
+        <div class=metadata>
+          <? stateViewLinks($abbrev) ?>
+        </div>
+    </div>
 
-
-      </div>
+<div class=heading><?= mysql_num_rows($locationQuery) ?> Locations</div>
 
 <?php formatTwoColumnLocationList($locationQuery); ?>
 

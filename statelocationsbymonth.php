@@ -28,26 +28,18 @@ navTrailLocations($items);
       <div class="titleblock">	  
 <?    rightThumbnailState("$abbrev"); ?>
 	  <div class=pagetitle><?= $stateName ?></div>
-        <div class=pagesubtitle><?= $locationCount ?> Locations</div>
       <div class=metadata>
         <? stateViewLinks($abbrev) ?>
       </div>
+    </div>
 
-      </div>
+<div class=heading><?= $locationCount ?> Locations</div>
 
 <table columns=10 class="report-content" width="100%">
 
-<?
-$gridQueryString="
-    SELECT DISTINCT(LocationName), County, State, location.objectid AS locationid, bit_or(1 << month(TripDate)) AS mask
-      FROM sighting, location
-      WHERE sighting.LocationName=location.Name AND State='" . $abbrev . "'
-      GROUP BY sighting.LocationName
-      ORDER BY location.State, location.County, location.Name;";
-
-formatLocationByMonthTable($gridQueryString, "./specieslist.php?");
-
-?>
+<? formatLocationByMonthTable(
+    "WHERE sighting.LocationName=location.Name AND State='" . $abbrev . "'",
+    "./specieslist.php?"); ?>
 
 </table>
 

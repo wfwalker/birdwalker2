@@ -28,12 +28,12 @@ navTrailLocations($items);
       <div class="titleblock">	  
 <?    rightThumbnailState("$abbrev"); ?>
 	  <div class=pagetitle><?= $stateName ?></div>
-        <div class=pagesubtitle><?= $locationCount ?> Locations</div>
       <div class=metadata>
         <? stateViewLinks($abbrev) ?>
       </div>
+    </div>
 
-      </div>
+<div class=heading><?= $locationCount ?> Locations</div>
 
 <table columns=10 class="report-content" width="100%">
 

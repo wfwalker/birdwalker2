@@ -39,10 +39,10 @@ navTrailCounty($abbrev, $county);
 <table columns=10 class="report-content" width="100%">
 
 <?
-$gridQueryString="select distinct(LocationName), County, State, location.objectid as locationid, bit_or(1 << month(TripDate)) as mask from sighting, location where sighting.LocationName=location.Name and County='" . $county . "' and State='" . $abbrev . "' group by sighting.LocationName order by location.State, location.County, location.Name;";
-
-formatLocationByMonthTable($gridQueryString, "./specieslist.php?", false);
-
+formatLocationByMonthTable(
+    "WHERE sighting.LocationName=location.Name and County='" . $county . "' and State='" . $abbrev . "'",
+    "./specieslist.php?",
+    false);
 ?>
 
 </table>

@@ -628,9 +628,16 @@ function formatLocationByYearTable($gridQueryString, $urlPrefix, $countyHeadings
 /**
  * Show locations as rows, months as columns
  */
-function formatLocationByMonthTable($gridQueryString, $urlPrefix, $countyHeadingsOK = true)
+function formatLocationByMonthTable($whereClause, $urlPrefix, $countyHeadingsOK = true)
 {
 	$lastStateHeading="";
+    $gridQueryString="
+      SELECT distinct(LocationName), County, State, location.objectid AS locationid, bit_or(1 << month(TripDate)) AS mask
+        FROM sighting, location " .
+        $whereClause . "
+        GROUP BY sighting.LocationName
+        ORDER BY location.State, location.County, location.Name;";
+
 	$gridQuery = performQuery($gridQueryString); ?>
 
     <table cellpadding=0 cellspacing=0 cols=11 class="report-content" width="100%">
