@@ -33,12 +33,12 @@ $sightingCount = performCount("select count(*) from sighting");
 
 <div class="contentright">
 <div class="titleblock">
+<?php if ($sightingInfo["Photo"] == "1") { echo getThumbForSightingInfo($sightingInfo); } ?>
 	  <div class=pagetitle> <?php echo $speciesInfo["CommonName"] ?></div>
       <div class=pagesubtitle><?php echo $tripInfo["niceDate"] ?></div>
       <div class=metadata><?php echo $locationInfo["County"] ?> County, <?php echo getStateNameForAbbreviation($locationInfo["State"]) ?></div>
 </div>
 
-<?php if ($sightingInfo["Photo"] == "1") { echo "<a href=\"". getPhotoURLForSightingInfo($sightingInfo) . "\"><img src=\"" . getPhotoThumbURLForSightingInfo($sightingInfo) . "\"></a>"; } ?>
 
 <table class=report-content columns=2 width=100%>
   <tr><td class=titleblock colspan=2>Sighting</td></tr>

@@ -16,7 +16,6 @@ $speciesLocationListQuery = performQuery( "select distinct(location.objectid), l
 $speciesLocationCount = performCount("select count(distinct location.objectid) from location, sighting where " . $locationWhereClause);
 
 $photoQuery = performQuery("select * from sighting where SpeciesAbbreviation='" . $speciesInfo["Abbreviation"] . "' and Photo='1' order by TripDate desc");
-//echo "select * from sighting where SpeciesAbbreviation='" . $speciesInfo["Abbreviation"] . "' and Photo='1'";
 
 ?>
 
@@ -33,7 +32,7 @@ $photoQuery = performQuery("select * from sighting where SpeciesAbbreviation='" 
 
   <div class=contentright>
 	<div class="titleblock">
-<?php if ($photoInfo = mysql_fetch_array($photoQuery)){ echo "<img align=right src=\"" . getPhotoThumbURLForSightingInfo($photoInfo) . "\">"; } ?>
+<?php if ($photoInfo = mysql_fetch_array($photoQuery)){ echo getThumbForSightingInfo($photoInfo); } ?>
       <div class="pagetitle"><?php echo $speciesInfo["CommonName"] ?></div>
       <div class="pagesubtitle"><?php echo $speciesInfo["LatinName"] ?></div>
       <div class="metadata">

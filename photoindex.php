@@ -29,7 +29,7 @@ $photoQuery = performQuery("select sighting.*, species.CommonName, date_format(s
 
 
 while($info = mysql_fetch_array($photoQuery)) {
-	echo "<tr><td><a href=\"./photodetail.php?id=" . $info["objectid"] . "\"><img src=\"" . getPhotoThumbURLForSightingInfo($info) . "\" align=right></td>";
+	echo "\n<tr><td>" . getThumbForSightingInfo($info) . "</td>";
 	echo "<td class=report-content valign=top>" . $info["CommonName"] . "<br/>";
 	echo $info["niceDate"] . "<br/>";
 	echo $info["LocationName"] .  "<br/>";

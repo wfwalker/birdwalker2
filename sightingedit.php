@@ -75,7 +75,7 @@ $locationList = performQuery("select Name, objectid from location");
 
 <div class="contentright">
 <div class="titleblock">
-<?php if ($sightingInfo['Photo'] == '1') { echo "<img align=right src=\"" . getPhotoThumbURLForSightingInfo($sightingInfo) . "\">"; } ?>
+<?php if ($sightingInfo["Photo"] == "1") { echo getThumbForSightingInfo($sightingInfo); } ?>
 	  <div class=pagetitle><a href="./speciesdetail.php?id=<?php echo $speciesInfo["objectid"] ?>"><?php echo $speciesInfo["CommonName"] ?></a></div>
       <div class=pagesubtitle><a href="./tripdetail.php?id=<?php echo $tripInfo["objectid"] ?>"><?php echo $tripInfo["niceDate"] ?></div>
       <div class=metadata>
