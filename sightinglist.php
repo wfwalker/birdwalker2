@@ -10,7 +10,10 @@ $month = $_GET["month"];
 $county = $_GET["county"];
 $state = $_GET["state"];
 
-$sightingListQueryString = "SELECT date_format(sighting.TripDate, '%M %e, %Y') as niceDate, sighting.*, species.CommonName, species.objectid as speciesid, trip.objectid as tripid, location.County, location.State FROM sighting, species, location, trip WHERE species.Abbreviation=sighting.SpeciesAbbreviation AND location.Name=sighting.LocationName AND trip.Date=sighting.TripDate ";
+$sightingListQueryString = "
+    SELECT date_format(sighting.TripDate, '%M %e, %Y') AS niceDate, sighting.*, species.CommonName, species.objectid AS speciesid, trip.objectid AS tripid, location.County, location.State
+      FROM sighting, species, location, trip
+      WHERE species.Abbreviation=sighting.SpeciesAbbreviation AND location.Name=sighting.LocationName AND trip.Date=sighting.TripDate ";
 
 if ($speciesid !="") {
 	$sightingListQueryString = $sightingListQueryString . " AND species.objectid=" . $speciesid;
@@ -49,7 +52,7 @@ if ($year !="") {
 	}
 }
 
-$sightingListQueryString = $sightingListQueryString . " order by TripDate, LocationName;";
+$sightingListQueryString = $sightingListQueryString . " order by sighting.TripDate desc, sighting.LocationName;";
 
 $sightingListQuery = performQuery($sightingListQueryString);
 ?>
