@@ -387,3 +387,4 @@ INSERT INTO trip VALUES (387,'Steve Shunk','','Wings over Monterey','<p>The weat
 INSERT INTO trip VALUES (388,'Mary and Bill','','Watching the feeders','','2004-12-31');
 INSERT INTO trip VALUES (389,'Anne Hanson','','Survey Bair Island','We volunteered to help out with an SFBBO survey of plant and bird populations on Bair Island. What a cool experience!','2005-01-22');
 INSERT INTO trip VALUES (390,'Mary','','Rainy Day At Home','Mary found unprecedented numbers of passerines at our house on this rainy day','2005-01-26');
+INSERT INTO trip VALUES (391,'Bill','','Morning Photo Safari','','2005-02-04');
