@@ -31,12 +31,7 @@ pageThumbnail("select sighting.*, rand() as shuffle from sighting, location wher
         <div class=pagetitle><?= $stateName ?></div>
         <div class=pagesubtitle> <?= $stateListCount ?> species</div>
       <div class=metadata>
-        locations:
-        <a href="./statelocations.php?state=<?= $abbrev ?>">list</a> |
-	    <a href="./statelocationsbyyear.php?state=<?= $abbrev ?>">by year</a>
-        species:	
-        <a href="./statespecies.php?state=<?= $abbrev ?>">list</a> |
-	    by year
+        <? stateViewLinks($abbrev) ?>
       </div>
       </div>
 
