@@ -51,7 +51,7 @@ disabledBrowseButtons();
 
 		  <div class="titleblock">
               <span class="pagetitle">
-                  <a href="./tripdetail.php?tripid=<?=$info["objectid"]?>"/>
+                  <a href="./tripdetail.php?tripid=<?=$info["objectid"]?>">
 <?                    rightThumbnail("SELECT * FROM sighting WHERE Photo='1' AND TripDate='" . $info["Date"] . "' LIMIT 1", false); ?>
                       <?= $info["Name"] ?>
                   </a>
@@ -64,6 +64,13 @@ disabledBrowseButtons();
 		  <p>&nbsp;</p>
 
 <?	  } ?>
+
+   valid <a href="http://validator.w3.org/check/referer">XHTML 1.1</a><br>
+   valid <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS 2.0</a><br>
+
+   </div>
+
+
 
   </body>
 </html>
