@@ -747,7 +747,7 @@ function formatLocationByYearTable($locationQuery, $urlPrefix, $countyHeadingsOK
 
 		<tr>
 		    <td width="40%">
-		        <a href="./locationdetail.php?id=<?= $info["locationid"] ?>"><?= $info["LocationName"] ?></a>
+		        <a href="./locationdetail.php?locationid=<?= $info["locationid"] ?>"><?= $info["LocationName"] ?></a>
             </td>
 
 <?		for ($index = 1; $index <= (1 + getLatestYear() - getEarliestYear()); $index++)
@@ -808,7 +808,7 @@ function formatLocationByMonthTable($locationQuery, $urlPrefix, $countyHeadingsO
 
 		<tr>
 		    <td>
-		        <a href="./locationdetail.php?id=<?= $info["locationid"] ?>"><?= $info["LocationName"] ?></a>
+		        <a href="./locationdetail.php?locationid=<?= $info["locationid"] ?>"><?= $info["LocationName"] ?></a>
             </td>
 
 <?		for ($index = 1; $index <= 12; $index++)
@@ -996,7 +996,7 @@ function locationBrowseButtons($url, $locationID, $viewMode)
         WHERE CONCAT(State,County,Name) < '" . $siteInfo["State"] . $siteInfo["County"] . $siteInfo["Name"] . "'
         ORDER BY CONCAT(State,County,Name) DESC LIMIT 1");
 
-	browseButtons($url . "?view=" . $viewMode . "&id=", $locationID,
+	browseButtons($url . "?view=" . $viewMode . "&locationid=", $locationID,
 				  $firstLocationID, $prevLocationID, $nextLocationID, $lastLocationID);
 }
 
@@ -1093,21 +1093,6 @@ function rightThumbnailLocation($locationName)
       true);
 }
 
-function mapLink($siteInfo)
-{
-   if ($siteInfo["Latitude"] > 0)
-   {
-	   $lat = $siteInfo["Latitude"];
-	   $long = $siteInfo["Longitude"];
-?>
-   <div>maps: 
-      <a href="http://www.mapquest.com/maps/map.adp?latlongtype=decimal&latitude=<?= $lat ?>&longitude=-<?= $long ?>">mapquest</a> |
-      <a href="http://terraserver.microsoft.com/image.aspx?Lon=-<?=$long?>&Lat=<?=$lat?>&w=1">terraserver</a> |
-      <a href="./locationmap.php?minlat=<?=$lat-0.1?>&maxlat=<?=$lat+0.1?>&minlong=<?=$long-0.1?>&maxlong=<?=$long+0.1?>">opengis</a>
-    </div>
-<? }
-}
-
 function formatTwoColumnLocationList($locationQuery, $countyHeadingsOK = true)
 {
 	$dbQuery = performQuery(
@@ -1138,7 +1123,7 @@ function formatTwoColumnLocationList($locationQuery, $countyHeadingsOK = true)
             </div>
 <?		} ?>
 
-		<div><a href="./locationdetail.php?id=<?= $info["objectid"] ?>"><?= $info["Name"] ?></a></div>
+		<div><a href="./locationdetail.php?locationid=<?= $info["objectid"] ?>"><?= $info["Name"] ?></a></div>
 
 <?		$prevInfo = $info;   
 		$counter--;
