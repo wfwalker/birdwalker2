@@ -308,3 +308,6 @@ INSERT INTO trip VALUES (307,'Mary','','Backyard','','2004-04-30');
 INSERT INTO trip VALUES (308,'FWS','','International Migratory Bird Day preview','','2004-05-18');
 INSERT INTO trip VALUES (309,'Mary and Bill','','Mount Hamilton','','2004-05-15');
 INSERT INTO trip VALUES (310,'Mary and Bill','','Strolling around the Zoo','','2004-05-08');
+INSERT INTO trip VALUES (311,'John Cang','','Bird Photography Workshop','','2004-05-23');
+INSERT INTO trip VALUES (312,'Bill Walker','','Photo Safari','','2004-05-25');
+INSERT INTO trip VALUES (313,'Bill Walker','','Photo Safari','','2004-05-19');
