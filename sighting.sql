@@ -1263,7 +1263,7 @@ INSERT INTO sighting VALUES (1262,'caltow','Stanford University','','0','0','199
 INSERT INTO sighting VALUES (1263,'coohaw','Stanford University','','0','0','1999-03-05');
 INSERT INTO sighting VALUES (1264,'norfli','Stanford University','','0','0','1999-03-05');
 INSERT INTO sighting VALUES (1265,'oaktit','Stanford University','was called Plain Titmouse at the time of sighting; during creation of this database, we updated to Oak Titmouse, based on range','1','0','1999-03-05');
-INSERT INTO sighting VALUES (1266,'orejun','Stanford University','','0','0','1999-03-05');
+INSERT INTO sighting VALUES (1266,'daejun','Stanford University','','0','0','1999-03-05');
 INSERT INTO sighting VALUES (1267,'rethaw','Stanford University','','0','0','1999-03-05');
 INSERT INTO sighting VALUES (1268,'shshaw','Stanford University','','0','0','1999-03-05');
 INSERT INTO sighting VALUES (1269,'turvul','Stanford University','','0','0','1999-03-05');
@@ -1276,7 +1276,7 @@ INSERT INTO sighting VALUES (1275,'chbchi','Stanford University','','0','0','199
 INSERT INTO sighting VALUES (1276,'grbher','Stanford University','','0','0','1999-03-18');
 INSERT INTO sighting VALUES (1277,'houfin','Stanford University','','0','0','1999-03-18');
 INSERT INTO sighting VALUES (1278,'oaktit','Stanford University','was called Plain Titmouse at the time of sighting; during creation of this database, we updated to Oak Titmouse, based on range','1','0','1999-03-18');
-INSERT INTO sighting VALUES (1279,'orejun','Stanford University','','0','0','1999-03-18');
+INSERT INTO sighting VALUES (1279,'daejun','Stanford University','','0','0','1999-03-18');
 INSERT INTO sighting VALUES (1280,'stejay','Stanford University','','0','0','1999-03-18');
 INSERT INTO sighting VALUES (1281,'whbnut','Stanford University','','0','0','1999-03-18');
 INSERT INTO sighting VALUES (1282,'yelleg','Charleston Slough','','1','0','1999-03-23');
@@ -1540,7 +1540,7 @@ INSERT INTO sighting VALUES (1539,'norhar','Lower Klamath NWR','','0','0','1999-
 INSERT INTO sighting VALUES (1540,'norpin','Lower Klamath NWR','','0','0','1999-08-19');
 INSERT INTO sighting VALUES (1541,'nrwswa','Lower Klamath NWR','','0','0','1999-08-19');
 INSERT INTO sighting VALUES (1542,'norsho','Lower Klamath NWR','','0','0','1999-08-19');
-INSERT INTO sighting VALUES (1543,'orejun','Lower Klamath NWR','','0','0','1999-08-19');
+INSERT INTO sighting VALUES (1543,'daejun','Lower Klamath NWR','','0','0','1999-08-19');
 INSERT INTO sighting VALUES (1544,'osprey','Lower Klamath NWR','','0','0','1999-08-19');
 INSERT INTO sighting VALUES (1545,'pibgre','Lower Klamath NWR','','0','0','1999-08-19');
 INSERT INTO sighting VALUES (1546,'rethaw','Lower Klamath NWR','','0','0','1999-08-19');
@@ -1720,7 +1720,7 @@ INSERT INTO sighting VALUES (1719,'margod','Point Reyes National Seashore','','0
 INSERT INTO sighting VALUES (1720,'norfli','Point Reyes National Seashore','','0','0','1999-11-13');
 INSERT INTO sighting VALUES (1721,'norhar','Point Reyes National Seashore','','0','0','1999-11-13');
 INSERT INTO sighting VALUES (1722,'norpin','Point Reyes National Seashore','','0','0','1999-11-13');
-INSERT INTO sighting VALUES (1723,'orejun','Point Reyes National Seashore','','0','0','1999-11-13');
+INSERT INTO sighting VALUES (1723,'daejun','Point Reyes National Seashore','','0','0','1999-11-13');
 INSERT INTO sighting VALUES (1724,'pagplo','Point Reyes National Seashore','Right where the Falcon Guide said it would be, in a particular field accessible through a particular gap in the fence.','0','0','1999-11-13');
 INSERT INTO sighting VALUES (1725,'pibgre','Point Reyes National Seashore','','0','0','1999-11-13');
 INSERT INTO sighting VALUES (1726,'rethaw','Point Reyes National Seashore','','0','0','1999-11-13');
@@ -2160,7 +2160,7 @@ INSERT INTO sighting VALUES (2159,'bushti','Stanford University','','0','0','200
 INSERT INTO sighting VALUES (2160,'chbchi','Stanford University','','0','0','2000-07-30');
 INSERT INTO sighting VALUES (2161,'moudov','Stanford University','','0','0','2000-07-30');
 INSERT INTO sighting VALUES (2162,'oaktit','Stanford University','was called Plain Titmouse at the time of sighting; during creation of this database, we updated to Oak Titmouse, based on range','1','0','2000-07-30');
-INSERT INTO sighting VALUES (2163,'orejun','Stanford University','','0','0','2000-07-30');
+INSERT INTO sighting VALUES (2163,'daejun','Stanford University','','0','0','2000-07-30');
 INSERT INTO sighting VALUES (2164,'reshaw','Stanford University','','0','0','2000-07-30');
 INSERT INTO sighting VALUES (2165,'buggna','Pikes Peak','','0','0','2000-08-04');
 INSERT INTO sighting VALUES (2166,'chispa','Pikes Peak','','0','0','2000-08-04');
@@ -2192,7 +2192,7 @@ INSERT INTO sighting VALUES (2191,'dowitc','Bolinas Lagoon','','1','0','2000-08-
 INSERT INTO sighting VALUES (2192,'lobcur','Bolinas Lagoon','','0','0','2000-08-26');
 INSERT INTO sighting VALUES (2193,'mallar','Bolinas Lagoon','','0','0','2000-08-26');
 INSERT INTO sighting VALUES (2194,'margod','Bolinas Lagoon','','0','0','2000-08-26');
-INSERT INTO sighting VALUES (2195,'orejun','Bolinas Lagoon','','0','0','2000-08-26');
+INSERT INTO sighting VALUES (2195,'daejun','Bolinas Lagoon','','0','0','2000-08-26');
 INSERT INTO sighting VALUES (2196,'osprey','Bolinas Lagoon','','0','0','2000-08-26');
 INSERT INTO sighting VALUES (2197,'ribgul','Bolinas Lagoon','','0','0','2000-08-26');
 INSERT INTO sighting VALUES (2198,'snoegr','Bolinas Lagoon','','0','0','2000-08-26');
@@ -2248,7 +2248,7 @@ INSERT INTO sighting VALUES (2247,'marwre','Coyote Hills','','0','0','2000-09-24
 INSERT INTO sighting VALUES (2248,'moudov','Coyote Hills','','0','0','2000-09-24');
 INSERT INTO sighting VALUES (2249,'normoc','Coyote Hills','','0','0','2000-09-24');
 INSERT INTO sighting VALUES (2250,'norpin','Coyote Hills','','0','0','2000-09-24');
-INSERT INTO sighting VALUES (2251,'orejun','Coyote Hills','','0','0','2000-09-24');
+INSERT INTO sighting VALUES (2251,'daejun','Coyote Hills','','0','0','2000-09-24');
 INSERT INTO sighting VALUES (2252,'pasfly','Coyote Hills','','0','0','2000-09-24');
 INSERT INTO sighting VALUES (2253,'pibgre','Coyote Hills','','0','0','2000-09-24');
 INSERT INTO sighting VALUES (2254,'reshaw','Coyote Hills','','0','0','2000-09-24');
@@ -2927,7 +2927,7 @@ INSERT INTO sighting VALUES (2926,'hutvir','Monte Bello Open Space Preserve','',
 INSERT INTO sighting VALUES (2927,'lesgol','Monte Bello Open Space Preserve','','0','0','2001-09-15');
 INSERT INTO sighting VALUES (2928,'moudov','Monte Bello Open Space Preserve','','0','0','2001-09-15');
 INSERT INTO sighting VALUES (2929,'oaktit','Monte Bello Open Space Preserve','','0','0','2001-09-15');
-INSERT INTO sighting VALUES (2930,'orejun','Monte Bello Open Space Preserve','','0','0','2001-09-15');
+INSERT INTO sighting VALUES (2930,'daejun','Monte Bello Open Space Preserve','','0','0','2001-09-15');
 INSERT INTO sighting VALUES (2931,'pasfly','Monte Bello Open Space Preserve','We listened to the call on the Peterson CD. We also liked the color of the underside of the bill, and the shape of the eye ring.','0','0','2001-09-15');
 INSERT INTO sighting VALUES (2932,'rethaw','Monte Bello Open Space Preserve','','0','0','2001-09-15');
 INSERT INTO sighting VALUES (2933,'ruckin','Monte Bello Open Space Preserve','','0','0','2001-09-15');
@@ -4099,7 +4099,7 @@ INSERT INTO sighting VALUES (4098,'horlar','Malheur NWR','','0','0','2002-04-21'
 INSERT INTO sighting VALUES (4099,'houfin','Malheur NWR','','0','0','2002-04-21');
 INSERT INTO sighting VALUES (4100,'moudov','Malheur NWR','','0','0','2002-04-21');
 INSERT INTO sighting VALUES (4101,'norhar','Malheur NWR','','0','0','2002-04-21');
-INSERT INTO sighting VALUES (4102,'orejun','Malheur NWR','','0','0','2002-04-21');
+INSERT INTO sighting VALUES (4102,'daejun','Malheur NWR','','0','0','2002-04-21');
 INSERT INTO sighting VALUES (4103,'prafal','Malheur NWR','','0','0','2002-04-21');
 INSERT INTO sighting VALUES (4104,'saggro','Malheur NWR','Woah. We did make it to the Lek around sunrise, and I\'ve never seen anything like that. They chased each other, they strutted, they fought, they made that weird toilet-plunger popping sound. ','0','1','2002-04-21');
 INSERT INTO sighting VALUES (4105,'sagthr','Malheur NWR','We got a couple of quick looks at this species, enough to put it on the trip list but not enough to put it on the life list. Maybe next time.','1','0','2002-04-21');
@@ -4741,7 +4741,7 @@ INSERT INTO sighting VALUES (4741,'norful','Humboldt County','','0','0','2002-10
 INSERT INTO sighting VALUES (4742,'norpin','Humboldt County','','0','0','2002-10-12');
 INSERT INTO sighting VALUES (4743,'norsho','Humboldt County','','0','0','2002-10-12');
 INSERT INTO sighting VALUES (4744,'oldsqu','Humboldt County','','1','0','2002-10-12');
-INSERT INTO sighting VALUES (4745,'orejun','Humboldt County','','0','0','2002-10-12');
+INSERT INTO sighting VALUES (4745,'daejun','Humboldt County','','0','0','2002-10-12');
 INSERT INTO sighting VALUES (4746,'osprey','Humboldt County','','0','0','2002-10-12');
 INSERT INTO sighting VALUES (4747,'pacloo','Humboldt County','','0','0','2002-10-12');
 INSERT INTO sighting VALUES (4748,'pelcor','Humboldt County','','0','0','2002-10-12');
@@ -5803,7 +5803,7 @@ INSERT INTO sighting VALUES (5803,'normoc','Cleveland National Forest','','0','0
 INSERT INTO sighting VALUES (5804,'nopowl','Cleveland National Forest','heard only','0','0','2003-03-27');
 INSERT INTO sighting VALUES (5805,'nutwoo','Cleveland National Forest','','0','0','2003-03-27');
 INSERT INTO sighting VALUES (5806,'oaktit','Cleveland National Forest','','0','0','2003-03-27');
-INSERT INTO sighting VALUES (5807,'orejun','Cleveland National Forest','','0','0','2003-03-27');
+INSERT INTO sighting VALUES (5807,'daejun','Cleveland National Forest','','0','0','2003-03-27');
 INSERT INTO sighting VALUES (5808,'purfin','Cleveland National Forest','','0','0','2003-03-27');
 INSERT INTO sighting VALUES (5809,'pygnut','Cleveland National Forest','','0','0','2003-03-27');
 INSERT INTO sighting VALUES (5810,'ruckin','Cleveland National Forest','','0','0','2003-03-27');
@@ -5965,7 +5965,7 @@ INSERT INTO sighting VALUES (5965,'orcwar','San Diego','','0','0','2003-03-29');
 INSERT INTO sighting VALUES (5966,'osprey','San Diego','','0','0','2003-03-29');
 INSERT INTO sighting VALUES (5967,'pacloo','San Diego','','0','0','2003-03-29');
 INSERT INTO sighting VALUES (5968,'pasfly','San Diego','','0','0','2003-03-29');
-INSERT INTO sighting VALUES (5969,'pelcor','San Diego','','0','0','2003-03-29');
+INSERT INTO sighting VALUES (5969,'pelcor','San Diego','','','1','2003-03-29');
 INSERT INTO sighting VALUES (5970,'pibgre','San Diego','','0','0','2003-03-29');
 INSERT INTO sighting VALUES (5971,'rethaw','San Diego','','0','0','2003-03-29');
 INSERT INTO sighting VALUES (5972,'retloo','San Diego','','0','0','2003-03-29');
@@ -7507,7 +7507,7 @@ INSERT INTO sighting VALUES (7507,'sonspa','Merced NWR','','0','0','2004-01-19')
 INSERT INTO sighting VALUES (7508,'treswa','Merced NWR','','0','0','2004-01-19');
 INSERT INTO sighting VALUES (7509,'vigswa','Merced NWR','','0','0','2004-01-19');
 INSERT INTO sighting VALUES (7510,'wessan','Merced NWR','','0','0','2004-01-19');
-INSERT INTO sighting VALUES (7511,'whfibi','Merced NWR','','0','0','2004-01-19');
+INSERT INTO sighting VALUES (7511,'whfibi','Merced NWR','','','1','2004-01-19');
 INSERT INTO sighting VALUES (7512,'whtkit','Merced NWR','','0','0','2004-01-19');
 INSERT INTO sighting VALUES (7513,'yerwar','Merced NWR','','0','0','2004-01-19');
 INSERT INTO sighting VALUES (7514,'buggna','San Luis NWR','heard only','0','0','2004-01-19');
@@ -8214,7 +8214,7 @@ INSERT INTO sighting VALUES (8220,'greyel','Brownsville','','0','0','2004-04-17'
 INSERT INTO sighting VALUES (8221,'solsan','Brownsville','','0','0','2004-04-17');
 INSERT INTO sighting VALUES (8222,'lobcur','Brownsville','','0','0','2004-04-17');
 INSERT INTO sighting VALUES (8223,'wessan','Brownsville','','0','0','2004-04-17');
-INSERT INTO sighting VALUES (8224,'lobdow','Brownsville','','0','0','2004-04-17');
+INSERT INTO sighting VALUES (8224,'lobdow','Brownsville','','','1','2004-04-17');
 INSERT INTO sighting VALUES (8225,'shbdow','Brownsville','','0','0','2004-04-17');
 INSERT INTO sighting VALUES (8226,'laugul','Brownsville','','0','0','2004-04-17');
 INSERT INTO sighting VALUES (8227,'hergul','Brownsville','','','','2004-04-17');
@@ -8754,7 +8754,7 @@ INSERT INTO sighting VALUES (8775,'houfin','2138 King Court','','0','0','2004-04
 INSERT INTO sighting VALUES (8776,'bkhgro','2138 King Court','','0','0','2004-04-30');
 INSERT INTO sighting VALUES (8777,'moudov','2138 King Court','','0','0','2004-04-30');
 INSERT INTO sighting VALUES (8778,'bushti','2138 King Court','','0','0','2004-04-30');
-INSERT INTO sighting VALUES (8779,'amerob','2138 King Court','','0','0','2004-04-30');
+INSERT INTO sighting VALUES (8779,'bcnher','Palo Alto Duck Pond','','','1','2004-04-30');
 INSERT INTO sighting VALUES (8780,'houspa','2138 King Court','','0','0','2004-04-30');
 INSERT INTO sighting VALUES (8781,'annhum','2138 King Court','','0','0','2004-04-30');
 INSERT INTO sighting VALUES (8782,'chbchi','2138 King Court','','','','2004-04-30');
@@ -8800,7 +8800,7 @@ INSERT INTO sighting VALUES (8820,'acowoo','Mount Hamilton','','0','0','2004-05-
 INSERT INTO sighting VALUES (8821,'blkpho','Mount Hamilton','','0','0','2004-05-15');
 INSERT INTO sighting VALUES (8822,'cangoo','Mount Hamilton','','0','0','2004-05-15');
 INSERT INTO sighting VALUES (8823,'rudduc','Mount Hamilton','','0','0','2004-05-15');
-INSERT INTO sighting VALUES (8824,'caster','Mount Hamilton','','0','0','2004-05-15');
+INSERT INTO sighting VALUES (8824,'caster','Mount Hamilton','','','1','2004-05-15');
 INSERT INTO sighting VALUES (8825,'forter','Mount Hamilton','','0','0','2004-05-15');
 INSERT INTO sighting VALUES (8826,'mallar','Mount Hamilton','','0','0','2004-05-15');
 INSERT INTO sighting VALUES (8827,'grbher','Mount Hamilton','','0','0','2004-05-15');
@@ -8843,14 +8843,14 @@ INSERT INTO sighting VALUES (8863,'ameavo','Palo Alto Duck Pond','','','1','2004
 INSERT INTO sighting VALUES (8864,'cangoo','Palo Alto Duck Pond','','0','0','2004-05-23');
 INSERT INTO sighting VALUES (8865,'brebla','Palo Alto Duck Pond','','','1','2004-05-23');
 INSERT INTO sighting VALUES (8866,'amwpel','Palo Alto Duck Pond','','0','0','2004-05-23');
-INSERT INTO sighting VALUES (8867,'norhar','Palo Alto Duck Pond','','0','0','2004-05-23');
+INSERT INTO sighting VALUES (8867,'norhar','Palo Alto Duck Pond','','','1','2004-05-23');
 INSERT INTO sighting VALUES (8868,'norpin','Foster City Radio Tower','','','1','2004-05-25');
 INSERT INTO sighting VALUES (8869,'forter','Foster City Radio Tower','','','1','2004-05-25');
 INSERT INTO sighting VALUES (8870,'houfin','Foster City Radio Tower','','','1','2004-05-25');
-INSERT INTO sighting VALUES (8871,'doccor','Foster City Radio Tower','','0','0','2004-05-25');
+INSERT INTO sighting VALUES (8871,'doccor','Foster City Radio Tower','','','1','2004-05-25');
 INSERT INTO sighting VALUES (8872,'moudov','Foster City Radio Tower','','0','0','2004-05-25');
 INSERT INTO sighting VALUES (8873,'normoc','Foster City Radio Tower','','','1','2004-05-25');
-INSERT INTO sighting VALUES (8874,'amwpel','Foster City Radio Tower','','0','0','2004-05-25');
+INSERT INTO sighting VALUES (8874,'amwpel','Foster City Radio Tower','','','1','2004-05-25');
 INSERT INTO sighting VALUES (8875,'rewbla','Foster City Radio Tower','','0','0','2004-05-25');
 INSERT INTO sighting VALUES (8876,'mallar','Foster City Radio Tower','','0','0','2004-05-25');
 INSERT INTO sighting VALUES (8877,'blkski','Foster City Radio Tower','','0','0','2004-05-25');
@@ -8882,9 +8882,9 @@ INSERT INTO sighting VALUES (8903,'snoegr','Palo Alto Duck Pond','','0','0','200
 INSERT INTO sighting VALUES (8904,'greegr','Palo Alto Duck Pond','','0','0','2004-05-22');
 INSERT INTO sighting VALUES (8905,'amecoo','Palo Alto Duck Pond','','','1','2004-05-22');
 INSERT INTO sighting VALUES (8906,'amwpel','San Mateo County','','0','0','2004-06-12');
-INSERT INTO sighting VALUES (8907,'brnpel','San Mateo County','','0','0','2004-06-12');
+INSERT INTO sighting VALUES (8907,'brnpel','San Mateo County','','','1','2004-06-12');
 INSERT INTO sighting VALUES (8908,'bracor','San Mateo County','','0','0','2004-06-12');
-INSERT INTO sighting VALUES (8909,'doccor','San Mateo County','','0','0','2004-06-12');
+INSERT INTO sighting VALUES (8909,'doccor','San Mateo County','','','1','2004-06-12');
 INSERT INTO sighting VALUES (8910,'pelcor','San Mateo County','','0','0','2004-06-12');
 INSERT INTO sighting VALUES (8911,'grbher','San Mateo County','','0','0','2004-06-12');
 INSERT INTO sighting VALUES (8912,'greegr','San Mateo County','','0','0','2004-06-12');
@@ -8917,7 +8917,7 @@ INSERT INTO sighting VALUES (8938,'heegul','San Mateo County','','0','0','2004-0
 INSERT INTO sighting VALUES (8939,'ribgul','San Mateo County','','0','0','2004-06-12');
 INSERT INTO sighting VALUES (8940,'calgul','San Mateo County','','0','0','2004-06-12');
 INSERT INTO sighting VALUES (8941,'hergul','San Mateo County','','0','0','2004-06-12');
-INSERT INTO sighting VALUES (8942,'wesgul','San Mateo County','','0','0','2004-06-12');
+INSERT INTO sighting VALUES (8942,'wesgul','San Mateo County','','','1','2004-06-12');
 INSERT INTO sighting VALUES (8943,'caster','San Mateo County','','0','0','2004-06-12');
 INSERT INTO sighting VALUES (8944,'forter','San Mateo County','','0','0','2004-06-12');
 INSERT INTO sighting VALUES (8945,'leater','San Mateo County','','0','0','2004-06-12');
@@ -8939,3 +8939,5 @@ INSERT INTO sighting VALUES (8960,'houspa','San Mateo County','','0','0','2004-0
 INSERT INTO sighting VALUES (8961,'litgul','San Mateo County','','0','0','2004-06-12');
 INSERT INTO sighting VALUES (8962,'bnhcow','San Mateo County','','0','0','2004-06-12');
 INSERT INTO sighting VALUES (8963,'houfin','San Mateo County','','','','2004-06-12');
+INSERT INTO sighting VALUES (8964,'sagthr','Sunnyvale Water Treatment Plant','','','1','2003-12-13');
+INSERT INTO sighting VALUES (8965,'snoegr','Palo Alto Duck Pond','','','1','2004-04-30');

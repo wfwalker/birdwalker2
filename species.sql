@@ -1387,7 +1387,6 @@ INSERT INTO species VALUES (22330180103,'gxsjun','Junco hyemalis 3','(Gray-heade
 INSERT INTO species VALUES (22330180104,'gyhjun','Junco hyemalis 4','Gray-headed Junco','','');
 INSERT INTO species VALUES (22330180105,'intjun','Junco hyemalis 5','Intermediate Junco','','');
 INSERT INTO species VALUES (22330180106,'monjun','Junco hyemalis 6','Montana Junco','','');
-INSERT INTO species VALUES (22330180107,'orejun','Junco hyemalis 7','Oregon Junco','see also Dark-eyed Junco; it\'s likely that there\'s no meaningful distinction in our pre-2001 records between daejun and orejun.','');
 INSERT INTO species VALUES (22330180108,'oxsjun','Junco hyemalis 8','(Oregon x Slate-colored) Dark-eyed Junco','','');
 INSERT INTO species VALUES (22330180109,'pisjun','Junco hyemalis 9','Pink-sided Junco','','');
 INSERT INTO species VALUES (22330180110,'popjun','Junco hyemalis 10','Point Pinos Junco','','');
