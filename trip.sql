@@ -104,6 +104,10 @@ INSERT INTO trip VALUES (103,'Mary and Bill','','Saturday Stroll','','2000-07-08
 INSERT INTO trip VALUES (104,'Mary and Bill','','Sunday Stroll','','2000-07-30');
 INSERT INTO trip VALUES (105,'Mary and Bill','','Wisconsin Trip','We saw two fauns wandering across the trail. Mary saw a Pileated Woodpecker; Bill did not.','2000-08-04');
 INSERT INTO trip VALUES (106,'Mary and Bill','','Early Morning Airport Run','We took Pat to the SF airport at something like 5:30am, and just kept on going. We got to Bolias at around 7:30am. We visited the Bolinas Lagoon, and also stopped at Point Reyes Bird Observatory. We even ate breakfast in Bolinas, a town that didn\'t seem to want us very much.','2000-08-26');
+INSERT INTO trip VALUES (329,'Mary and Bill','','New Tripod Tryout','','2004-08-28');
+INSERT INTO trip VALUES (330,'Bill and Mary','','Point Reyes Expedition','','2004-09-04');
+INSERT INTO trip VALUES (331,'Mary and Bill','','Wine Tasting at Picchetti','','2004-09-05');
+INSERT INTO trip VALUES (332,'Bill','','Alviso Photo Safari','','2004-09-06');
 INSERT INTO trip VALUES (108,'Mary and Bill','','Sunday Stroll','','2000-08-27');
 INSERT INTO trip VALUES (109,'Frank Vanslager','','Santa Clara Audubon Walk','The famous Gail C. accompanied us on this trip. Also, two attendees got into a heated discussion about the wingbars on Lesser versus American Goldfinches in non-breeding plumage.','2000-09-24');
 INSERT INTO trip VALUES (110,'Mary and Bill','','Columbus Day Trip','','2000-10-06');
