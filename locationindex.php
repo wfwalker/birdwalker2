@@ -26,7 +26,7 @@ navTrailLocations();
     <div class=contentright>
 	  <div class="pagesubtitle">Index</div>
       <div class="titleblock">	  
-<?    rightThumbnailAll(); ?>
+<?    if ($view != "map" ) rightThumbnailAll(); ?>
 	  <div class=pagetitle>Locations</div>
     <div class=metadata>
       <a href="./locationindex.php">list</a> |
@@ -35,8 +35,6 @@ navTrailLocations();
       <a href="./locationindex.php?view=map&minlat=<?= $extrema["minLat"]-0.01 ?>&maxlat=<?= $extrema["maxLat"]+0.01 ?>&minlong=<?= $extrema["minLong"]-0.01 ?>&maxlong=<?= $extrema["maxLong"]+0.01 ?>">map</a><br/>
     </div>
 	</div>
-
-    <div class=heading><?= $locationQuery->getLocationCount() ?> Locations</div>
 
 <? if ($view == "list") {
 	  $locationQuery->formatTwoColumnLocationList();
