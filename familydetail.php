@@ -108,8 +108,7 @@ else if ($view == "map")
 {
     $locationQuery = new LocationQuery;
 	$locationQuery->setFamily($familyid);
-	countHeading($locationQuery->getLocationCount(), "location");
-	$map = new Map("./countydetail.php");
+	$map = new Map("./familydetail.php");
 	$map->setFromRequest($_GET);
 	$map->draw();
 }
