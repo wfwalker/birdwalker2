@@ -18,7 +18,7 @@ $lifeCount = getSpeciesCount();
 
     <div class=contentright>
       <div class="titleblock">	  
-	  <div class=pagetitle>Mary and Bill&apos;s Life List</div>
+	  <div class=pagetitle>Mary and Bill&rsquo;s Life List</div>
         <div class=pagesubtitle><?php echo $lifeCount ?> Species</div>
       </div>
 
