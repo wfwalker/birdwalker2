@@ -23,7 +23,7 @@ navTrailBirds();
 
       <div class=heading><?= mysql_num_rows($dbQuery) ?> Sightings</div>
 
-<table class=report-content columns=4 width="600px">
+<table class=report-content width="600px">
 <?php
 while($sightingInfo = mysql_fetch_array($dbQuery)) {
 ?>

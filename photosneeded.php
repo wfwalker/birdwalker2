@@ -33,7 +33,7 @@ navTrailPhotos("missing");
 | <a href="./photosneeded.php?sort=theCount+desc">sighting count</a>
 | <a href="./photosneeded.php?sort=CommonName">alphabetical</a>
 
-<table columns=2 class=report-content>
+<table class=report-content>
 <tr class=titleblock><td>Species</td><td>Sightings</td></tr>
 
 <?php

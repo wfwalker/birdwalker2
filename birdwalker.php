@@ -522,7 +522,7 @@ function formatTwoColumnSpeciesList($speciesQuery, $firstSightings = "", $firstY
 	$divideByTaxo = ($speciesCount > 30);
 	$counter = round($speciesCount  * 0.52); ?>
 
-	<table columns=2 width="100%" class=report-content>
+	<table width="100%" class=report-content>
       <tr valign=top><td width="50%">
 
 <?
@@ -565,7 +565,7 @@ function formatTwoColumnSpeciesList($speciesQuery, $firstSightings = "", $firstY
 
 function formatSpeciesListWithPhoto($speciesQuery)
 {
-	?><table columns=2><?
+	?><table><?
 
 	$dbQuery = $speciesQuery->performQuery();
 
@@ -611,7 +611,7 @@ function formatSpeciesByYearTable($sightingQuery, $extraSightingListParams, $yea
 
 	$gridQuery = performQuery($gridQueryString); ?>
 
-	<table columns=11 cellpadding=0 cellspacing=0 class="report-content" width="100%">
+	<table cellpadding=0 cellspacing=0 class="report-content" width="100%">
 	    <tr><td></td><? insertYearLabels() ?></tr>
         <tr><td class=bordered>TOTAL</td>
 
@@ -685,7 +685,7 @@ function formatSpeciesByMonthTable($sightingQuery, $extraSightingListParams, $mo
 
 	$gridQuery = performQuery($gridQueryString); ?>
 
-	<table columns=11 cellpadding=0 cellspacing=0 class="report-content" width="100%">
+	<table cellpadding=0 cellspacing=0 class="report-content" width="100%">
 	    <tr><td></td><? insertMonthLabels() ?></tr>
         <tr><td class=bordered>TOTAL</td>
 
@@ -976,7 +976,7 @@ function formatTwoColumnTripList($tripQuery)
 	$prevYear = "";
 	$counter = round($tripCount  * 0.52); ?>
 	
-   <table class=report-content columns="2" width="100%">
+   <table class=report-content width="100%">
       <tr valign=top><td>
 
 <?	$dbQuery = $tripQuery->performQuery();

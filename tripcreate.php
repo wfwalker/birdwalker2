@@ -67,7 +67,7 @@ if ($save == "Save")
 
 <form method="post" action="./tripcreate.php">
 
-<table class=report-content columns=2 width=100%>
+<table class=report-content width=100%>
   <tr>
 	<td class=fieldlabel>Leader</td>
 	<td><input type="text" name="Leader" value="" size=20/></td>

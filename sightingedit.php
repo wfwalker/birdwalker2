@@ -84,7 +84,7 @@ navTrailBirds();
 
 <form method="post" action="./sightingedit.php?id=<?= $sightingID ?>">
 
-<table class=report-content columns=2 width=100%>
+<table class=report-content width=100%>
   <tr>
 	<td></td>
 	<td><input type="submit" name="New" value="New"/></td>

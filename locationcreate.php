@@ -81,7 +81,7 @@ navTrailLocationDetail($locationInfo);
 
 <form method="post" action="./locationcreate.php?id=<?= $locationID ?>">
 
-<table class=report-content columns=2 width=100%>
+<table class=report-content width=100%>
   <tr>
 	<td class=fieldlabel>Name</td>
 	<td><input type="text" name="Name" value="<?= $locationInfo['Name'] ?>" size=30/></td>

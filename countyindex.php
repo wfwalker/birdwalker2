@@ -17,7 +17,7 @@ navTrailLocations();
         <div class=pagetitle>Counties</div>
       </div>
 
-<table columns=11 class=metadata cellpadding=0 cellspacing=0 width="100%">
+<table class=metadata cellpadding=0 cellspacing=0 width="100%">
 
 <?php
 

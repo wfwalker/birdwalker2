@@ -77,7 +77,7 @@ Note: within a single day, the order of sightings is not
 preserved.
 </p>
 
-<table class=report-content columns=4 width="600px">
+<table class=report-content width="600px">
 
 <?
 while($sightingInfo = mysql_fetch_array($firstSightingQuery))

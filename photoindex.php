@@ -27,7 +27,7 @@ navTrailPhotos();
 
 <div class=heading><?= $photoCount . " photos covering " . $photoSpeciesCount . " species"; ?></div>
 
-<table cellpadding=4 columns=2>
+<table cellpadding=4>
 
 <?php
 $photoQuery = performQuery("

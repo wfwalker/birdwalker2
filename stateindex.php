@@ -41,7 +41,7 @@ navTrailLocations();
         <div class=pagetitle>States</div>
       </div>
 
-<table columns=11 class=metadata cellpadding=1 cellspacing=0 width=80%>
+<table class=metadata cellpadding=1 cellspacing=0 width=80%>
 
   <tr><td></td><? insertYearLabels() ?></tr>
 
