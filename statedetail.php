@@ -92,8 +92,6 @@ elseif ($view == 'locationsbymonth')
 }
 else if ($view == "map")
 {
-    $locationQuery = new LocationQuery;
-	$locationQuery->setFromRequest($_GET);
 	$map = new Map("./statedetail.php");
 	$map->setFromRequest($_GET);
 	$map->draw();
