@@ -11,10 +11,9 @@ $speciesQuery->setYear($theYear);
 ?>
 
 <html>
-  <head>
-    <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-    <title>birdWalker | <?= $theYear ?> Report</title>
-  </head>
+
+  <? htmlHead($theYear . " Report") ?>
+
   <body>
 
 <?

@@ -7,10 +7,9 @@ $randomPhotoSightings = performQuery("SELECT *, rand() AS shuffle FROM sighting 
  ?>
 
 <html>
-  <head>
-    <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-      <title>birdWalker | About</title>
-  </head>
+
+  <? htmlHead("About"); ?>
+
   <body>
 
 <?php

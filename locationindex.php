@@ -12,10 +12,9 @@ $extrema = $locationQuery->findExtrema();
 ?>
 
 <html>
-  <head>
-    <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-    <title>birdWalker | Locations</title>
-  </head>
+
+  <? htmlHead("Locations"); ?>
+
   <body>
 
 <?php

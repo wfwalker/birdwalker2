@@ -9,10 +9,9 @@ $photoSpeciesCount = performCount("select count(distinct(sighting.SpeciesAbbrevi
 ?>
 
 <html>
-  <head>
-    <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-    <title>birdWalker | Photo List</title>
-  </head>
+
+  <? htmlHead("Photo List"); ?>
+
   <body>
 
 <?php

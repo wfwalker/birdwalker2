@@ -23,12 +23,9 @@ $tripID = performCount("select max(objectid) from trip;");
 
 <html>
 
-<head>
-<link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-	  <title>birdWalker | Create a trip</title>
-</head>
+  <? htmlHead("Create a trip"); ?>
 
-<body>
+  <body>
 
 <?php globalMenu(); disabledBrowseButtons(); navTrailTrips(); ?>
 

@@ -11,10 +11,9 @@ $map->setFromRequest($_GET);
 ?>
 
 <html>
-  <head>
-    <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-    <title>birdWalker | OpenGIS</title>
-  </head>
+
+  <? htmlHead("OpenGIS"); ?>
+
   <body>
 
 <?php

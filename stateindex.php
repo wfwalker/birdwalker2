@@ -31,10 +31,9 @@ while ($info = mysql_fetch_array($stateStats))
 ?>
 
 <html>
-  <head>
-    <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-    <title>birdWalker | States</title>
-  </head>
+
+  <? htmlHead("States"); ?>
+
   <body>
 
 <?php

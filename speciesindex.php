@@ -10,10 +10,9 @@ $view = param($_GET, "view", "");
 ?>
 
 <html>
-  <head>
-    <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-    <title>birdWalker | Species</title>
-  </head>
+
+  <? htmlHead("Species"); ?>
+
   <body>
 
 <?php

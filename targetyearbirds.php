@@ -20,12 +20,9 @@ $theYear = param($_GET, "year", 2004);
 
 <html>
 
-<head>
-<link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-	  <title>birdWalker | Target CA Year Birds</title>
-</head>
+  <? htmlHead("Target CA Year Birds"); ?>
 
-<body>
+  <body>
 
 <?php
 globalMenu();

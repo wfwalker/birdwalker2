@@ -28,12 +28,9 @@ if ($view != "photo")
 
 <html>
 
-<head>
-  <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet"/>
-  <title>birdWalker | <?= $speciesInfo["CommonName"] ?></title>
-</head>
+  <? htmlHead($speciesInfo["CommonName"]); ?>
 
-<body>
+  <body>
 
 <?php
 globalMenu();

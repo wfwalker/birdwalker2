@@ -9,28 +9,6 @@ $save = $_POST['Save'];
 
 getEnableEdit() or die("Editing disabled");
 
-?>
-
-
-<html>
-
-<head>
-<link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-	  <title>birdWalker | <?= $speciesInfo["Name"] ?>,  <?= $speciesInfo["niceDate"] ?></title>
-</head>
-
-<body>
-
-<?php
-globalMenu();
-speciesBrowseButtons("./speciesedit.php", $speciesID, "edit");
-navTrailSpecies($speciesID);
-?>
-
-<div class="contentright">
-
-<?php
-
 if (($postSpeciesID != "") && ($save == "Save"))
 {
 	$commonName = $_POST['CommonName'];
@@ -55,6 +33,20 @@ if (($postSpeciesID != "") && ($save == "Save"))
 
 $speciesInfo = getSpeciesInfo($speciesID);
 ?>
+
+<html>
+
+  <? htmlHead($speciesInfo["Name"] . ", " . $speciesInfo["niceDate"]); ?>
+
+  <body>
+
+<?php
+globalMenu();
+speciesBrowseButtons("./speciesedit.php", $speciesID, "edit");
+navTrailSpecies($speciesID);
+?>
+
+<div class="contentright">
 
 <div class=pagesubtitle><?= $speciesInfo["niceDate"] ?></div>
 <div class="titleblock">

@@ -19,10 +19,9 @@ $view = param($_GET, "view", "list");
 ?>
 
 <html>
-  <head>
-    <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-    <title>birdWalker | <?= $pageTitle ?></title>
-  </head>
+
+  <? htmlHead($aQuery->getPageTitle()); ?>
+
   <body>
 
 <?

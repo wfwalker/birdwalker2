@@ -1,4 +1,3 @@
-<html>
 
 <?php
 
@@ -37,10 +36,9 @@ while($sightingInfo = mysql_fetch_array($tripSightings)) {
 
 ?>
 
-  <head>
-    <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-    <title>birdWalker | <?= $tripInfo["Name"] ?></title>
-  </head>
+<html>
+
+  <? htmlHead( $tripInfo["Name"]); ?>
 
   <body>
 

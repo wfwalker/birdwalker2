@@ -9,28 +9,6 @@ $save = $_POST['Save'];
 
 getEnableEdit() or die("Editing disabled");
 
-?>
-
-
-<html>
-
-<head>
-<link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-	  <title>birdWalker | <?= $tripInfo["Name"] ?>,  <?= $tripInfo["niceDate"] ?></title>
-</head>
-
-<body>
-
-<?php
-globalMenu();
-tripBrowseButtons("./tripedit.php", $tripID, "edit");
-navTrailTrips();
-?>
-
-<div class="contentright">
-
-<?php
-
 if (($postTripID != "") && ($save == "Save"))
 {
 	$leader = $_POST['Leader'];
@@ -53,6 +31,21 @@ if (($postTripID != "") && ($save == "Save"))
 
 $tripInfo = getTripInfo($tripID);
 ?>
+
+
+<html>
+
+  <? htmlHead($tripInfo["Name"] . ", " .$tripInfo["niceDate"]); ?>
+
+  <body>
+
+<?php
+globalMenu();
+tripBrowseButtons("./tripedit.php", $tripID, "edit");
+navTrailTrips();
+?>
+
+<div class="contentright">
 
 <div class=pagesubtitle><?= $tripInfo["niceDate"] ?></div>
 <div class="titleblock">

@@ -44,10 +44,9 @@ $speciesCount = mysql_num_rows($firstSightingQuery);
 ?>
 
 <html>
-  <head>
-    <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-    <title>birdWalker | Chronological ABA California <?= $theYear ?> List</title>
-  </head>
+
+  <? htmlHead("Chronological ABA California " . $theYear); ?>
+
   <body>
 
 <?php

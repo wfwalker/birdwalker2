@@ -24,10 +24,9 @@ $dbQuery = $sightingQuery->performQuery();
 ?>
 
 <html>
-  <head>
-    <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-    <title>birdWalker | <?= $pageTitle ?></title>
-  </head>
+
+  <? htmlHead($sightingQuery->getPageTitle()); ?>
+
   <body>
 
 <?php

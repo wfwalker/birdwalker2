@@ -18,12 +18,9 @@ $latestSightingQuery = performQuery("select countyfrequency.Frequency, tmp.Commo
 
 <html>
 
-<head>
-<link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-	  <title>birdWalker | Target Year Birds</title>
-</head>
+  <? htmlHead("Target Year Birds"); ?>
 
-<body>
+  <body>
 
 <?php
 globalMenu();

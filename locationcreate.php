@@ -65,14 +65,9 @@ $locationInfo = getLocationInfo($locationID);
 
 <html>
 
-<head>
+  <? htmlHead($locationInfo["Name"] . ", " .  $locationInfo["State"]); ?>
 
-<head>
-<link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-	  <title>birdWalker | <?= $locationInfo["Name"] ?>,  <?= $locationInfo["State"] ?></title>
-</head>
-
-<body>
+  <body>
 
 <?
 globalMenu();

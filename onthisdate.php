@@ -16,10 +16,8 @@ $tripsOnThisDate = performQuery("
       ORDER BY Date DESC"); ?>
 
 <html>
-  <head>
-    <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-    <title>birdWalker | This Week in Birding History</title>
-  </head>
+
+  <? htmlHead("This Week in Birding History"); ?>
 
   <body>
 

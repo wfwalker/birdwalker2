@@ -2,10 +2,9 @@
 <? require("./birdwalker.php"); ?>
 
 <html>
-  <head>
-    <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-    <title>birdWalker | Counties</title>
-  </head>
+
+  <? htmlHead("Counties"); ?>
+
   <body>
 
 <?php

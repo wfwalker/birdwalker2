@@ -14,10 +14,8 @@ $orderInfo = getOrderInfo($orderid * pow(10, 9));
 ?>
 
 <html>
-  <head>
-    <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-	  <title>birdWalker | <?= $orderInfo["LatinName"] ?></title>
-  </head>
+
+  <? htmlHead($orderInfo["LatinName"]); ?>
 
   <body>
 

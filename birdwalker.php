@@ -27,6 +27,17 @@ function globalMenu()
 <?
 }
 
+function htmlHead($title)
+{
+?>
+  <head>
+    <link rel="SHORTCUT ICON" href="./images/favicon.ico">
+    <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
+      <title>birdWalker | <?= $title ?></title>
+  </head>
+<?
+}
+
 function param($getParams, $paramName, $defaultValue)
 {
 	if ($getParams[$paramName] != "")

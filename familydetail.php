@@ -30,10 +30,8 @@ $prevFamily = performCount("
 ?>
 
 <html>
-  <head>
-    <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-	  <title>birdWalker | <?= $familyInfo["LatinName"] ?></title>
-  </head>
+
+  <? htmlHead($familyInfo["LatinName"]); ?>
 
   <body>
 

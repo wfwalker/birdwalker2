@@ -25,10 +25,9 @@ $speciesCount = mysql_num_rows($firstSightingQuery);
 ?>
 
 <html>
-  <head>
-    <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-    <title>birdWalker | Chronological ABA Life List</title>
-  </head>
+
+  <? htmlHead("Chronological ABA Life List"); ?>
+
   <body>
 
 <?php
@@ -70,7 +69,7 @@ while($sightingInfo = mysql_fetch_array($firstSightingQuery))
 	</td>
 
     <td align=right>&nbsp;</td>
-    <td><a href="./speciesdetail.php?id=<?= $sightingInfo['speciesid'] ?>"><?= $sightingInfo['CommonName'] ?></a>
+    <td><a href="./speciesdetail.php?speciesid=<?= $sightingInfo['speciesid'] ?>"><?= $sightingInfo['CommonName'] ?></a>
 
 <?  if ($sightingInfo["Photo"] == "1") { ?>
         <?= getPhotoLinkForSightingInfo($sightingInfo) ?>

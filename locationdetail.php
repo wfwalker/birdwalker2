@@ -37,12 +37,9 @@ while($sightingInfo = mysql_fetch_array($locationSightings)) {
 
 <html>
 
-<head>
-<link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-	  <title>birdWalker | <?= $siteInfo["Name"] ?></title>
-</head>
+  <? htmlHead($siteInfo["Name"]); ?>
 
-<body>
+  <body>
 
 <?php
 globalMenu();

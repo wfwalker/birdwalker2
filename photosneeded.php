@@ -19,10 +19,8 @@ $speciesCount = 0;
 ?>
 
 <html>
-  <head>
-    <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-    <title>birdWalker | Birds in need of photos</title>
-  </head>
+
+  <? htmlHead("Birds in need of photos"); ?>
 
   <body>
 

@@ -29,10 +29,9 @@ $missingLatLong = performQuery("
 
 
 <html>
-  <head>
-    <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-    <title>birdWalker | Bad Records</title>
-  </head>
+
+  <? htmlHead("Bad Records"); ?>
+
   <body>
 
 <?

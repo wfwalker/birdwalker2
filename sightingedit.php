@@ -63,12 +63,9 @@ $locationList = performQuery("select Name, objectid from location");
 
 <html>
 
-<head>
-<link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-	  <title>birdWalker | <?= $speciesInfo["CommonName"] ?>,  <?= $tripInfo["niceDate"] ?></title>
-</head>
+  <? htmlHead($speciesInfo["CommonName"] . ", " . $tripInfo["niceDate"]); ?>
 
-<body>
+  <body>
 
 <?php
 globalMenu();
