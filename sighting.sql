@@ -9413,7 +9413,7 @@ INSERT INTO sighting VALUES (9441,'mallar','Nortel Networks','','0','0','2004-10
 INSERT INTO sighting VALUES (9442,'rewbla','Nortel Networks','','0','0','2004-10-16');
 INSERT INTO sighting VALUES (9443,'gadwal','Nortel Networks','','0','0','2004-10-16');
 INSERT INTO sighting VALUES (9444,'pibgre','Nortel Networks','','0','0','2004-10-16');
-INSERT INTO sighting VALUES (9445,'foxspa','Nortel Networks','','0','0','2004-10-16');
+INSERT INTO sighting VALUES (9445,'foxspa','Nortel Networks','','','1','2004-10-16');
 INSERT INTO sighting VALUES (9446,'bushti','Nortel Networks','','0','0','2004-10-16');
 INSERT INTO sighting VALUES (9447,'normoc','Nortel Networks','','0','0','2004-10-16');
 INSERT INTO sighting VALUES (9448,'horgre','Malheur NWR','','0','0','2004-10-21');
@@ -9701,3 +9701,15 @@ INSERT INTO sighting VALUES (9733,'blujay','Southwest Wisconsin','','0','0','200
 INSERT INTO sighting VALUES (9734,'wiltur','Southwest Wisconsin','','0','0','2004-11-14');
 INSERT INTO sighting VALUES (9735,'calgul','Southwest Wisconsin','','0','0','2004-11-14');
 INSERT INTO sighting VALUES (9736,'amegfi','Southwest Wisconsin','','0','0','2004-11-14');
+INSERT INTO sighting VALUES (9737,'cintea','Foster City Radio Tower','','','1','2004-11-19');
+INSERT INTO sighting VALUES (9738,'buwtea','Foster City Radio Tower','','0','0','2004-11-19');
+INSERT INTO sighting VALUES (9739,'norpin','Foster City Radio Tower','','0','0','2004-11-19');
+INSERT INTO sighting VALUES (9740,'ameavo','Foster City Radio Tower','','0','0','2004-11-19');
+INSERT INTO sighting VALUES (9741,'norhar','Foster City Radio Tower','','0','0','2004-11-19');
+INSERT INTO sighting VALUES (9742,'norsho','Foster City Radio Tower','','0','0','2004-11-19');
+INSERT INTO sighting VALUES (9743,'amewig','Foster City Radio Tower','','','1','2004-11-19');
+INSERT INTO sighting VALUES (9744,'gnwtea','Foster City Radio Tower','','','','2004-11-19');
+INSERT INTO sighting VALUES (9745,'gnwtea','Foster City Radio Tower','','','1','2004-11-17');
+INSERT INTO sighting VALUES (9746,'margod','Foster City Radio Tower','','0','0','2004-11-17');
+INSERT INTO sighting VALUES (9747,'ameavo','Foster City Radio Tower','','0','0','2004-11-17');
+INSERT INTO sighting VALUES (9748,'bknsti','Foster City Radio Tower','','0','0','2004-11-17');
