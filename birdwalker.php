@@ -3,8 +3,8 @@
 function globalMenu()
 { ?>
 	<div class="contentleft">
-      <p><img src="./images/bill.jpg"></p>
-      <p><img src="./images/mary.jpg"></p>
+      <p><img src="./images/bill.jpg" alt="Bill"></p>
+      <p><img src="./images/mary.jpg" alt="Mary"></p>
 	  <div><a href="./tripindex.php">trips</a></div>
 	  <div><a href="./speciesindex.php">birds</a></div>
 	  <div><a href="./locationindex.php">locations</a></div>
@@ -38,7 +38,7 @@ function param($getParams, $paramName, $defaultValue)
 function editLink($href)
 { 
     if (getEnableEdit()) { ?>
-       <a href="<?= $href ?>"><img src="./images/edit.gif" border=0></a>
+       <a href="<?= $href ?>"><img src="./images/edit.gif" border=0 alt="edit"></a>
 <?  }
 }
 
@@ -78,7 +78,7 @@ function browseButtons($urlPrefix, $current, $first, $prev, $next, $last)
 
 <?	if ($current == $first)
 	{ ?>
-        <img name="first" border="0" src="./images/first.gif" alt="prev"/>
+        <img name="first" border="0" src="./images/first.gif" alt="first"/>
         <img name="prev" border="0" src="./images/prev.gif" alt="prev"/>
 <?	}
 	else
@@ -89,8 +89,8 @@ function browseButtons($urlPrefix, $current, $first, $prev, $next, $last)
 
 	if ($current == $last)
 	{?>
-        <img name="next" border="0" src="./images/next.gif" alt="prev"/>
-        <img name="last" border="0" src="./images/last.gif" alt="prev"/>
+        <img name="next" border="0" src="./images/next.gif" alt="next"/>
+        <img name="last" border="0" src="./images/last.gif" alt="last"/>
 <?	}
 	else
 	{ ?> 
@@ -124,7 +124,7 @@ function rightThumbnail($photoQueryString, $addLink)
 		if ($height > 0) { $sizeAttributes = $sizeAttributes . "  height=" . $height; }
 
 		if ($addLink == true) { ?> <a href="./photodetail.php?id=<?= $photoInfo["objectid"] ?>">  <? } ?>
-           <img <?= $sizeAttributes ?> src="./images/thumb/<?= $filename ?>" border=0 align="left" class="inlinepict">
+           <img <?= $sizeAttributes ?> src="./images/thumb/<?= $filename ?>" border=0 align="left" class="inlinepict" alt="bird">
 <?		if ($addLink == true) { ?> </a> <? }
 	}
 }
@@ -162,7 +162,7 @@ function formatPhotos($query)
 
 			list($width, $height, $type, $attr) = getimagesize("./images/photo/" . $photoFilename); ?>
 
-			<img width=<?= $width ?> height=<?= $height ?> src="<?= getPhotoURLForSightingInfo($sightingInfo) ?>">
+			<img width=<?= $width ?> height=<?= $height ?> src="<?= getPhotoURLForSightingInfo($sightingInfo) ?>" alt="bird">
 <?      }
 	}
 }
@@ -251,7 +251,7 @@ function getPhotoFilename($sightingInfo)
 
 function getPhotoLinkForSightingInfo($sightingInfo, $fieldName="objectid")
 { ?>
-	<a href="./photodetail.php?id=<?= $sightingInfo[$fieldName] ?>"><img border=0 align=center src="./images/camera.gif"></a>
+	<a href="./photodetail.php?id=<?= $sightingInfo[$fieldName] ?>"><img border=0 align=center src="./images/camera.gif" alt="photo"></a>
 <?
 }
 
@@ -273,7 +273,7 @@ function getThumbForSightingInfo($sightingInfo)
 
 	return
 		"<a href=\"./photodetail.php?id=" . $sightingInfo["objectid"] . "\">" .
-		"<img " . $sizeAttributes . " src=\"./images/thumb/" . $thumbFilename . "\" border=0>" . 
+		"<img " . $sizeAttributes . " src=\"./images/thumb/" . $thumbFilename . "\" border=0 alt=\"bird\">" . 
 		"</a>";
 }
 
