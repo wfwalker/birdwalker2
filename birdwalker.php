@@ -587,9 +587,9 @@ function formatSpeciesByYearTable($sightingQuery, $extraSightingListParams, $yea
         <tr><td class=bordered>TOTAL</td>
 
 <?	$info = mysql_fetch_array($yearTotals);
-	for ($index = 1; $index <= 9; $index++)
+	for ($index = 1; $index <= (1 + getLatestYear() - getEarliestYear()); $index++)
 	{
-		if ($info["year"] == 1995 + $index)
+		if ($info["year"] == (getEarliestYear() - 1) + $index)
 		{ ?>
 			<td class=bordered align=center>
                 <a href="./specieslist.php?year=<?= 1995 + $index ?><?= $extraSightingListParams ?>"><?= $info["count"] ?></a>
@@ -616,7 +616,7 @@ function formatSpeciesByYearTable($sightingQuery, $extraSightingListParams, $yea
 
 		<tr><td><a href="./speciesdetail.php?speciesid=<?= $info["speciesid"] ?>"><?= $info["CommonName"] ?></a></td>
 
-<?		for ($index = 1; $index <= 9; $index++)
+<?		for ($index = 1; $index <=  (1 + getLatestYear() - getEarliestYear()); $index++)
 		{ ?>
 			<td class=bordered align=center>
 
