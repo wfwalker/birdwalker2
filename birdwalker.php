@@ -10,6 +10,7 @@ function navigationHeader()
 	  <div class=\"leftsubtitle\"><a href=\"./speciesindex.php\">Species Reports</a></div>
 	  <div class=\"leftsubtitle\"><a href=\"./locationindex.php\">Location Reports</a></div>
 	  <div class=\"leftsubtitle\"><a href=\"./countyindex.php\">County Reports</a></div>
+	  <div class=\"leftsubtitle\"><a href=\"./photoindex.php\">Sighting Photos</a></div>
 	</div>
  ";
 }
@@ -34,6 +35,16 @@ function selectDatabase()
 
 	// Select database
 	mysql_select_db($mysql["database"]) or die("Could not connect to DataBase");
+}
+
+function getPhotoURLForSightingInfo($sightingInfo)
+{
+	return "./images/photo/" . $sightingInfo["TripDate"] . "-" . $sightingInfo["SpeciesAbbreviation"] . ".jpg";
+}
+
+function getPhotoThumbURLForSightingInfo($sightingInfo)
+{
+	return "./images/thumb/" . $sightingInfo["TripDate"] . "-" . $sightingInfo["SpeciesAbbreviation"] . ".jpg";
 }
 
 /**
