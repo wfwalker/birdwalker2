@@ -6,10 +6,10 @@ require_once("./birdwalker.php");
 getEnableEdit() or die("Editing disabled");
 
 // the GET id determines which record to show
-$locationID = $_GET['id'];
+$locationID = $_GET['locationid'];
 
 // the POST id determines which record to update
-$postLocationID = $_POST['id'];
+$postLocationID = $_POST['locationid'];
 
 // The SAVE and NEW buttons determine whether to update or createa a new record
 $save = $_POST['Save'];
@@ -77,7 +77,7 @@ navTrailLocationDetail($locationInfo);
 
 <div class="contentright">
 <div class="titleblock">
-  <a href="./locationdetail.php?id=<?= $locationInfo["objectid"] ?>">
+  <a href="./locationdetail.php?locationid=<?= $locationInfo["objectid"] ?>">
     <div class=pagetitle><?= $locationInfo["Name"] ?></div>
   <div class=pagesubtitle><?= $locationInfo["niceDate"] ?></div>
 </a>
@@ -126,7 +126,7 @@ navTrailLocationDetail($locationInfo);
 	<td><textarea name="Notes" cols=60 rows=20><?= $locationInfo['Notes'] ?></textarea></td>
   </tr>
   <tr>
-	<td><input type="hidden" name="id" value="<?= $locationID ?>"/></td>
+	<td><input type="hidden" name="locationid" value="<?= $locationID ?>"/></td>
 	<td><input type="submit" name="Save" value="Save"/><input type="submit" name="New" value="New"/></td>
   </tr>
 </table>
