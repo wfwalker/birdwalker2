@@ -16,7 +16,6 @@ $locationWhereClause = " '" . $speciesInfo["Abbreviation"] . "'=sighting.Species
 $speciesLocationListQuery = performQuery( "select distinct(location.objectid), location.* from location, sighting where " . $locationWhereClause . " order by State, County, Name");
 $speciesLocationCount = mysql_num_rows($speciesLocationListQuery);
 
-$photoQuery = performQuery("select * from sighting where SpeciesAbbreviation='" . $speciesInfo["Abbreviation"] . "' and Photo='1' order by TripDate desc");
 
 $firstAndLastSpecies = performOneRowQuery("select min(species.objectid) as firstOne, max(species.objectid) as lastOne from sighting, species where sighting.SpeciesAbbreviation=species.Abbreviation");
 $firstSpecies = $firstAndLastSpecies["firstOne"];
@@ -43,9 +42,8 @@ $items[] = "<a href=\"./orderdetail.php?order=" . $orderInfo["objectid"] / pow(1
 $items[] = "<a href=\"./familydetail.php?family=" . $familyInfo["objectid"] / pow(10, 7) . "\">" . strtolower($familyInfo["LatinName"]) . "</a>";
 $items[] = strtolower($speciesInfo["CommonName"]);
 navTrailBirds($items);
+pageThumbnail("select * from sighting where SpeciesAbbreviation='" . $speciesInfo["Abbreviation"] . "' and Photo='1' order by TripDate desc");
 ?>
-
-<div class=thumb><?php if ($photoInfo = mysql_fetch_array($photoQuery)){ echo getThumbForSightingInfo($photoInfo); } ?></div>
 
   <div class=contentright>
 	<div class="titleblock">
