@@ -87,14 +87,28 @@ function selectDatabase()
 	mysql_select_db($mysql["database"]) or die("Could not connect to DataBase");
 }
 
+function getPhotoFilename($sightingInfo)
+{
+	return $sightingInfo["TripDate"] . "-" . $sightingInfo["SpeciesAbbreviation"] . ".jpg";
+}
+
+function getPhotoLinkForSightingInfo($sightingInfo)
+{
+	echo " <a href=\"./photodetail.php?id=" . $sightingInfo["objectid"] . "\"><img align=center src=\"./images/camera.gif\"></a>";
+}
+
 function getPhotoURLForSightingInfo($sightingInfo)
 {
-	return "./images/photo/" . $sightingInfo["TripDate"] . "-" . $sightingInfo["SpeciesAbbreviation"] . ".jpg";
+	return "./images/photo/" . getPhotoFilename($sightingInfo);
 }
 
 function getThumbForSightingInfo($sightingInfo)
 {
-	return "<a href=\"./photodetail.php?id=" . $sightingInfo["objectid"] . "\"><img src=\"./images/thumb/" . $sightingInfo["TripDate"] . "-" . $sightingInfo["SpeciesAbbreviation"] . ".jpg\" align=right border=0></a>";
+	$thumbFilename = getPhotoFilename($sightingInfo);
+
+	list($width, $height, $type, $attr) = getimagesize("./images/thumb/" . $thumbFilename);
+
+	return "<a href=\"./photodetail.php?id=" . $sightingInfo["objectid"] . "\"><img width=" . $width . " height=" . $height . " src=\"./images/thumb/" . $thumbFilename . "\" align=right border=0></a>";
 }
 
 /**

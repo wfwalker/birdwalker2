@@ -43,7 +43,12 @@ if ($prevPhotoSightingID == "") { $prevPhotoSightingID = $sightingID; }
 
 <?php
 
-if ($sightingInfo["Photo"] == "1") { echo "<img src=\"" . getPhotoURLForSightingInfo($sightingInfo) . "\">"; }
+if ($sightingInfo["Photo"] == "1") {
+	$photoFilename = getPhotoFilename($sightingInfo);
+
+	list($width, $height, $type, $attr) = getimagesize("./images/photo/" . $photoFilename);
+	echo "<img width=" . $width . " height=" . $height . "  src=\"" . getPhotoURLForSightingInfo($sightingInfo) . "\">";
+}
 
 if (strlen($sightingInfo["Notes"]) > 0) {
   echo "<p class=sighting-notes>" . $sightingInfo["Notes"] . "</p>";

@@ -71,6 +71,10 @@ while($sightingInfo = mysql_fetch_array($sightingListQuery)) {
 	}
 		// edit link
 	if (getEnableEdit()) { echo " <a href=\"./sightingedit.php?id=" . $sightingInfo['objectid'] . "\">edit</a>"; }
+
+	// photo
+	if ($sightingInfo["Photo"] == "1") { echo getPhotoLinkForSightingInfo($sightingInfo); }
+
 	echo" </td>";
 
 	// location
@@ -84,6 +88,7 @@ while($sightingInfo = mysql_fetch_array($sightingListQuery)) {
 	
 	// notes
 	if ($sightingInfo["Notes"] != "") { echo "<tr><td></td><td class=sighting-notes>" . $sightingInfo["Notes"] . "</td></tr>"; }
+
 
 	$counter++;
 	$prevSightingInfo = $sightingInfo;
