@@ -73,7 +73,7 @@ a:hover { color:#43436e; text-decoration:underline; }
 
 a.info{
     position:relative; /*this is the key*/
-    z-index:24; background-color: blue;
+    z-index:24; background-color: #484393;
     color: white; padding-left: 3px; padding-right: 3px;
     text-decoration:none}
 
@@ -85,5 +85,5 @@ a.info:hover span{ /*the span will display just on :hover state*/
     display: block;
     position: absolute;
     top: 0em; left: 0em; width: 15em;
-    background-color: blue;
+    background-color: #484393;
 	color: white; padding-left: 3px; padding-right: 3px; }
