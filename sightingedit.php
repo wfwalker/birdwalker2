@@ -79,11 +79,11 @@ navTrailBirds();
 <div class="contentright">
 
 <div class=pagesubtitle>
-  <a href="./tripdetail.php?id=<?= $tripInfo["objectid"] ?>"><?= $tripInfo["niceDate"] ?></a>
+  <a href="./tripdetail.php?tripid=<?= $tripInfo["objectid"] ?>"><?= $tripInfo["niceDate"] ?></a>
 </div>
 <div class="titleblock">
   <div class=pagetitle>
-    <a href="./speciesdetail.php?id=<?= $speciesInfo["objectid"] ?>"><?= $speciesInfo["CommonName"] ?></a>
+    <a href="./speciesdetail.php?speciesid=<?= $speciesInfo["objectid"] ?>"><?= $speciesInfo["CommonName"] ?></a>
   </div>
   <div class=metadata>
     <a href="./countydetail.php?county=<?= $locationInfo["County"] ?>"><?= $locationInfo["County"] ?> County</a>,
