@@ -3,8 +3,8 @@
 require("./birdwalker.php");
 
 $tripInfo = getTripInfo($_GET['id']);
-$tripYear =  substr($tripInfo["Date"], 0, 4);
-
+$tripYear = substr($tripInfo["Date"], 0, 4);
+$tripCount = getTripCount();
 $whereClause = "sighting.LocationName=location.Name and species.Abbreviation=sighting.SpeciesAbbreviation and sighting.TripDate='" . $tripInfo["Date"]. "'";
 
 // total species countv for this trip
@@ -26,11 +26,18 @@ $firstYearSightings = getFirstYearSightings(substr($tripInfo["Date"], 0, 4));
 
 <?php navigationHeader() ?>
 
+    <div class="navigationleft">
+	  <a href="./tripdetail.php?id=1">first</a>
+	  <a href="./tripdetail.php?id=<?php echo $_GET['id'] - 1 ?>">prev</a>
+      <a href="./tripdetail.php?id=<?php echo $_GET['id'] + 1 ?>">next</a>
+      <a href="./tripdetail.php?id=<?php echo $tripCount ?>">last</a>
+    </div>
+
     <div class="contentright">
 	  <div class=titleblock>
       <div class=pagetitle> <?php echo $tripInfo["Name"] ?> Trip List</div>
       <div class=pagesubtitle> <?php echo $tripInfo["niceDate"] ?></div>
-      <div class=metadata>Leader:  <?php echo $tripInfo["Leader"] ?></div>
+      <div class=metadata>Led by  <?php echo $tripInfo["Leader"] ?></div>
 <?php if (strlen($tripInfo["ReferenceURL"]) > 0) {
       echo "<div><a href=\"" . $tripInfo["ReferenceURL"] . "\">Trip Website</a></div>";
 } ?>
@@ -61,21 +68,23 @@ while($locationInfo = mysql_fetch_array($locationListQuery))
 			echo "<div class=\"titleblock\">" . $taxoInfo["CommonName"] . "</div>";
 		}
 
-		echo "<div class=firstcell><a href=\"./speciesdetail.php?id=".$info["speciesid"]."\">".$info["CommonName"]."</a></div>";
+		echo "<div class=firstcell><a href=\"./speciesdetail.php?id=".$info["speciesid"]."\">".$info["CommonName"]."</a>";
+
+		if ($info["Exclude"] == "1") {
+			echo "<span class=sighting-notes> excluded</span>";
+		}
+ 
+		$sightingID = $info["objectid"];
+ 
+		if ($firstSightings[$sightingID] != null) echo "<span class=sighting-notes> first life sighting</span>";
+		else if ($firstYearSightings[$sightingID] != null) echo "<span class=sighting-notes> first " . $tripYear . " sighting</span>";
+		
+		echo "</div>";
 
 		if (strlen($info["Notes"]) > 0) {
 			echo "<div class=sighting-notes>" . $info["Notes"] . "</div>";
 		}
  
-		if ($info["Exclude"] == "1") {
-			echo "<div class=sighting-notes>excluded</div>";
-		}
- 
-		$sightingID = $info["objectid"];
- 
-		if ($firstSightings[$sightingID] != null) echo "<div class=sighting-notes>first life sighting</div>";
-		else if ($firstYearSightings[$sightingID] != null) echo "<div class=sighting-notes>first " . $tripYear . " sighting</div>";
-		
 		$prevInfo = $info;
 	}
 

@@ -8,6 +8,15 @@
 	position: absolute; text-decoration: none
  }
 
+.navigationleft
+{
+    font: 10pt Arial;
+  	font-weight: bold;
+	left: 1%; width: 14%; top: 1%;
+	padding-top: 33px; padding-left: 10px;
+	position: absolute; text-decoration: none
+ }
+
 .contentright
 {
     font: 10pt Arial;
