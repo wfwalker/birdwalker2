@@ -26,7 +26,7 @@ globalMenu();
 disabledBrowseButtons();
 
 $stateInfo = getStateInfoForAbbreviation($state);
-$items[]="<a href=\"./statedetail.php?view=" . $view . "&id=" . $stateInfo["objectid"] . "\">" . strtolower($stateInfo["Name"]) . "</a>";
+$items[]="<a href=\"./statedetail.php?view=" . $view . "&stateid=" . $stateInfo["objectid"] . "\">" . strtolower($stateInfo["Name"]) . "</a>";
 navTrailLocations($items);
 
 $locationQuery = new LocationQuery;

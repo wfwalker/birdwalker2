@@ -1014,7 +1014,7 @@ function navTrailLocationDetail($siteInfo)
 	$stateInfo = getStateInfoForAbbreviation($siteInfo["State"]);
 
 	$items[] = "
-    <a href=\"./statedetail.php?view=locations&id=" .  $stateInfo["objectid"] . "\">" .
+    <a href=\"./statedetail.php?view=locations&stateid=" .  $stateInfo["objectid"] . "\">" .
 		strtolower(getStateNameForAbbreviation($siteInfo["State"])) . "
     </a>";
 	$items[] = "
