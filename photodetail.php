@@ -53,7 +53,7 @@ navTrailPhotos();
 <?        editLink("./sightingedit.php?id=" . $sightingID); ?>
       </div>
       <div class=metadata>
-          <a href="./locationdetail.php?id=<?= $locationInfo["objectid"] ?>"><?= $locationInfo["Name"] ?>, <?= $locationInfo["State"] ?></a><br/>
+          <a href="./locationdetail.php?locationid=<?= $locationInfo["objectid"] ?>"><?= $locationInfo["Name"] ?>, <?= $locationInfo["State"] ?></a><br/>
           <a href="./tripdetail.php?tripid=<?= $tripInfo["objectid"] ?>"><?= $tripInfo["niceDate"] ?></a>
       </div>
 </div>
