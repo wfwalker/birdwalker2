@@ -6,14 +6,40 @@ require("./birdwalker.php");
 $speciesid = $_GET["speciesid"];
 $locationid = $_GET["locationid"];
 $year = $_GET["year"];
-$speciesInfo = getSpeciesInfo($speciesid);
+$county = $_GET["county"];
+$state = $_GET["state"];
 
-$sig2spe = "species.Abbreviation=sighting.SpeciesAbbreviation";
-$sig2loc = "location.Name=sighting.LocationName";
-$sig2tri = "trip.Date=sighting.TripDate";
+$sightingListQueryString = "SELECT date_format(sighting.TripDate, '%M %e, %Y') as niceDate, sighting.*, species.CommonName, species.objectid as speciesid, trip.objectid as tripid, location.County, location.State FROM sighting, species, location, trip WHERE species.Abbreviation=sighting.SpeciesAbbreviation AND location.Name=sighting.LocationName AND trip.Date=sighting.TripDate ";
 
-$sightingListQueryString = "SELECT date_format(sighting.TripDate, '%M %e, %Y') as niceDate, sighting.*, species.CommonName, species.objectid as speciesid, trip.objectid as tripid, location.County, location.State FROM sighting, species, location, trip WHERE species.Abbreviation=sighting.SpeciesAbbreviation AND location.Name=sighting.LocationName AND species.objectid=" . $speciesid . " AND Year(TripDate)=" . $year . " AND trip.Date=sighting.TripDate ";
-if ($locationid != "") { $sightingListQueryString = $sightingListQueryString . "AND location.objectid=" . $locationid; }
+if ($speciesid !="") {
+	$sightingListQueryString = $sightingListQueryString . " AND species.objectid=" . $speciesid;
+	$speciesInfo = getSpeciesInfo($speciesid);
+	$pageTitle = $speciesInfo["CommonName"] . " sightings";
+} else {
+	$pageTitle = "Sightings";
+}
+
+if ($locationid != "") {
+	$sightingListQueryString = $sightingListQueryString . " AND location.objectid=" . $locationid;
+	$locationInfo = getLocationInfo($locationid); 
+	$pageSubtitle = $locationInfo["Name"];
+} elseif ($county != "") {
+	$sightingListQueryString = $sightingListQueryString . " AND location.County='" . $county . "'";
+	$pageSubtitle = $county . " County";
+} elseif ($state != "") {
+	$sightingListQueryString = $sightingListQueryString . " AND location.State='" . $state . "'";
+	  $pageSubtitle = getStateNameForAbbreviation($state);
+}
+
+if ($year !="") {
+	$sightingListQueryString = $sightingListQueryString . " AND Year(TripDate)=" . $year;
+	if ($pageSubtitle == "" ) {
+		$pageTitle = $pageTitle . ", " . $year;
+	} else {
+		$pageSubtitle = $pageSubtitle . ", " . $year;
+	}
+}
+
 $sightingListQueryString = $sightingListQueryString . " order by TripDate, LocationName;";
 
 $sightingListQuery = performQuery($sightingListQueryString);
@@ -22,7 +48,7 @@ $sightingListQuery = performQuery($sightingListQueryString);
 <html>
   <head>
     <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-    <title>birdWalker | <?php echo $speciesInfo["CommonName"] ?> Sightings for <?php echo $year ?></title>
+    <title>birdWalker | <?php echo $pageTitle ?></title>
   </head>
   <body>
 
@@ -30,13 +56,9 @@ $sightingListQuery = performQuery($sightingListQueryString);
 
     <div class=contentright>
       <div class="titleblock">	  
-	  <div class=pagetitle><?php echo $speciesInfo["CommonName"] ?> Sightings for <?php echo $year ?></div>
+	  <div class=pagetitle><?php echo $pageTitle ?></div>
+	  <div class=pagesubtitle><?php echo $pageSubtitle ?></div>
       </div>
-
-<p class=sighting-notes>
-Note: within a single day, the order of sightings is not
-preserved.
-</p>
 
 <table class=report-content columns=4 width="600px">
 <?php
@@ -61,7 +83,7 @@ while($sightingInfo = mysql_fetch_array($sightingListQuery)) {
 	echo "</tr>";
 	
 	// notes
-	if ($sightingInfo["Notes"] != "") { echo "<tr><td></td><td></td><td colspan=2 class=sighting-notes>" . $sightingInfo["Notes"] . "</td></tr>"; }
+	if ($sightingInfo["Notes"] != "") { echo "<tr><td></td><td class=sighting-notes>" . $sightingInfo["Notes"] . "</td></tr>"; }
 
 	$counter++;
 	$prevSightingInfo = $sightingInfo;
