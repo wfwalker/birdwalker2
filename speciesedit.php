@@ -41,7 +41,7 @@ if (($postSpeciesID != "") && ($save == "Save"))
 	$abaCountable = $_POST['ABACountable'];
 
 	performQuery("update species set CommonName='" . $commonName . 
-				 "', latinName='" . $latinName . 
+				 "', LatinName='" . $latinName . 
 				 "', Abbreviation='" . $abbreviation . 
 				 "', Notes='" . $notes . 
 				 "', ReferenceURL='" . $referenceURL . 
