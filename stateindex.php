@@ -14,7 +14,7 @@ $stateStats = performQuery("SELECT
   ORDER BY State, theyear");
 
 $years = array(1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004);
-$states = array("AZ", "CA", "IA", "IL", "MA", "NJ", "OR", "PA", "TX");
+$states = array("AZ", "CA", "IA", "IL", "MA", "NJ", "OR", "PA", "TX", "WI");
 
 while ($info = mysql_fetch_array($stateStats))
 {
