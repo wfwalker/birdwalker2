@@ -10,8 +10,15 @@ function navigationHeader()
 	  <div class=\"leftsubtitle\"><a href=\"./speciesindex.php\">Species</a></div>
 	  <div class=\"leftsubtitle\"><a href=\"./locationindex.php\">Locations</a></div>
 	  <div class=\"leftsubtitle\"><a href=\"./countyindex.php\">Counties</a></div>
-	  <div class=\"leftsubtitle\"><a href=\"./photoindex.php\">Photos</a></div>
-	</div>
+	  <div class=\"leftsubtitle\"><a href=\"./photoindex.php\">Photos</a></div>";
+
+	if (getEnableEdit())
+	{
+		echo "<br><div class=\"leftsubtitle\"><a href=\"./tripcreate.php\">Create Trip</a></div>";
+	}
+
+	echo "
+    </div>
  ";
 }
 
