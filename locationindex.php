@@ -2,11 +2,12 @@
 <?php
 
 require("./birdwalker.php");
-require("./locationquery.php");
+require("./map.php");
 
-$view = param($_GET, "view", "");
+$view = param($_GET, "view", "list");
 
 $locationQuery = new LocationQuery;
+$extrema = $locationQuery->findExtrema();
 
 ?>
 
@@ -30,19 +31,24 @@ navTrailLocations();
     <div class=metadata>
       <a href="./locationindex.php">list</a> |
       <a href="./locationindex.php?view=bymonth">by month</a> |
-	  <a href="./locationindex.php?view=byyear">by year<a/>
+	  <a href="./locationindex.php?view=byyear">by year<a/> |
+      <a href="./locationindex.php?view=map&minlat=<?= $extrema["minLat"]-0.01 ?>&maxlat=<?= $extrema["maxLat"]+0.01 ?>&minlong=<?= $extrema["minLong"]-0.01 ?>&maxlong=<?= $extrema["maxLong"]+0.01 ?>">map</a><br/>
     </div>
 	</div>
 
     <div class=heading><?= $locationQuery->getLocationCount() ?> Locations</div>
 
-<? if ($view == "") {
+<? if ($view == "list") {
 	  $locationQuery->formatTwoColumnLocationList();
    } else if ($view == "bymonth") {
       $locationQuery->formatLocationByMonthTable();
    } else if ($view == "byyear") {
       $locationQuery->formatLocationByYearTable();
-   } ?>
+   } else if ($view == "map") {
+      $map = new Map("./locationindex.php");
+	  $map->setFromRequest($_GET);
+      $map->draw();
+   }?>
 
     </div>
   </body>
