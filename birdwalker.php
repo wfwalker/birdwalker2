@@ -211,9 +211,15 @@ function navTrail($extra)
 // -------------------------- DATABASE UTILITIES -------------------------------
 //
 
+function getIsLaptop()
+{
+ 	$serverName = getenv("SERVER_NAME");
+ 	return ($serverName == "127.0.0.1") || ($serverName == "localhost") || ($serverName == "");
+}
+
 function getEnableEdit()
 {
-	return true;
+	return getIsLaptop();
 }
 
 function getEarliestYear()
@@ -233,9 +239,18 @@ function selectDatabase()
 {
 	// MySQL info variables
 	$mysql["host"] = "localhost";
-	$mysql["user"] = "birdwalker";
-	$mysql["pass"] = "birdwalker";
 	$mysql["database"] = "birdwalker";
+
+ 	if (getIsLaptop())
+ 	{
+ 		$mysql["user"] = "birdwalker";
+ 		$mysql["pass"] = "birdwalker";
+ 	}
+ 	else
+ 	{
+ 		$mysql["user"] = "walker";
+ 		$mysql["pass"] = "walker";
+ 	}
 
 	// Connect to MySQL
 	mysql_connect($mysql["host"], $mysql["user"], $mysql["pass"]) or die("MySQL connection failed. Some info is wrong");
