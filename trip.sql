@@ -321,3 +321,7 @@ INSERT INTO trip VALUES (320,'Mary and Bill','','Rarity Chase','','2003-12-13');
 INSERT INTO trip VALUES (322,'Bill','','Walking to Work','','2004-06-22');
 INSERT INTO trip VALUES (321,'Mary and Bill','','Saturday Stroll','','2004-06-19');
 INSERT INTO trip VALUES (323,'Bill','','Commuting','','2004-01-13');
+INSERT INTO trip VALUES (324,'Mary and Bill','','Sunday Stroll','','2004-06-27');
+INSERT INTO trip VALUES (325,'Bill','','Cactus Garden Stroll','','2004-06-28');
+INSERT INTO trip VALUES (326,'Mary and Bill','','Holiday Stroll','','2004-07-05');
+INSERT INTO trip VALUES (327,'Bill','','Photos after work','Went twice to investigate reports of a Little Blue Heron, had no luck.','2004-07-02');
