@@ -20,10 +20,9 @@ disabledBrowseButtons();
 
     <div class=contentright>
 
-	  <p>Welcome to <code>birdWalker</code>! This website contains Bill and Mary&apos;s birding field notes, including
+	  <p>Welcome to <code>birdWalker</code>! This website contains Bill and Mary&#39;s birding field notes, including
 	  trip, county, state, and year lists. Our latest trips are listed below, other indices
 	  are available from the links on the left.</p>
-
 
 <?    for ($index = 0; $index < 5; $index++)
 	  {

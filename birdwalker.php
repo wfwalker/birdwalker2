@@ -9,8 +9,8 @@ function globalMenu()
 	  <div><a href="./speciesindex.php">birds</a></div>
 	  <div><a href="./locationindex.php">locations</a></div>
 	  <div><a href="./chronolifelist.php">life list</a></div>
-	  <div><a href="./photoindextaxo.php">photos</a></div>
-	  <div><a href="./credits.php">credits</a></div>
+	  <div><a href="./photoindex.php">photos</a></div>
+	  <div><a href="./credits.php">about</a></div>
 
 <?	if (getEnableEdit())
 	{ ?>
@@ -855,6 +855,35 @@ function locationBrowseButtons($siteInfo, $locationID, $viewMode)
 	browseButtons("./locationdetail" . $viewMode . ".php?id=", $locationID, $firstLocationID, $prevLocationID, $nextLocationID, $lastLocationID);
 }
 
+function getStateInfo($id)
+{
+	return performOneRowQuery("SELECT * FROM state where objectid='" . $id . "'");
+}
+
+function stateBrowseButtons($stateID, $viewMode)
+{
+	$firstAndLastState= performOneRowQuery("
+    SELECT min(state.objectid) as firstOne, max(state.objectid) as lastOne
+      FROM state, sighting, location
+      WHERE sighting.LocationName=location.Name AND location.State=state.Abbreviation");
+
+	$firstStateID = $firstAndLastState["firstOne"];
+	$lastStateID = $firstAndLastState["lastOne"];
+
+	$nextStateID = performCount("
+    SELECT min(state.objectid)
+      FROM state, sighting, location
+      WHERE sighting.LocationName=location.Name AND location.State=state.Abbreviation and state.objectid>" . $stateID . " LIMIT 1");
+
+	$prevStateID = performCount("
+    SELECT max(state.objectid)
+      FROM state, sighting, location
+      WHERE sighting.LocationName=location.Name AND location.State=state.Abbreviation and state.objectid<" . $stateID . " LIMIT 1");
+
+	browseButtons("./statedetail.php?view=" . $viewMode . "&id=", $stateID, $firstStateID, $prevStateID, $nextStateID, $lastStateID);
+
+}
+
 function navTrailCounty($state, $county)
 {
 	$items[]="<a href=\"./statespecies.php?state=" . $state . "\">" . strtolower(getStateNameForAbbreviation($state)) . "</a>";
@@ -949,17 +978,17 @@ function countyViewLinks($state, $county)
 <?
 }
 
-function stateViewLinks($abbrev)
+function stateViewLinks($id)
 {
 ?>
         locations:
-        <a href="./statelocations.php?state=<?= $abbrev ?>">list</a> |
-	    <a href="./statelocationsbymonth.php?state=<?= $abbrev ?>">by month</a> |
-	    <a href="./statelocationsbyyear.php?state=<?= $abbrev ?>">by year</a><br/>
+        <a href="./statedetail.php?view=locations&id=<?= $id ?>">list</a> |
+	    <a href="./statedetail.php?view=locationsbymonth&id=<?= $id ?>">by month</a> |
+	    <a href="./statedetail.php?view=locationsbyyear&id=<?= $id ?>">by year</a><br/>
         species:	
-        <a href="./statespecies.php?state=<?= $abbrev ?>">list</a> |
-	    <a href="./statespeciesbymonth.php?state=<?= $abbrev ?>">by month</a> |
-	    <a href="./statespeciesbyyear.php?state=<?= $abbrev ?>">by year</a><br/>
+        <a href="./statedetail.php?view=species&id=<?= $id ?>">list</a> |
+	    <a href="./statedetail.php?view=speciesbymonth&id=<?= $id ?>">by month</a> |
+	    <a href="./statedetail.php?view=speciesbyyear&id=<?= $id ?>">by year</a><br/>
 <?
 }
 
@@ -1054,17 +1083,7 @@ function getMonthNameForNumber($month)
 
 function getStateNameForAbbreviation($abbreviation)
 {
-	if ($abbreviation == "AZ") return "Arizona";
-	else if ($abbreviation == "CA") return "California";
-	else if ($abbreviation == "IA") return "Iowa";
-	else if ($abbreviation == "IL") return "Illinois";
-	else if ($abbreviation == "MA") return "Massachussets";
-	else if ($abbreviation == "NJ") return "New Jersey";
-	else if ($abbreviation == "OR") return "Oregon";
-	else if ($abbreviation == "PA") return "Pennsylvania";
-	else if ($abbreviation == "TX") return "Texas";
-	else if ($abbreviation == "WI") return "Wisconsin";
-	else return "Unknown";
+	return performCount("SELECT Name from state where Abbreviation='" . $abbreviation . "'");
 }
 
 

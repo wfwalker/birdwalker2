@@ -1,3 +1,4 @@
+mysqldump -u birdwalker -pbirdwalker birdwalker state | grep INSERT > state.sql
 mysqldump -u birdwalker -pbirdwalker birdwalker location | grep INSERT > location.sql
 mysqldump -u birdwalker -pbirdwalker birdwalker sighting | grep INSERT > sighting.sql
 mysqldump -u birdwalker -pbirdwalker birdwalker trip | grep INSERT > trip.sql
