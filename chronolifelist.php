@@ -5,7 +5,21 @@ require("./birdwalker.php");
 
 performQuery("CREATE TEMPORARY TABLE tmp ( abbrev varchar(16) default NULL, tripdate date default NULL);");
 performQuery("INSERT INTO tmp SELECT SpeciesAbbreviation, MIN(TripDate) FROM sighting where Exclude!='1' GROUP BY SpeciesAbbreviation;");
-$firstSightingQuery = performQuery("SELECT date_format(sighting.TripDate, '%M %e, %Y') as niceDate, sighting.*, species.CommonName, species.objectid as speciesid, trip.objectid as tripid, location.County, location.State FROM sighting, tmp, species, location, trip WHERE species.ABACountable='1' and sighting.SpeciesAbbreviation=tmp.abbrev AND species.Abbreviation=sighting.SpeciesAbbreviation AND sighting.TripDate=tmp.tripdate AND location.Name=sighting.LocationName AND trip.Date=sighting.TripDate order by TripDate, LocationName;");
+
+$firstSightingQuery = performQuery("SELECT
+     date_format(sighting.TripDate, '%M %e, %Y') as niceDate,
+     sighting.*, 
+     species.CommonName,
+     species.objectid as speciesid,
+     trip.objectid as tripid, location.County, location.State
+  FROM sighting, tmp, species, location, trip
+  WHERE species.ABACountable='1' AND
+     sighting.SpeciesAbbreviation=tmp.abbrev AND
+     species.Abbreviation=sighting.SpeciesAbbreviation AND
+     sighting.TripDate=tmp.tripdate AND
+     location.Name=sighting.LocationName AND
+     trip.Date=sighting.TripDate
+  ORDER BY TripDate, LocationName;");
 
 $speciesCount = mysql_num_rows($firstSightingQuery);
 ?>
@@ -39,27 +53,38 @@ preserved.
 
 <?php
 $counter = 1;
-while($sightingInfo = mysql_fetch_array($firstSightingQuery)) {
-	if (100 * floor($counter / 100) == $counter) { echo "<tr class=titleblock>"; } else { echo "<tr>"; }
-	// date
-	echo "<td nowrap>";
-	if ($prevSightingInfo['TripDate'] != $sightingInfo['TripDate']) {
-		echo "<a href=\"./tripdetail.php?id=" . $sightingInfo['tripid'] . "\">" . $sightingInfo['niceDate'] . "</a>";
-	}
-	echo "</td>";
+while($sightingInfo = mysql_fetch_array($firstSightingQuery))
+{
+	if (100 * floor($counter / 100) == $counter)
+	{ ?>
+		<tr class=titleblock>
+<?	} else { ?>
+		<tr>
+<?	} ?>
+	<td nowrap>
 
-	// count
-	echo "<td align=right>" . $counter . "</td>";
+<?	if ($prevSightingInfo['TripDate'] != $sightingInfo['TripDate'])
+	{ ?>
+		<a href="./tripdetail.php?id=<?= $sightingInfo['tripid'] ?>"><?= $sightingInfo['niceDate'] ?></a>
+<?	} ?>
 
-	// species
-	echo "<td><a href=\"./speciesdetail.php?id=" . $sightingInfo['speciesid'] . "\">" . $sightingInfo['CommonName'] . "</a>";
-	// edit link
-	if (getEnableEdit()) { echo " <a href=\"./sightingedit.php?id=" . $sightingInfo['objectid'] . "\">edit</a>"; }
-	echo" </td>";
-	echo "</tr>";
+	</td>
+
+	<td align=right><?= $counter ?></td>
+    <td><a href="./speciesdetail.php?id=<?= $sightingInfo['speciesid'] ?>"><?= $sightingInfo['CommonName'] ?></a>
+
+<?	if (getEnableEdit())
+	{ ?>
+	    <a href="./sightingedit.php?id=<?= $sightingInfo['objectid'] ?>">edit</a>
+<?  } ?>
+
+	</td>
+	</tr>
 	
-	// notes
-	if ($sightingInfo["Notes"] != "") { echo "<tr><td></td><td></td><td colspan=2 class=sighting-notes>" . $sightingInfo["Notes"] . "</td></tr>"; }
+<?	if ($sightingInfo["Notes"] != "")
+	{ ?>
+		<tr><td></td><td></td><td colspan=2 class=sighting-notes><?= $sightingInfo["Notes"] ?></td></tr>
+<?	}
 
 	$counter++;
 	$prevSightingInfo = $sightingInfo;

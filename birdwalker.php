@@ -1,27 +1,25 @@
 <?php
 
 function globalMenu()
-{
-	echo "
-	\n<div class=\"contentleft\">
-	\n  <div class=\"leftsubtitle\"><a href=\"./tripindex.php\">trips</a></div>
-	\n  <div class=\"leftsubtitle\"><a href=\"./speciesindex.php\">birds</a></div>
-	\n  <div class=\"leftsubtitle\"><a href=\"./locationindex.php\">locations</a></div>
-	\n  <div class=\"leftsubtitle\"><a href=\"./chronolifelist.php\">life list</a></div>
-	\n  <div class=\"leftsubtitle\"><a href=\"./photoindextaxo.php\">photos</a></div>";
+{ ?>
+	<div class="contentleft">
+	  <div class="leftsubtitle"><a href="./tripindex.php">trips</a></div>
+	  <div class="leftsubtitle"><a href="./speciesindex.php">birds</a></div>
+	  <div class="leftsubtitle"><a href="./locationindex.php">locations</a></div>
+	  <div class="leftsubtitle"><a href="./chronolifelist.php">life list</a></div>
+	  <div class="leftsubtitle"><a href="./photoindextaxo.php">photos</a></div>
 
-	if (getEnableEdit())
-	{
-		echo "\n<br><div class=\"leftsubtitle\">";
-		echo "\n<a href=\"./tripcreate.php\">create trip</a><br>";
-		echo "\n<a href=\"./photosneeded.php\">photos needed</a><br>";
-		echo "\n<a href=\"./errorcheck.php\">errors</a>";
-		echo "\n</div>";
-	}
+<?	if (getEnableEdit())
+	{ ?>
+		<br><div class="leftsubtitle">
+		<a href="./tripcreate.php">create trip</a><br>
+		<a href="./photosneeded.php">photos needed</a><br>
+		<a href="./errorcheck.php">errors</a>
+		</div>
+<?	} ?>
 
-	echo "
     </div>
- ";
+<?
 }
 
 function disabledBrowseButtons()
@@ -37,30 +35,39 @@ function browseButtons($urlPrefix, $current, $first, $prev, $next, $last)
 	$nextLabel="next";
 	$prevLabel="prev";
 
-    echo "<div class=\"navigationleft\">";
-	
+?>
+   <div class="navigationleft">
+<?	
 	if ($current == $first)
 	{
-		echo "\n<span class=navbutton>" . $firstLabel . "</span> <span class=navbutton>" . $prevLabel . "</span>";
+?>
+		<span class=navbutton><?= $firstLabel ?></span> <span class=navbutton><?= $prevLabel ?></span>
+<?
 	}
 	else
 	{
-		echo "\n<span class=navbutton><a href=\"" . $urlPrefix . $first . "\">" . $firstLabel . "</a></span>";
-		echo "\n <span class=navbutton><a href=\"" . $urlPrefix . $prev . "\">" . $prevLabel . "</a></span>";
+?>
+		<span class=navbutton><a href="<?= $urlPrefix . $first ?>"><?= $firstLabel ?></a></span>
+		<span class=navbutton><a href="<?= $urlPrefix . $prev ?>"><?= $prevLabel ?></a></span>
+<?
 	}
 
 	if ($current == $last)
 	{
-		echo "\n <span class=navbutton>" . $nextLabel . "</span> <span class=navbutton>" . $lastLabel . "</span>";
+?>
+		<span class=navbutton><?= $nextLabel ?></span> <span class=navbutton><?= $lastLabel ?></span>
+<?
 	}
 	else
 	{
-		echo "\n <span class=navbutton><a href=\"" . $urlPrefix . $next . "\">" . $nextLabel . "</a></span>";
-		echo "\n <span class=navbutton><a href=\"" . $urlPrefix . $last . "\">" . $lastLabel . "</a></span>";
+?>
+		<span class=navbutton><a href="<?= $urlPrefix . $next ?>"><?= $nextLabel ?></a></span>
+		<span class=navbutton><a href="<?= $urlPrefix . $last ?>"><?= $lastLabel ?></a></span>
+<?
 	}
-
-	echo "</div>";
-
+?>
+	</div>
+<?
 }
 
 function pageThumbnail($photoQueryString)
@@ -69,11 +76,10 @@ function pageThumbnail($photoQueryString)
 
 	if (mysql_num_rows($photoQuery) > 0)
 	{
-		echo "<div class=thumb>";
 		$photoInfo = mysql_fetch_array($photoQuery);
-		echo getThumbForSightingInfo($photoInfo);
-		echo "<div class=copyright>@2004 W. F. Walker</div>";
-		echo "</div>";
+?>
+		<div class=thumb><?= getThumbForSightingInfo($photoInfo) ?><div class=copyright>@2004 W. F. Walker</div></div>
+<?
 	}
 }
 
@@ -91,7 +97,7 @@ function navTrailLocations($extra = "")
 
 function navTrailPhotos($extra = "")
 {
-	$photoItems[] = "<a href=\"./photoindex.php\">photos</a>";
+	$photoItems[] = "photos";
 	navTrail(array_merge($photoItems, $extra));
 }
 
@@ -102,15 +108,19 @@ function navTrailTrips($extra = "")
 }
 
 function navTrail($extra)
-{
-	echo "\n<div class=navigationright><a href=\"./index.php\">birdWalker</a>";
+{ ?>
+	<div class=navigationright><a href="./index.php">birdWalker</a>
 
-	foreach ($extra as $item)
+<?	foreach ($extra as $item)
 	{
-		if (strlen($item) > 0) echo "\n &gt; " . $item;
-	}
+		if (strlen($item) > 0)
+		{ ?>
+		  &gt; <?= $item ?>
+<?		}
+	} ?>
 
-	echo "</div>";
+	</div>
+<?
 }
 
 //
@@ -146,8 +156,9 @@ function getPhotoFilename($sightingInfo)
 }
 
 function getPhotoLinkForSightingInfo($sightingInfo)
-{
-	echo " <a href=\"./photodetail.php?id=" . $sightingInfo["objectid"] . "\"><img border=0 align=center src=\"./images/camera.gif\"></a>";
+{ ?>
+	<a href="./photodetail.php?id=<?= $sightingInfo["objectid"] ?>"><img border=0 align=center src="./images/camera.gif"></a>
+<?
 }
 
 function getPhotoURLForSightingInfo($sightingInfo)
@@ -172,7 +183,10 @@ function performQuery($queryString)
 	$start = microtime(1);
 	selectDatabase();
 	$theQuery = mysql_query($queryString) or die("<p>Error during query: " . $queryString . "</p><p>" . mysql_error() . "</p>");
-	if (getEnableEdit()) { echo "\n\n<!-- " . (1000 * (microtime(1) - $start)) . ", " . $queryString . " -->\n\n"; }
+	if (getEnableEdit())
+	{ ?>
+		<!--  <?= (1000 * (microtime(1) - $start)) ?>, <?= $queryString ?> -->
+<?	}
 	return $theQuery;
 }
 
@@ -182,7 +196,10 @@ function performQuery($queryString)
 function performCount($queryString)
 {
 	selectDatabase();
-	if (getEnableEdit()) { echo "\n\n<!-- " . $queryString . "-->\n\n"; }
+	if (getEnableEdit())
+	{ ?>
+		<!-- <?= $queryString ?> -->
+<?	}
 	$theQuery = mysql_query($queryString) or die("count query error " . $queryString);
 	$theCount = mysql_fetch_array($theQuery);
 	return $theCount[0];
@@ -194,7 +211,10 @@ function performCount($queryString)
 function performOneRowQuery($queryString)
 {
 	selectDatabase();
-	if (getEnableEdit()) { echo "\n\n<!-- " . $queryString . "-->\n\n"; }
+	if (getEnableEdit())
+	{ ?>
+		<!-- <?= $queryString  ?> -->
+<?	}
 	$theQuery = mysql_query($queryString) or die("single row query error " . $queryString);
 	$theFirstRow = mysql_fetch_array($theQuery);
 	return $theFirstRow;
@@ -287,7 +307,9 @@ function insertYearLabels()
 {
 	for ($year = 1996; $year <= 2004; $year++)
 	{
-		echo "<td class=yearcell align=center><a href=\"./yeardetail.php?year=" . $year . "\">" . $year . "</a></td>";
+?>
+		<td class=yearcell align=center><a href="./yeardetail.php?year=<?= $year ?>"><?= $year ?></a></td>
+<?
 	}
 }
 
@@ -295,30 +317,38 @@ function formatTwoColumnSpeciesList($query)
 {
 	$speciesCount = mysql_num_rows($query);
 	$divideByTaxo = ($speciesCount > 30);
-	$counter = round($speciesCount  * 0.6);
-	
-	echo "<div class=col1>";
-	
-	while($info = mysql_fetch_array($query))
+	$counter = round($speciesCount  * 0.6); ?>
+
+	<div class=col1>
+
+<?	while($info = mysql_fetch_array($query))
 	{
 		$orderNum =  floor($info["objectid"] / pow(10, 9));
 		
 		if ($divideByTaxo && (getBestTaxonomyID($prevInfo["objectid"]) != getBestTaxonomyID($info["objectid"])))
 		{
-			$taxoInfo = getBestTaxonomyInfo($info["objectid"]);
-			echo "\n<div class=heading>" . $taxoInfo["LatinName"] . "</div>";
-		}
-		
-		echo "\n<div class=firstcell><a href=\"./speciesdetail.php?id=".$info["objectid"]."\">".$info["CommonName"]."</a>";
-		if ($info["ABACountable"] == "0") { echo " NOT ABA COUNTABLE"; }
-		echo "</div>";
+			$taxoInfo = getBestTaxonomyInfo($info["objectid"]); ?>
+			<div class=heading><?= $taxoInfo["LatinName"] ?></div>
+<?		} ?>
 
-		$prevInfo = $info;
+		<div class=firstcell><a href="./speciesdetail.php?id=<?= $info["objectid"] ?>"><?= $info["CommonName"] ?></a>
+
+<?		if ($info["ABACountable"] == "0")
+		{ ?>
+			NOT ABA COUNTABLE
+<?		} ?>
+		</div>
+
+<?		$prevInfo = $info;
 		$counter--;
-		if ($counter == 0) echo "\n</div><div class=col2>";
-	}
+		if ($counter == 0)
+		{ ?>
+			</div><div class=col2>
+<?		}
+	} ?>
 
-	echo "</div>";
+	</div>
+<?
 }
 
 /**
@@ -326,60 +356,63 @@ function formatTwoColumnSpeciesList($query)
  */
 function formatSpeciesByYearTable($gridQueryString, $extraSightingListParams, $yearTotals)
 {
-	$gridQuery = performQuery($gridQueryString);
+	$gridQuery = performQuery($gridQueryString); ?>
 
-	echo "\n\n<table columns=11 cellpadding=0 cellspacing=0 class=\"report-content\" width=\"100%\">";
+	<table columns=11 cellpadding=0 cellspacing=0 class="report-content" width="100%">
+	    <tr><td></td><? insertYearLabels() ?></tr>
+        <tr><td class=bordered>TOTAL</td>
 
-	echo "\n<tr><td></td>"; insertYearLabels(); echo "</tr>";
-
-	echo "\n<tr><td class=bordered>TOTAL</td>";
-	$info = mysql_fetch_array($yearTotals);
+<?	$info = mysql_fetch_array($yearTotals);
 	for ($index = 1; $index <= 9; $index++)
 	{
 		if ($info["year"] == 1995 + $index)
-		{
-			echo "<td class=bordered align=center>" . $info["count"] . "</td>";
-			$info = mysql_fetch_array($yearTotals);
+		{ ?>
+			<td class=bordered align=center><?= $info["count"] ?></td>
+<?			$info = mysql_fetch_array($yearTotals);
 		}
 		else
-		{
-			echo "<td class=bordered align=center>&nbsp;</td>";
-		}
-	}
-	echo "</tr>";
+		{ ?>
+			<td class=bordered align=center>&nbsp;</td>
+<?		}
+	} ?>
 
-	while ($info = mysql_fetch_array($gridQuery))
+        </tr>
+
+<?	while ($info = mysql_fetch_array($gridQuery))
 	{
 		$theMask = $info["mask"];
 
 		if (getBestTaxonomyID($prevInfo["speciesid"]) != getBestTaxonomyID($info["speciesid"]))
 		{
-			$taxoInfo = getBestTaxonomyInfo($info["speciesid"]);
-			echo "\n\n<tr><td class=heading colspan=11>" . $taxoInfo["LatinName"] . "</td></tr>";
-		}
+			$taxoInfo = getBestTaxonomyInfo($info["speciesid"]); ?>
+			<tr><td class=heading colspan=11><?= $taxoInfo["LatinName"] ?></td></tr>
+<?		} ?>
 
-		echo "\n\n<tr><td class=firstcell><a href=\"./speciesdetail.php?id=" . $info["speciesid"] . "\">" . $info["CommonName"] . "</a></td> ";
-		
-		for ($index = 1; $index <= 9; $index++)
-		{
-			echo "<td class=bordered align=center>";
-			if (($info["mask"] >> $index) & 1)
-			{
-				echo "<a href=\"./sightinglist.php?speciesid=" . $info["speciesid"] . "&year=" . (1995 + $index) . $extraSightingListParams . "\">X</a>";
-			}
+		<tr><td class=firstcell><a href="./speciesdetail.php?id=<?= $info["speciesid"] ?>"><?= $info["CommonName"] ?></a></td>
+
+<?		for ($index = 1; $index <= 9; $index++)
+		{ ?>
+			<td class=bordered align=center>
+
+<?			if (($info["mask"] >> $index) & 1)
+			{ ?>				
+				<a href="./sightinglist.php?speciesid=<?= $info["speciesid"] ?>&year=<?= (1995 + $index) . $extraSightingListParams?>">X</a>
+<?			}
 			else
-			{
-				echo "&nbsp;" ;
-			}
-			echo "</td>";
-		}
-		echo "</tr>";
+			{ ?>
+				&nbsp;
+<?			} ?>
+			 </td>
+<?		} ?>
 
-		$prevInfo = $info;
+		</tr>
+
+<?		$prevInfo = $info;
 		$reprintYears++;
-	}
+	} ?>
 
-	echo "</table>";
+	</table>
+<?
 }
 
 /**
@@ -387,43 +420,46 @@ function formatSpeciesByYearTable($gridQueryString, $extraSightingListParams, $y
  */
 function formatLocationByYearTable($gridQueryString, $urlPrefix)
 {
-	$gridQuery = performQuery($gridQueryString);
+	$gridQuery = performQuery($gridQueryString); ?>
 
-	echo "<table cellpadding=0 cellspacing=0 cols=11 class=\"report-content\" width=\"100%\">";
-	echo "<tr><td></td>"; insertYearLabels(); echo "</tr>";
+    <table cellpadding=0 cellspacing=0 cols=11 class="report-content" width="100%">
+    <tr><td></td><? insertYearLabels() ?></tr>
 
-	while ($info = mysql_fetch_array($gridQuery))
+<?	while ($info = mysql_fetch_array($gridQuery))
 	{
 		$theMask = $info["mask"];
 
-		if ($prevInfo["County"] != $info["County"]) {
-			echo "<tr><td class=heading colspan=11>" .  $info["County"] . " County, " . $info["State"] . "</td></tr>";
-		}
+		if ($prevInfo["County"] != $info["County"]) { ?>
+			<tr><td class=heading colspan=11> <?= $info["County"] ?> County, <?= $info["State"] ?></td></tr>
+<?		} ?>
 
-		echo "\n<tr><td class=firstcell>";
-		echo "<a href=\"./locationdetail.php?id=" . $info["locationid"] . "\">" . $info["LocationName"] . "</a>";
-		echo "</td>";
-		for ($index = 1; $index <= 9; $index++)
-		{
-			echo "<td class=bordered align=center>";
-			if (($theMask >> $index) & 1)
-			{
-				echo "<a href=\"" . $urlPrefix . "locationid=" . $info["locationid"] . "&year=" . (1995 + $index) . "\">X</a>";
-			}
+		<tr>
+		    <td class=firstcell>
+		        <a href="./locationdetail.php?id=<?= $info["locationid"] ?>"><?= $info["LocationName"] ?></a>
+            </td>
+
+<?		for ($index = 1; $index <= 9; $index++)
+		{ ?>
+			<td class=bordered align=center>
+<?			if (($theMask >> $index) & 1)
+			{ ?>
+				<a href="<?= $urlPrefix ?>locationid= <?= $info["locationid"] ?>&year=<?= (1995 + $index) ?>">X</a>
+<?			}
 			else
-			{
-				echo "&nbsp;" ;
-			}
-			echo "</td>";
-		}
-		echo "</tr>";
-
+			{ ?>
+				&nbsp;
+<?			} ?>
+			</td>
+<?		} ?>
+		</tr>
+<?
 		$prevInfo = $info;
 		$reprintYears++;
-	}
+	} ?>
 
-	echo "</table>";
-}
+	 </table>
+<?
+} 
 
 //
 // ---------------------- TAXONOMY -------------------------
@@ -497,24 +533,29 @@ function formatTwoColumnLocationList($locationListQuery, $countyHeadingsOK = tru
 	$prevInfo=null;
 	$locationCount = mysql_num_rows($locationListQuery);
 	$divideByCounties = ($locationCount > 20);
-	$counter = round($locationCount  * 0.6);
+	$counter = round($locationCount  * 0.6); ?>
 
-	echo "<div class=col1>";
+    <div class=col1>
 
-	while($info = mysql_fetch_array($locationListQuery))
+<?	while($info = mysql_fetch_array($locationListQuery))
 	{
 		if ($countyHeadingsOK && $divideByCounties && (($prevInfo["State"] != $info["State"]) || ($prevInfo["County"] != $info["County"])))
-		{
-			echo "\n<div class=\"heading\">" . $info["County"] . " County, " . $info["State"] . "</div>";
-		}
+		{ ?>
+			<div class="heading"> <?= $info["County"] ?> County, <?= $info["State"] ?></div>
+<?		} ?>
 
-		echo "\n<div class=firstcell><a href=\"./locationdetail.php?id=".$info["objectid"]."\">".$info["Name"]."</a></div>";
-		$prevInfo = $info;   
+		<div class=firstcell><a href="./locationdetail.php?id=<?= $info["objectid"] ?>"><?= $info["Name"] ?></a></div>
+
+<?		$prevInfo = $info;   
 		$counter--;
-		if ($counter == 0) echo "\n</div><div class=col2>";
-	}
+		if ($counter == 0)
+		{ ?>
+		</div><div class=col2>
+<?		}
+	} ?>
 
-	echo "</div>";
+	</div>
+<?
 }
 
 
