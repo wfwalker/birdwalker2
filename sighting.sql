@@ -5485,7 +5485,7 @@ INSERT INTO sighting VALUES (5485,'cintea','Charleston Slough','','0','0','2003-
 INSERT INTO sighting VALUES (5486,'comgol','Charleston Slough','','0','0','2003-03-02');
 INSERT INTO sighting VALUES (5487,'commoo','Charleston Slough','','0','0','2003-03-02');
 INSERT INTO sighting VALUES (5488,'doccor','Charleston Slough','','0','0','2003-03-02');
-INSERT INTO sighting VALUES (5489,'eargre','Charleston Slough','','0','0','2003-03-02');
+INSERT INTO sighting VALUES (5489,'eargre','Charleston Slough','','','1','2003-03-02');
 INSERT INTO sighting VALUES (5490,'gadwal','Charleston Slough','','0','0','2003-03-02');
 INSERT INTO sighting VALUES (5491,'gocspa','Charleston Slough','','0','0','2003-03-02');
 INSERT INTO sighting VALUES (5492,'grbher','Charleston Slough','','0','0','2003-03-02');
@@ -8917,7 +8917,7 @@ INSERT INTO sighting VALUES (8938,'heegul','San Mateo County','','0','0','2004-0
 INSERT INTO sighting VALUES (8939,'ribgul','San Mateo County','','0','0','2004-06-12');
 INSERT INTO sighting VALUES (8940,'calgul','San Mateo County','','0','0','2004-06-12');
 INSERT INTO sighting VALUES (8941,'hergul','San Mateo County','','0','0','2004-06-12');
-INSERT INTO sighting VALUES (8942,'wesgul','San Mateo County','','','1','2004-06-12');
+INSERT INTO sighting VALUES (8942,'wesgul','San Mateo County','Doug C. graciously lent me his Canon 400mm f/4L DO lens for a few shots, including this one. Not well framed, but gives a hint of the kind of sharpness this lens can produce. Very nice!','','1','2004-06-12');
 INSERT INTO sighting VALUES (8943,'caster','San Mateo County','','0','0','2004-06-12');
 INSERT INTO sighting VALUES (8944,'forter','San Mateo County','','0','0','2004-06-12');
 INSERT INTO sighting VALUES (8945,'leater','San Mateo County','','0','0','2004-06-12');
@@ -8969,4 +8969,5 @@ INSERT INTO sighting VALUES (8990,'houfin','2138 King Court','','','','2004-06-1
 INSERT INTO sighting VALUES (8991,'chbchi','2138 King Court','','','','2004-06-19');
 INSERT INTO sighting VALUES (8992,'doccor','Reactivity','','0','0','2004-06-22');
 INSERT INTO sighting VALUES (8993,'houspa','Reactivity','','0','0','2004-06-22');
-INSERT INTO sighting VALUES (8994,'whtkit','Reactivity','','0','0','2004-01-13');
+INSERT INTO sighting VALUES (8994,'whtkit','Reactivity','','','1','2004-01-13');
+INSERT INTO sighting VALUES (8995,'gadwal','Palo Alto Duck Pond','','','1','2004-04-30');
