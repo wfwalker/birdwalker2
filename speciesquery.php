@@ -1,27 +1,9 @@
-
 <?php
 
-class SpeciesQuery
+require_once("./birdwalkerquery.php");
+
+class SpeciesQuery extends BirdWalkerQuery
 {
-	// constrain this query to a particular location
-	var $mLocationID;
-	// constrain this query to a particular county
-	var $mCounty;
-	// constrain this query to a particular state
-	var $mState;
-
-	// constrain this query to a trip
-	var $mTripID;
-	// constrain this query to a particular month
-	var $mMonth;
-	// constrain this query to a particular year
-	var $mYear;
-
-	// constrain this query to a particular family
-	var $mFamily;
-	// constrain this query to a particular order
-	var $mOrder;
-
 	function SpeciesQuery()
 	{
 		$this->setLocationID("");
@@ -34,17 +16,6 @@ class SpeciesQuery
 		$this->setFamily("");
 		$this->setOrder("");
 	}
-
-	function setLocationID($inValue) { $this->mLocationID = $inValue; }
-	function setCounty($inValue) { $this->mCounty = $inValue; }
-	function setState($inValue) { $this->mState = $inValue; }
-
-	function setTripID($inValue) { $this->mTripID = $inValue; }
-	function setMonth($inValue) { $this->mMonth = $inValue; }
-	function setYear($inValue) { $this->mYear = $inValue; }
-
-	function setFamily($inValue) { $this->mFamily = $inValue; }
-	function setOrder($inValue) { $this->mOrder = $inValue; }
 
 	function getGroupByClause()
 	{

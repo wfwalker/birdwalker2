@@ -3,22 +3,8 @@
 require("./birdwalker.php");
 require("./sightingquery.php");
 
-$tripid = param($_GET, "tripid", "");
-$speciesid = param($_GET, "speciesid", "");
-$locationid = param($_GET, "locationid", "");
-$year = param($_GET, "year", "");
-$month = param($_GET, "month", "");
-$county = param($_GET, "county", "");
-$state = param($_GET, "state", "");
-
 $sightingQuery = new SightingQuery;
-$sightingQuery->setTripID($tripid);
-$sightingQuery->setSpeciesID($speciesid);
-$sightingQuery->setLocationID($locationid);
-$sightingQuery->setYear($year);
-$sightingQuery->setMonth($month);
-$sightingQuery->setCounty($county);
-$sightingQuery->setState($state);
+$sightingQuery->setFromRequest($_GET);
 
 $dbQuery = $sightingQuery->performQuery();
 ?>

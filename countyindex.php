@@ -1,5 +1,5 @@
 
-<? require("./birdwalker.php"); ?>
+<? require_once("./birdwalker.php"); ?>
 
 <html>
 

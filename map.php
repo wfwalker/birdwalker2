@@ -94,6 +94,12 @@ class Map
 			 "&WIDTH=" . $this->mMapWidth . "&HEIGHT=" . $this->mMapHeight .
 			 "&LAYERS=US_NED_Shaded_Relief&STYLES=reference&FORMAT=GIF&BGCOLOR=0xffffff&TRANSPARENT=TRUE&EXCEPTIONS=INIMAGE";
 
+		$relief2 =
+			 "http://gisdata.usgs.net/servlet/com.esri.wms.Esrimap/USGS_WMS_GTOPO?" . 
+			 "LAYERS=GTOPO60%20Color%20Shaded%20Relief&FORMAT=gif&REQUEST=GetMap&SRS=EPSG:4326&servicename=WMS&EXCEPTIONS=INIMAGE&BBOX=" . 
+			 "-" . $this->mMaximumLongitude . "," . $this->mMinimumLatitude. ",-" . $this->mMinimumLongitude . "," . $this->mMaximumLatitude .
+			 "&WIDTH=" . $this->mMapWidth . "&HEIGHT=" . $this->mMapHeight;
+
 		$relief =
 			 "http://gisdata.usgs.net/servlet/com.esri.wms.Esrimap?" .
 			 "servicename=USGS_WMS_NED&reaspect=True&REQUEST=map&SRS=EPSG:4326&BBOX=" . 
@@ -109,7 +115,7 @@ class Map
 			 "&format=image/jpeg&Exceptions=se_xml";
 
 		if ($this->mBackground == "roads") return $roads;
-		else if ($this->mBackground == "relief") return $relief;
+		else if ($this->mBackground == "relief") return $relief2;
 		else if ($this->mBackground == "landcover") return $landcover;
 		else return $terraserver;
 	}

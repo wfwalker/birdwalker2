@@ -105,7 +105,7 @@ else if ($view == "map")
 elseif ($view == 'photo')
 {
 	$sightingQuery = new SightingQuery;
-	$sightingQuery->setCounty($county);
+	$sightingQuery->setFromRequest($_GET);
 	$sightingQuery->formatPhotos();
 }
 
