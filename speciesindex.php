@@ -1,10 +1,11 @@
 
 <?php
 
+require("./birdwalker.php");
 require("./speciesquery.php");
 
 $speciesQuery = new SpeciesQuery;
-$view = $_GET["view"];
+$view = param($_GET, "view", "");
 
 ?>
 
