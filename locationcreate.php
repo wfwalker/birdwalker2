@@ -22,7 +22,7 @@ if ($new == "New") { $postLocationID = 1 + performCount("select max(objectid) fr
 if ($postLocationID != "") {
 	
 	$name = $_POST['Name'];
-	$referenceURL = $_POST['ReferenceUrl'];
+	$referenceURL = $_POST['ReferenceURL'];
 	$city = $_POST['City'];
 	$county = $_POST['County'];
 	$state = $_POST['State'];
