@@ -71,7 +71,8 @@ INSERT INTO location VALUES (70,'Parcourse Marsh','','Mountain View','Santa Clar
 INSERT INTO location VALUES (71,'Patricks Point State Park','http://www.parks.ca.gov/allpages/default.asp?page_id=417','Trinidad','Humboldt','CA','','NAD-27','37.478518','122.139991');
 INSERT INTO location VALUES (72,'Pescadero Marsh','http://parks.ca.gov/central/bayarea/psb227.htm','Pescadero','San Mateo','CA','','Unknown','37.2143','122.328');
 INSERT INTO location VALUES (73,'Philadelphia','','Philadelphia','Philadelphia','PA','','','','');
-INSERT INTO location VALUES (74,'Phoenecian Resort','http://www.thephoenician.com','Phoenix','Maricopa','AZ','','mapblast','33.502103','111.951902');
+INSERT INTO location VALUES (74,'Port Aransas','','Port Aransas','Neuces','TX','','','','');
+INSERT INTO location VALUES (131,'Phoenecian Resort','http://www.thephoenician.com','Phoenix','Maricopa','AZ','','mapblast','33.502103','111.951902');
 INSERT INTO location VALUES (75,'Picchetti Ranch','http://www.openspace.org/preserves/picchetti_ranch/picchetti_ranch.html','Los Altos','Santa Clara','CA','','','','');
 INSERT INTO location VALUES (76,'Pigeon Point','http://www.pigeonpointlighthouse.org/index_00.html','Pescadero','San Mateo','CA','','mapblast','37.18625','122.396556');
 INSERT INTO location VALUES (77,'Pikes Peak','http://www.state.ia.us/parks/pikepeak.htm','McGregor','Clayton','IA','','Unknown','43.0056','91.2139');

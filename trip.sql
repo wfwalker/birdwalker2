@@ -289,3 +289,4 @@ INSERT INTO trip VALUES (288,'Bill and Mary','','Sunday Stroll','Walking around 
 INSERT INTO trip VALUES (289,'Bill','','Early Morning Walk','I went to see if I could get a look at the Clapper Rail with the new camera, and was granted an audience.','2003-12-03');
 INSERT INTO trip VALUES (290,'Bill','','Early Morning Walk','','2004-03-31');
 INSERT INTO trip VALUES (291,'Mary and Bill','','Saturday Stroll','We wanted to get warmed up before our big trip to Texas','2004-04-10');
+INSERT INTO trip VALUES (292,'Steve Shunk','','Paradise Birding Texas Day 1','','2004-04-13');
