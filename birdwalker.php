@@ -4,6 +4,13 @@ function navigationHeader()
 {
 	echo "
 
+<script type=\"text/javascript\">
+function sightinglist(url) {
+    var helpWindow = window.open(url, \"helpWindow\", \"width=500,height=300,status=yes,toolbar=yes,resizable=yes,scrollbars=yes,location=yes\");
+    helpWindow.focus();
+}
+</script>
+
 	<div class=\"contentleft\">
       <div style=\"height: 50px\"><a href=\"./index.php\">birdWalker</div>
 	  <div class=\"leftsubtitle\"><a href=\"./tripindex.php\">Trips</a></div>
@@ -15,7 +22,11 @@ function navigationHeader()
 
 	if (getEnableEdit())
 	{
-		echo "<br><div class=\"leftsubtitle\"><a href=\"./tripcreate.php\">Create Trip</a></div>";
+		echo "<br><div class=\"leftsubtitle\">";
+		echo "<a href=\"./tripcreate.php\">Create Trip</a><br>";
+		echo "<a href=\"./photosneeded.php\">Photos Needed</a><br>";
+		echo "<a href=\"./errorcheck.php\">Errors</a>";
+		echo "</div>";
 	}
 
 	echo "
