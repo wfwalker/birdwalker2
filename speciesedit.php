@@ -63,7 +63,7 @@ $speciesInfo = getSpeciesInfo($speciesID);
 </a>
 </div>
 
-<form method="post" action="./speciesedit.php?id=<?= $speciesID ?>">
+<form method="post" action="./speciesedit.php?speciesid=<?= $speciesID ?>">
 
 <table class=report-content columns=2 width=100%>
   <tr>
@@ -72,7 +72,7 @@ $speciesInfo = getSpeciesInfo($speciesID);
   </tr>
   <tr>
 	<td class=fieldlabel>Latin Name</td>
-	<td><input type="text" name="Latin Name" value="<?= $speciesInfo["LatinName"] ?>" size=30/></td>
+	<td><input type="text" name="LatinName" value="<?= $speciesInfo["LatinName"] ?>" size=30/></td>
   </tr>
   <tr>
 	<td class=fieldlabel>Abbreviation</td>
@@ -94,7 +94,7 @@ $speciesInfo = getSpeciesInfo($speciesID);
   </tr>
 
   <tr>
-	<td><input type="hidden" name="id" value="<?= $speciesID ?>"/></td>
+	<td><input type="hidden" name="speciesid" value="<?= $speciesID ?>"/></td>
 	<td><input type="submit" name="Save" value="Save"/></td>
   </tr>
 </table>
