@@ -137,3 +137,5 @@ INSERT INTO location VALUES (136,'Corpus Christi','','Corpus Christi','Nueces','
 INSERT INTO location VALUES (137,'Palmetto State Park','http://www.tpwd.state.tx.us/park/palmetto/','San Antonio','Gonzales','TX','','','','');
 INSERT INTO location VALUES (138,'Other San Benito','','','San Benito','CA','','','','');
 INSERT INTO location VALUES (139,'Big Basin State Park','','Ben Lomond','Santa Cruz','CA','','','','');
+INSERT INTO location VALUES (140,'Arrowhead Marsh','http://baytrail.abag.ca.gov/vtour/map5/access/arrow.htm','Oakland','Alameda','CA','','','','');
+INSERT INTO location VALUES (141,'Lake Merritt','','Oakland','Alameda','CA','','','','');
