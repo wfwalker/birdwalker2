@@ -63,24 +63,40 @@ function browseButtons($urlPrefix, $current, $first, $prev, $next, $last)
 
 }
 
-function navTrailBirds()
+function navTrailBirds($extra = "")
 {
-    echo "<div class=navigationright><a href=\"./index.php\">birdWalker</a> &gt; <a href=\"./speciesindex.php\">birds</a></div>";
+    $birdItems[] = "<a href=\"./speciesindex.php\">birds</a>";
+	navTrail(array_merge($birdItems, $extra));
 }
 
 function navTrailLocations($extra = "")
 {
-    echo "<div class=navigationright><a href=\"./index.php\">birdWalker</a> &gt; <a href=\"./locationindex.php\">locations</a> " . $extra . "</div>";
+    $locationItems[] = "<a href=\"./locationindex.php\">locations</a>";
+	navTrail(array_merge($locationItems, $extra));
 }
 
 function navTrailPhotos($extra = "")
 {
-    echo "<div class=navigationright><a href=\"./index.php\">birdWalker</a> &gt; <a href=\"./photoindex.php\">photos</a> " . $extra . "</div>";
+	$photoItems[] = "<a href=\"./photoindex.php\">photos</a>";
+	navTrail(array_merge($photoItems, $extra));
 }
 
 function navTrailTrips($extra = "")
 {
-    echo "<div class=navigationright><a href=\"./index.php\">birdWalker</a> &gt; <a href=\"./tripindex.php\">trips</a> " . $extra . "</div>";
+	$tripItems[] = "<a href=\"./tripindex.php\">trips</a>";
+	navTrail(array_merge($tripItems, $extra));
+}
+
+function navTrail($extra)
+{
+	echo "\n<div class=navigationright><a href=\"./index.php\">birdWalker</a>";
+
+	foreach ($extra as $item)
+	{
+		if (strlen($item) > 0) echo "\n -&gt; " . $item;
+	}
+
+	echo "</div>";
 }
 
 //
@@ -164,6 +180,7 @@ function performCount($queryString)
 function performOneRowQuery($queryString)
 {
 	selectDatabase();
+	if (getEnableEdit()) { echo "\n\n<!-- " . $queryString . "-->\n\n"; }
 	$theQuery = mysql_query($queryString) or die("single row query error " . $queryString);
 	$theFirstRow = mysql_fetch_array($theQuery);
 	return $theFirstRow;
@@ -445,7 +462,7 @@ function getLocationInfo($objectid)
 	return performOneRowQuery("SELECT * FROM location where objectid=" . $objectid);
 }
 
-function formatTwoColumnLocationList($locationListQuery)
+function formatTwoColumnLocationList($locationListQuery, $countyHeadingsOK = true)
 {
 	$prevInfo=null;
 	$locationCount = mysql_num_rows($locationListQuery);
@@ -456,11 +473,11 @@ function formatTwoColumnLocationList($locationListQuery)
 
 	while($info = mysql_fetch_array($locationListQuery))
 	{
-		if ($divideByCounties && (($prevInfo["State"] != $info["State"]) || ($prevInfo["County"] != $info["County"])))
+		if ($countyHeadingsOK && $divideByCounties && (($prevInfo["State"] != $info["State"]) || ($prevInfo["County"] != $info["County"])))
 		{
 			echo "\n<div class=\"heading\">
-              <a href=\"./countydetail.php?county=" . urlencode($info["County"]) . "\">" . $info["County"] . " County</a>,
-              <a href=\"./statedetail.php?state=" . urlencode($info["State"]) . "\">" . $info["State"] . "</a></div>";
+              <a href=\"./countylocations.php?state=" . urlencode($info["State"]) . "&county=" . urlencode($info["County"]) . "\">" . $info["County"] . " County</a>,
+              <a href=\"./statelocations.php?state=" . urlencode($info["State"]) . "\">" . $info["State"] . "</a></div>";
 		}
 
 		echo "\n<div class=firstcell><a href=\"./locationdetail.php?id=".$info["objectid"]."\">".$info["Name"]."</a></div>";
