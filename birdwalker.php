@@ -160,7 +160,7 @@ function formatPhotos($query)
 
         <div class=heading>
           <div class=pagesubtitle>
-            <a href="./tripdetail.php?id=<?= $tripInfo["objectid"] ?>"><?= $tripInfo["niceDate"] ?></a>
+            <a href="./tripdetail.php?tripid=<?= $tripInfo["objectid"] ?>"><?= $tripInfo["niceDate"] ?></a>
 <?          editLink("./sightingedit.php?id=" . $sightingInfo["objectid"]); ?>
           </div>
           <div class=metadata>

@@ -75,14 +75,14 @@ while($sightingInfo = mysql_fetch_array($firstSightingQuery))
       <td nowrap>
 
 <?	if ($prevSightingInfo['TripDate'] != $sightingInfo['TripDate']) { ?>
-		<a href="./tripdetail.php?id=<?= $sightingInfo['tripid'] ?>"><?= $sightingInfo['niceDate'] ?></a>
+		<a href="./tripdetail.php?tripid=<?= $sightingInfo['tripid'] ?>"><?= $sightingInfo['niceDate'] ?></a>
 <?	} ?>
 
 	</td>
 
   <td align=right>&nbsp;</td>
 
-	<td><a href="./speciesdetail.php?id=<?= $sightingInfo['speciesid'] ?>"><?= $sightingInfo['CommonName'] ?></a>
+	<td><a href="./speciesdetail.php?speciesid=<?= $sightingInfo['speciesid'] ?>"><?= $sightingInfo['CommonName'] ?></a>
 
 <?  if ($sightingInfo["Photo"] == "1") { ?>
         <?= getPhotoLinkForSightingInfo($sightingInfo) ?>

@@ -52,7 +52,7 @@ navTrailPhotos("missing");
 ?>
         <tr>
           <td>
-            <a href="./speciesdetail.php?id=<?= $info["objectid"] ?>"><?= $info["CommonName"] ?></a>
+            <a href="./speciesdetail.php?speciesid=<?= $info["objectid"] ?>"><?= $info["CommonName"] ?></a>
           </td>
           <td align=right>
             <?= $info["theCount"] ?>

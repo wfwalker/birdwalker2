@@ -50,7 +50,7 @@ navTrailSpecies($speciesID);
 
 <div class=pagesubtitle><?= $speciesInfo["niceDate"] ?></div>
 <div class="titleblock">
-  <a href="./speciesdetail.php?id=<?= $speciesInfo["objectid"] ?>">
+  <a href="./speciesdetail.php?speciesid=<?= $speciesInfo["objectid"] ?>">
     <div class=pagetitle><?= $speciesInfo["Name"] ?></div>
 </a>
 </div>

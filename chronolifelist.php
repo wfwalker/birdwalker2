@@ -63,7 +63,7 @@ while($sightingInfo = mysql_fetch_array($firstSightingQuery))
 
 <?	if ($prevSightingInfo['TripDate'] != $sightingInfo['TripDate'])
 	{ ?>
-		<a href="./tripdetail.php?id=<?= $sightingInfo['tripid'] ?>"><?= $sightingInfo['niceDate'] ?></a>
+		<a href="./tripdetail.php?tripid=<?= $sightingInfo['tripid'] ?>"><?= $sightingInfo['niceDate'] ?></a>
 <?	} ?>
 
 	</td>
