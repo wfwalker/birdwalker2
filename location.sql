@@ -79,7 +79,7 @@ INSERT INTO location VALUES (77,'Pikes Peak','http://www.state.ia.us/parks/pikep
 INSERT INTO location VALUES (78,'Pillar Point','http://www.smharbor.com/pillarpoint/','El Granada','San Mateo','CA','','mapblast','37.509667','122.466581');
 INSERT INTO location VALUES (79,'Point Pinos','','Monterey','Monterey','CA','','','','');
 INSERT INTO location VALUES (80,'Point Reyes National Seashore','http://www.nps.gov/pore/','Point Reyes','Marin','CA','','Unknown','38.0849','122.7928');
-INSERT INTO location VALUES (81,'Portola Redwoods State Park','','Portola','Santa Clara','CA','','','','');
+INSERT INTO location VALUES (81,'Portola Redwoods State Park','http://www.parks.ca.gov/default.asp?page_id=539','Portola','Santa Clara','CA','','','','');
 INSERT INTO location VALUES (82,'Prairie Creek Redwoods State Park','http://www.parks.ca.gov/allpages/default.asp?page_id=415','Orick','Humboldt','CA','','','','');
 INSERT INTO location VALUES (83,'Prairie du Chien','http://www.prairieduchien.org/','Prairie du Chien','Crawford','WI','','Unknown','43.0613','91.0624');
 INSERT INTO location VALUES (84,'Princeton Harbor','','Princeton','San Mateo','CA','','','','');
