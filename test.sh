@@ -6,16 +6,20 @@ echo -n "" > testresults.txt
 
 for file in $(ls *.php); do
 	log "---- $file ----"
-	php ./$file > testout.html
-	egrep "(mysql|Fatal error)" testout.html >> testresults.txt
+	php ./$file > $file.html
+	egrep "(mysql|Fatal error)" $file.html >> testresults.txt
 	ec=$?
+
+	tidy -e $file.html > /dev/null 2>> testresults.txt
+
 	if [ $ec -eq 1 ]; then
 		log "---- $file PASSED ----"
 	else
 		log "---- $file FAILED ----"
 	fi		
 
-	tidy -html testout.html > /dev/null 2>> testresults.txt
+	log ""
+	log ""
 done
 
 exit 0
