@@ -74,7 +74,7 @@ if (getEnableEdit()) {
 
 	  // list the trips that included this location
 	  while($tripInfo = mysql_fetch_array($tripQuery)) {
-		  echo "<div class=firstcell><a href=\"./tripdetail.php?id=" . $tripInfo["objectid"] . "\">" . $tripInfo["Name"] . " (" . $tripInfo["Date"] .  ")</a></div>";
+		  echo "<div class=firstcell><a href=\"./tripdetail.php?id=" . $tripInfo["objectid"] . "\">" . $tripInfo["Name"] . " (" . $tripInfo["niceDate"] .  ")</a></div>";
 	  }
   }
   else
