@@ -18,7 +18,7 @@ function sightinglist(url) {
 	  <div class=\"leftsubtitle\"><a href=\"./chronolifelist.php\">Life List</a></div>
 	  <div class=\"leftsubtitle\"><a href=\"./locationindex.php\">Locations</a></div>
 	  <div class=\"leftsubtitle\"><a href=\"./countyindex.php\">Counties</a></div>
-	  <div class=\"leftsubtitle\"><a href=\"./photoindex.php\">Photos</a></div>";
+	  <div class=\"leftsubtitle\"><a href=\"./photoindextaxo.php\">Photos</a></div>";
 
 	if (getEnableEdit())
 	{
