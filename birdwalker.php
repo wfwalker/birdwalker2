@@ -106,7 +106,7 @@ function getFirstSightings()
 {
 	$firstSightings = null;
 
-	$firstSightingQuery = performQuery("select objectid, min(TripDate) as firstDate from sighting where Exclude='0' group by SpeciesAbbreviation order by firstDate");
+	$firstSightingQuery = performQuery("select objectid, min(TripDate) as firstDate from sighting where Exclude!='1' group by SpeciesAbbreviation order by firstDate");
 
 	while ($info = mysql_fetch_array($firstSightingQuery))
 	{
@@ -125,7 +125,7 @@ function getFirstYearSightings($theYear)
 {
 	$firstSightings = null;
 
-	$firstSightingQuery = performQuery("select objectid, min(TripDate) as firstDate from sighting where Exclude='0' and year(TripDate)='" . $theYear . "' group by SpeciesAbbreviation order by firstDate");
+	$firstSightingQuery = performQuery("select objectid, min(TripDate) as firstDate from sighting where Exclude!='1' and year(TripDate)='" . $theYear . "' group by SpeciesAbbreviation order by firstDate");
 
 	while ($info = mysql_fetch_array($firstSightingQuery))
 	{
@@ -145,7 +145,7 @@ function getFirstYearSightings($theYear)
 /**
  * Select the birdwalker database, count species according to where clause, return the count.
  */
-function getSpeciesCount($whereClause = "species.Abbreviation=sighting.SpeciesAbbreviation and sighting.Exclude=0")
+function getSpeciesCount($whereClause = "species.Abbreviation=sighting.SpeciesAbbreviation and sighting.Exclude!='1'")
 {
 	$speciesCountQueryString =
 		"SELECT count(distinct species.objectid)
@@ -158,7 +158,7 @@ function getSpeciesCount($whereClause = "species.Abbreviation=sighting.SpeciesAb
 /**
  * Select the birdwalker database, query species according to where clause, return the query.
  */
-function getSpeciesQuery($whereClause = "species.Abbreviation=sighting.SpeciesAbbreviation and sighting.Exclude=0", $orderClause = "species.objectid")
+function getSpeciesQuery($whereClause = "species.Abbreviation=sighting.SpeciesAbbreviation and sighting.Exclude!='1'", $orderClause = "species.objectid")
 {
 	$speciesQueryString =
 		"SELECT distinct species.objectid, species.CommonName, species.Abbreviation FROM species, sighting
@@ -416,6 +416,7 @@ function getStateNameForAbbreviation($abbreviation)
 	else if ($abbreviation == "NJ") return "New Jersey";
 	else if ($abbreviation == "OR") return "Oregon";
 	else if ($abbreviation == "PA") return "Pennsylvania";
+	else if ($abbreviation == "TX") return "Texas";
 	else if ($abbreviation == "WI") return "Wisconsin";
 	else return "Unknown";
 }
