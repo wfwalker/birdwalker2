@@ -530,7 +530,7 @@ function formatTwoColumnSpeciesList($speciesQuery, $firstSightings = "", $firstY
 	if ($firstSightings == "") $firstSightings = getFirstSightings();
 
 	$speciesCount = mysql_num_rows($dbQuery);
-	$divideByTaxo = ($speciesCount > 30);
+	$divideByFamily = ($speciesCount > 30);
 	$counter = round($speciesCount  * 0.52); ?>
 
 	<table width="100%" class=report-content>
@@ -543,9 +543,9 @@ function formatTwoColumnSpeciesList($speciesQuery, $firstSightings = "", $firstY
 		$temp = $info["earliestsighting"];
 		$earliestsightingid = round(substr($temp, 10));
 		
-		if ($divideByTaxo && (getBestTaxonomyID($prevInfo["objectid"]) != getBestTaxonomyID($info["objectid"])))
+		if ($divideByFamily && (getFamilyIDFromSpeciesID($prevInfo["objectid"]) != getFamilyIDFromSpeciesID($info["objectid"])))
 		{ ?>
-			<div class=subheading><?= getBestTaxonomyLink($info["objectid"]) ?></div>
+			<div class=subheading><?= getFamilyDetailLinkFromSpeciesID($info["objectid"]) ?></div>
 <?		} ?>
 
 		<div><a href="./speciesdetail.php?speciesid=<?= $info["objectid"] ?>"><?= $info["CommonName"] ?></a>
@@ -648,9 +648,9 @@ function formatSpeciesByYearTable($sightingQuery, $extraSightingListParams, $yea
 	{
 		$theMask = $info["mask"];
 
-		if (getBestTaxonomyID($prevInfo["speciesid"]) != getBestTaxonomyID($info["speciesid"]))
+		if (getFamilyIDFromSpeciesID($prevInfo["speciesid"]) != getFamilyIDFromSpeciesID($info["speciesid"]))
 		{
-			$taxoInfo = getBestTaxonomyInfo($info["speciesid"]); ?>
+			$taxoInfo = getFamilyInfoFromSpeciesID($info["speciesid"]); ?>
 			<tr><td class=subheading colspan=11><?= strtolower($taxoInfo["LatinName"]) ?></td></tr>
 <?		} ?>
 
@@ -722,9 +722,9 @@ function formatSpeciesByMonthTable($sightingQuery, $extraSightingListParams, $mo
 	{
 		$theMask = $info["mask"];
 
-		if (getBestTaxonomyID($prevInfo["speciesid"]) != getBestTaxonomyID($info["speciesid"]))
+		if (getFamilyIDFromSpeciesID($prevInfo["speciesid"]) != getFamilyIDFromSpeciesID($info["speciesid"]))
 		{
-			$taxoInfo = getBestTaxonomyInfo($info["speciesid"]); ?>
+			$taxoInfo = getFamilyInfoFromSpeciesID($info["speciesid"]); ?>
 			<tr><td class=subheading colspan=13><?= strtolower($taxoInfo["LatinName"]) ?></td></tr>
 <?		} ?>
 
@@ -878,26 +878,19 @@ function formatLocationByMonthTable($locationQuery, $urlPrefix, $countyHeadingsO
 // ---------------------- TAXONOMY -------------------------
 //
 
-function getBestTaxonomyInfo($speciesid)
+function getFamilyInfoFromSpeciesID($speciesid)
 {
-	return performOneRowQuery("select * from taxonomy where objectid='" . getBestTaxonomyID($speciesid) . "'");
+	return performOneRowQuery("select * from taxonomy where objectid='" . getFamilyIDFromSpeciesID($speciesid) . "'");
 }
 
-function getBestTaxonomyID($speciesid)
+function getFamilyIDFromSpeciesID($speciesid)
 {
-	if ($speciesid >= 22000000000)
-	{
-		return floor($speciesid / pow(10,7)) * pow(10, 7);
-	}
-	else
-	{
-		return floor($speciesid / pow(10,9)) * pow(10, 9);
-	}
+	return floor($speciesid / pow(10,7)) * pow(10, 7);
 }
 
-function getBestTaxonomyLink($speciesid)
+function getFamilyDetailLinkFromSpeciesID($speciesid)
 {
-	$taxoInfo = getBestTaxonomyInfo($speciesid);
+	$taxoInfo = getFamilyInfoFromSpeciesID($speciesid);
 
 	if ($speciesid >= 22000000000)
 	{
