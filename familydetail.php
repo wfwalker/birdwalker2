@@ -13,10 +13,20 @@ $familyCount = mysql_num_rows($familyQuery);
 $familyInfo = getFamilyInfo($familyid * pow(10, 7));
 $orderInfo = getOrderInfo($orderid * pow(10, 9));
 
-$firstFamily = performCount("select floor(min(species.objectid)/pow(10,7)) from species, sighting where sighting.SpeciesAbbreviation=species.Abbreviation");
-$lastFamily = performCount("select floor(max(species.objectid)/pow(10,7)) from species, sighting where sighting.SpeciesAbbreviation=species.Abbreviation");
-$nextFamily = performCount("select floor(min(species.objectid)/pow(10,7)) from species, sighting where sighting.SpeciesAbbreviation=species.Abbreviation and species.objectid>" . ($familyid + 1) * pow(10, 7));
-$prevFamily = performCount("select floor(max(species.objectid)/pow(10,7)) from species, sighting where sighting.SpeciesAbbreviation=species.Abbreviation and species.objectid<" . ($familyid - 1) * pow(10, 7));
+$firstFamily = performCount("
+    SELECT FLOOR(MIN(species.objectid)/pow(10,7)) FROM species, sighting
+      WHERE sighting.SpeciesAbbreviation=species.Abbreviation LIMIT 1");
+$lastFamily = performCount("
+    SELECT FLOOR(MAX(species.objectid)/pow(10,7)) FROM species, sighting
+      WHERE sighting.SpeciesAbbreviation=species.Abbreviation LIMIT 1");
+$nextFamily = performCount("
+    SELECT FLOOR(MIN(species.objectid)/pow(10,7)) FROM species, sighting
+      WHERE sighting.SpeciesAbbreviation=species.Abbreviation
+      AND species.objectid>" . ($familyid + 1) * pow(10, 7) . " LIMIT 1");
+$prevFamily = performCount("
+    SELECT FLOOR(MAX(species.objectid)/POW(10,7)) FROM species, sighting
+      WHERE sighting.SpeciesAbbreviation=species.Abbreviation
+      AND species.objectid<" . ($familyid - 1) * pow(10, 7) . " LIMIT 1");
 ?>
 
 <html>
