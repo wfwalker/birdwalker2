@@ -24,7 +24,11 @@ navTrailLocations();
       <div class="titleblock">	  
 <?    rightThumbnailAll(); ?>
 	  <div class=pagetitle>Locations</div>
-	  <div class=metadata>list | <a href="./locationindexbyyear.php">by year</a></div>
+    <div class=metadata>
+      <a href="./locationindex.php">list</a> |
+      <a href="./locationindexbymonth.php">by month</a> |
+	  <a href="./locationindexbyyear.php">by year<a/>
+    </div>
 	</div>
 
   <div class=heading><?= mysql_num_rows($locationQuery) ?> Locations</div>

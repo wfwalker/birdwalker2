@@ -37,13 +37,13 @@ navTrailLocations();
 
 <?
 $gridQueryString="
-    SELECT distinct(LocationName), County, State, location.objectid AS locationid, bit_or(1 << (year(TripDate) - 1995)) AS mask
+    SELECT distinct(LocationName), County, State, location.objectid AS locationid, bit_or(1 << month(TripDate)) AS mask
       FROM sighting, location
       WHERE sighting.LocationName=location.Name
       GROUP BY sighting.LocationName
       ORDER BY location.State, location.County, location.Name;";
 
-formatLocationByYearTable($gridQueryString, "./specieslist.php?");
+formatLocationByMonthTable($gridQueryString, "./specieslist.php?");
 
 ?>
 
