@@ -1,7 +1,7 @@
 
 <?php
 
-require("./birdwalker.php");
+require_once("./birdwalker.php");
 
 $tripID = $_GET['tripid'];
 $postTripID = $_POST['tripid'];

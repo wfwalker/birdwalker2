@@ -1,8 +1,8 @@
 
 <?php
 
-require("./birdwalker.php");
-require("./tripquery.php");
+require_once("./birdwalker.php");
+require_once("./tripquery.php");
 
 $tripQuery = new TripQuery;
 ?>

@@ -1,9 +1,9 @@
 
 <?php
 
-require("./birdwalker.php");
-require("./speciesquery.php");
-require("./map.php");
+require_once("./birdwalker.php");
+require_once("./speciesquery.php");
+require_once("./map.php");
 
 $id = param($_GET, "stateid", 3);
 $view = param($_GET, "view", "species");
