@@ -791,10 +791,10 @@ INSERT INTO species VALUES (21012040900,'bkbwoo','Picoides arcticus','Black-back
 INSERT INTO species VALUES (21012050100,'norfli','Colaptes auratus','Northern Flicker','','',1);
 INSERT INTO species VALUES (21012050101,'hybfli','Colaptes auratus 1','hybrid flicker','','',1);
 INSERT INTO species VALUES (21012050102,'nowfli','Colaptes auratus 2','Northwestern Flicker','','',1);
-INSERT INTO species VALUES (21012050103,'resfli','Colaptes auratus 3','Red-shafted Flicker','','',1);
+INSERT INTO species VALUES (21012050103,'resfli','Colaptes auratus 3','Red-shafted Flicker','','',0);
 INSERT INTO species VALUES (21012050104,'rxyfli','Colaptes auratus 4','Red-shafted x Yellow-shafted Flicker','','',1);
 INSERT INTO species VALUES (21012050105,'soufli','Colaptes auratus 5','Southern Flicker','','',1);
-INSERT INTO species VALUES (21012050106,'yesfli','Colaptes auratus 6','Yellow-shafted Flicker','','',1);
+INSERT INTO species VALUES (21012050106,'yesfli','Colaptes auratus 6','Yellow-shafted Flicker','','',0);
 INSERT INTO species VALUES (21012050200,'gilfli','Colaptes chrysoides','Gilded Flicker','','',1);
 INSERT INTO species VALUES (21012050201,'megfli','Colaptes chrysoides 1','Mearns\'s Gilded Flicker','','',1);
 INSERT INTO species VALUES (21012060100,'pilwoo','Dryocopus pileatus','Pileated Woodpecker','','',1);

@@ -416,7 +416,7 @@ INSERT INTO sighting VALUES (415,'hoomer','Malheur NWR','','1','0','1997-11-15')
 INSERT INTO sighting VALUES (416,'marwre','Malheur NWR','','1','0','1997-11-15');
 INSERT INTO sighting VALUES (417,'norshr','Malheur NWR','','1','0','1997-11-15');
 INSERT INTO sighting VALUES (418,'osprey','Malheur NWR','','1','0','1997-11-15');
-INSERT INTO sighting VALUES (419,'resfli','Malheur NWR','','1','0','1997-11-15');
+INSERT INTO sighting VALUES (419,'resfli','Malheur NWR','','','0','1997-11-15');
 INSERT INTO sighting VALUES (420,'ruckin','Malheur NWR','','1','0','1997-11-15');
 INSERT INTO sighting VALUES (421,'snobun','Malheur NWR','','1','0','1997-11-15');
 INSERT INTO sighting VALUES (422,'sonspa','Malheur NWR','','1','0','1997-11-15');
@@ -1251,12 +1251,12 @@ INSERT INTO sighting VALUES (1250,'lesgol','Stanford University','','0','0','199
 INSERT INTO sighting VALUES (1251,'mallar','Stanford University','','0','0','1999-02-20');
 INSERT INTO sighting VALUES (1252,'moudov','Stanford University','','0','0','1999-02-20');
 INSERT INTO sighting VALUES (1253,'oaktit','Stanford University','was called Plain Titmouse at the time of sighting; during creation of this database, we updated to Oak Titmouse, based on range','1','0','1999-02-20');
-INSERT INTO sighting VALUES (1254,'resfli','Stanford University','','1','0','1999-02-20');
+INSERT INTO sighting VALUES (1254,'resfli','Stanford University','','','0','1999-02-20');
 INSERT INTO sighting VALUES (1255,'sonspa','Stanford University','','0','0','1999-02-20');
 INSERT INTO sighting VALUES (1256,'spotow','Stanford University','','0','0','1999-02-20');
 INSERT INTO sighting VALUES (1257,'wesjay','Stanford University','','0','0','1999-02-20');
 INSERT INTO sighting VALUES (1258,'yerwar','Stanford University','','0','0','1999-02-20');
-INSERT INTO sighting VALUES (1259,'yesfli','Stanford University','','1','0','1999-02-20');
+INSERT INTO sighting VALUES (1259,'yesfli','Stanford University','','','0','1999-02-20');
 INSERT INTO sighting VALUES (1260,'amekes','Stanford University','','0','0','1999-03-05');
 INSERT INTO sighting VALUES (1261,'bewwre','Stanford University','','0','0','1999-03-05');
 INSERT INTO sighting VALUES (1262,'caltow','Stanford University','','0','0','1999-03-05');
@@ -2108,7 +2108,7 @@ INSERT INTO sighting VALUES (2107,'norhar','Pigeon Point','','0','0','2000-05-13
 INSERT INTO sighting VALUES (2108,'nrwswa','Pigeon Point','','0','0','2000-05-13');
 INSERT INTO sighting VALUES (2109,'olsfly','Pigeon Point','heard but not seen','0','0','2000-05-13');
 INSERT INTO sighting VALUES (2110,'pelcor','Pigeon Point','','0','0','2000-05-13');
-INSERT INTO sighting VALUES (2111,'resfli','Pigeon Point','','1','0','2000-05-13');
+INSERT INTO sighting VALUES (2111,'resfli','Pigeon Point','','','0','2000-05-13');
 INSERT INTO sighting VALUES (2112,'rethaw','Pigeon Point','','0','0','2000-05-13');
 INSERT INTO sighting VALUES (2113,'rewbla','Pigeon Point','','0','0','2000-05-13');
 INSERT INTO sighting VALUES (2114,'rudduc','Pigeon Point','','0','0','2000-05-13');
@@ -2695,7 +2695,7 @@ INSERT INTO sighting VALUES (2694,'nrwswa','Champaign County','','0','0','2001-0
 INSERT INTO sighting VALUES (2695,'phivir','Champaign County','','0','0','2001-05-27');
 INSERT INTO sighting VALUES (2696,'swathr','Champaign County','','0','0','2001-05-27');
 INSERT INTO sighting VALUES (2697,'yebfly','Champaign County','','1','0','2001-05-27');
-INSERT INTO sighting VALUES (2698,'yesfli','Champaign County','','1','0','2001-05-27');
+INSERT INTO sighting VALUES (2698,'yesfli','Champaign County','','','0','2001-05-27');
 INSERT INTO sighting VALUES (2699,'amegfi','Arcata Marsh','','0','0','2001-06-16');
 INSERT INTO sighting VALUES (2700,'bcnher','Arcata Marsh','','0','1','2001-06-16');
 INSERT INTO sighting VALUES (2701,'cangoo','Arcata Marsh','','0','0','2001-06-16');
