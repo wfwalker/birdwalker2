@@ -8167,7 +8167,7 @@ INSERT INTO sighting VALUES (8173,'redegr','Brownsville','','0','0','2004-04-17'
 INSERT INTO sighting VALUES (8174,'clarai','Brownsville','','','1','2004-04-17');
 INSERT INTO sighting VALUES (8175,'triher','Brownsville','','','1','2004-04-17');
 INSERT INTO sighting VALUES (8176,'dunlin','Brownsville','','0','0','2004-04-17');
-INSERT INTO sighting VALUES (8177,'sander','Brownsville','','','1','2004-04-17');
+INSERT INTO sighting VALUES (8177,'sander','Brownsville','','','','2004-04-17');
 INSERT INTO sighting VALUES (8178,'caster','Brownsville','','0','0','2004-04-17');
 INSERT INTO sighting VALUES (8179,'categr','Brownsville','','0','0','2004-04-17');
 INSERT INTO sighting VALUES (8180,'semplo','Brownsville','','','1','2004-04-17');
@@ -8176,7 +8176,7 @@ INSERT INTO sighting VALUES (8182,'pipplo','Brownsville','','1','','2004-04-17')
 INSERT INTO sighting VALUES (8183,'willet','Brownsville','','0','0','2004-04-17');
 INSERT INTO sighting VALUES (8184,'rudtur','Brownsville','','0','0','2004-04-17');
 INSERT INTO sighting VALUES (8185,'sora','Brownsville','','0','0','2004-04-17');
-INSERT INTO sighting VALUES (8186,'bkbplo','Brownsville','','0','0','2004-04-17');
+INSERT INTO sighting VALUES (8186,'bkbplo','Brownsville','I originally marked this photo as a Sanderling, but Ron Pittaway notes that it is in fact a Black-bellied Plover','','1','2004-04-17');
 INSERT INTO sighting VALUES (8187,'leasan','Brownsville','','0','0','2004-04-17');
 INSERT INTO sighting VALUES (8188,'margod','Brownsville','','0','0','2004-04-17');
 INSERT INTO sighting VALUES (8189,'killde','Brownsville','','0','0','2004-04-17');
@@ -9212,7 +9212,7 @@ INSERT INTO sighting VALUES (9239,'logshr','Coyote Creek Field Station','','0','
 INSERT INTO sighting VALUES (9240,'rethaw','Coyote Creek Field Station','','0','0','2004-09-06');
 INSERT INTO sighting VALUES (9241,'blkpho','Coyote Creek Field Station','','0','0','2004-09-06');
 INSERT INTO sighting VALUES (9242,'eursta','Coyote Creek Field Station','','0','0','2004-09-06');
-INSERT INTO sighting VALUES (9243,'renpha','Don Edwards Center','','','1','2004-09-06');
+INSERT INTO sighting VALUES (9243,'wilpha','Don Edwards Center','I originally marked this photo as a Red-necked Phalarope, but Ron Pittaway notes that it is in fact a Wilson\'s Phalarope.','','1','2004-09-06');
 INSERT INTO sighting VALUES (9244,'caltow','Alviso Marina','','0','0','2004-09-14');
 INSERT INTO sighting VALUES (9245,'moudov','Alviso Marina','','0','0','2004-09-14');
 INSERT INTO sighting VALUES (9246,'ribgul','Alviso Marina','','0','0','2004-09-14');
