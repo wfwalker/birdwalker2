@@ -19,20 +19,14 @@ $dateString = $dateArray["year"] . "-" . $dateArray["mon"] . "-" .  $dateArray["
 $sightingID = performCount("select max(objectid) from sighting;");
 $tripID = performCount("select max(objectid) from trip;");
 
-?>
+htmlHead("Create a trip");
 
-<html>
-
-  <? htmlHead("Create a trip"); ?>
-
-  <body>
-
-<?php globalMenu(); disabledBrowseButtons(); navTrailTrips(); ?>
+globalMenu(); disabledBrowseButtons(); navTrailTrips(); ?>
 
 <div class="contentright">
-<div class="titleblock">
+  <div class="titleblock">
 	  <div class=pagetitle>Create new trip</div>
-</div>
+  </div>
 
 <?
 if ($save == "Save")
