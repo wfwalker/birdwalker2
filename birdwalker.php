@@ -22,6 +22,32 @@ function navigationHeader()
  ";
 }
 
+function navigationButtons($urlPrefix, $current, $first, $prev, $next, $last)
+{
+    echo "<div class=\"navigationleft\">";
+	
+	if ($current == $first)
+	{
+		echo "first prev";
+	}
+	else
+	{
+		echo "<a href=\"" . $urlPrefix . $first . "\">first</a> <a href=\"" . $urlPrefix . $prev . "\">prev</a>";
+	}
+
+	if ($current == $last)
+	{
+		echo " next last";
+	}
+	else
+	{
+		echo " <a href=\"" . $urlPrefix . $next . "\">next</a> <a href=\"" . $urlPrefix . $last . "\">last</a>";
+	}
+
+	echo "</div>";
+
+}
+
 //
 // -------------------------- DATABASE UTILITIES -------------------------------
 //
@@ -113,14 +139,19 @@ function getFirstSightings()
 {
 	$firstSightings = null;
 
-	$firstSightingQuery = performQuery("select objectid, min(TripDate) as firstDate from sighting where Exclude!='1' group by SpeciesAbbreviation order by firstDate");
+
+	performQuery("CREATE TEMPORARY TABLE tmp ( abbrev varchar(16) default NULL, tripdate date default NULL);");
+	performQuery("INSERT INTO tmp SELECT SpeciesAbbreviation, MIN(TripDate) FROM sighting where Exclude!='1' GROUP BY SpeciesAbbreviation;");
+	$firstSightingQuery = performQuery("SELECT sighting.objectid, tmp.tripdate FROM sighting, tmp WHERE sighting.SpeciesAbbreviation=tmp.abbrev and sighting.TripDate=tmp.tripdate order by tripdate;");
 
 	while ($info = mysql_fetch_array($firstSightingQuery))
 	{
 		$firstSightingID = $info["objectid"];
-		$firstSightingDate = $info["firstDate"];
+		$firstSightingDate = $info["tripdate"];
 		$firstSightings[$firstSightingID] = $firstSightingDate;
 	}
+
+	performQuery("DROP TABLE tmp;");
 
 	return $firstSightings;
 }
@@ -132,12 +163,14 @@ function getFirstYearSightings($theYear)
 {
 	$firstSightings = null;
 
-	$firstSightingQuery = performQuery("select objectid, min(TripDate) as firstDate from sighting where Exclude!='1' and year(TripDate)='" . $theYear . "' group by SpeciesAbbreviation order by firstDate");
+	performQuery("CREATE TEMPORARY TABLE tmp ( abbrev varchar(16) default NULL, tripdate date default NULL);");
+	performQuery("INSERT INTO tmp SELECT SpeciesAbbreviation, MIN(TripDate) FROM sighting where Exclude!='1' and year(TripDate)='" . $theYear . "' GROUP BY SpeciesAbbreviation;");
+	$firstSightingQuery = performQuery("SELECT sighting.objectid, tmp.tripdate FROM sighting, tmp WHERE sighting.SpeciesAbbreviation=tmp.abbrev and sighting.TripDate=tmp.tripdate order by tripdate;");
 
 	while ($info = mysql_fetch_array($firstSightingQuery))
 	{
 		$firstSightingID = $info["objectid"];
-		$firstSightingDate = $info["firstDate"];
+		$firstSightingDate = $info["tripdate"];
 		$firstSightings[$firstSightingID] = $firstSightingDate;
 	}
 
