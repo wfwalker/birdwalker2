@@ -72,6 +72,7 @@ function pageThumbnail($photoQueryString)
 		echo "<div class=thumb>";
 		$photoInfo = mysql_fetch_array($photoQuery);
 		echo getThumbForSightingInfo($photoInfo);
+		echo "<div class=copyright>@2004 W. F. Walker</div>";
 		echo "</div>";
 	}
 }
@@ -305,7 +306,7 @@ function formatTwoColumnSpeciesList($query)
 		if ($divideByTaxo && (getBestTaxonomyID($prevInfo["objectid"]) != getBestTaxonomyID($info["objectid"])))
 		{
 			$taxoInfo = getBestTaxonomyInfo($info["objectid"]);
-			echo "\n<div class=heading>" . $taxoInfo["CommonName"] . "</div>";
+			echo "\n<div class=heading>" . $taxoInfo["LatinName"] . "</div>";
 		}
 		
 		echo "\n<div class=firstcell><a href=\"./speciesdetail.php?id=".$info["objectid"]."\">".$info["CommonName"]."</a>";
@@ -504,9 +505,7 @@ function formatTwoColumnLocationList($locationListQuery, $countyHeadingsOK = tru
 	{
 		if ($countyHeadingsOK && $divideByCounties && (($prevInfo["State"] != $info["State"]) || ($prevInfo["County"] != $info["County"])))
 		{
-			echo "\n<div class=\"heading\">
-              <a href=\"./countylocations.php?state=" . urlencode($info["State"]) . "&county=" . urlencode($info["County"]) . "\">" . $info["County"] . " County</a>,
-              <a href=\"./statelocations.php?state=" . urlencode($info["State"]) . "\">" . $info["State"] . "</a></div>";
+			echo "\n<div class=\"heading\">" . $info["County"] . " County, " . $info["State"] . "</div>";
 		}
 
 		echo "\n<div class=firstcell><a href=\"./locationdetail.php?id=".$info["objectid"]."\">".$info["Name"]."</a></div>";
