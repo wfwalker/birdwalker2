@@ -58,21 +58,8 @@ $divideByTaxo = ($speciesCount > 30);
 
 <?php
 
-while($info = mysql_fetch_array($speciesListQuery))
-{
-	$orderNum =  floor($info["objectid"] / pow(10, 9));
-	
-	if ($divideByTaxo && (getBestTaxonomyID($prevInfo["objectid"]) != getBestTaxonomyID($info["objectid"])))
-	{
-		$taxoInfo = getBestTaxonomyInfo($info["objectid"]);
-		echo "<div class=\"heading\">" . $taxoInfo["CommonName"] . "</div>";
-	}
-	
-	echo "\n<div class=firstcell><a href=\"./speciesdetail.php?id=".$info["objectid"]."\">" . $info["CommonName"] .	"</a></div>";
-	
-	$prevInfo = $info;
-}
-
+formatTwoColumnSpeciesList($speciesListQuery);
+ 
 ?>
     </div>
   </body>
