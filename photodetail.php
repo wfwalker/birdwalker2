@@ -76,17 +76,17 @@ navTrailPhotos();
 <?  }
 
     if (strlen($tripInfo["Notes"]) > 0) { ?>
-        <div class=heading> <?= $tripInfo["Name"] ?></div>
+        <div class=heading>Trip: <?= $tripInfo["Name"] ?></div>
         <p class=sighting-notes><?= $tripInfo["Notes"] ?></p>
 <?  }
 
     if (strlen($locationInfo["Notes"]) > 0) { ?>
-	    <div class=heading><?= $locationInfo["Name"] ?></div>
+	    <div class=heading>Location: <?= $locationInfo["Name"] ?></div>
         <p class=sighting-notes><?= $locationInfo["Notes"] ?></p>
 <?  }
 
     if (strlen($speciesInfo["Notes"]) > 0) { ?>
-	    <div class=heading><?= $speciesInfo["CommonName"] ?></div>
+	    <div class=heading>Species: <?= $speciesInfo["CommonName"] ?></div>
 	    <p class=sighting-notes><?= $speciesInfo["Notes"] ?></p>
 <?  } ?>
 

@@ -80,13 +80,6 @@ disabledBrowseButtons();
 navTrailLocations();
 ?>
 
-    <div class="navigationleft">
-	  <a href="./locationcreate.php?id=1">first</a>
-	  <a href="./locationcreate.php?id=<?= $_GET['id'] - 1 ?>">prev</a>
-      <a href="./locationcreate.php?id=<?= $_GET['id'] + 1 ?>">next</a>
-      <a href="./locationcreate.php?id=<?= $locationCount ?>">last</a>
-    </div>
-
 <div class="contentright">
 <div class="titleblock">
   <a href="./locationdetail.php?id=<?= $locationInfo["objectid"] ?>">

@@ -76,13 +76,6 @@ browseButtons("./sightingedit.php?id=", $sightingID, 1, $sightingID - 1, $sighti
 navTrailBirds();
 ?>
 
-    <div class="navigationleft">
-	  <a href="./sightingedit.php?id=1">first</a>
-	  <a href="./sightingedit.php?id=<?= $_GET['id'] - 1 ?>">prev</a>
-      <a href="./sightingedit.php?id=<?= $_GET['id'] + 1 ?>">next</a>
-      <a href="./sightingedit.php?id=<?= $sightingCount ?>">last</a>
-    </div>
-
 <div class="contentright">
 
 <div class=pagesubtitle>

@@ -195,7 +195,7 @@ class SpeciesQuery
 			$this->getFromClause() . "  " .
 			$this->getWhereClause() . "
             AND sighting.Photo='1'
-            ORDER BY shuffle LIMIT 1");
+            ORDER BY shuffle LIMIT 1", true);
 	}
 
 	function getPhotos()
@@ -210,6 +210,7 @@ class SpeciesQuery
 
 	function formatTwoColumnSpeciesList()
 	{
+		// todo need to do something about first sightings?
 		formatTwoColumnSpeciesList($this);
 	}
 
@@ -240,4 +241,22 @@ class SpeciesQuery
 		formatPhotos($this);
 	}
 }
+
+
+
+// $locationSightings = performQuery("
+//     SELECT sighting.objectid FROM sighting, location
+//       WHERE sighting.LocationName=location.Name
+//       AND location.objectid='" . $locationID ."'");
+
+// $firstSightings = getFirstSightings();
+// $locationFirstSightings = 0;
+
+// while($sightingInfo = mysql_fetch_array($locationSightings)) {
+// 	if ($firstSightings[$sightingInfo['objectid']] != null) {
+// 		$locationFirstSightings++;
+// 	}
+// }
+
+
 ?>

@@ -3,9 +3,12 @@
 
 require("./birdwalker.php");
 require("./speciesquery.php");
+require("./sightingquery.php");
 require("./tripquery.php");
 
 $locationID = param($_GET, 'id', 1);
+$view = param($_GET, 'view', 'list');
+
 $siteInfo = getLocationInfo($locationID);
 
 $speciesQuery = new SpeciesQuery;
@@ -43,37 +46,54 @@ while($sightingInfo = mysql_fetch_array($locationSightings)) {
 
 <?php
 globalMenu();
-locationBrowseButtons($siteInfo, $locationID, "");
+locationBrowseButtons($siteInfo, $locationID, $view);
 navTrailLocationDetail($siteInfo);
 ?>
 
 <div class="contentright">
   <div class="titleblock">
-<?  rightThumbnailLocation($siteInfo["Name"]); ?>
+<?  if ($view != "photo") { rightThumbnailLocation($siteInfo["Name"]); } ?>
     <div class=pagetitle>
         <?= $siteInfo["Name"] ?>
         <? editLink("./locationcreate.php?id=" . $locationID); ?>
     </div>
 
 <?    referenceURL($siteInfo);
-      mapLink($siteInfo);
-      locationViewLinks($locationID); ?>
+      mapLink($siteInfo); ?>
+      <a href="./locationdetail.php?id=<?=$locationID?>">list</a> |
+      <a href="./locationdetail.php?view=bymonth&id=<?=$locationID?>">by month</a> |
+      <a href="./locationdetail.php?view=byyear&id=<?=$locationID?>">by year</a> |
+      <a href="./locationdetail.php?view=photo&id=<?=$locationID?>">photos</a>
     </div>
 
     <p class=sighting-notes><?= $siteInfo["Notes"] ?></p>
 
-     <div class="heading">
-	  <?= $tripCount ?> trip<? if ($tripCount > 1) echo 's' ?>
-     </div>
+<?
+	if ($view == "list")
+	{
+		countHeading($tripCount, "trip");
+		$tripQuery->formatTwoColumnTripList();
+		doubleCountHeading($speciesQuery->getSpeciesCount(), "species", $locationFirstSightings, "life bird");
+		$speciesQuery->formatTwoColumnSpeciesList();
+	}
+	else if ($view == "bymonth")
+	{
+		doubleCountHeading($speciesQuery->getSpeciesCount(), "species", $locationFirstSightings, "life bird");
+		$speciesQuery->formatSpeciesByMonthTable();
+	}
+	else if ($view == "byyear")
+	{
+		doubleCountHeading($speciesQuery->getSpeciesCount(), "species", $locationFirstSightings, "life bird");
+		$speciesQuery->formatSpeciesByYearTable();
+	}
+	else if ($view == "photo")
+	{
+		$sightingQuery = new SightingQuery;
+		$sightingQuery->setLocationID($locationID);
+		$sightingQuery->formatPhotos();
+	}
 
-<?  $tripQuery->formatTwoColumnTripList(); ?>
-
-   <div class=heading>
-     <?= $speciesQuery->getSpeciesCount() ?> species<? if ($locationFirstSightings > 0) { ?>,
-     <?= $locationFirstSightings ?> life bird<? if ($locationFirstSightings > 1) echo 's'; } ?>
-   </div>
-
-<? $speciesQuery->formatTwoColumnSpeciesList(); ?>
+?>
 
 </div>
 </body>

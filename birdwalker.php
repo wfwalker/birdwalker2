@@ -40,6 +40,30 @@ function editLink($href)
 <?  }
 }
 
+function pluralize($noun)
+{
+	if ($noun == "species")
+		return "species";
+	else
+		return $noun . "s";
+}
+
+
+function countHeading($number, $name)
+{ ?>
+     <div class="heading"> <?
+		echo $number . " "; if ($number == 1) echo $name; else echo pluralize($name); ?>
+     </div> <?
+}
+
+function doubleCountHeading($number1, $name1, $number2, $name2)
+{ ?>
+     <div class="heading"> <?
+		echo $number1 . " "; if ($number1 == 1) echo $name1; else echo pluralize($name1);
+        if ($number2 != 0 ) { echo ", " . $number2 . " "; if ($number2 == 1) echo $name2; else echo pluralize($name2); }
+?>   </div> <?
+}
+
 function disabledBrowseButtons()
 {
 	browseButtons("", 0, 0, 0, 0, 0);
@@ -110,7 +134,10 @@ function rightThumbnailAll()
 
 function formatPhotos($query)
 {
+	// TODO, the labels here should show values not fixed by the query!
 	$dbQuery = $query->getPhotos();
+
+    countHeading(mysql_num_rows($dbQuery), "photo");
 
 	while ($sightingInfo = mysql_fetch_array($dbQuery))
 	{
@@ -814,7 +841,7 @@ function tripBrowseButtons($tripID, $viewMode)
 	if ($nextTripID == "") { $nextTripID = $sightingID; }
 	if ($prevTripID == "") { $prevTripID = $sightingID; }
 
-	browseButtons("./trip" . $viewMode . ".php?id=", $tripID, $firstTripID, $prevTripID, $nextTripID, $lastTripID);
+	browseButtons("./tripdetail.php?view=" . $viewMode . "&id=", $tripID, $firstTripID, $prevTripID, $nextTripID, $lastTripID);
 }
 
 function formatTwoColumnTripList($tripQuery)
@@ -883,7 +910,7 @@ function locationBrowseButtons($siteInfo, $locationID, $viewMode)
         WHERE CONCAT(State,County,Name) < '" . $siteInfo["State"] . $siteInfo["County"] . $siteInfo["Name"] . "'
         ORDER BY CONCAT(State,County,Name) DESC LIMIT 1");
 
-	browseButtons("./locationdetail" . $viewMode . ".php?id=", $locationID, $firstLocationID, $prevLocationID, $nextLocationID, $lastLocationID);
+	browseButtons("./locationdetail.php?view=" . $viewMode . "&id=", $locationID, $firstLocationID, $prevLocationID, $nextLocationID, $lastLocationID);
 }
 
 function getStateInfo($id)
@@ -995,45 +1022,6 @@ function mapLink($siteInfo)
     </div>
 <? }
 }
-
-function locationViewLinks($locationID)
-{
-?>
-      <a href="./locationdetail.php?id=<?=$locationID?>">list</a> |
-      <a href="./locationdetailbymonth.php?id=<?=$locationID?>">by month</a> |
-      <a href="./locationdetailbyyear.php?id=<?=$locationID?>">by year</a> |
-      <a href="./locationdetailphoto.php?id=<?=$locationID?>">photos</a>
-<?
-}
-
-function countyViewLinks($state, $county)
-{
-?>
-        locations:
-        <a href="./countydetail.php?view=locations&state=<?= $state ?>&county=<?= $county ?>">list</a> |
-	    <a href="./countydetail.php?view=locationsbymonth&state=<?= $state ?>&county=<?= $county ?>">by month</a> |
-	    <a href="./countydetail.php?view=locationsbyyear&state=<?= $state ?>&county=<?= $county ?>">by year</a><br/>
-        species:	
-        <a href="./countydetail.php?view=species&state=<?= $state ?>&county=<?= $county ?>">list</a> |
-	    <a href="./countydetail.php?view=speciesbymonth&state=<?= $state ?>&county=<?= $county ?>">by month</a> |
-	    <a href="./countydetail.php?view=speciesbyyear&state=<?= $state ?>&county=<?= $county ?>">by year</a><br/>
-<?
-}
-
-function stateViewLinks($id)
-{
-?>
-        locations:
-        <a href="./statedetail.php?view=locations&id=<?= $id ?>">list</a> |
-	    <a href="./statedetail.php?view=locationsbymonth&id=<?= $id ?>">by month</a> |
-	    <a href="./statedetail.php?view=locationsbyyear&id=<?= $id ?>">by year</a><br/>
-        species:	
-        <a href="./statedetail.php?view=species&id=<?= $id ?>">list</a> |
-	    <a href="./statedetail.php?view=speciesbymonth&id=<?= $id ?>">by month</a> |
-	    <a href="./statedetail.php?view=speciesbyyear&id=<?= $id ?>">by year</a><br/>
-<?
-}
-
 
 function formatTwoColumnLocationList($locationQuery, $countyHeadingsOK = true)
 {

@@ -3,11 +3,17 @@
 <?php
 
 require("./birdwalker.php");
+require("./sightingquery.php");
 require("./speciesquery.php");
 
 $tripID = param($_GET, 'id', 343);
+$view = param($_GET, 'view', 'list');
+
 $tripInfo = getTripInfo($tripID);
 $tripYear = substr($tripInfo["Date"], 0, 4);
+
+$sightingQuery = new SightingQuery;
+$sightingQuery->setTripID($tripID);
 
 $locationListQuery = performQuery("SELECT distinct(location.objectid), location.Name
   FROM location, sighting
@@ -42,9 +48,8 @@ while($sightingInfo = mysql_fetch_array($tripSightings)) {
 
 <?php
 globalMenu();
-tripBrowseButtons($tripID, "detail");
+tripBrowseButtons($tripID, $view);
 $items[] = "<a href=\"./tripindex.php#" . $tripYear . "\">" . $tripYear . "</a>";
-//$items[] = strtolower($tripInfo["Name"]);
 navTrailTrips($items);
 ?>
 
@@ -54,18 +59,20 @@ navTrailTrips($items);
 
 	  <div class=titleblock>
 
-<?rightThumbnail("SELECT *, rand() AS shuffle
-    FROM sighting WHERE Photo='1' AND TripDate='" . $tripInfo["Date"] . "'
-    ORDER BY shuffle LIMIT 1", true);?>
+<?      if ($view != "photo") { $sightingQuery->rightThumbnail(true); }?>
         <div class=pagetitle>
             <?= $tripInfo["Name"] ?>
             <?= editLink("./tripedit.php?id=" . $tripID); ?>
         </div>
-        <div class=metadata>Led by  <?= $tripInfo["Leader"] ?></div>
+        <div class=metadata>
+          Led by  <?= $tripInfo["Leader"] ?>
+<?        referenceURL($tripInfo); ?>
+        </div>
+        <div class=metadata>
+	        <a href="./tripdetail.php?view=list&id=<?= $tripID ?>"?>list</a> | 
+	        <a href="./tripdetail.php?view=photo&id=<?= $tripID ?>"?>photo</a>
+        </div>
 
-<? if (strlen($tripInfo["ReferenceURL"]) > 0) { ?>
-          <div><a href="<?= $tripInfo["ReferenceURL"] ?>">See also...</a></div>
-<? } ?>
 
          <div class=report-content><p><?= $tripInfo["Notes"] ?></p></div>
       </div>
@@ -77,28 +84,34 @@ navTrailTrips($items);
           </div>
 <? }
 
-while($locationInfo = mysql_fetch_array($locationListQuery))
+if ($view == "photo")
 {
-	$speciesQuery = new SpeciesQuery;
-	$speciesQuery->setTripID($tripID);
-	$speciesQuery->setLocationID($locationInfo["objectid"]);
+	$sightingQuery->formatPhotos();
+}
+else
+{
+	while($locationInfo = mysql_fetch_array($locationListQuery))
+	{
+		$speciesQuery = new SpeciesQuery;
+		$speciesQuery->setTripID($tripID);
+		$speciesQuery->setLocationID($locationInfo["objectid"]);
+		
+		$tripLocationQuery = performQuery("SELECT
+          species.CommonName, species.ABACountable, species.objectid, sighting.Notes, sighting.Exclude,
+          sighting.Photo, sighting.objectid AS sightingid
+            FROM species, sighting
+            WHERE sighting.SpeciesAbbreviation=species.Abbreviation AND
+              sighting.TripDate='". $tripInfo["Date"] . "' AND
+              sighting.LocationName='" . $locationInfo["Name"] . "'
+            ORDER BY species.objectid");
 
-	$tripLocationQuery = performQuery("SELECT
-        species.CommonName, species.ABACountable, species.objectid, sighting.Notes, sighting.Exclude,
-        sighting.Photo, sighting.objectid AS sightingid
-      FROM species, sighting
-      WHERE sighting.SpeciesAbbreviation=species.Abbreviation AND
-        sighting.TripDate='". $tripInfo["Date"] . "' AND
-        sighting.LocationName='" . $locationInfo["Name"] . "'
-      ORDER BY species.objectid");
-
-	$locationFirstSightings = 0;
-	while($sightingInfo = mysql_fetch_array($tripLocationQuery)) {
-		if ($firstSightings[$sightingInfo['sightingid']] != null) { $locationFirstSightings++; }
-	}
-	mysql_data_seek($tripLocationQuery, 0);
-
-	$tripLocationCount = mysql_num_rows($tripLocationQuery); ?>
+		$locationFirstSightings = 0;
+		while($sightingInfo = mysql_fetch_array($tripLocationQuery)) {
+			if ($firstSightings[$sightingInfo['sightingid']] != null) { $locationFirstSightings++; }
+		}
+		mysql_data_seek($tripLocationQuery, 0);
+		
+		$tripLocationCount = mysql_num_rows($tripLocationQuery); ?>
 
     <div class="heading">
         <a href="./locationdetail.php?id=<?= $locationInfo["objectid"]?>"><?= $locationInfo["Name"] ?></a>,
@@ -106,8 +119,12 @@ while($locationInfo = mysql_fetch_array($locationListQuery))
         <?= $locationFirstSightings ?> life bird<? if ($locationFirstSightings > 1) echo 's'; } ?>
     </div>
 
-    <? $speciesQuery->formatTwoColumnSpeciesList(); ?>
-<? }?>
+<?
+        $speciesQuery->formatTwoColumnSpeciesList();
+	}
+}
+?>
+
     </div>
   </body>
 </html>
