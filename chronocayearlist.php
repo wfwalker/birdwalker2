@@ -3,7 +3,7 @@
 
 require_once("./birdwalker.php");
 
-$theYear = param($_GET, "year", getEarliestYear());
+$year = param($_GET, "year", getEarliestYear());
 
 performQuery("CREATE TEMPORARY TABLE tmp (
       SpeciesAbbreviation varchar(16) default NULL,
@@ -19,7 +19,7 @@ performQuery("
           LEFT(        MIN( CONCAT(TripDate,lpad(sighting.objectid,6,'0')) ), 10) AS TripDate,
           0+SUBSTRING( MIN( CONCAT(TripDate,lpad(sighting.objectid,6,'0')) ),  11) AS objectid
         FROM sighting, location
-        WHERE location.State='CA' and sighting.LocationName=location.Name AND Year(sighting.TripDate)='" . $theYear . "'
+        WHERE location.State='CA' and sighting.LocationName=location.Name AND Year(sighting.TripDate)='" . $year . "'
         GROUP BY SpeciesAbbreviation");
 
 // TODO count rows in the first sightings table!
@@ -45,21 +45,38 @@ $speciesCount = mysql_num_rows($firstSightingQuery);
 
 <html>
 
-  <? htmlHead("Chronological ABA California " . $theYear); ?>
+  <? htmlHead("Chronological ABA California " . $year); ?>
 
   <body>
 
 <?php
 globalMenu();
-browseButtons("./chronocayearlist.php?year=", $theYear, getEarliestYear(), $theYear - 1, $theYear + 1, getLatestYear());
+browseButtons("./chronocayearlist.php?year=", $year, getEarliestYear(), $year - 1, $year + 1, getLatestYear());
 navTrailBirds();
 ?>
 
 <div class=contentright>
   <div class="titleblock">	  
-    <div class=pagetitle>ABA California <?= $theYear ?> List</div>
-      <div class=pagesubtitle><? echo $speciesCount ?> Species</div>
+<?      rightThumbnail("
+            SELECT sighting.*, rand() AS shuffle
+                FROM sighting
+                WHERE sighting.Photo='1' AND Year(TripDate)='" . $year . "'
+                ORDER BY shuffle LIMIT 1", true); ?>
+    <div class=pagetitle>ABA California <?= $year ?> Year List</div>
+          <div class=metadata>
+            locations:
+              <a href="./yeardetail.php?view=locations&year=<?= $year ?>">list</a> |
+	          <a href="./yeardetail.php?view=locationsbymonth&year=<?= $year ?>">by month</a> |
+              <a href="./yeardetail.php?view=map&year=<?= $year ?>">map</a> <br/>
+            species:	
+              <a href="./yeardetail.php?view=species&year=<?= $year ?>">list</a> |
+              <a href="./chronocayearlist.php?year=<?= $year ?>">ABA</a> |
+	          <a href="./yeardetail.php?view=speciesbymonth&year=<?= $year ?>">by month</a> |
+              <a href="./yeardetail.php?view=species&view=photo&year=<?= $year ?>">photo</a><br/>
+          </div>
     </div>
+
+   <div class=heading><? echo $speciesCount ?> Species</div>
 
 <p class=sighting-notes>
 Note: within a single day, the order of sightings is not
