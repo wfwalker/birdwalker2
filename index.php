@@ -22,10 +22,16 @@ require("./birdwalker.php");
 	  <p>&nbsp;</p>
 
 	  <div class="report-content">
-		I built birdWalker as a way to collect, organize, and present
+		<p>I built birdWalker as a way to collect, organize, and present
 		my birding field notes. I wanted to be able to keep track of
 		year, county, and life lists without doing very much
-		record-keeping myself.
+        record-keeping by hand.</p>
+
+		<p>If you have bird sightings that you'd like to report,
+		please take a look at Cornell University's excellent <a
+		href="http://www.ebird.com/">eBird</a> site.</p>
+
+		<p>- Bill Walker</p>
 	  </div>
 
     </div>

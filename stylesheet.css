@@ -42,6 +42,7 @@
 .report-content {font: 10pt Arial, Serif}
 .titlecell {background-color: #EEEEEE}
 .firstcell {padding-left: 15px}
+.fieldlabel {padding-left: 15px; font: 9pt Courier, Fixed; text-align: right; vertical-align: top}
 .bordered {border-left: solid 1px lightgray; border-bottom: solid 1px lightgray; width: 25px}
 .yearcell {width: 20px; border-left: solid 1px lightgray; border-bottom: solid 1px lightgray; color: lightgray}
 
