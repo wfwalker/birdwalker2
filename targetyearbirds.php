@@ -3,9 +3,12 @@
 
 require("./birdwalker.php");
 
+performQuery("CREATE TEMPORARY TABLE tmp ( CommonName varchar(32) default NULL, tripdate date default NULL, sightingCount varchar(32));");
+performQuery("INSERT INTO tmp SELECT species.CommonName, max(TripDate), count(sighting.objectid) as sightingCount FROM sighting, species where species.Abbreviation=sighting.SpeciesAbbreviation and Exclude!='1' GROUP BY SpeciesAbbreviation;");
+$latestSightingQuery = performQuery("SELECT *, Year(tripdate) as latestYear FROM tmp order by tripdate desc;");
 
-$lastSightingQuery = performQuery("select species.CommonName, species.objectid as speciesid, sighting.objectid, max(sighting.TripDate) as lastDate from sighting, species where species.Abbreviation=sighting.SpeciesAbbreviation and Exclude='0' group by SpeciesAbbreviation order by species.objectid;");
-
+$sightingThreshold = 5;
+$targetYear = 2004;
 ?>
 
 <html>
@@ -22,19 +25,27 @@ $lastSightingQuery = performQuery("select species.CommonName, species.objectid a
 <div class="contentright">
 
 <div class="titleblock">
-    <div class="pagetitle">Target birds for 2004</div>
+    <div class="pagetitle">Target birds for <?php echo $targetYear ?></div>
+	<div class=metadata>Birds we have seen at least <?php echo $sightingThreshold ?> times, but not seen yet in <?php echo $targetYear ?></div>
 </div>
 
+<table>
 <?php
-	  while($info = mysql_fetch_array($lastSightingQuery))
-	  {
-		  if ($info["lastDate"] < '2004-01-01')
-		  {
-			  echo "<div class=firstcell><a href=\"./speciesdetail.php?id=".$info["speciesid"]."\">" . $info["CommonName"] . "</a> last seen " . $info["lastDate"] . "</div>";
-		  }
-	  }
+
+while ($info = mysql_fetch_array($latestSightingQuery))
+{
+	if ($info["latestYear"] < $targetYear && $info["sightingCount"] >= $sightingThreshold)
+	{
+		echo "<tr class=report-content>";
+		echo "<td align=right>" . $info["sightingCount"] . "</td><td> " . $info["CommonName"] . "</td><td> " . $info["tripdate"] . "</td>";
+		echo "</tr>";
+	}
+}
+
+performQuery("DROP TABLE tmp;");
 
 ?>
+</table>
 
 </div>
 </body>
