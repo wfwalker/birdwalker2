@@ -23,19 +23,20 @@ $annualCountyTotal = performQuery("select count(distinct sighting.SpeciesAbbrevi
 globalMenu();
 disabledBrowseButtons();
 navTrailCounty($state, $countyName);
-pageThumbnailCounty($countyName);
 ?>
 
     <div class=contentright>
 	  <div class="titleblock">
-	  <div class=pagetitle><?= $countyName ?> County</div>
-        <div class=pagesubtitle><?= $countyCount ?> species</div>
+<?      rightThumbnailCounty($countyName);?>
+        <div class=pagetitle><?= $countyName ?> County</div>
 
       <div class=metadata>
 <?        countyViewLinks($state, $countyName); ?>
       </div>
 
       </div>
+
+ <div class=heading><?= $countyCount ?> species</div>
 
 <?
 $gridQueryString="select distinct(CommonName), species.objectid as speciesid, bit_or(1 << (year(TripDate) - 1995)) as mask from sighting, species, location where sighting.SpeciesAbbreviation=species.Abbreviation and sighting.LocationName=location.Name and location.County='". $countyName . "' group by sighting.SpeciesAbbreviation order by speciesid";

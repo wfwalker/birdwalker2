@@ -24,19 +24,20 @@ $divideByTaxo = ($speciesCount > 30);
 globalMenu();
 disabledBrowseButtons();
 navTrailCounty($abbrev, $county);
-pageThumbnailCounty( $abbrev);
  ?>
 
     <div class=contentright>
       <div class="titleblock">	  
-	<div class=pagetitle><?= $county ?> County</div>
-      <div class=pagesubtitle><?= $speciesCount ?> Species</div>
+<?      rightThumbnailCounty($county); ?>
+        <div class=pagetitle><?= $county ?> County</div>
 
       <div class=metadata>
 <?        countyViewLinks($abbrev, $county); ?>
       </div>
 
       </div>
+
+<div class=heading><?= $speciesCount ?> Species</div>
 
 <?php
 

@@ -23,19 +23,20 @@ $monthlyCountyTotal = performQuery("select count(distinct sighting.SpeciesAbbrev
 globalMenu();
 disabledBrowseButtons();
 navTrailCounty($state, $countyName);
-pageThumbnailCounty($countyName);
 ?>
 
     <div class=contentright>
 	  <div class="titleblock">
+<?      rightThumbnailCounty($countyName);?>
 	  <div class=pagetitle><?= $countyName ?> County</div>
-        <div class=pagesubtitle><?= $countyCount ?> species</div>
-
       <div class=metadata>
 <?        countyViewLinks($state, $countyName); ?>
       </div>
 
       </div>
+
+ <div class=heading><?= $countyCount ?> species</div>
+
 
 <?
 $gridQueryString="

@@ -21,19 +21,20 @@ $locationQuery = performQuery("select * from location where county='" . $county 
 globalMenu();
 disabledBrowseButtons();
 navTrailCounty($abbrev, $county);
-pageThumbnailCounty($county);
 ?>
 
     <div class=contentright>
       <div class="titleblock">	  
-	<div class=pagetitle><?= $county?> County</div>
-	<div class=pagesubtitle><?= mysql_num_rows($locationQuery) ?> Locations</div>
+<?       rightThumbnailCounty($county);?>
+         <div class=pagetitle><?= $county?> County</div>
 
       <div class=metadata>
 <?       countyViewLinks($abbrev, $county); ?>
       </div>
 
     </div>
+
+<div class=heading><?= mysql_num_rows($locationQuery) ?> Locations</div>
 
 <table columns=10 class="report-content" width="100%">
 

@@ -21,18 +21,19 @@ $locationCount = mysql_num_rows($locationQuery);
 globalMenu();
 disabledBrowseButtons();
 navTrailCounty($state, $county);
-pageThumbnailCounty($county);
 ?>
 
     <div class=contentright>
       <div class="titleblock">	  
+<?      rightThumbnailCounty($county); ?>
         <div class=pagetitle><?= $county ?> County</div>
-        <div class=pagesubtitle><?= mysql_num_rows($locationQuery) ?> Locations</div>
 
       <div class=metadata>
 <?        countyViewLinks($state, $county); ?>
       </div>
     </div>
+
+<div class=heading><?= mysql_num_rows($locationQuery) ?> Locations</div>
 
    <? formatTwoColumnLocationList($locationQuery, false); ?>
 
