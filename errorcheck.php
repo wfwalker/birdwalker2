@@ -20,6 +20,11 @@ $badSightingLocations = performQuery("
       FROM sighting
       LEFT JOIN location ON location.Name=sighting.LocationName
       ORDER BY location.County, sighting.LocationName");
+
+
+$missingLatLong = performQuery("
+    SELECT * FROM location WHERE Latitude=0 OR Longitude=0");
+
 ?>
 
 
@@ -81,3 +86,11 @@ while($sightingInfo = mysql_fetch_array($badSightingLocations))
 	}
 }
 ?>
+
+<div class=heading>locations without lat or long</div>
+
+<?
+while($locationInfo = mysql_fetch_array($missingLatLong))
+{
+	echo "<a href=\"./locationcreate.php?id=" . $locationInfo["objectid"] . "\">" . $locationInfo["Name"] . "</a><br/>\n";
+}
