@@ -228,7 +228,6 @@ class SpeciesQuery
 
 	function formatTwoColumnSpeciesList()
 	{
-		// todo need to do something about first sightings?
 		formatTwoColumnSpeciesList($this);
 	}
 
