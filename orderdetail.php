@@ -1,6 +1,7 @@
 
 <?php
 
+require("./birdwalker.php");
 require("./speciesquery.php");
 
 $orderid = param($_GET, "order", 21);
