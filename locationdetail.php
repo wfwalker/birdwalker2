@@ -11,7 +11,7 @@ $siteListQuery = getSpeciesQuery($whereClause);
 $siteListCount = getSpeciesCount($whereClause);
 
 $tripQuery = getTripQuery("sighting.LocationName='" . $siteInfo["Name"]. "' and sighting.TripDate=trip.Date");
-$tripCount = getTripCount("sighting.LocationName='" . $siteInfo["Name"]. "' and sighting.TripDate=trip.Date");
+$tripCount = mysql_num_rows($tripQuery);
 $firstSightings = getFirstSightings();
 
 ?>
@@ -38,6 +38,9 @@ $firstSightings = getFirstSightings();
 <?php
 if (strlen($siteInfo["ReferenceURL"]) > 0) {
 	echo "<div><a href=\"" . $siteInfo["ReferenceURL"] . "\">See also...</a></div>";
+}
+if (getEnableEdit()) {
+	echo "<div><a href=\"./locationcreate.php?id=" . $locationID . "\">edit</a></div>";
 }
 ?>
 
