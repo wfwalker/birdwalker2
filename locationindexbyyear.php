@@ -27,7 +27,7 @@ $locationCount = performCount("select count(distinct location.objectid) from loc
 <?
 $gridQueryString=" select distinct(LocationName), County, State, location.objectid as locationid, bit_or(1 << (year(TripDate) - 1995)) as mask from sighting, location where sighting.LocationName=location.Name group by sighting.LocationName order by location.State, location.County, location.Name;";
 
-formatLocationByYearTable($gridQueryString, "");
+formatLocationByYearTable($gridQueryString, "./specieslist.php?");
 
 ?>
 
