@@ -25,7 +25,7 @@ $lifeCount = getSpeciesCount();
 <?
 $gridQueryString="select distinct(CommonName), species.objectid as speciesid, bit_or(1 << (year(TripDate) - 1995)) as mask from sighting, species where sighting.SpeciesAbbreviation=species.Abbreviation and sighting.Exclude=0 group by sighting.SpeciesAbbreviation order by speciesid";
 
-formatSpeciesByYearTable($lifeCount, $gridQueryString);
+formatSpeciesByYearTable($gridQueryString, "");
 
 ?>
 

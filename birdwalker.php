@@ -259,7 +259,7 @@ function insertYearLabels()
 /**
  * Show a set of sightings, species by rows, years by columns.
  */
-function formatSpeciesByYearTable($speciesCount, $gridQueryString)
+function formatSpeciesByYearTable($gridQueryString, $extraSightingListParams)
 {
 	$gridQuery = performQuery($gridQueryString);
 
@@ -279,7 +279,19 @@ function formatSpeciesByYearTable($speciesCount, $gridQueryString)
 
 		echo "<tr><td class=firstcell><a href=\"./speciesdetail.php?id=" . $info["speciesid"] . "\">" . $info["CommonName"] . "</a></td> ";
 		
-		for ($index = 1; $index <= 9; $index++) echo "<td class=bordered align=center>" . bitToString($theMask, $index) . "</td>";
+		for ($index = 1; $index <= 9; $index++)
+		{
+			echo "<td class=bordered align=center>";
+			if (($info["mask"] >> $index) & 1)
+			{
+				echo "<a href=\"./sightinglist.php?speciesid=" . $info["speciesid"] . "&year=" . (1995 + $index) . $extraSightingListParams . "\">X</a>";
+			}
+			else
+			{
+				echo "&nbsp;" ;
+			}
+			echo "</td>";
+		}
 		echo "</tr>";
 
 		$prevInfo = $info;

@@ -78,7 +78,7 @@ if (strlen($siteInfo["ReferenceURL"]) > 0) {
   {
 	  $gridQueryString="select distinct(CommonName), species.objectid as speciesid, bit_or(1 << (year(TripDate) - 1995)) as mask from sighting, species where sighting.LocationName='" . $siteInfo["Name"] . "' and sighting.SpeciesAbbreviation=species.Abbreviation group by sighting.SpeciesAbbreviation order by speciesid";
 
-	  formatSpeciesByYearTable($siteListCount, $gridQueryString);
+	  formatSpeciesByYearTable($gridQueryString, "&locationid=" . $siteInfo["objectid"]);
    }
 
 ?>

@@ -3,6 +3,8 @@
 
 require("./birdwalker.php");
 
+$speciesCount = getSpeciesCount();
+
 performQuery("CREATE TEMPORARY TABLE tmp ( abbrev varchar(16) default NULL, tripdate date default NULL);");
 performQuery("INSERT INTO tmp SELECT SpeciesAbbreviation, MIN(TripDate) FROM sighting where Exclude!='1' GROUP BY SpeciesAbbreviation;");
 $firstSightingQuery = performQuery("SELECT date_format(sighting.TripDate, '%M %e, %Y') as niceDate, sighting.*, species.CommonName, species.objectid as speciesid, trip.objectid as tripid, location.County, location.State FROM sighting, tmp, species, location, trip WHERE sighting.SpeciesAbbreviation=tmp.abbrev AND species.Abbreviation=sighting.SpeciesAbbreviation AND sighting.TripDate=tmp.tripdate AND location.Name=sighting.LocationName AND trip.Date=sighting.TripDate order by TripDate, LocationName;");
@@ -20,8 +22,8 @@ $firstSightingQuery = performQuery("SELECT date_format(sighting.TripDate, '%M %e
 
     <div class=contentright>
       <div class="titleblock">	  
-	  <div class=pagetitle>Mary and Bill&apos;s Life List</div>
-        <div class=pagesubtitle><?php echo $locationCount ?> Locations</div>
+	  <div class=pagetitle>Mary and Bill&rsquo;s Life List</div>
+        <div class=pagesubtitle><? echo $speciesCount ?> Species</div>
       </div>
 
 <p class=sighting-notes>

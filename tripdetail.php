@@ -80,7 +80,7 @@ while($locationInfo = mysql_fetch_array($locationListQuery))
 		}
 
 		if ($info["Photo"] == "1") {
-			echo " <a href=\"./photodetail.php?id=" . $info["objectid"] . "\">PHOTO</a>";
+			echo " <a href=\"./photodetail.php?id=" . $info["objectid"] . "\"><img align=center src=\"./images/camera.gif\"></a>";
 		}
 
 		$sightingID = $info["objectid"];
