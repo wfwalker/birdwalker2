@@ -1129,11 +1129,12 @@ function formatTwoColumnLocationList($locationQuery, $countyHeadingsOK = true)
 		if ($countyHeadingsOK && $divideByCounties && (($prevInfo["State"] != $info["State"]) || ($prevInfo["County"] != $info["County"])))
 		{ ?>
 			<div class="subheading">
-<?          if ($lastStateHeading != $info["State"]) { ?>
-			    <b><?= getStateNameForAbbreviation($info["State"]) ?></b>,
+<?          if ($lastStateHeading != $info["State"]) {
+				$stateInfo = getStateInfoForAbbreviation($info["State"]); ?>
+			    <a href="./statedetail.php?id=<?= $stateInfo["objectid"]?>"><?= $stateInfo["Name"] ?></a>,
 <?              $lastStateHeading = $info["State"];
             } ?>
-			    <?= $info["County"] ?> County
+			<a href="./countydetail.php?state=<?= $info["State"]?>&county=<?= $info["County"] ?>"><?= $info["County"] ?> County</a>
             </div>
 <?		} ?>
 
