@@ -9225,7 +9225,7 @@ INSERT INTO sighting VALUES (9252,'bknsti','Alviso Marina','','0','0','2004-09-1
 INSERT INTO sighting VALUES (9253,'turvul','Alviso Marina','','','','2004-09-14');
 INSERT INTO sighting VALUES (9254,'greegr','Alviso Marina','','','','2004-09-14');
 INSERT INTO sighting VALUES (9255,'grhowl','Other San Benito','','0','0','2004-09-18');
-INSERT INTO sighting VALUES (9256,'wesowl','Other San Benito','','0','0','2004-09-18');
+INSERT INTO sighting VALUES (9256,'wesowl','Other San Benito','heard only','','','2004-09-18');
 INSERT INTO sighting VALUES (9257,'brnowl','Other San Benito','','0','0','2004-09-18');
 INSERT INTO sighting VALUES (9258,'compoo','Other San Benito','','0','0','2004-09-18');
 INSERT INTO sighting VALUES (9259,'amecro','Other San Benito','','0','0','2004-09-18');
@@ -9320,3 +9320,4 @@ INSERT INTO sighting VALUES (9348,'comsni','Other San Benito','Seen by R. J. onl
 INSERT INTO sighting VALUES (9349,'nrwswa','Other San Benito','Seen by all but Mary','','','2004-09-18');
 INSERT INTO sighting VALUES (9350,'barswa','Other San Benito','','','','2004-09-18');
 INSERT INTO sighting VALUES (9351,'herwar','Other San Benito','Seen by Mary only','','','2004-09-18');
+INSERT INTO sighting VALUES (9352,'blkpho','Other San Benito','','','','2004-09-18');
