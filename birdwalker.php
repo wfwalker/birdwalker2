@@ -38,12 +38,7 @@ function disabledBrowseButtons()
 
 
 function browseButtons($urlPrefix, $current, $first, $prev, $next, $last)
-{
-	$firstLabel="first";
-	$lastLabel="last";
-	$nextLabel="next";
-	$prevLabel="prev"; ?>
-
+{ ?>
    <div class="navigationleft">
 
 <?	if ($current == $first)
@@ -429,8 +424,8 @@ function formatTwoColumnSpeciesList($query, $firstSightings = "", $firstYearSigh
 <?      if ($info["Photo"] == "1") { ?><?= getPhotoLinkForSightingInfo($info, "sightingid") ?><? } ?>
 <?		if ($info["ABACountable"] == "0") { ?>NOT ABA COUNTABLE<? } ?>
 <?		if ($info["Exclude"] == "1") { ?>excluded<? } ?>
-<? 		if ($firstSightings[$info["sightingid"]] != null) { ?> life bird #<?= $firstSightings[$info["sightingid"]] ?> <? }
-		else if ($firstYearSightings[$info["sightingid"]] != null) { ?> year bird #<?= $firstYearSightings[$info["sightingid"]] ?> <? } ?>
+<? 		if ($firstSightings[$info["sightingid"]] != null) { ?> life bird <? }
+		else if ($firstYearSightings[$info["sightingid"]] != null) { ?> year bird <? } ?>
 <?		if (strlen($info["Notes"]) > 0) { ?><div class=sighting-notes><?= $info["Notes"] ?></div><? } ?>
 
 		</div>
@@ -769,6 +764,30 @@ function getTaxonomyInfo($objectid, $blankDigits)
 function getTripInfo($objectid)
 {
 	return performOneRowQuery("SELECT *, date_format(Date, '%W,  %M %e, %Y') as niceDate FROM trip where objectid=" . $objectid);
+}
+
+function tripBrowseButtons($tripID, $viewMode)
+{
+	$tripInfo = getTripInfo($tripID);
+
+	$firstTripID = performCount("
+    SELECT objectid FROM trip ORDER BY Date LIMIT 1");
+	$lastTripID = performCount("
+    SELECT objectid FROM trip ORDER BY Date DESC LIMIT 1");
+
+	$nextTripID = performCount("
+    SELECT objectid FROM trip
+      WHERE Date > '" . $tripInfo["Date"] . "'
+      ORDER BY Date LIMIT 1");
+	$prevTripID = performCount("
+    SELECT objectid FROM trip
+      WHERE Date < '" . $tripInfo["Date"] . "'
+      ORDER BY Date DESC LIMIT 1");
+
+	if ($nextTripID == "") { $nextTripID = $sightingID; }
+	if ($prevTripID == "") { $prevTripID = $sightingID; }
+
+	browseButtons("./trip" . $viewMode . ".php?id=", $tripID, $firstTripID, $prevTripID, $nextTripID, $lastTripID);
 }
 
 function formatTwoColumnTripList($tripListQuery)
