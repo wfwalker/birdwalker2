@@ -7,7 +7,24 @@ require("./birdwalker.php");
 $tripID = $_GET['id'];
 $tripInfo = getTripInfo($tripID);
 $tripYear = substr($tripInfo["Date"], 0, 4);
-$tripCount = performCount("select max(objectid) from trip");
+
+$firstTripID = performCount("
+    SELECT objectid FROM trip ORDER BY Date LIMIT 1");
+$lastTripID = performCount("
+    SELECT objectid FROM trip ORDER BY Date DESC LIMIT 1");
+
+$nextTripID = performCount("
+    SELECT objectid FROM trip
+      WHERE Date > '" . $tripInfo["Date"] . "'
+      ORDER BY Date LIMIT 1");
+$prevTripID = performCount("
+    SELECT objectid FROM trip
+      WHERE Date < '" . $tripInfo["Date"] . "'
+      ORDER BY Date DESC LIMIT 1");
+
+if ($nextTripID == "") { $nextTripID = $sightingID; }
+if ($prevTripID == "") { $prevTripID = $sightingID; }
+
 
 $locationListQuery = performQuery("SELECT distinct(location.objectid), location.Name
   FROM location, sighting
@@ -42,11 +59,13 @@ while($sightingInfo = mysql_fetch_array($tripSightings)) {
 
 <?php
 globalMenu();
-browseButtons("./tripdetail.php?id=", $tripID, 1, $tripID - 1, $tripID + 1, $tripCount);
+browseButtons("./tripdetail.php?id=", $tripID, $firstTripID, $prevTripID, $nextTripID, $lastTripID);
 $items[] = "<a href=\"./tripindex.php#" . $tripYear . "\">" . $tripYear . "</a>";
 $items[] = strtolower($tripInfo["Name"]);
 navTrailTrips($items);
-pageThumbnail("select *, rand() as shuffle from sighting where Photo='1' and TripDate='" . $tripInfo["Date"] . "' order by shuffle");
+pageThumbnail("SELECT *, rand() AS shuffle
+    FROM sighting WHERE Photo='1' AND TripDate='" . $tripInfo["Date"] . "'
+    ORDER BY shuffle LIMIT 1");
 ?>
 
     <div class="contentright">
