@@ -755,7 +755,7 @@ function formatLocationByYearTable($locationQuery, $urlPrefix, $countyHeadingsOK
 			<td class=bordered align=center>
 <?			if (($theMask >> $index) & 1)
 			{ ?>
-				<a href="<?= $urlPrefix . $locationQuery->getParams() ?>&locationid= <?= $info["locationid"] ?>&year=<?= (1995 + $index) ?>">X</a>
+				<a href="<?= $urlPrefix . $locationQuery->getParams() ?>&locationid=<?= $info["locationid"] ?>&year=<?= (1995 + $index) ?>">X</a>
 <?			}
 			else
 			{ ?>
@@ -816,7 +816,7 @@ function formatLocationByMonthTable($locationQuery, $urlPrefix, $countyHeadingsO
 			<td class=bordered align=center>
 <?			if (($theMask >> $index) & 1)
 			{ ?>
-				<a href="<?= $urlPrefix . $locationQuery->getParams() ?>&locationid= <?= $info["locationid"] ?>&month=<?= $index ?>">X</a>
+				<a href="<?= $urlPrefix . $locationQuery->getParams() ?>&locationid=<?= $info["locationid"] ?>&month=<?= $index ?>">X</a>
 <?			}
 			else
 			{ ?>
