@@ -78,7 +78,7 @@ navTrailBirds();
 
    <div class=heading><? echo $speciesCount ?> Species</div>
 
-<p class=sighting-notes>
+<p class=report-content>
 Note: within a single day, the order of sightings is not
 preserved.
 </p>
