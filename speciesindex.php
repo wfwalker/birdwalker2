@@ -18,7 +18,7 @@ $speciesQuery = getSpeciesQuery();
 globalMenu();
 disabledBrowseButtons();
 navTrailBirds();
-pageThumbnail("select *, rand() as shuffle from sighting where Photo='1' order by shuffle");
+pageThumbnail("SELECT *, rand() as shuffle FROM sighting WHERE Photo='1' ORDER BY shuffle");
 ?>
 
     <div class=contentright>

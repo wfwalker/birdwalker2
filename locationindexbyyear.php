@@ -3,7 +3,7 @@
 
 require("./birdwalker.php");
 
-$locationCount = performCount("select count(distinct location.objectid) from location");
+$locationCount = performCount("SELECT COUNT(DISTINCT location.objectid) FROM location");
 
 ?>
 
@@ -18,7 +18,7 @@ $locationCount = performCount("select count(distinct location.objectid) from loc
 globalMenu();
 disabledBrowseButtons();
 navTrailLocations();
-pageThumbnail("select *, rand() as shuffle from sighting where Photo='1' order by shuffle");
+pageThumbnail("SELECT *, rand() AS shuffle FROM sighting WHERE Photo='1' ORDER BY shuffle");
 ?>
 
 <div class=contentright>
@@ -31,7 +31,12 @@ pageThumbnail("select *, rand() as shuffle from sighting where Photo='1' order b
   <table columns=10 class="report-content" width="100%">
 
 <?
-$gridQueryString=" select distinct(LocationName), County, State, location.objectid as locationid, bit_or(1 << (year(TripDate) - 1995)) as mask from sighting, location where sighting.LocationName=location.Name group by sighting.LocationName order by location.State, location.County, location.Name;";
+$gridQueryString="
+    SELECT distinct(LocationName), County, State, location.objectid AS locationid, bit_or(1 << (year(TripDate) - 1995)) AS mask
+      FROM sighting, location
+      WHERE sighting.LocationName=location.Name
+      GROUP BY sighting.LocationName
+      ORDER BY location.State, location.County, location.Name;";
 
 formatLocationByYearTable($gridQueryString, "./specieslist.php?");
 

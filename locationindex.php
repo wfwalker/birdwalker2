@@ -3,7 +3,7 @@
 
 require("./birdwalker.php");
 
-$locationQuery = performQuery("select * from location order by State, County, Name");
+$locationQuery = performQuery("SELECT * FROM location ORDER BY State, County, Name");
 
 ?>
 
@@ -18,7 +18,7 @@ $locationQuery = performQuery("select * from location order by State, County, Na
 globalMenu();
 disabledBrowseButtons();
 navTrailLocations();
-pageThumbnail("select *, rand() as shuffle from sighting where Photo='1' order by shuffle");
+pageThumbnail("SELECT *, rand() AS shuffle FROM sighting WHERE Photo='1' ORDER BY shuffle");
 ?>
 
     <div class=contentright>

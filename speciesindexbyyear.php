@@ -3,9 +3,16 @@
 
 require("./birdwalker.php");
 
-$lifeCount = performCount("select count(distinct species.objectid) from species, sighting where species.Abbreviation=sighting.SpeciesAbbreviation and sighting.Exclude!='1'");
+$lifeCount = performCount("
+    SELECT count(distinct species.objectid)
+      FROM species, sighting
+      WHERE species.Abbreviation=sighting.SpeciesAbbreviation
+      AND sighting.Exclude!='1'");
 
-$annualTotal = performQuery("select count(distinct sighting.SpeciesAbbreviation) as count, year(sighting.TripDate) as year from sighting group by year");
+$annualTotal = performQuery("
+    SELECT count(distinct sighting.SpeciesAbbreviation) as count, year(sighting.TripDate) as year
+      FROM sighting
+      GROUP BY year");
 
 ?>
 
@@ -20,7 +27,7 @@ $annualTotal = performQuery("select count(distinct sighting.SpeciesAbbreviation)
 globalMenu();
 disabledBrowseButtons();
 navTrailBirds();
-pageThumbnail("select *, rand() as shuffle from sighting where Photo='1' order by shuffle");
+pageThumbnail("SELECT *, rand() AS shuffle FROM sighting WHERE Photo='1' ORDER BY shuffle");
 ?>
 
 
@@ -32,7 +39,12 @@ pageThumbnail("select *, rand() as shuffle from sighting where Photo='1' order b
       </div>
 
 <?
-$gridQueryString="select distinct(CommonName), species.objectid as speciesid, bit_or(1 << (year(TripDate) - 1995)) as mask from sighting, species where sighting.SpeciesAbbreviation=species.Abbreviation and sighting.Exclude=0 group by sighting.SpeciesAbbreviation order by speciesid";
+$gridQueryString="
+    SELECT distinct(CommonName), species.objectid AS speciesid, bit_or(1 << (year(TripDate) - 1995)) AS mask
+      FROM sighting, species
+      WHERE sighting.SpeciesAbbreviation=species.Abbreviation and sighting.Exclude=0
+      GROUP BY sighting.SpeciesAbbreviation
+      ORDER BY speciesid";
 
 formatSpeciesByYearTable($gridQueryString, "", $annualTotal);
 
