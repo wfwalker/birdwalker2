@@ -5,15 +5,9 @@ require_once("./birdwalker.php");
 require_once("./tripquery.php");
 
 $tripQuery = new TripQuery;
-?>
 
-<html>
+htmlHead("Trips");
 
-  <? htmlHead("Trips"); ?>
-
-  <body>
-
-<?php
 globalMenu();
 disabledBrowseButtons();
 navTrailTrips("");
