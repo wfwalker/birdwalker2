@@ -50,7 +50,7 @@ if (($postSpeciesID != "") && ($save == "Save"))
 
 	$speciesID = $postSpeciesID;
 
-	echo "<b>Species Updated</b>";
+	echo "<a href=\"./speciesdetail.php?speciesid=" . $speciesID . "\"><b>Species Updated</b></a>";
 }
 
 $speciesInfo = getSpeciesInfo($speciesID);
