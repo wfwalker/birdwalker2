@@ -44,7 +44,7 @@ navTrailPhotos();
 
 <?  while($info = mysql_fetch_array($photoLocations))
     { ?>
-        <div><a href="./locationdetailphoto.php?id=<?= $info["objectid"] ?>"><?= $info["Name"] ?></a> (<?= $info["photoCount"] ?>)</div>
+        <div><a href="./locationdetail.php?view=photo&id=<?= $info["objectid"] ?>"><?= $info["Name"] ?></a> (<?= $info["photoCount"] ?>)</div>
 <?  } ?>
 
     </div>
