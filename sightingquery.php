@@ -161,14 +161,14 @@ class SightingQuery
 			$locationInfo = getLocationInfo($this->mLocationID); 
 			$pageTitle = $pageTitle . ", " . $locationInfo["Name"];
 		} elseif ($this->mCounty != "") {
-			$pageTitle = $this->mCounty . " County";
+			$pageTitle = $pageTitle . ", " . $pageTitle = $this->mCounty . " County";
 		} elseif ($this->mState != "") {
-			$pageTitle = getStateNameForAbbreviation($this->mState);
+			$pageTitle = $pageTitle . ", " . $pageTitle = getStateNameForAbbreviation($this->mState);
 		}
 
 		if ($this->mTripID != "") {
 			$tripInfo = getTripInfo($this->mTripID); 
-			$pageTitle = $tripInfo["Name"];
+			$pageTitle = $pageTitle . ", " . $pageTitle = $tripInfo["Name"];
 		}
 		if ($this->mMonth !="") {
 			if ($pageTitle == "") $pageTitle = getMonthNameForNumber($this->mMonth);
