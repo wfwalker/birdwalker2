@@ -24,7 +24,6 @@ $sightingCount = performCount("select max(objectid) from sighting");
 globalMenu();
 browseButtons("./sightingdetail.php?id=", $sightingID, 1, $sightingID - 1, $sightingID + 1, $sightingCount);
 navTrailBirds();
-pageThumbnail("select * from sighting where Photo='1' and objectid='" . $sightingID . "'");
 ?>
 
 <div class="contentright">

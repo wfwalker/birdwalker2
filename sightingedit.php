@@ -74,7 +74,6 @@ $locationList = performQuery("select Name, objectid from location");
 globalMenu();
 browseButtons("./sightingedit.php?id=", $sightingID, 1, $sightingID - 1, $sightingID + 1, $sightingCount);
 navTrailBirds();
-pageThumbnail("select * from sighting where Photo='1' and objectid='" . $sightingID . "'");
 ?>
 
     <div class="navigationleft">
@@ -86,14 +85,12 @@ pageThumbnail("select * from sighting where Photo='1' and objectid='" . $sightin
 
 <div class="contentright">
 
+<div class=pagesubtitle>
+  <a href="./tripdetail.php?id=<?= $tripInfo["objectid"] ?>"><?= $tripInfo["niceDate"] ?>
+</div>
 <div class="titleblock">
-
-
   <div class=pagetitle>
     <a href="./speciesdetail.php?id=<?= $speciesInfo["objectid"] ?>"><?= $speciesInfo["CommonName"] ?></a>
-  </div>
-  <div class=pagesubtitle>
-    <a href="./tripdetail.php?id=<?= $tripInfo["objectid"] ?>"><?= $tripInfo["niceDate"] ?>
   </div>
   <div class=metadata>
     <a href="./countydetail.php?county=<?= $locationInfo["County"] ?>"><?= $locationInfo["County"] ?> County</a>,

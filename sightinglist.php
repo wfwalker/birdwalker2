@@ -71,9 +71,9 @@ navTrailBirds();
 ?>
 
     <div class=contentright>
+      <div class=pagesubtitle><?= $pageSubtitle ?></div>
       <div class="titleblock">	  
 	  <div class=pagetitle><?= $pageTitle ?></div>
-	  <div class=pagesubtitle><?= $pageSubtitle ?></div>
       <div class=metadata><?= mysql_num_rows($sightingListQuery) ?> Sightings</div>
       </div>
 
@@ -89,11 +89,9 @@ while($sightingInfo = mysql_fetch_array($sightingListQuery)) {
         <a href="./tripdetail.php?id=<?= $sightingInfo['tripid'] ?>"><?= $sightingInfo['niceDate'] ?></a>
 <?
 	}
-	if (getEnableEdit()) {
-?>
-        <a href="./sightingedit.php?id=<?= $sightingInfo['objectid'] ?>">edit</a>
-<?
-    }
+
+    editLink("./sightingedit.php?id=" . $sightingInfo['objectid']);
+
 	if ($sightingInfo["Photo"] == "1") {
 ?>
         <?= getPhotoLinkForSightingInfo($sightingInfo) ?>
