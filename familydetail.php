@@ -53,35 +53,7 @@ navTrailBirds($items);
 
 <div class=heading><?= $speciesQuery->getSpeciesCount() ?> species</div>
 
-<table columns=2>		
-
-<?
-$dbQuery = $speciesQuery->performQuery();
-
-while($info = mysql_fetch_array($dbQuery)) {
-  $photoQuery = performQuery("select * from sighting where SpeciesAbbreviation='" . $info["Abbreviation"] . "' and Photo='1' order by TripDate desc");
-?>
-
-  <tr><td class=report-content>
-
-<?
-  if ($photoInfo = mysql_fetch_array($photoQuery)) {
-	  echo getThumbForSightingInfo($photoInfo);
-  }
-?>
-
-  <br><br>
-  </td>
-
-  <td class=report-content valign=top>
-  <a href="./speciesdetail.php?id=<?= $info["objectid"] ?>"><?= $info["CommonName"] ?></a><br>
-  <i><?= $info["LatinName"] ?></i><br><br>
-  </td></tr>
-<?
-}
-?>
-
-</table>
+	<? formatSpeciesListWithPhoto($speciesQuery); ?>
 
     </div>
   </body>
