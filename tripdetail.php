@@ -20,11 +20,6 @@ $locationQuery = new LocationQuery;
 $locationQuery->setTripID($tripID);
 $locationCount = $locationQuery->getLocationCount();
 
-// $locationListQuery = performQuery("SELECT distinct(location.objectid), location.Name
-//   FROM location, sighting
-//   WHERE location.Name=sighting.LocationName and sighting.TripDate='". $tripInfo["Date"] . "'");
-// $locationCount = mysql_num_rows($locationListQuery);
-
 $firstSightings = getFirstSightings();
 $firstYearSightings = getFirstYearSightings(substr($tripInfo["Date"], 0, 4));
 
