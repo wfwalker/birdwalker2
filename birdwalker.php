@@ -275,7 +275,7 @@ function formatLocationByYearTable($locationCount, $gridQueryString)
 
 		echo "<tr><td class=firstcell>";
 		echo "<a href=\"./locationdetail.php?id=" . $info["locationid"] . "\">" . $info["LocationName"] . "</a>";
-		if (getEnableEdit()) { echo "<a href=\"./locationedit.php?id=" . $info["locationid"] . "\"> edit</a>"; }
+		if (getEnableEdit()) { echo "<a href=\"./locationcreate.php?id=" . $info["locationid"] . "\"> edit</a>"; }
 		echo "</td>";
 		for ($index = 1; $index <= 9; $index++) echo "<td class=bordered align=center>" . bitToString($theMask, $index) . "</td>";
 		echo "</tr>";
