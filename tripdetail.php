@@ -34,15 +34,8 @@ while($sightingInfo = mysql_fetch_array($tripSightings)) {
 	if ($firstSightings[$sightingInfo['objectid']] != null) { $tripFirstSightings++; }
 }
 
-?>
+htmlHead( $tripInfo["Name"]);
 
-<html>
-
-  <? htmlHead( $tripInfo["Name"]); ?>
-
-  <body>
-
-<?php
 globalMenu();
 tripBrowseButtons("./tripdetail.php", $tripID, $view);
 $items[] = "<a href=\"./tripindex.php#" . $tripYear . "\">" . $tripYear . "</a>";
