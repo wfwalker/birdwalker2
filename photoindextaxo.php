@@ -60,10 +60,8 @@ while($info = mysql_fetch_array($photoSpecies))
         <a href="./speciesdetail.php?view=photo&speciesid=<?= $info["objectid"] ?>">
              <?= $info["CommonName"] ?>
         </a>
+        <? if ($info["photoCount"] > 1) echo "(" . $info["photoCount"] . ")"; ?>
         <? if (strtotime($info["latestPhoto"]) > $thresholdTime) echo "NEW"; ?>
-
-<?  if ($info["photoCount"] > 1) echo "(" . $info["photoCount"] . ")"; ?>
-
 	</div>
 
 <?	$prevInfo = $info;
