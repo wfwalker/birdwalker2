@@ -9,12 +9,14 @@ function globalMenu()
 	  <div class="leftsubtitle"><a href="./locationindex.php">locations</a></div>
 	  <div class="leftsubtitle"><a href="./chronolifelist.php">life list</a></div>
 	  <div class="leftsubtitle"><a href="./photoindextaxo.php">photos</a></div>
+	  <div class="leftsubtitle"><a href="./credits.php">credits</a></div>
 
 <?	if (getEnableEdit())
 	{ ?>
 		<br><div class="leftsubtitle">
 		<a href="./tripcreate.php">create trip</a><br>
 		<a href="./photosneeded.php">photos needed</a><br>
+		<a href="./errorcheck.php">error check</a><br>
 		</div>
 <?	} ?>
 
@@ -81,7 +83,8 @@ function rightThumbnail($photoQueryString)
 	if (mysql_num_rows($photoQuery) > 0)
 	{
 		$photoInfo = mysql_fetch_array($photoQuery);
-		$filename = getPhotoFilename($photoInfo); ?>
+		$filename = getPhotoFilename($photoInfo);
+		list($width, $height, $type, $attr) = getimagesize("./images/thumb/" . $filename); ?>
 
         <a href="./photodetail.php?id=<?= $photoInfo["objectid"] ?>">
            <img width=<?= $width ?> height=<?= $height ?> src="./images/thumb/<?= $filename ?>" border=0 align="left" class="inlinepict">
@@ -249,14 +252,26 @@ function getFirstSightings()
 	$firstSightings = null;
 
 	performQuery("CREATE TEMPORARY TABLE tmp ( abbrev varchar(16) default NULL, tripdate date default NULL);");
-	performQuery("INSERT INTO tmp SELECT SpeciesAbbreviation, MIN(TripDate) FROM sighting where Exclude!='1' GROUP BY SpeciesAbbreviation;");
-	$firstSightingQuery = performQuery("SELECT sighting.objectid, tmp.tripdate FROM sighting, tmp WHERE sighting.SpeciesAbbreviation=tmp.abbrev and sighting.TripDate=tmp.tripdate order by tripdate;");
 
+	performQuery("
+      INSERT INTO tmp
+        SELECT SpeciesAbbreviation, MIN(TripDate)
+        FROM sighting, species
+        WHERE Exclude!='1' AND sighting.SpeciesAbbreviation=species.Abbreviation AND species.ABACountable='1'
+        GROUP BY SpeciesAbbreviation
+        ORDER BY species.objectid;");
+
+	$firstSightingQuery = performQuery("
+      SELECT sighting.objectid, tmp.tripdate FROM sighting, tmp
+        WHERE sighting.SpeciesAbbreviation=tmp.abbrev AND sighting.TripDate=tmp.tripdate
+        ORDER BY tripdate;");
+
+	$index = 1;
 	while ($info = mysql_fetch_array($firstSightingQuery))
 	{
 		$firstSightingID = $info["objectid"];
-		$firstSightingDate = $info["tripdate"];
-		$firstSightings[$firstSightingID] = $firstSightingDate;
+		$firstSightings[$firstSightingID] = $index;
+		$index++;
 	}
 
 	performQuery("DROP TABLE tmp;");
@@ -272,14 +287,27 @@ function getFirstYearSightings($theYear)
 	$firstSightings = null;
 
 	performQuery("CREATE TEMPORARY TABLE tmp ( abbrev varchar(16) default NULL, tripdate date default NULL);");
-	performQuery("INSERT INTO tmp SELECT SpeciesAbbreviation, MIN(TripDate) FROM sighting where Exclude!='1' and year(TripDate)='" . $theYear . "' GROUP BY SpeciesAbbreviation;");
-	$firstSightingQuery = performQuery("SELECT sighting.objectid, tmp.tripdate FROM sighting, tmp WHERE sighting.SpeciesAbbreviation=tmp.abbrev and sighting.TripDate=tmp.tripdate order by tripdate;");
+	performQuery("
+      INSERT INTO tmp
+      SELECT SpeciesAbbreviation, MIN(TripDate)
+        FROM sighting, species
+        WHERE Exclude!='1' AND year(TripDate)='" . $theYear . "'
+          AND species.Abbreviation=sighting.SpeciesAbbreviation AND species.ABACountable='1'
+        GROUP BY SpeciesAbbreviation
+        ORDER BY species.objectid;");
+	$firstSightingQuery = performQuery("
+      SELECT sighting.objectid, tmp.tripdate
+        FROM sighting, tmp
+        WHERE sighting.SpeciesAbbreviation=tmp.abbrev
+          AND sighting.TripDate=tmp.tripdate
+      ORDER BY tripdate");
 
+	$index = 1;
 	while ($info = mysql_fetch_array($firstSightingQuery))
 	{
 		$firstSightingID = $info["objectid"];
-		$firstSightingDate = $info["tripdate"];
-		$firstSightings[$firstSightingID] = $firstSightingDate;
+		$firstSightings[$firstSightingID] = $index;
+		$index++;
 	}
 
 	performQuery("DROP TABLE tmp;");
@@ -389,11 +417,13 @@ function formatTwoColumnSpeciesList($query, $firstSightings = "", $firstYearSigh
 
 		<div><a href="./speciesdetail.php?id=<?= $info["objectid"] ?>"><?= $info["CommonName"] ?></a>
 
+<?      if ($info["sightingid"] != "") editLink("./sightingedit.php?id=" . $info["sightingid"]); ?>
 <?      if ($info["Photo"] == "1") { ?><?= getPhotoLinkForSightingInfo($info, "sightingid") ?><? } ?>
-<?		if (strlen($info["Notes"]) > 0) { ?><div class=sighting-notes><?= $info["Notes"] ?></div><? } ?>
 <?		if ($info["ABACountable"] == "0") { ?>NOT ABA COUNTABLE<? } ?>
-<? 		if ($firstSightings[$info["sightingid"]] != null) { ?> first life sighting <? }
-		else if ($firstYearSightings[$info["sightingid"]] != null) { ?> first year sighting <? } ?>
+<?		if ($info["Exclude"] == "1") { ?>excluded<? } ?>
+<? 		if ($firstSightings[$info["sightingid"]] != null) { ?> life bird #<?= $firstSightings[$info["sightingid"]] ?> <? }
+		else if ($firstYearSightings[$info["sightingid"]] != null) { ?> year bird #<?= $firstYearSightings[$info["sightingid"]] ?> <? } ?>
+<?		if (strlen($info["Notes"]) > 0) { ?><div class=sighting-notes><?= $info["Notes"] ?></div><? } ?>
 
 		</div>
 
