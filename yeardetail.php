@@ -97,7 +97,6 @@ else if ($view == "map")
 {
     $locationQuery = new LocationQuery;
 	$locationQuery->setFromRequest($_GET);
-	countHeading($locationQuery->getLocationCount(), "location");
 	$map = new Map("./yeardetail.php");
 	$map->setFromRequest($_GET);
 	$map->draw();
