@@ -6,8 +6,6 @@ require("./birdwalker.php");
 $photoSpecies = performQuery("select distinct species.*, count(distinct sighting.objectid) as photoCount from species, sighting where species.Abbreviation=sighting.SpeciesAbbreviation and sighting.Photo='1' group by sighting.SpeciesAbbreviation order by species.objectid");
 $photoCount = performCount("select count(*) from sighting where Photo='1'");
 
-$randomPhotoSightings = performQuery("select *, rand() as shuffle from sighting where Photo='1' order by shuffle");
-
 ?>
 
 <html>
@@ -21,10 +19,8 @@ $randomPhotoSightings = performQuery("select *, rand() as shuffle from sighting 
 globalMenu();
 disabledBrowseButtons();
 navTrailPhotos("by species | <a href=\"./photoindex.php\">by date</a>");
+pageThumbnail("select *, rand() as shuffle from sighting where Photo='1' order by shuffle");
 ?>
-
-
-<div class=thumb><?php  if (mysql_num_rows($randomPhotoSightings) > 0) { $photoInfo = mysql_fetch_array($randomPhotoSightings); if (mysql_num_rows($randomPhotoSightings) > 0) echo "<td>" . getThumbForSightingInfo($photoInfo) . "</td>"; } ?></div>
 
     <div class=contentright>
       <div class="titleblock">	  

@@ -11,7 +11,6 @@ $orderQuery = getSpeciesQuery($whereClause);
 $orderCount = mysql_num_rows($orderQuery);
 $orderInfo = getOrderInfo($orderid * pow(10, 9));
 
-$randomPhotoSightings = performQuery("select sighting.*, rand() as shuffle from sighting, species where Photo='1' and " . $whereClause . " order by shuffle");
 
 ?>
 
@@ -23,14 +22,13 @@ $randomPhotoSightings = performQuery("select sighting.*, rand() as shuffle from 
 
   <body>
 
-<div class=thumb><?php  if (mysql_num_rows($randomPhotoSightings) > 0) { $photoInfo = mysql_fetch_array($randomPhotoSightings); if (mysql_num_rows($randomPhotoSightings) > 0) echo "<td>" . getThumbForSightingInfo($photoInfo) . "</td>"; } ?></div>
-
 <?php
 globalMenu();
 disabledBrowseButtons();
 browseButtons("./orderdetail.php?order=", $orderid, 1, $orderid - 1, $orderid + 1, $orderCount);
 $items[] = strtolower($orderInfo["LatinName"]);
 navTrailBirds($items);
+pageThumbnail("select sighting.*, rand() as shuffle from sighting, species where Photo='1' and " . $whereClause . " order by shuffle");
  ?>
 
     <div class=contentright>
