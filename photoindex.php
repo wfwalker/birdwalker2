@@ -25,7 +25,7 @@ $photoSpeciesCount = performCount("select count(distinct(sighting.SpeciesAbbrevi
 
 <table cellpadding=4 columns=2>
 <?
-$photoQuery = performQuery("select sighting.*, species.CommonName, date_format(sighting.TripDate, '%M %e, %Y') as niceDate from sighting, species where Photo='1' and sighting.SpeciesAbbreviation=species.Abbreviation order by TripDate desc");
+$photoQuery = performQuery("select concat(sighting.TripDate, sighting.objectid) as photoOrder, sighting.*, species.CommonName, date_format(sighting.TripDate, '%M %e, %Y') as niceDate from sighting, species where Photo='1' and sighting.SpeciesAbbreviation=species.Abbreviation order by photoOrder desc");
 
 
 while($info = mysql_fetch_array($photoQuery)) {

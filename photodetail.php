@@ -10,10 +10,10 @@ $tripInfo = performOneRowQuery("select *, date_format(Date, '%W,  %M %e, %Y') as
 $tripYear =  substr($tripInfo["Date"], 0, 4);
 $locationInfo = performOneRowQuery("select * from location where Name='" . $sightingInfo["LocationName"] . "'");
 
-$firstPhotoSightingID = performCount("select min(objectid) from sighting where Photo='1'");
-$lastPhotoSightingID = performCount("select max(objectid) from sighting where Photo='1'");
-$nextPhotoSightingID = performCount("select min(objectid) from sighting where Photo='1' and objectid > " . $sightingID);
-$prevPhotoSightingID = performCount("select max(objectid) from sighting where Photo='1' and objectid < " . $sightingID);
+$firstPhotoSightingID = performCount("select objectid from sighting where Photo='1' order by concat(TripDate,objectid)");
+$lastPhotoSightingID = performCount("select objectid from sighting where Photo='1' order by concat(TripDate, objectid) desc");
+$nextPhotoSightingID = performCount("select objectid from sighting where Photo='1' and concat(TripDate,objectid) > '" . $sightingInfo["TripDate"] . $sightingID . "' order by concat(TripDate,objectid)");
+$prevPhotoSightingID = performCount("select objectid from sighting where Photo='1' and concat(TripDate,objectid) < '" . $sightingInfo["TripDate"] . $sightingID . "' order by concat(TripDate,objectid) desc");
 
 if ($nextPhotoSightingID == "") { $nextPhotoSightingID = $sightingID; }
 if ($prevPhotoSightingID == "") { $prevPhotoSightingID = $sightingID; }
