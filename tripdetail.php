@@ -8,23 +8,6 @@ $tripID = $_GET['id'];
 $tripInfo = getTripInfo($tripID);
 $tripYear = substr($tripInfo["Date"], 0, 4);
 
-$firstTripID = performCount("
-    SELECT objectid FROM trip ORDER BY Date LIMIT 1");
-$lastTripID = performCount("
-    SELECT objectid FROM trip ORDER BY Date DESC LIMIT 1");
-
-$nextTripID = performCount("
-    SELECT objectid FROM trip
-      WHERE Date > '" . $tripInfo["Date"] . "'
-      ORDER BY Date LIMIT 1");
-$prevTripID = performCount("
-    SELECT objectid FROM trip
-      WHERE Date < '" . $tripInfo["Date"] . "'
-      ORDER BY Date DESC LIMIT 1");
-
-if ($nextTripID == "") { $nextTripID = $sightingID; }
-if ($prevTripID == "") { $prevTripID = $sightingID; }
-
 $locationListQuery = performQuery("SELECT distinct(location.objectid), location.Name
   FROM location, sighting
   WHERE location.Name=sighting.LocationName and sighting.TripDate='". $tripInfo["Date"] . "'");
@@ -58,7 +41,7 @@ while($sightingInfo = mysql_fetch_array($tripSightings)) {
 
 <?php
 globalMenu();
-browseButtons("./tripdetail.php?id=", $tripID, $firstTripID, $prevTripID, $nextTripID, $lastTripID);
+tripBrowseButtons($tripID, "detail");
 $items[] = "<a href=\"./tripindex.php#" . $tripYear . "\">" . $tripYear . "</a>";
 //$items[] = strtolower($tripInfo["Name"]);
 navTrailTrips($items);

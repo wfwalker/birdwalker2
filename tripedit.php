@@ -3,6 +3,10 @@
 
 require("./birdwalker.php");
 
+$tripID = $_GET['id'];
+$postTripID = $_POST['id'];
+$save = $_POST['Save'];
+
 getEnableEdit() or die("Editing disabled");
 
 ?>
@@ -19,24 +23,13 @@ getEnableEdit() or die("Editing disabled");
 
 <?php
 globalMenu();
-disabledBrowseButtons();
+tripBrowseButtons($tripID, "edit");
 navTrailTrips();
 ?>
-
-    <div class="navigationleft">
-	  <a href="./tripedit.php?id=1">first</a>
-	  <a href="./tripedit.php?id=<?= $_GET['id'] - 1 ?>">prev</a>
-      <a href="./tripedit.php?id=<?= $_GET['id'] + 1 ?>">next</a>
-      <a href="./tripedit.php?id=<?= $tripCount ?>">last</a>
-    </div>
 
 <div class="contentright">
 
 <?php
-
-$tripID = $_GET['id'];
-$postTripID = $_POST['id'];
-$save = $_POST['Save'];
 
 if (($postTripID != "") && ($save == "Save"))
 {
