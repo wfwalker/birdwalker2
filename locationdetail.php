@@ -78,7 +78,7 @@ navTrailLocationDetail($siteInfo);
 
    <div class=heading>
 	 <?= $speciesCount ?> species<? if ($locationFirstSightings > 0) { ?>,
-     <?= $locationFirstSightings ?> first sighting<? if ($locationFirstSightings > 1) echo 's'; } ?>
+     <?= $locationFirstSightings ?> life bird<? if ($locationFirstSightings > 1) echo 's'; } ?>
    </div>
 
 <? formatTwoColumnSpeciesList(performQuery("

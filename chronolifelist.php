@@ -3,16 +3,8 @@
 
 require("./birdwalker.php");
 
-performQuery("
-    CREATE TEMPORARY TABLE tmp ( abbrev varchar(16) default NULL, tripdate date default NULL);");
 
-performQuery("
-    INSERT INTO tmp
-      SELECT SpeciesAbbreviation, MIN(TripDate)
-      FROM sighting, species
-      WHERE Exclude!='1' and species.Abbreviation=sighting.SpeciesAbbreviation
-      GROUP BY SpeciesAbbreviation
-      ORDER BY species.objectid;");
+buildFirstSightingsTable("WHERE Exclude!='1'");
 
 $firstSightingQuery = performQuery("SELECT
      date_format(sighting.TripDate, '%M %e, %Y') as niceDate,
@@ -22,9 +14,9 @@ $firstSightingQuery = performQuery("SELECT
      trip.objectid as tripid, location.County, location.State
   FROM sighting, tmp, species, location, trip
   WHERE species.ABACountable='1' AND
-     sighting.SpeciesAbbreviation=tmp.abbrev AND
+     sighting.SpeciesAbbreviation=tmp.SpeciesAbbreviation AND
      species.Abbreviation=sighting.SpeciesAbbreviation AND
-     sighting.TripDate=tmp.tripdate AND
+     sighting.TripDate=tmp.TripDate AND
      location.Name=sighting.LocationName AND
      trip.Date=sighting.TripDate
   ORDER BY TripDate, LocationName;");

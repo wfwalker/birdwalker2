@@ -15,26 +15,31 @@ $latestTrips = performQuery("select *, date_format(Date, '%M %e, %Y') AS niceDat
 
 <?php
 globalMenu();
-$items[] = "";
-navTrail($items);
 disabledBrowseButtons();
 ?>
 
     <div class=contentright>
 
+	  <p>Welcome to <code>birdWalker</code>! This website contains Bill and Mary&apos;s birding field notes, including
+	  trip, county, state, and year lists. Our latest trips are listed below, other indices
+	  are available from the links on the left.</p>
+
+
 <?    for ($index = 0; $index < 5; $index++)
 	  {
-		  $info = mysql_fetch_array($latestTrips); ?>
+		  $info = mysql_fetch_array($latestTrips);
+          $tripSpeciesCount = performCount("SELECT COUNT(DISTINCT(sighting.objectid)) from sighting where sighting.TripDate='" . $info["Date"] . "'"); ?>
 
 		  <p>&nbsp;</p>
-
 
           <div class="pagesubtitle"><?= $info["niceDate"] ?></div>
 
 		  <div class="titleblock">
 <?         rightThumbnail("SELECT * FROM sighting WHERE Photo='1' AND TripDate='" . $info["Date"] . "' LIMIT 1"); ?>
               <span class="pagetitle"><a href="./tripdetail.php?id=<?=$info["objectid"]?>"/><?= $info["Name"] ?></a></span>
+              <div class="subheading"><?= $tripSpeciesCount ?> species</div>
           </div>
+
 
           <div class=report-content><?= $info["Notes"] ?><br clear="all"/></div>
 <?	  } ?>

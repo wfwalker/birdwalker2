@@ -4,7 +4,7 @@
 require("./birdwalker.php");
 
 $tripListQuery = performQuery("
-    SELECT trip.*, date_format(Date, '%M %e') AS niceDate, COUNT(DISTINCT sighting.SpeciesAbbreviation) AS tripCount
+    SELECT trip.*, date_format(Date, '%M %e') AS niceDate
       FROM trip, sighting WHERE sighting.TripDate=trip.Date
       GROUP BY trip.Date
       ORDER BY trip.Date desc");

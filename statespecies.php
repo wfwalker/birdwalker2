@@ -22,7 +22,7 @@ $divideByTaxo = ($speciesCount > 30);
 <?php
 globalMenu();
 disabledBrowseButtons();
-navTrailLocations(strtolower($stateName));
+navTrailLocations();
  ?>
 
     <div class=contentright>

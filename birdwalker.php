@@ -4,16 +4,16 @@ function globalMenu()
 { ?>
 	<div class="contentleft">
       <p><img src="./images/bill.jpg"></p>
-	  <div class="leftsubtitle"><a href="./tripindex.php">trips</a></div>
-	  <div class="leftsubtitle"><a href="./speciesindex.php">birds</a></div>
-	  <div class="leftsubtitle"><a href="./locationindex.php">locations</a></div>
-	  <div class="leftsubtitle"><a href="./chronolifelist.php">life list</a></div>
-	  <div class="leftsubtitle"><a href="./photoindextaxo.php">photos</a></div>
-	  <div class="leftsubtitle"><a href="./credits.php">credits</a></div>
+	  <div><a href="./tripindex.php">trips</a></div>
+	  <div><a href="./speciesindex.php">birds</a></div>
+	  <div><a href="./locationindex.php">locations</a></div>
+	  <div><a href="./chronolifelist.php">life list</a></div>
+	  <div><a href="./photoindextaxo.php">photos</a></div>
+	  <div><a href="./credits.php">credits</a></div>
 
 <?	if (getEnableEdit())
 	{ ?>
-		<br><div class="leftsubtitle">
+		<br><div>
 		<a href="./tripcreate.php">create trip</a><br>
 		<a href="./photosneeded.php">photos needed</a><br>
 		<a href="./errorcheck.php">error check</a><br>
@@ -48,22 +48,24 @@ function browseButtons($urlPrefix, $current, $first, $prev, $next, $last)
 
 <?	if ($current == $first)
 	{ ?>
-		<span class=navbutton><?= $firstLabel ?></span> <span class=navbutton><?= $prevLabel ?></span>
+        <img name="first" border="0" src="./images/first.gif" alt="prev"/>
+        <img name="prev" border="0" src="./images/prev.gif" alt="prev"/>
 <?	}
 	else
 	{ ?>
-		<span class=navbutton><a href="<?= $urlPrefix . $first ?>"><?= $firstLabel ?></a></span>
-		<span class=navbutton><a href="<?= $urlPrefix . $prev ?>"><?= $prevLabel ?></a></span>
+        <a href="<?= $urlPrefix . $first ?>"><img name="first" border="0" src="./images/first_hilite.gif" alt="first"/></a>
+        <a href="<?= $urlPrefix . $prev ?>"><img name="prev" border="0" src="./images/prev_hilite.gif" alt="prev"/></a>
 <?	}
 
 	if ($current == $last)
 	{?>
-		<span class=navbutton><?= $nextLabel ?></span> <span class=navbutton><?= $lastLabel ?></span>
+        <img name="next" border="0" src="./images/next.gif" alt="prev"/>
+        <img name="last" border="0" src="./images/last.gif" alt="prev"/>
 <?	}
 	else
-	{ ?>
-		<span class=navbutton><a href="<?= $urlPrefix . $next ?>"><?= $nextLabel ?></a></span>
-		<span class=navbutton><a href="<?= $urlPrefix . $last ?>"><?= $lastLabel ?></a></span>
+	{ ?> 
+        <a href="<?= $urlPrefix . $next ?>"><img name="next" border="0" src="./images/next_hilite.gif" alt="next"/></a>
+        <a href="<?= $urlPrefix . $last ?>"><img name="last" border="0" src="./images/last_hilite.gif" alt="last"/></a>
 <?	} ?>
 	</div>
 <?
@@ -84,10 +86,15 @@ function rightThumbnail($photoQueryString)
 	{
 		$photoInfo = mysql_fetch_array($photoQuery);
 		$filename = getPhotoFilename($photoInfo);
-		list($width, $height, $type, $attr) = getimagesize("./images/thumb/" . $filename); ?>
+		list($width, $height, $type, $attr) = getimagesize("./images/thumb/" . $filename);
+
+		$sizeAttributes = "";
+
+		if ($width > 0) { $sizeAttributes = $sizeAttributes . " width=" . $width; }
+		if ($height > 0) { $sizeAttributes = $sizeAttributes . "  height=" . $height; } ?>
 
         <a href="./photodetail.php?id=<?= $photoInfo["objectid"] ?>">
-           <img width=<?= $width ?> height=<?= $height ?> src="./images/thumb/<?= $filename ?>" border=0 align="left" class="inlinepict">
+           <img <?= $sizeAttributes ?> src="./images/thumb/<?= $filename ?>" border=0 align="left" class="inlinepict">
         </a>
 <?	}
 }
@@ -187,20 +194,38 @@ function getThumbForSightingInfo($sightingInfo)
 
 	list($width, $height, $type, $attr) = getimagesize("./images/thumb/" . $thumbFilename);
 
-	return "<a href=\"./photodetail.php?id=" . $sightingInfo["objectid"] . "\"><img width=" . $width . " height=" . $height . " src=\"./images/thumb/" . $thumbFilename . "\" border=0></a>";
+	$sizeAttributes = "";
+
+	if ($width != "") { $sizeAttributes = $sizeAttributes . "  width=" . $width; }
+	if ($height != "") { $sizeAttributes = $sizeAttributes . "  height=" . $height; }
+
+	return
+		"<a href=\"./photodetail.php?id=" . $sightingInfo["objectid"] . "\">" .
+		"<img " . $sizeAttributes . " src=\"./images/thumb/" . $thumbFilename . "\" border=0>" . 
+		"</a>";
 }
+
+function getmicrotime()
+{
+	list($usec, $sec) = explode(" ", microtime());
+	return (float)$usec + (float)$sec;
+}
+
 
 /**
  * Select the birdwalker database, perform a query, die on error, return the query.
  */
 function performQuery($queryString)
 {
-	$start = microtime(1);
+	$start = getmicrotime();
 	selectDatabase();
 	$theQuery = mysql_query($queryString) or die("<p>Error during query: " . $queryString . "</p><p>" . mysql_error() . "</p>");
 	if (getEnableEdit())
 	{ ?>
-		<!--  <?= (1000 * (microtime(1) - $start)) ?>, <?= $queryString ?>, <?= mysql_num_rows($theQuery) ?> rows -->
+
+<!--  <?= round(getmicrotime() - $start, 3) ?> seconds -->
+<!-- <?= $queryString ?> -->
+
 <?	}
 	return $theQuery;
 }
@@ -210,12 +235,7 @@ function performQuery($queryString)
  */
 function performCount($queryString)
 {
-	selectDatabase();
-	if (getEnableEdit())
-	{ ?>
-		<!-- <?= $queryString ?> -->
-<?	}
-	$theQuery = mysql_query($queryString) or die("count query error " . $queryString);
+	$theQuery = performQuery($queryString);
 	$theCount = mysql_fetch_array($theQuery);
 	return $theCount[0];
 }
@@ -225,12 +245,7 @@ function performCount($queryString)
  */
 function performOneRowQuery($queryString)
 {
-	selectDatabase();
-	if (getEnableEdit())
-	{ ?>
-		<!-- <?= $queryString  ?> -->
-<?	}
-	$theQuery = mysql_query($queryString) or die("single row query error " . $queryString);
+	$theQuery = performQuery($queryString);
 	$theFirstRow = mysql_fetch_array($theQuery);
 	return $theFirstRow;
 }
@@ -245,32 +260,53 @@ function getSightingInfo($objectid)
 }
 
 /**
- * Find the first sighting for each species.
+ * Build a table called "tmp" containing first sighting for each species.
+ * Caller is responsible for deleting the table.
  */
-function getFirstSightings()
+
+function buildFirstSightingsTable($whereClause)
 {
 	$firstSightings = null;
 
-	performQuery("CREATE TEMPORARY TABLE tmp ( abbrev varchar(16) default NULL, tripdate date default NULL);");
+ 	performQuery("CREATE TEMPORARY TABLE tmp (
+        SpeciesAbbreviation varchar(16) default NULL,
+        TripDate date default NULL,
+        objectid varchar(16) default NULL);");
 
+	// here's what section 3.6.4 of the mysql manual calls:
+	// "a quite inefficient trick called the MAX-CONCAT trick"
+	// TODO upgrade to mysql 4.1 and use a subquery
 	performQuery("
       INSERT INTO tmp
-        SELECT SpeciesAbbreviation, MIN(TripDate)
-        FROM sighting, species
-        WHERE Exclude!='1' AND sighting.SpeciesAbbreviation=species.Abbreviation AND species.ABACountable='1'
-        GROUP BY SpeciesAbbreviation
-        ORDER BY species.objectid;");
+        SELECT SpeciesAbbreviation,
+          LEFT(        MIN( CONCAT(TripDate,lpad(objectid,6,'0')) ), 10) AS TripDate,
+          0+SUBSTRING( MIN( CONCAT(TripDate,lpad(objectid,6,'0')) ),  11) AS objectid
+        FROM sighting " .
+        $whereClause . "
+        GROUP BY SpeciesAbbreviation");
+}
+
+/**
+ * Find the first sighting for each species.
+ */
+function getFirstSightings($whereClause="WHERE Exclude!='1'")
+{
+	$firstSightings = null;
+
+	buildFirstSightingsTable($whereClause);
 
 	$firstSightingQuery = performQuery("
-      SELECT sighting.objectid, tmp.tripdate FROM sighting, tmp
-        WHERE sighting.SpeciesAbbreviation=tmp.abbrev AND sighting.TripDate=tmp.tripdate
-        ORDER BY tripdate;");
+      SELECT tmp.TripDate, tmp.objectid as objectid, tmp.SpeciesAbbreviation
+        FROM tmp, species
+        WHERE tmp.SpeciesAbbreviation=species.Abbreviation AND species.ABACountable='1' 
+        ORDER BY tripdate, species.objectid;");
 
 	$index = 1;
 	while ($info = mysql_fetch_array($firstSightingQuery))
 	{
 		$firstSightingID = $info["objectid"];
 		$firstSightings[$firstSightingID] = $index;
+		//		echo $index . $info["abbrev"] . "\n";
 		$index++;
 	}
 
@@ -284,35 +320,7 @@ function getFirstSightings()
  */
 function getFirstYearSightings($theYear)
 {
-	$firstSightings = null;
-
-	performQuery("CREATE TEMPORARY TABLE tmp ( abbrev varchar(16) default NULL, tripdate date default NULL);");
-	performQuery("
-      INSERT INTO tmp
-      SELECT SpeciesAbbreviation, MIN(TripDate)
-        FROM sighting, species
-        WHERE Exclude!='1' AND year(TripDate)='" . $theYear . "'
-          AND species.Abbreviation=sighting.SpeciesAbbreviation AND species.ABACountable='1'
-        GROUP BY SpeciesAbbreviation
-        ORDER BY species.objectid;");
-	$firstSightingQuery = performQuery("
-      SELECT sighting.objectid, tmp.tripdate
-        FROM sighting, tmp
-        WHERE sighting.SpeciesAbbreviation=tmp.abbrev
-          AND sighting.TripDate=tmp.tripdate
-      ORDER BY tripdate");
-
-	$index = 1;
-	while ($info = mysql_fetch_array($firstSightingQuery))
-	{
-		$firstSightingID = $info["objectid"];
-		$firstSightings[$firstSightingID] = $index;
-		$index++;
-	}
-
-	performQuery("DROP TABLE tmp;");
-
-	return $firstSightings;
+	return getFirstSightings("WHERE Exclude!='1' AND year(TripDate)='" . $theYear . "'");
 }
 
 
@@ -359,7 +367,7 @@ function navTrailSpecies($speciesID)
 
 	$items[] = "<a href=\"./orderdetail.php?order=" . $orderInfo["objectid"] / pow(10, 9) . "\">" . strtolower($orderInfo["LatinName"]) . "</a>";
 	$items[] = "<a href=\"./familydetail.php?family=" . $familyInfo["objectid"] / pow(10, 7) . "\">" . strtolower($familyInfo["LatinName"]) . "</a>";
-	$items[] = strtolower($speciesInfo["CommonName"]);
+	//	$items[] = strtolower($speciesInfo["CommonName"]);
 	navTrailBirds($items);
 }
 
@@ -442,8 +450,15 @@ function formatTwoColumnSpeciesList($query, $firstSightings = "", $firstYearSigh
 /**
  * Show a set of sightings, species by rows, years by columns.
  */
-function formatSpeciesByYearTable($gridQueryString, $extraSightingListParams, $yearTotals)
+function formatSpeciesByYearTable($whereClause, $extraSightingListParams, $yearTotals)
 {
+    $gridQueryString="
+    SELECT DISTINCT(CommonName), species.objectid as speciesid, bit_or(1 << (year(TripDate) - 1995)) AS mask
+      FROM sighting, species, location " .
+      $whereClause . "
+      GROUP BY sighting.SpeciesAbbreviation
+      ORDER BY speciesid";
+
 	$gridQuery = performQuery($gridQueryString); ?>
 
 	<table columns=11 cellpadding=0 cellspacing=0 class="report-content" width="100%">
@@ -509,8 +524,15 @@ function formatSpeciesByYearTable($gridQueryString, $extraSightingListParams, $y
 /**
  * Show a set of sightings, species by rows, months by columns.
  */
-function formatSpeciesByMonthTable($gridQueryString, $extraSightingListParams, $monthTotals)
+function formatSpeciesByMonthTable($whereClause, $extraSightingListParams, $monthTotals)
 {
+    $gridQueryString="
+    SELECT DISTINCT(CommonName), species.objectid AS speciesid, bit_or(1 << month(TripDate)) AS mask
+      FROM sighting, species, location ".
+	  $whereClause . "
+      GROUP BY sighting.SpeciesAbbreviation
+      ORDER BY speciesid";
+
 	$gridQuery = performQuery($gridQueryString); ?>
 
 	<table columns=11 cellpadding=0 cellspacing=0 class="report-content" width="100%">
@@ -815,7 +837,7 @@ function locationBrowseButtons($siteInfo, $locationID, $viewMode)
 function navTrailCounty($state, $county)
 {
 	$items[]="<a href=\"./statespecies.php?state=" . $state . "\">" . strtolower(getStateNameForAbbreviation($state)) . "</a>";
-	$items[] = strtolower($county . " county");
+	//	$items[] = strtolower($county . " county");
 	navTrailLocations($items);
 }
 
@@ -829,8 +851,8 @@ function navTrailLocationDetail($siteInfo)
     <a href=\"./countylocations.php?county=" . $siteInfo["County"] . "&state=" . $siteInfo["State"] . "\">" .
 		 strtolower($siteInfo["County"]) . " county
     </a>";
-	$items[] =
-		 strtolower($siteInfo["Name"]);
+// 	$items[] =
+// 		 strtolower($siteInfo["Name"]);
 
 	navTrailLocations($items);
 }
@@ -896,12 +918,12 @@ function countyViewLinks($state, $county)
 ?>
         locations:
         <a href="./countylocations.php?state=<?= $state ?>&county=<?= urlencode($county) ?>">list</a> |
-	    <a href="./countylocationsbyyear.php?state=<?= $state ?>&county=<?= urlencode($county) ?>">by year</a> |
-	    <a href="./countylocationsbymonth.php?state=<?= $state ?>&county=<?= urlencode($county) ?>">by month</a>
+	    <a href="./countylocationsbymonth.php?state=<?= $state ?>&county=<?= urlencode($county) ?>">by month</a> |
+	    <a href="./countylocationsbyyear.php?state=<?= $state ?>&county=<?= urlencode($county) ?>">by year</a><br/>
         species:	
         <a href="./countyspecies.php?state=<?= $state ?>&county=<?= urlencode($county) ?>">list</a> |
-	    <a href="./countyspeciesbyyear.php?state=<?= $state ?>&county=<?= urlencode($county) ?>">by year</a> |
-	    <a href="./countyspeciesbymonth.php?state=<?= $state ?>&county=<?= urlencode($county) ?>">by month</a>
+	    <a href="./countyspeciesbymonth.php?state=<?= $state ?>&county=<?= urlencode($county) ?>">by month</a> |
+	    <a href="./countyspeciesbyyear.php?state=<?= $state ?>&county=<?= urlencode($county) ?>">by year</a><br/>
 <?
 }
 
@@ -910,12 +932,12 @@ function stateViewLinks($abbrev)
 ?>
         locations:
         <a href="./statelocations.php?state=<?= $abbrev ?>">list</a> |
-	    <a href="./statelocationsbyyear.php?state=<?= $abbrev ?>">by year</a> |
-	    <a href="./statelocationsbymonth.php?state=<?= $abbrev ?>">by month</a>
+	    <a href="./statelocationsbymonth.php?state=<?= $abbrev ?>">by month</a> |
+	    <a href="./statelocationsbyyear.php?state=<?= $abbrev ?>">by year</a><br/>
         species:	
         <a href="./statespecies.php?state=<?= $abbrev ?>">list</a> |
-	    <a href="./statespeciesbyyear.php?state=<?= $abbrev ?>">by year</a> |
-	    <a href="./statespeciesbymonth.php?state=<?= $abbrev ?>">by month</a>
+	    <a href="./statespeciesbymonth.php?state=<?= $abbrev ?>">by month</a> |
+	    <a href="./statespeciesbyyear.php?state=<?= $abbrev ?>">by year</a><br/>
 <?
 }
 

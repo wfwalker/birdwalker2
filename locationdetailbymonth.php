@@ -68,7 +68,7 @@ navTrailLocationDetail($siteInfo);
 	  <div class=heading>
           <?= $speciesCount ?> species,
           <?= $tripCount ?> trips<? if ($locationFirstSightings > 0) {  echo ','; ?>
-          <?= $locationFirstSightings ?> first sighting<? if ($locationFirstSightings > 1) echo 's'; } ?>
+          <?= $locationFirstSightings ?> life bird<? if ($locationFirstSightings > 1) echo 's'; } ?>
       </div>
 
 <?	$monthlyLocationTotal = performQuery("

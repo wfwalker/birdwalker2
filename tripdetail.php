@@ -33,7 +33,7 @@ $locationCount = mysql_num_rows($locationListQuery);
 $firstSightings = getFirstSightings();
 $firstYearSightings = getFirstYearSightings(substr($tripInfo["Date"], 0, 4));
 
-// how many first sightings were on this trip?
+// how many life birds were on this trip?
 $tripSightings = performQuery("
     SELECT sighting.objectid FROM sighting, species
       WHERE sighting.SpeciesAbbreviation=species.Abbreviation
@@ -89,7 +89,7 @@ navTrailTrips($items);
 
 <? if ($locationCount > 1) { ?>
           <div class=heading>Grand total, <?= $tripSpeciesCount ?> species<? if ($tripFirstSightings > 0) { ?>,
-          <?= $tripFirstSightings ?> first sightings <? } ?>
+			<?= $tripFirstSightings ?> life bird<? if ($tripFirstSightings > 1) echo 's'; } ?>
           </div>
 <? }
 
@@ -115,7 +115,7 @@ while($locationInfo = mysql_fetch_array($locationListQuery))
     <div class="heading">
         <a href="./locationdetail.php?id=<?= $locationInfo["objectid"]?>"><?= $locationInfo["Name"] ?></a>,
         <?= $tripLocationCount ?> species<? if ($locationFirstSightings > 0) { ?>,
-          <?= $locationFirstSightings ?> first sightings <? } ?>
+        <?= $locationFirstSightings ?> life bird<? if ($locationFirstSightings > 1) echo 's'; } ?>
     </div>
 
     <? formatTwoColumnSpeciesList($tripLocationQuery, $firstSightings, $firstYearSightings); ?>

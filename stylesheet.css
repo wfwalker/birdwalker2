@@ -1,7 +1,7 @@
 
 .contentleft
 {
-    font: 10pt Arial;
+    font: 9pt Arial;
 	left: 1px; width: 150px; top: 40px;
 	padding-left: 10px;
 	position: absolute; text-decoration: none
@@ -17,7 +17,7 @@
 
 .navigationright
 {
-    font: 9pt Arial;
+    font: 9pt Courier;
 	left: 150px; width: 640px; top: 10px;
 	position: absolute; text-decoration: none
  }
@@ -27,7 +27,7 @@
     font: 10pt Arial;
 	left: 150px; width: 640px; top: 40px;
 	padding-bottom: 30px;
-	position: absolute
+	position: absolute;
 }
 
 .navbutton { color: #CCCCCC; background-color: #EEEEEE}
