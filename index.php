@@ -10,6 +10,7 @@ $randomPhotoSightings = performQuery("SELECT *, rand() AS shuffle FROM sighting 
 
 <html>
   <head>
+    <link rel="SHORTCUT ICON" href="./images/favicon.ico">
     <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
       <title>birdWalker | Home</title>
   </head>
