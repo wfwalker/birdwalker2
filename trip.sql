@@ -386,3 +386,4 @@ INSERT INTO trip VALUES (386,'Steve Shunk','','Wings over Merced','<p>The weathe
 INSERT INTO trip VALUES (387,'Steve Shunk','','Wings over Monterey','<p>The weather was beautiful, warm and sunny all day, making for delightful observing conditions.</p>\r\n\r\n<p>We observed numerous mammals -- Bottle-nosed Dolphin, Harbour Seal, Steller\'s Sea Lion, California Sea Lion, Bobcat, Wild Boar, Sea Otter</p>\r\n\r\n<p>In addition to the species listed, other participants observed Black Turnstone, Horned Grebe, Eared Grebe, and Mourning Dove.</p>\r\n\r\n\r\n\r\n','2005-01-16');
 INSERT INTO trip VALUES (388,'Mary and Bill','','Watching the feeders','','2004-12-31');
 INSERT INTO trip VALUES (389,'Anne Hanson','','Survey Bair Island','We volunteered to help out with an SFBBO survey of plant and bird populations on Bair Island. What a cool experience!','2005-01-22');
+INSERT INTO trip VALUES (390,'Mary','','Rainy Day At Home','','2005-01-26');

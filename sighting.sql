@@ -10439,3 +10439,7 @@ INSERT INTO sighting VALUES (10473,'rocdov','Bair Island','','','','2005-01-22')
 INSERT INTO sighting VALUES (10474,'doccor','Bair Island','','','','2005-01-22');
 INSERT INTO sighting VALUES (10475,'brnpel','Bair Island','','','','2005-01-22');
 INSERT INTO sighting VALUES (10476,'amecro','Bair Island','','','','2005-01-22');
+INSERT INTO sighting VALUES (10477,'moudov','2138 King Court','8 birds','','','2005-01-26');
+INSERT INTO sighting VALUES (10478,'houspa','2138 King Court','3 birds','','','2005-01-26');
+INSERT INTO sighting VALUES (10479,'houfin','2138 King Court','30 birds!','','','2005-01-26');
+INSERT INTO sighting VALUES (10480,'amegfi','2138 King Court','20 birds!','','','2005-01-26');
