@@ -14,6 +14,7 @@ $firstPhotoSightingID = performCount("select min(objectid) from sighting where P
 $lastPhotoSightingID = performCount("select max(objectid) from sighting where Photo='1'");
 $nextPhotoSightingID = performCount("select min(objectid) from sighting where Photo='1' and objectid > " . $sightingID);
 $prevPhotoSightingID = performCount("select max(objectid) from sighting where Photo='1' and objectid < " . $sightingID);
+
 ?>
 
 <html>
