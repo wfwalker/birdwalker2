@@ -36,8 +36,10 @@ CREATE TABLE species (
   CommonName text,
   Notes text,
   ReferenceURL text,
+  ABACountable int(2) NOT NULL default '1',
   PRIMARY KEY  (objectid),
-  KEY AbbreviationIndex (Abbreviation)
+  KEY AbbreviationIndex (Abbreviation),
+  KEY ABACountableIndex (ABACountable)
 ) TYPE=MyISAM;
 
 --
@@ -48,13 +50,14 @@ drop table if exists taxonomy;
 
 CREATE TABLE taxonomy (
   objectid bigint(20) NOT NULL default '0',
-  Abbreviation varchar(16) default NULL,
+  HierarchyLevel varchar(16) default NULL,
   LatinName text,
   CommonName text,
   Notes text,
   ReferenceURL text,
   PRIMARY KEY  (objectid),
-  KEY objectidIndex (objectid)
+  KEY objectidIndex (objectid),
+  KEY hierarchyLevelIndex (HierarchyLevel)
 ) TYPE=MyISAM;
 
 --

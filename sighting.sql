@@ -5655,7 +5655,7 @@ INSERT INTO sighting VALUES (5655,'brespa','Salton Sea','','0','0','2003-03-25')
 INSERT INTO sighting VALUES (5656,'burowl','Salton Sea','','0','0','2003-03-25');
 INSERT INTO sighting VALUES (5657,'cacwre','Salton Sea','','0','0','2003-03-25');
 INSERT INTO sighting VALUES (5658,'categr','Salton Sea','','0','0','2003-03-25');
-INSERT INTO sighting VALUES (5659,'chifla','Salton Sea','Actually, these Flamingos might have been zoo escapees from 20 years ago, according to the park ranger. We eliminated them as Greater Flamingos because they lacked the requisite tricolor bill and two-toned body.','1','','2003-03-25');
+INSERT INTO sighting VALUES (5659,'chifla','Salton Sea','Actually, these Flamingos are almost certainly zoo escapees from 20 years ago, according to the park ranger. We eliminated them as Greater Flamingos because they lacked the requisite tricolor bill and two-toned body.','','','2003-03-25');
 INSERT INTO sighting VALUES (5660,'cintea','Salton Sea','','0','0','2003-03-25');
 INSERT INTO sighting VALUES (5661,'clarai','Salton Sea','','0','0','2003-03-25');
 INSERT INTO sighting VALUES (5662,'cliswa','Salton Sea','','0','0','2003-03-25');
