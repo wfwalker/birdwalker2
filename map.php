@@ -223,12 +223,10 @@ class Map
 		
 ?>
 
-	   <div>
-		 <?= $this->linkToSelfZoom(1.2, "out"); ?> |
-		 <?= $this->linkToSelfZoom(0.8, "in"); ?> |
-	     <?= round($this->getLatitudeRadius() * 69.0) ?> miles
-	     <?= round($this->getLongitudeRadius() * 69.0) ?> miles
+	   <div style="text-align: right; padding-top: 30px;">
+		 <?= $this->linkToSelfZoom(1.2, "out"); ?> | <?= $this->linkToSelfZoom(0.8, "in"); ?> | <?= $this->drawLayerControls(); ?>
        </div>
+
 	   
        <div style="position: relative; border: 1px solid gray; background-image: url(<?=$this->getBackgroundImageURL()?>); height:<?= $this->mMapHeight ?>px; width: <?= $this->mMapWidth?>px;">
 
@@ -265,33 +263,19 @@ class Map
 <?
 			   $counter++;
 			}
-			else
-			{
-				echo "<!-- " . $lat . " = " . $top . ", " . $long . " = " . $left . " -->\n";
-			}
-			
 		}
 ?>
 
    </div>
+  
 
-   <div style="position: relative; width: 300px; left: <?= $this->mMapWidth + 30?>px; top: -<?= $this->mMapHeight?>px ">
-	
-         <p><? $this->drawLayerControls(); ?></p>
+	 <p>&nbsp;</p>
 
 <?
-		 for($i = 1; $i < $counter; $i++)
-		 { ?>
-			 <div style="padding: 2px">
-				 <a class="info" href="./locationdetail.php?id=<?= $locationInfo[$i]["objectid"] ?>">
-                   <?= $locationInfo[$i]["Name"][0] . $locationInfo[$i]["Name"][1] ?><span><?= $locationInfo[$i]["Name"] ?></span>
-                 </a>
-			 </div>
-<?		 } ?>
+	countHeading($this->mLocationQuery->getLocationCount(), "location");
+	$this->mLocationQuery->formatTwoColumnLocationList();
 
-    </div>
-
-<? }
+   }
 }
 
 ?>
