@@ -1,32 +1,16 @@
 
 <?php
 
-class LocationQuery
+require_once("./birdwalkerquery.php");
+
+class LocationQuery extends BirdWalkerQuery
 {
-	// constrain this query to a particular county
-	var $mCounty;
-	// constrain this query to a particular state
-	var $mStateID;
-
-	// constrain this query to a trip
-	var $mTripID;
-	// constrain this query to a particular month
-	var $mMonth;
-	// constrain this query to a particular year
-	var $mYear;
-
-	// constrain this query to a particular location
-	var $mSpeciesID;
-	// constrain this query to a particular family
-	var $mFamily;
-	// constrain this query to a particular order
-	var $mOrder;
-
 	function LocationQuery()
 	{
 		$this->setCounty("");
 		$this->setStateID("");
 
+		$this->setLocationID("");
 		$this->setTripID("");
 		$this->setMonth("");
 		$this->setYear("");
@@ -35,17 +19,6 @@ class LocationQuery
 		$this->setFamily("");
 		$this->setOrder("");
 	}
-
-	function setCounty($inValue) { $this->mCounty = $inValue; }
-	function setStateID($inValue) { $this->mStateID = $inValue; }
-
-	function setTripID($inValue) { $this->mTripID = $inValue; }
-	function setMonth($inValue) { $this->mMonth = $inValue; }
-	function setYear($inValue) { $this->mYear = $inValue; }
-
-	function setSpeciesID($inValue) { $this->mSpeciesID = $inValue; }
-	function setFamily($inValue) { $this->mFamily = $inValue; }
-	function setOrder($inValue) { $this->mOrder = $inValue; }
 
 	function getSelectClause()
 	{
@@ -73,6 +46,8 @@ class LocationQuery
 
 	function getWhereClause()
 	{
+		$this->debug();
+
 		$whereClause = "WHERE sighting.LocationName=location.Name";
 
 		if ($this->mTripID != "") {
@@ -86,6 +61,10 @@ class LocationQuery
 		} elseif ($this->mStateID != "") {
 			$stateInfo = getStateInfo($this->mStateID);
 			$whereClause = $whereClause . " AND location.State='" . $stateInfo["Abbreviation"] . "'";
+			$whereClause = $whereClause . " AND location.Name=sighting.LocationName"; 
+		} elseif ($this->mLocationID != "") {
+			echo "<!-- LOCATION " . $this->mLocationID . " -->\n";
+			$whereClause = $whereClause . " AND location.objectid='" . $this->mLocationID . "'";
 			$whereClause = $whereClause . " AND location.Name=sighting.LocationName"; 
 		}
 
@@ -114,24 +93,13 @@ class LocationQuery
 		return $whereClause;
 	}
 
-	function setFromRequest($get)
-	{
-		$this->setCounty(param($_GET, "county", ""));
-		$this->setStateID(param($_GET, "stateid", ""));
-
-		$this->setTripID(param($_GET, "tripid", ""));
-		$this->setMonth(param($_GET, "month", ""));
-		$this->setYear(param($_GET, "year", ""));
-
-		$this->setSpeciesID(param($_GET, "speciesid", ""));
-		$this->setFamily(param($_GET, "family", ""));
-		$this->setOrder(param($_GET, "order", ""));
-	}
-
 	function getParams()
 	{
 		$params = "";
 
+		if ($this->mLocationID != "") {
+			$params = $params . "&locationid=" . $this->mLocationID;
+		}
 		if ($this->mCounty != "") {
 			$params = $params . "&county=" . $this->mCounty;
 		}
@@ -205,6 +173,9 @@ class LocationQuery
 
 	function findExtrema()
 	{
+		echo "<!-- extrema -->";
+		$this->debug();
+
 		// TODO, we want both a minimum map dimension, and a minimum margin around the group of points
 		$extrema = performOneRowQuery("
           SELECT
