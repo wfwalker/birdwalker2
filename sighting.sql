@@ -8859,7 +8859,7 @@ INSERT INTO sighting VALUES (8879,'rewbla','Sunnyvale Baylands','','','1','2004-
 INSERT INTO sighting VALUES (8880,'cangoo','Sunnyvale Baylands','','0','0','2004-05-19');
 INSERT INTO sighting VALUES (8881,'mallar','Sunnyvale Baylands','','0','0','2004-05-19');
 INSERT INTO sighting VALUES (8901,'wesgul','San Francisco Zoo','','','1','2004-05-08');
-INSERT INTO sighting VALUES (8900,'wewpew','Mount Hamilton','','','1','2004-05-15');
+INSERT INTO sighting VALUES (8900,'olsfly','Mount Hamilton','I originally marked this photo as a Western Wood-Pewee, but Ron Pittaway notes that it is in fact an Olive-sided Flkcatcher','','1','2004-05-15');
 INSERT INTO sighting VALUES (8899,'dowwoo','Downtown Palo Alto','Palo Alto train station','','1','2004-03-16');
 INSERT INTO sighting VALUES (8898,'bushti','Lithia Park','','0','0','2004-06-05');
 INSERT INTO sighting VALUES (8897,'stejay','Lithia Park','','0','0','2004-06-05');
