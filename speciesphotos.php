@@ -38,9 +38,7 @@ while ($sightingInfo = mysql_fetch_array($sightingQuery))
 	echo "<div class=heading>";
 	echo "<div class=pagesubtitle><a href=\"./tripdetail.php?id=" . $tripInfo["objectid"] ."\">" . $tripInfo["niceDate"] . "</a></div>";
 	echo "<div class=metadata>";
-	echo "<a href=\"./locationdetail.php?id=" . $locationInfo["objectid"] . "\">" . $locationInfo["Name"] . "</a>, ";
-	echo "<a href=\"./countydetail.php?county=" . $locationInfo["County"] . "\">" . $locationInfo["County"] . " County</a>, ";
-	echo "<a href=\"./statedetail.php?state=" . $locationInfo["State"] . "\">" . getStateNameForAbbreviation($locationInfo["State"]) . "</a>";
+	echo "<a href=\"./locationdetail.php?id=" . $locationInfo["objectid"] . "\">" . $locationInfo["Name"] . "</a>";
 	if (getEnableEdit()) { echo "<div><a href=\"./sightingedit.php?id=" . $sightingInfo["objectid"] . "\">edit</a></div>"; }
 	echo "</div>";
 
