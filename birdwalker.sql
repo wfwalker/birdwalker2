@@ -4,7 +4,7 @@ use birdwalker
 -- Table structure for table 'location'
 --
 
-drop table if exists Location;
+drop table if exists location;
 
 CREATE TABLE location (
   objectid mediumint(9) NOT NULL auto_increment,
@@ -27,7 +27,7 @@ CREATE TABLE location (
 -- Table structure for table 'species'
 --
 
-drop table if exists Species;
+drop table if exists species;
 
 CREATE TABLE species (
   objectid bigint(20) NOT NULL default '0',
@@ -44,7 +44,7 @@ CREATE TABLE species (
 -- Table structure for table 'taxonomy'
 --
 
-drop table if exists Taxonomy;
+drop table if exists taxonomy;
 
 CREATE TABLE taxonomy (
   objectid bigint(20) NOT NULL default '0',
@@ -61,7 +61,7 @@ CREATE TABLE taxonomy (
 -- Table structure for table 'trip'
 --
 
-drop table if exists Trip;
+drop table if exists trip;
 
 CREATE TABLE trip (
   objectid mediumint(9) NOT NULL auto_increment,
@@ -78,7 +78,7 @@ CREATE TABLE trip (
 -- Table structure for table 'sighting'
 --
 
-drop table if exists Sighting;
+drop table if exists sighting;
 
 CREATE TABLE sighting (
   objectid mediumint(9) NOT NULL auto_increment,
