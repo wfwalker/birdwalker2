@@ -1586,3 +1586,4 @@ INSERT INTO species VALUES (22392010100,'vilind','Vidua chalybeata','Village Ind
 INSERT INTO species VALUES (22392010200,'pitwhy','Vidua macroura','Pin-tailed Whydah','','',1);
 INSERT INTO species VALUES (6010010101,'chifla','Phoenicopterus chilensis','Chilean Flamingo','','',0);
 INSERT INTO species VALUES (13023100800,'whfpar','Amazona albifrons','White-Fronted Parrot','','',0);
+INSERT INTO species VALUES (11061160150,'dowitc','Limnodromus species','Dowitcher sp.','','',0);
