@@ -18,8 +18,8 @@ function globalMenu()
 	{ ?>
 		<br><div>
 		<a href="./tripcreate.php">create trip</a><br>
-		<a href="./photosneeded.php">photos needed</a><br>
-		<a href="./errorcheck.php">error check</a><br>
+		<a href="./photosneeded.php">photo todo</a><br>
+		<a href="./errorcheck.php">db todo</a><br>
 		</div>
 <?	} ?>
 
@@ -214,7 +214,7 @@ function navTrail($extra)
 function getIsLaptop()
 {
  	$serverName = getenv("SERVER_NAME");
- 	return ($serverName == "127.0.0.1") || ($serverName == "localhost") || ($serverName == "");
+ 	return ($serverName == "127.0.0.1") || ($serverName == "localhost") || ($serverName == "") || ($serverName == "vermillion.local");
 }
 
 function getEnableEdit()
