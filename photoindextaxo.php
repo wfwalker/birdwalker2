@@ -42,7 +42,7 @@ while($info = mysql_fetch_array($photoSpecies))
 	{
 		$taxoInfo = getBestTaxonomyInfo($info["objectid"]);
 ?>
-        <div class="heading"><?= $taxoInfo["CommonName"] ?></div>
+		<div class="heading"><?= strtolower($taxoInfo["LatinName"]) ?></div>
 <?
 	}
 
