@@ -33,9 +33,8 @@ function browseButtons($urlPrefix, $current, $first, $prev, $next, $last)
 	$firstLabel="first";
 	$lastLabel="last";
 	$nextLabel="next";
-	$prevLabel="prev";
+	$prevLabel="prev"; ?>
 
-?>
    <div class="navigationleft">
 
 <?	if ($current == $first)
@@ -59,6 +58,13 @@ function browseButtons($urlPrefix, $current, $first, $prev, $next, $last)
 <?	} ?>
 	</div>
 <?
+}
+
+function referenceURL($info)
+{
+	if (strlen($info["ReferenceURL"]) > 0) { ?>
+		<div><a href="<?= $info["ReferenceURL"] ?>">See also...</a></div>
+<? }
 }
 
 function pageThumbnail($photoQueryString)
@@ -285,6 +291,15 @@ function getSpeciesQuery($whereClause = "species.Abbreviation=sighting.SpeciesAb
 	return $speciesQuery;
 }
 
+function speciesViewLinks($speciesID)
+{
+?>
+      <a href="./speciesdetail.php?id=<?=$speciesID?>">list</a> |
+      <a href="./speciesdetailbymonth.php?id=<?=$speciesID?>">by month</a> |
+      <a href="./speciesdetailbyyear.php?id=<?=$speciesID?>">by year</a>
+<?
+}
+
 /**
  * Get information about a specific species entry.
  */
@@ -293,12 +308,42 @@ function getSpeciesInfo($objectid)
 	return performOneRowQuery("SELECT * FROM species where objectid=" . $objectid);
 }
 
-function insertYearLabels()
+function navTrailSpecies($speciesID)
 {
-	for ($year = 1996; $year <= 2004; $year++)
-	{ ?>
-		<td class=yearcell align=center><?= $year ?></td>
-<?	}
+	$orderInfo = getOrderInfo($speciesID);
+	$familyInfo = getFamilyInfo($speciesID);
+
+	$items[] = "<a href=\"./orderdetail.php?order=" . $orderInfo["objectid"] / pow(10, 9) . "\">" . strtolower($orderInfo["LatinName"]) . "</a>";
+	$items[] = "<a href=\"./familydetail.php?family=" . $familyInfo["objectid"] / pow(10, 7) . "\">" . strtolower($familyInfo["LatinName"]) . "</a>";
+	$items[] = strtolower($speciesInfo["CommonName"]);
+	navTrailBirds($items);
+}
+
+
+function speciesBrowseButtons($speciesID, $viewMode)
+{
+	$firstAndLastSpecies = performOneRowQuery("
+    SELECT min(species.objectid) as firstOne, max(species.objectid) as lastOne
+      FROM sighting, species
+      WHERE sighting.SpeciesAbbreviation=species.Abbreviation");
+
+	$firstSpeciesID = $firstAndLastSpecies["firstOne"];
+	$lastSpeciesID = $firstAndLastSpecies["lastOne"];
+
+	$nextSpeciesID = performCount("
+    SELECT min(species.objectid)
+      FROM species, sighting
+      WHERE sighting.SpeciesAbbreviation=species.Abbreviation
+      AND species.objectid>" . $speciesID . " LIMIT 1");
+
+	$prevSpeciesID = performCount("
+    SELECT max(species.objectid)
+      FROM species, sighting
+      WHERE sighting.SpeciesAbbreviation=species.Abbreviation
+      AND species.objectid<" . $speciesID . " LIMIT 1");
+
+	browseButtons("./speciesdetail" . $viewMode . ".php?id=", $speciesID, $firstSpeciesID, $prevSpeciesID, $nextSpeciesID, $lastSpeciesID);
+
 }
 
 function formatTwoColumnSpeciesList($query)
@@ -405,6 +450,73 @@ function formatSpeciesByYearTable($gridQueryString, $extraSightingListParams, $y
 <?
 }
 
+
+/**
+ * Show a set of sightings, species by rows, months by columns.
+ */
+function formatSpeciesByMonthTable($gridQueryString, $extraSightingListParams, $monthTotals)
+{
+	$gridQuery = performQuery($gridQueryString); ?>
+
+	<table columns=11 cellpadding=0 cellspacing=0 class="report-content" width="100%">
+	    <tr><td></td><? insertMonthLabels() ?></tr>
+        <tr><td class=bordered>TOTAL</td>
+
+<?	$info = mysql_fetch_array($monthTotals);
+	for ($index = 1; $index <= 12; $index++)
+	{
+		if ($info["month"] == $index)
+		{ ?>
+			<td class=bordered align=center>
+                <a href="./specieslist.php?month=<?= $index ?><?= $extraSightingListParams ?>"><?= $info["count"] ?></a>
+            </td>
+<?			$info = mysql_fetch_array($monthTotals);
+		}
+		else
+		{ ?>
+			<td class=bordered align=center>&nbsp;</td>
+<?		}
+	} ?>
+
+        </tr>
+
+<?	while ($info = mysql_fetch_array($gridQuery))
+	{
+		$theMask = $info["mask"];
+
+		if (getBestTaxonomyID($prevInfo["speciesid"]) != getBestTaxonomyID($info["speciesid"]))
+		{
+			$taxoInfo = getBestTaxonomyInfo($info["speciesid"]); ?>
+			<tr><td class=heading colspan=13><?= strtolower($taxoInfo["LatinName"]) ?></td></tr>
+<?		} ?>
+
+		<tr><td class=firstcell><a href="./speciesdetail.php?id=<?= $info["speciesid"] ?>"><?= $info["CommonName"] ?></a></td>
+
+<?		for ($index = 1; $index <= 12; $index++)
+		{ ?>
+			<td class=bordered align=center>
+
+<?			if (($info["mask"] >> $index) & 1)
+			{ ?>				
+				<a href="./sightinglist.php?speciesid=<?= $info["speciesid"] ?>&month=<?= $index . $extraSightingListParams?>">X</a>
+<?			}
+			else
+			{ ?>
+				&nbsp;
+<?			} ?>
+			 </td>
+<?		} ?>
+
+		</tr>
+
+<?		$prevInfo = $info;
+		$reprintMonths++;
+	} ?>
+
+	</table>
+<?
+}
+
 /**
  * Show locations as rows, years as columns
  */
@@ -453,6 +565,61 @@ function formatLocationByYearTable($gridQueryString, $urlPrefix, $countyHeadings
 <?
 		$prevInfo = $info;
 		$reprintYears++;
+	} ?>
+
+	 </table>
+<?
+} 
+
+
+/**
+ * Show locations as rows, months as columns
+ */
+function formatLocationByMonthTable($gridQueryString, $urlPrefix, $countyHeadingsOK = true)
+{
+	$lastStateHeading="";
+	$gridQuery = performQuery($gridQueryString); ?>
+
+    <table cellpadding=0 cellspacing=0 cols=11 class="report-content" width="100%">
+    <tr><td></td><? insertMonthLabels() ?></tr>
+
+<?	while ($info = mysql_fetch_array($gridQuery))
+	{
+		$theMask = $info["mask"];
+
+		if ($countyHeadingsOK && ($prevInfo["County"] != $info["County"])) { ?>
+             <tr><td class=heading colspan=13>
+<?          if ($lastStateHeading != $info["State"]) { ?>
+			    <b><?= getStateNameForAbbreviation($info["State"]) ?></b>,
+<?              $lastStateHeading = $info["State"];
+            } else { ?>
+				&nbsp;
+<?          } ?>
+			<?= $info["County"] ?> County</td></tr>
+<?		} ?>
+
+		<tr>
+		    <td class=firstcell>
+		        <a href="./locationdetail.php?id=<?= $info["locationid"] ?>"><?= $info["LocationName"] ?></a>
+            </td>
+
+<?		for ($index = 1; $index <= 12; $index++)
+		{ ?>
+			<td class=bordered align=center>
+<?			if (($theMask >> $index) & 1)
+			{ ?>
+				<a href="<?= $urlPrefix ?>locationid= <?= $info["locationid"] ?>&month=<?= $index ?>">X</a>
+<?			}
+			else
+			{ ?>
+				&nbsp;
+<?			} ?>
+			</td>
+<?		} ?>
+		</tr>
+<?
+		$prevInfo = $info;
+		$reprintMonths++;
 	} ?>
 
 	 </table>
@@ -517,6 +684,39 @@ function getTripInfo($objectid)
 	return performOneRowQuery("SELECT *, date_format(Date, '%W,  %M %e, %Y') as niceDate FROM trip where objectid=" . $objectid);
 }
 
+function formatTwoColumnTripList($tripListQuery)
+{
+    $subdivideByYears = mysql_num_rows($tripListQuery) > 40;
+	$prevYear = "";
+	$counter = 0; ?>
+	
+   <table class=report-content columns="2" width="100%">
+
+<?	while($info = mysql_fetch_array($tripListQuery))
+	{
+		$thisYear =  substr($info["Date"], 0, 4);
+		
+		if (strcmp($thisYear, $prevYear) && $subdivideByYears)
+		{ ?>
+			<tr><td colspan=4 class="heading"><a name="<?= $thisYear ?>"></a><?= $thisYear ?></td></tr>
+<?		    $counter = 0;
+		}
+
+		if (($counter % 2) == 0) { ?><tr><? } ?>
+			
+			<td class=firstcell width="50%">
+				 <a href="./tripdetail.php?id=<?= $info["objectid"] ?>"><?= $info["Name"] ?>, <?= $info["niceDate"] ?></a>
+		    </td>
+				 
+<?      if (($counter % 2) == 1) { ?></tr><? }
+
+		$prevYear = $thisYear;
+		$counter++;
+	} ?>
+
+	</table> <?
+}
+
 //
 // ---------------------- LOCATIONS ------------------------
 //
@@ -525,6 +725,92 @@ function getLocationInfo($objectid)
 {
 	return performOneRowQuery("SELECT * FROM location where objectid=" . $objectid);
 }
+
+function locationBrowseButtons($siteInfo, $locationID, $viewMode)
+{
+	$firstLocationID = performCount("
+      SELECT objectid FROM location ORDER BY CONCAT(State,County,Name) LIMIT 1");
+
+	$lastLocationID = performCount("
+      SELECT objectid FROM location ORDER BY CONCAT(State,County,Name) DESC LIMIT 1");
+
+	$nextLocationID = performCount("
+      SELECT objectid FROM location
+        WHERE CONCAT(State,County,Name) > '" . $siteInfo["State"] . $siteInfo["County"] . $siteInfo["Name"] . "'
+        ORDER BY CONCAT(State,County,Name) LIMIT 1");
+
+	$prevLocationID = performCount("
+      SELECT objectid FROM location
+        WHERE CONCAT(State,County,Name) < '" . $siteInfo["State"] . $siteInfo["County"] . $siteInfo["Name"] . "'
+        ORDER BY CONCAT(State,County,Name) DESC LIMIT 1");
+
+	browseButtons("./locationdetail" . $viewMode . ".php?id=", $locationID, $firstLocationID, $prevLocationID, $nextLocationID, $lastLocationID);
+}
+
+function navTrailCounty($state, $county)
+{
+	$items[]="<a href=\"./statespecies.php?state=" . $state . "\">" . strtolower(getStateNameForAbbreviation($state)) . "</a>";
+	$items[] = strtolower($county . " county");
+	navTrailLocations($items);
+}
+
+function pageThumbnailCounty($countyName)
+{
+	pageThumbnail(
+    "SELECT sighting.*, rand() AS shuffle
+      FROM sighting, location
+      WHERE sighting.Photo='1' AND sighting.LocationName=location.Name AND location.County='" . $countyName . "'
+      ORDER BY shuffle
+      LIMIT 1");
+}
+
+
+function mapLink($siteInfo)
+{
+   if (strlen($siteInfo["Latitude"]) > 0) { ?>
+	<div>
+      <a href="http://www.mapquest.com/maps/map.adp?latlongtype=decimal&latitude=<?= $siteInfo["Latitude"] ?>&longitude=-<?= $siteInfo["Longitude"] ?>">Map...</a>
+    </div>
+<? }
+}
+
+function locationViewLinks($locationID)
+{
+?>
+      <a href="./locationdetail.php?id=<?=$locationID?>">list</a> |
+      <a href="./locationdetailbymonth.php?id=<?=$locationID?>">by month</a> |
+      <a href="./locationdetailbyyear.php?id=<?=$locationID?>">by year</a>
+<?
+}
+
+function countyViewLinks($state, $county)
+{
+?>
+        locations:
+        <a href="./countylocations.php?state=<?= $state ?>&county=<?= urlencode($county) ?>">list</a> |
+	    <a href="./countylocationsbyyear.php?state=<?= $state ?>&county=<?= urlencode($county) ?>">by year</a> |
+	    <a href="./countylocationsbymonth.php?state=<?= $state ?>&county=<?= urlencode($county) ?>">by month</a>
+        species:	
+        <a href="./countyspecies.php?state=<?= $state ?>&county=<?= urlencode($county) ?>">list</a> |
+	    <a href="./countyspeciesbyyear.php?state=<?= $state ?>&county=<?= urlencode($county) ?>">by year</a> |
+	    <a href="./countyspeciesbymonth.php?state=<?= $state ?>&county=<?= urlencode($county) ?>">by month</a>
+<?
+}
+
+function stateViewLinks($abbrev)
+{
+?>
+        locations:
+        <a href="./statelocations.php?state=<?= $abbrev ?>">list</a> |
+	    <a href="./statelocationsbyyear.php?state=<?= $abbrev ?>">by year</a> |
+	    <a href="./statelocationsbymonth.php?state=<?= $abbrev ?>">by month</a>
+        species:	
+        <a href="./statespecies.php?state=<?= $abbrev ?>">list</a> |
+	    <a href="./statespeciesbyyear.php?state=<?= $abbrev ?>">by year</a> |
+	    <a href="./statespeciesbymonth.php?state=<?= $abbrev ?>">by month</a>
+<?
+}
+
 
 function formatTwoColumnLocationList($locationListQuery, $countyHeadingsOK = true)
 {
@@ -565,6 +851,34 @@ function formatTwoColumnLocationList($locationListQuery, $countyHeadingsOK = tru
 <?
 }
 
+
+// -------------------------------------- TIME -----------------------------------
+//
+
+function insertYearLabels()
+{
+	for ($year = 1996; $year <= 2004; $year++)
+	{ ?>
+		<td class=yearcell align=center><?= $year ?></td>
+<?	}
+}
+
+function insertMonthLabels()
+{ ?>
+    <td class=yearcell align=center>Jan</td>
+    <td class=yearcell align=center>Feb</td>
+    <td class=yearcell align=center>Mar</td>
+    <td class=yearcell align=center>Apr</td>
+    <td class=yearcell align=center>May</td>
+    <td class=yearcell align=center>Jun</td>
+    <td class=yearcell align=center>Jul</td>
+    <td class=yearcell align=center>Aug</td>
+    <td class=yearcell align=center>Sep</td>
+    <td class=yearcell align=center>Oct</td>
+    <td class=yearcell align=center>Nov</td>
+    <td class=yearcell align=center>Dec</td>
+<?
+}
 
 //
 // ---------------------- MISC ------------------------
