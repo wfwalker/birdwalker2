@@ -26,6 +26,8 @@ disabledBrowseButtons();
 	  trip, county, state, and year lists. Our latest trips are listed below, other indices
 	  are available from the links on the left.</p>
 
+	  <div class="heading">Featured Photos</div>
+
       <table width="100%"><tr>
 
 <?    for ($index = 0; $index < 5; $index++)
