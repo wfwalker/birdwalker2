@@ -3,9 +3,25 @@
 
 require("./birdwalker.php");
 
-$badAbbrevs = performQuery("select species.*,sighting.*, sighting.objectid as sightingid from sighting left join species on species.Abbreviation=sighting.SpeciesAbbreviation order by species.CommonName, sighting.SpeciesAbbreviation");
+$badAbbrevs = performQuery("
+    SELECT species.*,sighting.*, sighting.objectid AS sightingid
+      FROM sighting
+      LEFT JOIN species ON species.Abbreviation=sighting.SpeciesAbbreviation
+      ORDER BY species.CommonName, sighting.SpeciesAbbreviation");
 
+$badSightingDates = performQuery("
+    SELECT trip.*,sighting.*, sighting.objectid AS sightingid
+      FROM sighting
+      LEFT JOIN trip ON trip.Date=sighting.TripDate
+      ORDER BY trip.Name, sighting.TripDate");
+
+$badSightingLocations = performQuery("
+    SELECT location.*,sighting.*, sighting.objectid AS sightingid
+      FROM sighting
+      LEFT JOIN location ON location.Name=sighting.LocationName
+      ORDER BY location.County, sighting.LocationName");
 ?>
+
 
 <html>
   <head>
@@ -21,16 +37,46 @@ $badAbbrevs = performQuery("select species.*,sighting.*, sighting.objectid as si
 	  <div class=pagetitle>Bad Records</div>
       </div>
 
-<?php
-while($sightingInfo = mysql_fetch_array($badAbbrevs)) {
-	if ($sightingInfo["CommonName"] == "") {
-		echo "<a href=\"./sightingedit.php?id=" . $sightingInfo["sightingid"] . "\">";
-		echo $sightingInfo["SpeciesAbbreviation"];
-		echo " " . $sightingInfo["LocationName"];
-		echo " " . $sightingInfo["TripDate"] . "</a><br>";
+<div class=heading>sightings with bad abbreviations</div>
+
+<?
+while($sightingInfo = mysql_fetch_array($badAbbrevs))
+{
+	if ($sightingInfo["CommonName"] == "") { ?>
+        <a href="./sightingedit.php?id=<?= $sightingInfo["sightingid"] ?>">
+        <?= $sightingInfo["SpeciesAbbreviation"] ?> <?= $sightingInfo["LocationName"] ?> <?= $sightingInfo["TripDate"] ?>
+        </a><br>
+ <?	} else {
+		break;
 	}
-	else
-	{
+}
+?>
+
+<div class=heading>sightings with bad trip dates</div>
+
+<?
+while($sightingInfo = mysql_fetch_array($badSightingDates))
+{
+	if ($sightingInfo["Name"] == "") { ?>
+        <a href="./sightingedit.php?id=<?= $sightingInfo["sightingid"] ?>">
+        <?= $sightingInfo["SpeciesAbbreviation"] ?> <?= $sightingInfo["LocationName"] ?> <?= $sightingInfo["TripDate"] ?>
+        </a><br>
+ <?	} else {
+		break;
+	}
+}
+?>
+
+<div class=heading>sightings with bad location names</div>
+
+<?
+while($sightingInfo = mysql_fetch_array($badSightingLocations))
+{
+	if ($sightingInfo["Name"] == "") { ?>
+        <a href="./sightingedit.php?id=<?= $sightingInfo["sightingid"] ?>">
+        <?= $sightingInfo["SpeciesAbbreviation"] ?> <?= $sightingInfo["LocationName"] ?> <?= $sightingInfo["TripDate"] ?>
+        </a><br>
+ <?	} else {
 		break;
 	}
 }
