@@ -9,15 +9,8 @@ $view = param($_GET, "view", "list");
 $locationQuery = new LocationQuery;
 $extrema = $locationQuery->findExtrema();
 
-?>
+htmlHead("Locations");
 
-<html>
-
-  <? htmlHead("Locations"); ?>
-
-  <body>
-
-<?php
 globalMenu();
 disabledBrowseButtons();
 navTrailLocations();
@@ -37,7 +30,7 @@ navTrailLocations();
 	</div>
 
 <? if ($view == "list") {
-	  $locationQuery->formatTwoColumnLocationList();
+	  $locationQuery->formatTwoColumnLocationList(true);
    } else if ($view == "bymonth") {
       $locationQuery->formatLocationByMonthTable();
    } else if ($view == "byyear") {

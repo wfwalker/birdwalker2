@@ -273,7 +273,7 @@ class Map
 
 <?
 	countHeading($this->mLocationQuery->getLocationCount(), "location");
-	$this->mLocationQuery->formatTwoColumnLocationList();
+	$this->mLocationQuery->formatTwoColumnLocationList(true);
 
    }
 }
