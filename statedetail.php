@@ -29,7 +29,7 @@ $stateListCount = getFancySpeciesCount($whereClause);
 <?
 $gridQueryString="select distinct(CommonName), species.objectid as speciesid, bit_or(1 << (year(TripDate) - 1995)) as mask from sighting, species, location where sighting.SpeciesAbbreviation=species.Abbreviation and sighting.LocationName=location.Name and location.State='". $abbrev . "' group by sighting.SpeciesAbbreviation order by speciesid";
 
-formatSpeciesByYearTable($stateListCount, $gridQueryString);
+formatSpeciesByYearTable($gridQueryString, "&state=" . $abbrev);
 
 ?>
 
