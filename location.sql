@@ -98,7 +98,7 @@ INSERT INTO location VALUES (96,'San Francisco Zoo','http://www.sfzoo.org/','San
 INSERT INTO location VALUES (97,'San Gregorio State Beach','http://www.parks.ca.gov/default.asp?page_id=529','Pescadero','San Mateo','CA','','','','');
 INSERT INTO location VALUES (98,'San Luis NWR','http://sanluis.fws.gov/','Los Banos','Merced','CA','','','','');
 INSERT INTO location VALUES (99,'San Mateo County','','San Mateo','San Mateo','CA','A catch-all location for birds seen on the road in San Mateo County','','','');
-INSERT INTO location VALUES (100,'Santa Clara County','','Santa Clara','Santa Clara','CA','','','','');
+INSERT INTO location VALUES (100,'Santa Clara County','','Santa Clara','Santa Clara','CA','This page shows all the birds we\'ve seen in Santa Clara county but don\'t remember exactly where they were.','','','');
 INSERT INTO location VALUES (101,'Santa Cruz','','Santa Cruz','Santa Cruz','CA','','','','');
 INSERT INTO location VALUES (102,'Saratoga Parks','http://www.hakone.com/about/index.html','Saratoga','Santa Clara','CA','includes Hakone Gardens and Saratoga Wildwood Park','','','');
 INSERT INTO location VALUES (103,'Schollenberger Park','','Petaluma','Sonoma','CA','','WGS 84','38.2308','122.59724');
@@ -136,3 +136,4 @@ INSERT INTO location VALUES (135,'Laredo','','Laredo','Webb','TX','','','','');
 INSERT INTO location VALUES (136,'Corpus Christi','','Corpus Christi','Nueces','TX','','','','');
 INSERT INTO location VALUES (137,'Palmetto State Park','http://www.tpwd.state.tx.us/park/palmetto/','San Antonio','Gonzales','TX','','','','');
 INSERT INTO location VALUES (138,'Other San Benito','','','San Benito','CA','','','','');
+INSERT INTO location VALUES (139,'Big Basin State Park','','Ben Lomond','Santa Cruz','CA','','','','');

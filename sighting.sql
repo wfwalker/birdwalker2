@@ -9330,3 +9330,15 @@ INSERT INTO sighting VALUES (9358,'amecoo','Charleston Slough','','0','0','2004-
 INSERT INTO sighting VALUES (9359,'willet','Charleston Slough','','0','0','2004-09-10');
 INSERT INTO sighting VALUES (9360,'coohaw','Palo Alto Duck Pond','','','1','2004-07-20');
 INSERT INTO sighting VALUES (9361,'snoegr','Palo Alto Duck Pond','','0','0','2004-07-20');
+INSERT INTO sighting VALUES (9362,'blktur','Santa Cruz','','','1','2004-09-25');
+INSERT INTO sighting VALUES (9363,'sander','Santa Cruz','','0','0','2004-09-25');
+INSERT INTO sighting VALUES (9364,'brnpel','Santa Cruz','','0','0','2004-09-25');
+INSERT INTO sighting VALUES (9365,'doccor','Santa Cruz','','0','0','2004-09-25');
+INSERT INTO sighting VALUES (9366,'renpha','Santa Cruz','I noticed someone digiscoping with their Swarovski spotting scope, and headed over to see if he had found something interesting. He had evidently been looking at some Phalaropes. Although they flew off as I first approached, they later returned to a much sunnier spot.','','1','2004-09-25');
+INSERT INTO sighting VALUES (9367,'acowoo','Big Basin State Park','','','','2004-09-25');
+INSERT INTO sighting VALUES (9368,'stejay','Big Basin State Park','','','','2004-09-25');
+INSERT INTO sighting VALUES (9369,'chbchi','Big Basin State Park','','','','2004-09-25');
+INSERT INTO sighting VALUES (9370,'heegul','Santa Cruz','','','','2004-09-25');
+INSERT INTO sighting VALUES (9371,'wesgul','Santa Cruz','','','','2004-09-25');
+INSERT INTO sighting VALUES (9372,'rocdov','Santa Cruz','','','','2004-09-25');
+INSERT INTO sighting VALUES (9373,'brebla','Santa Cruz','','','','2004-09-25');
