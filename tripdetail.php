@@ -25,7 +25,6 @@ while($sightingInfo = mysql_fetch_array($tripSightings)) {
 	if ($firstSightings[$sightingInfo['objectid']] != null) { $tripFirstSightings++; }
 }
 
-$randomPhotoSightings = performQuery("select *, rand() as shuffle from sighting where Photo='1' and TripDate='" . $tripInfo["Date"] . "' order by shuffle");
 
 ?>
 
@@ -42,9 +41,8 @@ browseButtons("./tripdetail.php?id=", $tripID, 1, $tripID - 1, $tripID + 1, $tri
 $items[] = "<a href=\"./tripindex.php#" . $tripYear . "\">" . $tripYear . "</a>";
 $items[] = strtolower($tripInfo["Name"]);
 navTrailTrips($items);
+pageThumbnail("select *, rand() as shuffle from sighting where Photo='1' and TripDate='" . $tripInfo["Date"] . "' order by shuffle");
 ?>
-
-<div class=thumb><?php  if (mysql_num_rows($randomPhotoSightings) > 0) { $photoInfo = mysql_fetch_array($randomPhotoSightings); if (mysql_num_rows($randomPhotoSightings) > 0) echo "<td>" . getThumbForSightingInfo($photoInfo) . "</td>"; } ?></div>
 
     <div class="contentright">
 	  <div class=titleblock>

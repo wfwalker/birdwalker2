@@ -25,7 +25,7 @@ pageThumbnail("select *, rand() as shuffle from sighting where Photo='1' order b
 
     <div class=contentright>
 	  <div class="titleblock">
-        <div class=pagetitle>Trip Lists</div>
+        <div class=pagetitle>Trips</div>
         <div class=pagesubtitle> <?php echo $tripListCount ?> trips</div>
 	  </div>
 
