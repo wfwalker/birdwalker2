@@ -23,7 +23,7 @@ pageThumbnail("select *, rand() as shuffle from sighting where Photo='1' order b
 
     <div class=contentright>
       <div class="titleblock">	  
-	  <div class=pagetitle>Location Index</div>
+	  <div class=pagetitle>Locations</div>
 	  <div class=pagesubtitle><?php echo mysql_num_rows($locationQuery) ?> Locations</div>
 	  <div class=metadata>list | <a href="./locationindexbyyear.php">by year</a></div>
 	</div>
