@@ -37,7 +37,7 @@ while ($info = mysql_fetch_array($stateStats))
 <?php
 globalMenu();
 disabledBrowseButtons();
-navTrailBirds();
+navTrailLocations();
 ?>
 
     <div class=contentright>

@@ -11,9 +11,9 @@
 <?php
 globalMenu();
 disabledBrowseButtons();
+navTrailLocations();
 ?>
 
-<div class=navigationright><a href="./index.php">birdWalker</a> &gt; <a href="./locationindex.php">locations</a> &gt; counties by year</div>
 
     <div class=contentright>
       <div class="titleblock">	  
