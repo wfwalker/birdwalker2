@@ -17,7 +17,8 @@ class SightingQuery
 	// constrain this query to a particular year
 	var $mYear;
 
-	// constrain this query to a particular species	var $mSpeciesID;
+	// constrain this query to a particular species
+	var $mSpeciesID;
 	// constrain this query to a particular family
 	var $mFamily;
 	// constrain this query to a particular order
@@ -51,7 +52,7 @@ class SightingQuery
 
 	function getSelectClause()
 	{
-		return "SELECT DISTINCT sighting.objectid,
+		return "SELECT DISTINCT sighting.objectid as sightingid,
             sighting.*,
             trip.objectid as tripid, date_format(sighting.TripDate, '%M %e, %Y') AS niceDate, trip.*,
             location.objectid as locationid, location.*,
@@ -151,9 +152,14 @@ class SightingQuery
 		// todo add species, family, order
 		$pageTitle = "";
 
+		if ($this->mSpeciesID != "") {
+			$speciesInfo = getSpeciesInfo($this->mSpeciesID);
+			$pageTitle = $speciesInfo["CommonName"];
+		}
+
 		if ($this->mLocationID != "") {
 			$locationInfo = getLocationInfo($this->mLocationID); 
-			$pageTitle = $locationInfo["Name"];
+			$pageTitle = $pageTitle . ", " . $locationInfo["Name"];
 		} elseif ($this->mCounty != "") {
 			$pageTitle = $this->mCounty . " County";
 		} elseif ($this->mState != "") {
