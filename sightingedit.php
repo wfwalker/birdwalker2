@@ -79,7 +79,7 @@ navTrailBirds();
 <div class="contentright">
 
 <div class=pagesubtitle>
-  <a href="./tripdetail.php?id=<?= $tripInfo["objectid"] ?>"><?= $tripInfo["niceDate"] ?>
+  <a href="./tripdetail.php?id=<?= $tripInfo["objectid"] ?>"><?= $tripInfo["niceDate"] ?></a>
 </div>
 <div class="titleblock">
   <div class=pagetitle>
