@@ -68,22 +68,27 @@ while($locationInfo = mysql_fetch_array($locationListQuery))
 			echo "<div class=\"titleblock\">" . $taxoInfo["CommonName"] . "</div>";
 		}
 
-		echo "<div class=firstcell><a href=\"./speciesdetail.php?id=".$info["speciesid"]."\">".$info["CommonName"]."</a>";
+		echo "\n<div class=firstcell><a href=\"./speciesdetail.php?id=".$info["speciesid"]."\">" .
+			$info["CommonName"] .
+			"</a>";
 
+		echo "\n<span class=noteworthy-species>";
 		if ($info["Exclude"] == "1") {
-			echo "<span class=sighting-notes> excluded</span>";
+			echo " excluded";
 		}
 
 		if ($info["Photo"] == "1") {
-			echo "<span class=sighting-notes> <a href=\"./photodetail.php?id=" . $info["objectid"] . "\">PHOTO</a></span>";
+			echo " <a href=\"./photodetail.php?id=" . $info["objectid"] . "\">PHOTO</a>";
 		}
 
 		$sightingID = $info["objectid"];
- 
-		if ($firstSightings[$sightingID] != null) echo "<span class=sighting-notes> first life sighting</span>";
-		else if ($firstYearSightings[$sightingID] != null) echo "<span class=sighting-notes> first " . $tripYear . " sighting</span>";
+
+		if (getEnableEdit()) { echo "\n <a href=\"./sightingedit.php?id=" . $sightingID . "\">edit</a>"; }
+
+		if ($firstSightings[$sightingID] != null) echo " first life sighting";
+		else if ($firstYearSightings[$sightingID] != null) echo " first " . $tripYear . " sighting";
 		
-		echo "</div>";
+		echo "\n</div>";
 
 		if (strlen($info["Notes"]) > 0) {
 			echo "<div class=sighting-notes>" . $info["Notes"] . "</div>";
