@@ -3,19 +3,28 @@
 
 require_once("./birdwalker.php");
 
-performQuery("CREATE TEMPORARY TABLE tmp ( CommonName varchar(32) default NULL, tripdate date default NULL, sightingCount varchar(32));");
+performQuery("
+    CREATE TEMPORARY TABLE tmp (
+      CommonName varchar(32) default NULL,
+      speciesid varchar(32) default NULL,
+      tripdate date default NULL,
+      sightingCount varchar(32));");
 
 performQuery("
     INSERT INTO tmp
-    SELECT species.CommonName, max(TripDate), count(sighting.objectid) as sightingCount
-    FROM sighting, species, location
-    WHERE species.Abbreviation=sighting.SpeciesAbbreviation AND sighting.LocationName=location.Name AND location.State='CA' AND Exclude!='1'
-    GROUP BY SpeciesAbbreviation;");
+      SELECT species.CommonName, species.objectid, max(TripDate), count(sighting.objectid) as sightingCount
+      FROM sighting, species, location
+      WHERE species.Abbreviation=sighting.SpeciesAbbreviation AND
+        sighting.LocationName=location.Name AND location.State='CA' AND Exclude!='1'
+      GROUP BY SpeciesAbbreviation;");
 
-$latestSightingQuery = performQuery("SELECT *, Year(tripdate) as latestYear FROM tmp ORDER BY tripdate desc;");
+$latestSightingQuery = performQuery("
+    SELECT *, Year(tripdate) as latestYear, date_format(tripdate, '%M %e, %Y') AS niceDate
+      FROM tmp
+      ORDER BY tripdate desc;");
 
-$sightingThreshold = 5;
-$theYear = param($_GET, "year", 2004);
+$sightingThreshold = 10;
+
 ?>
 
 <html>
@@ -26,27 +35,32 @@ $theYear = param($_GET, "year", 2004);
 
 <?php
 globalMenu();
-browseButtons("./targetyearbirds.php?year=", $theYear, getEarliestYear(), $theYear - 1, $theYear + 1, getLatestYear());
+disabledBrowseButtons();
 navTrailBirds();
 ?>
 
 <div class="contentright">
 
 <div class="titleblock">
-    <div class="pagetitle">Target CA birds for <?= $theYear ?></div>
-	<div class=metadata>Birds we have seen at least <?= $sightingThreshold ?> times, but not seen yet in <?= $theYear ?></div>
+    <div class="pagetitle">Target CA birds for <?= getLatestYear() ?></div>
+	<div class=metadata>
+        Birds we have seen at least <?= $sightingThreshold ?> times, but not seen yet in <?= getLatestYear() ?>
+    </div>
 </div>
 
 <table>
-<?php
+	<tr class=report-content><td>Sightings</td><td>Name</td><td>Last Seen</td></tr>
 
+<?
 while ($info = mysql_fetch_array($latestSightingQuery))
 {
-	if ($info["latestYear"] < $theYear && $info["sightingCount"] >= $sightingThreshold)
+	if ($info["latestYear"] < getLatestYear() && $info["sightingCount"] >= $sightingThreshold)
 	{
 ?>
 		<tr class=report-content>
-		<td align=right><?= $info["sightingCount"] ?></td><td> <?= $info["CommonName"] ?></td><td><?= $info["tripdate"] ?></td>
+		  <td align=right><a href="./sightinglist.php?speciesid=<?= $info["speciesid"] ?>"><?= $info["sightingCount"] ?></a></td>
+          <td><a href="./speciesdetail.php?speciesid=<?= $info["speciesid"] ?>"><?= $info["CommonName"] ?></a></td>
+          <td><?= $info["niceDate"] ?></td>
 		</tr>
 <?
 	}
