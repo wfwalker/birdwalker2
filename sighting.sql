@@ -8148,7 +8148,7 @@ INSERT INTO sighting VALUES (8154,'neocor','Brownsville','','','1','2004-04-17')
 INSERT INTO sighting VALUES (8155,'buwtea','Brownsville','','','1','2004-04-17');
 INSERT INTO sighting VALUES (8156,'commoo','Brownsville','','','1','2004-04-17');
 INSERT INTO sighting VALUES (8157,'rinkin','Brownsville','Seen from the photo blind at the Resaca at Sabal Palm.','','','2004-04-17');
-INSERT INTO sighting VALUES (8158,'grnkin','Brownsville','Seen from the photo blind at the Resaca at Sabal Palm.','','1','2004-04-17');
+INSERT INTO sighting VALUES (8158,'rinkin','Brownsville','Seen from the photo blind at the Resaca at Sabal Palm. I originally marked this photo as a Green Kingfisher, but Ron Pittaway notes that it is in fact a Ringed Kingfisher.','','1','2004-04-17');
 INSERT INTO sighting VALUES (8159,'ycnher','Brownsville','','0','0','2004-04-17');
 INSERT INTO sighting VALUES (8160,'grnher','Brownsville','','0','0','2004-04-17');
 INSERT INTO sighting VALUES (8161,'whtdov','Brownsville','','','1','2004-04-17');
