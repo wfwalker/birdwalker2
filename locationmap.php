@@ -3,11 +3,12 @@
 
 require("./birdwalker.php");
 require("./locationquery.php");
-//minlong=121.923024&maxlong=122.054096&minlat=37.334464&maxlat=37.465536
+
 $minLat = param($_GET, "minlat", 37.3);
 $maxLat = param($_GET, "maxlat", 37.5);
 $minLong = param($_GET, "minlong", 121.9);
 $maxLong = param($_GET, "maxlong", 122.1);
+$backgnd = param($_GET, "backgnd", "roads");
 
 $longRange = $maxLong - $minLong;
 $latRange = $maxLat - $minLat;
@@ -30,15 +31,31 @@ $dbQuery = performQuery(
 			$locationQuery->getSelectClause() . ", location.Latitude, location.Longitude" .
 			$locationQuery->getFromClause() . " " . 
 			$locationQuery->getWhereClause() . " AND Latitude>" . $minLat . " AND Latitude<" . $maxLat . " AND Longitude>" . $minLong . " AND Longitude<" . $maxLong . 
-			" ORDER BY location.State, location.County, location.Name");
+			" ORDER BY location.Latitude desc, location.Longitude");
 
+$roads = "http://gisdata.usgs.net/servlet/com.esri.wms.Esrimap?servicename=USGS_WMS_REF&reaspect=True&REQUEST=map&SRS=EPSG:4326&BBOX=" . 
+	"-" . $maxLong . "," . $minLat. ",-" . $minLong . "," . $maxLat .
+    "&WIDTH=500&HEIGHT=500&LAYERS=County_Labels,County,Route_Numbers,Roads,Streams,Names-Streams,Water_Bodies,Names-Water_Bodies,Urban_Areas,Federal_Lands,Names-Federal_Lands&STYLES=reference&FORMAT=GIF&BGCOLOR=0xffffff&TRANSPARENT=TRUE&EXCEPTIONS=INIMAGE";
+
+$elevation = "http://gisdata.usgs.net/servlet/com.esri.wms.Esrimap?servicename=USGS_WMS_NED&reaspect=True&REQUEST=map&SRS=EPSG:4326&BBOX=" . 
+	"-" . $maxLong . "," . $minLat. ",-" . $minLong . "," . $maxLat .
+    "&WIDTH=500&HEIGHT=500&LAYERS=US_NED_Shaded_Relief&STYLES=reference&FORMAT=GIF&BGCOLOR=0xffffff&TRANSPARENT=TRUE&EXCEPTIONS=INIMAGE";
+
+$terraserver =
+    "http://terraserver.microsoft.com/ogcmap.ashx?version=1.1.1&request=GetMap&Layers=DOQ&Styles=GeoGrid&SRS=EPSG:4326&BBOX=" .
+	"-" . $maxLong . "," . $minLat. ",-" . $minLong . "," . $maxLat .
+    "&width=500&height=500&format=image/jpeg&Exceptions=se_xml";
+
+if ($backgnd == "roads") $backgndURL = $roads;
+else if ($backgnd == "elevation") $backgndURL = $elevation;
+else $backgndURL = $terraserver;
 
 ?>
 
 <html>
   <head>
     <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-    <title>birdWalker | Scrolling Map</title>
+    <title>birdWalker | OpenGIS</title>
   </head>
   <body>
 
@@ -50,28 +67,24 @@ navTrailLocations();
 
     <div class=contentright>
 
-
-
-	<a href="./locationmap.php?minlong=<?= $centerLong-0.6*$longRange ?>&maxlong=<?= $centerLong+0.6*$longRange ?>&minlat=<?=$centerLat-0.6*$latRange?>&maxlat=<?=$centerLat+0.6*$latRange?>">Out</a>
-	<a href="./locationmap.php?minlong=<?= $centerLong-0.4*$longRange ?>&maxlong=<?= $centerLong+0.4*$longRange ?>&minlat=<?=$centerLat-0.4*$latRange?>&maxlat=<?=$centerLat+0.4*$latRange?>">In</a>
-	<p>&nbsp;</p>
-
-
-	<div style="position: relative; border: 1px solid; background-image: url(http://terraserver.microsoft.com/ogcmap.ashx?version=1.1.1&request=GetMap&Layers=DOQ&Styles=&SRS=EPSG:4326&BBOX=-<?=$maxLong?>,<?=$minLat?>,-<?=$minLong?>,<?=$maxLat?>&width=500&height=500&format=image/jpeg&Exceptions=se_xml); height:500px; width: 500px;">
+	<div style="position: relative; border: 1px solid; background-image: url(<?=$backgndURL?>); height:500px; width: 500px;">
 
 	<div style="position: absolute; left: 250px; top: -20px; color: red">
-	  <a href="./locationmap.php?minlat=<?= $minLat+$latPan ?>&maxlat=<?= $maxLat+$latPan ?>&minlong=<?=$minLong?>&maxlong=<?=$maxLong?>">N</a>
+	  <a href="./locationmap.php?minlat=<?= $minLat+$latPan ?>&maxlat=<?= $maxLat+$latPan ?>&minlong=<?=$minLong?>&maxlong=<?=$maxLong?>&backgnd=<?=$backgnd?>">N</a>
 	</div>
-	<div style="position: absolute; left: 250px; top: 510px; color: red">
-	  <a href="./locationmap.php?minlat=<?= $minLat-$latPan ?>&maxlat=<?= $maxLat-$latPan ?>&minlong=<?=$minLong?>&maxlong=<?=$maxLong?>">S</a>
+	<div style="position: absolute; left: 250px; top: 505px; color: red">
+	  <a href="./locationmap.php?minlat=<?= $minLat-$latPan ?>&maxlat=<?= $maxLat-$latPan ?>&minlong=<?=$minLong?>&maxlong=<?=$maxLong?>&backgnd=<?=$backgnd?>">S</a>
 	</div>
 	<div style="position: absolute; left: -20px; top: 250px; color: red">
-	  <a href="./locationmap.php?minlong=<?= $minLong+$longPan ?>&maxlong=<?= $maxLong+$longPan ?>&minlat=<?=$minLat?>&maxlat=<?=$maxLat?>">W</a>
+	  <a href="./locationmap.php?minlong=<?= $minLong+$longPan ?>&maxlong=<?= $maxLong+$longPan ?>&minlat=<?=$minLat?>&maxlat=<?=$maxLat?>&backgnd=<?=$backgnd?>">W</a>
 	</div>
 	<div style="position: absolute; left: 510px; top: 250px; color: red">
-	  <a href="./locationmap.php?minlong=<?= $minLong-$longPan ?>&maxlong=<?= $maxLong-$longPan ?>&minlat=<?=$minLat?>&maxlat=<?=$maxLat?>">E</a>
+	  <a href="./locationmap.php?minlong=<?= $minLong-$longPan ?>&maxlong=<?= $maxLong-$longPan ?>&minlat=<?=$minLat?>&maxlat=<?=$maxLat?>&backgnd=<?=$backgnd?>">E</a>
 	</div>
 <?
+
+	$counter = 1;
+
 	while($info = mysql_fetch_array($dbQuery))
 	{
 		$lat = $info["Latitude"];
@@ -82,17 +95,35 @@ navTrailLocations();
 
 		if ($lat != 0)
 		{
-			echo "<div style=\"position: absolute; left: " . $left . "px; top: " . $top . "px; color: white\">";
-						echo "<a href=\"./locationdetail.php?id=" . $info["objectid"] . "\">";
-						echo "<img border=0 src=\"./images/first_hilite.gif\">";
-			//echo "left: " . $left . ", top: " . $top;
-						echo $info["Name"];
+			$locationNames[$counter] = $info["Name"];
+
+			echo "<div style=\"position: absolute; left: " . $left . "px; top: " . $top . "px; color: white\" nowrap>";
+						echo "<a href=\"./locationdetail.php?id=" . $info["objectid"] . "\" style=\"color: white; background-color: black \">";
+						echo "+ " . $counter;
 						echo "</a>";
 			echo "</div>";
+
+			$counter++;
 		}
-	} ?>
+	}
+
+?>
+
+   </div>
+
+   <div style="position: relative; left: 530px; top: -500px ">
+     <p>
+       <a href="./locationmap.php?minlong=<?= $centerLong-0.6*$longRange ?>&maxlong=<?= $centerLong+0.6*$longRange ?>&minlat=<?=$centerLat-0.6*$latRange?>&maxlat=<?=$centerLat+0.6*$latRange?>&backgnd=<?=$backgnd?>">out</a> |
+	   <a href="./locationmap.php?minlong=<?= $centerLong-0.4*$longRange ?>&maxlong=<?= $centerLong+0.4*$longRange ?>&minlat=<?=$centerLat-0.4*$latRange?>&maxlat=<?=$centerLat+0.4*$latRange?>&backgnd=<?=$backgnd?>">in</a> |
+	   <a href="./locationmap.php?minlong=<?= $minLong?>&maxlong=<?= $maxLong?>&minlat=<?= $minLat?>&maxlat=<?= $maxLat?>&backgnd=elevation">elevation</a> |
+	   <a href="./locationmap.php?minlong=<?= $minLong?>&maxlong=<?= $maxLong?>&minlat=<?= $minLat?>&maxlat=<?= $maxLat?>&backgnd=terraserver">photo</a> |
+	   <a href="./locationmap.php?minlong=<?= $minLong?>&maxlong=<?= $maxLong?>&minlat=<?= $minLat?>&maxlat=<?= $maxLat?>&backgnd=roads">roads</a>
+     </p>
+
+     <? for($i = 1; $i < $counter; $i++) { echo "<div>" . $i . ". " . $locationNames[$i] . "</div>"; } ?>
+   </div>
 
 
-    </div>
+   </div>
   </body>
 </html>
