@@ -3,10 +3,13 @@
 
 require("./birdwalker.php");
 
-$tripListQuery = performQuery("select trip.*, date_format(Date, '%M %e') as niceDate, count(distinct sighting.SpeciesAbbreviation) as tripCount from trip, sighting where sighting.TripDate=trip.Date group by trip.Date order by trip.Date desc");
-$tripListCount = mysql_num_rows($tripListQuery);
+$tripListQuery = performQuery("
+    SELECT trip.*, date_format(Date, '%M %e') AS niceDate, COUNT(DISTINCT sighting.SpeciesAbbreviation) AS tripCount
+      FROM trip, sighting WHERE sighting.TripDate=trip.Date
+      GROUP BY trip.Date
+      ORDER BY trip.Date desc");
 
-?>
+$tripListCount = mysql_num_rows($tripListQuery); ?>
 
 <html>
   <head>
@@ -31,33 +34,31 @@ pageThumbnail("select *, rand() as shuffle from sighting where Photo='1' order b
 
 
 <table class=report-content>
-<?php
 
+<?php
 $prevYear = "";
 $counter = 0;
+
 while($info = mysql_fetch_array($tripListQuery))
 {
-  $thisYear =  substr($info["Date"], 0, 4);
-  if (strcmp($thisYear, $prevYear))
-  {
-?>
-    <tr><td colspan=4 class="heading"><a name="<?= $thisYear ?>"></a><?= $thisYear ?></td></tr>
-<?
-  }
+    $thisYear =  substr($info["Date"], 0, 4);
 
-  if (($counter % 2) == 0) { ?><tr><? } ?>
+    if (strcmp($thisYear, $prevYear))
+    { ?>
+        <tr><td colspan=4 class="heading"><a name="<?= $thisYear ?>"></a><?= $thisYear ?></td></tr>
+<?  }
 
-  <td class=firstcell><a href="./tripdetail.php?id=<?= $info["objectid"] ?>"><?= $info["Name"] ?>, <?= $info["niceDate"] ?></a></td>
-  </td>
+    if (($counter % 2) == 0) { ?><tr><? } ?>
 
-<?
-  if (($counter % 2) == 1) { ?></tr><? }
+    <td class=firstcell>
+        <a href="./tripdetail.php?id=<?= $info["objectid"] ?>"><?= $info["Name"] ?>, <?= $info["niceDate"] ?></a>
+    </td>
 
-  $prevYear = $thisYear;
-  $counter++;
-}
+<?  if (($counter % 2) == 1) { ?></tr><? }
 
-?>
+	$prevYear = $thisYear;
+	$counter++;
+} ?>
 
 </table>
 
