@@ -210,9 +210,9 @@ class LocationQuery extends BirdWalkerQuery
             ORDER BY sighting.TripDate DESC");
 	}
 
-	function formatTwoColumnLocationList()
+	function formatTwoColumnLocationList($countyHeadingOK)
 	{
-		formatTwoColumnLocationList($this);
+		formatTwoColumnLocationList($this, $countyHeadingOK);
 	}
 
 	function formatLocationByYearTable()
