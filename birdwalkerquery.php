@@ -54,6 +54,7 @@ class BirdWalkerQuery
 		$this->setTripID(param($_GET, "tripid", ""));
 		$this->setSpeciesID(param($_GET, "speciesid", ""));
 		$this->setFamily(param($_GET, "family", ""));
+		$this->setOrder(param($_GET, "order", ""));
 		$this->setLocationID(param($_GET, "locationid", ""));
 		$this->setYear(param($_GET, "year", ""));
 		$this->setMonth(param($_GET, "month", ""));
