@@ -1070,9 +1070,10 @@ function rightThumbnailLocation($locationName)
 
 function mapLink($siteInfo)
 {
-   if (strlen($siteInfo["Latitude"]) > 0) { ?>
-	<div>
-      <a href="http://www.mapquest.com/maps/map.adp?latlongtype=decimal&latitude=<?= $siteInfo["Latitude"] ?>&longitude=-<?= $siteInfo["Longitude"] ?>">Map...</a>
+   if ($siteInfo["Latitude"] > 0) { ?>
+   <div>maps: 
+      <a href="http://www.mapquest.com/maps/map.adp?latlongtype=decimal&latitude=<?= $siteInfo["Latitude"] ?>&longitude=-<?= $siteInfo["Longitude"] ?>">mapquest</a>
+      <a href="http://terraserver.microsoft.com/image.aspx?Lon=-<?=$siteInfo["Longitude"]?>&Lat=<?=$siteInfo["Latitude"]?>&w=1">terraserver</a>
     </div>
 <? }
 }
