@@ -1,16 +1,14 @@
 
 <?php
 
-require("./birdwalker.php");
+require("./speciesquery.php");
 
-$orderid = $_GET["order"];
+$orderid = param($_GET, "order", 21);
 
-$whereClause = "species.Abbreviation = sighting.SpeciesAbbreviation and species.objectid >= " . $orderid * pow(10, 9) . " and species.objectid < " . ($orderid + 1) * pow(10, 9);
+$speciesQuery = new SpeciesQuery;
+$speciesQuery->setOrder($orderid);
 
-$orderQuery = getSpeciesQuery($whereClause);
-$orderCount = mysql_num_rows($orderQuery);
 $orderInfo = getOrderInfo($orderid * pow(10, 9));
-
 
 ?>
 
@@ -36,13 +34,38 @@ navTrailBirds($items);
         <div class=pagetitle><?= $orderInfo["CommonName"] ?></div>
       </div>
 
+<div class=heading><?= $speciesQuery->getSpeciesCount() ?> species</div>
 
-     <div class=heading> <?= $orderCount ?> species</div>
-		
-<?php
+<table columns=2>		
 
-	formatTwoColumnSpeciesList($orderQuery);
+<?
+$dbQuery = $speciesQuery->performQuery();
+
+while($info = mysql_fetch_array($dbQuery)) {
+  $photoQuery = performQuery("select * from sighting where SpeciesAbbreviation='" . $info["Abbreviation"] . "' and Photo='1' order by TripDate desc");
 ?>
+
+  <tr><td class=report-content>
+
+<?
+  if ($photoInfo = mysql_fetch_array($photoQuery)) {
+	  echo getThumbForSightingInfo($photoInfo);
+  }
+?>
+
+  <br><br>
+  </td>
+
+  <td class=report-content valign=top>
+  <a href="./speciesdetail.php?id=<?= $info["objectid"] ?>"><?= $info["CommonName"] ?></a><br>
+  <i><?= $info["LatinName"] ?></i><br><br>
+  </td></tr>
+<?
+}
+?>
+
+</table>
+
 
     </div>
   </body>

@@ -1,9 +1,10 @@
 
 <?php
 
-require("./birdwalker.php");
+require("./speciesquery.php");
 
-$speciesQuery = getSpeciesQuery();
+$speciesQuery = new SpeciesQuery;
+$view = $_GET["view"];
 
 ?>
 
@@ -24,12 +25,23 @@ navTrailBirds();
       <div class="titleblock">	  
 <?    rightThumbnailAll(); ?>
 	  <div class=pagetitle>Species</div>
-	  <div class=metadata>list | <a href="./speciesindexbymonth.php">by month</a> | <a href="./speciesindexbyyear.php">by year</a></div>
+	    <div class=metadata>
+          <a href="./speciesindex.php">list</a> |
+          <a href="./speciesindex.php?view=bymonth">by month</a> |
+          <a href="./speciesindex.php?view=byyear">by year</a>
+        </div>
       </div>
 
-    <div class=heading><?= mysql_num_rows($speciesQuery) ?> Species</div>
+	  <div class=heading><?= $speciesQuery->getSpeciesCount() ?> Species</div>
 
-<?php formatTwoColumnSpeciesList($speciesQuery); ?>
+<? if ($view == "") {
+      $speciesQuery->formatTwoColumnSpeciesList(); 
+   } else if ($view == "bymonth") {
+      $speciesQuery->formatSpeciesByMonthTable($speciesQuery);
+   } else if ($view == "byyear") {
+      $speciesQuery->formatSpeciesByYearTable($speciesQuery);
+   }
+?>
 
     </div>
   </body>

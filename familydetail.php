@@ -1,17 +1,16 @@
 
 <?php
 
-require("./birdwalker.php");
+require("./speciesQuery.php");
 
-$familyid = $_GET["family"];
+$familyid = param($_GET, "family", 701);
 $orderid = floor($familyid / 100);
 
-$whereClause = "species.Abbreviation = sighting.SpeciesAbbreviation and species.objectid >= " . $familyid * pow(10, 7) . " and species.objectid < " . ($familyid + 1) * pow(10, 7);
-
-$familyQuery = getSpeciesQuery($whereClause);
-$familyCount = mysql_num_rows($familyQuery);
 $familyInfo = getFamilyInfo($familyid * pow(10, 7));
 $orderInfo = getOrderInfo($orderid * pow(10, 9));
+
+$speciesQuery = new SpeciesQuery;
+$speciesQuery->setFamily($familyid);
 
 $firstFamily = performCount("
     SELECT FLOOR(MIN(species.objectid)/pow(10,7)) FROM species, sighting
@@ -41,7 +40,6 @@ $prevFamily = performCount("
 globalMenu();
 browseButtons("./familydetail.php?family=", $familyid, $firstFamily, $prevFamily, $nextFamily, $lastFamily);
 $items[] = "<a href=\"./orderdetail.php?order=" . $orderInfo["objectid"] / pow(10, 9) . "\">" . strtolower($orderInfo["LatinName"]) . "</a>";
-$items[] = strtolower($familyInfo["LatinName"]);
 navTrailBirds($items);
  ?>
 
@@ -49,14 +47,17 @@ navTrailBirds($items);
       <div class=pagesubtitle><?= $familyInfo["LatinName"] ?></div>
 	  <div class="titleblock">
 	    <div class=pagetitle><?= $familyInfo["CommonName"] ?></div>
-        <div class=metadata> <?= $familyCount ?> species</div>
       </div>
 
 
-<table columns=2>		
-<?php
+<div class=heading><?= $speciesQuery->getSpeciesCount() ?> species</div>
 
-while($info = mysql_fetch_array($familyQuery)) {
+<table columns=2>		
+
+<?
+$dbQuery = $speciesQuery->performQuery();
+
+while($info = mysql_fetch_array($dbQuery)) {
   $photoQuery = performQuery("select * from sighting where SpeciesAbbreviation='" . $info["Abbreviation"] . "' and Photo='1' order by TripDate desc");
 ?>
 

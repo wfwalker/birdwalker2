@@ -1,14 +1,13 @@
-
-<?php
+<?
 
 require("./birdwalker.php");
 
-$speciesid = $_GET["speciesid"];
-$locationid = $_GET["locationid"];
-$year = $_GET["year"];
-$month = $_GET["month"];
-$county = $_GET["county"];
-$state = $_GET["state"];
+$speciesid = param($_GET, "speciesid", "");
+$locationid = param($_GET, "locationid", "");
+$year = param($_GET, "year", "");
+$month = param($_GET, "month", "");
+$county = param($_GET, "county", "");
+$state = param($_GET, "state", "");
 
 $sightingListQueryString = "
     SELECT date_format(sighting.TripDate, '%M %e, %Y') AS niceDate, sighting.*, species.CommonName, species.objectid AS speciesid, trip.objectid AS tripid, location.County, location.State

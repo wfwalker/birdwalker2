@@ -1,16 +1,14 @@
 
 <?php
 
-require("./birdwalker.php");
+require("./speciesQuery.php");
 
-$locationID = $_GET['id'];
+$locationID = param($_GET, 'id', 1);
 $siteInfo = getLocationInfo($locationID);
 
-$speciesCount = performCount("
-    SELECT COUNT(DISTINCT species.objectid)
-      FROM species, sighting
-      WHERE species.Abbreviation=sighting.SpeciesAbbreviation
-      AND sighting.LocationName='" . $siteInfo["Name"]. "'");
+$speciesQuery = new SpeciesQuery;
+
+$speciesQuery->setLocationID($locationID);
 
 $tripQuery = performQuery("
     SELECT DISTINCT trip.objectid, trip.*, date_format(Date, '%M %e, %Y') AS niceDate,
@@ -73,20 +71,14 @@ navTrailLocationDetail($siteInfo);
          <?= $tripCount ?> trip<? if ($tripCount > 1) echo 's' ?>
      </div>
 
-		  <? formatTwoColumnTripList($tripQuery, $firstSightings); ?>
-
+   <? formatTwoColumnTripList($tripQuery, $firstSightings); ?>
 
    <div class=heading>
-	 <?= $speciesCount ?> species<? if ($locationFirstSightings > 0) { ?>,
+     <?= $speciesQuery->getSpeciesCount() ?> species<? if ($locationFirstSightings > 0) { ?>,
      <?= $locationFirstSightings ?> life bird<? if ($locationFirstSightings > 1) echo 's'; } ?>
    </div>
 
-<? formatTwoColumnSpeciesList(performQuery("
-        SELECT distinct(species.objectid), species.CommonName, species.ABACountable
-          FROM species, sighting
-          WHERE species.Abbreviation=sighting.SpeciesAbbreviation
-          AND sighting.LocationName='" . $siteInfo["Name"]. "'
-          GROUP BY species.objectid ORDER BY species.objectid")); ?>
+<? $speciesQuery->formatTwoColumnSpeciesList(); ?>
 
 </div>
 </body>

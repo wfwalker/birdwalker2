@@ -1,14 +1,13 @@
 
 <?
 
-require("./birdwalker.php");
+require("./speciesQuery.php");
 
 $theYear = $_GET["year"];
+$speciesQuery = new SpeciesQuery;
+$speciesQuery->setYear($theYear);
 
-$yearCount = performCount("
-    SELECT COUNT(DISTINCT species.objectid) FROM species, sighting
-      WHERE sighting.Exclude!='1' AND species.Abbreviation=sighting.SpeciesAbbreviation
-      AND year(sighting.TripDate)='" . $theYear . "'"); ?>
+?>
 
 <html>
   <head>
@@ -34,19 +33,9 @@ navTrailBirds();
     </div>
 
 
-    <div class=heading><?= $yearCount ?> species</div>
+		<div class=heading><?= $speciesQuery->getSpeciesCount() ?> species</div>
 
-<? $monthlyTotal = performQuery("
-    SELECT COUNT(DISTINCT sighting.SpeciesAbbreviation) AS count, month(sighting.TripDate) AS month
-      FROM sighting, species
-      WHERE sighting.SpeciesAbbreviation=species.Abbreviation
-      AND Year(sighting.TripDate)=" . $theYear . "
-      GROUP BY month");
-
-   formatSpeciesByMonthTable("
-     WHERE sighting.Exclude='0' AND sighting.SpeciesAbbreviation=species.Abbreviation AND sighting.LocationName=location.Name
-       AND year(sighting.TripDate)='" . $theYear . "'",
-      "&year=" . $theYear, $monthlyTotal); ?>
+<? $speciesQuery->formatSpeciesByMonthTable(); ?>
 
     </div>
   </body>

@@ -2,7 +2,8 @@
 <?php
 
 require("./birdwalker.php");
-$speciesID = $_GET['id'];
+
+$speciesID = param($_GET, 'id', 22330150100);
 
 $speciesInfo = getSpeciesInfo($speciesID);
 $sightingQuery = performQuery("select * from sighting where sighting.SpeciesAbbreviation='" . $speciesInfo["Abbreviation"] . "' and Photo='1' order by TripDate desc");

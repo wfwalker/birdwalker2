@@ -3,7 +3,7 @@
 
 require("./birdwalker.php");
 
-$theYear = $_GET["year"];
+$theYear = param($_GET, "year", "1996");
 
 performQuery("CREATE TEMPORARY TABLE tmp (
       SpeciesAbbreviation varchar(16) default NULL,

@@ -1,11 +1,11 @@
 
 <?php
 
-require("./birdwalker.php");
+require("./speciesquery.php");
 
-$id = $_GET["id"];
-$view = $_GET["view"];
-if ($view == "") $view = "species";
+$id = param($_GET, "id", 3);
+$view = param($_GET, "view", "species");
+
 $info = getStateInfo($id);
 
 ?>
@@ -35,36 +35,27 @@ navTrailLocations();
 <?
 if ($view == 'species')
 {
-    $speciesListQuery = performQuery("
-	    SELECT distinct species.* FROM sighting, species, location
-		    WHERE species.Abbreviation=sighting.SpeciesAbbreviation
-			    AND location.Name=sighting.LocationName
-			    AND location.State='" . $info["Abbreviation"] . "'
-			    ORDER BY species.objectid;"); ?>
+	$speciesQuery = new SpeciesQuery;
+	$speciesQuery->setState($info["Abbreviation"]); ?>
 
-    <div class=heading><?= mysql_num_rows($speciesListQuery) ?> Species</div>
-<?  formatTwoColumnSpeciesList($speciesListQuery);
+    <div class=heading><?= $speciesQuery->getSpeciesCount() ?> Species</div>
+<?  $speciesQuery->formatTwoColumnSpeciesList(); 
 }
 elseif ($view == 'speciesbyyear')
 {
-    $stateListCount =  performCount("
-        SELECT COUNT(DISTINCT species.objectid)
-          FROM species, sighting, location
-          WHERE species.Abbreviation=sighting.SpeciesAbbreviation
-            AND sighting.LocationName=location.Name AND location.State='" . $info["Abbreviation"] . "'");
-    $annualStateTotal = performQuery("
-        SELECT COUNT(DISTINCT species.objectid) AS count, year(sighting.TripDate) AS year
-          FROM sighting, species, location
-          WHERE species.Abbreviation=sighting.SpeciesAbbreviation
-            AND sighting.LocationName=location.Name AND location.State='" . $info["Abbreviation"] . "'
-          GROUP BY year"); ?>
-		 <div class=heading><?= $stateListCount ?> Species</div>
-<?  formatSpeciesByYearTable(
-        "WHERE sighting.SpeciesAbbreviation=species.Abbreviation
-            AND sighting.LocationName=location.Name AND location.State='". $info["Abbreviation"] . "'",
-            "&state=" . $abbrev,
-            $annualStateTotal);
+	$speciesQuery = new SpeciesQuery;
+	$speciesQuery->setState($info["Abbreviation"]); ?>
 
+    <div class=heading><?= $speciesQuery->getSpeciesCount() ?> Species</div>
+<?  $speciesQuery->formatSpeciesByYearTable(); 
+}
+elseif ($view == 'speciesbymonth')
+{
+	$speciesQuery = new SpeciesQuery;
+	$speciesQuery->setState($info["Abbreviation"]); ?>
+
+    <div class=heading><?= $speciesQuery->getSpeciesCount() ?> Species</div>
+<?  $speciesQuery->formatSpeciesByMonthTable(); 
 }
 elseif ($view == 'locations')
 {

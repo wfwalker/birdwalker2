@@ -2,7 +2,7 @@
 <?php
 
 require("./birdwalker.php");
-$locationID = $_GET['id'];
+$locationID = param($_GET, 'id', 1);
 
 $siteInfo = getLocationInfo($locationID);
 $sightingQuery = performQuery("

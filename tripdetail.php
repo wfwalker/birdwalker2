@@ -2,9 +2,9 @@
 
 <?php
 
-require("./birdwalker.php");
+require("./speciesquery.php");
 
-$tripID = $_GET['id'];
+$tripID = param($_GET, 'id', 343);
 $tripInfo = getTripInfo($tripID);
 $tripYear = substr($tripInfo["Date"], 0, 4);
 
@@ -78,6 +78,10 @@ navTrailTrips($items);
 
 while($locationInfo = mysql_fetch_array($locationListQuery))
 {
+	$speciesQuery = new SpeciesQuery;
+	$speciesQuery->setTripID($tripID);
+	$speciesQuery->setLocationID($locationInfo["objectid"]);
+
 	$tripLocationQuery = performQuery("SELECT
         species.CommonName, species.ABACountable, species.objectid, sighting.Notes, sighting.Exclude,
         sighting.Photo, sighting.objectid AS sightingid
@@ -101,7 +105,7 @@ while($locationInfo = mysql_fetch_array($locationListQuery))
         <?= $locationFirstSightings ?> life bird<? if ($locationFirstSightings > 1) echo 's'; } ?>
     </div>
 
-    <? formatTwoColumnSpeciesList($tripLocationQuery, $firstSightings, $firstYearSightings); ?>
+    <? $speciesQuery->formatTwoColumnSpeciesList(); ?>
 <? }?>
     </div>
   </body>

@@ -25,6 +25,14 @@ function globalMenu()
 <?
 }
 
+function param($getParams, $paramName, $defaultValue)
+{
+	if ($getParams[$paramName] != "")
+		return $getParams[$paramName];
+	else
+		return $defaultValue;
+}
+
 function editLink($href)
 { 
     if (getEnableEdit()) { ?>
@@ -324,21 +332,6 @@ function getFirstYearSightings($theYear)
 // ---------------------------- SPECIES ---------------------------
 //
 
-/**
- * Select the birdwalker database, query species according to where clause, return the query.
- */
-function getSpeciesQuery($whereClause = "species.Abbreviation=sighting.SpeciesAbbreviation and sighting.Exclude!='1'", $orderClause = "species.objectid")
-{
-	$speciesQueryString =
-		"SELECT distinct species.* FROM species, sighting
-     where " . $whereClause . "
-     order by " . $orderClause;
-
-	$speciesQuery = performQuery($speciesQueryString);
-
-	return $speciesQuery;
-}
-
 function speciesViewLinks($speciesID)
 {
 ?>
@@ -399,18 +392,23 @@ function speciesBrowseButtons($speciesID, $viewMode)
  * Displays a list of species common names that result from a search over
  * species and sighting tables.
  */
-function formatTwoColumnSpeciesList($query, $firstSightings = "", $firstYearSightings = "")
+function formatTwoColumnSpeciesList($speciesQuery, $firstSightings = "", $firstYearSightings = "")
 {
+	$dbQuery = performQuery(
+			$speciesQuery->getSelectClause() . " " .
+			$speciesQuery->getFromClause() . " " .
+			$speciesQuery->getWhereClause() . " ORDER BY species.objectid");
+
 	if ($firstSightings == "") $firstSightings = getFirstSightings();
 
-	$speciesCount = mysql_num_rows($query);
+	$speciesCount = mysql_num_rows($dbQuery);
 	$divideByTaxo = ($speciesCount > 30);
 	$counter = round($speciesCount  * 0.52); ?>
 
 	<table columns=2 width="100%" class=report-content>
       <tr valign=top><td width="50%">
 
-<?	while($info = mysql_fetch_array($query))
+<?	while($info = mysql_fetch_array($dbQuery))
 	{
 		$orderNum =  floor($info["objectid"] / pow(10, 9));
 		
@@ -447,12 +445,12 @@ function formatTwoColumnSpeciesList($query, $firstSightings = "", $firstYearSigh
 /**
  * Show a set of sightings, species by rows, years by columns.
  */
-function formatSpeciesByYearTable($whereClause, $extraSightingListParams, $yearTotals)
+function formatSpeciesByYearTable($sightingQuery, $extraSightingListParams, $yearTotals)
 {
     $gridQueryString="
-    SELECT DISTINCT(CommonName), species.objectid as speciesid, bit_or(1 << (year(TripDate) - 1995)) AS mask
-      FROM sighting, species, location " .
-      $whereClause . "
+    SELECT DISTINCT(CommonName), species.objectid as speciesid, bit_or(1 << (year(TripDate) - 1995)) AS mask " .
+      $sightingQuery->getFromClause() . " " .
+      $sightingQuery->getWhereClause() . " 
       GROUP BY sighting.SpeciesAbbreviation
       ORDER BY speciesid";
 
@@ -521,12 +519,13 @@ function formatSpeciesByYearTable($whereClause, $extraSightingListParams, $yearT
 /**
  * Show a set of sightings, species by rows, months by columns.
  */
-function formatSpeciesByMonthTable($whereClause, $extraSightingListParams, $monthTotals)
+function formatSpeciesByMonthTable($sightingQuery, $extraSightingListParams, $monthTotals)
 {
+	// TOOD, WHAT IF THEREISNT A LOCATION CLAUSE NEEDED?
     $gridQueryString="
-    SELECT DISTINCT(CommonName), species.objectid AS speciesid, bit_or(1 << month(TripDate)) AS mask
-      FROM sighting, species, location ".
-	  $whereClause . "
+    SELECT DISTINCT(CommonName), species.objectid AS speciesid, bit_or(1 << month(TripDate)) AS mask " . 
+      $sightingQuery->getFromClause() . " " .
+      $sightingQuery->getWhereClause() . " 
       GROUP BY sighting.SpeciesAbbreviation
       ORDER BY speciesid";
 
@@ -860,6 +859,11 @@ function getStateInfo($id)
 	return performOneRowQuery("SELECT * FROM state where objectid='" . $id . "'");
 }
 
+function getStateInfoForAbbreviation($abbrev)
+{
+	return performOneRowQuery("SELECT * FROM state where Abbreviation='" . $abbrev . "'");
+}
+
 function stateBrowseButtons($stateID, $viewMode)
 {
 	$firstAndLastState= performOneRowQuery("
@@ -893,8 +897,10 @@ function navTrailCounty($state, $county)
 
 function navTrailLocationDetail($siteInfo)
 {
+	$stateInfo = getStateInfoForAbbreviation($siteInfo["State"]);
+
 	$items[] = "
-    <a href=\"./statelocations.php?state=" .  $siteInfo["State"] . "\">" .
+    <a href=\"./statedetail.php?view=locations&id=" .  $stateInfo["objectid"] . "\">" .
 		strtolower(getStateNameForAbbreviation($siteInfo["State"])) . "
     </a>";
 	$items[] = "

@@ -12,10 +12,17 @@ class SpeciesQuery
 	// constrain this query to a particular state
 	var $mState;
 
-	// constrain this query to a particular year
-	var $mYear;
+	// constrain this query to a trip
+	var $mTripID;
 	// constrain this query to a particular month
 	var $mMonth;
+	// constrain this query to a particular year
+	var $mYear;
+
+	// constrain this query to a particular order
+	var $mOrder;
+	// constrain this query to a particular family
+	var $mFamily;
 
 	function SpeciesQuery()
 	{
@@ -27,14 +34,29 @@ class SpeciesQuery
 	}
 
 	function setLocationID($inValue) { $this->mLocationID = $inValue; }
+	function setTripID($inValue) { $this->mTripID = $inValue; }
 	function setYear($inValue) { $this->mYear = $inValue; }
 	function setMonth($inValue) { $this->mMonth = $inValue; }
 	function setCounty($inValue) { $this->mCounty = $inValue; }
 	function setState($inValue) { $this->mState = $inValue; }
+	function setOrder($inValue) { $this->mOrder = $inValue; }
+	function setFamily($inValue) { $this->mFamily = $inValue; }
+
+	function getSelectClause()
+	{
+		$selectClause = "SELECT DISTINCT species.objectid, species.CommonName, species.LatinName, species.ABACountable";
+
+		if ($this->mTripID != "")
+		{
+			$selectClause = $selectClause . ", sighting.Notes, sighting.Exclude, sighting.Photo, sighting.objectid AS sightingid";
+		}
+
+		return $selectClause;
+	}
 
 	function getFromClause()
 	{
-		$otherWhereClauses = "";
+		$otherTables = "";
 
 		if ($this->mLocationID != "") {
 			$otherTables = $otherTables . ", location";
@@ -53,6 +75,11 @@ class SpeciesQuery
 	{
 		$whereClause = "WHERE species.Abbreviation=sighting.SpeciesAbbreviation";
 
+		if ($this->mTripID != "") {
+			$tripInfo = getTripInfo($this->mTripID);
+			$whereClause = $whereClause . " AND sighting.TripDate='" . $tripInfo["Date"] . "'";
+		}
+
 		if ($this->mLocationID != "") {
 			$whereClause = $whereClause . " AND location.objectid=" . $this->mLocationID;
 			$whereClause = $whereClause . " AND location.Name=sighting.LocationName"; 
@@ -62,6 +89,16 @@ class SpeciesQuery
 		} elseif ($this->mState != "") {
 			$whereClause = $whereClause . " AND location.State='" . $this->mState . "'";
 			$whereClause = $whereClause . " AND location.Name=sighting.LocationName"; 
+		}
+
+		if ($this->mFamily != "") {
+			$whereClause = $whereClause . " AND
+              species.objectid >= " . $this->mFamily * pow(10, 7) . " AND
+              species.objectid < " . ($this->mFamily + 1) * pow(10, 7);
+		} elseif ($this->mOrder != "") {
+			$whereClause = $whereClause . " AND
+              species.objectid >= " . $this->mOrder * pow(10, 9) . " AND
+              species.objectid < " . ($this->mOrder + 1) * pow(10, 9);
 		}
 		
 		if ($this->mMonth !="") {
@@ -74,10 +111,46 @@ class SpeciesQuery
 		return $whereClause;
 	}
 
-	function getQuery()
+	function getParams()
+	{
+		$params = "";
+
+		if ($this->mLocationID != "") {
+			$params = $params . "&locationid=" . $this->mLocationID;
+		} elseif ($this->mCounty != "") {
+			$params = $params . "&county=" . $this->mCounty . "'";
+		} elseif ($this->mState != "") {
+			$params = $params . "&state=" . $this->mState . "'";
+		}
+
+		if ($this->mFamily != "") {
+			$params = $params . "&family=" . $this->mFamily;
+		} elseif ($this->mOrder != "") {
+			$params = $params . "&order=" . $this->mOrder;
+		}
+		
+		if ($this->mMonth !="") {
+			$params = $params . "&month=" . $this->mMonth;
+		}
+		if ($this->mYear !="") {
+			$params = $params . "&year=" . $this->mYear;
+		}
+
+		return $params;
+	}
+
+	function getSpeciesCount()
+	{
+		return performCount("
+          SELECT COUNT(DISTINCT species.objectid) ".
+			$this->getFromClause() . " " .
+			$this->getWhereClause() . " ORDER BY species.objectid");
+	}
+
+	function performQuery()
 	{
 		return performQuery("
-          SELECT DISTINCT species.CommonName, species.objectid, species.ABACountable " . 
+          SELECT DISTINCT species.objectid, species.* ".
 			$this->getFromClause() . " " .
 			$this->getWhereClause() . " ORDER BY species.objectid");
 	}
@@ -116,6 +189,11 @@ class SpeciesQuery
             ORDER BY shuffle LIMIT 1");
 	}
 
+	function formatTwoColumnSpeciesList()
+	{
+		formatTwoColumnSpeciesList($this);
+	}
+
 	function formatSpeciesByYearTable()
 	{
 		$annualTotal = performQuery("
@@ -124,7 +202,7 @@ class SpeciesQuery
 		    $this->getWhereClause() . "
 			GROUP BY year");
 
-		formatSpeciesByYearTable($this->getWhereClause(), "pants", $annualTotal);
+		formatSpeciesByYearTable($this, $this->getParams(), $annualTotal);
 	}
 
 	function formatSpeciesByMonthTable()
@@ -135,7 +213,7 @@ class SpeciesQuery
 		    $this->getWhereClause() . "
 			GROUP BY month");
 
-		formatSpeciesByMonthTable($this->getWhereClause(), "pants", $annualTotal);
+		formatSpeciesByMonthTable($this, $this->getParams(), $annualTotal);
 	}
 }
 ?>

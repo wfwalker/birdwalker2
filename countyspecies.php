@@ -1,14 +1,18 @@
 
 <?php
 
-require("./birdwalker.php");
+require("./speciesquery.php");
 
-$county = $_GET["county"];
-$abbrev = $_GET["state"];
-$stateName = getStateNameForAbbreviation($abbrev);
-$speciesListQuery = performQuery("SELECT distinct species.* FROM sighting, species, location  WHERE species.Abbreviation=sighting.SpeciesAbbreviation AND location.Name=sighting.LocationName AND location.County='" . $county . "' and location.State='" . $abbrev . "' order by species.objectid;");
+$county = param($_GET, "county", "San Mateo");
+$state = param($_GET, "state", "CA");
 
-$speciesCount = mysql_num_rows($speciesListQuery);
+$stateName = getStateNameForAbbreviation($state);
+
+$speciesQuery = new SpeciesQuery;
+
+$speciesQuery->setCounty($county);
+$speciesQuery->setState($state);
+
 $divideByTaxo = ($speciesCount > 30);
 
 ?>
@@ -23,7 +27,7 @@ $divideByTaxo = ($speciesCount > 30);
 <?php
 globalMenu();
 disabledBrowseButtons();
-navTrailCounty($abbrev, $county);
+navTrailCounty($state, $county);
  ?>
 
     <div class=contentright>
@@ -32,16 +36,16 @@ navTrailCounty($abbrev, $county);
         <div class=pagetitle><?= $county ?> County</div>
 
       <div class=metadata>
-<?        countyViewLinks($abbrev, $county); ?>
+<?        countyViewLinks($state, $county); ?>
       </div>
 
       </div>
 
-<div class=heading><?= $speciesCount ?> Species</div>
+<div class=heading><?= $speciesQuery->getSpeciesCount() ?> Species</div>
 
 <?php
 
-formatTwoColumnSpeciesList($speciesListQuery);
+$speciesQuery->formatTwoColumnSpeciesList();
  
 ?>
     </div>

@@ -3,7 +3,7 @@
 
 require("./birdwalker.php");
 
-$speciesID = $_GET['id'];
+$speciesID = param($_GET, 'id', 22330150100);
 $speciesInfo = getSpeciesInfo($speciesID);
 
 $speciesTripQuery = performQuery("

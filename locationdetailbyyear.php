@@ -1,17 +1,13 @@
 
 <?php
 
-require("./birdwalker.php");
+require("./speciesquery.php");
 
-$locationID = $_GET['id'];
+$locationID = param($_GET, 'id', 1);
 $siteInfo = getLocationInfo($locationID);
 
-$speciesCount = performCount("
-    SELECT COUNT(DISTINCT species.objectid)
-      FROM species, sighting
-      WHERE species.Abbreviation=sighting.SpeciesAbbreviation
-      AND sighting.LocationName='" . $siteInfo["Name"]. "'");
-
+$speciesQuery = new SpeciesQuery;
+$speciesQuery->setLocationID($locationID);
 
 $tripCount = performCount("
     SELECT count(DISTINCT trip.objectid)
@@ -64,20 +60,12 @@ navTrailLocationDetail($siteInfo);
     <p class=sighting-notes><?= $siteInfo["Notes"] ?></p>
   
   <div class=heading>
-          <?= $speciesCount ?> species,
+          <?= $speciesQuery->getSpeciesCount() ?> species,
           <?= $tripCount ?> trips<? if ($locationFirstSightings > 0) {  echo ','; ?>
           <?= $locationFirstSightings ?> life bird<? if ($locationFirstSightings > 1) echo 's'; } ?>
   </div>
 
-<?  $annualLocationTotal = performQuery("
-        SELECT COUNT(DISTINCT sighting.SpeciesAbbreviation) AS count, year(sighting.TripDate) AS year
-          FROM sighting, location
-          WHERE sighting.LocationName='" . $siteInfo["Name"] . "'
-          GROUP BY year");
-
-    formatSpeciesByYearTable(
-        "WHERE sighting.LocationName='" . $siteInfo["Name"] . "' AND sighting.SpeciesAbbreviation=species.Abbreviation",
-        "&locationid=" . $siteInfo["objectid"], $annualLocationTotal); ?>
+<? $speciesQuery->formatSpeciesByYearTable(); ?>
 
 </div>
 </body>

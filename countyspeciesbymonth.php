@@ -1,27 +1,21 @@
 
 <?php
 
-require("./birdwalker.php");
+require("./speciesquery.php");
 
-$countyName = $_GET["county"];
-$state = $_GET["state"];
-$countyCount = performCount("
-    SELECT COUNT(DISTINCT species.objectid)
-      FROM species, sighting, location
-      WHERE species.Abbreviation=sighting.SpeciesAbbreviation AND sighting.LocationName=location.Name
-        AND location.County='" . $countyName . "'");
+$county = param($_GET, "county", "Santa Clara");
+$state = param($_GET, "state", "California");
 
-$monthlyCountyTotal = performQuery("
-    SELECT COUNT(DISTINCT sighting.SpeciesAbbreviation) AS count, month(sighting.TripDate) AS month
-      FROM sighting, location
-      WHERE sighting.LocationName=location.Name AND location.County='" . $countyName . "' AND location.State='" . $state . "'
-      GROUP BY month");
+$speciesQuery = new SpeciesQuery;
+$speciesQuery->setCounty($county);
+$speciesQuery->setState($state);
+
 ?>
 
 <html>
   <head>
     <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-	  <title>birdWalker | <?= $countyName ?> County</title>
+	  <title>birdWalker | <?= $county ?> County</title>
   </head>
 
   <body>
@@ -29,25 +23,22 @@ $monthlyCountyTotal = performQuery("
 <?php
 globalMenu();
 disabledBrowseButtons();
-navTrailCounty($state, $countyName);
+navTrailCounty($state, $county);
 ?>
 
     <div class=contentright>
 	  <div class="titleblock">
-<?      rightThumbnailCounty($countyName);?>
-	  <div class=pagetitle><?= $countyName ?> County</div>
+<?      rightThumbnailCounty($county);?>
+	  <div class=pagetitle><?= $county ?> County</div>
       <div class=metadata>
-<?     countyViewLinks($state, $countyName); ?>
+<?     countyViewLinks($state, $county); ?>
       </div>
     </div>
 
- <div class=heading><?= $countyCount ?> species</div>
+    <div class=heading><?= $speciesQuery->getSpeciesCount() ?> species</div>
 
 
-<? formatSpeciesByMonthTable(
-    "WHERE sighting.SpeciesAbbreviation=species.Abbreviation
-        AND sighting.LocationName=location.Name AND location.County='". $countyName . "'",
-        "&county=" . $countyName, $monthlyCountyTotal); ?>
+<? $speciesQuery->formatSpeciesByMonthTable(); ?>
 
     </div>
   </body>

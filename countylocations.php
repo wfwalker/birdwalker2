@@ -3,8 +3,9 @@
 
 require("./birdwalker.php");
 
-$county = $_GET["county"];
-$state = $_GET["state"];
+$county = param($_GET, "county", "San Mateo");
+$state = param($_GET, "state", "CA");
+
 $locationQuery = performQuery("select * from location where county='" . $county . "' order by State, County, Name");
 $locationCount = mysql_num_rows($locationQuery);
 
