@@ -9527,7 +9527,7 @@ INSERT INTO sighting VALUES (9555,'norshr','Malheur NWR','Mary got to see this b
 INSERT INTO sighting VALUES (9556,'bkbmag','Malheur NWR','','0','0','2004-10-23');
 INSERT INTO sighting VALUES (9557,'comrav','Malheur NWR','','0','0','2004-10-23');
 INSERT INTO sighting VALUES (9558,'barswa','Malheur NWR','','0','0','2004-10-23');
-INSERT INTO sighting VALUES (9559,'rebnut','Malheur NWR','','0','0','2004-10-23');
+INSERT INTO sighting VALUES (9559,'rebnut','Malheur NWR','','','1','2004-10-23');
 INSERT INTO sighting VALUES (9560,'canwre','Malheur NWR','','0','0','2004-10-23');
 INSERT INTO sighting VALUES (9561,'ruckin','Malheur NWR','','0','0','2004-10-23');
 INSERT INTO sighting VALUES (9562,'wesblu','Malheur NWR','','0','0','2004-10-23');
@@ -10491,7 +10491,7 @@ INSERT INTO sighting VALUES (10525,'moudov','2138 King Court','1 bird','','','20
 INSERT INTO sighting VALUES (10526,'houspa','2138 King Court','1 bird','','','2005-02-17');
 INSERT INTO sighting VALUES (10527,'saypho','Sunnyvale Baylands','','','1','2005-02-21');
 INSERT INTO sighting VALUES (10528,'turvul','Ulistac Natural Area','','0','0','2005-02-21');
-INSERT INTO sighting VALUES (10529,'rethaw','Sunnyvale Baylands','','','','2005-02-21');
+INSERT INTO sighting VALUES (10529,'rethaw','Sunnyvale Baylands','','','1','2005-02-21');
 INSERT INTO sighting VALUES (10530,'blkpho','Ulistac Natural Area','','0','0','2005-02-21');
 INSERT INTO sighting VALUES (10531,'whcspa','Ulistac Natural Area','','0','0','2005-02-21');
 INSERT INTO sighting VALUES (10532,'gocspa','Ulistac Natural Area','','0','0','2005-02-21');
