@@ -10,7 +10,7 @@ $county = $_GET["county"];
 $state = $_GET["state"];
 
 $speciesListQueryString = "
-    SELECT DISTINCT species.*
+    SELECT DISTINCT species.CommonName, species.objectid, species.ABACountable
       FROM sighting, species, location, trip
       WHERE species.Abbreviation=sighting.SpeciesAbbreviation
       AND location.Name=sighting.LocationName
@@ -74,8 +74,10 @@ navTrailBirds();
 <?    rightThumbnail($photoQueryString . $otherWhereClauses . " LIMIT 1"); ?>
 	  <div class=pagetitle><?= $pageTitle ?></div>
 	  <div class=pagesubtitle><?= $pageSubtitle ?></div>
-      <div class=metadata><?= $speciesCount ?> Species</div>
+<?    if (($state == 'CA') && ($year != "")) { ?><div class=metadata>See also our <a href="./chronocayearlist.php?year=<?=$year?>">California ABA Year List for <?=$year?></a></div><? } ?>
       </div>
+
+   <div class=heading><?= $speciesCount ?> Species</div>
 
 <? formatTwoColumnSpeciesList($speciesListQuery); ?>
 
