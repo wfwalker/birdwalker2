@@ -37,35 +37,26 @@ function browseButtons($urlPrefix, $current, $first, $prev, $next, $last)
 
 ?>
    <div class="navigationleft">
-<?	
-	if ($current == $first)
-	{
-?>
+
+<?	if ($current == $first)
+	{ ?>
 		<span class=navbutton><?= $firstLabel ?></span> <span class=navbutton><?= $prevLabel ?></span>
-<?
-	}
+<?	}
 	else
-	{
-?>
+	{ ?>
 		<span class=navbutton><a href="<?= $urlPrefix . $first ?>"><?= $firstLabel ?></a></span>
 		<span class=navbutton><a href="<?= $urlPrefix . $prev ?>"><?= $prevLabel ?></a></span>
-<?
-	}
+<?	}
 
 	if ($current == $last)
-	{
-?>
+	{?>
 		<span class=navbutton><?= $nextLabel ?></span> <span class=navbutton><?= $lastLabel ?></span>
-<?
-	}
+<?	}
 	else
-	{
-?>
+	{ ?>
 		<span class=navbutton><a href="<?= $urlPrefix . $next ?>"><?= $nextLabel ?></a></span>
 		<span class=navbutton><a href="<?= $urlPrefix . $last ?>"><?= $lastLabel ?></a></span>
-<?
-	}
-?>
+<?	} ?>
 	</div>
 <?
 }
@@ -76,11 +67,10 @@ function pageThumbnail($photoQueryString)
 
 	if (mysql_num_rows($photoQuery) > 0)
 	{
-		$photoInfo = mysql_fetch_array($photoQuery);
-?>
+		$photoInfo = mysql_fetch_array($photoQuery); ?>
+
 		<div class=thumb><?= getThumbForSightingInfo($photoInfo) ?><div class=copyright>@2004 W. F. Walker</div></div>
-<?
-	}
+<?	}
 }
 
 function navTrailBirds($extra = "")
@@ -185,7 +175,7 @@ function performQuery($queryString)
 	$theQuery = mysql_query($queryString) or die("<p>Error during query: " . $queryString . "</p><p>" . mysql_error() . "</p>");
 	if (getEnableEdit())
 	{ ?>
-		<!--  <?= (1000 * (microtime(1) - $start)) ?>, <?= $queryString ?> -->
+		<!--  <?= (1000 * (microtime(1) - $start)) ?>, <?= $queryString ?>, <?= mysql_num_rows($theQuery) ?> rows -->
 <?	}
 	return $theQuery;
 }
