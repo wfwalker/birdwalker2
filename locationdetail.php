@@ -6,8 +6,6 @@ require("./birdwalker.php");
 $locationID = $_GET['id'];
 $siteInfo = getLocationInfo($locationID);
 
-$locationCount = performCount("SELECT COUNT(DISTINCT(objectid)) FROM location");
-
 $speciesCount = performCount("
     SELECT COUNT(DISTINCT species.objectid)
       FROM species, sighting
@@ -26,19 +24,18 @@ $tripQuery = performQuery("
 $tripCount = mysql_num_rows($tripQuery);
 
 $firstLocationID = performCount("
-    SELECT objectid FROM location ORDER BY CONCAT(State,County,Name)");
+    SELECT objectid FROM location ORDER BY CONCAT(State,County,Name) LIMIT 1");
 $lastLocationID = performCount("
-    SELECT objectid FROM location ORDER BY CONCAT(State,County,Name) DESC");
+    SELECT objectid FROM location ORDER BY CONCAT(State,County,Name) DESC LIMIT 1");
 
 $nextLocationID = performCount("
     SELECT objectid FROM location
       WHERE CONCAT(State,County,Name) > '" . $siteInfo["State"] . $siteInfo["County"] . $siteInfo["Name"] . "'
-      ORDER BY CONCAT(State,County,Name)");
+      ORDER BY CONCAT(State,County,Name) LIMIT 1");
 $prevLocationID = performCount("
     SELECT objectid FROM location
       WHERE CONCAT(State,County,Name) < '" . $siteInfo["State"] . $siteInfo["County"] . $siteInfo["Name"] . "'
-      ORDER BY CONCAT(State,County,Name) DESC");
-
+      ORDER BY CONCAT(State,County,Name) DESC LIMIT 1");
 
 $locationSightings = performQuery("
     SELECT sighting.objectid FROM sighting, location
