@@ -5,6 +5,8 @@ require("./birdwalker.php");
 
 getEnableEdit() or die("Editing disabled");
 
+$sightingCount = performCount("select max(objectid) from sighting");
+
 // the GET id determines which record to show
 $sightingID = $_GET['id'];
 
@@ -16,7 +18,7 @@ $save = $_POST['Save'];
 $new = $_POST['New'];
 
 // if NEW, set the POST id to a new unique sighting objectid
-if ($new == "New") { $postSightingID = 1 + performCount("select count(*) from sighting"); }
+if ($new == "New") { $postSightingID = 1 + performCount("select max(objectid) from sighting"); }
 
 // if we have a POST id and either a new or a save button, then time to update
 if ($postSightingID != "") {
@@ -74,15 +76,21 @@ $locationList = performQuery("select Name, objectid from location");
     </div>
 
 <div class="contentright">
+
 <div class="titleblock">
+
 <?php if ($sightingInfo["Photo"] == "1") { echo getThumbForSightingInfo($sightingInfo); } ?>
-	  <div class=pagetitle><a href="./speciesdetail.php?id=<?php echo $speciesInfo["objectid"] ?>"><?php echo $speciesInfo["CommonName"] ?></a></div>
-      <div class=pagesubtitle><a href="./tripdetail.php?id=<?php echo $tripInfo["objectid"] ?>"><?php echo $tripInfo["niceDate"] ?></div>
-      <div class=metadata>
-        <a href="./countydetail.php?county=<?php echo $locationInfo["County"] ?>"><?php echo $locationInfo["County"] ?> County</a>,
-        <a href="./statedetail.php?state=<?php echo $locationInfo["State"] ?>"><?php echo getStateNameForAbbreviation($locationInfo["State"]) ?></a>
-      </div>
-	  <br clear=all/>
+
+  <div class=pagetitle>
+    <a href="./speciesdetail.php?id=<?php echo $speciesInfo["objectid"] ?>"><?php echo $speciesInfo["CommonName"] ?></a>
+  </div>
+  <div class=pagesubtitle>
+    <a href="./tripdetail.php?id=<?php echo $tripInfo["objectid"] ?>"><?php echo $tripInfo["niceDate"] ?>
+  </div>
+  <div class=metadata>
+    <a href="./countydetail.php?county=<?php echo $locationInfo["County"] ?>"><?php echo $locationInfo["County"] ?> County</a>,
+    <a href="./statedetail.php?state=<?php echo $locationInfo["State"] ?>"><?php echo getStateNameForAbbreviation($locationInfo["State"]) ?></a>
+  </div>
 </div>
 
 <form method="post" action="./sightingedit.php?id=<?php echo $sightingID ?>">
