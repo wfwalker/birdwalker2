@@ -51,13 +51,13 @@
 .pagesubtitle {font: 12pt Times, Serif; font-style: italic}
 .metadata {font: 9pt Arial, Serif}
 .heading {margin-top: 5px; margin-bottom: 5px; padding: 5pt; background-color: #EEEEEE}
-.titleblock {border: solid 1px lightgray; margin-top: 5px; margin-bottom: 5px; padding: 5pt; background-color: #EEEEEE}
+.titleblock {border: solid 1px #DDDDDD; margin-top: 5px; margin-bottom: 5px; padding: 5pt; background-color: #EEEEEE}
 
 .report-content {font: 10pt Arial, Serif}
 .titlecell {background-color: #EEEEEE}
 .firstcell {padding-left: 15px}
 .fieldlabel {padding-left: 15px; font: 9pt Courier, Fixed; text-align: right; vertical-align: top}
-.bordered {border-left: solid 1px lightgray; border-bottom: solid 1px lightgray; width: 25px}
+.bordered {border-left: solid 1px #DDDDDD; border-bottom: solid 1px #DDDDDD; width: 25px}
 .yearcell {width: 20px; border-left: solid 1px lightgray; border-bottom: solid 1px lightgray; color: lightgray}
 
 /* Styles for items within lists */

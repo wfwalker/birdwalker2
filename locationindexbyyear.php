@@ -10,7 +10,7 @@ $locationCount = performCount("select count(distinct location.objectid) from loc
 <html>
   <head>
     <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-    <title>birdWalker | Locations</title>
+    <title>birdWalker | Locations by Year</title>
   </head>
   <body>
 
@@ -18,7 +18,7 @@ $locationCount = performCount("select count(distinct location.objectid) from loc
 
     <div class=contentright>
       <div class="titleblock">	  
-	  <div class=pagetitle>Mary and Bill&apos;s Location List</div>
+	  <div class=pagetitle>Locations by Year</div>
         <div class=pagesubtitle><?php echo $locationCount ?> Locations</div>
       </div>
 
