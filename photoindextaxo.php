@@ -4,12 +4,14 @@
 require("./birdwalker.php");
 
 $photoSpecies = performQuery("
-    SELECT DISTINCT species.*, COUNT(DISTINCT sighting.objectid) AS photoCount
+    SELECT DISTINCT species.*, COUNT(DISTINCT sighting.objectid) AS photoCount, max(sighting.TripDate) as latestPhoto
       FROM species, sighting
       WHERE species.Abbreviation=sighting.SpeciesAbbreviation AND sighting.Photo='1'
       GROUP BY sighting.SpeciesAbbreviation ORDER BY species.objectid");
 $photoCount = performCount("
     SELECT COUNT(*) FROM sighting WHERE Photo='1'");
+
+$thresholdTime = strtotime("-1 month");
 
 ?>
 
@@ -56,7 +58,12 @@ while($info = mysql_fetch_array($photoSpecies))
 
 	if ($info["photoCount"] > 1)
 	{ ?>
-        <div><a href="./speciesdetail.php?view=photo&speciesid=<?= $info["objectid"] ?>"><?= $info["CommonName"] ?></a> (<?= $info["photoCount"] ?>)</div>
+        <div>
+            <a href="./speciesdetail.php?view=photo&speciesid=<?= $info["objectid"] ?>">
+                 <?= $info["CommonName"] ?>
+            </a> (<?= $info["photoCount"] ?>)
+			<? if (strtotime($info["latestPhoto"]) > $thresholdTime) echo "NEW"; ?>
+        </div>
 <?	}
 	else
 	{ ?>
