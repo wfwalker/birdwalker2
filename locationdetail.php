@@ -38,7 +38,7 @@ $firstSightings = getFirstSightings();
   <div class=pagetitle><?php echo $siteInfo["Name"] ?></div>
   <div class=pagesubtitle>
     <a href="./countydetail.php?county=<?php echo $siteInfo["County"] ?>"><?php echo $siteInfo["County"] ?> County</a>,
-    <a href="./statedetail.php?state=<?php echo $siteInfo["State"] ?>"><?php echo getStateNameForAbbreviation($siteInfo["State"]) ?>
+    <a href="./statedetail.php?state=<?php echo $siteInfo["State"] ?>"><?php echo getStateNameForAbbreviation($siteInfo["State"]) ?></a>
   </div>
 
 <?php
