@@ -2,7 +2,8 @@
 
 <?
 require("./birdwalker.php");
-$latestTrips = performQuery("select *, date_format(Date, '%M %e, %Y') AS niceDate from trip order by Date desc limit 5");
+// Sat, 07 Sep 2002 00:00:01 GMT
+$latestTrips = performQuery("select *, date_format(Date, '%a, %d %b %Y %T GMT') AS niceDate from trip order by Date desc limit 5");
 ?>
 
 <rss version="2.0">
