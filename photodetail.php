@@ -48,7 +48,7 @@ navTrailPhotos();
 
 <div class="contentright">
   <div class=report-content>
-    <a href="./tripdetail.php?id=<?= $tripInfo["objectid"] ?>"><?= $tripInfo["niceDate"] ?>
+    <a href="./tripdetail.php?tripid=<?= $tripInfo["objectid"] ?>"><?= $tripInfo["niceDate"] ?>
   </div>
 
 <div class="titleblock">

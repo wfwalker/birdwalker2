@@ -23,7 +23,7 @@ $latestTrips = performQuery("select *, date_format(Date, '%a, %d %b %Y %T GMT') 
           <pubDate><?= $info["niceDate"] ?></pubDate>
           <title><?= $info["Name"] ?></title>
 		   <category>trip</category>
-          <link>http://sven.spflrc.org/~walker/tripdetail.php?id=<?=$info["objectid"]?></link>
+          <link>http://sven.spflrc.org/~walker/tripdetail.php?tripid=<?=$info["objectid"]?></link>
           <description><?= htmlentities($info["Notes"]) ?></description>
       </item>
 <?	  } ?>

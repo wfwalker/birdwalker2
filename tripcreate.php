@@ -70,7 +70,7 @@ if ($save == "Save")
 	// FINALLY insert the trip record
 	performQuery("INSERT INTO trip VALUES (" . ($tripID + 1) . ", '" . $leader . "', '', '" . $tripName . "', '" . $notes . "', '" . $tripDate . "');");
 
-	echo "<a href=\"./tripdetail.php?id=" . ($tripID + 1) . "\">Trip Created</a>";
+	echo "<a href=\"./tripdetail.php?tripid=" . ($tripID + 1) . "\">Trip Created</a>";
 }
 ?>
 
