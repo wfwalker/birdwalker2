@@ -52,9 +52,14 @@ navTrailPhotos(" &gt;missing");
 		if (($info["theSum"] == "0") && ($info["theCount"] >= $threshold))
 		{
 ?>
-        <tr><td>
-          <a href="./speciesdetail.php?id=<?= $info["objectid"] ?>"><?= $info["CommonName"] ?></td><td align=right><?= $info["theCount"] ?></a>
-        </td></tr>
+        <tr>
+          <td>
+            <a href="./speciesdetail.php?id=<?= $info["objectid"] ?>"><?= $info["CommonName"] ?></a>
+          </td>
+          <td align=right>
+            <?= $info["theCount"] ?>
+          </td>
+        </tr>
 <?
 			$speciesCount++;
 		}
