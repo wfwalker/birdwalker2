@@ -41,9 +41,7 @@ while($info = mysql_fetch_array($tripListQuery))
 
   if (($counter % 2) == 0) echo "\n<tr>";
 
-  echo "<td align=right>" . $info["tripCount"];
-  echo "<td class=firstcell><a href=\"./tripdetail.php?id=".$info["objectid"]."\">" . $info["Name"] . " (" . $info["niceDate"] . ")</a></td>";
-  if (getEnableEdit()) { echo "\n <a href=\"./tripedit.php?id=" . $info["objectid"] . "\">edit</a>"; }
+  echo "<td class=firstcell><a href=\"./tripdetail.php?id=".$info["objectid"]."\">" . $info["Name"] . ", " . $info["niceDate"] . "</a></td>";
   echo "</td>";
   if (($counter % 2) == 1) echo "</tr>";
 
