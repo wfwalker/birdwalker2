@@ -30,16 +30,9 @@ if (($postTripID != "") && ($save == "Save"))
 }
 
 $tripInfo = getTripInfo($tripID);
-?>
 
+htmlHead($tripInfo["Name"] . ", " .$tripInfo["niceDate"]);
 
-<html>
-
-  <? htmlHead($tripInfo["Name"] . ", " .$tripInfo["niceDate"]); ?>
-
-  <body>
-
-<?php
 globalMenu();
 tripBrowseButtons("./tripedit.php", $tripID, "edit");
 navTrailTrips();
