@@ -139,3 +139,4 @@ INSERT INTO location VALUES (138,'Other San Benito','','','San Benito','CA','','
 INSERT INTO location VALUES (139,'Big Basin State Park','','Ben Lomond','Santa Cruz','CA','','',0,0);
 INSERT INTO location VALUES (140,'Arrowhead Marsh','http://baytrail.abag.ca.gov/vtour/map5/access/arrow.htm','Oakland','Alameda','CA','','',37.7444,122.213);
 INSERT INTO location VALUES (141,'Lake Merritt','','Oakland','Alameda','CA','','',0,0);
+INSERT INTO location VALUES (142,'Bair Island','','Redwood City','San Mateo','CA','','',37.53,122.221);
