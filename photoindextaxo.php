@@ -18,7 +18,7 @@ $photoCount = performCount("select count(*) from sighting where Photo='1'");
 <?php
 globalMenu();
 disabledBrowseButtons();
-navTrailPhotos("by species | <a href=\"./photoindex.php\">by date</a>");
+navTrailPhotos();
 pageThumbnail("select *, rand() as shuffle from sighting where Photo='1' order by shuffle");
 ?>
 
@@ -26,6 +26,7 @@ pageThumbnail("select *, rand() as shuffle from sighting where Photo='1' order b
       <div class="titleblock">	  
 	    <div class=pagetitle>Photo Index</div>
         <div class=pagesubtitle><?= $photoCount ?> photos covering <?= mysql_num_rows($photoSpecies) ?> species</div>
+        <div class=metadata>by species | <a href="./photoindex.php">by date</a></div>
       </div>
 
 <div class=col1>
