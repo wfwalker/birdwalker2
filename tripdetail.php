@@ -3,6 +3,7 @@
 require("./birdwalker.php");
 
 $tripInfo = getTripInfo($_GET['id']);
+$tripYear =  substr($tripInfo["Date"], 0, 4);
 
 $whereClause = "sighting.LocationName=location.Name and species.Abbreviation=sighting.SpeciesAbbreviation and sighting.TripDate='" . $tripInfo["Date"]. "'";
 
@@ -13,6 +14,7 @@ $tripSpeciesCount = getFancySpeciesCount($whereClause);
 $tripSpeciesQuery = getFancySpeciesQuery($whereClause, "sighting.LocationName, species.objectID", ", sighting.LocationName, location.objectid as locationid, sighting.Notes, sighting.Exclude, sighting.objectid as sightingid");
 
 $firstSightings = getFirstSightings();
+$firstYearSightings = getFirstYearSightings(substr($tripInfo["Date"], 0, 4));
 ?>
 
 <html>
@@ -33,7 +35,7 @@ $firstSightings = getFirstSightings();
 <?php if (strlen($tripInfo["ReferenceURL"]) > 0) {
       echo "<div><a href=\"" . $tripInfo["ReferenceURL"] . "\">Trip Website</a></div>";
 } ?>
-	  </div>
+    </div>
 
       <div class=sighting-notes> <?php echo $tripInfo["Notes"] ?></div>
 
@@ -59,10 +61,10 @@ while($speciesInfo = mysql_fetch_array($tripSpeciesQuery)) {
   }
 
   $sightingID = $speciesInfo["sightingid"];
-  if ($firstSightings[$sightingID] != null)
-  {
-    echo "<div class=sighting-notes>first</div>";
-  }
+
+  if ($firstSightings[$sightingID] != null) echo "<div class=sighting-notes>first life sighting</div>";
+  else if ($firstYearSightings[$sightingID] != null) echo "<div class=sighting-notes>first " . $tripYear . " sighting</div>";
+
 
   echo "</div>";
 
