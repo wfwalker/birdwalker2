@@ -26,13 +26,13 @@ navTrailTrips("");
         <div class=pagetitle>Trips</div>
 	  </div>
 
-	<div class=heading> <?= $tripQuery->getTripCount() ?> trips</div>
+	  <div class=heading> <?= $tripQuery->getTripCount() ?> trips</div>
 
 
-<? $tripQuery->formatTwoColumnTripList(); ?>
-
-      </div>
 <?
+      $tripQuery->formatTwoColumnTripList();
+
+
 footer();
 ?>
 
