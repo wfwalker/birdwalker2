@@ -96,3 +96,18 @@ CREATE TABLE sighting (
   KEY TripDateIndex (TripDate),
   KEY LocationNameIndex (LocationName)
 ) TYPE=MyISAM;
+
+
+--
+-- Table structure for table 'state'
+--
+
+drop table if exists state;
+
+CREATE TABLE state (
+  objectid mediumint(9) NOT NULL auto_increment,
+  Abbreviation varchar(16) default NULL,
+  Name varchar(16) default NULL,
+  Notes text,
+  PRIMARY KEY  (objectid),
+) TYPE=MyISAM;

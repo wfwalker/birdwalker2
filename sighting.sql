@@ -9523,7 +9523,7 @@ INSERT INTO sighting VALUES (9551,'sancra','Malheur NWR','','0','0','2004-10-23'
 INSERT INTO sighting VALUES (9552,'calgul','Malheur NWR','','0','0','2004-10-23');
 INSERT INTO sighting VALUES (9553,'belkin','Malheur NWR','','0','0','2004-10-23');
 INSERT INTO sighting VALUES (9554,'norfli','Malheur NWR','','0','0','2004-10-23');
-INSERT INTO sighting VALUES (9555,'norshr','Malheur NWR','','0','0','2004-10-23');
+INSERT INTO sighting VALUES (9555,'norshr','Malheur NWR','Mary got to see this bird that Bill first saw seven years earlier at Malheur, allowing us to add one more to the life list. ','','','2004-10-23');
 INSERT INTO sighting VALUES (9556,'bkbmag','Malheur NWR','','0','0','2004-10-23');
 INSERT INTO sighting VALUES (9557,'comrav','Malheur NWR','','0','0','2004-10-23');
 INSERT INTO sighting VALUES (9558,'barswa','Malheur NWR','','0','0','2004-10-23');
@@ -9580,3 +9580,9 @@ INSERT INTO sighting VALUES (9608,'amekes','Malheur NWR','','0','0','2004-10-24'
 INSERT INTO sighting VALUES (9609,'comrav','Malheur NWR','','0','0','2004-10-24');
 INSERT INTO sighting VALUES (9610,'wesblu','Malheur NWR','','0','0','2004-10-24');
 INSERT INTO sighting VALUES (9612,'moudov','Malheur NWR','','0','0','2004-10-24');
+INSERT INTO sighting VALUES (9613,'coohaw','Charleston Slough','This guy landed just ten feet in front of me, and held still for long enough to snap off a few shots.','','1','2004-10-29');
+INSERT INTO sighting VALUES (9614,'amecoo','Charleston Slough','','0','0','2004-10-29');
+INSERT INTO sighting VALUES (9615,'bcnher','Charleston Slough','','0','0','2004-10-29');
+INSERT INTO sighting VALUES (9616,'annhum','Charleston Slough','','0','0','2004-10-29');
+INSERT INTO sighting VALUES (9617,'lobdow','Charleston Slough','','0','0','2004-10-29');
+INSERT INTO sighting VALUES (9618,'gocspa','Charleston Slough','','0','0','2004-10-29');
