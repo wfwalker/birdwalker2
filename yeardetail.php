@@ -6,7 +6,6 @@ require("./birdwalker.php");
 $theYear = $_GET["year"];
 
 $yearCount = performCount("select count(distinct species.objectid) from species, sighting where sighting.Exclude!='1' and species.Abbreviation=sighting.SpeciesAbbreviation and year(sighting.TripDate)='" . $theYear . "'");
-$randomPhotoSightings = performQuery("select sighting.*, rand() as shuffle from sighting where sighting.Photo='1' and Year(TripDate)='" . $theYear . "' order by shuffle");
 
 ?>
 
@@ -17,9 +16,12 @@ $randomPhotoSightings = performQuery("select sighting.*, rand() as shuffle from 
   </head>
   <body>
 
-<?php globalMenu(); browseButtons("./yeardetail.php?year=", $theYear, 1996, $theYear - 1, $theYear + 1, 2004); navTrailBirds(); ?>
-
-<div class=thumb><?php  if (mysql_num_rows($randomPhotoSightings) > 0) { $photoInfo = mysql_fetch_array($randomPhotoSightings); if (mysql_num_rows($randomPhotoSightings) > 0) echo "<td>" . getThumbForSightingInfo($photoInfo) . "</td>"; } ?></div>
+<?php
+globalMenu();
+browseButtons("./yeardetail.php?year=", $theYear, 1996, $theYear - 1, $theYear + 1, 2004);
+navTrailBirds();
+pageThumbnail("select sighting.*, rand() as shuffle from sighting where sighting.Photo='1' and Year(TripDate)='" . $theYear . "' order by shuffle");
+?>
 
     <div class=contentright>
       <div class="titleblock">	  
