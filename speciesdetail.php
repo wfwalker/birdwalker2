@@ -42,7 +42,10 @@ navTrailSpecies($speciesID);
     <div class="pagesubtitle"><?= $speciesInfo["LatinName"] ?></div>
 	<div class="titleblock">
 <?    if ($view != "photo") { rightThumbnailSpecies($speciesInfo["Abbreviation"]); } ?>
-      <div class="pagetitle"><?= $speciesInfo["CommonName"] ?></div>
+      <div class="pagetitle">
+        <?= $speciesInfo["CommonName"] ?>
+        <?= editlink("./speciesedit.php?id=" . $speciesID) ?>
+      </div>
       <div class=metadata>
 <?  if (strlen($speciesInfo["ReferenceURL"]) > 0) { ?>
         <div><a href="<?= $speciesInfo["ReferenceURL"] ?>">See also...</a></div>
