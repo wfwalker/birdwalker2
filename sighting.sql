@@ -4740,7 +4740,7 @@ INSERT INTO sighting VALUES (4740,'norfli','Humboldt County','','0','0','2002-10
 INSERT INTO sighting VALUES (4741,'norful','Humboldt County','','0','0','2002-10-12');
 INSERT INTO sighting VALUES (4742,'norpin','Humboldt County','','0','0','2002-10-12');
 INSERT INTO sighting VALUES (4743,'norsho','Humboldt County','','0','0','2002-10-12');
-INSERT INTO sighting VALUES (4744,'oldsqu','Humboldt County','','1','0','2002-10-12');
+INSERT INTO sighting VALUES (4744,'lotduc','Humboldt County','','1','','2002-10-12');
 INSERT INTO sighting VALUES (4745,'daejun','Humboldt County','','0','0','2002-10-12');
 INSERT INTO sighting VALUES (4746,'osprey','Humboldt County','','0','0','2002-10-12');
 INSERT INTO sighting VALUES (4747,'pacloo','Humboldt County','','0','0','2002-10-12');
@@ -8384,7 +8384,7 @@ INSERT INTO sighting VALUES (8394,'motduc','McAllen','','0','0','2004-04-18');
 INSERT INTO sighting VALUES (8395,'commoo','McAllen','','0','0','2004-04-18');
 INSERT INTO sighting VALUES (8396,'incdov','McAllen','','0','0','2004-04-18');
 INSERT INTO sighting VALUES (8397,'whwdov','McAllen','','','','2004-04-18');
-INSERT INTO sighting VALUES (8398,'whfpar','McAllen','','0','0','2004-04-18');
+INSERT INTO sighting VALUES (8398,'whfpar','McAllen','','','1','2004-04-18');
 INSERT INTO sighting VALUES (8399,'lesnig','McAllen','','','1','2004-04-18');
 INSERT INTO sighting VALUES (8400,'easkin','McAllen','','0','0','2004-04-18');
 INSERT INTO sighting VALUES (8401,'purmar','McAllen','','0','0','2004-04-18');

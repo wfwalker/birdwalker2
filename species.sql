@@ -216,7 +216,7 @@ INSERT INTO species VALUES (7013110200,'whwsco','Melanitta fusca','White-winged 
 INSERT INTO species VALUES (7013110201,'velsco','Melanitta fusca 1','Velvet Scoter','','',1);
 INSERT INTO species VALUES (7013110300,'blksco','Melanitta nigra','Black Scoter','','http://www.mbr-pwrc.usgs.gov/id/framlst/i1630id.html',1);
 INSERT INTO species VALUES (7013110301,'amesco','Melanitta nigra 1','American Scoter','','',1);
-INSERT INTO species VALUES (7013120100,'oldsqu','Clangula hyemalis','Oldsquaw','','',1);
+INSERT INTO species VALUES (7013120100,'lotduc','Clangula hyemalis','Long-Tailed Duck','','',1);
 INSERT INTO species VALUES (7013130100,'buffle','Bucephala albeola','Bufflehead','','',1);
 INSERT INTO species VALUES (7013130200,'comgol','Bucephala clangula','Common Goldeneye','','',1);
 INSERT INTO species VALUES (7013130300,'bargol','Bucephala islandica','Barrow\'s Goldeneye','','http://www.mbr-pwrc.usgs.gov/id/framlst/i1520id.html',1);
@@ -1585,3 +1585,4 @@ INSERT INTO species VALUES (22391070100,'javspa','Padda oryzivora','Java Sparrow
 INSERT INTO species VALUES (22392010100,'vilind','Vidua chalybeata','Village Indigobird','','',1);
 INSERT INTO species VALUES (22392010200,'pitwhy','Vidua macroura','Pin-tailed Whydah','','',1);
 INSERT INTO species VALUES (6010010101,'chifla','Phoenicopterus chilensis','Chilean Flamingo','','',0);
+INSERT INTO species VALUES (13023100800,'whfpar','Amazona albifrons','White-Fronted Parrot','','',0);
