@@ -1,4 +1,4 @@
-INSERT INTO trip VALUES (1,'Steve Shunk?','','From Field List 1','We think this might be the trip we took with Jacques and Marianne','1996-02-10');
+INSERT INTO trip VALUES (1,'Steve Shunk?','','From Field List 1','We think this might be the trip we took with Jacques and Marianne. Our records from these early trips are very sketchy.','1996-02-10');
 INSERT INTO trip VALUES (2,'Mary and Bill?','','From Field List 2','','1996-02-11');
 INSERT INTO trip VALUES (3,'Mary and Bill?','','From Field List 3','','1996-03-15');
 INSERT INTO trip VALUES (4,'Mary and Bill','','Lunch with Andria and Sumit','','1996-07-06');
@@ -316,3 +316,4 @@ INSERT INTO trip VALUES (315,'Mary and Bill','','Mission College Owl Safari','',
 INSERT INTO trip VALUES (316,'Mary and Bill','','Saturday Stroll','','2004-06-05');
 INSERT INTO trip VALUES (317,'Bill','','Waiting for Train','','2004-03-16');
 INSERT INTO trip VALUES (318,'Bill ','','Rookery Visit','','2004-05-22');
+INSERT INTO trip VALUES (319,'Mary and Bill','','San Mateo Adventure','','2004-06-12');
