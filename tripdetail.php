@@ -12,12 +12,16 @@ $tripCount = performCount("select max(objectid) from trip");
 $locationListQuery = performQuery("SELECT distinct(location.objectid), location.Name
   FROM location, sighting
   WHERE location.Name=sighting.LocationName and sighting.TripDate='". $tripInfo["Date"] . "'");
+$locationCount = mysql_num_rows($locationListQuery);
 
 $firstSightings = getFirstSightings();
 $firstYearSightings = getFirstYearSightings(substr($tripInfo["Date"], 0, 4));
 
 // how many first sightings were on this trip?
-$tripSightings = performQuery("SELECT objectid FROM sighting WHERE TripDate='" . $tripInfo['Date'] . "'");
+$tripSightings = performQuery("
+    SELECT sighting.objectid FROM sighting, species
+      WHERE sighting.SpeciesAbbreviation=species.Abbreviation
+      AND TripDate='" . $tripInfo['Date'] . "'");
 
 // total species count for this trip
 $tripSpeciesCount = mysql_num_rows($tripSightings);
@@ -26,6 +30,7 @@ $tripFirstSightings = 0;
 while($sightingInfo = mysql_fetch_array($tripSightings)) {
 	if ($firstSightings[$sightingInfo['objectid']] != null) { $tripFirstSightings++; }
 }
+
 ?>
 
   <head>
@@ -49,11 +54,13 @@ pageThumbnail("select *, rand() as shuffle from sighting where Photo='1' and Tri
       <div class=pagetitle> <?= $tripInfo["Name"] ?></div>
       <div class=pagesubtitle> <?= $tripInfo["niceDate"] ?></div>
       <div class=metadata>Led by  <?= $tripInfo["Leader"] ?></div>
-      <div class=metadata>Observed  <?= $tripSpeciesCount ?> species on this trip
-        <? if ($tripFirstSightings > 0) { ?>, including <?= $tripFirstSightings ?> first sightings <? } ?>
-      </div>
 
-<? if (strlen($tripInfo["ReferenceURL"]) > 0) { ?>
+<? if ($locationCount > 1) { ?>
+          <div class=metadata><?= $tripSpeciesCount ?> species<? if ($tripFirstSightings > 0) { ?>,
+          <?= $tripFirstSightings ?> first sightings <? } ?>
+          </div>
+<? }
+   if (strlen($tripInfo["ReferenceURL"]) > 0) { ?>
 	  <div><a href="<?= $tripInfo["ReferenceURL"] ?>">See also...</a></div>
 <? }
    if (getEnableEdit()) { ?>
@@ -75,11 +82,19 @@ while($locationInfo = mysql_fetch_array($locationListQuery))
         sighting.LocationName='" . $locationInfo["Name"] . "'
       ORDER BY species.objectid");
 
+	$locationFirstSightings = 0;
+	while($sightingInfo = mysql_fetch_array($tripLocationQuery)) {
+		if ($firstSightings[$sightingInfo['objectid']] != null) { $locationFirstSightings++; }
+	}
+	mysql_data_seek($tripLocationQuery, 0);
+
 	$tripLocationCount = mysql_num_rows($tripLocationQuery);
 	$divideByTaxo = ($tripLocationCount > 30); ?>
 
     <div class="heading">
-        <a href="./locationdetail.php?id=<?= $locationInfo["objectid"]?>"><?= $locationInfo["Name"] ?></a>, <?= $tripLocationCount ?> species
+        <a href="./locationdetail.php?id=<?= $locationInfo["objectid"]?>"><?= $locationInfo["Name"] ?></a>,
+        <?= $tripLocationCount ?> species<? if ($locationFirstSightings > 0) { ?>,
+          <?= $locationFirstSightings ?> first sightings <? } ?>
     </div>
 	<div style="padding-left: 20px">
 
@@ -91,7 +106,7 @@ while($locationInfo = mysql_fetch_array($locationListQuery))
 		{
 			$taxoInfo = getBestTaxonomyInfo($info["speciesid"]); ?>
 
-            <div class="heading"><?= $taxoInfo["CommonName"] ?></div>
+			<div class="heading"><?= strtolower($taxoInfo["LatinName"]) ?></div>
 <?		} ?>
 
 		<div class=firstcell><a href="./speciesdetail.php?id=<?= $info["speciesid"] ?>"><?= $info["CommonName"] ?></a>
