@@ -7,7 +7,8 @@ function navigationHeader()
 	<div class=\"contentleft\">
       <div style=\"height: 50px\"><a href=\"./index.php\">birdWalker</div>
 	  <div class=\"leftsubtitle\"><a href=\"./tripindex.php\">Trips</a></div>
-	  <div class=\"leftsubtitle\"><a href=\"./speciesindex.php\">Species</a></div>
+	  <div class=\"leftsubtitle\"><a href=\"./speciesindex.php\">Years</a></div>
+	  <div class=\"leftsubtitle\"><a href=\"./chronolifelist.php\">Life List</a></div>
 	  <div class=\"leftsubtitle\"><a href=\"./locationindex.php\">Locations</a></div>
 	  <div class=\"leftsubtitle\"><a href=\"./countyindex.php\">Counties</a></div>
 	  <div class=\"leftsubtitle\"><a href=\"./photoindex.php\">Photos</a></div>";
