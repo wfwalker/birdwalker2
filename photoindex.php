@@ -3,7 +3,9 @@
 
 require("./birdwalker.php");
 
-$lifeCount = getSpeciesCount();
+$photoCount = performCount("select count(*) from sighting where Photo='1'");
+$photoSpeciesCount = performCount("select count(distinct(sighting.SpeciesAbbreviation)) from sighting where Photo='1'");
+
 ?>
 
 <html>
@@ -18,6 +20,7 @@ $lifeCount = getSpeciesCount();
     <div class=contentright>
       <div class="titleblock">	  
 	    <div class=pagetitle>Photo Index</div>
+        <div class=pagesubtitle><?php echo $photoCount . " photos, " . $photoSpeciesCount . " species photographed"; ?></div>
       </div>
 
 <table cellpadding=4 columns=2>
