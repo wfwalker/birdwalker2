@@ -1160,7 +1160,7 @@ function insertYearLabels()
 {
 	for ($year = getEarliestYear(); $year <= getLatestYear(); $year++)
 	{ ?>
-		<td class=yearcell align=center><?= $year ?></td>
+		<td class=yearcell align=center><a href="./yeardetail.php?year=<?= $year ?>"><?= $year ?></td>
 <?	}
 }
 
