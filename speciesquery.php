@@ -8,7 +8,7 @@ class SpeciesQuery extends BirdWalkerQuery
 	{
 		$this->setLocationID("");
 		$this->setCounty("");
-		$this->setState("");
+		$this->setStateID("");
 
 		$this->setYear("");
 		$this->setMonth("");
