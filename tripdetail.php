@@ -11,6 +11,7 @@ $view = param($_GET, 'view', 'list');
 
 $tripInfo = getTripInfo($tripID);
 $tripYear = substr($tripInfo["Date"], 0, 4);
+$tripMonth = substr($tripInfo["Date"], 5, 2);
 
 $sightingQuery = new SightingQuery;
 $sightingQuery->setFromRequest($_GET);
@@ -39,6 +40,7 @@ htmlHead( $tripInfo["Name"]);
 globalMenu();
 tripBrowseButtons("./tripdetail.php", $tripID, $view);
 $items[] = "<a href=\"./tripindex.php#" . $tripYear . "\">" . $tripYear . "</a>";
+$items[] = "<a href=\"./monthdetail.php?view=trip&year=" . $tripYear . "&month=" . $tripMonth . "\">" . strtolower(getMonthNameForNumber($tripMonth)) . "</a>";
 navTrailTrips($items);
 ?>
 
