@@ -1,32 +1,15 @@
 
 <?php
 
-class TripQuery
+require_once("./birdwalkerquery.php");
+
+class TripQuery extends BirdWalkerQuery
 {
-	// constrain this query to a particular location
-	var $mLocationID;
-	// constrain this query to trips that visited a particular county
-	var $mCounty;
-	// constrain this query to trips that visited a particular state
-	var $mState;
-
-	// constrain this query to trips during a particular month
-	var $mMonth;
-	// constrain this query to trips during a particular year
-	var $mYear;
-
-	// constrain this query to trips when we observed a particular species
-	var $mSpeciesID;
-	// constrain this query to trips when we observed a particular family
-	var $mFamily;
-	// constrain this query to trips when we observed a particular order
-	var $mOrder;
-
 	function TripQuery()
 	{
 		$this->setLocationID("");
 		$this->setCounty("");
-		$this->setState("");
+		$this->setStateID("");
 
 		$this->setMonth("");
 		$this->setYear("");
@@ -35,17 +18,6 @@ class TripQuery
 		$this->setFamily("");
 		$this->setOrder("");
 	}
-
-	function setLocationID($inValue) { $this->mLocationID = $inValue; }
-	function setCounty($inValue) { $this->mCounty = $inValue; }
-	function setState($inValue) { $this->mState = $inValue; }
-
-	function setMonth($inValue) { $this->mMonth = $inValue; }
-	function setYear($inValue) { $this->mYear = $inValue; }
-
-	function setSpeciesID($inValue) { $this->mSpeciesID = $inValue; }
-	function setFamily($inValue) { $this->mFamily = $inValue; }
-	function setOrder($inValue) { $this->mOrder = $inValue; }
 
 	function getSelectClause()
 	{
