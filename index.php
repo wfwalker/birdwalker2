@@ -3,7 +3,8 @@
 
 require("./birdwalker.php");
 
-$latestTrips = performQuery("select *, date_format(Date, '%M %e, %Y') AS niceDate from trip order by Date desc limit 5");
+$numberOfTrips = 10;
+$latestTrips = performQuery("select *, date_format(Date, '%M %e, %Y') AS niceDate from trip order by Date desc LIMIT " . $numberOfTrips);
 $randomPhotoSightings = performQuery("SELECT *, rand() AS shuffle FROM sighting WHERE Photo='1' ORDER BY shuffle LIMIT 5");
 
  ?>
@@ -39,7 +40,7 @@ disabledBrowseButtons();
 
 	  <div class="heading">Latest Trips</div>
 
-<?    for ($index = 0; $index < 5; $index++)
+<?    for ($index = 0; $index < $numberOfTrips; $index++)
 	  {
 		  $info = mysql_fetch_array($latestTrips);
           $tripSpeciesCount = performCount("SELECT COUNT(DISTINCT(sighting.objectid)) from sighting where sighting.TripDate='" . $info["Date"] . "'"); ?>
