@@ -73,6 +73,16 @@ function bitToString($aBitVector, $anIndex)
 	if (($aBitVector >> $anIndex) & 1) { return "X"; } else { return "&nbsp;" ; }
 }
 
+//
+// -------------------------- SIGHTINGS, FIRST -------------------------------
+//
+
+
+function getSightingInfo($objectid)
+{
+	return performOneRowQuery("SELECT * FROM sighting where objectid=" . $objectid);
+}
+
 /**
  * Find the first sighting for each species.
  */
@@ -174,23 +184,6 @@ function getFancySpeciesQuery($whereClause = "species.Abbreviation=sighting.Spec
 	return $speciesQuery;
 }
 
-function getBestTaxonomyInfo($speciesid)
-{
-	return performOneRowQuery("select * from taxonomy where objectid='" . getBestTaxonomyID($speciesid) . "'");
-}
-
-function getBestTaxonomyID($speciesid)
-{
-	if ($speciesid >= 22000000000)
-	{
-		return floor($speciesid / pow(10,7)) * pow(10, 7);
-	}
-	else
-	{
-		return floor($speciesid / pow(10,9)) * pow(10, 9);
-	}
-}
-
 /**
  * Get information about a specific species entry.
  */
@@ -271,6 +264,23 @@ function formatLocationByYearTable($locationCount, $gridQueryString)
 // ---------------------- TAXONOMY -------------------------
 //
 
+function getBestTaxonomyInfo($speciesid)
+{
+	return performOneRowQuery("select * from taxonomy where objectid='" . getBestTaxonomyID($speciesid) . "'");
+}
+
+function getBestTaxonomyID($speciesid)
+{
+	if ($speciesid >= 22000000000)
+	{
+		return floor($speciesid / pow(10,7)) * pow(10, 7);
+	}
+	else
+	{
+		return floor($speciesid / pow(10,9)) * pow(10, 9);
+	}
+}
+
 /**
  * Get information about a specific order.
  */
@@ -347,40 +357,6 @@ function getTripInfo($objectid)
 // ---------------------- LOCATIONS ------------------------
 //
 
-/**
- * Select the birdwalker database, query location according to where clause, return the query.
- */
-function getLocationQuery($whereClause = "")
-{
-	if (strlen($whereClause) > 0)
-	{
-		$locationListQueryString = "select distinct(location.objectid), location.* from location, sighting where " . $whereClause . " order by State, County, Name";
-	}
-	else
-	{
-		$locationListQueryString = "select * from location order by State, County, Name";
-	}
-
-	return performQuery($locationListQueryString);
-}
-
-/**
- * Select the birdwalker database, count locations according to where clause, return the count.
- */
-function getLocationCount($whereClause = "")
-{
-	if (strlen($whereClause) > 0)
-	{
-		$locationCountQueryString = "select count(distinct location.objectid) from location, sighting where " . $whereClause;
-	}
-	else
-	{
-		$locationCountQueryString = "select count(distinct location.objectid) from location";
-	}
-
-	return performCount($locationCountQueryString);
-}
-
 function getLocationInfo($objectid)
 {
 	return performOneRowQuery("SELECT * FROM location where objectid=" . $objectid);
@@ -404,5 +380,25 @@ function formatLocationList($locationListCount, $locationListQuery)
 		$prevInfo = $info;   
 	}
 }
+
+
+//
+// ---------------------- MISC ------------------------
+//
+
+function getStateNameForAbbreviation($abbreviation)
+{
+	if ($abbreviation == "AZ") return "Arizona";
+	else if ($abbreviation == "CA") return "California";
+	else if ($abbreviation == "IA") return "Iowa";
+	else if ($abbreviation == "IL") return "Illinois";
+	else if ($abbreviation == "MA") return "Massachussets";
+	else if ($abbreviation == "NJ") return "New Jersey";
+	else if ($abbreviation == "OR") return "Oregon";
+	else if ($abbreviation == "PA") return "Pennsylvania";
+	else if ($abbreviation == "WI") return "Wisconsin";
+	else return "Unknown";
+}
+
 
 ?>
