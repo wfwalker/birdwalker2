@@ -4,7 +4,7 @@
 require("./birdwalker.php");
 
 performQuery("CREATE TEMPORARY TABLE tmp ( CommonName varchar(32) default NULL, tripdate date default NULL, sightingCount varchar(32));");
-performQuery("INSERT INTO tmp SELECT species.CommonName, max(TripDate), count(sighting.objectid) as sightingCount FROM sighting, species where species.Abbreviation=sighting.SpeciesAbbreviation and Exclude!='1' GROUP BY SpeciesAbbreviation;");
+performQuery("INSERT INTO tmp SELECT species.CommonName, max(TripDate), count(sighting.objectid) as sightingCount FROM sighting, species, location where species.Abbreviation=sighting.SpeciesAbbreviation and sighting.LocationName=location.Name and location.State='CA' and Exclude!='1' GROUP BY SpeciesAbbreviation;");
 $latestSightingQuery = performQuery("SELECT *, Year(tripdate) as latestYear FROM tmp order by tripdate desc;");
 
 $sightingThreshold = 5;
@@ -15,7 +15,7 @@ $targetYear = 2004;
 
 <head>
 <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-	  <title>birdWalker | Target Year Birds</title>
+	  <title>birdWalker | Target CA Year Birds</title>
 </head>
 
 <body>
@@ -25,7 +25,7 @@ $targetYear = 2004;
 <div class="contentright">
 
 <div class="titleblock">
-    <div class="pagetitle">Target birds for <?php echo $targetYear ?></div>
+    <div class="pagetitle">Target CA birds for <?php echo $targetYear ?></div>
 	<div class=metadata>Birds we have seen at least <?php echo $sightingThreshold ?> times, but not seen yet in <?php echo $targetYear ?></div>
 </div>
 
