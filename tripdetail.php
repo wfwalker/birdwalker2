@@ -88,8 +88,8 @@ if ($view == "photo")
 }
 else
 {
-	$dbQuery = $locationQuery->performQuery();
-	while($locationInfo = mysql_fetch_array($dbQuery))
+	$dbLocation = $locationQuery->performQuery();
+	while($locationInfo = mysql_fetch_array($dbLocation))
 	{
 		$speciesQuery = new SpeciesQuery;
 		$speciesQuery->setTripID($tripID);
@@ -99,12 +99,12 @@ else
 		$locationSightingQuery->setTripID($tripID);
 		$locationSightingQuery->setLocationID($locationInfo["objectid"]);
 
-		$dbQuery = $locationSightingQuery->performQuery();
+		$dbLocationSightings = $locationSightingQuery->performQuery();
 
-		$tripLocationCount = mysql_num_rows($dbQuery);
+		$tripLocationCount = mysql_num_rows($dbLocationSightings);
 
 		$locationFirstSightings = 0;
-		while($sightingInfo = mysql_fetch_array($dbQuery)) {
+		while($sightingInfo = mysql_fetch_array($dbLocationSightings)) {
 			if ($firstSightings[$sightingInfo['sightingid']] != null) { $locationFirstSightings++; }
 		}
  ?>
