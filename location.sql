@@ -25,7 +25,7 @@ INSERT INTO location VALUES (24,'Clifton Court Forebay','','','Contra Costa','CA
 INSERT INTO location VALUES (25,'Coast Guard Wharf','','Monterey','Monterey','CA','','NAD-27','36.594688','121.880567');
 INSERT INTO location VALUES (26,'Colusa NWR','http://www.r1.fws.gov/sacnwrc/','Colusa','Colusa','CA','','Unknown','39.2396','122.0742');
 INSERT INTO location VALUES (27,'Coyote Creek County Park','','San Jose','Santa Clara','CA','','','','');
-INSERT INTO location VALUES (28,'Coyote Creek Field Station','http://www.sfbbo.org/ccfs01.html','Alviso','Santa Clara','CA','Formerly the Coyote Creek Riparian Station, now part of the San Francisco Bay Bird Observatory','mapblast','37.420236','121.987878');
+INSERT INTO location VALUES (28,'Coyote Creek Field Station','http://www.sfbbo.org/ccfs01.html','Alviso','Santa Clara','CA','Formerly the Coyote Creek Riparian Station, now part of the San Francisco Bay Bird Observatory','mapblast','37.420236','121.987878');
 INSERT INTO location VALUES (29,'Coyote Hills','http://www.ebparks.org/parks/coyote.htm','Fremont','Alameda','CA','a great place for flying RC gliders. There\'s also a lovely boardwalk and some golden hills for walking on','WGS 84','37.55058','122.08602');
 INSERT INTO location VALUES (30,'Coyote Point Marina','http://www.cpyc.com/','Burlinghame','San Mateo','CA','First visited here with Steve Shunk  in January 2001.','Unknown','37.567','122.3669');
 INSERT INTO location VALUES (31,'Crittenden Marsh','','Mountain View','Santa Clara','CA','','','','');

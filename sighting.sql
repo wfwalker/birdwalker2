@@ -9835,3 +9835,12 @@ INSERT INTO sighting VALUES (9868,'savspa','Sacramento NWR','','0','0','2004-11-
 INSERT INTO sighting VALUES (9869,'rewbla','Sacramento NWR','','0','0','2004-11-27');
 INSERT INTO sighting VALUES (9870,'wesmea','Sacramento NWR','','0','0','2004-11-27');
 INSERT INTO sighting VALUES (9871,'orcwar','Sacramento NWR','','0','0','2004-11-27');
+INSERT INTO sighting VALUES (9872,'lobcur','Foster City Radio Tower','','','1','2004-12-05');
+INSERT INTO sighting VALUES (9873,'grbher','Foster City Radio Tower','','0','0','2004-12-05');
+INSERT INTO sighting VALUES (9874,'norsho','Foster City Radio Tower','','0','0','2004-12-05');
+INSERT INTO sighting VALUES (9875,'belkin','Foster City Radio Tower','','0','0','2004-11-30');
+INSERT INTO sighting VALUES (9876,'mallar','Foster City Radio Tower','','0','0','2004-11-30');
+INSERT INTO sighting VALUES (9877,'amegfi','Foster City Radio Tower','','0','0','2004-11-30');
+INSERT INTO sighting VALUES (9878,'savspa','Foster City Radio Tower','','0','0','2004-11-30');
+INSERT INTO sighting VALUES (9879,'leasan','Foster City Radio Tower','','0','0','2004-11-30');
+INSERT INTO sighting VALUES (9880,'comyel','Foster City Radio Tower','','','1','2004-11-30');
