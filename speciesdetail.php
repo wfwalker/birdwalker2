@@ -60,25 +60,25 @@ navTrailSpecies($speciesID);
 
    <div class=sighting-notes><?= $speciesInfo["Notes"] ?></div>
 
-
-<? if ($view == "lists") { ?>
-       <div class=heading><?= $tripCount ?> trip<? if ($tripCount > 1) echo 's' ?></div>
-<?     $tripQuery->formatTwoColumnTripList() ?>
-       <div class=heading><?= $locationCount ?> location<? if ($locationCount > 1) echo 's' ?></div>
-<?     $locationQuery->formatTwoColumnLocationList() ?>
-<? } elseif ($view == "bymonth") { ?>
-       <div class=heading><?= $tripCount ?> trips, <?= $locationCount ?> locations</div>
-<?     $locationQuery->formatLocationByMonthTable(); ?>
-<? } elseif ($view == "byyear") { ?>
-       <div class=heading><?= $tripCount ?> trips, <?= $locationCount ?> locations</div>
-<?     $locationQuery->formatLocationByYearTable(); ?>
-<? } elseif ($view == "photo") {
-	   $sightingQuery = new SightingQuery;
-       $sightingQuery->setSpeciesID($speciesID); ?>
-       <div class=heading><?= $sightingQuery->getPhotoCount(); ?> photos</div>
-<?     $sightingQuery->formatPhotos(); ?>
-<? } ?>
-
+<?
+	
+	  if ($view == "lists") {
+		  countHeading($tripCount, "trip");
+		  $tripQuery->formatTwoColumnTripList();
+		  countHeading($locationCount, "location");
+		  $locationQuery->formatTwoColumnLocationList();
+	  } elseif ($view == "bymonth") {
+		  doubleCountHeading($tripCount, "trip", $locationCount, "location");
+		  $locationQuery->formatLocationByMonthTable();
+	  } elseif ($view == "byyear") {
+		  doubleCountHeading($tripCount, "trip", $locationCount, "location");
+		  $locationQuery->formatLocationByYearTable();
+	  } elseif ($view == "photo") {
+		  $sightingQuery = new SightingQuery;
+		  $sightingQuery->setSpeciesID($speciesID);
+		  $sightingQuery->formatPhotos();
+	  }
+?>
    </div>
 </body>
 </html>

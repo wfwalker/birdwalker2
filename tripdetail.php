@@ -3,6 +3,7 @@
 <?php
 
 require("./birdwalker.php");
+require("./locationquery.php");
 require("./sightingquery.php");
 require("./speciesquery.php");
 
@@ -15,10 +16,14 @@ $tripYear = substr($tripInfo["Date"], 0, 4);
 $sightingQuery = new SightingQuery;
 $sightingQuery->setTripID($tripID);
 
-$locationListQuery = performQuery("SELECT distinct(location.objectid), location.Name
-  FROM location, sighting
-  WHERE location.Name=sighting.LocationName and sighting.TripDate='". $tripInfo["Date"] . "'");
-$locationCount = mysql_num_rows($locationListQuery);
+$locationQuery = new LocationQuery;
+$locationQuery->setTripID($tripID);
+$locationCount = $locationQuery->getLocationCount();
+
+// $locationListQuery = performQuery("SELECT distinct(location.objectid), location.Name
+//   FROM location, sighting
+//   WHERE location.Name=sighting.LocationName and sighting.TripDate='". $tripInfo["Date"] . "'");
+// $locationCount = mysql_num_rows($locationListQuery);
 
 $firstSightings = getFirstSightings();
 $firstYearSightings = getFirstYearSightings(substr($tripInfo["Date"], 0, 4));
@@ -78,11 +83,11 @@ navTrailTrips($items);
       </div>
 
 
-<? if ($locationCount > 1) { ?>
-          <div class=heading>Grand total, <?= $tripSpeciesCount ?> species<? if ($tripFirstSightings > 0) { ?>,
-			<?= $tripFirstSightings ?> life bird<? if ($tripFirstSightings > 1) echo 's'; } ?>
-          </div>
-<? }
+<?
+
+if ($locationCount > 1) {
+	doubleCountHeading($tripSpeciesCount, "species", $tripFirstSightings, "life bird");
+}
 
 if ($view == "photo")
 {
@@ -90,7 +95,8 @@ if ($view == "photo")
 }
 else
 {
-	while($locationInfo = mysql_fetch_array($locationListQuery))
+	$dbQuery = $locationQuery->performQuery();
+	while($locationInfo = mysql_fetch_array($dbQuery))
 	{
 		$speciesQuery = new SpeciesQuery;
 		$speciesQuery->setTripID($tripID);

@@ -33,15 +33,18 @@ navTrailBirds();
         </div>
       </div>
 
-	  <div class=heading><?= $speciesQuery->getSpeciesCount() ?> Species</div>
+<?
 
-<? if ($view == "") {
-      $speciesQuery->formatTwoColumnSpeciesList(); 
-   } else if ($view == "bymonth") {
-      $speciesQuery->formatSpeciesByMonthTable($speciesQuery);
-   } else if ($view == "byyear") {
-      $speciesQuery->formatSpeciesByYearTable($speciesQuery);
-   }
+countHeading($speciesQuery->getSpeciesCount(), "species");
+
+if ($view == "") {
+	$speciesQuery->formatTwoColumnSpeciesList(); 
+} else if ($view == "bymonth") {
+	$speciesQuery->formatSpeciesByMonthTable($speciesQuery);
+} else if ($view == "byyear") {
+	$speciesQuery->formatSpeciesByYearTable($speciesQuery);
+}
+
 ?>
 
     </div>

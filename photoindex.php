@@ -37,7 +37,11 @@ navTrailPhotos();
 <table cellpadding=4 columns=2>
 
 <?php
-$photoQuery = performQuery("select concat(sighting.TripDate, sighting.objectid) as photoOrder, sighting.*, species.CommonName, date_format(sighting.TripDate, '%M %e, %Y') as niceDate from sighting, species where Photo='1' and sighting.SpeciesAbbreviation=species.Abbreviation order by photoOrder desc");
+$photoQuery = performQuery("
+  SELECT CONCAT(sighting.TripDate, sighting.objectid) AS photoOrder, sighting.*,
+      species.CommonName, DATE_FORMAT(sighting.TripDate, '%M %e, %Y') AS niceDate
+    FROM sighting, species WHERE Photo='1' AND sighting.SpeciesAbbreviation=species.Abbreviation
+    ORDER BY photoOrder DESC");
 
 
 $counter = 0;
