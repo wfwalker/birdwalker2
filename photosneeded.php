@@ -29,7 +29,7 @@ $speciesCount = 0;
 <?php
 globalMenu();
 disabledBrowseButtons();
-navTrailPhotos(" &gt;missing");
+navTrailPhotos("missing");
 ?>
 
     <div class="contentright">
