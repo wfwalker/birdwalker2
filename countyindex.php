@@ -19,7 +19,7 @@ require("./birdwalker.php");
         <div class=pagetitle>County Reports</div>
       </div>
 
-<table class=metadata cellpadding=0 cellspacing=0 width="100%">
+<table columns=11 class=metadata cellpadding=0 cellspacing=0 width="100%">
 
 <?php
 
@@ -28,6 +28,8 @@ $lastStateAccumulated = "NONE";
 $prevState = "NONE";
 $countyToAccumulate = "NONE";
 $countyStats = performQuery("select location.County, location.State, location.objectid, count(distinct sighting.SpeciesAbbreviation) as SpeciesCount, year(sighting.TripDate) as theyear from location, sighting where sighting.LocationName=location.Name group by location.County, theyear order by State, County, theyear");
+
+echo "<tr><td></td>"; insertYearLabels(); echo "</tr>";
 
 while ($info = mysql_fetch_array($countyStats))
 {
@@ -38,7 +40,7 @@ while ($info = mysql_fetch_array($countyStats))
 
 	if ($lastStateAccumulated != $prevState)
 	{
-		echo "<tr><td>" . $prevState . "</td>"; insertYearLabels(); echo "</tr>";
+		echo "<tr><td colspan=11 class=titleblock>" . $prevState . "</td></tr>";
 		$lastStateAccumulated = $prevState;
 	}
 		
@@ -47,7 +49,7 @@ while ($info = mysql_fetch_array($countyStats))
 		echo "<tr><td class=firstcell><a href=\"./countydetail.php?county=" . urlencode($countyToAccumulate) . "\"/>" . $countyToAccumulate . " County</a></td>";
 		for ($year = 1996; $year <= 2004; $year++)
 		{
-			echo "<td class=bordered>&nbsp;" . $yearArray[$year] . "</td>";
+			echo "<td class=bordered align=right>&nbsp;" . $yearArray[$year] . "</td>";
 		}
 		echo "</tr>";
 
