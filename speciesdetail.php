@@ -58,7 +58,7 @@ $prevSpecies = performCount("select max(species.objectid) from species, sighting
 
     <div class=sighting-notes><?php echo $speciesInfo["Notes"] ?></div>
 
-    <div class=titleblock>Seen on <?php echo $speciesTripCount ?> trips at <?php echo $speciesLocationCount ?> locations</div>
+    <div class=titleblock>Seen on <?php echo $speciesTripCount ?> trips</div>
 
 <?php
   if ($speciesTripCount < 5)
