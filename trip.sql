@@ -376,3 +376,5 @@ INSERT INTO trip VALUES (376,'Bill','','Morning Photo Safari','I stopped by the 
 INSERT INTO trip VALUES (377,'Bill','','Morning Photo Safari','My continuing quest to photograph the Yellow-rumped Warbler and Common Yellowthroat','2004-11-30');
 INSERT INTO trip VALUES (378,'Mary and Bill','','Christmas Bird Count','Also saw: 69 sparrows, 106 dowitchers, 483 gulls','2004-12-19');
 INSERT INTO trip VALUES (379,'Bill','','Photo Safari','','2004-11-28');
+INSERT INTO trip VALUES (380,'Mary and Bill','','New Backyard Feeders','The new thistle feeder brings unprecedented numbers of Goldfinches to our yard, and our first Pine Siskin','2004-12-30');
+INSERT INTO trip VALUES (381,'Mary and Bill','','Strolling in the Park','The sun\'s comings and goings made the light hard to predict, but it sure was lovely to be outside.','2004-12-29');
