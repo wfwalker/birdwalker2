@@ -19,7 +19,7 @@ performQuery("
           LEFT(        MIN( CONCAT(TripDate,lpad(sighting.objectid,6,'0')) ), 10) AS TripDate,
           0+SUBSTRING( MIN( CONCAT(TripDate,lpad(sighting.objectid,6,'0')) ),  11) AS objectid
         FROM sighting, location
-        WHERE location.State='CA' and sighting.LocationName=location.Name AND Year(sighting.TripDate)='" . $year . "'
+        WHERE location.State='CA' and sighting.LocationName=location.Name AND Year(sighting.TripDate)='" . $year . "' AND Exclude!='1'
         GROUP BY SpeciesAbbreviation");
 
 // TODO count rows in the first sightings table!
@@ -31,7 +31,7 @@ $firstSightingQuery = performQuery("SELECT
      species.objectid as speciesid,
      trip.objectid as tripid, location.County, location.State
   FROM sighting, tmp, species, location, trip
-  WHERE species.ABACountable='1' AND
+  WHERE species.ABACountable='1' AND sighting.Exclude!='1' AND
      sighting.SpeciesAbbreviation=tmp.SpeciesAbbreviation AND
      species.Abbreviation=sighting.SpeciesAbbreviation AND
      sighting.TripDate=tmp.TripDate AND
