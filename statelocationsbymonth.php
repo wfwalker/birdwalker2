@@ -22,11 +22,11 @@ globalMenu();
 disabledBrowseButtons();
 $items[] = strtolower($stateName);
 navTrailLocations($items);
-pageThumbnail("select *, rand() as shuffle from sighting, location where Photo='1' and sighting.LocationName=location.Name and location.State='" . $abbrev . "' order by shuffle");
 ?>
 
     <div class=contentright>
       <div class="titleblock">	  
+<?    rightThumbnailState("$abbrev"); ?>
 	  <div class=pagetitle><?= $stateName ?></div>
         <div class=pagesubtitle><?= $locationCount ?> Locations</div>
       <div class=metadata>

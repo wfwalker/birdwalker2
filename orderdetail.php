@@ -28,13 +28,12 @@ disabledBrowseButtons();
 browseButtons("./orderdetail.php?order=", $orderid, 1, $orderid - 1, $orderid + 1, $orderCount);
 $items[] = strtolower($orderInfo["LatinName"]);
 navTrailBirds($items);
-pageThumbnail("select sighting.*, rand() as shuffle from sighting, species where Photo='1' and " . $whereClause . " order by shuffle");
 ?>
 
     <div class=contentright>
+      <div class=pagesubtitle> <?= $orderInfo["LatinName"] ?></div>
 	  <div class="titleblock">
         <div class=pagetitle><?= $orderInfo["CommonName"] ?></div>
-        <div class=pagesubtitle> <?= $orderInfo["LatinName"] ?></div>
         <div class=metadata> <?= $orderCount ?> species</div>
       </div>
 

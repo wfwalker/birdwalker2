@@ -2,15 +2,7 @@
 .contentleft
 {
     font: 10pt Arial;
-	left: 1px; width: 150px; top: 160px;
-	padding-left: 10px;
-	position: absolute; text-decoration: none
- }
-
-.thumb
-{
-    font: 10pt Arial;
-	left: 1px; width: 150px; top: 40px; height: 100px;
+	left: 1px; width: 150px; top: 40px;
 	padding-left: 10px;
 	position: absolute; text-decoration: none
  }
@@ -47,11 +39,16 @@
 
 /* Styles for section headers, page titles, and overall report content */
 
-.pagetitle {font: 18pt Times, Serif}
-.pagesubtitle {font: 12pt Times, Serif; font-style: italic}
+.pagetitle {font: 18pt Times, Serif; color:#484393}
+.pagesubtitle {font: 12pt Times, Serif; font-style: italic; color: #999999}
+
 .metadata {font: 9pt Arial, Serif}
-.heading {margin-top: 5px; margin-bottom: 5px; padding: 5pt; background-color: #EEEEEE}
-.titleblock {border: solid 1px #DDDDDD; margin-top: 5px; margin-bottom: 5px; padding: 5pt; background-color: #EEEEEE}
+
+.heading {font-weight: bold; margin-top: 20px; margin-bottom: 10px; clear: both; }
+.subheading { margin-top: 5px; margin-bottom: 5px; color: #999999 }
+.titleblock { border-top: solid 1px #AAAAAA; padding-top: 5px; margin-bottom: 5px }
+
+.inlinepict { margin-right: 10px; margin-bottom: 10px }
 
 .report-content {font: 10pt Arial, Serif}
 .titlecell {background-color: #EEEEEE}
@@ -61,10 +58,9 @@
 .yearcell {width: 20px; border-left: solid 1px lightgray; border-bottom: solid 1px lightgray; color: gray}
 
 .copyright { font: 8pt Arial, SansSerif }
-/* Styles for items within lists */
-.noteworthy-species {font-style: italic}
-.sighting-notes {font-style: italic; margin-left: 5%; margin-right: 5%}
 
+/* Styles for items within lists */
+.sighting-notes {margin-left: 2%; margin-right: 2%; margin-bottom: 2px; margin-top: 2px}
 
 /* detail anchors are ugly!! */
 

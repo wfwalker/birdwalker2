@@ -29,14 +29,11 @@ globalMenu();
 disabledBrowseButtons();
 $items[] = strtolower($stateName);
 navTrailLocations($items);
-pageThumbnail("
-    SELECT sighting.*, rand() AS shuffle FROM sighting, location
-      WHERE sighting.Photo='1' AND sighting.LocationName=location.Name AND location.State='" . $abbrev . "'
-      ORDER BY shuffle");
 ?>
 
     <div class=contentright>
 	  <div class="titleblock">
+<?      rightThumbnailState("$abbrev"); ?>
         <div class=pagetitle><?= $stateName ?></div>
         <div class=pagesubtitle> <?= $stateListCount ?> species</div>
       <div class=metadata>

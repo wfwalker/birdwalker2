@@ -12,12 +12,16 @@ $sightingQuery = performQuery("select * from sighting where sighting.SpeciesAbbr
 
 <head>
 <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-	  <title>birdWalker | <?= $speciesInfo["CommonName"] ?> photos</title>
+    <title>birdWalker | <?= $speciesInfo["CommonName"] ?> photos</title>
 </head>
 
 <body>
 
-<?php globalMenu(); disabledBrowseButtons(); navTrailPhotos(); ?>
+<?
+globalMenu();
+disabledBrowseButtons();
+navTrailPhotos();
+?>
 
 <div class="contentright">
   <div class="titleblock">
@@ -26,9 +30,7 @@ $sightingQuery = performQuery("select * from sighting where sighting.SpeciesAbbr
     </div>
   </div>
 
-
-<?php
-
+<?
 while ($sightingInfo = mysql_fetch_array($sightingQuery))
 {
 	$tripInfo = performOneRowQuery("select *, date_format(Date, '%W,  %M %e, %Y') as niceDate from trip where Date='" . $sightingInfo["TripDate"] . "'");
@@ -36,27 +38,24 @@ while ($sightingInfo = mysql_fetch_array($sightingQuery))
 	$locationInfo = performOneRowQuery("select * from location where Name='" . $sightingInfo["LocationName"] . "'");
 ?>
     <div class=heading>
-    <div class=pagesubtitle><a href="./tripdetail.php?id=<?= $tripInfo["objectid"] ?>"><?= $tripInfo["niceDate"] ?></a></div>
+    <div class=pagesubtitle>
+      <a href="./tripdetail.php?id=<?= $tripInfo["objectid"] ?>"><?= $tripInfo["niceDate"] ?></a>
+<?    editLink("./sightingedit.php?id=" . $sightingInfo["objectid"]); ?>
+    </div>
     <div class=metadata>
     <a href="./locationdetail.php?id=<?= $locationInfo["objectid"] ?>"><?= $locationInfo["Name"] ?></a>
-<?
-	if (getEnableEdit()) {
-?>
-        <div><a href="./sightingedit.php?id=<?= $sightingInfo["objectid"] ?>">edit</a></div>
-<?
-    }
-?>
+
+
 	</div>
     </div>
-<?
-	if ($sightingInfo["Photo"] == "1") {
+
+<?	if ($sightingInfo["Photo"] == "1") {
 		$photoFilename = getPhotoFilename($sightingInfo);
 
-		list($width, $height, $type, $attr) = getimagesize("./images/photo/" . $photoFilename);
-?>
+		list($width, $height, $type, $attr) = getimagesize("./images/photo/" . $photoFilename); ?>
+
 		<img width=<?= $width ?> height=<?= $height ?> src="<?= getPhotoURLForSightingInfo($sightingInfo) ?>">
-<?
-	}
+<?	}
 }
 ?>
 

@@ -43,24 +43,22 @@ if ($prevPhotoID == "") { $prevPhotoID = $sightingID; }
 <?php
 globalMenu();
 browseButtons("./photodetail.php?id=", $sightingID, $firstPhotoID, $prevPhotoID, $nextPhotoID, $lastPhotoID);
-navTrailPhotos(); ?>
+navTrailPhotos();
+?>
 
 <div class="contentright">
+  <div class=report-content>
+    <a href="./tripdetail.php?id=<?= $tripInfo["objectid"] ?>"><?= $tripInfo["niceDate"] ?>
+  </div>
+
 <div class="titleblock">
 	  <div class=pagetitle>
           <a href="./speciesdetail.php?id=<?= $speciesInfo["objectid"] ?>"><?= $speciesInfo["CommonName"] ?></a>
-      </div>
-      <div class=pagesubtitle>
-        <a href="./tripdetail.php?id=<?= $tripInfo["objectid"] ?>"><?= $tripInfo["niceDate"] ?>
+<?        editLink("./sightingedit.php?id=" . $sightingID); ?>
       </div>
       <div class=metadata>
-        <a href="./locationdetail.php?id=<?= $locationInfo["objectid"] ?>"><?= $locationInfo["Name"] ?></a> 
+          <a href="./locationdetail.php?id=<?= $locationInfo["objectid"] ?>"><?= $locationInfo["Name"] ?>, <?= $locationInfo["State"] ?></a> 
       </div>
-
-<? if (getEnableEdit()) { ?>
-	  <div><a href="./sightingedit.php?id=<?= $sightingID ?>">edit</a></div>
-<? } ?>
-
 </div>
 
 <?  if ($sightingInfo["Photo"] == "1")

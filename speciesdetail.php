@@ -7,7 +7,7 @@ $speciesID = $_GET['id'];
 $speciesInfo = getSpeciesInfo($speciesID);
 
 $speciesTripQuery = performQuery("
-    SELECT sighting.Notes as sightingNotes, trip.*, date_format(Date, '%M %e, %Y') as niceDate
+    SELECT sighting.Notes as sightingNotes, trip.*, date_format(Date, '%b %e, %Y') as niceDate
       FROM trip, sighting
       WHERE '" . $speciesInfo["Abbreviation"] . "'=sighting.SpeciesAbbreviation
       AND sighting.TripDate=trip.Date
@@ -38,14 +38,16 @@ $speciesLocationCount = mysql_num_rows($speciesLocationListQuery);
 globalMenu();
 speciesBrowseButtons($speciesID, "");
 navTrailSpecies($speciesID);
-pageThumbnail("
+?>
+
+  <div class=contentright>
+    <div class="pagesubtitle"><?= $speciesInfo["LatinName"] ?></div>
+	<div class="titleblock">
+<? rightThumbnail("
     SELECT * FROM sighting
       WHERE SpeciesAbbreviation='" . $speciesInfo["Abbreviation"] . "' and Photo='1' ORDER BY TripDate DESC LIMIT 1"); ?>
 
-  <div class=contentright>
-	<div class="titleblock">
       <div class="pagetitle"><?= $speciesInfo["CommonName"] ?></div>
-      <div class="pagesubtitle"><?= $speciesInfo["LatinName"] ?></div>
       <div class=metadata>
 <?  if (strlen($speciesInfo["ReferenceURL"]) > 0) { ?>
         <div><a href="<?= $speciesInfo["ReferenceURL"] ?>">See also...</a></div>

@@ -3,6 +3,7 @@
 function globalMenu()
 { ?>
 	<div class="contentleft">
+      <p><img src="./images/bill.jpg"></p>
 	  <div class="leftsubtitle"><a href="./tripindex.php">trips</a></div>
 	  <div class="leftsubtitle"><a href="./speciesindex.php">birds</a></div>
 	  <div class="leftsubtitle"><a href="./locationindex.php">locations</a></div>
@@ -14,12 +15,18 @@ function globalMenu()
 		<br><div class="leftsubtitle">
 		<a href="./tripcreate.php">create trip</a><br>
 		<a href="./photosneeded.php">photos needed</a><br>
-		<a href="./errorcheck.php">errors</a>
 		</div>
 <?	} ?>
 
     </div>
 <?
+}
+
+function editLink($href)
+{ 
+    if (getEnableEdit()) { ?>
+       <a href="<?= $href ?>"><img src="./images/edit.gif" border=0></a>
+<?  }
 }
 
 function disabledBrowseButtons()
@@ -67,17 +74,26 @@ function referenceURL($info)
 <? }
 }
 
-function pageThumbnail($photoQueryString)
+function rightThumbnail($photoQueryString)
 {
 	$photoQuery = performQuery($photoQueryString);
 
 	if (mysql_num_rows($photoQuery) > 0)
 	{
-		$photoInfo = mysql_fetch_array($photoQuery); ?>
+		$photoInfo = mysql_fetch_array($photoQuery);
+		$filename = getPhotoFilename($photoInfo); ?>
 
-		<div class=thumb><?= getThumbForSightingInfo($photoInfo) ?><div class=copyright>@2004 W. F. Walker</div></div>
+        <a href="./photodetail.php?id=<?= $photoInfo["objectid"] ?>">
+           <img width=<?= $width ?> height=<?= $height ?> src="./images/thumb/<?= $filename ?>" border=0 align="left" class="inlinepict">
+        </a>
 <?	}
 }
+
+function rightThumbnailAll()
+{
+	rightThumbnail("SELECT *, rand() AS shuffle FROM sighting WHERE Photo='1' ORDER BY shuffle LIMIT 1");
+}
+
 
 function navTrailBirds($extra = "")
 {
@@ -151,9 +167,9 @@ function getPhotoFilename($sightingInfo)
 	return $sightingInfo["TripDate"] . "-" . $sightingInfo["SpeciesAbbreviation"] . ".jpg";
 }
 
-function getPhotoLinkForSightingInfo($sightingInfo)
+function getPhotoLinkForSightingInfo($sightingInfo, $fieldName="objectid")
 { ?>
-	<a href="./photodetail.php?id=<?= $sightingInfo["objectid"] ?>"><img border=0 align=center src="./images/camera.gif"></a>
+	<a href="./photodetail.php?id=<?= $sightingInfo[$fieldName] ?>"><img border=0 align=center src="./images/camera.gif"></a>
 <?
 }
 
@@ -346,13 +362,20 @@ function speciesBrowseButtons($speciesID, $viewMode)
 
 }
 
-function formatTwoColumnSpeciesList($query)
+/**
+ * Displays a list of species common names that result from a search over
+ * species and sighting tables.
+ */
+function formatTwoColumnSpeciesList($query, $firstSightings = "", $firstYearSightings = "")
 {
+	if ($firstSightings == "") $firstSightings = getFirstSightings();
+
 	$speciesCount = mysql_num_rows($query);
 	$divideByTaxo = ($speciesCount > 30);
-	$counter = round($speciesCount  * 0.6); ?>
+	$counter = round($speciesCount  * 0.52); ?>
 
-	<div class=col1>
+	<table columns=2 width="100%" class=report-content>
+      <tr valign=top><td width="50%">
 
 <?	while($info = mysql_fetch_array($query))
 	{
@@ -361,26 +384,28 @@ function formatTwoColumnSpeciesList($query)
 		if ($divideByTaxo && (getBestTaxonomyID($prevInfo["objectid"]) != getBestTaxonomyID($info["objectid"])))
 		{
 			$taxoInfo = getBestTaxonomyInfo($info["objectid"]); ?>
-			<div class=heading><?= strtolower($taxoInfo["LatinName"]) ?></div>
+			<div class=subheading><?= strtolower($taxoInfo["LatinName"]) ?></div>
 <?		} ?>
 
-		<div class=firstcell><a href="./speciesdetail.php?id=<?= $info["objectid"] ?>"><?= $info["CommonName"] ?></a>
+		<div><a href="./speciesdetail.php?id=<?= $info["objectid"] ?>"><?= $info["CommonName"] ?></a>
 
-<?		if ($info["ABACountable"] == "0")
-		{ ?>
-			NOT ABA COUNTABLE
-<?		} ?>
+<?      if ($info["Photo"] == "1") { ?><?= getPhotoLinkForSightingInfo($info, "sightingid") ?><? } ?>
+<?		if (strlen($info["Notes"]) > 0) { ?><div class=sighting-notes><?= $info["Notes"] ?></div><? } ?>
+<?		if ($info["ABACountable"] == "0") { ?>NOT ABA COUNTABLE<? } ?>
+<? 		if ($firstSightings[$info["sightingid"]] != null) { ?> first life sighting <? }
+		else if ($firstYearSightings[$info["sightingid"]] != null) { ?> first year sighting <? } ?>
+
 		</div>
 
 <?		$prevInfo = $info;
 		$counter--;
 		if ($counter == 0)
 		{ ?>
-			</div><div class=col2>
+			</td><td width="50%">
 <?		}
 	} ?>
 
-	</div>
+	</td></tr></table>
 <?
 }
 
@@ -420,10 +445,10 @@ function formatSpeciesByYearTable($gridQueryString, $extraSightingListParams, $y
 		if (getBestTaxonomyID($prevInfo["speciesid"]) != getBestTaxonomyID($info["speciesid"]))
 		{
 			$taxoInfo = getBestTaxonomyInfo($info["speciesid"]); ?>
-			<tr><td class=heading colspan=11><?= strtolower($taxoInfo["LatinName"]) ?></td></tr>
+			<tr><td class=subheading colspan=11><?= strtolower($taxoInfo["LatinName"]) ?></td></tr>
 <?		} ?>
 
-		<tr><td class=firstcell><a href="./speciesdetail.php?id=<?= $info["speciesid"] ?>"><?= $info["CommonName"] ?></a></td>
+		<tr><td><a href="./speciesdetail.php?id=<?= $info["speciesid"] ?>"><?= $info["CommonName"] ?></a></td>
 
 <?		for ($index = 1; $index <= 9; $index++)
 		{ ?>
@@ -487,10 +512,10 @@ function formatSpeciesByMonthTable($gridQueryString, $extraSightingListParams, $
 		if (getBestTaxonomyID($prevInfo["speciesid"]) != getBestTaxonomyID($info["speciesid"]))
 		{
 			$taxoInfo = getBestTaxonomyInfo($info["speciesid"]); ?>
-			<tr><td class=heading colspan=13><?= strtolower($taxoInfo["LatinName"]) ?></td></tr>
+			<tr><td class=subheading colspan=13><?= strtolower($taxoInfo["LatinName"]) ?></td></tr>
 <?		} ?>
 
-		<tr><td class=firstcell><a href="./speciesdetail.php?id=<?= $info["speciesid"] ?>"><?= $info["CommonName"] ?></a></td>
+		<tr><td width="40%"><a href="./speciesdetail.php?id=<?= $info["speciesid"] ?>"><?= $info["CommonName"] ?></a></td>
 
 <?		for ($index = 1; $index <= 12; $index++)
 		{ ?>
@@ -533,18 +558,16 @@ function formatLocationByYearTable($gridQueryString, $urlPrefix, $countyHeadings
 		$theMask = $info["mask"];
 
 		if ($countyHeadingsOK && ($prevInfo["County"] != $info["County"])) { ?>
-             <tr><td class=heading colspan=11>
+             <tr><td class=subheading colspan=11>
 <?          if ($lastStateHeading != $info["State"]) { ?>
 			    <b><?= getStateNameForAbbreviation($info["State"]) ?></b>,
 <?              $lastStateHeading = $info["State"];
-            } else { ?>
-				&nbsp;
-<?          } ?>
+            } ?>
 			<?= $info["County"] ?> County</td></tr>
 <?		} ?>
 
 		<tr>
-		    <td class=firstcell>
+		    <td width="40%">
 		        <a href="./locationdetail.php?id=<?= $info["locationid"] ?>"><?= $info["LocationName"] ?></a>
             </td>
 
@@ -588,18 +611,16 @@ function formatLocationByMonthTable($gridQueryString, $urlPrefix, $countyHeading
 		$theMask = $info["mask"];
 
 		if ($countyHeadingsOK && ($prevInfo["County"] != $info["County"])) { ?>
-             <tr><td class=heading colspan=13>
+             <tr><td class=subheading colspan=13>
 <?          if ($lastStateHeading != $info["State"]) { ?>
 			    <b><?= getStateNameForAbbreviation($info["State"]) ?></b>,
 <?              $lastStateHeading = $info["State"];
-            } else { ?>
-				&nbsp;
-<?          } ?>
+            } ?>
 			<?= $info["County"] ?> County</td></tr>
 <?		} ?>
 
 		<tr>
-		    <td class=firstcell>
+		    <td>
 		        <a href="./locationdetail.php?id=<?= $info["locationid"] ?>"><?= $info["LocationName"] ?></a>
             </td>
 
@@ -686,11 +707,13 @@ function getTripInfo($objectid)
 
 function formatTwoColumnTripList($tripListQuery)
 {
-    $subdivideByYears = mysql_num_rows($tripListQuery) > 40;
+	$tripCount = mysql_num_rows($tripListQuery);
+    $subdivideByYears = $tripCount > 20;
 	$prevYear = "";
-	$counter = 0; ?>
+	$counter = round($tripCount  * 0.52); ?>
 	
    <table class=report-content columns="2" width="100%">
+      <tr valign=top><td>
 
 <?	while($info = mysql_fetch_array($tripListQuery))
 	{
@@ -698,22 +721,20 @@ function formatTwoColumnTripList($tripListQuery)
 		
 		if (strcmp($thisYear, $prevYear) && $subdivideByYears)
 		{ ?>
-			<tr><td colspan=4 class="heading"><a name="<?= $thisYear ?>"></a><?= $thisYear ?></td></tr>
-<?		    $counter = 0;
-		}
+			<div class="subheading"><a name="<?= $thisYear ?>"></a><?= $thisYear ?></div>
+<?		} ?>
 
-		if (($counter % 2) == 0) { ?><tr><? } ?>
-			
-			<td class=firstcell width="50%">
-				 <a href="./tripdetail.php?id=<?= $info["objectid"] ?>"><?= $info["Name"] ?>, <?= $info["niceDate"] ?></a>
-		    </td>
-				 
-<?      if (($counter % 2) == 1) { ?></tr><? }
+			 <div><a href="./tripdetail.php?id=<?= $info["objectid"] ?>"><?= $info["Name"] ?>, <?= $info["niceDate"] ?></a></div>
+             <? if ($info["sightingNotes"] != "") { ?> <div class=sighting-notes><?= $info["sightingNotes"] ?></div> <? } ?>
 
-		$prevYear = $thisYear;
-		$counter++;
+<?		$prevYear = $thisYear;
+		$counter--;
+		if ($counter == 0)
+		{ ?>
+		</td><td width="50%">
+<?		}
 	} ?>
-
+      </td></tr>
 	</table> <?
 }
 
@@ -754,9 +775,35 @@ function navTrailCounty($state, $county)
 	navTrailLocations($items);
 }
 
-function pageThumbnailCounty($countyName)
+function navTrailLocationDetail($siteInfo)
 {
-	pageThumbnail(
+	$items[] = "
+    <a href=\"./statelocations.php?state=" .  $siteInfo["State"] . "\">" .
+		strtolower(getStateNameForAbbreviation($siteInfo["State"])) . "
+    </a>";
+	$items[] = "
+    <a href=\"./countylocations.php?county=" . $siteInfo["County"] . "&state=" . $siteInfo["State"] . "\">" .
+		 strtolower($siteInfo["County"]) . " county
+    </a>";
+	$items[] =
+		 strtolower($siteInfo["Name"]);
+
+	navTrailLocations($items);
+}
+
+function rightThumbnailSpecies($abbrev)
+{
+	rightThumbnail(
+    "SELECT sighting.*, rand() AS shuffle
+      FROM sighting
+      WHERE sighting.Photo='1' AND sighting.SpeciesAbbreviation='" . $abbrev . "'
+      ORDER BY shuffle
+      LIMIT 1");
+}
+
+function rightThumbnailCounty($countyName)
+{
+	rightThumbnail(
     "SELECT sighting.*, rand() AS shuffle
       FROM sighting, location
       WHERE sighting.Photo='1' AND sighting.LocationName=location.Name AND location.County='" . $countyName . "'
@@ -764,6 +811,23 @@ function pageThumbnailCounty($countyName)
       LIMIT 1");
 }
 
+function rightThumbnailState($stateCode)
+{
+	rightThumbnail(
+      "SELECT sighting.*, rand() AS shuffle
+        FROM sighting, location
+        WHERE sighting.Photo='1' AND sighting.LocationName=location.Name AND location.State='" . $stateCode . "'
+        ORDER BY shuffle LIMIT 1");
+}
+
+function rightThumbnailLocation($locationName)
+{
+  rightThumbnail("
+    SELECT *, rand() AS shuffle
+      FROM sighting
+      WHERE Photo='1' AND LocationName='" . $locationName . "'
+      ORDER BY shuffle LIMIT 1");
+}
 
 function mapLink($siteInfo)
 {
@@ -818,36 +882,35 @@ function formatTwoColumnLocationList($locationListQuery, $countyHeadingsOK = tru
 	$prevInfo=null;
 	$locationCount = mysql_num_rows($locationListQuery);
 	$divideByCounties = ($locationCount > 20);
-	$counter = round($locationCount  * 0.6); ?>
+	$counter = round($locationCount  * 0.5); ?>
 
-    <div class=col1>
+    <table class=report-content width="100%">
+      <tr valign=top><td width="50%">
 
 <?	while($info = mysql_fetch_array($locationListQuery))
 	{
 		if ($countyHeadingsOK && $divideByCounties && (($prevInfo["State"] != $info["State"]) || ($prevInfo["County"] != $info["County"])))
 		{ ?>
-			<div class="heading">
+			<div class="subheading">
 <?          if ($lastStateHeading != $info["State"]) { ?>
 			    <b><?= getStateNameForAbbreviation($info["State"]) ?></b>,
 <?              $lastStateHeading = $info["State"];
-            } else { ?>
-				&nbsp;
-<?          } ?>
-			    <?= $info["County"] ?> County</td></tr>
+            } ?>
+			    <?= $info["County"] ?> County
             </div>
 <?		} ?>
 
-		<div class=firstcell><a href="./locationdetail.php?id=<?= $info["objectid"] ?>"><?= $info["Name"] ?></a></div>
+		<div><a href="./locationdetail.php?id=<?= $info["objectid"] ?>"><?= $info["Name"] ?></a></div>
 
 <?		$prevInfo = $info;   
 		$counter--;
 		if ($counter == 0)
 		{ ?>
-		</div><div class=col2>
+		</td><td width="50%">
 <?		}
 	} ?>
 
-	</div>
+	</tr></table>
 <?
 }
 

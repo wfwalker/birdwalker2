@@ -41,7 +41,6 @@ $speciesCount = mysql_num_rows($firstSightingQuery);
 globalMenu();
 disabledBrowseButtons();
 navTrailBirds();
-pageThumbnail("select *, rand() as shuffle from sighting where Photo='1' order by shuffle");
 ?>
 
 <div class=contentright>
@@ -83,10 +82,8 @@ while($sightingInfo = mysql_fetch_array($firstSightingQuery))
         <?= getPhotoLinkForSightingInfo($sightingInfo) ?>
 <?
     }
-    if (getEnableEdit())
-	{ ?>
-	    <a href="./sightingedit.php?id=<?= $sightingInfo['objectid'] ?>">edit</a>
-<?  } ?>
+
+    editLink("./sightingedit.php?id=" . $sightingInfo['objectid']); ?>
 
 	</td>
 	</tr>

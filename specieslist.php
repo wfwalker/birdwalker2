@@ -10,40 +10,47 @@ $county = $_GET["county"];
 $state = $_GET["state"];
 
 $speciesListQueryString = "
-    SELECT distinct species.*
+    SELECT DISTINCT species.*
       FROM sighting, species, location, trip
       WHERE species.Abbreviation=sighting.SpeciesAbbreviation
       AND location.Name=sighting.LocationName
       AND trip.Date=sighting.TripDate ";
 
+$photoQueryString = "
+    SELECT DISTINCT sighting.*
+      FROM sighting, species, location, trip
+      WHERE species.Abbreviation=sighting.SpeciesAbbreviation
+      AND location.Name=sighting.LocationName
+      AND sighting.Photo='1'
+      AND trip.Date=sighting.TripDate ";
+
+$otherWhereClauses = "";
 $pageTitle = "";
 
 if ($locationid != "") {
-	$speciesListQueryString = $speciesListQueryString . " AND location.objectid=" . $locationid;
+	$otherWhereClauses = $otherWhereClauses . " AND location.objectid=" . $locationid;
 	$locationInfo = getLocationInfo($locationid); 
 	$pageTitle = $locationInfo["Name"];
 } elseif ($county != "") {
-	$speciesListQueryString = $speciesListQueryString . " AND location.County='" . $county . "'";
+	$otherWhereClauses = $otherWhereClauses . " AND location.County='" . $county . "'";
 	$pageTitle = $county . " County";
 } elseif ($state != "") {
-	$speciesListQueryString = $speciesListQueryString . " AND location.State='" . $state . "'";
+	$otherWhereClauses = $otherWhereClauses . " AND location.State='" . $state . "'";
 	$pageTitle = getStateNameForAbbreviation($state);
 }
 
 if ($month !="") {
-	$speciesListQueryString = $speciesListQueryString . " AND Month(TripDate)=" . $month;
+	$otherWhereClauses = $otherWhereClauses . " AND Month(TripDate)=" . $month;
 	if ($pageTitle == "") $pageTitle = getMonthNameForNumber($month);
 	else $pageTitle = $pageTitle . ", " . getMonthNameForNumber($month);
 }
 if ($year !="") {
-	$speciesListQueryString = $speciesListQueryString . " AND Year(TripDate)=" . $year;
+	$otherWhereClauses = $otherWhereClauses . " AND Year(TripDate)=" . $year;
 	if ($pageTitle == "") $pageTitle = $year;
 	else $pageTitle = $pageTitle . ", " . $year;
 }
 
-$speciesListQueryString = $speciesListQueryString . " order by species.objectid;";
-
-$speciesListQuery = performQuery($speciesListQueryString);
+$speciesListQuery = performQuery($speciesListQueryString . $otherWhereClauses . " ORDER BY species.objectid");
 $speciesCount = mysql_num_rows($speciesListQuery);
 $divideByTaxo = ($speciesCount > 30);
 
@@ -56,20 +63,22 @@ $divideByTaxo = ($speciesCount > 30);
   </head>
   <body>
 
-<?php globalMenu(); disabledBrowseButtons(); navTrailBirds(); ?>
+<?
+globalMenu();
+disabledBrowseButtons();
+navTrailBirds();
+?>
 
     <div class=contentright>
-      <div class="titleblock">	  
+      <div class="titleblock">
+<?    rightThumbnail($photoQueryString . $otherWhereClauses . " LIMIT 1"); ?>
 	  <div class=pagetitle><?= $pageTitle ?></div>
 	  <div class=pagesubtitle><?= $pageSubtitle ?></div>
       <div class=metadata><?= $speciesCount ?> Species</div>
       </div>
 
-<?php
+<? formatTwoColumnSpeciesList($speciesListQuery); ?>
 
-formatTwoColumnSpeciesList($speciesListQuery);
- 
-?>
     </div>
   </body>
 </html>

@@ -20,18 +20,16 @@ $yearCount = performCount("select count(distinct species.objectid) from species,
 globalMenu();
 browseButtons("./yeardetail.php?year=", $theYear, 1996, $theYear - 1, $theYear + 1, 2004);
 navTrailBirds();
-pageThumbnail("
-    SELECT sighting.*, rand() AS shuffle
-      FROM sighting
-      WHERE sighting.Photo='1' AND Year(TripDate)='" . $theYear . "'
-      ORDER BY shuffle LIMIT 1");
 ?>
 
     <div class=contentright>
       <div class="titleblock">	  
-        <div class=pagetitle> <?= $theYear ?> List</div>
-        <div class=pagesubtitle><?= $yearCount ?> species</div>
-      </div>
+<?      rightThumbnail("SELECT sighting.*, rand() AS shuffle FROM sighting WHERE sighting.Photo='1' AND Year(TripDate)='" . $theYear . "' ORDER BY shuffle LIMIT 1"); ?>
+        <div class=pagetitle><?= $theYear ?> List</div>
+    </div>
+
+
+    <div class=heading><?= $yearCount ?> species</div>
 
 <?
 

@@ -61,10 +61,10 @@ if (($postTripID != "") && ($save == "Save"))
 $tripInfo = getTripInfo($tripID);
 ?>
 
+<div class=pagesubtitle><?= $tripInfo["niceDate"] ?></div>
 <div class="titleblock">
   <a href="./tripdetail.php?id=<?= $tripInfo["objectid"] ?>">
     <div class=pagetitle><?= $tripInfo["Name"] ?></div>
-  <div class=pagesubtitle><?= $tripInfo["niceDate"] ?></div>
 </a>
 </div>
 

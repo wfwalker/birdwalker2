@@ -3,8 +3,13 @@
 
 require("./birdwalker.php");
 
-$photoSpecies = performQuery("select distinct species.*, count(distinct sighting.objectid) as photoCount from species, sighting where species.Abbreviation=sighting.SpeciesAbbreviation and sighting.Photo='1' group by sighting.SpeciesAbbreviation order by species.objectid");
-$photoCount = performCount("select count(*) from sighting where Photo='1'");
+$photoSpecies = performQuery("
+    SELECT DISTINCT species.*, COUNT(DISTINCT sighting.objectid) AS photoCount
+      FROM species, sighting
+      WHERE species.Abbreviation=sighting.SpeciesAbbreviation AND sighting.Photo='1'
+      GROUP BY sighting.SpeciesAbbreviation ORDER BY species.objectid");
+$photoCount = performCount("
+    SELECT COUNT(*) FROM sighting WHERE Photo='1'");
 
 ?>
 
@@ -19,18 +24,19 @@ $photoCount = performCount("select count(*) from sighting where Photo='1'");
 globalMenu();
 disabledBrowseButtons();
 navTrailPhotos();
-pageThumbnail("select *, rand() as shuffle from sighting where Photo='1' order by shuffle");
 ?>
 
     <div class=contentright>
-      <div class="titleblock">	  
+      <div class="titleblock">
+<?      rightThumbnailAll(); ?>
 	    <div class=pagetitle>Photo Index</div>
-        <div class=pagesubtitle><?= $photoCount ?> photos covering <?= mysql_num_rows($photoSpecies) ?> species</div>
         <div class=metadata>by species | <a href="./photoindex.php">by date</a></div>
       </div>
 
-<div class=col1>
+   <div class=heading><?= $photoCount ?> photos covering <?= mysql_num_rows($photoSpecies) ?> species</div>
 
+<table width="100%">
+<tr valign=top><td width="50%" class=report-content>
 <?
 $counter = round(mysql_num_rows($photoSpecies)  * 0.6);
 
@@ -40,30 +46,23 @@ while($info = mysql_fetch_array($photoSpecies))
 	
 	if (getBestTaxonomyID($prevInfo["objectid"]) != getBestTaxonomyID($info["objectid"]))
 	{
-		$taxoInfo = getBestTaxonomyInfo($info["objectid"]);
-?>
-		<div class="heading"><?= strtolower($taxoInfo["LatinName"]) ?></div>
-<?
-	}
+		$taxoInfo = getBestTaxonomyInfo($info["objectid"]); ?>
+		<div class="subheading"><?= strtolower($taxoInfo["LatinName"]) ?></div>
+<?	}
 
 	if ($info["photoCount"] > 1)
-	{
-?>
-        <div class=firstcell><a href="./speciesphotos.php?id=<?= $info["objectid"] ?>"><?= $info["CommonName"] ?></a> (<?= $info["photoCount"] ?>)</div>
-<?
-	}
+	{ ?>
+        <div><a href="./speciesphotos.php?id=<?= $info["objectid"] ?>"><?= $info["CommonName"] ?></a> (<?= $info["photoCount"] ?>)</div>
+<?	}
 	else
-	{
-?>
-        <div class=firstcell><a href="./speciesphotos.php?id=<?= $info["objectid"] ?>"><?= $info["CommonName"] ?></a></div>
-<?
-	}
+	{ ?>
+        <div><a href="./speciesphotos.php?id=<?= $info["objectid"] ?>"><?= $info["CommonName"] ?></a></div>
+<?	}
 		
 	$prevInfo = $info;
     $counter--;
-    if ($counter == 0) echo "\n</div><div class=col2>";
-}
-?>
+    if ($counter == 0) { ?></td><td width="50%" class=report-content> <? }
+} ?>
 
     </div>
   </body>

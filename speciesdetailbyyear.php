@@ -38,27 +38,22 @@ $speciesLocationCount = mysql_num_rows($speciesLocationListQuery);
 globalMenu();
 speciesBrowseButtons($speciesID, "byyear");
 navTrailSpecies($speciesID);
-pageThumbnail("
-    SELECT * FROM sighting
-      WHERE SpeciesAbbreviation='" . $speciesInfo["Abbreviation"] . "' and Photo='1' ORDER BY TripDate DESC LIMIT 1");
 ?>
 
   <div class=contentright>
+    <div class="pagesubtitle"><?= $speciesInfo["LatinName"] ?></div>
 	<div class="titleblock">
+<?    rightThumbnailSpecies($speciesInfo["Abbreviation"]); ?>
       <div class="pagetitle"><?= $speciesInfo["CommonName"] ?></div>
-      <div class="pagesubtitle"><?= $speciesInfo["LatinName"] ?></div>
       <div class=metadata>
-<?php
-    $sightingDates = performOneRowQuery("SELECT
+
+<? $sightingDates = performOneRowQuery("SELECT
         date_format(min(TripDate), '%M %e, %Y') AS earliest,
         date_format(max(TripDate), '%M %e, %Y') AS latest
       FROM sighting
-      WHERE sighting.SpeciesAbbreviation='" . $speciesInfo["Abbreviation"] . "'"); ?>
+      WHERE sighting.SpeciesAbbreviation='" . $speciesInfo["Abbreviation"] . "'");
 
-    <div class=metadata><?= $sightingDates["earliest"] ?> - <?= $sightingDates["latest"] ?></div>
-    <div class=metadata><?= $speciesTripCount ?> trips, <?= $speciesLocationCount ?> locations</div>
 
-<?
     if (strlen($speciesInfo["ReferenceURL"]) > 0) { ?>
         <div><a href="<?= $speciesInfo["ReferenceURL"] ?>">See also...</a></div>
 <?  }
@@ -67,10 +62,13 @@ pageThumbnail("
 <?  }
     speciesViewLinks($speciesID); ?>
 
-   </div>
+     </div>
    </div>
 
+
    <div class=sighting-notes><?= $speciesInfo["Notes"] ?></div>
+
+   <div class=heading><?= $speciesTripCount ?> trips, <?= $speciesLocationCount ?> locations</div>
 
 <?  $gridQueryString="
               SELECT distinct(LocationName), County, State,

@@ -23,23 +23,21 @@ $divideByTaxo = ($speciesCount > 30);
 globalMenu();
 disabledBrowseButtons();
 navTrailLocations(strtolower($stateName));
-pageThumbnail("select sighting.*, rand() as shuffle from sighting, location where sighting.Photo='1' and sighting.LocationName=location.Name and location.State='" . $abbrev . "' order by shuffle");
  ?>
 
     <div class=contentright>
       <div class="titleblock">	  
+<?    rightThumbnailState("$abbrev"); ?>
 	  <div class=pagetitle><?= $stateName ?></div>
-      <div class=pagesubtitle><?= $speciesCount ?> Species</div>
       <div class=metadata>
         <? stateViewLinks($abbrev) ?>
       </div>
       </div>
 
-<?php
+ <div class=heading><?= $speciesCount ?> Species</div>
 
-formatTwoColumnSpeciesList($speciesListQuery);
- 
-?>
+<? formatTwoColumnSpeciesList($speciesListQuery); ?>
+
     </div>
   </body>
 </html>

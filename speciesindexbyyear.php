@@ -27,16 +27,17 @@ $annualTotal = performQuery("
 globalMenu();
 disabledBrowseButtons();
 navTrailBirds();
-pageThumbnail("SELECT *, rand() AS shuffle FROM sighting WHERE Photo='1' ORDER BY shuffle");
 ?>
 
 
     <div class=contentright>
       <div class="titleblock">	  
-	  <div class=pagetitle>Species</div>
-        <div class=pagesubtitle><?= $lifeCount ?> Species</div>
+<?      rightThumbnailAll(); ?>
+        <div class=pagetitle>Species</div>
 	  <div class=metadata><a href="./speciesindex.php">list</a> | <a href="./speciesindexbymonth.php">by month</a> | by year</div>
       </div>
+
+     <div class=heading><?= $lifeCount ?> Species</div>
 
 <?
 $gridQueryString="
