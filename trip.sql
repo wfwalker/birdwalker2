@@ -263,7 +263,7 @@ INSERT INTO trip VALUES (262,'Mary and Bill','','Sunday Stroll','','2003-10-12')
 INSERT INTO trip VALUES (263,'Mary and Bill','','Looking for the Waterthrush','Based on a mailing list tip, we went searching for a Louisiana Waterthrush, but found none.','2003-10-19');
 INSERT INTO trip VALUES (264,'Bill','','Early Morning Drive','','2003-10-31');
 INSERT INTO trip VALUES (265,'Mayr and Bill','','Birding the Arboretum','','2003-11-06');
-INSERT INTO trip VALUES (266,'Mary and Bill','','A Trip to Avalanche','','2003-11-07');
+INSERT INTO trip VALUES (266,'Mary and Bill','','A Trip to Avalanche','We went in search of Avalanche Looms, a lovely weaving studio in \"downtown\" Avalanche.','2003-11-07');
 INSERT INTO trip VALUES (267,'Mary and Bill','','Rivers and Bluffs Birding Festival','','2003-11-08');
 INSERT INTO trip VALUES (268,'Mary and Bill','','Visit to the Field Station','','2003-11-28');
 INSERT INTO trip VALUES (269,'Mary and Bill','','Sunday Stroll','','2003-12-07');
@@ -285,3 +285,6 @@ INSERT INTO trip VALUES (284,'Mary','','Birding with Thaine','Thaine was visitin
 INSERT INTO trip VALUES (285,'Mary and Bill','','Sunday Stroll','','2004-02-22');
 INSERT INTO trip VALUES (286,'Bill','','Early Morning Walk','We scouted the park on the weekend, and decided it would be worth coming back to try to photograph Ruddy Duck.','2004-03-02');
 INSERT INTO trip VALUES (287,'Mary and Bill','','Rarity Chase','After reading about the Snow Bunting on the south-bay-birds mailing list, we decided to make the epic drive east. We spent several pleasant but bunting-less hours, until a helpful wave from some fellow birders led us to the right spot.','2004-03-06');
+INSERT INTO trip VALUES (288,'Bill and Mary','','Sunday Stroll','Walking around the Arboretum on a Sunday morning','2004-03-28');
+INSERT INTO trip VALUES (289,'Bill','','Early Morning Walk','I went to see if I could get a look at the Clapper Rail with the new camera, and was granted an audience.','2003-12-03');
+INSERT INTO trip VALUES (290,'Bill','','Early Morning Walk','','2004-03-31');

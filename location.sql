@@ -95,7 +95,7 @@ INSERT INTO location VALUES (94,'San Diego','','San Diego','San Diego','CA','','
 INSERT INTO location VALUES (95,'San Francisco','','San Francisco','San Francisco','CA','','','','');
 INSERT INTO location VALUES (96,'San Francisco Zoo','','San Francisco','San Francisco','CA','','','','');
 INSERT INTO location VALUES (97,'San Gregorio State Beach','','Pescadero','San Mateo','CA','','','','');
-INSERT INTO location VALUES (98,'San Luis NWR','','Los Banos','Merced','CA','','','','');
+INSERT INTO location VALUES (98,'San Luis NWR','http://sanluis.fws.gov/','Los Banos','Merced','CA','','','','');
 INSERT INTO location VALUES (99,'San Mateo County','','San Mateo','San Mateo','CA','A catch-all location for birds seen on the road in San Mateo County','','','');
 INSERT INTO location VALUES (100,'Santa Clara County','','Santa Clara','Santa Clara','CA','','','','');
 INSERT INTO location VALUES (101,'Santa Cruz','','Santa Cruz','Santa Cruz','CA','','','','');
