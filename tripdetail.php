@@ -3,11 +3,11 @@
 <?php
 
 require("./birdwalker.php");
-require("./locationquery.php");
+require("./map.php");
 require("./sightingquery.php");
 require("./speciesquery.php");
 
-$tripID = param($_GET, 'id', 343);
+$tripID = param($_GET, 'tripid', 343);
 $view = param($_GET, 'view', 'list');
 
 $tripInfo = getTripInfo($tripID);
@@ -19,7 +19,6 @@ $sightingQuery->setTripID($tripID);
 $locationQuery = new LocationQuery;
 $locationQuery->setTripID($tripID);
 $locationCount = $locationQuery->getLocationCount();
-$extrema = $locationQuery->findExtrema();
 
 $firstSightings = getFirstSightings();
 $firstYearSightings = getFirstYearSightings($tripYear);
@@ -68,9 +67,9 @@ navTrailTrips($items);
 <?        referenceURL($tripInfo); ?>
         </div>
         <div class=metadata>
-	        <a href="./tripdetail.php?view=list&id=<?= $tripID ?>"?>list</a> | 
-	        <a href="./tripdetail.php?view=photo&id=<?= $tripID ?>"?>photo</a> |
-            <a href="./locationmap.php?minlat=<?= $extrema["minLat"]-0.01 ?>&maxlat=<?= $extrema["maxLat"]+0.01 ?>&minlong=<?= $extrema["minLong"]-0.01 ?>&maxlong=<?= $extrema["maxLong"]+0.01 ?>">map</a><br/>
+	        <a href="./tripdetail.php?view=list&tripid=<?= $tripID ?>">list</a> | 
+	        <a href="./tripdetail.php?view=photo&tripid=<?= $tripID ?>">photo</a> |
+            <a href="./tripdetail.php?view=map&tripid=<?= $tripID ?>">map</a><br/>
         </div>
 
 
@@ -88,7 +87,14 @@ if ($view == "photo")
 {
 	$sightingQuery->formatPhotos();
 }
-else
+else if ($view == "map")
+{
+	countHeading($locationCount, "location");
+	$map = new Map("./tripdetail.php");
+	$map->setFromRequest($_GET);
+	$map->draw();
+}
+else if ($view="list")
 {
 	$dbLocation = $locationQuery->performQuery();
 	while($locationInfo = mysql_fetch_array($dbLocation))
