@@ -112,7 +112,8 @@ class SightingQuery extends BirdWalkerQuery
 	{
 		if (($this->mLocationID == "") && ($this->mCounty == "") && ($this->mState == "") &&
 			($this->mTripID == "") && ($this->mMonth == "") && ($this->mYear == "") &&
-			($this->mFamily == "") && ($this->mOrder == "")) die("No query parameters for sighting query");
+			($this->mFamily == "") && ($this->mOrder == "") && ($this->mSpeciesID == ""))
+			die("No query parameters for sighting query");
 
 		return performQuery(
 			$this->getSelectClause() . " " .
