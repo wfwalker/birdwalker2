@@ -5,9 +5,18 @@ require("./birdwalker.php");
 
 $abbrev = $_GET["state"];
 $stateName = getStateNameForAbbreviation($abbrev);
-$stateListCount =  performCount("select count(distinct species.objectid) from species, sighting, location where species.Abbreviation=sighting.SpeciesAbbreviation and sighting.LocationName=location.Name and location.State='" . $abbrev . "'");
+$stateListCount =  performCount("
+    SELECT COUNT(DISTINCT species.objectid)
+      FROM species, sighting, location
+      WHERE species.Abbreviation=sighting.SpeciesAbbreviation
+        AND sighting.LocationName=location.Name AND location.State='" . $abbrev . "'");
 
-$annualStateTotal = performQuery("select count(distinct sighting.SpeciesAbbreviation) as count, year(sighting.TripDate) as year from sighting, location where sighting.LocationName=location.Name and location.State='" . $abbrev . "' group by year");
+$annualStateTotal = performQuery("
+    SELECT COUNT(DISTINCT species.objectid) AS count, year(sighting.TripDate) AS year
+      FROM sighting, species, location
+      WHERE species.Abbreviation=sighting.SpeciesAbbreviation
+        AND sighting.LocationName=location.Name AND location.State='" . $abbrev . "'
+      GROUP BY year");
 ?>
 
 <html>
@@ -36,7 +45,8 @@ navTrailLocations();
 <div class=heading> <?= $stateListCount ?> species</div>
 
 <? formatSpeciesByYearTable(
-    "WHERE sighting.SpeciesAbbreviation=species.Abbreviation AND sighting.LocationName=location.Name AND location.State='". $abbrev . "'",
+    "WHERE sighting.SpeciesAbbreviation=species.Abbreviation
+        AND sighting.LocationName=location.Name AND location.State='". $abbrev . "'",
         "&state=" . $abbrev,
         $annualStateTotal); ?>
 
