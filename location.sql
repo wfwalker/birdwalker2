@@ -131,7 +131,8 @@ INSERT INTO location VALUES (129,'Woodbridge Ecological Preserve','http://www.sa
 INSERT INTO location VALUES (130,'Yosemite','','Yosemite National Park','Mono','CA','','','','');
 INSERT INTO location VALUES (132,'Leakey','','Leaky','Real','TX','','','','');
 INSERT INTO location VALUES (133,'Brownsville','','Brownsville','Cameron','TX','','','','');
-INSERT INTO location VALUES (134,'Port Aransas','','Port Aransas','Neuces','TX','','','','');
+INSERT INTO location VALUES (134,'Port Aransas','','Port Aransas','Nueces','TX','','','','');
 INSERT INTO location VALUES (135,'Laredo','','Laredo','Webb','TX','','','','');
-INSERT INTO location VALUES (136,'Corpus Christi','','Corpus Christi','Neuces','TX','','','','');
+INSERT INTO location VALUES (136,'Corpus Christi','','Corpus Christi','Nueces','TX','','','','');
 INSERT INTO location VALUES (137,'Palmetto State Park','http://www.tpwd.state.tx.us/park/palmetto/','San Antonio','Gonzales','TX','','','','');
+INSERT INTO location VALUES (138,'Other San Benito','','','San Benito','CA','','','','');

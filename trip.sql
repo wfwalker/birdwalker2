@@ -104,10 +104,10 @@ INSERT INTO trip VALUES (103,'Mary and Bill','','Saturday Stroll','','2000-07-08
 INSERT INTO trip VALUES (104,'Mary and Bill','','Sunday Stroll','','2000-07-30');
 INSERT INTO trip VALUES (105,'Mary and Bill','','Wisconsin Trip','We saw two fauns wandering across the trail. Mary saw a Pileated Woodpecker; Bill did not.','2000-08-04');
 INSERT INTO trip VALUES (106,'Mary and Bill','','Early Morning Airport Run','We took Pat to the SF airport at something like 5:30am, and just kept on going. We got to Bolias at around 7:30am. We visited the Bolinas Lagoon, and also stopped at Point Reyes Bird Observatory. We even ate breakfast in Bolinas, a town that didn\'t seem to want us very much.','2000-08-26');
-INSERT INTO trip VALUES (329,'Mary and Bill','','New Tripod Tryout','','2004-08-28');
+INSERT INTO trip VALUES (329,'Mary and Bill','','New Tripod Tryout','Fresh from a big shopping trip at Keeble and Shuchat we went to the Stanford cactus garden so I could play around with my new Gitzo 1227 and Canon 70-200mm. Wahoo!','2004-08-28');
 INSERT INTO trip VALUES (330,'Bob Reiling','http://www.scvas.org/trips.html','Audubon Trip to Point Reyes','<p>We spent the morning with Bob and company, then split off after lunch. Before we joined the group at Drake\'s Beach, others reported Red-throated Loon and Elegant Tern. We had great looks at Osprey flying over the beach. Weather was sunny and pleasant with an offshore wind. It was a good day for owls, with two Great Horned Owls at the fishdocks and a Barn Owl near the Drake\'s Beach parking lot. At the lighthouse, some observed Brant\'s Cormorant; we had great looks at Red-breasted Nuthatch, immature Hermit Warbler, and a Willow Flycatcher. The fishdocks offered looks at Common Murre and Pigeon Guillemot.</p>\r\n\r\nIn the afternoon we walked part of Estero Trail, then ended the day at Pierce Point Ranch. We saw a coyote and had nice looks at the Tule Elk. We saw quite a few raptors in the afternoon heat, including a very dark morph Red-tailed Hawk. At sunset, the Sharp-shinned Hawks were calling incessantly at the Ranch.','2004-09-04');
-INSERT INTO trip VALUES (331,'Mary and Bill','','Wine Tasting at Picchetti','','2004-09-05');
-INSERT INTO trip VALUES (332,'Bill','','Alviso Photo Safari','','2004-09-06');
+INSERT INTO trip VALUES (331,'Mary and Bill','','Wine Tasting at Picchetti','While Mary and Wendy were tasting wine, I was finally getting a pretty good Junco photo for my collection. I was going to practice on the winery\'s peacocks with the rented 500mm lens, but my subject just walked right up to me, so I hurriedly switched to my 70-200mm and got a few good portraits.','2004-09-05');
+INSERT INTO trip VALUES (332,'Bill','','Alviso Photo Safari','Well, there I was with a day off work and a rental 500mm f4.5/L and a new tripod. I had to do something. So I drove around the pond at the Coyote Creek Field station, where a Peregrine Falcon let me get surprisingly close. I then headed over to the Don Edwards Center, where I met up with two other  bird photographers, also toting Gitzo and Canon gear. They sent me down to the turn in the road by the sign to find the flock of Phalaropes, which I had good luck with. By then it was getting really hot, and I called it a day.','2004-09-06');
 INSERT INTO trip VALUES (108,'Mary and Bill','','Sunday Stroll','','2000-08-27');
 INSERT INTO trip VALUES (109,'Frank Vanslager','','Santa Clara Audubon Walk','The famous Gail C. accompanied us on this trip. Also, two attendees got into a heated discussion about the wingbars on Lesser versus American Goldfinches in non-breeding plumage.','2000-09-24');
 INSERT INTO trip VALUES (110,'Mary and Bill','','Columbus Day Trip','','2000-10-06');
@@ -312,7 +312,7 @@ INSERT INTO trip VALUES (308,'FWS','','International Migratory Bird Day preview'
 INSERT INTO trip VALUES (309,'Mary and Bill','','Mount Hamilton','','2004-05-15');
 INSERT INTO trip VALUES (310,'Mary and Bill','','Strolling around the Zoo','','2004-05-08');
 INSERT INTO trip VALUES (311,'John Cang','http://www.johncangphoto.com/','Bird Photography Workshop','Spent a very pleasant early morning and late afternoon shooting shorebirds under the tutelage of John Cang, talking about metering, fill flash, proper exposure for black and white birds, flight shots, and so on. Highly recommended.','2004-05-23');
-INSERT INTO trip VALUES (312,'Bill Walker','','Photo Safari','','2004-05-25');
+INSERT INTO trip VALUES (312,'Bill Walker','','Photo Safari','Stopped by the radio tower pond after work to try some flight shots in the evening light.','2004-05-25');
 INSERT INTO trip VALUES (313,'Bill Walker','','Photo Safari','','2004-05-19');
 INSERT INTO trip VALUES (314,'Mary and Bill','','Saturday Stroll','','2002-07-27');
 INSERT INTO trip VALUES (315,'Mary and Bill','','Mission College Owl Safari','','2000-07-23');
@@ -326,6 +326,8 @@ INSERT INTO trip VALUES (321,'Mary and Bill','','Saturday Stroll','','2004-06-19
 INSERT INTO trip VALUES (323,'Bill','','Commuting','','2004-01-13');
 INSERT INTO trip VALUES (324,'Mary and Bill','','Sunday Stroll','','2004-06-27');
 INSERT INTO trip VALUES (325,'Bill','','Cactus Garden Stroll','','2004-06-28');
-INSERT INTO trip VALUES (326,'Mary and Bill','','Holiday Stroll','','2004-07-05');
+INSERT INTO trip VALUES (326,'Mary and Bill','','Holiday Stroll','After lovely fireworks at Sonoma State University\'s Green Music Festival the night before, we stayed with friends in San Rafael and headed over to Point Reyes. Best photo oppportunities were Pigeon Guillemots nesting under the fish docks, roosting Turkey Vultures, and some very cooperative California Quail at sunset near the visitor\'s center.','2004-07-05');
 INSERT INTO trip VALUES (327,'Bill','','Photos after work','Went twice to investigate reports of a Little Blue Heron, had no luck.','2004-07-02');
 INSERT INTO trip VALUES (328,'Mary','','Work at Home','','2004-07-27');
+INSERT INTO trip VALUES (333,'Bill','','Looking for Roadrunner','','2004-09-14');
+INSERT INTO trip VALUES (334,'R. J. Adams','','the Early Bird gets the Prize','Also saw an Accipter sp. and Dowitcher sp.','2004-09-18');
