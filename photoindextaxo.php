@@ -43,9 +43,9 @@ while($info = mysql_fetch_array($photoSpecies))
 {
 	$orderNum =  floor($info["objectid"] / pow(10, 9));
 	
-	if (getBestTaxonomyID($prevInfo["objectid"]) != getBestTaxonomyID($info["objectid"]))
+	if (getFamilyIDFromSpeciesID($prevInfo["objectid"]) != getFamilyIDFromSpeciesID($info["objectid"]))
 	{
-		$taxoInfo = getBestTaxonomyInfo($info["objectid"]); ?>
+		$taxoInfo = getFamilyInfoFromSpeciesID($info["objectid"]); ?>
 		<div class="subheading"><?= strtolower($taxoInfo["LatinName"]) ?></div>
 <?	} ?>
 

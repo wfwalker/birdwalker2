@@ -397,3 +397,4 @@ INSERT INTO trip VALUES (397,'Bill','','Coffee Run','I don\'t always remember to
 INSERT INTO trip VALUES (398,'Mary and Bill','','Christina shows us around','','2004-11-16');
 INSERT INTO trip VALUES (399,'Bill','','Morning Photo Safari','I worked on flight shots again, this time with gulls. Had a female blackbird posing for me.','2005-02-11');
 INSERT INTO trip VALUES (400,'Bill','','Walk to work','I had several interesting subjects show up during my walk to the office this morning, including one I\'d been waiting a long time for.','2005-03-21');
+INSERT INTO trip VALUES (401,'Mary and Bill','','Saturday Stroll','Our first visit to McLellan Ranch in quite some time. We had a nice chat with one of the SCVAS Board members, and enjoyed being out in the warm sunshine.','2005-04-02');
