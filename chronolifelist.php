@@ -5,7 +5,7 @@ require("./birdwalker.php");
 
 performQuery("CREATE TEMPORARY TABLE tmp ( abbrev varchar(16) default NULL, tripdate date default NULL);");
 performQuery("INSERT INTO tmp SELECT SpeciesAbbreviation, MIN(TripDate) FROM sighting where Exclude!='1' GROUP BY SpeciesAbbreviation;");
-$firstSightingQuery = performQuery("SELECT date_format(sighting.TripDate, '%M %e, %Y') as niceDate, sighting.*, species.CommonName, species.objectid as speciesid, trip.objectid as tripid, location.County, location.State FROM sighting, tmp, species, location, trip WHERE sighting.SpeciesAbbreviation=tmp.abbrev AND species.Abbreviation=sighting.SpeciesAbbreviation AND sighting.TripDate=tmp.tripdate AND location.Name=sighting.LocationName AND trip.Date=sighting.TripDate order by TripDate, LocationName;");
+$firstSightingQuery = performQuery("SELECT date_format(sighting.TripDate, '%M %e, %Y') as niceDate, sighting.*, species.CommonName, species.objectid as speciesid, trip.objectid as tripid, location.County, location.State FROM sighting, tmp, species, location, trip WHERE species.ABACountable='1' and sighting.SpeciesAbbreviation=tmp.abbrev AND species.Abbreviation=sighting.SpeciesAbbreviation AND sighting.TripDate=tmp.tripdate AND location.Name=sighting.LocationName AND trip.Date=sighting.TripDate order by TripDate, LocationName;");
 
 $speciesCount = mysql_num_rows($firstSightingQuery);
 ?>
@@ -13,7 +13,7 @@ $speciesCount = mysql_num_rows($firstSightingQuery);
 <html>
   <head>
     <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-    <title>birdWalker | Chronological Life List</title>
+    <title>birdWalker | Chronological ABA Life List</title>
   </head>
   <body>
 
@@ -21,7 +21,7 @@ $speciesCount = mysql_num_rows($firstSightingQuery);
 
     <div class=contentright>
       <div class="titleblock">	  
-	  <div class=pagetitle>Mary and Bill&rsquo;s Life List</div>
+	  <div class=pagetitle>ABA Life List</div>
         <div class=pagesubtitle><? echo $speciesCount ?> Species</div>
       </div>
 

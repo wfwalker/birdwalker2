@@ -13,9 +13,9 @@ function globalMenu()
 	if (getEnableEdit())
 	{
 		echo "\n<br><div class=\"leftsubtitle\">";
-		echo "\n<a href=\"./tripcreate.php\">Create Trip</a><br>";
-		echo "\n<a href=\"./photosneeded.php\">Photos Needed</a><br>";
-		echo "\n<a href=\"./errorcheck.php\">Errors</a>";
+		echo "\n<a href=\"./tripcreate.php\">create trip</a><br>";
+		echo "\n<a href=\"./photosneeded.php\">photos needed</a><br>";
+		echo "\n<a href=\"./errorcheck.php\">errors</a>";
 		echo "\n</div>";
 	}
 
@@ -89,7 +89,7 @@ function navTrailTrips($extra = "")
 
 function getEnableEdit()
 {
-	return false;
+	return true;
 }
 
 /**
@@ -169,15 +169,9 @@ function performOneRowQuery($queryString)
 	return $theFirstRow;
 }
 
-function bitToString($aBitVector, $anIndex)
-{
-	if (($aBitVector >> $anIndex) & 1) { return "X"; } else { return "&nbsp;" ; }
-}
-
 //
 // -------------------------- SIGHTINGS, FIRST -------------------------------
 //
-
 
 function getSightingInfo($objectid)
 {
@@ -190,7 +184,6 @@ function getSightingInfo($objectid)
 function getFirstSightings()
 {
 	$firstSightings = null;
-
 
 	performQuery("CREATE TEMPORARY TABLE tmp ( abbrev varchar(16) default NULL, tripdate date default NULL);");
 	performQuery("INSERT INTO tmp SELECT SpeciesAbbreviation, MIN(TripDate) FROM sighting where Exclude!='1' GROUP BY SpeciesAbbreviation;");
@@ -252,22 +245,6 @@ function getSpeciesQuery($whereClause = "species.Abbreviation=sighting.SpeciesAb
 }
 
 /**
- * Select species according to fancy query.
- */
-function getFancySpeciesQuery($whereClause = "species.Abbreviation=sighting.SpeciesAbbreviation", $orderClause = "species.objectid", $additionalFields = "")
-{
-	$speciesQueryString =
-		"SELECT distinct species.objectid, species.CommonName " . $additionalFields . "
-     FROM species, sighting, location
-     where " . $whereClause . "
-     order by " . $orderClause;
-
-	$speciesQuery = performQuery($speciesQueryString);
-
-	return $speciesQuery;
-}
-
-/**
  * Get information about a specific species entry.
  */
 function getSpeciesInfo($objectid)
@@ -301,8 +278,10 @@ function formatTwoColumnSpeciesList($query)
 			echo "\n<div class=heading>" . $taxoInfo["CommonName"] . "</div>";
 		}
 		
-		echo "\n<div class=firstcell><a href=\"./speciesdetail.php?id=".$info["objectid"]."\">".$info["CommonName"]."</a></div>";
-		
+		echo "\n<div class=firstcell><a href=\"./speciesdetail.php?id=".$info["objectid"]."\">".$info["CommonName"]."</a>";
+		if ($info["ABACountable"] == "0") { echo " NOT ABA COUNTABLE"; }
+		echo "</div>";
+
 		$prevInfo = $info;
 		$counter--;
 		if ($counter == 0) echo "\n</div><div class=col2>";
@@ -359,7 +338,7 @@ function formatSpeciesByYearTable($gridQueryString, $extraSightingListParams)
 /**
  * Show locations as rows, years as columns
  */
-function formatLocationByYearTable($gridQueryString, $extraSightingListParams)
+function formatLocationByYearTable($gridQueryString, $urlPrefix)
 {
 	$gridQuery = performQuery($gridQueryString);
 
@@ -382,7 +361,7 @@ function formatLocationByYearTable($gridQueryString, $extraSightingListParams)
 			echo "<td class=bordered align=center>";
 			if (($theMask >> $index) & 1)
 			{
-				echo "<a href=\"./specieslist.php?locationid=" . $info["locationid"] . "&year=" . (1995 + $index) . $extraSightingListParams . "\">X</a>";
+				echo "<a href=\"" . $urlPrefix . "locationid=" . $info["locationid"] . "&year=" . (1995 + $index) . "\">X</a>";
 			}
 			else
 			{
@@ -452,23 +431,6 @@ function getTaxonomyInfo($objectid, $blankDigits)
 // ---------------------- TRIPS ------------------------
 //
 
-/**
- * Select the birdwalker database, query trips according to where clause, return the query.
- */
-function getTripQuery($whereClause = "")
-{
-	if (strlen($whereClause) > 0)
-	{
-		$tripListQueryString = "select distinct trip.objectid, trip.*, date_format(Date, '%M %e, %Y') as niceDate, count(distinct sighting.SpeciesAbbreviation) as tripCount from trip, sighting where " . $whereClause . " group by trip.Date order by trip.Date desc";
-	}
-	else
-	{
-		$tripListQueryString = "select trip.*, date_format(Date, '%M %e, %Y') as niceDate, count(distinct sighting.SpeciesAbbreviation) as tripCount from trip, sighting where sighting.TripDate=trip.Date group by trip.Date order by trip.Date desc";
-	}
-
-	return performQuery($tripListQueryString);
-}
-
 function getTripInfo($objectid)
 {
 	return performOneRowQuery("SELECT *, date_format(Date, '%W,  %M %e, %Y') as niceDate FROM trip where objectid=" . $objectid);
@@ -497,8 +459,8 @@ function formatTwoColumnLocationList($locationListQuery)
 		if ($divideByCounties && (($prevInfo["State"] != $info["State"]) || ($prevInfo["County"] != $info["County"])))
 		{
 			echo "\n<div class=\"heading\">
-              <a href=\"./countyindex.php?county=" . urlencode($info["County"]) . "\">" . $info["County"] . " County</a>,
-              <a href=\"./stateindex.php?state=" . urlencode($info["State"]) . "\">" . $info["State"] . "</a></div>";
+              <a href=\"./countydetail.php?county=" . urlencode($info["County"]) . "\">" . $info["County"] . " County</a>,
+              <a href=\"./statedetail.php?state=" . urlencode($info["State"]) . "\">" . $info["State"] . "</a></div>";
 		}
 
 		echo "\n<div class=firstcell><a href=\"./locationdetail.php?id=".$info["objectid"]."\">".$info["Name"]."</a></div>";
