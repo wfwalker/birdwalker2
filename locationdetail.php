@@ -13,11 +13,10 @@ $view = param($_GET, 'view', 'list');
 $siteInfo = getLocationInfo($locationID);
 
 $speciesQuery = new SpeciesQuery;
-
-$speciesQuery->setLocationID($locationID);
+$speciesQuery->setFromRequest($_GET);
 
 $tripQuery = new TripQuery;
-$tripQuery->setLocationID($locationID);
+$tripQuery->setFromRequest($_GET);
 $tripCount = $tripQuery->getTripCount();
 
 $locationSightings = performQuery("
@@ -99,7 +98,7 @@ navTrailLocationDetail($siteInfo);
 	else if ($view == "photo")
 	{
 		$sightingQuery = new SightingQuery;
-		$sightingQuery->setLocationID($locationID);
+		$sightingQuery->setFromRequest($_GET);
 		$sightingQuery->formatPhotos();
 	}
     else if ($view == "map")
