@@ -16,7 +16,12 @@ $tripListCount = mysql_num_rows($tripListQuery);
 
   <body>
 
-<?php globalMenu(); disabledBrowseButtons(); navTrailTrips(""); ?>
+<?php
+globalMenu();
+disabledBrowseButtons();
+navTrailTrips("");
+pageThumbnail("select *, rand() as shuffle from sighting where Photo='1' order by shuffle");
+?>
 
     <div class=contentright>
 	  <div class="titleblock">

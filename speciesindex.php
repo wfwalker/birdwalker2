@@ -14,7 +14,12 @@ $speciesQuery = getSpeciesQuery();
   </head>
   <body>
 
-<?php globalMenu(); disabledBrowseButtons(); navTrailBirds("list | <a href=\"./speciesindexbyyear.php\">by year</a>"); ?>
+<?php
+globalMenu();
+disabledBrowseButtons();
+navTrailBirds("list | <a href=\"./speciesindexbyyear.php\">by year</a>");
+pageThumbnail("select *, rand() as shuffle from sighting where Photo='1' order by shuffle");
+?>
 
     <div class=contentright>
       <div class="titleblock">	  
