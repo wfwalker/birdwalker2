@@ -13,8 +13,6 @@ $tripQuery = performQuery("select distinct trip.objectid, trip.*, date_format(Da
 $tripCount = mysql_num_rows($tripQuery);
 // $firstSightings = getFirstSightings(); // NOT CURRENTLY IN USE
 
-$randomPhotoSightings = performQuery("select *, rand() as shuffle from sighting where Photo='1' and LocationName='" . $siteInfo["Name"] . "' order by shuffle");
-
 ?>
 
 <html>
@@ -33,9 +31,8 @@ $items[] = "<a href=\"./statelocations.php?state=" .  $siteInfo["State"] . "\">"
 $items[] = "<a href=\"./countylocations.php?county=" . $siteInfo["County"] . "&state=" . $siteInfo["State"] . "\">" . strtolower($siteInfo["County"]) . " county</a>";
 $items[] = strtolower($siteInfo["Name"]);
 navTrailLocations($items);
+pageThumbnail("select *, rand() as shuffle from sighting where Photo='1' and LocationName='" . $siteInfo["Name"] . "' order by shuffle");
 ?>
-
-<div class=thumb><?php  if (mysql_num_rows($randomPhotoSightings) > 0) { $photoInfo = mysql_fetch_array($randomPhotoSightings); if (mysql_num_rows($randomPhotoSightings) > 0) echo "<td>" . getThumbForSightingInfo($photoInfo) . "</td>"; } ?></div>
 
 <div class="contentright">
   <div class="titleblock">
