@@ -365,3 +365,5 @@ INSERT INTO trip VALUES (365,'Bill','','Photo Safari','The light was just great 
 INSERT INTO trip VALUES (366,'Mary and Bill','','Sunday Stroll','We decided to check out Charleston Slough to see if any more small hawks were hanging out there. We did have a nice Peregrine Falcon flyover, and the light was lovely.','2004-10-31');
 INSERT INTO trip VALUES (367,'Mary and Bill','','Rarity Chase','Having seen the Clay-colored Sparrow here the day before, I brought Mary back the next day. We were unable to find the Sparrow, but had great looks at the Palm Warbler. I tried to follow Pete\'s example and take some shorebird flight shots, but found them really hard to track.','2004-11-06');
 INSERT INTO trip VALUES (368,'Bill','','Morning Photo Safari','I read reports of a Clay-colored Sparrow up in Foster City, and wanted to see for myself. I found the bird, thanks to some kind assistance from other birders on site, especially Joy and Gary.','2004-11-05');
+INSERT INTO trip VALUES (369,'Bill','','Morning Photo Safari','','2004-11-12');
+INSERT INTO trip VALUES (370,'Mary and Bill','','Birding the Mississippi','','2004-11-14');
