@@ -79,6 +79,21 @@ disabledBrowseButtons();
 	    <a href="http://www.mbr-pwrc.usgs.gov/Infocenter/infocenter.html">Patuxent Bird Identification InfoCenter</a>
 		is an excellent reference for photos, range maps, and descriptions of field marks.</p>
 
+	  <div class="heading">My favorite photographers</div>
+        Big thanks to the kind words and encouragement I have gotten from
+		<a href="http://www.birdphotography.com/">Pete LaTourette</a>,
+     	<a href="http://www.kokophoto.com/">Mark Bohrer</a>,
+        <a href="http://www.pbase.com/tgrey/profile">Tom Grey</a>,
+        <a href="http://www.johncangphoto.com/">John Cang</a>,
+        <a href="http://www.kevinsmithnaturephotos.com/">Kevin Smith</a>,
+        <a href="http://www.pbase.com/robpavey/birding">Rob Pavey</a>,
+        Terry Steele,
+        Kris Falco,
+        Cort Vaughn,
+        <a href="http://www.pbase.com/birdervan">Gary and Joy Aspenall</a>,
+        Steve Shunk,
+        and
+        <a href="http://www.avesphoto.com/">Mike Danzenbaker</a>
     </div>
   </body>
 </html>
