@@ -503,9 +503,8 @@ function formatTwoColumnSpeciesList($speciesQuery, $firstSightings = "", $firstY
 		$earliestsightingid = round(substr($temp, 10));
 		
 		if ($divideByTaxo && (getBestTaxonomyID($prevInfo["objectid"]) != getBestTaxonomyID($info["objectid"])))
-		{
-			$taxoInfo = getBestTaxonomyInfo($info["objectid"]); ?>
-			<div class=subheading><?= strtolower($taxoInfo["LatinName"]) ?></div>
+		{ ?>
+			<div class=subheading><?= getBestTaxonomyLink($info["objectid"]) ?></div>
 <?		} ?>
 
 		<div><a href="./speciesdetail.php?speciesid=<?= $info["objectid"] ?>"><?= $info["CommonName"] ?></a>
@@ -852,6 +851,24 @@ function getBestTaxonomyID($speciesid)
 	else
 	{
 		return floor($speciesid / pow(10,9)) * pow(10, 9);
+	}
+}
+
+function getBestTaxonomyLink($speciesid)
+{
+	$taxoInfo = getBestTaxonomyInfo($speciesid);
+
+	if ($speciesid >= 22000000000)
+	{
+		return "<a href=\"./familydetail.php?order=" . floor($speciesid / pow(10,7)) . "\">" .
+			$taxoInfo["LatinName"] . 
+			"</a>";
+	}
+	else
+	{
+		return "<a href=\"./orderdetail.php?order=" . floor($speciesid / pow(10,9)) . "\">" .
+			$taxoInfo["LatinName"] . 
+			"</a>";
 	}
 }
 
