@@ -33,15 +33,13 @@ $speciesLocationCount = getLocationCount($locationWhereClause);
       <div class="pagetitle"><?php echo $speciesInfo["CommonName"] ?></div>
       <div class="pagesubtitle"><?php echo $speciesInfo["LatinName"] ?></div>
       <div class="metadata">
-	    Family:
-        <a href="./familydetail.php?family=<?php echo $familyInfo["objectid"] / pow(10, 7) ?>">
-          <?php echo $familyInfo["LatinName"] ?>, <?php echo $familyInfo["CommonName"] ?>
+	    <a href="./familydetail.php?family=<?php echo $familyInfo["objectid"] / pow(10, 7) ?>">
+          Family <?php echo $familyInfo["LatinName"] ?>, <?php echo $familyInfo["CommonName"] ?>
         </a>
       </div>
       <div class="metadata">
-	    Order:
 	    <a href="./orderindex.php?order=<?php echo $orderInfo["objectid"] / pow(10, 9) ?>">
-	      <?php echo $orderInfo["LatinName"] ?>, <?php echo $orderInfo["CommonName"] ?>
+	      Order <?php echo $orderInfo["LatinName"] ?>, <?php echo $orderInfo["CommonName"] ?>
         </a>
 <?php if (strlen($speciesInfo["ReferenceURL"]) > 0) {
       echo "<div><a href=\"" . $speciesInfo["ReferenceURL"] . "\">See also...</a></div>";
