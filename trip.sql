@@ -42,7 +42,7 @@ INSERT INTO trip VALUES (41,'Bill','','Lunchtime Walk','','1998-06-23');
 INSERT INTO trip VALUES (42,'Mary and Bill','','Saturday Stroll','','1998-06-27');
 INSERT INTO trip VALUES (43,'Mary and Bill','','Cape Cod Family Trip','','1998-07-23');
 INSERT INTO trip VALUES (44,'Mary and Bill','','Pre-Ashland','','1998-08-01');
-INSERT INTO trip VALUES (45,'Debra Shearwater','','Anniversary Pelagic Trip','Mammals:Short-beak (common) DolphinDahl\'s PorpoiseHumpback WhaleSea LionSea Otter','1998-08-29');
+INSERT INTO trip VALUES (45,'Debra Shearwater','','Anniversary Pelagic Trip','Mammals: Short-beak (common) Dolphin, Dahl\'s Porpoise, Humpback Whale, Sea Lion, Sea Otter','1998-08-29');
 INSERT INTO trip VALUES (46,'Mary and Bill','','Anniversary Slough Trip','','1998-08-30');
 INSERT INTO trip VALUES (47,'Bill','','Lunchtime Walk','','1998-09-01');
 INSERT INTO trip VALUES (48,'Mary and Bill','','Sunday Stroll','','1998-10-18');

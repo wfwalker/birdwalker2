@@ -9,63 +9,77 @@ class Map
 	var $mMapHeight;
 	var $mMapWidth;
 
-	var $mMinumumLatitude;
-	var $mMaxumumLatitude;
-	var $mMinumumLongitude;
-	var $mMaxumumLongitude;
+	var $mLatitude;
+	var $mLongitude;
+	var $mScale;
+
 	var $mBackground;
 	var $mLocationQuery;
 
 	function Map($inPageURL)
 	{
 		$this->mLocationQuery = new LocationQuery;
-		$this->mMapHeight = 500;
-		$this->mMapWidth = 500;
+		$this->mMapHeight = 320;
+		$this->mMapWidth = 640;
 		$this->mPageURL = $inPageURL;
 	}
 
-	function setMinimumLatitude($inValue) { $this->mMinimumLatitude = $inValue; }
-	function setMaximumLatitude($inValue) { $this->mMaximumLatitude = $inValue; }
-	function setMinimumLongitude($inValue) { $this->mMinimumLongitude = $inValue; }
-	function setMaximumLongitude($inValue) { $this->mMaximumLongitude = $inValue; }
+	function setLatitude($inValue) { $this->mLatitude = $inValue; }
+	function setLongitude($inValue) { $this->mLongitude = $inValue; }
+	function setScale($inValue) { $this->mScale = $inValue; }
 	function setBackground($inValue) { $this->mBackground = $inValue; }
+
+	function getMinimumLatitude() { return $this->mLatitude - $this->getLatitudeRadius(); }
+	function getMaximumLatitude() { return $this->mLatitude + $this->getLatitudeRadius(); }
+	function getMinimumLongitude() { return $this->mLongitude - $this->getLongitudeRadius(); }
+	function getMaximumLongitude() { return $this->mLongitude + $this->getLongitudeRadius(); }
+	function getLatitudeRadius() { return $this->mScale; }
+	function getLongitudeRadius() { return $this->mScale * ($this->mMapWidth / $this->mMapHeight); }
 
 	function setFromRequest($get)
 	{
 		$this->mLocationQuery->setFromRequest($_GET);
 
-		if ($_GET["minlat"] == "")
+		if ($_GET["lat"] == "") // get parameters from location query
 		{
 			$extrema = $this->mLocationQuery->findExtrema();
 
-			$this->setMinimumLatitude($extrema["minLat"]);
-			$this->setMaximumLatitude($extrema["maxLat"]);
-			$this->setMinimumLongitude($extrema["minLong"]);
-			$this->setMaximumLongitude($extrema["maxLong"]);
+			// put the map in the center of the extrema
+			$this->setLatitude(($extrema["minLat"] + $extrema["maxLat"]) / 2.0);
+			$this->setLongitude(($extrema["minLong"] + $extrema["maxLong"]) / 2.0);
 			$this->setBackground(param($_GET, "backgnd", "roads"));
+
+			// compute lat and long ranges, with a lower bound in case there's only one location in the set
+			$longRange = max(0.25, abs($extrema["maxLong"] - $extrema["minLong"]));
+			$latRange = max(0.25, abs($extrema["maxLat"] - $extrema["minLat"]));
+
+			// using the aspect ratio, decide on how to scale the map so it fits all the points
+			$minRange = max(0.25 , min($latRange, $longRange * ($this->mMapWidth / $this->mMapHeight)));
+			$this->setScale(0.75 * $minRange);
 		}
-		else
+		else // get parameters from query
 		{
-			$this->setMinimumLatitude(param($_GET, "minlat", 37.3));
-			$this->setMaximumLatitude(param($_GET, "maxlat", 37.5));
-			$this->setMinimumLongitude(param($_GET, "minlong", 121.9));
-			$this->setMaximumLongitude(param($_GET, "maxlong", 122.1));
+			$this->setLatitude(param($_GET, "lat", 37.3));
+			$this->setLongitude(param($_GET, "long", -121.9));
+			$this->setScale(param($_GET, "scale", 1.0));
 			$this->setBackground(param($_GET, "backgnd", "roads"));
 		}
 
-		echo "<!-- " . $this->mMinimumLongitude . ", " . $this->mMinimumLatitude . ", " . $this->mMaximumLongitude . ", " . $this->mMaximumLatitude . " -->\n";
+		echo "<!-- '" . $this->mLongitude . "', '" . $this->mLatitude . "', '" . $this->mScale . "' -->\n";
+		echo "<!-- '" . $this->getLatitudeRadius() . "', '" . $this->getLongitudeRadius() . "' -->\n";
 	}
+
 
 	function scaleLat($inLat)
 	{
-		return $this->mMapHeight - $this->mMapHeight * ($inLat - $this->mMinimumLatitude) /
-			($this->mMaximumLatitude - $this->mMinimumLatitude);
+		return $this->mMapHeight - $this->mMapHeight * ($inLat - $this->getMinimumLatitude()) /
+			($this->getMaximumLatitude() - $this->getMinimumLatitude());
 	}
 
 	function scaleLong($inLong)
 	{
-		return $this->mMapWidth - $this->mMapWidth * ($inLong - $this->mMinimumLongitude) /
-			($this->mMaximumLongitude - $this->mMinimumLongitude);
+		return $this->mMapWidth * ($inLong - $this->getMinimumLongitude()) /
+			($this->getMaximumLongitude() - $this->getMinimumLongitude());
 	}
 
 	function performDBQuery()
@@ -82,14 +96,14 @@ class Map
 		$roads =
 			"http://gisdata.usgs.net/servlet/com.esri.wms.Esrimap?" . 
 			"servicename=USGS_WMS_REF&reaspect=True&REQUEST=map&SRS=EPSG:4326&BBOX=" . 
-			"-" . $this->mMaximumLongitude . "," . $this->mMinimumLatitude. ",-" . $this->mMinimumLongitude . "," . $this->mMaximumLatitude .
+			$this->getMinimumLongitude() . "," . $this->getMinimumLatitude(). "," . $this->getMaximumLongitude() . "," . $this->getMaximumLatitude() .
 			"&WIDTH=" . $this->mMapWidth . "&HEIGHT=" . $this->mMapHeight .
 			"&LAYERS=States,County_Labels,County,Route_Numbers,Roads,Streams,Names-Streams,Water_Bodies,Names-Water_Bodies,Urban_Areas,Federal_Lands,Names-Federal_Lands&STYLES=reference&FORMAT=GIF&BGCOLOR=0xffffff&TRANSPARENT=TRUE&EXCEPTIONS=INIMAGE";
 
 		$landcover =
 			 "http://ims.cr.usgs.gov/servlet/com.esri.wms.Esrimap?" . 
 			 "WMTVER=1.0.0&LAYERS=US_NLCD&FORMAT=PNG&BGCOLOR=0x000000&TRANSPARENT=true&SRS=EPSG:4326&SERVICE=WMS&STYLES=&SERVICENAME=USGS_EDC_LandCover_NLCD&BBOX=" . 
-			 "-" . $this->mMaximumLongitude . "," . $this->mMinimumLatitude. ",-" . $this->mMinimumLongitude . "," . $this->mMaximumLatitude .
+			 $this->getMinimumLongitude() . "," . $this->getMinimumLatitude(). "," . $this->getMaximumLongitude() . "," . $this->getMaximumLatitude() .
 			 "&REQUEST=map" . 
 			 "&WIDTH=" . $this->mMapWidth . "&HEIGHT=" . $this->mMapHeight .
 			 "&LAYERS=US_NED_Shaded_Relief&STYLES=reference&FORMAT=GIF&BGCOLOR=0xffffff&TRANSPARENT=TRUE&EXCEPTIONS=INIMAGE";
@@ -98,14 +112,14 @@ class Map
 		$relief2 =
 			 "http://gisdata.usgs.net/servlet/com.esri.wms.Esrimap/USGS_WMS_GTOPO?" . 
 			 "LAYERS=GTOPO60%20Color%20Shaded%20Relief&FORMAT=gif&REQUEST=GetMap&SRS=EPSG:4326&servicename=WMS&EXCEPTIONS=INIMAGE&BBOX=" . 
-			 "-" . $this->mMaximumLongitude . "," . $this->mMinimumLatitude. ",-" . $this->mMinimumLongitude . "," . $this->mMaximumLatitude .
+			 $this->getMinimumLongitude() . "," . $this->getMinimumLatitude(). "," . $this->getMaximumLongitude() . "," . $this->getMaximumLatitude() .
 			 "&WIDTH=" . $this->mMapWidth . "&HEIGHT=" . $this->mMapHeight;
 
 		// higher res elevation but greyscale only
 		$relief =
 			 "http://gisdata.usgs.net/servlet/com.esri.wms.Esrimap?" .
 			 "servicename=USGS_WMS_NED&reaspect=True&REQUEST=map&SRS=EPSG:4326&BBOX=" . 
-			 "-" . $this->mMaximumLongitude . "," . $this->mMinimumLatitude. ",-" . $this->mMinimumLongitude . "," . $this->mMaximumLatitude .
+			 $this->getMinimumLongitude() . "," . $this->getMinimumLatitude(). "," . $this->getMaximumLongitude() . "," . $this->getMaximumLatitude() .
 			 "&WIDTH=" . $this->mMapWidth . "&HEIGHT=" . $this->mMapHeight .
 			 "&LAYERS=US_NED_Shaded_Relief&STYLES=reference&FORMAT=GIF&BGCOLOR=0xffffff&TRANSPARENT=TRUE&EXCEPTIONS=INIMAGE";
 
@@ -113,7 +127,7 @@ class Map
 		$landsat = 
 			 "http://ims.cr.usgs.gov:80/servlet/com.esri.wms.Esrimap/USGS_WMS_LANDSAT7?" . 
 			 "servicename=WMS&reaspect=True&REQUEST=map&SRS=EPSG:4326&BBOX=" . 
-			 "-" . $this->mMaximumLongitude . "," . $this->mMinimumLatitude. ",-" . $this->mMinimumLongitude . "," . $this->mMaximumLatitude .
+			 $this->getMinimumLongitude() . "," . $this->getMinimumLatitude(). "," . $this->getMaximumLongitude() . "," . $this->getMaximumLatitude() .
 			 "&WIDTH=" . $this->mMapWidth . "&HEIGHT=" . $this->mMapHeight .
 			 "&LAYERS=LANDSAT7&STYLES=reference&FORMAT=GIF&BGCOLOR=0xffffff&TRANSPARENT=TRUE&EXCEPTIONS=INIMAGE";
 
@@ -121,7 +135,7 @@ class Map
 		$terraserver =
 			 "http://terraserver.microsoft.com/ogcmap.ashx?" .
 			 "version=1.1.1&request=GetMap&Layers=DOQ&Styles=GeoGrid&SRS=EPSG:4326&BBOX=" .
-			 "-" . $this->mMaximumLongitude . "," . $this->mMinimumLatitude. ",-" . $this->mMinimumLongitude . "," . $this->mMaximumLatitude .
+			 $this->getMinimumLongitude() . "," . $this->getMinimumLatitude(). "," . $this->getMaximumLongitude() . "," . $this->getMaximumLatitude() .
 			 "&WIDTH=" . $this->mMapWidth . "&HEIGHT=" . $this->mMapHeight .
 			 "&format=image/jpeg&Exceptions=se_xml";
 
@@ -132,42 +146,34 @@ class Map
 		//		else return $terraserver;
 	}
 
-	function linkToSelf($minLat, $maxLat, $minLong, $maxLong, $backgnd, $anchorText, $style = "")
+	function linkToSelf($lat, $long, $scale, $backgnd, $anchorText, $style = "")
 	{
 		return "<a href=\"" . $this->mPageURL . "?" .
 			"view=map&" . 
-			"minlat=" . $minLat . "&maxlat=" . $maxLat .
-			"&minlong=" . $minLong . "&maxlong=" . $maxLong . 
+			"lat=" . $lat . "&long=" . $long . "&scale=" . $scale .
 			"&backgnd=" . $backgnd .
 			$this->mLocationQuery->getParams() . "\"" . 
-			" style=\"" . $style . "\">" .
+			" class=\"" . $style . "\">" .
 			$anchorText . 
 			"</a>";
 	}
 
 	function linkToSelfChangeBackground($background)
 	{
-		return $this->linkToSelf($this->mMinimumLatitude, $this->mMaximumLatitude, $this->mMinimumLongitude, $this->mMaximumLongitude,
+		return $this->linkToSelf($this->mLatitude, $this->mLongitude, $this->mScale,
 								 $background, $background);
 		
 	}
 
 	function linkToSelfZoom($zoomFactor, $anchortext)
 	{
-		$centerLong = ($this->mMinimumLongitude + $this->mMaximumLongitude) / 2.0;
-		$centerLat = ($this->mMinimumLatitude + $this->mMaximumLatitude) / 2.0;
-		$longRange = $this->mMaximumLongitude - $this->mMinimumLongitude;
-		$latRange = $this->mMaximumLatitude - $this->mMinimumLatitude;
-
-		return $this->linkToSelf($centerLat - $zoomFactor * $latRange, $centerLat + $zoomFactor * $latRange,
-								 $centerLong - $zoomFactor * $longRange, $centerLong + $zoomFactor * $longRange,
+		return $this->linkToSelf($this->mLatitude, $this->mLongitude, $this->mScale * $zoomFactor,
 								 $this->mBackground, $anchortext);
 	}
 
 	function linkToSelfPan($latPan, $longPan, $anchortext)
 	{
-		return $this->linkToSelf($this->mMinimumLatitude + $latPan, $this->mMaximumLatitude + $latPan, 
-								 $this->mMinimumLongitude + $longPan, $this->mMaximumLongitude + $longPan,
+		return $this->linkToSelf($this->mLatitude + $latPan, $this->mLongitude + $longPan, $this->mScale,
 								 $this->mBackground, $anchortext);
 	}
 
@@ -181,15 +187,14 @@ class Map
 
 	function drawPanControls()
 	{
-		$longRange = $this->mMaximumLongitude - $this->mMinimumLongitude;
-		$latRange = $this->mMaximumLatitude - $this->mMinimumLatitude;
-		$longPan = $longRange * 0.25;
-		$latPan = $latRange * 0.25; 
+		$longPan = -$this->getLongitudeRadius() * 0.25;
+		$latPan = $this->getLatitudeRadius() * 0.25; 
+		echo "<!-- PAN " . $longPan . ", " . $latPan . " -->";
 ?>
 	<div style="position: absolute; left: <?= $this->mMapWidth / 2 ?>px; top: -20px">
 		 <?= $this->linkToSelfPan($latPan, 0, "N"); ?>
 	</div>
-	<div style="position: absolute; left: <?= $this->mMapWidth / 2 ?>px; top: <?= $this->mMapWidth + 5 ?>px">
+	<div style="position: absolute; left: <?= $this->mMapWidth / 2 ?>px; top: <?= $this->mMapHeight + 5 ?>px">
 		 <?= $this->linkToSelfPan(-$latPan, 0, "S"); ?>
 	</div>
 	<div style="position: absolute; left: -20px; top: <?= $this->mMapHeight / 2 ?>px">
@@ -204,21 +209,25 @@ class Map
 
 	function draw()
 	{
-		$longRange = $this->mMaximumLongitude - $this->mMinimumLongitude;
-		$latRange = $this->mMaximumLatitude - $this->mMinimumLatitude;
-		$longPan = $longRange * 0.1;
-		$latPan = $latRange * 0.3; 
-		
 		$centerLong = ($this->mMinimumLongitude + $this->mMaximumLongitude) / 2.0;
 		$centerLat = ($this->mMinimumLatitude + $this->mMaximumLatitude) / 2.0;
 
+		$minRange = min($this->mMaximumLongitude - $this->mMinimumLongitude, $this->mMaximumLatitude - $this->mMinimumLatitude);
+		$minPixels = min($this->mMapWidth, $this->mMapHeight);
 
+		$longRange = $minRange * $this->mMapHeight / $minPixels;
+		$latRange = $minRange * $this->mMapWidth / $minPixels;
+
+		$longPan = $longRange * 0.1;
+		$latPan = $latRange * 0.3; 
+		
 ?>
 
 	   <div>
-		 <?= $this->linkToSelfZoom(0.6, "out"); ?> |
-		 <?= $this->linkToSelfZoom(0.4, "in"); ?> |
-	     <?= round($latRange * 69.0) ?> miles
+		 <?= $this->linkToSelfZoom(1.2, "out"); ?> |
+		 <?= $this->linkToSelfZoom(0.8, "in"); ?> |
+	     <?= round($this->getLatitudeRadius() * 69.0) ?> miles
+	     <?= round($this->getLongitudeRadius() * 69.0) ?> miles
        </div>
 	   
        <div style="position: relative; border: 1px solid gray; background-image: url(<?=$this->getBackgroundImageURL()?>); height:<?= $this->mMapHeight ?>px; width: <?= $this->mMapWidth?>px;">
@@ -248,15 +257,19 @@ class Map
 				
 			    <div style="position: absolute; left: <?= $left ?>px; top: <?= $top ?>px" nowrap>
 
-				<?=  $this->linkToSelf($mylat - 0.25 * $latRange, $mylat + 0.25 * $latRange,
-									   $mylong - 0.25 * $longRange, $mylong + 0.25 * $longRange,
+					 <?=  $this->linkToSelf($mylat, $mylong, $this->mScale * 0.5,
 									   $this->mBackground,
-									   $counter,
-									   "color: white; border: 1px solid black; background-color: blue; padding-left: 3px; padding-right: 3px"); ?>
+									   $info["Name"][0] . $info["Name"][1] . "<span>" . $info["Name"] . "</span>",
+									   "info"); ?>
 			   </div>
 <?
 			   $counter++;
 			}
+			else
+			{
+				echo "<!-- " . $lat . " = " . $top . ", " . $long . " = " . $left . " -->\n";
+			}
+			
 		}
 ?>
 
@@ -270,8 +283,9 @@ class Map
 		 for($i = 1; $i < $counter; $i++)
 		 { ?>
 			 <div style="padding: 2px">
-                 <span style="color: white; border: 1px solid black; background-color: blue; padding-left: 3px; padding-right: 3px"><?= $i ?></span>
-				 <a href="./locationdetail.php?id=<?= $locationInfo[$i]["objectid"] ?>"><?= $locationInfo[$i]["Name"] ?></a>
+				 <a class="info" href="./locationdetail.php?id=<?= $locationInfo[$i]["objectid"] ?>">
+                   <?= $locationInfo[$i]["Name"][0] . $locationInfo[$i]["Name"][1] ?><span><?= $locationInfo[$i]["Name"] ?></span>
+                 </a>
 			 </div>
 <?		 } ?>
 

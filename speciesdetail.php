@@ -63,7 +63,7 @@ navTrailSpecies($speciesID);
       </div>
    </div>
 
-   <div class=sighting-notes><?= $speciesInfo["Notes"] ?></div>
+   <div class=report-content><?= $speciesInfo["Notes"] ?></div>
 
 <?
 	

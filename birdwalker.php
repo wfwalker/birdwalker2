@@ -1131,7 +1131,7 @@ function formatTwoColumnLocationList($locationQuery, $countyHeadingsOK = true)
 			<div class="subheading">
 <?          if ($lastStateHeading != $info["State"]) {
 				$stateInfo = getStateInfoForAbbreviation($info["State"]); ?>
-			    <a href="./statedetail.php?id=<?= $stateInfo["objectid"]?>"><?= $stateInfo["Name"] ?></a>,
+			    <a href="./statedetail.php?stateid=<?= $stateInfo["objectid"]?>"><?= $stateInfo["Name"] ?></a>,
 <?              $lastStateHeading = $info["State"];
             } ?>
 			<a href="./countydetail.php?state=<?= $info["State"]?>&county=<?= $info["County"] ?>"><?= $info["County"] ?> County</a>

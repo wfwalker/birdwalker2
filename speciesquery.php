@@ -153,6 +153,12 @@ class SpeciesQuery extends BirdWalkerQuery
 		// todo add species, family, order
 		$pageTitle = "";
 
+		if ($this->mFamily != "") {
+			$familyInfo = getFamilyInfo($family * pow(10, 7));
+			$pageTitle = $familyInfo["CommonName"];
+		}
+
+		// TODO need to cope with both family and location being set!
 		if ($this->mLocationID != "") {
 			$locationInfo = getLocationInfo($this->mLocationID); 
 			$pageTitle = $locationInfo["Name"];

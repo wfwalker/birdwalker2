@@ -64,7 +64,7 @@ navTrailLocationDetail($siteInfo);
       <a href="./locationdetail.php?view=photo&id=<?=$locationID?>">photos</a>
     </div>
 
-    <p class=sighting-notes><?= $siteInfo["Notes"] ?></p>
+    <div class=report-content><?= $siteInfo["Notes"] ?></div>
 
 <?
 	if ($view == "list")

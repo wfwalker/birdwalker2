@@ -31,7 +31,7 @@ disabledBrowseButtons();
 <?    for ($index = 0; $index < 5; $index++)
 	  {
 		  $info = mysql_fetch_array($randomPhotoSightings); ?>
-		  <td><?= getThumbForSightingInfo($info) ?></td>
+		  <td align=right><?= getThumbForSightingInfo($info) ?></td>
 <?	  } ?>
 
       </tr></table>

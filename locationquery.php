@@ -214,16 +214,9 @@ class LocationQuery
             min(location.Longitude) as minLong " .
 			$this->getFromClause() . " " .
 			$this->getWhereClause() . " " .
-			"AND location.Latitude<>'' AND location.Longitude<>''"); 
+			"AND location.Latitude>0 AND location.Longitude<0"); 
 
-		$midLat = ($extrema["maxLat"] + $extrema["minLat"]) / 2.0;
-		$midLong = ($extrema["maxLong"] + $extrema["minLong"]) / 2.0;
-		$maxRadius = max(0.05, 1.1 * max($extrema["maxLong"] - $extrema["minLong"], $extrema["maxLat"] - $extrema["minLat"]) / 2.0);
-
-		$box["minLat"] = $midLat - $maxRadius; $box["maxLat"] = $midLat + $maxRadius;
-		$box["minLong"] = $midLong - $maxRadius; $box["maxLong"] = $midLong + $maxRadius;
-
-		return $box;
+		return $extrema;
 	}
 
 	function rightThumbnail()

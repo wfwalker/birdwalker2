@@ -70,7 +70,7 @@ while($sightingInfo = mysql_fetch_array($dbQuery)) {
 <?	
 	if ($sightingInfo["Notes"] != "") {
 ?>
-    <tr><td></td><td class=sighting-notes><?= $sightingInfo["Notes"] ?></td></tr>
+    <tr><td></td><td class=report-content><?= $sightingInfo["Notes"] ?></td></tr>
 <?
     }
 
