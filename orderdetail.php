@@ -67,35 +67,33 @@ elseif ($view == 'speciesbyyear')
 elseif ($view == 'speciesbymonth')
 {
 	$speciesQuery = new SpeciesQuery;
-	$speciesQuery->setOrder($orderid);
+	$speciesQuery->setFromRequest($_GET);
 	countHeading( $speciesQuery->getSpeciesCount(), "species");
 	$speciesQuery->formatSpeciesByMonthTable(); 
 }
 elseif ($view == 'locations')
 {
     $locationQuery = new LocationQuery;
-	$locationQuery->setOrder($orderid);
+	$locationQuery->setFromRequest($_GET);
 	countHeading( $locationQuery->getLocationCount(), "location");
 	$locationQuery->formatTwoColumnLocationList();
 }
 elseif ($view == 'locationsbyyear')
 {
     $locationQuery = new LocationQuery;
-	$locationQuery->setOrder($orderid);
+	$locationQuery->setFromRequest($_GET);
 	countHeading( $locationQuery->getLocationCount(), "location");
 	$locationQuery->formatLocationByYearTable();
 }
 elseif ($view == 'locationsbymonth')
 {
     $locationQuery = new LocationQuery;
-	$locationQuery->setOrder($orderid);
+	$locationQuery->setFromRequest($_GET);
 	countHeading($locationQuery->getLocationCount(), "location");
 	$locationQuery->formatLocationByMonthTable();
 }
 else if ($view == "map")
 {
-    $locationQuery = new LocationQuery;
-	$locationQuery->setOrder($orderid);
 	$map = new Map("./orderdetail.php");
 	$map->setFromRequest($_GET);
 	$map->draw();
