@@ -30,9 +30,8 @@ $orderInfo = getOrderInfo($orderid * pow(10, 9));
 	    <div class=pagetitle><?php echo $familyInfo["CommonName"] ?></div>
         <div class=pagesubtitle><?php echo $familyInfo["LatinName"] ?></div>
         <div class="metadata">
-	      Order:
 	      <a href="./orderdetail.php?order=<?php echo $orderid ?>">
-	        <?php echo $orderInfo["LatinName"] ?>, <?php echo $orderInfo["CommonName"] ?>
+	        Order <?php echo $orderInfo["LatinName"] ?>, <?php echo $orderInfo["CommonName"] ?>
           </a>
         </div>
       </div>
