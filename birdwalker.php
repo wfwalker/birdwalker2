@@ -729,7 +729,7 @@ function formatLocationByYearTable($locationQuery, $urlPrefix, $countyHeadingsOK
         ORDER BY location.State, location.County, location.Name;";
 	$gridQuery = performQuery($gridQueryString); ?>
 
-    <table cellpadding=0 cellspacing=0 cols=11 class="report-content" width="100%">
+    <table cellpadding=0 cellspacing=0 class="report-content" width="100%">
     <tr><td></td><? insertYearLabels() ?></tr>
 
 <?	while ($info = mysql_fetch_array($gridQuery))
@@ -750,7 +750,7 @@ function formatLocationByYearTable($locationQuery, $urlPrefix, $countyHeadingsOK
 		        <a href="./locationdetail.php?id=<?= $info["locationid"] ?>"><?= $info["LocationName"] ?></a>
             </td>
 
-<?		for ($index = 1; $index <= 9; $index++)
+<?		for ($index = 1; $index <= (1 + getLatestYear() - getEarliestYear()); $index++)
 		{ ?>
 			<td class=bordered align=center>
 <?			if (($theMask >> $index) & 1)
@@ -1158,7 +1158,7 @@ function formatTwoColumnLocationList($locationQuery, $countyHeadingsOK = true)
 
 function insertYearLabels()
 {
-	for ($year = 1996; $year <= getLatestYear(); $year++)
+	for ($year = getEarliestYear(); $year <= getLatestYear(); $year++)
 	{ ?>
 		<td class=yearcell align=center><?= $year ?></td>
 <?	}
