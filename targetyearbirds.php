@@ -4,11 +4,18 @@
 require("./birdwalker.php");
 
 performQuery("CREATE TEMPORARY TABLE tmp ( CommonName varchar(32) default NULL, tripdate date default NULL, sightingCount varchar(32));");
-performQuery("INSERT INTO tmp SELECT species.CommonName, max(TripDate), count(sighting.objectid) as sightingCount FROM sighting, species, location where species.Abbreviation=sighting.SpeciesAbbreviation and sighting.LocationName=location.Name and location.State='CA' and Exclude!='1' GROUP BY SpeciesAbbreviation;");
-$latestSightingQuery = performQuery("SELECT *, Year(tripdate) as latestYear FROM tmp order by tripdate desc;");
+
+performQuery("
+    INSERT INTO tmp
+    SELECT species.CommonName, max(TripDate), count(sighting.objectid) as sightingCount
+    FROM sighting, species, location
+    WHERE species.Abbreviation=sighting.SpeciesAbbreviation AND sighting.LocationName=location.Name AND location.State='CA' AND Exclude!='1'
+    GROUP BY SpeciesAbbreviation;");
+
+$latestSightingQuery = performQuery("SELECT *, Year(tripdate) as latestYear FROM tmp ORDER BY tripdate desc;");
 
 $sightingThreshold = 5;
-$targetYear = 2004;
+$theYear = param($_GET, "year", 2004);
 ?>
 
 <html>
@@ -22,15 +29,15 @@ $targetYear = 2004;
 
 <?php
 globalMenu();
-disabledBrowseButtons();
+browseButtons("./targetyearbirds.php?year=", $theYear, getEarliestYear(), $theYear - 1, $theYear + 1, getLatestYear());
 navTrailBirds();
 ?>
 
 <div class="contentright">
 
 <div class="titleblock">
-    <div class="pagetitle">Target CA birds for <?= $targetYear ?></div>
-	<div class=metadata>Birds we have seen at least <?= $sightingThreshold ?> times, but not seen yet in <?= $targetYear ?></div>
+    <div class="pagetitle">Target CA birds for <?= $theYear ?></div>
+	<div class=metadata>Birds we have seen at least <?= $sightingThreshold ?> times, but not seen yet in <?= $theYear ?></div>
 </div>
 
 <table>
@@ -38,7 +45,7 @@ navTrailBirds();
 
 while ($info = mysql_fetch_array($latestSightingQuery))
 {
-	if ($info["latestYear"] < $targetYear && $info["sightingCount"] >= $sightingThreshold)
+	if ($info["latestYear"] < $theYear && $info["sightingCount"] >= $sightingThreshold)
 	{
 ?>
 		<tr class=report-content>
