@@ -12,16 +12,12 @@ $speciesCount = performCount("
       WHERE species.Abbreviation=sighting.SpeciesAbbreviation
       AND sighting.LocationName='" . $siteInfo["Name"]. "'");
 
-$tripQuery = performQuery("
-    SELECT DISTINCT trip.objectid, trip.*, date_format(Date, '%M %e, %Y') AS niceDate,
-      COUNT(DISTINCT sighting.SpeciesAbbreviation) AS tripCount
+
+$tripCount = performCount("
+    SELECT count(DISTINCT trip.objectid)
       FROM trip, sighting
       WHERE sighting.LocationName='" . $siteInfo["Name"]. "'
-      AND sighting.TripDate=trip.Date
-      GROUP BY trip.Date
-      ORDER BY trip.Date DESC");
-
-$tripCount = mysql_num_rows($tripQuery);
+      AND sighting.TripDate=trip.Date");
 
 $locationSightings = performQuery("
     SELECT sighting.objectid FROM sighting, location
@@ -50,7 +46,7 @@ while($sightingInfo = mysql_fetch_array($locationSightings)) {
 
 <?php
 globalMenu();
-locationBrowseButtons($siteInfo, $locationID, "");
+locationBrowseButtons($siteInfo, $locationID, "byyear");
 
 $items[] = "
     <a href=\"./statelocations.php?state=" .  $siteInfo["State"] . "\">" .
@@ -75,36 +71,38 @@ pageThumbnail("
   <div class="titleblock">
     <div class=pagetitle><?= $siteInfo["Name"] ?></div>
 
-<?    referenceURL($siteInfo);
+<? referenceURL($siteInfo); ?>
 
-      if (getEnableEdit()) { ?>
-	     <div><a href="./locationcreate.php?id=<?= $locationID ?>">edit</a></div>
-<?    }
+<? if (getEnableEdit()) { ?>
+	<div><a href="./locationcreate.php?id=<?= $locationID ?>">edit</a></div>
+<? }
 
       mapLink($siteInfo);
       locationViewLinks($locationID); ?>
     </div>
 
     <p class=sighting-notes><?= $siteInfo["Notes"] ?></p>
+  
+  <div class=heading>
+          <?= $speciesCount ?> species,
+          <?= $tripCount ?> trips<? if ($locationFirstSightings > 0) {  echo ','; ?>
+          <?= $locationFirstSightings ?> first sighting<? if ($locationFirstSightings > 1) echo 's'; } ?>
+  </div>
 
-     <div class="heading">
-         <?= $tripCount ?> trip<? if ($tripCount > 1) echo 's' ?>
-     </div>
+<?   $gridQueryString="
+        SELECT DISTINCT(CommonName), species.objectid AS speciesid, bit_or(1 << (year(TripDate) - 1995)) AS mask
+          FROM sighting, species
+          WHERE sighting.LocationName='" . $siteInfo["Name"] . "' AND sighting.SpeciesAbbreviation=species.Abbreviation
+          GROUP BY sighting.SpeciesAbbreviation
+          ORDER BY speciesid";
 
-<? formatTwoColumnTripList($tripQuery); ?>
+	  $annualLocationTotal = performQuery("
+        SELECT COUNT(DISTINCT sighting.SpeciesAbbreviation) AS count, year(sighting.TripDate) AS year
+          FROM sighting, location
+          WHERE sighting.LocationName='" . $siteInfo["Name"] . "'
+          GROUP BY year");
 
-
-   <div class=heading>
-	 <?= $speciesCount ?> species<? if ($locationFirstSightings > 0) { ?>,
-     <?= $locationFirstSightings ?> first sighting<? if ($locationFirstSightings > 1) echo 's'; } ?>
-   </div>
-
-<? formatTwoColumnSpeciesList(performQuery("
-        SELECT distinct(species.objectid), species.*
-          FROM species, sighting
-          WHERE species.Abbreviation=sighting.SpeciesAbbreviation
-          AND sighting.LocationName='" . $siteInfo["Name"]. "'
-          ORDER BY species.objectid")); ?>
+	  formatSpeciesByYearTable($gridQueryString, "&locationid=" . $siteInfo["objectid"], $annualLocationTotal); ?>
 
 </div>
 </body>
