@@ -503,7 +503,7 @@ INSERT INTO species VALUES (11082010800,'batgul','Larus belcheri','Band-tailed G
 INSERT INTO species VALUES (11082010900,'bktgul','Larus crassirostris','Black-tailed Gull','','',1);
 INSERT INTO species VALUES (11082011000,'mewgul','Larus canus','Mew Gull','','',1);
 INSERT INTO species VALUES (11082011001,'shbgul','Larus canus 1','Short-billed Gull','','',1);
-INSERT INTO species VALUES (11082011100,'ribgul','Larus delawarensis','Ring-billed Gull','','',1);
+INSERT INTO species VALUES (11082011100,'ribgul','','Ring-billed Gull','','http://www.mbr-pwrc.usgs.gov/id/framlst/i0540id.html',1);
 INSERT INTO species VALUES (11082011200,'calgul','Larus californicus','California Gull','','',1);
 INSERT INTO species VALUES (11082011300,'hergul','Larus argentatus','Herring Gull','','',1);
 INSERT INTO species VALUES (11082011301,'amhgul','Larus argentatus 1','American Herring Gull','','',1);
