@@ -44,7 +44,7 @@ disabledBrowseButtons();
 
 		  <div class="titleblock">
               <span class="pagetitle">
-                  <a href="./tripdetail.php?id=<?=$info["objectid"]?>"/>
+                  <a href="./tripdetail.php?tripid=<?=$info["objectid"]?>"/>
 <?                    rightThumbnail("SELECT * FROM sighting WHERE Photo='1' AND TripDate='" . $info["Date"] . "' LIMIT 1", false); ?>
                       <?= $info["Name"] ?>
                   </a>
