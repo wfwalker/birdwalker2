@@ -32,7 +32,7 @@ $extrema = $locationQuery->findExtrema();
     <div class=contentright>
       <div class="pagesubtitle">State Detail</div>
       <div class="titleblock">	  
-<?    rightThumbnailState($info["Abbreviation"]); ?>
+<?    if ($view != "map") rightThumbnailState($info["Abbreviation"]); ?>
 	  <div class=pagetitle><?= $info["Name"] ?></div>
       <div class=metadata>
         locations:
@@ -86,7 +86,7 @@ elseif ($view == 'locationsbyyear')
 elseif ($view == 'locationsbymonth')
 {
     $locationQuery = new LocationQuery;
-	$locationQuery->setState($info['Abbreviation']);
+	$locationQuery->setStateID($id);
 	countHeading($locationQuery->getLocationCount(), "location");
 	$locationQuery->formatLocationByMonthTable();
 }
