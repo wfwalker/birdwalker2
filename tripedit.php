@@ -2,30 +2,11 @@
 <?php
 
 require("./birdwalker.php");
-$tripID = $_GET['id'];
-$postTripID = $_POST['id'];
-$save = $_POST['Save'];
 
-if (($postTripID != "") && ($save == "Save"))
-{
-	$leader = $_POST['Leader'];
-	$referenceURL = $_POST['ReferenceURL'];
-	$date = $_POST['Date'];
-	$notes = $_POST['Notes'];
-	$name = $_POST['Name'];
+getEnableEdit() or die("Editing disabled");
 
-	performQuery("update trip set Leader='" . $leader . 
-				 "', ReferenceURL='" . $referenceURL . 
-				 "', Date='" . $date . 
-				 "', Notes='" . $notes . 
-				 "' where objectid='" . $postTripID . "'");
-
-	$tripID = $postTripID;
-			   
-}
-
-$tripInfo = getTripInfo($tripID);
 ?>
+
 
 <html>
 
@@ -46,6 +27,37 @@ $tripInfo = getTripInfo($tripID);
     </div>
 
 <div class="contentright">
+
+
+<?php
+
+$tripID = $_GET['id'];
+$postTripID = $_POST['id'];
+$save = $_POST['Save'];
+
+if (($postTripID != "") && ($save == "Save"))
+{
+	$leader = $_POST['Leader'];
+	$referenceURL = $_POST['ReferenceURL'];
+	$date = $_POST['Date'];
+	$notes = $_POST['Notes'];
+	$name = $_POST['Name'];
+
+	performQuery("update trip set Leader='" . $leader . 
+				 "', ReferenceURL='" . $referenceURL . 
+				 "', Name='" . $name . 
+				 "', Date='" . $date . 
+				 "', Notes='" . $notes . 
+				 "' where objectid='" . $postTripID . "'");
+
+	$tripID = $postTripID;
+
+	echo "<b>Trip Updated</b>";
+}
+
+$tripInfo = getTripInfo($tripID);
+?>
+
 <div class="titleblock">
   <a href="./tripdetail.php?id=<?php echo $tripInfo["objectid"] ?>">
     <div class=pagetitle><?php echo $tripInfo["Name"] ?></div>
