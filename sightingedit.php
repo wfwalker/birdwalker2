@@ -66,7 +66,7 @@ $locationList = performQuery("select Name, objectid from location");
 
 <body>
 
-<?php navigationHeader() ?>
+<?php globalMenu(); browseButtons("./sightingedit.php?id=", $sightingID, 1, $sightingID - 1, $sightingID + 1, $sightingCount);navTrailBirds();  ?>
 
     <div class="navigationleft">
 	  <a href="./sightingedit.php?id=1">first</a>
@@ -75,11 +75,12 @@ $locationList = performQuery("select Name, objectid from location");
       <a href="./sightingedit.php?id=<?php echo $sightingCount ?>">last</a>
     </div>
 
+<div class=thumb><?php if ($sightingInfo["Photo"] == "1") { echo getThumbForSightingInfo($sightingInfo); } ?></div>
+
 <div class="contentright">
 
 <div class="titleblock">
 
-<?php if ($sightingInfo["Photo"] == "1") { echo getThumbForSightingInfo($sightingInfo); } ?>
 
   <div class=pagetitle>
     <a href="./speciesdetail.php?id=<?php echo $speciesInfo["objectid"] ?>"><?php echo $speciesInfo["CommonName"] ?></a>

@@ -74,7 +74,7 @@ $locationInfo = getLocationInfo($locationID);
 
 <body>
 
-<?php navigationHeader() ?>
+<?php globalMenu(); disabledBrowseButtons(); navTrailLocations(); ?>
 
     <div class="navigationleft">
 	  <a href="./locationcreate.php?id=1">first</a>
