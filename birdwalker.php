@@ -3,8 +3,8 @@
 function globalMenu()
 { ?>
 	<div class="contentleft">
-      <p><img src="./images/bill.jpg" alt="Bill"></p>
-      <p><img src="./images/mary.jpg" alt="Mary"></p>
+      <p><a href="http://wfwalker.blogspot.com/"><img src="./images/bill.jpg" border=0 alt="Bill"></a></p>
+      <p><a href="http://spinnity.blogspot.com/"><img src="./images/mary.jpg" border=0 alt="Mary"></a></p>
 	  <div><a href="./tripindex.php">trips</a></div>
 	  <div><a href="./speciesindex.php">birds</a></div>
 	  <div><a href="./locationindex.php">locations</a></div>
