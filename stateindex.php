@@ -58,7 +58,13 @@ while ($info = mysql_fetch_array($stateStats))
 
 <?		for ($year = 1996; $year <= 2004; $year++)
 		{ ?>
-			<td class=bordered align=right>&nbsp;<?= $yearArray[$year] ?></td>
+			<td class=bordered align=right>
+<?	        if ($yearArray[$year] > 0) { ?>
+		        <a href="./specieslist.php?state=<?= urlencode($stateToAccumulate) ?>&year=<?= $year ?>"><?= $yearArray[$year] ?></a>
+<?          } else { ?>
+                &nbsp;
+<?          } ?>
+		    </td>
 <? 		} ?>
 
 		</tr>
