@@ -1,13 +1,10 @@
 
-<? require_once("./birdwalker.php"); ?>
+<?
+require_once("./birdwalker.php");
 
-<html>
 
-  <? htmlHead("Counties"); ?>
+htmlHead("Counties");
 
-  <body>
-
-<?php
 globalMenu();
 disabledBrowseButtons();
 navTrailLocations();
@@ -89,7 +86,12 @@ while ($info = mysql_fetch_array($countyStats))
 
 </table>
 
+<?
+footer();
+?>
 
     </div>
-  </body>
-</html>
+
+<?
+htmlFoot();
+?>

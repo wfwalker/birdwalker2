@@ -25,16 +25,8 @@ $badSightingLocations = performQuery("
 $missingLatLong = performQuery("
     SELECT * FROM location WHERE Latitude=0 OR Longitude=0");
 
-?>
+htmlHead("Bad Records");
 
-
-<html>
-
-  <? htmlHead("Bad Records"); ?>
-
-  <body>
-
-<?
 globalMenu();
 disabledBrowseButtons();
 navTrailBirds();
@@ -97,3 +89,13 @@ while($locationInfo = mysql_fetch_array($missingLatLong))
 {
 	echo "<a href=\"./locationcreate.php?id=" . $locationInfo["objectid"] . "\">" . $locationInfo["Name"] . "</a><br/>\n";
 }
+
+<?
+footer();
+?>
+
+</div>
+
+<?
+htmlFoot();
+?>

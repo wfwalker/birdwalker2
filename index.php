@@ -7,13 +7,8 @@ $numberOfTrips = 10;
 $latestTrips = performQuery("select *, date_format(Date, '%M %e, %Y') AS niceDate from trip order by Date desc LIMIT " . $numberOfTrips);
 $randomPhotoSightings = performQuery("SELECT *, rand() AS shuffle FROM sighting WHERE Photo='1' ORDER BY shuffle LIMIT 5");
 
- ?>
+htmlHead("Home");
 
-<html>
-  <? htmlHead("Home"); ?>
-  <body>
-
-<?php
 globalMenu();
 disabledBrowseButtons();
 ?>
@@ -61,14 +56,12 @@ disabledBrowseButtons();
           <div class=report-content><?= $info["Notes"] ?><br clear="all"/></div>
 		  <p>&nbsp;</p>
 
-<?	  } ?>
+<?	  }
 
-   valid <a href="http://validator.w3.org/check/referer">XHTML 1.1</a><br>
-   valid <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS 2.0</a><br>
+      footer();
+?>
+    </div>
 
-   </div>
-
-
-
-  </body>
-</html>
+<?
+htmlFoot();
+?>

@@ -68,7 +68,12 @@ navTrailPhotos("missing");
 
 <p><?= $speciesCount . " species in need of photos" ?></p>
 
-    </div>
-  </body>
+<?
+footer();
+?>
 
-</html>
+    </div>
+
+<?
+htmlFoot();
+?>

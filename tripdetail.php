@@ -126,8 +126,13 @@ else if ($view="list")
         $speciesQuery->formatTwoColumnSpeciesList();
 	}
 }
+
+footer();
+
 ?>
 
     </div>
-  </body>
-</html>
+
+<?
+htmlFoot();
+?>

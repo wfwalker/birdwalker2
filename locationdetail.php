@@ -112,8 +112,12 @@ navTrailLocationDetail($siteInfo);
 		$map->draw();
 	}
 
+footer();
+
 ?>
 
 </div>
-</body>
-</html>
+
+<?
+htmlFoot();
+?>

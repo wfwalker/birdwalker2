@@ -51,9 +51,13 @@ disabledBrowseButtons();
           </div>
 
           <div class=report-content><?= $info["Notes"] ?><br clear="all"/></div>
-<?	  } ?>
+<?	  }
+
+footer();
+?>
 
     </div>
-  </body>
 
-</html>
+<?
+htmlFoot();
+?>

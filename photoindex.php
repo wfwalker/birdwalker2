@@ -6,15 +6,8 @@ require_once("./birdwalker.php");
 $photoCount = performCount("select count(*) from sighting where Photo='1'");
 $photoSpeciesCount = performCount("select count(distinct(sighting.SpeciesAbbreviation)) from sighting where Photo='1'");
 
-?>
+htmlHead("Photo List");
 
-<html>
-
-  <? htmlHead("Photo List"); ?>
-
-  <body>
-
-<?php
 globalMenu();
 disabledBrowseButtons();
 navTrailPhotos();
@@ -71,6 +64,12 @@ while($info = mysql_fetch_array($photoQuery))
 
 </table>
 
-    </div>
-  </body>
-</html>
+<?
+footer();
+?>
+
+</div>
+
+<?
+htmlFoot();
+?>

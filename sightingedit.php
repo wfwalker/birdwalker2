@@ -139,6 +139,12 @@ navTrailBirds();
 
 </form>
 
+<?
+footer();
+?>
+
 </div>
-</body>
-</html>
+
+<?
+htmlFoot();
+?>

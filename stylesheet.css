@@ -36,6 +36,16 @@
 	position: absolute;
 }
 
+.footer
+{
+    border-top: solid 1px #AAAAAA;
+    font: 10pt "Gill Sans", "Gill Sans MT", SansSerif;
+	left: 15%; width: 640px;
+	padding-bottom: 30px;
+	margin-top: 60px;
+	position: static;
+}
+
 /* Styles for section headers, page titles, and overall report content */
 
 .pagetitle {font: 18pt "Gill Sans", "Gill Sans MT", SansSerif; color:#484393}

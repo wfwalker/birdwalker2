@@ -97,6 +97,12 @@ performQuery("DROP TABLE tmp;");
 
 </table>
 
+<?
+footer();
+?>
+
     </div>
-  </body>
-</html>
+
+<?
+htmlFoot();
+?>

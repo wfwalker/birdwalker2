@@ -32,6 +32,12 @@ navTrailTrips("");
 <? $tripQuery->formatTwoColumnTripList(); ?>
 
       </div>
+<?
+footer();
+?>
+
     </div>
-  </body>
-</html>
+
+<?
+htmlFoot();
+?>

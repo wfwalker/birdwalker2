@@ -53,8 +53,12 @@ while ($info = mysql_fetch_array($latestSightingQuery))
 
 </table>
 
+<?
+footer();
+?>
+
 </div>
-</body>
-</html>
 
-
+<?
+htmlFoot();
+?>

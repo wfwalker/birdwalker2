@@ -93,6 +93,12 @@ navTrailSpecies($speciesID);
 
 </form>
 
+<?
+footer();
+?>
+
 </div>
-</body>
-</html>
+
+<?
+htmlFoot();
+?>

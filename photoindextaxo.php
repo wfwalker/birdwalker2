@@ -67,8 +67,13 @@ while($info = mysql_fetch_array($photoSpecies))
 <?	$prevInfo = $info;
     $counter--;
     if ($counter == 0) { ?></td><td width="50%" class=report-content> <? }
-} ?>
+}
+
+footer();
+?>
 
     </div>
-  </body>
-</html>
+
+<?
+htmlFoot();
+?>

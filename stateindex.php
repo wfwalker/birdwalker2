@@ -70,7 +70,12 @@ navTrailLocations();
 
 </table>
 
+<?
+footer();
+?>
 
     </div>
-  </body>
-</html>
+
+<?
+htmlFoot();
+?>

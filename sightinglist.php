@@ -76,8 +76,12 @@ while($sightingInfo = mysql_fetch_array($dbQuery)) {
 
 	$prevSightingInfo = $sightingInfo;
 }
+
+footer();
 ?>
 
     </div>
-  </body>
-</html>
+
+<?
+htmlFoot();
+?>

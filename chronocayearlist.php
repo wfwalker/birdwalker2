@@ -41,15 +41,9 @@ $firstSightingQuery = performQuery("SELECT
   ORDER BY TripDate DESC, LocationName, species.objectid;");
 
 $speciesCount = mysql_num_rows($firstSightingQuery);
-?>
 
-<html>
+htmlHead("Chronological ABA California " . $year);
 
-  <? htmlHead("Chronological ABA California " . $year); ?>
-
-  <body>
-
-<?php
 globalMenu();
 browseButtons("./chronocayearlist.php?year=", $year, getEarliestYear(), $year - 1, $year + 1, getLatestYear());
 navTrailBirds();
@@ -122,6 +116,10 @@ performQuery("DROP TABLE tmp;");
 
 </table>
 
+<?  footer(); ?>
+
     </div>
-  </body>
-</html>
+
+<?
+htmlFoot();
+?>

@@ -24,15 +24,8 @@ if ($view != "photo")
 	$locationCount = $locationQuery->getLocationCount();
 }
 
-?>
+htmlHead($speciesInfo["CommonName"]);
 
-<html>
-
-  <? htmlHead($speciesInfo["CommonName"]); ?>
-
-  <body>
-
-<?php
 globalMenu();
 speciesBrowseButtons("./speciesdetail.php", $speciesID, $view);
 navTrailSpecies($speciesID);
@@ -88,7 +81,12 @@ navTrailSpecies($speciesID);
 		  $sightingQuery->setSpeciesID($speciesID);
 		  $sightingQuery->formatPhotos();
 	  }
+
+      footer();
 ?>
+
    </div>
-</body>
-</html>
+
+<?
+htmlFoot();
+?>

@@ -109,6 +109,12 @@ if ($save == "Save")
 
 </form>
 
+<?
+footer();
+?>
+
 </div>
-</body>
-</html>
+
+<?
+htmlFoot();
+?>

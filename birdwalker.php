@@ -30,12 +30,41 @@ function globalMenu()
 function htmlHead($title)
 {
 ?>
+<html>
   <head>
     <link rel="SHORTCUT ICON" href="./images/favicon.ico">
     <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
       <title>birdWalker | <?= $title ?></title>
   </head>
+  <body>
 <?
+}
+
+function footer()
+{
+?>
+    <div class="footer">
+	  comments to <a href="mailto:walker@shout.net">walker@shout.net</a><br/>
+		valid <a href="http://validator.w3.org/check/referer">XHTML 1.1</a>, <a href="http://jigsaw.w3.org/css-validator/check/referer">CSS 2.0</a><br>
+    </div>
+<?
+}
+
+function htmlFoot()
+{
+?>
+  </body>
+</html>
+<?
+}
+
+
+function reqParam($getParams, $paramName)
+{
+	if ($getParams[$paramName] != "")
+		return $getParams[$paramName];
+	else
+		die("Fatal error: Missing required parameter '" . $paramName . "'");
 }
 
 function param($getParams, $paramName, $defaultValue)

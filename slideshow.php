@@ -45,6 +45,12 @@ navTrail($items);
         <div class=copyright>@<?= $tripYear ?> W. F. Walker</div>
 </div>
 
+<?
+footer();
+?>
+
 </div>
-</body>
-</html>
+
+<?
+htmlFoot();
+?>

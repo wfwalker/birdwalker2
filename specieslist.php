@@ -66,8 +66,13 @@ navTrailBirds();
 <?            $prevInfo = $info;
           } ?>
 		  </form>
-<?	  } ?>
+<?	  }
+
+      footer();
+ ?>
 
     </div>
-  </body>
-</html>
+
+<?
+htmlFoot();
+?>

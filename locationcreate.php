@@ -133,6 +133,12 @@ navTrailLocationDetail($locationInfo);
 
 </form>
 
+<?
+footer();
+?>
+
 </div>
-</body>
-</html>
+
+<?
+htmlFoot();
+?>

@@ -97,8 +97,12 @@ else if ($view == "map")
 	$map->draw();
 }
 
+footer();
+
 ?>
 
     </div>
-  </body>
-</html>
+
+<?
+htmlFoot();
+?>

@@ -4,15 +4,10 @@
 require_once("./birdwalker.php");
 
 $randomPhotoSightings = performQuery("SELECT *, rand() AS shuffle FROM sighting WHERE Photo='1' ORDER BY shuffle LIMIT 5");
- ?>
 
-<html>
 
-  <? htmlHead("About"); ?>
+htmlHead("About");
 
-  <body>
-
-<?php
 globalMenu();
 $items[] = "about";
 navTrail($items);
@@ -93,6 +88,10 @@ disabledBrowseButtons();
         Steve Shunk,
         and
         <a href="http://www.avesphoto.com/">Mike Danzenbaker</a>
+
+<?     footer(); ?>
     </div>
-  </body>
-</html>
+
+<?
+htmlFoot();
+?>

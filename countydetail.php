@@ -7,21 +7,14 @@ require_once("./map.php");
 require_once("./sightingquery.php");
 require_once("./tripquery.php");
 
-$county = param($_GET, "county", "San Mateo");
-$state = param($_GET, "state", "CA");
+$county = reqParam($_GET, "county");
+$state = reqParam($_GET, "state");
 $view = param($_GET, "view", "species");
 
 $stateName = getStateNameForAbbreviation($state);
 
-?>
+htmlHead($county . " County");
 
-<html>
-
-  <? htmlHead($county . " County"); ?>
-
-  <body>
-
-<?php
 globalMenu();
 disabledBrowseButtons();
 
@@ -120,8 +113,12 @@ elseif ($view == 'photo')
 	$sightingQuery->formatPhotos();
 }
 
+
+footer();
 ?>
 
     </div>
-  </body>
-</html>
+
+<?
+htmlFoot();
+?>

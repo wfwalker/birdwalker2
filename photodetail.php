@@ -30,15 +30,8 @@ $prevPhotoID = performCount("
 if ($nextPhotoID == "") { $nextPhotoID = $sightingID; }
 if ($prevPhotoID == "") { $prevPhotoID = $sightingID; }
 
-?>
+htmlHead($speciesInfo["CommonName"] . ", " . $tripInfo["niceDate"]);
 
-<html>
-
-  <? htmlHead($speciesInfo["CommonName"] . ", " . $tripInfo["niceDate"]); ?>
-
-  <body>
-
-<?php
 globalMenu();
 browseButtons("./photodetail.php?id=", $sightingID, $firstPhotoID, $prevPhotoID, $nextPhotoID, $lastPhotoID);
 navTrailPhotos();
@@ -85,8 +78,14 @@ navTrailPhotos();
     if (strlen($speciesInfo["Notes"]) > 0) { ?>
 	    <div class=heading>Species: <?= $speciesInfo["CommonName"] ?></div>
 	    <p class=report-content><?= $speciesInfo["Notes"] ?></p>
-<?  } ?>
+<?  }
+
+    footer();
+ ?>
+
 
 </div>
-</body>
-</html>
+
+<?
+htmlFoot();
+?>

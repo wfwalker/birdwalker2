@@ -45,8 +45,12 @@ if ($view == "") {
 	$speciesQuery->formatSpeciesByYearTable($speciesQuery);
 }
 
+footer();
+
 ?>
 
     </div>
-  </body>
-</html>
+
+<?
+htmlFoot();
+?>

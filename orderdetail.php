@@ -15,15 +15,8 @@ $speciesQuery->setOrder($orderid);
 
 $orderInfo = getOrderInfo($orderid * pow(10, 9));
 
-?>
+htmlHead($orderInfo["LatinName"]);
 
-<html>
-
-  <? htmlHead($orderInfo["LatinName"]); ?>
-
-  <body>
-
-<?php
 globalMenu();
 disabledBrowseButtons();
 browseButtons("./orderdetail.php?view=" . $view . "&order=", $orderid, 1, $orderid - 1, $orderid + 1, $orderCount);
@@ -98,8 +91,13 @@ else if ($view == "map")
 	$map->setFromRequest($_GET);
 	$map->draw();
 }
+
+footer();
+
 ?>
 
     </div>
-  </body>
-</html>
+
+<?
+htmlFoot();
+?>

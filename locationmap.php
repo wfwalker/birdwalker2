@@ -24,9 +24,13 @@ navTrailLocations();
 
     <div class=contentright>
 
-	<? $map->draw(); ?>
+	<? $map->draw();
+
+    footer();
+?>
 
    </div>
 
-  </body>
-</html>
+<?
+   htmlFoot();
+?>

@@ -28,15 +28,9 @@ $prevFamily = performCount("
     SELECT FLOOR(MAX(species.objectid)/POW(10,7)) FROM species, sighting
       WHERE sighting.SpeciesAbbreviation=species.Abbreviation
       AND species.objectid<" . ($familyid - 1) * pow(10, 7) . " LIMIT 1");
-?>
 
-<html>
+htmlHead($familyInfo["LatinName"]);
 
-  <? htmlHead($familyInfo["LatinName"]); ?>
-
-  <body>
-
-<?php
 globalMenu();
 browseButtons("./familydetail.php?view=".$view."&family=", $familyid, $firstFamily, $prevFamily, $nextFamily, $lastFamily);
 $items[] = "<a href=\"./orderdetail.php?order=" . $orderInfo["objectid"] / pow(10, 9) . "\">" . strtolower($orderInfo["LatinName"]) . "</a>";
@@ -121,8 +115,10 @@ else if ($view == "map")
 	$map->setFromRequest($_GET);
 	$map->draw();
 }
+
+footer();
 ?>
 
     </div>
-  </body>
-</html>
+
+<? htmlFoot(); ?>

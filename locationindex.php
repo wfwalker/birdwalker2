@@ -46,8 +46,13 @@ navTrailLocations();
       $map = new Map("./locationindex.php");
 	  $map->setFromRequest($_GET);
       $map->draw();
-   }?>
+   }
+
+footer();
+?>
 
     </div>
-  </body>
-</html>
+
+<?
+htmlFoot();
+?>

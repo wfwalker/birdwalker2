@@ -68,6 +68,12 @@ navTrailBirds();
   <tr><td class=fieldlabel>Longitude</td><td><?= $locationInfo["Longitude"] ?></td></tr>
 </table>
 
+<?
+footer();
+?>
+
 </div>
-</body>
-</html>
+
+<?
+htmlFoot();
+?>

@@ -119,8 +119,11 @@ elseif ($view == 'photo')
 	$sightingQuery->formatPhotos();
 }
 
+footer();
 ?>
 
     </div>
-  </body>
-</html>
+
+<?
+htmlFoot();
+?>
