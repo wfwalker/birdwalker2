@@ -49,7 +49,7 @@ class TripQuery
 
 	function getSelectClause()
 	{
- 		$selectClause = "SELECT DISTINCT trip.objectid, trip.Name, trip.Date, date_format(trip.Date, '%M %e') AS niceDate";
+ 		$selectClause = "SELECT DISTINCT trip.objectid, trip.Name, trip.Date, date_format(trip.Date, '%M %e') AS niceDate, year(trip.Date) as year";
 
 		if ($this->mSpeciesID != "")
 		{
