@@ -19,7 +19,7 @@ $speciesQuery->setYear($theYear);
 
 <?
 globalMenu();
-browseButtons("./yeardetail.php?year=", $theYear, 1996, $theYear - 1, $theYear + 1, 2004);
+browseButtons("./yeardetail.php?year=", $theYear, getEarliestYear(), $theYear - 1, $theYear + 1, getLatestYear());
 navTrailBirds();
 ?>
 

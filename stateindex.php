@@ -13,9 +13,7 @@ $stateStats = performQuery("SELECT
   GROUP BY location.State, theyear
   ORDER BY State, theyear");
 
-$years = array(1996, 1997, 1998, 1999, 2000, 2001, 2002, 2003, 2004);
-
-// todo could build some kind of set of visited sets while running through the stateStats?
+// todo could build some kind of set of visited states while running through the stateStats?
 $visitedStatesQuery = performQuery("
     SELECT DISTINCT(state.objectid)
       FROM state, location, sighting
@@ -60,7 +58,7 @@ navTrailLocations();
      $state = $info["Abbreviation"]; ?>
     <tr>
       <td class=firstcell><a href="./statedetail.php?id=<?= $info["objectid"] ?>"><?= getStateNameForAbbreviation($state) ?></a></td>
-<?	  foreach ($years as $year)
+<?	  for ($year = getEarliestYear(); $year <= getLatestYear(); $year++)
 	  { ?>
 		  <td class=bordered align=right>
               &nbsp;
