@@ -6,11 +6,11 @@ function navigationHeader()
 
 	<div class=\"contentleft\">
       <div style=\"height: 50px\"><a href=\"./index.php\">birdWalker</div>
-	  <div class=\"leftsubtitle\"><a href=\"./tripindex.php\">Trip Lists</a></div>
-	  <div class=\"leftsubtitle\"><a href=\"./speciesindex.php\">Species Reports</a></div>
-	  <div class=\"leftsubtitle\"><a href=\"./locationindex.php\">Location Reports</a></div>
-	  <div class=\"leftsubtitle\"><a href=\"./countyindex.php\">County Reports</a></div>
-	  <div class=\"leftsubtitle\"><a href=\"./photoindex.php\">Sighting Photos</a></div>
+	  <div class=\"leftsubtitle\"><a href=\"./tripindex.php\">Trips</a></div>
+	  <div class=\"leftsubtitle\"><a href=\"./speciesindex.php\">Species</a></div>
+	  <div class=\"leftsubtitle\"><a href=\"./locationindex.php\">Locations</a></div>
+	  <div class=\"leftsubtitle\"><a href=\"./countyindex.php\">Counties</a></div>
+	  <div class=\"leftsubtitle\"><a href=\"./photoindex.php\">Photos</a></div>
 	</div>
  ";
 }
@@ -18,6 +18,11 @@ function navigationHeader()
 //
 // -------------------------- DATABASE UTILITIES -------------------------------
 //
+
+function getEnableEdit()
+{
+	return true;
+}
 
 /**
  * Prepare to query the birdwalker database.
@@ -205,7 +210,10 @@ function getSpeciesInfo($objectid)
 
 function insertYearLabels()
 {
-	for ($year = 1996; $year <= 2004; $year++) echo "<td class=yearcell align=center>" . substr($year, 2, 2) . "</td>";
+	for ($year = 1996; $year <= 2004; $year++)
+	{
+		echo "<td class=yearcell align=center><a href=\"./yeardetail.php?year=" . $year . "\">" . substr($year, 2, 2) . "</a></td>";
+	}
 }
 
 /**
@@ -259,7 +267,10 @@ function formatLocationByYearTable($locationCount, $gridQueryString)
 			echo "<tr><td class=titleblock colspan=11>" .  $info["County"] . " County, " . $info["State"] . "</td></tr>";
 		}
 
-		echo "<tr><td class=firstcell><a href=\"./locationdetail.php?id=" . $info["locationid"] . "\">" . $info["LocationName"] . "</a></td> ";
+		echo "<tr><td class=firstcell>";
+		echo "<a href=\"./locationdetail.php?id=" . $info["locationid"] . "\">" . $info["LocationName"] . "</a>";
+		if (getEnableEdit()) { echo "<a href=\"./locationedit.php?id=" . $info["locationid"] . "\"> edit</a>"; }
+		echo "</td>";
 		for ($index = 1; $index <= 9; $index++) echo "<td class=bordered align=center>" . bitToString($theMask, $index) . "</td>";
 		echo "</tr>";
 
