@@ -30,7 +30,8 @@ navTrailBirds();
     <div class=contentright>
       <div class="pagesubtitle">Year Detail</div>
       <div class="titleblock">	  
-<?      rightThumbnail("
+<?    if ($view != "map")
+         rightThumbnail("
             SELECT sighting.*, rand() AS shuffle
                 FROM sighting
                 WHERE sighting.Photo='1' AND Year(TripDate)='" . $year . "'
@@ -94,8 +95,10 @@ elseif ($view == 'locationsbymonth')
 }
 else if ($view == "map")
 {
-	countHeading($locationCount, "location");
-	$map = new Map("./countydetail.php");
+    $locationQuery = new LocationQuery;
+	$locationQuery->setFromRequest($_GET);
+	countHeading($locationQuery->getLocationCount(), "location");
+	$map = new Map("./yeardetail.php");
 	$map->setFromRequest($_GET);
 	$map->draw();
 }
