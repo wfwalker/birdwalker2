@@ -144,7 +144,7 @@ class SightingQuery extends BirdWalkerQuery
 		return performQuery(
 			$this->getSelectClause() . " " .
 			$this->getFromClause() . " " .
-			$this->getWhereClause() . " AND sighting.Photo='1' ORDER BY sighting.objectid");
+			$this->getWhereClause() . " AND sighting.Photo='1' ORDER BY sighting.TripDate desc");
 	}
 
 	function getPageTitle()
