@@ -46,14 +46,32 @@ class SpeciesQuery
 	function setFamily($inValue) { $this->mFamily = $inValue; }
 	function setOrder($inValue) { $this->mOrder = $inValue; }
 
+	function getGroupByClause()
+	{
+		if ($this->mTripID != "")
+		{
+			return "";
+		}
+		else
+		{
+			return "GROUP BY species.objectid";
+		} 
+	}
+
 	function getSelectClause()
 	{
 		$selectClause = "SELECT DISTINCT species.objectid, species.CommonName, species.LatinName, species.ABACountable";
 
+		// TODO how can we get a sightingid into this select clause even if it's not a specific trip id?
 		if ($this->mTripID != "")
 		{
 			$selectClause = $selectClause . ", sighting.Notes, sighting.Exclude, sighting.Photo, sighting.objectid AS sightingid";
 		}
+		else if (($this->mLocationID != "") || ($this->mCounty != "") || ($this->mState != ""))
+		{
+			$selectClause = $selectClause . ",  min(concat(sighting.TripDate, lpad(sighting.objectid, 6, '0'))) as earliestsighting";
+		}
+
 
 		return $selectClause;
 	}
@@ -122,9 +140,9 @@ class SpeciesQuery
 		if ($this->mLocationID != "") {
 			$params = $params . "&locationid=" . $this->mLocationID;
 		} elseif ($this->mCounty != "") {
-			$params = $params . "&county=" . $this->mCounty . "'";
+			$params = $params . "&county=" . $this->mCounty;
 		} elseif ($this->mState != "") {
-			$params = $params . "&state=" . $this->mState . "'";
+			$params = $params . "&state=" . $this->mState;
 		}
 
 		if ($this->mFamily != "") {
@@ -241,22 +259,5 @@ class SpeciesQuery
 		formatPhotos($this);
 	}
 }
-
-
-
-// $locationSightings = performQuery("
-//     SELECT sighting.objectid FROM sighting, location
-//       WHERE sighting.LocationName=location.Name
-//       AND location.objectid='" . $locationID ."'");
-
-// $firstSightings = getFirstSightings();
-// $locationFirstSightings = 0;
-
-// while($sightingInfo = mysql_fetch_array($locationSightings)) {
-// 	if ($firstSightings[$sightingInfo['objectid']] != null) {
-// 		$locationFirstSightings++;
-// 	}
-// }
-
 
 ?>
