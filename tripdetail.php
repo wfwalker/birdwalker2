@@ -77,9 +77,6 @@ navTrailTrips($items);
 
 <?
 
-if ($locationCount > 1) {
-	doubleCountHeading($tripSpeciesCount, "species", $tripFirstSightings, "life bird");
-}
 
 if ($view == "photo")
 {
@@ -94,6 +91,10 @@ else if ($view == "map")
 }
 else if ($view="list")
 {
+	if ($locationCount > 1) {
+		doubleCountHeading($tripSpeciesCount, "species", $tripFirstSightings, "life bird");
+	}
+
 	$dbLocation = $locationQuery->performQuery();
 	while($locationInfo = mysql_fetch_array($dbLocation))
 	{
