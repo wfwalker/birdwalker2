@@ -328,7 +328,7 @@ function formatTwoColumnSpeciesList($query)
 		if ($divideByTaxo && (getBestTaxonomyID($prevInfo["objectid"]) != getBestTaxonomyID($info["objectid"])))
 		{
 			$taxoInfo = getBestTaxonomyInfo($info["objectid"]); ?>
-			<div class=heading><?= $taxoInfo["LatinName"] ?></div>
+			<div class=heading><?= strtolower($taxoInfo["LatinName"]) ?></div>
 <?		} ?>
 
 		<div class=firstcell><a href="./speciesdetail.php?id=<?= $info["objectid"] ?>"><?= $info["CommonName"] ?></a>
@@ -385,7 +385,7 @@ function formatSpeciesByYearTable($gridQueryString, $extraSightingListParams, $y
 		if (getBestTaxonomyID($prevInfo["speciesid"]) != getBestTaxonomyID($info["speciesid"]))
 		{
 			$taxoInfo = getBestTaxonomyInfo($info["speciesid"]); ?>
-			<tr><td class=heading colspan=11><?= $taxoInfo["LatinName"] ?></td></tr>
+			<tr><td class=heading colspan=11><?= strtolower($taxoInfo["LatinName"]) ?></td></tr>
 <?		} ?>
 
 		<tr><td class=firstcell><a href="./speciesdetail.php?id=<?= $info["speciesid"] ?>"><?= $info["CommonName"] ?></a></td>
@@ -418,8 +418,9 @@ function formatSpeciesByYearTable($gridQueryString, $extraSightingListParams, $y
 /**
  * Show locations as rows, years as columns
  */
-function formatLocationByYearTable($gridQueryString, $urlPrefix)
+function formatLocationByYearTable($gridQueryString, $urlPrefix, $countyHeadingsOK = true)
 {
+	$lastStateHeading="";
 	$gridQuery = performQuery($gridQueryString); ?>
 
     <table cellpadding=0 cellspacing=0 cols=11 class="report-content" width="100%">
@@ -429,8 +430,15 @@ function formatLocationByYearTable($gridQueryString, $urlPrefix)
 	{
 		$theMask = $info["mask"];
 
-		if ($prevInfo["County"] != $info["County"]) { ?>
-			<tr><td class=heading colspan=11> <?= $info["County"] ?> County, <?= $info["State"] ?></td></tr>
+		if ($countyHeadingsOK && ($prevInfo["County"] != $info["County"])) { ?>
+             <tr><td class=heading colspan=11>
+<?          if ($lastStateHeading != $info["State"]) { ?>
+			    <b><?= getStateNameForAbbreviation($info["State"]) ?></b>,
+<?              $lastStateHeading = $info["State"];
+            } else { ?>
+				&nbsp;
+<?          } ?>
+			<?= $info["County"] ?> County</td></tr>
 <?		} ?>
 
 		<tr>
@@ -530,6 +538,7 @@ function getLocationInfo($objectid)
 
 function formatTwoColumnLocationList($locationListQuery, $countyHeadingsOK = true)
 {
+	$lastStateHeading="";
 	$prevInfo=null;
 	$locationCount = mysql_num_rows($locationListQuery);
 	$divideByCounties = ($locationCount > 20);
@@ -541,7 +550,15 @@ function formatTwoColumnLocationList($locationListQuery, $countyHeadingsOK = tru
 	{
 		if ($countyHeadingsOK && $divideByCounties && (($prevInfo["State"] != $info["State"]) || ($prevInfo["County"] != $info["County"])))
 		{ ?>
-			<div class="heading"> <?= $info["County"] ?> County, <?= $info["State"] ?></div>
+			<div class="heading">
+<?          if ($lastStateHeading != $info["State"]) { ?>
+			    <b><?= getStateNameForAbbreviation($info["State"]) ?></b>,
+<?              $lastStateHeading = $info["State"];
+            } else { ?>
+				&nbsp;
+<?          } ?>
+			    <?= $info["County"] ?> County</td></tr>
+            </div>
 <?		} ?>
 
 		<div class=firstcell><a href="./locationdetail.php?id=<?= $info["objectid"] ?>"><?= $info["Name"] ?></a></div>
