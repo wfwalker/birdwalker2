@@ -12,22 +12,38 @@ require("./birdwalker.php");
   </head>
   <body>
 
-<?php globalMenu(); disabledBrowseButtons(); navTrailBirds(); ?>
+<?php
+globalMenu();
+disabledBrowseButtons();
+navTrailBirds();
+pageThumbnail("select *, rand() as shuffle from sighting where Photo='1' order by shuffle");
+?>
 
     <div class=contentright>
       <div class="titleblock">	  
-        <div class=pagetitle>State Reports</div>
+        <div class=pagetitle>States</div>
       </div>
 
-<table columns=11 class=metadata cellpadding=0 cellspacing=0>
+<table columns=11 class=metadata cellpadding=1 cellspacing=0 width=80%>
 
 <?php
 
 $yearArray = null;
-$stateStats = performQuery("select location.State, location.objectid, count(distinct sighting.SpeciesAbbreviation) as SpeciesCount, year(sighting.TripDate) as theyear from location, sighting where sighting.LocationName=location.Name group by location.State, theyear order by State, theyear");
+$stateStats = performQuery("SELECT
+    location.State,
+    location.objectid,
+    count(distinct sighting.SpeciesAbbreviation) as SpeciesCount,
+    year(sighting.TripDate) as theyear
+  FROM location, sighting
+  WHERE sighting.LocationName=location.Name
+  GROUP BY location.State, theyear
+  ORDER BY State, theyear");
 
-echo "<tr><td></td>"; insertYearLabels(); echo "</tr>";
+?>
 
+  <tr><td></td><? insertYearLabels() ?></tr>
+
+<?
 while ($info = mysql_fetch_array($stateStats))
 {
 	$state = $info["State"];
@@ -35,15 +51,19 @@ while ($info = mysql_fetch_array($stateStats))
 	$speciesCount = $info["SpeciesCount"];
 
 	if (($yearArray != null) && ($stateToAccumulate != $state))
-	{
-		echo "<tr><td class=firstcell><a href=\"./statedetail.php?state=" . urlencode($stateToAccumulate) . "\"/>" . getStateNameForAbbreviation($stateToAccumulate) . "</a></td>";
-		for ($year = 1996; $year <= 2004; $year++)
-		{
-			echo "<td class=bordered align=right>&nbsp;" . $yearArray[$year] . "</td>";
-		}
-		echo "</tr>";
+	{ ?>
+		<tr><td class=firstcell>
+               <a href="./statespecies.php?state=<?= urlencode($stateToAccumulate) ?>"><?= getStateNameForAbbreviation($stateToAccumulate) ?></a>
+            </td>
 
-		$yearArray = null;
+<?		for ($year = 1996; $year <= 2004; $year++)
+		{ ?>
+			<td class=bordered align=right>&nbsp;<?= $yearArray[$year] ?></td>
+<? 		} ?>
+
+		</tr>
+
+<?		$yearArray = null;
 	}
 
 	$prevState = $state;	
@@ -51,7 +71,7 @@ while ($info = mysql_fetch_array($stateStats))
 	$yearArray[$theYear] = $speciesCount;
 }
 
- ?>
+?>
 
 </table>
 
