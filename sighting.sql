@@ -7222,7 +7222,7 @@ INSERT INTO sighting VALUES (7222,'haiwoo','Mount Hamilton','','0','0','2004-01-
 INSERT INTO sighting VALUES (7223,'houfin','Mount Hamilton','','0','0','2004-01-10');
 INSERT INTO sighting VALUES (7224,'hutvir','Mount Hamilton','','0','0','2004-01-10');
 INSERT INTO sighting VALUES (7225,'lesgol','Mount Hamilton','','0','0','2004-01-10');
-INSERT INTO sighting VALUES (7226,'lewwoo','Mount Hamilton','','0','0','2004-01-10');
+INSERT INTO sighting VALUES (7226,'lewwoo','Mount Hamilton','','','1','2004-01-10');
 INSERT INTO sighting VALUES (7227,'mallar','Mount Hamilton','','0','0','2004-01-10');
 INSERT INTO sighting VALUES (7228,'moudov','Mount Hamilton','','0','0','2004-01-10');
 INSERT INTO sighting VALUES (7229,'norfli','Mount Hamilton','','0','0','2004-01-10');
@@ -8527,7 +8527,7 @@ INSERT INTO sighting VALUES (8543,'blkpho','Leakey','','0','0','2004-04-20');
 INSERT INTO sighting VALUES (8544,'gchwar','Leakey','I know this isn\'t a great photo, but we worked so hard to get a look at this bird that I just had to leave this shot on the website.','','1','2004-04-20');
 INSERT INTO sighting VALUES (8545,'naswar','Leakey','','0','0','2004-04-20');
 INSERT INTO sighting VALUES (8546,'indbun','Leakey','','0','0','2004-04-20');
-INSERT INTO sighting VALUES (8547,'lazbun','Leakey','','0','0','2004-04-20');
+INSERT INTO sighting VALUES (8547,'lazbun','Leakey','','','1','2004-04-20');
 INSERT INTO sighting VALUES (8548,'vesspa','Leakey','','0','0','2004-04-20');
 INSERT INTO sighting VALUES (8549,'categr','Leakey','','0','0','2004-04-20');
 INSERT INTO sighting VALUES (8550,'grnher','Leakey','','0','0','2004-04-20');
@@ -10347,7 +10347,7 @@ INSERT INTO sighting VALUES (10381,'buffle','Monterey Bay','','0','0','2005-01-1
 INSERT INTO sighting VALUES (10382,'comgol','Monterey Bay','','0','0','2005-01-16');
 INSERT INTO sighting VALUES (10383,'rebmer','Monterey Bay','','0','0','2005-01-16');
 INSERT INTO sighting VALUES (10384,'rudduc','Monterey Bay','','0','0','2005-01-16');
-INSERT INTO sighting VALUES (10385,'reshaw','Monterey Bay','','0','0','2005-01-16');
+INSERT INTO sighting VALUES (10385,'reshaw','Monterey Bay','','','1','2005-01-16');
 INSERT INTO sighting VALUES (10386,'rethaw','Monterey Bay','','0','0','2005-01-16');
 INSERT INTO sighting VALUES (10387,'amekes','Monterey Bay','','0','0','2005-01-16');
 INSERT INTO sighting VALUES (10388,'blkoys','Monterey Bay','','0','0','2005-01-16');
