@@ -132,3 +132,4 @@ INSERT INTO location VALUES (130,'Yosemite','','Yosemite National Park','Mono','
 INSERT INTO location VALUES (132,'Corpus Christi','','Corpus Christi','Neuces','TX','','','','');
 INSERT INTO location VALUES (133,'Brownsville','','Brownsville','','TX','','','','');
 INSERT INTO location VALUES (134,'Port Aransas','','Port Aransas','Neuces','TX','','','','');
+INSERT INTO location VALUES (135,'Laredo','','Laredo','','TX','','','','');
