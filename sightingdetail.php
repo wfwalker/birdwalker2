@@ -8,8 +8,6 @@ $speciesInfo = performOneRowQuery("select * from species where Abbreviation='" .
 $tripInfo = performOneRowQuery("select *, date_format(Date, '%W,  %M %e, %Y') as niceDate from trip where Date='" . $sightingInfo["TripDate"] . "'");
 $tripYear =  substr($tripInfo["Date"], 0, 4);
 $locationInfo = performOneRowQuery("select * from location where Name='" . $sightingInfo["LocationName"] . "'");
-$firstSightings = getFirstSightings();
-$firstYearSightings = getFirstYearSightings($tripYear);
 $sightingCount = performCount("select max(objectid) from sighting");
 ?>
 
@@ -22,9 +20,12 @@ $sightingCount = performCount("select max(objectid) from sighting");
 
 <body>
 
-<?php globalMenu(); browseButtons("./sightingdetail.php?id=", $sightingID, 1, $sightingID - 1, $sightingID + 1, $sightingCount);  ?>
-
-<div class=thumb><?php if ($sightingInfo["Photo"] == "1") { echo getThumbForSightingInfo($sightingInfo); } ?></div>
+<?php
+globalMenu();
+browseButtons("./sightingdetail.php?id=", $sightingID, 1, $sightingID - 1, $sightingID + 1, $sightingCount);
+navTrailBirds();
+pageThumbnail("select * from sighting where Photo='1' and objectid='" . $sightingID . "'");
+?>
 
 <div class="contentright">
 <div class="titleblock">

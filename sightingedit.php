@@ -66,7 +66,12 @@ $locationList = performQuery("select Name, objectid from location");
 
 <body>
 
-<?php globalMenu(); browseButtons("./sightingedit.php?id=", $sightingID, 1, $sightingID - 1, $sightingID + 1, $sightingCount);navTrailBirds();  ?>
+<?php
+globalMenu();
+browseButtons("./sightingedit.php?id=", $sightingID, 1, $sightingID - 1, $sightingID + 1, $sightingCount);
+navTrailBirds();
+pageThumbnail("select * from sighting where Photo='1' and objectid='" . $sightingID . "'");
+?>
 
     <div class="navigationleft">
 	  <a href="./sightingedit.php?id=1">first</a>
@@ -74,8 +79,6 @@ $locationList = performQuery("select Name, objectid from location");
       <a href="./sightingedit.php?id=<?php echo $_GET['id'] + 1 ?>">next</a>
       <a href="./sightingedit.php?id=<?php echo $sightingCount ?>">last</a>
     </div>
-
-<div class=thumb><?php if ($sightingInfo["Photo"] == "1") { echo getThumbForSightingInfo($sightingInfo); } ?></div>
 
 <div class="contentright">
 
