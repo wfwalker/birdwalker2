@@ -1,7 +1,9 @@
 <?
 
 require("./birdwalker.php");
+require("./sightingquery.php");
 
+$tripid = param($_GET, "tripid", "");
 $speciesid = param($_GET, "speciesid", "");
 $locationid = param($_GET, "locationid", "");
 $year = param($_GET, "year", "");
@@ -9,51 +11,16 @@ $month = param($_GET, "month", "");
 $county = param($_GET, "county", "");
 $state = param($_GET, "state", "");
 
-$sightingListQueryString = "
-    SELECT date_format(sighting.TripDate, '%M %e, %Y') AS niceDate, sighting.*, species.CommonName, species.objectid AS speciesid, trip.objectid AS tripid, location.County, location.State
-      FROM sighting, species, location, trip
-      WHERE species.Abbreviation=sighting.SpeciesAbbreviation AND location.Name=sighting.LocationName AND trip.Date=sighting.TripDate ";
+$sightingQuery = new SightingQuery;
+$sightingQuery->setTripID($tripid);
+$sightingQuery->setSpeciesID($speciesid);
+$sightingQuery->setLocationID($locationid);
+$sightingQuery->setYear($year);
+$sightingQuery->setMonth($month);
+$sightingQuery->setCounty($county);
+$sightingQuery->setState($state);
 
-if ($speciesid !="") {
-	$sightingListQueryString = $sightingListQueryString . " AND species.objectid=" . $speciesid;
-	$speciesInfo = getSpeciesInfo($speciesid);
-	$pageTitle = $speciesInfo["CommonName"];
-} else {
-	$pageTitle = "Sightings";
-}
-
-if ($locationid != "") {
-	$sightingListQueryString = $sightingListQueryString . " AND location.objectid=" . $locationid;
-	$locationInfo = getLocationInfo($locationid); 
-	$pageSubtitle = $locationInfo["Name"];
-} elseif ($county != "") {
-	$sightingListQueryString = $sightingListQueryString . " AND location.County='" . $county . "'";
-	$pageSubtitle = $county . " County";
-} elseif ($state != "") {
-	$sightingListQueryString = $sightingListQueryString . " AND location.State='" . $state . "'";
-	  $pageSubtitle = getStateNameForAbbreviation($state);
-}
-
-if ($month !="") {
-	$sightingListQueryString = $sightingListQueryString . " AND Month(TripDate)=" . $month;
-	if ($pageSubtitle == "" ) {
-		$pageTitle = $pageTitle . ", " . getMonthNameForNumber($month);
-	} else {
-		$pageSubtitle = $pageSubtitle . ", " . getMonthNameForNumber($month);
-	}
-}
-if ($year !="") {
-	$sightingListQueryString = $sightingListQueryString . " AND Year(TripDate)=" . $year;
-	if ($pageSubtitle == "" ) {
-		$pageTitle = $pageTitle . ", " . $year;
-	} else {
-		$pageSubtitle = $pageSubtitle . ", " . $year;
-	}
-}
-
-$sightingListQueryString = $sightingListQueryString . " order by sighting.TripDate desc, sighting.LocationName;";
-
-$sightingListQuery = performQuery($sightingListQueryString);
+$dbQuery = $sightingQuery->performQuery();
 ?>
 
 <html>
@@ -72,24 +39,31 @@ navTrailBirds();
     <div class=contentright>
       <div class=pagesubtitle><?= $pageSubtitle ?></div>
       <div class="titleblock">	  
-	  <div class=pagetitle><?= $pageTitle ?></div>
-      <div class=metadata><?= mysql_num_rows($sightingListQuery) ?> Sightings</div>
+          <div class=pagetitle><?= $sightingQuery->getPageTitle() ?></div>
       </div>
+
+      <div class=heading><?= mysql_num_rows($dbQuery) ?> Sightings</div>
 
 <table class=report-content columns=4 width="600px">
 <?php
-while($sightingInfo = mysql_fetch_array($sightingListQuery)) {
+while($sightingInfo = mysql_fetch_array($dbQuery)) {
 ?>
     <tr>
-    <td nowrap>
+    <td nowrap> 
 <?
-	if ($prevSightingInfo['TripDate'] != $sightingInfo['TripDate']) {
+	if ($prevSightingInfo["TripDate"] != $sightingInfo["TripDate"]) {
 ?>
-        <a href="./tripdetail.php?id=<?= $sightingInfo['tripid'] ?>"><?= $sightingInfo['niceDate'] ?></a>
+        <a href="./tripdetail.php?id=<?= $sightingInfo["tripid"] ?>"><?= $sightingInfo["niceDate"] ?></a>
 <?
 	}
+?>
+    </td>
+    <td>
+<?
 
-    editLink("./sightingedit.php?id=" . $sightingInfo['objectid']);
+ if ($speciesid == "") { echo $sightingInfo["CommonName"]; }
+
+    editLink("./sightingedit.php?id=" . $sightingInfo["sightingid"]);
 
 	if ($sightingInfo["Photo"] == "1") {
 ?>
@@ -98,11 +72,11 @@ while($sightingInfo = mysql_fetch_array($sightingListQuery)) {
     }
 ?>
     </td>
-    <td>
+    <td nowrap>
 <?
-	if ($prevSightingInfo['LocationName'] != $sightingInfo['LocationName']) {
+    if (($locationid == "") && ($prevSightingInfo["LocationName"] != $sightingInfo["LocationName"])) {
 ?>
-		<?= $sightingInfo['LocationName'] ?>, <?= $sightingInfo['County'] ?> County, <?= $sightingInfo['State'] ?>
+		<?= $sightingInfo["LocationName"] ?>, <?= $sightingInfo["County"] ?> County, <?= $sightingInfo["State"] ?>
 <?
 	}
 ?>
@@ -115,7 +89,6 @@ while($sightingInfo = mysql_fetch_array($sightingListQuery)) {
 <?
     }
 
-	$counter++;
 	$prevSightingInfo = $sightingInfo;
 }
 ?>
