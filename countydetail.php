@@ -79,7 +79,7 @@ elseif ($view == 'locations')
     $locationQuery = new LocationQuery;
 	$locationQuery->setFromRequest($_GET);
 	countHeading( $locationQuery->getLocationCount(), "location");
-	$locationQuery->formatTwoColumnLocationList();
+	$locationQuery->formatTwoColumnLocationList(false);
 
 	$tripQuery = new TripQuery;
 	$tripQuery->setFromRequest($_GET);
