@@ -2,7 +2,8 @@
 
 require("./birdwalker.php");
 
-$tripInfo = getTripInfo($_GET['id']);
+$tripID = $_GET['id'];
+$tripInfo = getTripInfo($tripID);
 $tripYear = substr($tripInfo["Date"], 0, 4);
 $tripCount = getTripCount();
 $whereClause = "sighting.LocationName=location.Name and species.Abbreviation=sighting.SpeciesAbbreviation and sighting.TripDate='" . $tripInfo["Date"]. "'";
@@ -32,14 +33,7 @@ while($sightingInfo = mysql_fetch_array($tripSightings)) {
 
   <body>
 
-<?php navigationHeader() ?>
-
-    <div class="navigationleft">
-	  <a href="./tripdetail.php?id=1">first</a>
-	  <a href="./tripdetail.php?id=<?php echo $_GET['id'] - 1 ?>">prev</a>
-      <a href="./tripdetail.php?id=<?php echo $_GET['id'] + 1 ?>">next</a>
-      <a href="./tripdetail.php?id=<?php echo $tripCount ?>">last</a>
-    </div>
+<?php navigationHeader(); navigationButtons("./tripdetail.php?id=", $tripID, 1, $tripID - 1, $tripID + 1, $tripCount); ?>
 
     <div class="contentright">
 	  <div class=titleblock>

@@ -15,14 +15,7 @@ $yearCount = getSpeciesCount("sighting.Exclude='0' and species.Abbreviation=sigh
   </head>
   <body>
 
-<?php navigationHeader() ?>
-
-    <div class="navigationleft">
-	  <a href="./yeardetail.php?year=1996">first</a>
-	  <a href="./yeardetail.php?year=<?php echo $_GET['year'] - 1 ?>">prev</a>
-      <a href="./yeardetail.php?year=<?php echo $_GET['year'] + 1 ?>">next</a>
-      <a href="./yeardetail.php?year=2004">last</a>
-    </div>
+<?php navigationHeader(); navigationButtons("./yeardetail.php?year=", $theYear, 1996, $theYear - 1, $theYear + 1, 2004); ?>
 
     <div class=contentright>
       <div class="titleblock">	  

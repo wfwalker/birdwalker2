@@ -3,9 +3,10 @@
 
 require("./birdwalker.php");
 
-$speciesInfo = getSpeciesInfo($_GET['id']);
-$orderInfo = getOrderInfo($_GET['id']);
-$familyInfo = getFamilyInfo($_GET['id']);
+$speciesID = $_GET['id'];
+$speciesInfo = getSpeciesInfo($speciesID);
+$orderInfo = getOrderInfo($speciesID);
+$familyInfo = getFamilyInfo($speciesID);
 
 $tripWhereClause = "'" . $speciesInfo["Abbreviation"] . "'=sighting.SpeciesAbbreviation and sighting.TripDate=trip.Date";
 $speciesTripQuery = performQuery( "select sighting.Notes as sightingNotes, trip.*, date_format(Date, '%M %e, %Y') as niceDate from trip, sighting where " . $tripWhereClause . " order by trip.Date desc");
@@ -17,6 +18,10 @@ $speciesLocationCount = performCount("select count(distinct location.objectid) f
 
 $photoQuery = performQuery("select * from sighting where SpeciesAbbreviation='" . $speciesInfo["Abbreviation"] . "' and Photo='1' order by TripDate desc");
 
+$firstSpecies = performCount("select min(species.objectid) from species, sighting where sighting.SpeciesAbbreviation=species.Abbreviation");
+$lastSpecies = performCount("select max(species.objectid) from species, sighting where sighting.SpeciesAbbreviation=species.Abbreviation");
+$nextSpecies = performCount("select min(species.objectid) from species, sighting where sighting.SpeciesAbbreviation=species.Abbreviation and species.objectid>" . $speciesID);
+$prevSpecies = performCount("select max(species.objectid) from species, sighting where sighting.SpeciesAbbreviation=species.Abbreviation and species.objectid<" . $speciesID);
 ?>
 
 <html>
@@ -28,7 +33,7 @@ $photoQuery = performQuery("select * from sighting where SpeciesAbbreviation='" 
 
 <body>
 
-<?php navigationHeader() ?>
+<?php navigationHeader(); navigationButtons("./speciesdetail.php?id=", $speciesID, $firstSpecies, $prevSpecies, $nextSpecies, $lastSpecies); ?>
 
   <div class=contentright>
 	<div class="titleblock">

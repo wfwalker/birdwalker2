@@ -29,15 +29,7 @@ if ($prevPhotoSightingID == "") { $prevPhotoSightingID = $sightingID; }
 
 <body>
 
-<?php navigationHeader() ?>
-
-    <div class="navigationleft">
-	  <a href="./photodetail.php?id=<?php echo $firstPhotoSightingID ?>">first</a>
-	  <a href="./photodetail.php?id=<?php echo $prevPhotoSightingID ?>">prev</a>
-      <a href="./photodetail.php?id=<?php echo $nextPhotoSightingID ?>">next</a>
-      <a href="./photodetail.php?id=<?php echo $lastPhotoSightingID ?>">last</a>
-    </div>
-
+<?php navigationHeader(); navigationButtons("./photodetail.php?id=", $sightingID, $firstPhotoSightingID, $prevPhotoSightingID, $nextPhotoSightingID, $lastPhotoSightingID); ?>
 
 <div class="contentright">
 <div class="titleblock">
