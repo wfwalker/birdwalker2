@@ -9909,7 +9909,7 @@ INSERT INTO sighting VALUES (9942,'norfli','Ulistac Natural Area','','','1','200
 INSERT INTO sighting VALUES (9943,'comyel','Ulistac Natural Area','','0','0','2004-11-28');
 INSERT INTO sighting VALUES (9944,'wesmea','Sunnyvale Baylands','','','1','2004-11-28');
 INSERT INTO sighting VALUES (9945,'ruckin','Ulistac Natural Area','','0','0','2004-11-28');
-INSERT INTO sighting VALUES (9946,'normoc','Ulistac Natural Area','','0','0','2004-11-28');
+INSERT INTO sighting VALUES (9946,'normoc','Ulistac Natural Area','','','1','2004-11-28');
 INSERT INTO sighting VALUES (9947,'caltow','Ulistac Natural Area','','0','0','2004-11-28');
 INSERT INTO sighting VALUES (9948,'blkpho','Ulistac Natural Area','','0','0','2004-11-28');
 INSERT INTO sighting VALUES (9949,'yerwar','Ulistac Natural Area','','0','0','2004-11-28');
