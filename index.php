@@ -48,8 +48,12 @@ disabledBrowseButtons();
           <div class="pagesubtitle"><?= $info["niceDate"] ?></div>
 
 		  <div class="titleblock">
-<?         rightThumbnail("SELECT * FROM sighting WHERE Photo='1' AND TripDate='" . $info["Date"] . "' LIMIT 1"); ?>
-              <span class="pagetitle"><a href="./tripdetail.php?id=<?=$info["objectid"]?>"/><?= $info["Name"] ?></a></span>
+              <span class="pagetitle">
+                  <a href="./tripdetail.php?id=<?=$info["objectid"]?>"/>
+<?                    rightThumbnail("SELECT * FROM sighting WHERE Photo='1' AND TripDate='" . $info["Date"] . "' LIMIT 1", false); ?>
+                      <?= $info["Name"] ?>
+                  </a>
+              </span>
               <div class="subheading"><?= $tripSpeciesCount ?> species</div>
           </div>
 
