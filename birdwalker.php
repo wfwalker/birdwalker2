@@ -65,7 +65,7 @@ function getThumbForSightingInfo($sightingInfo)
 function performQuery($queryString)
 {
 	selectDatabase();
-	$theQuery = mysql_query($queryString) or die("query error " . $queryString);
+	$theQuery = mysql_query($queryString) or die("<p>Error during query: " . $queryString . "</p><p>" . mysql_error() . "</p>");
 	return $theQuery;
 }
 
@@ -168,7 +168,7 @@ function getSpeciesCount($whereClause = "species.Abbreviation=sighting.SpeciesAb
 function getSpeciesQuery($whereClause = "species.Abbreviation=sighting.SpeciesAbbreviation and sighting.Exclude!='1'", $orderClause = "species.objectid")
 {
 	$speciesQueryString =
-		"SELECT distinct species.objectid, species.CommonName, species.Abbreviation FROM species, sighting
+		"SELECT distinct species.* FROM species, sighting
      where " . $whereClause . "
      order by " . $orderClause;
 

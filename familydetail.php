@@ -51,7 +51,7 @@ while($info = mysql_fetch_array($familyQuery)) {
 
   echo "<td class=report-content valign=top>";
   echo "<a href=\"./speciesdetail.php?id=".$info["objectid"]."\">".$info["CommonName"]."</a><br>";
-  echo "more<br>more<br>";
+  echo "<i>" . $info["LatinName"] . "</i><br><br>";
   echo "</td></tr>";
 }
 
