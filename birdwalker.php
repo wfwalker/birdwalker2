@@ -253,18 +253,17 @@ function formatLocationByYearTable($locationCount, $gridQueryString)
 
 	while ($info = mysql_fetch_array($gridQuery))
 	{
-		$county = $info["County"];
 		$theMask = $info["mask"];
 
-		if ($prevCounty != $county) {
-			echo "<tr><td class=titleblock colspan=11>" .  $county . " County</td></tr>";
+		if ($prevInfo["County"] != $info["County"]) {
+			echo "<tr><td class=titleblock colspan=11>" .  $info["County"] . " County, " . $info["State"] . "</td></tr>";
 		}
 
 		echo "<tr><td class=firstcell><a href=\"./locationdetail.php?id=" . $info["locationid"] . "\">" . $info["LocationName"] . "</a></td> ";
 		for ($index = 1; $index <= 9; $index++) echo "<td class=bordered align=center>" . bitToString($theMask, $index) . "</td>";
 		echo "</tr>";
 
-		$prevCounty = $county;
+		$prevInfo = $info;
 		$reprintYears++;
 	}
 
