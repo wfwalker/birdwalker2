@@ -1,0 +1,47 @@
+
+.contentleft
+{
+    font: 15pt Arial;
+  	font-weight: bold;
+	left: 1%; width: 14%; top: 1%;
+	padding-top: 80px; padding-left: 10px;
+	position: absolute; text-decoration: none
+ }
+
+.contentright
+{
+    font: 10pt Arial;
+	left: 20%; width: 60%; top: 1%;
+	padding-top: 30px; padding-bottom: 30px;
+	position: absolute
+}
+
+/* styles for the left menu */
+
+.leftsubtitle { font: 10pt Arial; font-weight: bold; text-decoration: none }
+
+.contentleft a {text-decoration: none}
+.leftsubtitle a {text-decoration: none}
+
+/* Styles for section headers, page titles, and overall report content */
+
+.pagetitle {font: 18pt Times, Serif}
+.pagesubtitle {font: 14pt Times, Serif; font-style: italic}
+.metadata {font: 10pt Arial, Serif}
+.titleblock {margin-top: 5px; margin-bottom: 5px; padding: 5pt; background-color: #EEEEEE}
+
+.report-content {font: 10pt Arial, Serif}
+.titlecell {background-color: #EEEEEE}
+.firstcell {padding-left: 15px}
+.bordered {border-left: solid 1px lightgray; border-bottom: solid 1px lightgray}
+.yearcell {width: 20px; border-left: solid 1px lightgray; border-bottom: solid 1px lightgray; color: lightgray}
+
+/* Styles for items within lists */
+.noteworthy-species {font-style: italic}
+.sighting-notes {font-style: italic; margin-left: 5%; margin-right: 5%}
+
+
+/* detail anchors are ugly!! */
+
+a       { color:#484393; text-decoration:none; }
+a:hover { color:#43436e; text-decoration:underline; }
