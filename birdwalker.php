@@ -63,6 +63,19 @@ function browseButtons($urlPrefix, $current, $first, $prev, $next, $last)
 
 }
 
+function pageThumbnail($photoQueryString)
+{
+	$photoQuery = performQuery($photoQueryString);
+
+	if (mysql_num_rows($photoQuery) > 0)
+	{
+		echo "<div class=thumb>";
+		$photoInfo = mysql_fetch_array($photoQuery);
+		echo getThumbForSightingInfo($photoInfo);
+		echo "</div>";
+	}
+}
+
 function navTrailBirds($extra = "")
 {
     $birdItems[] = "<a href=\"./speciesindex.php\">birds</a>";
@@ -93,7 +106,7 @@ function navTrail($extra)
 
 	foreach ($extra as $item)
 	{
-		if (strlen($item) > 0) echo "\n -&gt; " . $item;
+		if (strlen($item) > 0) echo "\n &gt; " . $item;
 	}
 
 	echo "</div>";
@@ -273,7 +286,7 @@ function insertYearLabels()
 {
 	for ($year = 1996; $year <= 2004; $year++)
 	{
-		echo "<td class=yearcell align=center><a href=\"./yeardetail.php?year=" . $year . "\">" . substr($year, 2, 2) . "</a></td>";
+		echo "<td class=yearcell align=center><a href=\"./yeardetail.php?year=" . $year . "\">" . $year . "</a></td>";
 	}
 }
 
@@ -310,13 +323,29 @@ function formatTwoColumnSpeciesList($query)
 /**
  * Show a set of sightings, species by rows, years by columns.
  */
-function formatSpeciesByYearTable($gridQueryString, $extraSightingListParams)
+function formatSpeciesByYearTable($gridQueryString, $extraSightingListParams, $yearTotals)
 {
 	$gridQuery = performQuery($gridQueryString);
 
-	echo "<table columns=11 cellpadding=0 cellspacing=0 class=\"report-content\" width=\"100%\">";
+	echo "\n\n<table columns=11 cellpadding=0 cellspacing=0 class=\"report-content\" width=\"100%\">";
 
-	echo "<tr><td></td>"; insertYearLabels(); echo "</tr>";
+	echo "\n<tr><td></td>"; insertYearLabels(); echo "</tr>";
+
+	echo "\n<tr><td class=bordered>TOTAL</td>";
+	$info = mysql_fetch_array($yearTotals);
+	for ($index = 1; $index <= 9; $index++)
+	{
+		if ($info["year"] == 1995 + $index)
+		{
+			echo "<td class=bordered align=center>" . $info["count"] . "</td>";
+			$info = mysql_fetch_array($yearTotals);
+		}
+		else
+		{
+			echo "<td class=bordered align=center>&nbsp;</td>";
+		}
+	}
+	echo "</tr>";
 
 	while ($info = mysql_fetch_array($gridQuery))
 	{
@@ -325,10 +354,10 @@ function formatSpeciesByYearTable($gridQueryString, $extraSightingListParams)
 		if (getBestTaxonomyID($prevInfo["speciesid"]) != getBestTaxonomyID($info["speciesid"]))
 		{
 			$taxoInfo = getBestTaxonomyInfo($info["speciesid"]);
-			echo "<tr><td class=heading colspan=11>" . $taxoInfo["LatinName"] . "</td></tr>";
+			echo "\n\n<tr><td class=heading colspan=11>" . $taxoInfo["LatinName"] . "</td></tr>";
 		}
 
-		echo "<tr><td class=firstcell><a href=\"./speciesdetail.php?id=" . $info["speciesid"] . "\">" . $info["CommonName"] . "</a></td> ";
+		echo "\n\n<tr><td class=firstcell><a href=\"./speciesdetail.php?id=" . $info["speciesid"] . "\">" . $info["CommonName"] . "</a></td> ";
 		
 		for ($index = 1; $index <= 9; $index++)
 		{
