@@ -16,7 +16,7 @@ $tripListCount = mysql_num_rows($tripListQuery);
 
   <body>
 
-<?php globalMenu(); disabledBrowseButtons(); navTrailTrips(); ?>
+<?php globalMenu(); disabledBrowseButtons(); navTrailTrips(""); ?>
 
     <div class=contentright>
 	  <div class="titleblock">
@@ -36,7 +36,7 @@ while($info = mysql_fetch_array($tripListQuery))
   if (strcmp($thisYear, $prevYear))
   {
     echo "<tr><td colspan=4 class=\"heading\">
-            <a href=\"./yeardetail.php?year=" . $thisYear . "\">" . $thisYear . "</a></td></tr>";
+            <a name=\"" . $thisYear . "\"></a>" . $thisYear . "</td></tr>";
   }
 
   if (($counter % 2) == 0) echo "\n<tr>";

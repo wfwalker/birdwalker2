@@ -36,11 +36,15 @@ $randomPhotoSightings = performQuery("select *, rand() as shuffle from sighting 
 
   <body>
 
-  <?php globalMenu(); browseButtons("./tripdetail.php?id=", $tripID, 1, $tripID - 1, $tripID + 1, $tripCount);  navTrailTrips(); ?>
+<?php
+globalMenu();
+browseButtons("./tripdetail.php?id=", $tripID, 1, $tripID - 1, $tripID + 1, $tripCount);
+$items[] = "<a href=\"./tripindex.php#" . $tripYear . "\">" . $tripYear . "</a>";
+$items[] = strtolower($tripInfo["Name"]);
+navTrailTrips($items);
+?>
 
 <div class=thumb><?php  if (mysql_num_rows($randomPhotoSightings) > 0) { $photoInfo = mysql_fetch_array($randomPhotoSightings); if (mysql_num_rows($randomPhotoSightings) > 0) echo "<td>" . getThumbForSightingInfo($photoInfo) . "</td>"; } ?></div>
-
-<div class=navigationright><a href="./index.php">birdWalker</a> &gt; <a href="./tripindex.php">trips</a></div>
 
     <div class="contentright">
 	  <div class=titleblock>
