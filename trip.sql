@@ -393,3 +393,7 @@ INSERT INTO trip VALUES (393,'Bill','','Morning Photo Safari','There weren\'t ma
 INSERT INTO trip VALUES (394,'Mary','','Working at home','Mary reports the Cedar Waxwings were clearly visible in our backyard trees eating the red berries. Bill would really like to take that photo.','2005-02-17');
 INSERT INTO trip VALUES (395,'Bill','','Morning Photo Safari','Ulistac and Sunnyvale baylands were both quite lovely this morning, and at least two species were very cooperative photo subjects today.','2005-02-21');
 INSERT INTO trip VALUES (396,'Mary and Bill','','Running Errands','We heard that great giggling sound high overhead and saw those distinctive silhouettes.','2005-03-17');
+INSERT INTO trip VALUES (397,'Bill','','Coffee Run','I don\'t always remember to make notes about this pond, but it\'s always productive!','2005-03-10');
+INSERT INTO trip VALUES (398,'Mary and Bill','','Christina shows us around','','2004-11-16');
+INSERT INTO trip VALUES (399,'Bill','','Morning Photo Safari','I worked on flight shots again, this time with gulls. Had a female blackbird posing for me.','2005-02-11');
+INSERT INTO trip VALUES (400,'Bill','','Walk to work','I had several interesting subjects show up during my walk to the office this morning, including one I\'d been waiting a long time for.','2005-03-21');
