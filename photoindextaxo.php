@@ -56,11 +56,11 @@ while($info = mysql_fetch_array($photoSpecies))
 
 	if ($info["photoCount"] > 1)
 	{ ?>
-        <div><a href="./speciesdetailphoto.php?id=<?= $info["objectid"] ?>"><?= $info["CommonName"] ?></a> (<?= $info["photoCount"] ?>)</div>
+        <div><a href="./speciesdetail.php?view=photo&id=<?= $info["objectid"] ?>"><?= $info["CommonName"] ?></a> (<?= $info["photoCount"] ?>)</div>
 <?	}
 	else
 	{ ?>
-        <div><a href="./speciesdetailphoto.php?id=<?= $info["objectid"] ?>"><?= $info["CommonName"] ?></a></div>
+        <div><a href="./speciesdetail.php?view=photo&id=<?= $info["objectid"] ?>"><?= $info["CommonName"] ?></a></div>
 <?	}
 		
 	$prevInfo = $info;

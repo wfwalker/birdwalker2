@@ -442,7 +442,7 @@ function speciesBrowseButtons($speciesID, $viewMode)
       WHERE sighting.SpeciesAbbreviation=species.Abbreviation
       AND species.objectid<" . $speciesID . " LIMIT 1");
 
-	browseButtons("./speciesdetail.php?view=" . $viewMode . "&id=", $speciesID, $firstSpeciesID, $prevSpeciesID, $nextSpeciesID, $lastSpeciesID);
+	browseButtons("./speciesdetail.php?view=" . $viewMode . "&speciesid=", $speciesID, $firstSpeciesID, $prevSpeciesID, $nextSpeciesID, $lastSpeciesID);
 
 }
 
@@ -482,7 +482,7 @@ function formatTwoColumnSpeciesList($speciesQuery, $firstSightings = "", $firstY
 			<div class=subheading><?= strtolower($taxoInfo["LatinName"]) ?></div>
 <?		} ?>
 
-		<div><a href="./speciesdetail.php?id=<?= $info["objectid"] ?>"><?= $info["CommonName"] ?></a>
+		<div><a href="./speciesdetail.php?speciesid=<?= $info["objectid"] ?>"><?= $info["CommonName"] ?></a>
 
 <?      if ($info["sightingid"] != "") editLink("./sightingedit.php?id=" . $info["sightingid"]); ?>
 <?      if ($info["Photo"] == "1") { ?><?= getPhotoLinkForSightingInfo($info, "sightingid") ?><? } ?>
@@ -530,7 +530,7 @@ function formatSpeciesListWithPhoto($speciesQuery)
 		?> <br/><br/></td>
 
 		<td class=report-content valign=top>
-            <a href="./speciesdetail.php?id=<?= $info["objectid"] ?>"><?= $info["CommonName"] ?></a><br>
+            <a href="./speciesdetail.php?speciesid=<?= $info["objectid"] ?>"><?= $info["CommonName"] ?></a><br>
             <i><?= $info["LatinName"] ?></i><br><br>
         </td><?
 
@@ -588,7 +588,7 @@ function formatSpeciesByYearTable($sightingQuery, $extraSightingListParams, $yea
 			<tr><td class=subheading colspan=11><?= strtolower($taxoInfo["LatinName"]) ?></td></tr>
 <?		} ?>
 
-		<tr><td><a href="./speciesdetail.php?id=<?= $info["speciesid"] ?>"><?= $info["CommonName"] ?></a></td>
+		<tr><td><a href="./speciesdetail.php?speciesid=<?= $info["speciesid"] ?>"><?= $info["CommonName"] ?></a></td>
 
 <?		for ($index = 1; $index <= 9; $index++)
 		{ ?>
@@ -621,7 +621,6 @@ function formatSpeciesByYearTable($sightingQuery, $extraSightingListParams, $yea
  */
 function formatSpeciesByMonthTable($sightingQuery, $extraSightingListParams, $monthTotals)
 {
-	// TOOD, WHAT IF THEREISNT A LOCATION CLAUSE NEEDED?
     $gridQueryString="
     SELECT DISTINCT(CommonName), species.objectid AS speciesid, bit_or(1 << month(TripDate)) AS mask " . 
       $sightingQuery->getFromClause() . " " .
@@ -663,7 +662,7 @@ function formatSpeciesByMonthTable($sightingQuery, $extraSightingListParams, $mo
 			<tr><td class=subheading colspan=13><?= strtolower($taxoInfo["LatinName"]) ?></td></tr>
 <?		} ?>
 
-		<tr><td width="40%"><a href="./speciesdetail.php?id=<?= $info["speciesid"] ?>"><?= $info["CommonName"] ?></a></td>
+		<tr><td width="40%"><a href="./speciesdetail.php?speciesid=<?= $info["speciesid"] ?>"><?= $info["CommonName"] ?></a></td>
 
 <?		for ($index = 1; $index <= 12; $index++)
 		{ ?>
@@ -917,7 +916,9 @@ function formatTwoColumnTripList($tripQuery)
 <?		} ?>
 
 			 <div>
-                <a href="./tripdetail.php?id=<?= $info["objectid"] ?>"><?= $info["Name"] ?>, <?= $info["niceDate"] ?></a>
+                <a href="./tripdetail.php?id=<?= $info["objectid"] ?>">
+				  <?= $info["Name"] ?>, <?= $info["niceDate"] ?><? if (! $subdivideByYears) echo ", " . $info["year"] ?>
+                </a>
                 <? if ($info["Photo"] == "1") { ?><?= getPhotoLinkForSightingInfo($info, "sightingid") ?><? } ?>
                 <? if ($info["Exclude"] == "1") { ?>excluded<? } ?>
              </div>
@@ -1001,13 +1002,6 @@ function stateBrowseButtons($stateID, $viewMode)
 
 	browseButtons("./statedetail.php?view=" . $viewMode . "&id=", $stateID, $firstStateID, $prevStateID, $nextStateID, $lastStateID);
 
-}
-
-function navTrailCounty($state, $county)
-{
-	$stateInfo = getStateInfoForAbbreviation($state);
-	$items[]="<a href=\"./statedetail.php?id=" . $stateInfo["objectid"] . "\">" . strtolower($stateInfo["Name"]) . "</a>";
-	navTrailLocations($items);
 }
 
 function navTrailLocationDetail($siteInfo)
