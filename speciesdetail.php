@@ -29,13 +29,13 @@ $nextSpecies = performCount("
     SELECT min(species.objectid)
       FROM species, sighting
       WHERE sighting.SpeciesAbbreviation=species.Abbreviation
-      AND species.objectid>" . $speciesID);
+      AND species.objectid>" . $speciesID . " LIMIT 1");
 
 $prevSpecies = performCount("
     SELECT max(species.objectid)
       FROM species, sighting
       WHERE sighting.SpeciesAbbreviation=species.Abbreviation
-      AND species.objectid<" . $speciesID);
+      AND species.objectid<" . $speciesID . " LIMIT 1");
 
 $speciesLocationListQuery = performQuery( "
     SELECT distinct(location.objectid), location.*
@@ -65,8 +65,8 @@ $items[] = "<a href=\"./familydetail.php?family=" . $familyInfo["objectid"] / po
 $items[] = strtolower($speciesInfo["CommonName"]);
 navTrailBirds($items);
 pageThumbnail("
-    SELECT * from sighting
-      WHERE SpeciesAbbreviation='" . $speciesInfo["Abbreviation"] . "' and Photo='1' order by TripDate desc");
+    SELECT * FROM sighting
+      WHERE SpeciesAbbreviation='" . $speciesInfo["Abbreviation"] . "' and Photo='1' ORDER BY TripDate DESC LIMIT 1");
 ?>
 
   <div class=contentright>
@@ -78,8 +78,8 @@ pageThumbnail("
 if ($speciesTripCount >= 5)
 {
     $sightingDates = performOneRowQuery("SELECT
-        date_format(min(TripDate), '%M %e, %Y') as earliest,
-        date_format(max(TripDate), '%M %e, %Y') as latest
+        date_format(min(TripDate), '%M %e, %Y') AS earliest,
+        date_format(max(TripDate), '%M %e, %Y') AS latest
       FROM sighting
       WHERE sighting.SpeciesAbbreviation='" . $speciesInfo["Abbreviation"] . "'"); ?>
 
@@ -88,57 +88,47 @@ if ($speciesTripCount >= 5)
 
 <?
 }
-if (strlen($speciesInfo["ReferenceURL"]) > 0) {
-?>
-    <div><a href="<?= $speciesInfo["ReferenceURL"] ?>">See also...</a></div>
-<?
-}
-if ($speciesInfo["ABACountable"] == '0') {
-?>
-    <div>NOT ABA COUNTABLE</div>
-<?
-}
-?>
-    </div>
-    </div>
+    if (strlen($speciesInfo["ReferenceURL"]) > 0) { ?>
+        <div><a href="<?= $speciesInfo["ReferenceURL"] ?>">See also...</a></div>
+<?  }
+    if ($speciesInfo["ABACountable"] == '0') { ?>
+        <div>NOT ABA COUNTABLE</div>
+<? } ?>
 
-    <div class=sighting-notes><?= $speciesInfo["Notes"] ?></div>
+   </div>
+   </div>
 
-<?php
-	  if ($speciesTripCount < 5)
-	  {
-?>
-          <div class=heading><?= $speciesTripCount ?> trip<? if ($speciesTripCount > 1) echo 's' ?></div>
+   <div class=sighting-notes><?= $speciesInfo["Notes"] ?></div>
 
-<?
-		  // list the trips that included this species
-		  while($tripInfo = mysql_fetch_array($speciesTripQuery))
-		  {
-?>
+<? if ($speciesTripCount < 5)
+   { ?>
+       <div class=heading><?= $speciesTripCount ?> trip<? if ($speciesTripCount > 1) echo 's' ?></div>
+
+<?      // list the trips that included this species
+		while($tripInfo = mysql_fetch_array($speciesTripQuery))
+		{ ?>
 			  <div class=firstcell>
-                  <a href="./tripdetail.php?id=<?= $tripInfo["objectid"] ?>"><?= $tripInfo["Name"] ?> (<?= $tripInfo["niceDate"] ?>)</a>
+                  <a href="./tripdetail.php?id=<?= $tripInfo["objectid"] ?>">
+                      <?= $tripInfo["Name"] ?> (<?= $tripInfo["niceDate"] ?>)
+                  </a>
               </div>
 			  <div class=sighting-notes><?= $tripInfo["sightingNotes"] ?></div>
-<?
-		  }
-?>
-          <div class=heading><?= $speciesLocationCount ?> location<? if ($speciesLocationCount > 1) echo 's' ?></div>
-<?
-		  $prevInfo=null;
+<?		} ?>
+        <div class=heading><?= $speciesLocationCount ?> location<? if ($speciesLocationCount > 1) echo 's' ?></div>
 
-		  while($info = mysql_fetch_array($speciesLocationListQuery))
-		  {
-?>
-			  <div class=firstcell><a href="./locationdetail.php?id=<?= $info["objectid"] ?>"><?= $info["Name"] ?></a></div>
-<?
-			  $prevInfo = $info;   
-		  }
+<?		$prevInfo=null;
 
-		  echo "</div>";
-	  }
-	  else
-	  {
-		  $gridQueryString="
+		while($info = mysql_fetch_array($speciesLocationListQuery))
+		{ ?>
+		    <div class=firstcell><a href="./locationdetail.php?id=<?= $info["objectid"] ?>"><?= $info["Name"] ?></a></div>
+<?		    $prevInfo = $info;   
+		} ?>
+
+		</div>
+<? }
+	else
+	{
+	    $gridQueryString="
               SELECT distinct(LocationName), County, State,
                 location.objectid as locationid, bit_or(1 << (year(TripDate) - 1995)) as mask
                 FROM sighting, location
@@ -148,8 +138,7 @@ if ($speciesInfo["ABACountable"] == '0') {
                 ORDER BY location.State, location.County, location.Name;";
 
 		  formatLocationByYearTable($gridQueryString, "./sightinglist.php?speciesid=" . $speciesID . "&");
-	  }
-?>
+    } ?>
 
 </body>
 </html>
