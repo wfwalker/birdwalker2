@@ -61,7 +61,11 @@ $sightingListQuery = performQuery($sightingListQueryString);
   </head>
   <body>
 
-<?php globalMenu(); disabledBrowseButtons(); navTrailBirds(); ?>
+<?php
+globalMenu();
+disabledBrowseButtons();
+navTrailBirds();
+?>
 
     <div class=contentright>
       <div class="titleblock">	  
