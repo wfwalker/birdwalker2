@@ -5,8 +5,9 @@ require_once("./birdwalker.php");
 require_once("./speciesquery.php");
 require_once("./sightingquery.php");
 require_once("./tripquery.php");
+require_once("./map.php");
 
-$locationID = param($_GET, 'id', 1);
+$locationID = param($_GET, 'locationid', 1);
 $view = param($_GET, 'view', 'list');
 
 $siteInfo = getLocationInfo($locationID);
@@ -50,18 +51,29 @@ navTrailLocationDetail($siteInfo);
 <div class="contentright">
   <div class="pagesubtitle">Location Detail</div>
   <div class="titleblock">
-<?  if ($view != "photo") { rightThumbnailLocation($siteInfo["Name"]); } ?>
+<?  if (($view != "map") && ($view != "photo")) { rightThumbnailLocation($siteInfo["Name"]); } ?>
     <div class=pagetitle>
         <?= $siteInfo["Name"] ?>
-        <? editLink("./locationcreate.php?id=" . $locationID); ?>
+        <? editLink("./locationcreate.php?locationid=" . $locationID); ?>
     </div>
 
-<?    referenceURL($siteInfo);
-      mapLink($siteInfo); ?>
-      species: <a href="./locationdetail.php?id=<?=$locationID?>">list</a> |
-      <a href="./locationdetail.php?view=bymonth&id=<?=$locationID?>">by month</a> |
-      <a href="./locationdetail.php?view=byyear&id=<?=$locationID?>">by year</a> |
-      <a href="./locationdetail.php?view=photo&id=<?=$locationID?>">photos</a>
+<? referenceURL($siteInfo);
+   if ($siteInfo["Latitude"] > 0)
+   {
+	   $lat = $siteInfo["Latitude"];
+	   $long = $siteInfo["Longitude"];
+?>
+   <div>maps: 
+      <a href="http://www.mapquest.com/maps/map.adp?latlongtype=decimal&latitude=<?= $lat ?>&longitude=<?= $long ?>">mapquest</a> |
+      <a href="http://terraserver.microsoft.com/image.aspx?Lon=<?=$long?>&Lat=<?=$lat?>&w=1">terraserver</a> |
+		<a href="./locationdetail.php?view=map&locationid=<?=$locationID?>">opengis</a>
+    </div>
+<? } ?>
+
+      species: <a href="./locationdetail.php?locationid=<?=$locationID?>">list</a> |
+      <a href="./locationdetail.php?view=bymonth&locationid=<?=$locationID?>">by month</a> |
+      <a href="./locationdetail.php?view=byyear&locationid=<?=$locationID?>">by year</a> |
+      <a href="./locationdetail.php?view=photo&locationid=<?=$locationID?>">photos</a>
     </div>
 
     <div class=report-content><?= $siteInfo["Notes"] ?></div>
@@ -69,10 +81,10 @@ navTrailLocationDetail($siteInfo);
 <?
 	if ($view == "list")
 	{
-		countHeading($tripCount, "trip");
-		$tripQuery->formatTwoColumnTripList();
 		doubleCountHeading($speciesQuery->getSpeciesCount(), "species", $locationFirstSightings, "life bird");
 		$speciesQuery->formatTwoColumnSpeciesList();
+		countHeading($tripCount, "trip");
+		$tripQuery->formatTwoColumnTripList();
 	}
 	else if ($view == "bymonth")
 	{
@@ -89,6 +101,12 @@ navTrailLocationDetail($siteInfo);
 		$sightingQuery = new SightingQuery;
 		$sightingQuery->setLocationID($locationID);
 		$sightingQuery->formatPhotos();
+	}
+    else if ($view == "map")
+	{
+		$map = new Map("./locationdetail.php");
+		$map->setFromRequest($_GET);
+		$map->draw();
 	}
 
 ?>
