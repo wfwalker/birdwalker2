@@ -3,8 +3,8 @@
 
 require("./birdwalker.php");
 
-$tripID = $_GET['id'];
-$postTripID = $_POST['id'];
+$tripID = $_GET['tripid'];
+$postTripID = $_POST['tripid'];
 $save = $_POST['Save'];
 
 getEnableEdit() or die("Editing disabled");
@@ -23,7 +23,7 @@ getEnableEdit() or die("Editing disabled");
 
 <?php
 globalMenu();
-tripBrowseButtons($tripID, "edit");
+tripBrowseButtons("./tripedit.php", $tripID, "edit");
 navTrailTrips();
 ?>
 
@@ -56,12 +56,12 @@ $tripInfo = getTripInfo($tripID);
 
 <div class=pagesubtitle><?= $tripInfo["niceDate"] ?></div>
 <div class="titleblock">
-  <a href="./tripdetail.php?id=<?= $tripInfo["objectid"] ?>">
+  <a href="./tripdetail.php?tripid=<?= $tripInfo["objectid"] ?>">
     <div class=pagetitle><?= $tripInfo["Name"] ?></div>
 </a>
 </div>
 
-<form method="post" action="./tripedit.php?id=<?= $tripID ?>">
+<form method="post" action="./tripedit.php?tripid=<?= $tripID ?>">
 
 <table class=report-content columns=2 width=100%>
   <tr>

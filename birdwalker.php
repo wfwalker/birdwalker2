@@ -871,7 +871,7 @@ function getTripInfoForDate($inDate)
 	return performOneRowQuery("SELECT *, date_format(Date, '%W,  %M %e, %Y') as niceDate FROM trip where Date='" . $inDate . "'");
 }
 
-function tripBrowseButtons($tripID, $viewMode)
+function tripBrowseButtons($url, $tripID, $viewMode)
 {
 	$tripInfo = getTripInfo($tripID);
 
@@ -892,7 +892,7 @@ function tripBrowseButtons($tripID, $viewMode)
 	if ($nextTripID == "") { $nextTripID = $sightingID; }
 	if ($prevTripID == "") { $prevTripID = $sightingID; }
 
-	browseButtons("./tripdetail.php?view=" . $viewMode . "&tripid=", $tripID,
+	browseButtons($url . "?view=" . $viewMode . "&tripid=", $tripID,
 				  $firstTripID, $prevTripID, $nextTripID, $lastTripID);
 }
 

@@ -46,7 +46,7 @@ while($sightingInfo = mysql_fetch_array($tripSightings)) {
 
 <?php
 globalMenu();
-tripBrowseButtons($tripID, $view);
+tripBrowseButtons("./tripdetail.php", $tripID, $view);
 $items[] = "<a href=\"./tripindex.php#" . $tripYear . "\">" . $tripYear . "</a>";
 navTrailTrips($items);
 ?>
@@ -60,7 +60,7 @@ navTrailTrips($items);
 <?      if ($view != "photo") { $sightingQuery->rightThumbnail(true); }?>
         <div class=pagetitle>
             <?= $tripInfo["Name"] ?>
-            <?= editLink("./tripedit.php?id=" . $tripID); ?>
+            <?= editLink("./tripedit.php?tripid=" . $tripID); ?>
         </div>
         <div class=metadata>
           Led by  <?= $tripInfo["Leader"] ?>
