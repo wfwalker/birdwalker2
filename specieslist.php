@@ -7,12 +7,7 @@ require_once("./speciesquery.php");
 $locationList = performQuery("select Name, objectid from location order by Name");
 
 $aQuery = new SpeciesQuery;
-
-$aQuery->setLocationID($_GET["locationid"]);
-$aQuery->setYear($_GET["year"]);
-$aQuery->setMonth($_GET["month"]);
-$aQuery->setCounty($_GET["county"]);
-$aQuery->setState($_GET["state"]);
+$aQuery->setFromRequest($_GET);
 
 $view = param($_GET, "view", "list");
 
