@@ -10472,7 +10472,7 @@ INSERT INTO sighting VALUES (10506,'wesgul','Charleston Slough','','0','0','2005
 INSERT INTO sighting VALUES (10507,'amecoo','Charleston Slough','','0','0','2005-02-09');
 INSERT INTO sighting VALUES (10508,'doccor','Charleston Slough','','0','0','2005-02-09');
 INSERT INTO sighting VALUES (10509,'comgol','Charleston Slough','','0','0','2005-02-09');
-INSERT INTO sighting VALUES (10510,'bargol','Charleston Slough','','','1','2005-02-09');
+INSERT INTO sighting VALUES (10510,'bxcgol','Charleston Slough','After correspondence with the Steve Shunk and Les Chibana, I\'m going to mark this bird as a hybrid.','','1','2005-02-09');
 INSERT INTO sighting VALUES (10511,'canvas','Charleston Slough','','0','0','2005-02-09');
 INSERT INTO sighting VALUES (10512,'pibgre','Charleston Slough','','','1','2005-02-09');
 INSERT INTO sighting VALUES (10513,'cangoo','Palo Alto Duck Pond','','','1','2005-02-10');

@@ -219,6 +219,7 @@ INSERT INTO species VALUES (7013110301,'amesco','Melanitta nigra 1','American Sc
 INSERT INTO species VALUES (7013120100,'lotduc','Clangula hyemalis','Long-Tailed Duck','','',1);
 INSERT INTO species VALUES (7013130100,'buffle','Bucephala albeola','Bufflehead','','',1);
 INSERT INTO species VALUES (7013130200,'comgol','Bucephala clangula','Common Goldeneye','','',1);
+INSERT INTO species VALUES (7013130250,'bxcgol','Bucephala islandica X Bucephala clangula','Barrow\'s X Common Goldeneye','','',0);
 INSERT INTO species VALUES (7013130300,'bargol','Bucephala islandica','Barrow\'s Goldeneye','','http://www.mbr-pwrc.usgs.gov/id/framlst/i1520id.html',1);
 INSERT INTO species VALUES (7013140100,'smew','Mergellus albellus','Smew','','',1);
 INSERT INTO species VALUES (7013150100,'hoomer','Lophodytes cucullatus','Hooded Merganser','','http://www.mbr-pwrc.usgs.gov/Infocenter/i1310id.html',1);
