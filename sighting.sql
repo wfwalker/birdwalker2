@@ -6924,7 +6924,7 @@ INSERT INTO sighting VALUES (6923,'snoegr','Charleston Slough','','0','0','2003-
 INSERT INTO sighting VALUES (6924,'sursco','Charleston Slough','','0','0','2003-10-12');
 INSERT INTO sighting VALUES (6925,'turvul','Charleston Slough','','0','0','2003-10-12');
 INSERT INTO sighting VALUES (6926,'virrai','Charleston Slough','','0','0','2003-10-12');
-INSERT INTO sighting VALUES (6927,'wesgre','Charleston Slough','','0','0','2003-10-12');
+INSERT INTO sighting VALUES (6927,'wesgre','Charleston Slough','','','1','2003-10-12');
 INSERT INTO sighting VALUES (6928,'wesmea','Charleston Slough','','0','0','2003-10-12');
 INSERT INTO sighting VALUES (6929,'wessan','Charleston Slough','','0','0','2003-10-12');
 INSERT INTO sighting VALUES (6930,'whcspa','Charleston Slough','','0','0','2003-10-12');
@@ -7496,7 +7496,7 @@ INSERT INTO sighting VALUES (7495,'norpin','Merced NWR','','0','0','2004-01-19')
 INSERT INTO sighting VALUES (7496,'norsho','Merced NWR','','0','0','2004-01-19');
 INSERT INTO sighting VALUES (7497,'orcwar','Merced NWR','','0','0','2004-01-19');
 INSERT INTO sighting VALUES (7498,'pibgre','Merced NWR','','0','0','2004-01-19');
-INSERT INTO sighting VALUES (7499,'reshaw','Merced NWR','','0','0','2004-01-19');
+INSERT INTO sighting VALUES (7499,'reshaw','Merced NWR','','','1','2004-01-19');
 INSERT INTO sighting VALUES (7500,'ribgul','Merced NWR','','0','0','2004-01-19');
 INSERT INTO sighting VALUES (7501,'rinphe','Merced NWR','','0','0','2004-01-19');
 INSERT INTO sighting VALUES (7502,'rosgoo','Merced NWR','In a flock of five thousand regular geese, we found three blue morph Ross\' Geese, and ten with collars (one read \"LPJ\")','0','0','2004-01-19');
@@ -7728,7 +7728,7 @@ INSERT INTO sighting VALUES (7727,'gocspa','Palo Alto Duck Pond','','0','0','200
 INSERT INTO sighting VALUES (7728,'greegr','Palo Alto Duck Pond','','0','0','2004-01-31');
 INSERT INTO sighting VALUES (7729,'greyel','Palo Alto Duck Pond','','0','0','2004-01-31');
 INSERT INTO sighting VALUES (7730,'gnwtea','Palo Alto Duck Pond','','0','0','2004-01-31');
-INSERT INTO sighting VALUES (7731,'hoomer','Palo Alto Duck Pond','','0','0','2004-01-31');
+INSERT INTO sighting VALUES (7731,'hoomer','Palo Alto Duck Pond','','','1','2004-01-31');
 INSERT INTO sighting VALUES (7732,'killde','Palo Alto Duck Pond','','0','0','2004-01-31');
 INSERT INTO sighting VALUES (7733,'lobcur','Palo Alto Duck Pond','','0','0','2004-01-31');
 INSERT INTO sighting VALUES (7734,'mallar','Palo Alto Duck Pond','','0','0','2004-01-31');
@@ -8428,7 +8428,7 @@ INSERT INTO sighting VALUES (8441,'pyrrhu','Laredo','','0','0','2004-04-19');
 INSERT INTO sighting VALUES (8442,'incdov','Laredo','','0','0','2004-04-19');
 INSERT INTO sighting VALUES (8443,'grnher','Laredo','','0','0','2004-04-19');
 INSERT INTO sighting VALUES (8444,'grnjay','Laredo','','0','0','2004-04-19');
-INSERT INTO sighting VALUES (8499,'larspa','Leakey','','0','0','2004-04-20');
+INSERT INTO sighting VALUES (8499,'larspa','Leakey','','','1','2004-04-20');
 INSERT INTO sighting VALUES (8446,'turvul','Laredo','','0','0','2004-04-19');
 INSERT INTO sighting VALUES (8447,'blkvul','Laredo','','0','0','2004-04-19');
 INSERT INTO sighting VALUES (8448,'clcrob','Laredo','','0','0','2004-04-19');
@@ -8744,3 +8744,9 @@ INSERT INTO sighting VALUES (8764,'rocdov','2138 King Court','','','1','2003-10-
 INSERT INTO sighting VALUES (8765,'stejay','Rancho San Antonio','','0','0','2003-11-02');
 INSERT INTO sighting VALUES (8766,'nutwoo','Rancho San Antonio','','','1','2003-11-02');
 INSERT INTO sighting VALUES (8767,'acowoo','Rancho San Antonio','','0','0','2003-11-02');
+INSERT INTO sighting VALUES (8768,'amecoo','Charleston Slough','','0','0','2004-03-05');
+INSERT INTO sighting VALUES (8769,'annhum','Charleston Slough','','0','0','2004-03-05');
+INSERT INTO sighting VALUES (8770,'commoo','Charleston Slough','','0','0','2004-03-05');
+INSERT INTO sighting VALUES (8771,'wesmea','Charleston Slough','','','1','2004-03-05');
+INSERT INTO sighting VALUES (8772,'comgol','Charleston Slough','','','1','2004-03-05');
+INSERT INTO sighting VALUES (8773,'snoegr','Charleston Slough','','0','0','2004-03-05');
