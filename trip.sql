@@ -292,3 +292,5 @@ INSERT INTO trip VALUES (291,'Mary and Bill','','Saturday Stroll','We wanted to 
 INSERT INTO trip VALUES (292,'Steve Shunk','','Paradise Birding Texas Day 1','','2004-04-13');
 INSERT INTO trip VALUES (293,'Steve Shunk','','Paradise Birding Texas Day 2','','2004-04-14');
 INSERT INTO trip VALUES (294,'Steve Shunk','','Paradise Birding Texas Day 3','','2004-04-15');
+INSERT INTO trip VALUES (295,'Steve Shunk','','Paradise Birding Texas Day 5','Sabal Palm Grove Sanctuary, Laguna Madre Nature Trail, Hwy 100, Old Port Isabel Road','2004-04-17');
+INSERT INTO trip VALUES (296,'Steve Shunk','','Paradise Birding Texas Day 4','Mustang Island, S Nuences Co., Kingsville, Baffin Bay, Laguna Atascosa','2004-04-16');
