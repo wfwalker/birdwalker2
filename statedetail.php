@@ -51,49 +51,49 @@ $extrema = $locationQuery->findExtrema();
 if ($view == 'species')
 {
 	$speciesQuery = new SpeciesQuery;
-	$speciesQuery->setStateID($id);
+	$speciesQuery->setFromRequest($_GET);
 	countHeading($speciesQuery->getSpeciesCount(), "species");
 	$speciesQuery->formatTwoColumnSpeciesList(); 
 }
 elseif ($view == 'speciesbyyear')
 {
 	$speciesQuery = new SpeciesQuery;
-	$speciesQuery->setStateID($id);
+	$speciesQuery->setFromRequest($_GET);
 	countHeading($speciesQuery->getSpeciesCount(), "species");
 	$speciesQuery->formatSpeciesByYearTable(); 
 }
 elseif ($view == 'speciesbymonth')
 {
 	$speciesQuery = new SpeciesQuery;
-	$speciesQuery->setStateID($id);
+	$speciesQuery->setFromRequest($_GET);
 	countHeading($speciesQuery->getSpeciesCount(), "species");
 	$speciesQuery->formatSpeciesByMonthTable(); 
 }
 elseif ($view == 'locations')
 {
     $locationQuery = new LocationQuery;
-	$locationQuery->setStateID($id);
+	$locationQuery->setFromRequest($_GET);
 	countHeading($locationQuery->getLocationCount(), "location");
 	$locationQuery->formatTwoColumnLocationList();
 }
 elseif ($view == 'locationsbyyear')
 {
     $locationQuery = new LocationQuery;
-	$locationQuery->setStateID($id);
+	$locationQuery->setFromRequest($_GET);
 	countHeading($locationQuery->getLocationCount(), "location");
 	$locationQuery->formatLocationByYearTable();
 }
 elseif ($view == 'locationsbymonth')
 {
     $locationQuery = new LocationQuery;
-	$locationQuery->setStateID($id);
+	$locationQuery->setFromRequest($_GET);
 	countHeading($locationQuery->getLocationCount(), "location");
 	$locationQuery->formatLocationByMonthTable();
 }
 else if ($view == "map")
 {
     $locationQuery = new LocationQuery;
-	$locationQuery->setStateID($id);
+	$locationQuery->setFromRequest($_GET);
 	$map = new Map("./statedetail.php");
 	$map->setFromRequest($_GET);
 	$map->draw();
