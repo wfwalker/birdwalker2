@@ -11,7 +11,7 @@ $speciesCount = performCount("select count(distinct species.objectid) from speci
 $tripQuery = performQuery("select distinct trip.objectid, trip.*, date_format(Date, '%M %e, %Y') as niceDate, count(distinct sighting.SpeciesAbbreviation) as tripCount from trip, sighting where sighting.LocationName='" . $siteInfo["Name"]. "' and sighting.TripDate=trip.Date group by trip.Date order by trip.Date desc");
 
 $tripCount = mysql_num_rows($tripQuery);
-// $firstSightings = getFirstSightings(); // NOT CURRENTLY IN USE
+
 
 ?>
 
@@ -75,7 +75,9 @@ if (strlen($siteInfo["Latitude"]) > 0) {
 
 	  echo "<div class=heading>Observed " . $speciesCount . " species at this location on " . $tripCount . " trips</div>";
 
-	  formatSpeciesByYearTable($gridQueryString, "&locationid=" . $siteInfo["objectid"]);
+	  $annualLocationTotal = performQuery("select count(distinct sighting.SpeciesAbbreviation) as count, year(sighting.TripDate) as year from sighting, location where sighting.LocationName='" . $siteInfo["Name"] . "' group by year");
+
+	  formatSpeciesByYearTable($gridQueryString, "&locationid=" . $siteInfo["objectid"], $annualLocationTotal);
   }
 ?>
 
