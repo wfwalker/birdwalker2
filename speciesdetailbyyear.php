@@ -36,18 +36,30 @@ $speciesLocationCount = mysql_num_rows($speciesLocationListQuery);
 
 <?php
 globalMenu();
-speciesBrowseButtons($speciesID, "");
+speciesBrowseButtons($speciesID, "byyear");
 navTrailSpecies($speciesID);
 pageThumbnail("
     SELECT * FROM sighting
-      WHERE SpeciesAbbreviation='" . $speciesInfo["Abbreviation"] . "' and Photo='1' ORDER BY TripDate DESC LIMIT 1"); ?>
+      WHERE SpeciesAbbreviation='" . $speciesInfo["Abbreviation"] . "' and Photo='1' ORDER BY TripDate DESC LIMIT 1");
+?>
 
   <div class=contentright>
 	<div class="titleblock">
       <div class="pagetitle"><?= $speciesInfo["CommonName"] ?></div>
       <div class="pagesubtitle"><?= $speciesInfo["LatinName"] ?></div>
       <div class=metadata>
-<?  if (strlen($speciesInfo["ReferenceURL"]) > 0) { ?>
+<?php
+    $sightingDates = performOneRowQuery("SELECT
+        date_format(min(TripDate), '%M %e, %Y') AS earliest,
+        date_format(max(TripDate), '%M %e, %Y') AS latest
+      FROM sighting
+      WHERE sighting.SpeciesAbbreviation='" . $speciesInfo["Abbreviation"] . "'"); ?>
+
+    <div class=metadata><?= $sightingDates["earliest"] ?> - <?= $sightingDates["latest"] ?></div>
+    <div class=metadata><?= $speciesTripCount ?> trips, <?= $speciesLocationCount ?> locations</div>
+
+<?
+    if (strlen($speciesInfo["ReferenceURL"]) > 0) { ?>
         <div><a href="<?= $speciesInfo["ReferenceURL"] ?>">See also...</a></div>
 <?  }
     if ($speciesInfo["ABACountable"] == '0') { ?>
@@ -59,14 +71,18 @@ pageThumbnail("
    </div>
 
    <div class=sighting-notes><?= $speciesInfo["Notes"] ?></div>
-       <div class=heading><?= $speciesTripCount ?> trip<? if ($speciesTripCount > 1) echo 's' ?></div>
 
-<?     formatTwoColumnTripList($speciesTripQuery) ?>
+<?  $gridQueryString="
+              SELECT distinct(LocationName), County, State,
+                location.objectid as locationid, bit_or(1 << (year(TripDate) - 1995)) as mask
+                FROM sighting, location
+                WHERE sighting.LocationName=location.Name
+                AND sighting.SpeciesAbbreviation='" . $speciesInfo["Abbreviation"] . "'
+                GROUP BY sighting.LocationName
+                ORDER BY location.State, location.County, location.Name;";
 
-       <div class=heading><?= $speciesLocationCount ?> location<? if ($speciesLocationCount > 1) echo 's' ?></div>
+		  formatLocationByYearTable($gridQueryString, "./sightinglist.php?speciesid=" . $speciesID . "&");
+?>
 
-<?     formatTwoColumnLocationList($speciesLocationListQuery) ?>
-
-   </div>
 </body>
 </html>
