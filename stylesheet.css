@@ -55,10 +55,10 @@
 
 .report-content {font: 10pt Arial, Serif}
 .titlecell {background-color: #EEEEEE}
-.firstcell {padding-left: 15px}
+.firstcell {padding-left: 15px; white-space: nowrap; }
 .fieldlabel {padding-left: 15px; font: 9pt Courier, Fixed; text-align: right; vertical-align: top}
 .bordered {border-left: solid 1px #DDDDDD; border-bottom: solid 1px #DDDDDD; width: 25px}
-.yearcell {width: 20px; border-left: solid 1px lightgray; border-bottom: solid 1px lightgray; color: lightgray}
+.yearcell {width: 20px; border-left: solid 1px lightgray; border-bottom: solid 1px lightgray; color: gray}
 
 .copyright { font: 8pt Arial, SansSerif }
 /* Styles for items within lists */
