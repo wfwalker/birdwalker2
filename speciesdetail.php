@@ -15,6 +15,9 @@ $locationWhereClause = " '" . $speciesInfo["Abbreviation"] . "'=sighting.Species
 $speciesLocationListQuery = performQuery( "select distinct(location.objectid), location.* from location, sighting where " . $locationWhereClause . " order by State, County, Name");
 $speciesLocationCount = performCount("select count(distinct location.objectid) from location, sighting where " . $locationWhereClause);
 
+$photoQuery = performQuery("select * from sighting where SpeciesAbbreviation='" . $speciesInfo["Abbreviation"] . "' and Photo='1' order by TripDate desc");
+//echo "select * from sighting where SpeciesAbbreviation='" . $speciesInfo["Abbreviation"] . "' and Photo='1'";
+
 ?>
 
 <html>
@@ -30,6 +33,7 @@ $speciesLocationCount = performCount("select count(distinct location.objectid) f
 
   <div class=contentright>
 	<div class="titleblock">
+<?php if ($photoInfo = mysql_fetch_array($photoQuery)){ echo "<img align=right src=\"" . getPhotoThumbURLForSightingInfo($photoInfo) . "\">"; } ?>
       <div class="pagetitle"><?php echo $speciesInfo["CommonName"] ?></div>
       <div class="pagesubtitle"><?php echo $speciesInfo["LatinName"] ?></div>
       <div class="metadata">
@@ -38,13 +42,14 @@ $speciesLocationCount = performCount("select count(distinct location.objectid) f
         </a>
       </div>
       <div class="metadata">
+
 	    <a href="./orderdetail.php?order=<?php echo $orderInfo["objectid"] / pow(10, 9) ?>">
 	      Order <?php echo $orderInfo["LatinName"] ?>, <?php echo $orderInfo["CommonName"] ?>
         </a>
 <?php if (strlen($speciesInfo["ReferenceURL"]) > 0) {
       echo "<div><a href=\"" . $speciesInfo["ReferenceURL"] . "\">See also...</a></div>";
 } ?>
-      </div>
+      </div> <br clear=all/>
 	</div>
 
     <div class=sighting-notes><?php echo $speciesInfo["Notes"] ?></div>
