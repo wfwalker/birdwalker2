@@ -26,17 +26,20 @@ $randomPhotoSightings = performQuery("select *, rand() as shuffle from sighting 
 
 <body>
 
-<?php globalMenu(); browseButtons("./locationdetail.php?id=", $locationID, 1, $locationID - 1, $locationID + 1, $locationCount); navTrailLocations(); ?>
+<?php
+globalMenu();
+browseButtons("./locationdetail.php?id=", $locationID, 1, $locationID - 1, $locationID + 1, $locationCount);
+$items[] = "<a href=\"./statelocations.php?state=" .  $siteInfo["State"] . "\">" . strtolower(getStateNameForAbbreviation($siteInfo["State"])) . "</a>";
+$items[] = "<a href=\"./countylocations.php?county=" . $siteInfo["County"] . "&state=" . $siteInfo["State"] . "\">" . strtolower($siteInfo["County"]) . " county</a>";
+$items[] = strtolower($siteInfo["Name"]);
+navTrailLocations($items);
+?>
 
 <div class=thumb><?php  if (mysql_num_rows($randomPhotoSightings) > 0) { $photoInfo = mysql_fetch_array($randomPhotoSightings); if (mysql_num_rows($randomPhotoSightings) > 0) echo "<td>" . getThumbForSightingInfo($photoInfo) . "</td>"; } ?></div>
 
 <div class="contentright">
   <div class="titleblock">
     <div class=pagetitle><?php echo $siteInfo["Name"] ?></div>
-    <div class=pagesubtitle>
-      <a href="./countydetail.php?county=<?php echo $siteInfo["County"] ?>"><?php echo $siteInfo["County"] ?> County</a>,
-      <a href="./statedetail.php?state=<?php echo $siteInfo["State"] ?>"><?php echo getStateNameForAbbreviation($siteInfo["State"]) ?></a>
-    </div>
 
 <?php
 if (strlen($siteInfo["ReferenceURL"]) > 0) {
