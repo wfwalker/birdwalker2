@@ -3,8 +3,8 @@
 
 require("./birdwalker.php");
 require("./speciesquery.php");
+require("./map.php");
 require("./sightingquery.php");
-require("./locationquery.php");
 
 $county = param($_GET, "county", "San Mateo");
 $state = param($_GET, "state", "CA");
@@ -24,7 +24,14 @@ $stateName = getStateNameForAbbreviation($state);
 <?php
 globalMenu();
 disabledBrowseButtons();
-navTrailCounty($state, $county);
+
+$stateInfo = getStateInfoForAbbreviation($state);
+$items[]="<a href=\"./statedetail.php?view=" . $view . "&id=" . $stateInfo["objectid"] . "\">" . strtolower($stateInfo["Name"]) . "</a>";
+navTrailLocations($items);
+
+$locationQuery = new LocationQuery;
+$locationQuery->setCounty($county);
+$extrema = $locationQuery->findExtrema();
 
 ?>
 
@@ -36,13 +43,14 @@ navTrailCounty($state, $county);
         locations:
         <a href="./countydetail.php?view=locations&state=<?= $state ?>&county=<?= $county ?>">list</a> |
 	    <a href="./countydetail.php?view=locationsbymonth&state=<?= $state ?>&county=<?= $county ?>">by month</a> |
-	    <a href="./countydetail.php?view=locationsbyyear&state=<?= $state ?>&county=<?= $county ?>">by year</a><br/>
+	    <a href="./countydetail.php?view=locationsbyyear&state=<?= $state ?>&county=<?= $county ?>">by year</a> |
+        <a href="./locationmap.php?minlat=<?= $extrema["minLat"]-0.01 ?>&maxlat=<?= $extrema["maxLat"]+0.01 ?>&minlong=<?= $extrema["minLong"]-0.01 ?>&maxlong=<?= $extrema["maxLong"]+0.01 ?>">map</a><br/>
         species:	
         <a href="./countydetail.php?view=species&state=<?= $state ?>&county=<?= $county ?>">list</a> |
 	    <a href="./countydetail.php?view=speciesbymonth&state=<?= $state ?>&county=<?= $county ?>">by month</a> |
-	    <a href="./countydetail.php?view=speciesbyyear&state=<?= $state ?>&county=<?= $county ?>">by year</a><br/>
-        <a href="./countydetail.php?view=species&view=photo&state=<?= $state ?>&county=<?= $county ?>">photo</a>
-      </div>
+	    <a href="./countydetail.php?view=speciesbyyear&state=<?= $state ?>&county=<?= $county ?>">by year</a> | 
+        <a href="./countydetail.php?view=species&view=photo&state=<?= $state ?>&county=<?= $county ?>">photo</a><br/>
+	          </div>
       </div>
 
 <?

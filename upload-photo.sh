@@ -1,9 +1,9 @@
 ssh walker@sven.spflrc.org ls /home/walker/.www/images/photo/ > spflrclist.txt
 
-ls images/photo > folderlist.txt
+ls images/photo | sed 's/JPG/jpg/' > folderlist.txt
 
-for file in $(diff --ignore-case spflrclist.txt folderlist.txt | sort | grep -i jpg | cut -c 3-19) ; do
-	filelist="$filelist $file.jpg"
+for line in $(diff --ignore-case spflrclist.txt folderlist.txt | sort | grep -i jpg) ; do
+	filelist="$filelist $file"
 done
 
 echo "files: $filelist"

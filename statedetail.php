@@ -23,6 +23,11 @@ $info = getStateInfo($id);
 globalMenu();
 stateBrowseButtons($id, $view);
 navTrailLocations();
+
+$locationQuery = new LocationQuery;
+$locationQuery->setState($info["Abbreviation"]);
+$extrema = $locationQuery->findExtrema();
+
 ?>
 
     <div class=contentright>
@@ -33,7 +38,8 @@ navTrailLocations();
         locations:
         <a href="./statedetail.php?view=locations&id=<?= $id ?>">list</a> |
 	    <a href="./statedetail.php?view=locationsbymonth&id=<?= $id ?>">by month</a> |
-	    <a href="./statedetail.php?view=locationsbyyear&id=<?= $id ?>">by year</a><br/>
+	    <a href="./statedetail.php?view=locationsbyyear&id=<?= $id ?>">by year</a> |
+	    <a href="./locationmap.php?minlat=<?= $extrema["minLat"]-0.01 ?>&maxlat=<?= $extrema["maxLat"]+0.01 ?>&minlong=<?= $extrema["minLong"]-0.01 ?>&maxlong=<?= $extrema["maxLong"]+0.01 ?>">map</a><br/>
         species:	
         <a href="./statedetail.php?view=species&id=<?= $id ?>">list</a> |
 	    <a href="./statedetail.php?view=speciesbymonth&id=<?= $id ?>">by month</a> |

@@ -19,6 +19,7 @@ $sightingQuery->setTripID($tripID);
 $locationQuery = new LocationQuery;
 $locationQuery->setTripID($tripID);
 $locationCount = $locationQuery->getLocationCount();
+$extrema = $locationQuery->findExtrema();
 
 $firstSightings = getFirstSightings();
 $firstYearSightings = getFirstYearSightings($tripYear);
@@ -68,7 +69,8 @@ navTrailTrips($items);
         </div>
         <div class=metadata>
 	        <a href="./tripdetail.php?view=list&id=<?= $tripID ?>"?>list</a> | 
-	        <a href="./tripdetail.php?view=photo&id=<?= $tripID ?>"?>photo</a>
+	        <a href="./tripdetail.php?view=photo&id=<?= $tripID ?>"?>photo</a> |
+            <a href="./locationmap.php?minlat=<?= $extrema["minLat"]-0.01 ?>&maxlat=<?= $extrema["maxLat"]+0.01 ?>&minlong=<?= $extrema["minLong"]-0.01 ?>&maxlong=<?= $extrema["maxLong"]+0.01 ?>">map</a><br/>
         </div>
 
 
