@@ -19,7 +19,7 @@ $firstSightingQuery = performQuery("SELECT
      sighting.TripDate=tmp.TripDate AND
      location.Name=sighting.LocationName AND
      trip.Date=sighting.TripDate
-  ORDER BY TripDate, LocationName;");
+  ORDER BY TripDate DESC, LocationName;");
 
 $speciesCount = mysql_num_rows($firstSightingQuery);
 ?>
@@ -51,7 +51,7 @@ preserved.
 <table class=report-content columns=4 width="600px">
 
 <?php
-$counter = 1;
+$counter = $speciesCount;
 while($sightingInfo = mysql_fetch_array($firstSightingQuery))
 {
 	if (100 * floor($counter / 100) == $counter)
@@ -69,7 +69,7 @@ while($sightingInfo = mysql_fetch_array($firstSightingQuery))
 
 	</td>
 
-	<td align=right><?= $counter ?></td>
+    <td align=right>&nbsp;</td>
     <td><a href="./speciesdetail.php?id=<?= $sightingInfo['speciesid'] ?>"><?= $sightingInfo['CommonName'] ?></a>
 
 <?  if ($sightingInfo["Photo"] == "1") { ?>
@@ -87,7 +87,6 @@ while($sightingInfo = mysql_fetch_array($firstSightingQuery))
 		<tr><td></td><td></td><td colspan=2 class=sighting-notes><?= $sightingInfo["Notes"] ?></td></tr>
 <?	}
 
-	$counter++;
 	$prevSightingInfo = $sightingInfo;
 }
 
