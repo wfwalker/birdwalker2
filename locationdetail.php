@@ -8,10 +8,10 @@ $siteInfo = getLocationInfo($locationID);
 $locationCount = performCount("select count(distinct(objectid)) from location");
 $speciesCount = performCount("select count(distinct species.objectid) from species, sighting where species.Abbreviation=sighting.SpeciesAbbreviation and sighting.LocationName='" . $siteInfo["Name"]. "'");
 
-$tripQuery = getTripQuery("sighting.LocationName='" . $siteInfo["Name"]. "' and sighting.TripDate=trip.Date");
+$tripQuery = performQuery("select distinct trip.objectid, trip.*, date_format(Date, '%M %e, %Y') as niceDate, count(distinct sighting.SpeciesAbbreviation) as tripCount from trip, sighting where sighting.LocationName='" . $siteInfo["Name"]. "' and sighting.TripDate=trip.Date group by trip.Date order by trip.Date desc");
+
 $tripCount = mysql_num_rows($tripQuery);
 // $firstSightings = getFirstSightings(); // NOT CURRENTLY IN USE
-//http://www.mapquest.com/maps/map.adp?latlongtype=decimal&latitude=41.9196&longitude=-69.9971
 
 $randomPhotoSightings = performQuery("select *, rand() as shuffle from sighting where Photo='1' and LocationName='" . $siteInfo["Name"] . "' order by shuffle");
 
