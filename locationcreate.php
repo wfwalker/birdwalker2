@@ -76,8 +76,8 @@ $locationInfo = getLocationInfo($locationID);
 
 <?
 globalMenu();
-disabledBrowseButtons();
-navTrailLocations();
+locationBrowseButtons("./locationcreate.php", $locationID, $view);
+navTrailLocationDetail($locationInfo);
 ?>
 
 <div class="contentright">

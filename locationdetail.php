@@ -46,7 +46,7 @@ while($sightingInfo = mysql_fetch_array($locationSightings)) {
 
 <?php
 globalMenu();
-locationBrowseButtons($siteInfo, $locationID, $view);
+locationBrowseButtons("./locationdetail.php", $locationID, $view);
 navTrailLocationDetail($siteInfo);
 ?>
 

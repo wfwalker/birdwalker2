@@ -6,7 +6,7 @@ class LocationQuery
 	// constrain this query to a particular county
 	var $mCounty;
 	// constrain this query to a particular state
-	var $mState;
+	var $mStateID;
 
 	// constrain this query to a trip
 	var $mTripID;
@@ -25,7 +25,7 @@ class LocationQuery
 	function LocationQuery()
 	{
 		$this->setCounty("");
-		$this->setState("");
+		$this->setStateID("");
 
 		$this->setTripID("");
 		$this->setMonth("");
@@ -37,7 +37,7 @@ class LocationQuery
 	}
 
 	function setCounty($inValue) { $this->mCounty = $inValue; }
-	function setState($inValue) { $this->mState = $inValue; }
+	function setStateID($inValue) { $this->mStateID = $inValue; }
 
 	function setTripID($inValue) { $this->mTripID = $inValue; }
 	function setMonth($inValue) { $this->mMonth = $inValue; }
@@ -83,8 +83,9 @@ class LocationQuery
 		if ($this->mCounty != "") {
 			$whereClause = $whereClause . " AND location.County='" . $this->mCounty . "'";
 			$whereClause = $whereClause . " AND location.Name=sighting.LocationName"; 
-		} elseif ($this->mState != "") {
-			$whereClause = $whereClause . " AND location.State='" . $this->mState . "'";
+		} elseif ($this->mStateID != "") {
+			$stateInfo = getStateInfo($this->mStateID);
+			$whereClause = $whereClause . " AND location.State='" . $stateInfo["Abbreviation"] . "'";
 			$whereClause = $whereClause . " AND location.Name=sighting.LocationName"; 
 		}
 
@@ -116,12 +117,15 @@ class LocationQuery
 	function setFromRequest($get)
 	{
 		$this->setCounty(param($_GET, "county", ""));
-		$this->setState(param($_GET, "state", ""));
+		$this->setStateID(param($_GET, "stateid", ""));
+
+		$this->setTripID(param($_GET, "tripid", ""));
+		$this->setMonth(param($_GET, "month", ""));
+		$this->setYear(param($_GET, "year", ""));
+
 		$this->setSpeciesID(param($_GET, "speciesid", ""));
 		$this->setFamily(param($_GET, "family", ""));
 		$this->setOrder(param($_GET, "order", ""));
-		$this->setMonth(param($_GET, "month", ""));
-		$this->setYear(param($_GET, "year", ""));
 	}
 
 	function getParams()
@@ -130,8 +134,13 @@ class LocationQuery
 
 		if ($this->mCounty != "") {
 			$params = $params . "&county=" . $this->mCounty;
-		} elseif ($this->mState != "") {
-			$params = $params . "&state=" . $this->mState;
+		}
+		if ($this->mStateID != "") {
+			$params = $params . "&stateid=" . $this->mStateID;
+		}
+
+		if ($this->mTripID != "") {
+			$params = $params . "&tripid=" . $this->mTripID;
 		}
 
 		if ($this->mSpeciesID != "") {
@@ -179,10 +188,10 @@ class LocationQuery
 
 		if ($this->mCounty != "") {
 			$pageTitle = $this->mCounty . " County";
-		} elseif ($this->mState != "") {
-			$pageTitle = getStateNameForAbbreviation($this->mState);
+		} elseif ($this->mStateID != "") {
+			$stateInfo = getStateInfo($this->mStateID);
+		    $pageTitle = $stateInfo["Name"];
 		}
-
 		if ($this->mMonth !="") {
 			if ($pageTitle == "") $pageTitle = getMonthNameForNumber($this->mMonth);
 			else $pageTitle = $pageTitle . ", " . getMonthNameForNumber($this->mMonth);

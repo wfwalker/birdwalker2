@@ -44,7 +44,7 @@ $extrema = $locationQuery->findExtrema();
         <a href="./countydetail.php?view=locations&state=<?= $state ?>&county=<?= $county ?>">list</a> |
 	    <a href="./countydetail.php?view=locationsbymonth&state=<?= $state ?>&county=<?= $county ?>">by month</a> |
 	    <a href="./countydetail.php?view=locationsbyyear&state=<?= $state ?>&county=<?= $county ?>">by year</a> |
-        <a href="./locationmap.php?minlat=<?= $extrema["minLat"]-0.01 ?>&maxlat=<?= $extrema["maxLat"]+0.01 ?>&minlong=<?= $extrema["minLong"]-0.01 ?>&maxlong=<?= $extrema["maxLong"]+0.01 ?>">map</a><br/>
+	    <a href="./countydetail.php?view=map&state=<?= $state ?>&county=<?= $county ?>">map</a> <br/>
         species:	
         <a href="./countydetail.php?view=species&state=<?= $state ?>&county=<?= $county ?>">list</a> |
 	    <a href="./countydetail.php?view=speciesbymonth&state=<?= $state ?>&county=<?= $county ?>">by month</a> |
@@ -95,6 +95,13 @@ elseif ($view == 'locationsbymonth')
 	$locationQuery->setCounty($county);
 	countHeading( $locationQuery->getLocationCount(), "location");
 	$locationQuery->formatLocationByMonthTable();
+}
+else if ($view == "map")
+{
+	countHeading($locationCount, "location");
+	$map = new Map("./countydetail.php");
+	$map->setFromRequest($_GET);
+	$map->draw();
 }
 elseif ($view == 'photo')
 {

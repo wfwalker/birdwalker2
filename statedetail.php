@@ -3,9 +3,9 @@
 
 require("./birdwalker.php");
 require("./speciesquery.php");
-require("./locationquery.php");
+require("./map.php");
 
-$id = param($_GET, "id", 3);
+$id = param($_GET, "stateid", 3);
 $view = param($_GET, "view", "species");
 
 $info = getStateInfo($id);
@@ -25,7 +25,7 @@ stateBrowseButtons($id, $view);
 navTrailLocations();
 
 $locationQuery = new LocationQuery;
-$locationQuery->setState($info["Abbreviation"]);
+$locationQuery->setStateID($id);
 $extrema = $locationQuery->findExtrema();
 
 ?>
@@ -36,14 +36,14 @@ $extrema = $locationQuery->findExtrema();
 	  <div class=pagetitle><?= $info["Name"] ?></div>
       <div class=metadata>
         locations:
-        <a href="./statedetail.php?view=locations&id=<?= $id ?>">list</a> |
-	    <a href="./statedetail.php?view=locationsbymonth&id=<?= $id ?>">by month</a> |
-	    <a href="./statedetail.php?view=locationsbyyear&id=<?= $id ?>">by year</a> |
-	    <a href="./locationmap.php?minlat=<?= $extrema["minLat"]-0.01 ?>&maxlat=<?= $extrema["maxLat"]+0.01 ?>&minlong=<?= $extrema["minLong"]-0.01 ?>&maxlong=<?= $extrema["maxLong"]+0.01 ?>">map</a><br/>
+        <a href="./statedetail.php?view=locations&stateid=<?= $id ?>">list</a> |
+	    <a href="./statedetail.php?view=locationsbymonth&stateid=<?= $id ?>">by month</a> |
+	    <a href="./statedetail.php?view=locationsbyyear&stateid=<?= $id ?>">by year</a> |
+	    <a href="./statedetail.php?view=map&stateid=<?= $id ?>">map</a><br/>
         species:	
-        <a href="./statedetail.php?view=species&id=<?= $id ?>">list</a> |
-	    <a href="./statedetail.php?view=speciesbymonth&id=<?= $id ?>">by month</a> |
-	    <a href="./statedetail.php?view=speciesbyyear&id=<?= $id ?>">by year</a><br/>
+        <a href="./statedetail.php?view=species&stateid=<?= $id ?>">list</a> |
+	    <a href="./statedetail.php?view=speciesbymonth&stateid=<?= $id ?>">by month</a> |
+	    <a href="./statedetail.php?view=speciesbyyear&stateid=<?= $id ?>">by year</a><br/>
       </div>
       </div>
 
@@ -72,14 +72,14 @@ elseif ($view == 'speciesbymonth')
 elseif ($view == 'locations')
 {
     $locationQuery = new LocationQuery;
-	$locationQuery->setState($info['Abbreviation']);
+	$locationQuery->setStateID($id);
 	countHeading($locationQuery->getLocationCount(), "location");
 	$locationQuery->formatTwoColumnLocationList();
 }
 elseif ($view == 'locationsbyyear')
 {
     $locationQuery = new LocationQuery;
-	$locationQuery->setState($info['Abbreviation']);
+	$locationQuery->setStateID($id);
 	countHeading($locationQuery->getLocationCount(), "location");
 	$locationQuery->formatLocationByYearTable();
 }
@@ -90,6 +90,16 @@ elseif ($view == 'locationsbymonth')
 	countHeading($locationQuery->getLocationCount(), "location");
 	$locationQuery->formatLocationByMonthTable();
 }
+else if ($view == "map")
+{
+    $locationQuery = new LocationQuery;
+	$locationQuery->setStateID($id);
+	countHeading($locationQuery->getLocationCount(), "location");
+	$map = new Map("./statedetail.php");
+	$map->setFromRequest($_GET);
+	$map->draw();
+}
+
 ?>
 
     </div>

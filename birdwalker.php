@@ -420,7 +420,7 @@ function navTrailSpecies($speciesID)
 }
 
 
-function speciesBrowseButtons($speciesID, $viewMode)
+function speciesBrowseButtons($url, $speciesID, $viewMode)
 {
 	$firstAndLastSpecies = performOneRowQuery("
     SELECT min(species.objectid) as firstOne, max(species.objectid) as lastOne
@@ -442,8 +442,8 @@ function speciesBrowseButtons($speciesID, $viewMode)
       WHERE sighting.SpeciesAbbreviation=species.Abbreviation
       AND species.objectid<" . $speciesID . " LIMIT 1");
 
-	browseButtons("./speciesdetail.php?view=" . $viewMode . "&speciesid=", $speciesID, $firstSpeciesID, $prevSpeciesID, $nextSpeciesID, $lastSpeciesID);
-
+	browseButtons($url . "?view=" . $viewMode . "&speciesid=", $speciesID,
+				  $firstSpeciesID, $prevSpeciesID, $nextSpeciesID, $lastSpeciesID);
 }
 
 /**
@@ -892,7 +892,8 @@ function tripBrowseButtons($tripID, $viewMode)
 	if ($nextTripID == "") { $nextTripID = $sightingID; }
 	if ($prevTripID == "") { $prevTripID = $sightingID; }
 
-	browseButtons("./tripdetail.php?view=" . $viewMode . "&id=", $tripID, $firstTripID, $prevTripID, $nextTripID, $lastTripID);
+	browseButtons("./tripdetail.php?view=" . $viewMode . "&tripid=", $tripID,
+				  $firstTripID, $prevTripID, $nextTripID, $lastTripID);
 }
 
 function formatTwoColumnTripList($tripQuery)
@@ -916,7 +917,7 @@ function formatTwoColumnTripList($tripQuery)
 <?		} ?>
 
 			 <div>
-                <a href="./tripdetail.php?id=<?= $info["objectid"] ?>">
+                <a href="./tripdetail.php?tripid=<?= $info["objectid"] ?>">
 				  <?= $info["Name"] ?>, <?= $info["niceDate"] ?><? if (! $subdivideByYears) echo ", " . $info["year"] ?>
                 </a>
                 <? if ($info["Photo"] == "1") { ?><?= getPhotoLinkForSightingInfo($info, "sightingid") ?><? } ?>
@@ -949,8 +950,10 @@ function getLocationInfoForName($inLocationName)
 	return performOneRowQuery("SELECT * FROM location WHERE Name='" . $inLocationName . "'");
 }
 
-function locationBrowseButtons($siteInfo, $locationID, $viewMode)
+function locationBrowseButtons($url, $locationID, $viewMode)
 {
+	$siteInfo = getLocationInfo($locationID);
+
 	$firstLocationID = performCount("
       SELECT objectid FROM location ORDER BY CONCAT(State,County,Name) LIMIT 1");
 
@@ -967,7 +970,8 @@ function locationBrowseButtons($siteInfo, $locationID, $viewMode)
         WHERE CONCAT(State,County,Name) < '" . $siteInfo["State"] . $siteInfo["County"] . $siteInfo["Name"] . "'
         ORDER BY CONCAT(State,County,Name) DESC LIMIT 1");
 
-	browseButtons("./locationdetail.php?view=" . $viewMode . "&id=", $locationID, $firstLocationID, $prevLocationID, $nextLocationID, $lastLocationID);
+	browseButtons($url . "?view=" . $viewMode . "&id=", $locationID,
+				  $firstLocationID, $prevLocationID, $nextLocationID, $lastLocationID);
 }
 
 function getStateInfo($id)
@@ -1000,7 +1004,8 @@ function stateBrowseButtons($stateID, $viewMode)
       FROM state, sighting, location
       WHERE sighting.LocationName=location.Name AND location.State=state.Abbreviation and state.objectid<" . $stateID . " LIMIT 1");
 
-	browseButtons("./statedetail.php?view=" . $viewMode . "&id=", $stateID, $firstStateID, $prevStateID, $nextStateID, $lastStateID);
+	browseButtons("./statedetail.php?view=" . $viewMode . "&stateid=", $stateID,
+				  $firstStateID, $prevStateID, $nextStateID, $lastStateID);
 
 }
 

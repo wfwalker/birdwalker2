@@ -3,8 +3,8 @@
 
 require("./birdwalker.php");
 
-$speciesID = $_GET['id'];
-$postSpeciesID = $_POST['id'];
+$speciesID = $_GET['speciesid'];
+$postSpeciesID = $_POST['speciesid'];
 $save = $_POST['Save'];
 
 getEnableEdit() or die("Editing disabled");
@@ -23,7 +23,7 @@ getEnableEdit() or die("Editing disabled");
 
 <?php
 globalMenu();
-speciesBrowseButtons($speciesID, "edit");
+speciesBrowseButtons("./speciesedit.php", $speciesID, "edit");
 navTrailSpecies($speciesID);
 ?>
 

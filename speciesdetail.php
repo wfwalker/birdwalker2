@@ -37,7 +37,7 @@ if ($view != "photo")
 
 <?php
 globalMenu();
-speciesBrowseButtons($speciesID, $view);
+speciesBrowseButtons("./speciesdetail.php", $speciesID, $view);
 navTrailSpecies($speciesID);
 ?>
 
