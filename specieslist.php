@@ -11,6 +11,8 @@ $state = $_GET["state"];
 
 $speciesListQueryString = "SELECT distinct species.* FROM sighting, species, location, trip WHERE species.Abbreviation=sighting.SpeciesAbbreviation AND location.Name=sighting.LocationName AND trip.Date=sighting.TripDate ";
 
+$pageTitle = "";
+
 if ($locationid != "") {
 	$speciesListQueryString = $speciesListQueryString . " AND location.objectid=" . $locationid;
 	$locationInfo = getLocationInfo($locationid); 
@@ -25,11 +27,13 @@ if ($locationid != "") {
 
 if ($month !="") {
 	$speciesListQueryString = $speciesListQueryString . " AND Month(TripDate)=" . $month;
-	$pageTitle = $pageTitle . ", " . $month;
+	if ($pageTitle == "") $pageTitle = $month;
+	else $pageTitle = $pageTitle . ", " . $month;
 }
 if ($year !="") {
 	$speciesListQueryString = $speciesListQueryString . " AND Year(TripDate)=" . $year;
-	$pageTitle = $pageTitle . ", " . $year;
+	if ($pageTitle == "") $pageTitle = $year;
+	else $pageTitle = $pageTitle . ", " . $year;
 }
 
 $speciesListQueryString = $speciesListQueryString . " order by species.objectid;";
