@@ -297,3 +297,4 @@ INSERT INTO trip VALUES (296,'Steve Shunk','','Paradise Birding Texas Day 4','Mu
 INSERT INTO trip VALUES (297,'Steve Shunk','','Paradise Birding Texas Day 6','Santa Ana NWR, Bentsen Rio Grande River State Park','2004-04-18');
 INSERT INTO trip VALUES (298,'Steve Shunk','','Paradise Birding Texas Day 7','Santa Ana NWR, Chapeno, Falcon State Park, Zapata, San Ignacio','2004-04-19');
 INSERT INTO trip VALUES (299,'Steve Shunk','','Paradise Birding Texas Day 8','','2004-04-20');
+INSERT INTO trip VALUES (300,'Steve Shunk','','Paradise Birding Texas Day 9','Kickapoo State Park, Lost Maples Nature Area. We worked really hard to find and see these three Vireos.','2004-04-21');
