@@ -5,6 +5,7 @@ require_once("./birdwalker.php");
 require_once("./speciesquery.php");
 require_once("./map.php");
 require_once("./sightingquery.php");
+require_once("./tripquery.php");
 
 $county = param($_GET, "county", "San Mateo");
 $state = param($_GET, "state", "CA");
@@ -60,6 +61,11 @@ if ($view == 'species')
 	$speciesQuery->setFromRequest($_GET);
 	countHeading( $speciesQuery->getSpeciesCount(), "species");
 	$speciesQuery->formatTwoColumnSpeciesList(); 
+
+	$tripQuery = new TripQuery;
+	$tripQuery->setFromRequest($_GET);
+	countHeading( $tripQuery->getTripCount(), "trip");
+	$tripQuery->formatTwoColumnTripList();
 }
 elseif ($view == 'speciesbyyear')
 {
@@ -81,6 +87,11 @@ elseif ($view == 'locations')
 	$locationQuery->setFromRequest($_GET);
 	countHeading( $locationQuery->getLocationCount(), "location");
 	$locationQuery->formatTwoColumnLocationList();
+
+	$tripQuery = new TripQuery;
+	$tripQuery->setFromRequest($_GET);
+	countHeading( $tripQuery->getTripCount(), "trip");
+	$tripQuery->formatTwoColumnTripList();
 }
 elseif ($view == 'locationsbyyear')
 {

@@ -956,12 +956,15 @@ function formatTwoColumnTripList($tripQuery)
 		
 		if (strcmp($thisYear, $prevYear) && $subdivideByYears)
 		{ ?>
-			<div class="subheading"><a name="<?= $thisYear ?>"></a><?= $thisYear ?></div>
+			<div class="subheading">
+                <a name="<?= $thisYear ?>"></a>
+                <a href="./yeardetail.php?year=<?= $info["year"] ?>"><?= $info["year"] ?></a>
+            </div>
 <?		} ?>
 
 			 <div>
                 <a href="./tripdetail.php?tripid=<?= $info["objectid"] ?>">
-				  <?= $info["Name"] ?>, <?= $info["niceDate"] ?><? if (! $subdivideByYears) echo ", " . $info["year"] ?>
+				  <?= $info["Name"] ?>, <?= $info["niceDate"] ?><? if (($tripQuery->mYear == "") && (! $subdivideByYears)) { echo ", " . $info["year"]; } ?>
                 </a>
                 <? if ($info["Photo"] == "1") { ?><?= getPhotoLinkForSightingInfo($info, "sightingid") ?><? } ?>
                 <? if ($info["Exclude"] == "1") { ?>excluded<? } ?>

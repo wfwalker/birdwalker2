@@ -24,7 +24,7 @@ stateBrowseButtons($id, $view);
 navTrailLocations();
 
 $locationQuery = new LocationQuery;
-$locationQuery->setStateID($id);
+$locationQuery->setFromRequest($_GET);
 $extrema = $locationQuery->findExtrema();
 
 ?>

@@ -38,7 +38,7 @@ class SpeciesQuery extends BirdWalkerQuery
 		{
 			$selectClause = $selectClause . ", sighting.Notes, sighting.Exclude, sighting.Photo, sighting.objectid AS sightingid";
 		}
-		else if (($this->mLocationID != "") || ($this->mCounty != "") || ($this->mState != ""))
+		else if (($this->mLocationID != "") || ($this->mCounty != "") || ($this->mStateID != ""))
 		{
 			$selectClause = $selectClause . ",  min(concat(sighting.TripDate, lpad(sighting.objectid, 6, '0'))) as earliestsighting";
 		}
@@ -55,7 +55,7 @@ class SpeciesQuery extends BirdWalkerQuery
 			$otherTables = $otherTables . ", location";
 		} elseif ($this->mCounty != "") {
 			$otherTables = $otherTables . ", location";
-		} elseif ($this->mState != "") {
+		} elseif ($this->mStateID != "") {
 			$otherTables = $otherTables . ", location";
 		}
 
@@ -79,8 +79,9 @@ class SpeciesQuery extends BirdWalkerQuery
 		} elseif ($this->mCounty != "") {
 			$whereClause = $whereClause . " AND location.County='" . $this->mCounty . "'";
 			$whereClause = $whereClause . " AND location.Name=sighting.LocationName"; 
-		} elseif ($this->mState != "") {
-			$whereClause = $whereClause . " AND location.State='" . $this->mState . "'";
+		} elseif ($this->mStateID != "") {
+			$stateInfo = getStateInfo($this->mStateID);
+			$whereClause = $whereClause . " AND location.State='" . $stateInfo["Abbreviation"] . "'";
 			$whereClause = $whereClause . " AND location.Name=sighting.LocationName"; 
 		}
 
@@ -112,8 +113,8 @@ class SpeciesQuery extends BirdWalkerQuery
 			$params = $params . "&locationid=" . $this->mLocationID;
 		} elseif ($this->mCounty != "") {
 			$params = $params . "&county=" . $this->mCounty;
-		} elseif ($this->mState != "") {
-			$params = $params . "&state=" . $this->mState;
+		} elseif ($this->mStateID != "") {
+			$params = $params . "&stateid=" . $this->mStateID;
 		}
 
 		if ($this->mFamily != "") {
@@ -164,8 +165,8 @@ class SpeciesQuery extends BirdWalkerQuery
 			$pageTitle = $locationInfo["Name"];
 		} elseif ($this->mCounty != "") {
 			$pageTitle = $this->mCounty . " County";
-		} elseif ($this->mState != "") {
-			$pageTitle = getStateNameForAbbreviation($this->mState);
+		} elseif ($this->mStateID != "") {
+			$pageTitle = getStateNameForAbbreviation($this->mStateID);
 		}
 
 		if ($this->mMonth !="") {

@@ -3,6 +3,7 @@
 
 require_once("./birdwalker.php");
 require_once("./speciesquery.php");
+require_once("./tripquery.php");
 require_once("./locationquery.php");
 require_once("./map.php");
 
@@ -68,6 +69,11 @@ if ($view == 'species')
 	$speciesQuery->setFromRequest($_GET);
 	countHeading($speciesQuery->getSpeciesCount(), "species");
     formatSpeciesListWithPhoto($speciesQuery);
+
+	$tripQuery = new TripQuery;
+	$tripQuery->setFromRequest($_GET);
+	countHeading( $tripQuery->getTripCount(), "trip");
+	$tripQuery->formatTwoColumnTripList();
 }
 elseif ($view == 'speciesbyyear')
 {
@@ -89,6 +95,11 @@ elseif ($view == 'locations')
 	$locationQuery->setFromRequest($_GET);
 	countHeading( $locationQuery->getLocationCount(), "location");
 	$locationQuery->formatTwoColumnLocationList();
+
+	$tripQuery = new TripQuery;
+	$tripQuery->setFromRequest($_GET);
+	countHeading( $tripQuery->getTripCount(), "trip");
+	$tripQuery->formatTwoColumnTripList();
 }
 elseif ($view == 'locationsbyyear')
 {
