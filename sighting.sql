@@ -466,7 +466,7 @@ INSERT INTO sighting VALUES (465,'whcspa','Sacramento NWR','','1','0','1997-11-1
 INSERT INTO sighting VALUES (466,'whfibi','Sacramento NWR','','1','0','1997-11-17');
 INSERT INTO sighting VALUES (467,'whtkit','Sacramento NWR','','1','0','1997-11-17');
 INSERT INTO sighting VALUES (468,'yebmag','Sacramento NWR','','1','0','1997-11-17');
-INSERT INTO sighting VALUES (469,'yelleg','Charleston Slough','','1','0','1997-12-12');
+INSERT INTO sighting VALUES (469,'yelleg','Charleston Slough','','','0','1997-12-12');
 INSERT INTO sighting VALUES (470,'ameavo','Charleston Slough','','0','0','1997-12-12');
 INSERT INTO sighting VALUES (471,'blkpho','Charleston Slough','','0','0','1997-12-12');
 INSERT INTO sighting VALUES (472,'bcnher','Charleston Slough','','0','0','1997-12-12');
@@ -486,7 +486,7 @@ INSERT INTO sighting VALUES (485,'norsho','Charleston Slough','','0','0','1997-1
 INSERT INTO sighting VALUES (486,'rethaw','Charleston Slough','','0','0','1997-12-12');
 INSERT INTO sighting VALUES (487,'rudduc','Charleston Slough','','0','0','1997-12-12');
 INSERT INTO sighting VALUES (488,'snoplo','Charleston Slough','','1','0','1997-12-12');
-INSERT INTO sighting VALUES (489,'yelleg','Charleston Slough','','1','0','1997-12-15');
+INSERT INTO sighting VALUES (489,'yelleg','Charleston Slough','','','0','1997-12-15');
 INSERT INTO sighting VALUES (490,'sandpi','Charleston Slough','','1','0','1997-12-15');
 INSERT INTO sighting VALUES (491,'amecoo','Charleston Slough','','0','0','1997-12-15');
 INSERT INTO sighting VALUES (492,'amewig','Charleston Slough','','0','0','1997-12-15');
@@ -774,7 +774,7 @@ INSERT INTO sighting VALUES (773,'houfin','Palo Alto Duck Pond','','0','0','1998
 INSERT INTO sighting VALUES (774,'rudduc','Palo Alto Duck Pond','','0','0','1998-06-23');
 INSERT INTO sighting VALUES (775,'snoegr','Palo Alto Duck Pond','','0','0','1998-06-23');
 INSERT INTO sighting VALUES (776,'swallo','Palo Alto Duck Pond','','1','0','1998-06-23');
-INSERT INTO sighting VALUES (777,'yelleg','Sunnyvale Baylands','','1','0','1998-06-27');
+INSERT INTO sighting VALUES (777,'yelleg','Sunnyvale Baylands','','','0','1998-06-27');
 INSERT INTO sighting VALUES (778,'ameavo','Sunnyvale Baylands','','0','0','1998-06-27');
 INSERT INTO sighting VALUES (779,'amecoo','Sunnyvale Baylands','','0','0','1998-06-27');
 INSERT INTO sighting VALUES (780,'amwpel','Sunnyvale Baylands','','0','0','1998-06-27');
@@ -885,7 +885,7 @@ INSERT INTO sighting VALUES (884,'turvul','Elkhorn Slough','','0','0','1998-08-3
 INSERT INTO sighting VALUES (885,'wesgul','Elkhorn Slough','','0','0','1998-08-30');
 INSERT INTO sighting VALUES (886,'whtkit','Elkhorn Slough','','0','0','1998-08-30');
 INSERT INTO sighting VALUES (887,'willet','Elkhorn Slough','','0','0','1998-08-30');
-INSERT INTO sighting VALUES (888,'yelleg','Palo Alto Duck Pond','','1','0','1998-09-01');
+INSERT INTO sighting VALUES (888,'yelleg','Palo Alto Duck Pond','','','0','1998-09-01');
 INSERT INTO sighting VALUES (889,'ameavo','Palo Alto Duck Pond','','0','0','1998-09-01');
 INSERT INTO sighting VALUES (890,'bknsti','Palo Alto Duck Pond','','0','0','1998-09-01');
 INSERT INTO sighting VALUES (891,'forter','Palo Alto Duck Pond','','0','0','1998-09-01');
@@ -919,7 +919,7 @@ INSERT INTO sighting VALUES (918,'sterna','Moss Landing State Beach','','1','0',
 INSERT INTO sighting VALUES (919,'sursco','Moss Landing State Beach','','0','0','1998-10-18');
 INSERT INTO sighting VALUES (920,'wesgre','Moss Landing State Beach','','0','0','1998-10-18');
 INSERT INTO sighting VALUES (921,'willet','Moss Landing State Beach','','0','0','1998-10-18');
-INSERT INTO sighting VALUES (922,'yelleg','Palo Alto Duck Pond','','1','0','1998-10-23');
+INSERT INTO sighting VALUES (922,'yelleg','Palo Alto Duck Pond','','','0','1998-10-23');
 INSERT INTO sighting VALUES (923,'ameavo','Palo Alto Duck Pond','','0','0','1998-10-23');
 INSERT INTO sighting VALUES (924,'amecoo','Palo Alto Duck Pond','','0','0','1998-10-23');
 INSERT INTO sighting VALUES (925,'bcnher','Palo Alto Duck Pond','','0','0','1998-10-23');
@@ -934,7 +934,7 @@ INSERT INTO sighting VALUES (933,'rudduc','Palo Alto Duck Pond','','0','0','1998
 INSERT INTO sighting VALUES (934,'snoegr','Palo Alto Duck Pond','','0','0','1998-10-23');
 INSERT INTO sighting VALUES (935,'wesmea','Palo Alto Duck Pond','','0','0','1998-10-23');
 INSERT INTO sighting VALUES (936,'whtkit','Palo Alto Duck Pond','','0','0','1998-10-23');
-INSERT INTO sighting VALUES (937,'yelleg','Charleston Slough','','1','0','1998-10-25');
+INSERT INTO sighting VALUES (937,'yelleg','Charleston Slough','','','0','1998-10-25');
 INSERT INTO sighting VALUES (938,'ameavo','Charleston Slough','','0','0','1998-10-25');
 INSERT INTO sighting VALUES (939,'amecoo','Charleston Slough','','0','0','1998-10-25');
 INSERT INTO sighting VALUES (940,'blkpho','Charleston Slough','','0','0','1998-10-25');
@@ -1076,7 +1076,7 @@ INSERT INTO sighting VALUES (1075,'pibgre','Palo Alto Duck Pond','','0','0','199
 INSERT INTO sighting VALUES (1076,'ribgul','Palo Alto Duck Pond','','0','0','1998-12-07');
 INSERT INTO sighting VALUES (1077,'rudduc','Palo Alto Duck Pond','','0','0','1998-12-07');
 INSERT INTO sighting VALUES (1078,'willet','Palo Alto Duck Pond','','0','0','1998-12-07');
-INSERT INTO sighting VALUES (1079,'yelleg','Charleston Slough','','1','0','1998-12-17');
+INSERT INTO sighting VALUES (1079,'yelleg','Charleston Slough','','','0','1998-12-17');
 INSERT INTO sighting VALUES (1080,'ameavo','Charleston Slough','','0','0','1998-12-17');
 INSERT INTO sighting VALUES (1081,'amecoo','Charleston Slough','','0','0','1998-12-17');
 INSERT INTO sighting VALUES (1082,'bargol','Charleston Slough','','0','0','1998-12-17');
@@ -1105,7 +1105,7 @@ INSERT INTO sighting VALUES (1104,'sonspa','Charleston Slough','','0','0','1998-
 INSERT INTO sighting VALUES (1105,'sursco','Charleston Slough','','0','0','1998-12-17');
 INSERT INTO sighting VALUES (1106,'wesmea','Charleston Slough','','0','0','1998-12-17');
 INSERT INTO sighting VALUES (1107,'whtkit','Charleston Slough','','0','0','1998-12-17');
-INSERT INTO sighting VALUES (1108,'yelleg','Palo Alto Duck Pond','','1','0','1999-01-07');
+INSERT INTO sighting VALUES (1108,'yelleg','Palo Alto Duck Pond','','','0','1999-01-07');
 INSERT INTO sighting VALUES (1109,'ameavo','Palo Alto Duck Pond','','0','0','1999-01-07');
 INSERT INTO sighting VALUES (1110,'amecoo','Palo Alto Duck Pond','','0','0','1999-01-07');
 INSERT INTO sighting VALUES (1111,'blkpho','Palo Alto Duck Pond','','0','0','1999-01-07');
@@ -1128,7 +1128,7 @@ INSERT INTO sighting VALUES (1127,'rethaw','Palo Alto Duck Pond','','0','0','199
 INSERT INTO sighting VALUES (1128,'rudduc','Palo Alto Duck Pond','','0','0','1999-01-07');
 INSERT INTO sighting VALUES (1129,'turvul','Palo Alto Duck Pond','','0','0','1999-01-07');
 INSERT INTO sighting VALUES (1130,'willet','Palo Alto Duck Pond','','0','0','1999-01-07');
-INSERT INTO sighting VALUES (1131,'yelleg','Charleston Slough','','1','0','1999-01-28');
+INSERT INTO sighting VALUES (1131,'yelleg','Charleston Slough','','','0','1999-01-28');
 INSERT INTO sighting VALUES (1132,'ameavo','Charleston Slough','','0','0','1999-01-28');
 INSERT INTO sighting VALUES (1133,'amecoo','Charleston Slough','','0','0','1999-01-28');
 INSERT INTO sighting VALUES (1134,'blkski','Charleston Slough','','0','0','1999-01-28');
@@ -1213,7 +1213,7 @@ INSERT INTO sighting VALUES (1212,'rocdov','Stanford University','','0','0','199
 INSERT INTO sighting VALUES (1213,'ruckin','Stanford University','','0','0','1999-02-11');
 INSERT INTO sighting VALUES (1214,'wesjay','Stanford University','','0','0','1999-02-11');
 INSERT INTO sighting VALUES (1215,'yerwar','Stanford University','','0','0','1999-02-11');
-INSERT INTO sighting VALUES (1216,'yelleg','Stevens Creek County Park','','1','0','1999-02-15');
+INSERT INTO sighting VALUES (1216,'yelleg','Stevens Creek County Park','','','0','1999-02-15');
 INSERT INTO sighting VALUES (1217,'hummin','Stevens Creek County Park','','1','0','1999-02-15');
 INSERT INTO sighting VALUES (1218,'ameavo','Stevens Creek County Park','','0','0','1999-02-15');
 INSERT INTO sighting VALUES (1219,'amecoo','Stevens Creek County Park','','0','0','1999-02-15');
@@ -1279,7 +1279,7 @@ INSERT INTO sighting VALUES (1278,'oaktit','Stanford University','was called Pla
 INSERT INTO sighting VALUES (1279,'daejun','Stanford University','','0','0','1999-03-18');
 INSERT INTO sighting VALUES (1280,'stejay','Stanford University','','0','0','1999-03-18');
 INSERT INTO sighting VALUES (1281,'whbnut','Stanford University','','0','0','1999-03-18');
-INSERT INTO sighting VALUES (1282,'yelleg','Charleston Slough','','1','0','1999-03-23');
+INSERT INTO sighting VALUES (1282,'yelleg','Charleston Slough','','','0','1999-03-23');
 INSERT INTO sighting VALUES (1283,'scaup','Charleston Slough','','1','0','1999-03-23');
 INSERT INTO sighting VALUES (1284,'ameavo','Charleston Slough','breeding plumage','0','0','1999-03-23');
 INSERT INTO sighting VALUES (1285,'amecoo','Charleston Slough','','0','0','1999-03-23');
@@ -1499,7 +1499,7 @@ INSERT INTO sighting VALUES (1498,'sooshe','Moss Landing State Beach','','0','0'
 INSERT INTO sighting VALUES (1499,'sterna','Moss Landing State Beach','','1','0','1999-08-08');
 INSERT INTO sighting VALUES (1500,'sursco','Moss Landing State Beach','','0','0','1999-08-08');
 INSERT INTO sighting VALUES (1501,'wesgre','Moss Landing State Beach','','0','0','1999-08-08');
-INSERT INTO sighting VALUES (1502,'yelleg','Lower Klamath NWR','','1','0','1999-08-19');
+INSERT INTO sighting VALUES (1502,'yelleg','Lower Klamath NWR','','','0','1999-08-19');
 INSERT INTO sighting VALUES (1503,'sandpi','Lower Klamath NWR','','1','0','1999-08-19');
 INSERT INTO sighting VALUES (1504,'oriole','Lower Klamath NWR','','1','0','1999-08-19');
 INSERT INTO sighting VALUES (1505,'amecoo','Lower Klamath NWR','','0','0','1999-08-19');
@@ -1646,7 +1646,7 @@ INSERT INTO sighting VALUES (1645,'wesmea','Palo Alto Duck Pond','','0','0','199
 INSERT INTO sighting VALUES (1646,'whcspa','Palo Alto Duck Pond','','0','0','1999-10-23');
 INSERT INTO sighting VALUES (1647,'whtkit','Palo Alto Duck Pond','','0','0','1999-10-23');
 INSERT INTO sighting VALUES (1648,'yerwar','Palo Alto Duck Pond','','0','0','1999-10-23');
-INSERT INTO sighting VALUES (1649,'yelleg','Palo Alto Duck Pond','','1','0','1999-10-26');
+INSERT INTO sighting VALUES (1649,'yelleg','Palo Alto Duck Pond','','','0','1999-10-26');
 INSERT INTO sighting VALUES (1650,'sandpi','Palo Alto Duck Pond','','1','0','1999-10-26');
 INSERT INTO sighting VALUES (1651,'ameavo','Palo Alto Duck Pond','','0','0','1999-10-26');
 INSERT INTO sighting VALUES (1652,'amecoo','Palo Alto Duck Pond','','0','0','1999-10-26');
@@ -1844,7 +1844,7 @@ INSERT INTO sighting VALUES (1843,'whcspa','Palo Alto Duck Pond','','0','0','199
 INSERT INTO sighting VALUES (1844,'willet','Palo Alto Duck Pond','','0','0','1999-12-12');
 INSERT INTO sighting VALUES (1845,'yerwar','Palo Alto Duck Pond','','0','0','1999-12-12');
 INSERT INTO sighting VALUES (1846,'humming','Drawbridge','','1','0','1999-12-19');
-INSERT INTO sighting VALUES (1847,'yelleg','Drawbridge','','1','0','1999-12-19');
+INSERT INTO sighting VALUES (1847,'yelleg','Drawbridge','','','0','1999-12-19');
 INSERT INTO sighting VALUES (1848,'ameavo','Drawbridge','','0','0','1999-12-19');
 INSERT INTO sighting VALUES (1849,'amecoo','Drawbridge','','0','0','1999-12-19');
 INSERT INTO sighting VALUES (1850,'amekes','Drawbridge','','0','0','1999-12-19');
@@ -1899,7 +1899,7 @@ INSERT INTO sighting VALUES (1898,'eursta','Champaign County','','0','0','1999-1
 INSERT INTO sighting VALUES (1899,'norcar','Champaign County','','0','0','1999-12-27');
 INSERT INTO sighting VALUES (1900,'rinphe','Champaign County','','0','0','1999-12-27');
 INSERT INTO sighting VALUES (1901,'sonspa','Champaign County','','0','0','1999-12-27');
-INSERT INTO sighting VALUES (1902,'yelleg','Don Edwards Center','','1','0','2000-01-02');
+INSERT INTO sighting VALUES (1902,'yelleg','Don Edwards Center','','','0','2000-01-02');
 INSERT INTO sighting VALUES (1903,'war','Don Edwards Center','','1','0','2000-01-02');
 INSERT INTO sighting VALUES (1904,'ameavo','Don Edwards Center','','0','0','2000-01-02');
 INSERT INTO sighting VALUES (1905,'amecoo','Don Edwards Center','','0','0','2000-01-02');
@@ -1926,7 +1926,7 @@ INSERT INTO sighting VALUES (1925,'wesmea','Don Edwards Center','','0','0','2000
 INSERT INTO sighting VALUES (1926,'whcspa','Don Edwards Center','','0','0','2000-01-02');
 INSERT INTO sighting VALUES (1927,'willet','Don Edwards Center','','0','0','2000-01-02');
 INSERT INTO sighting VALUES (1928,'yerwar','Don Edwards Center','','0','0','2000-01-02');
-INSERT INTO sighting VALUES (1929,'yelleg','Palo Alto Duck Pond','','1','0','2000-01-09');
+INSERT INTO sighting VALUES (1929,'yelleg','Palo Alto Duck Pond','','','0','2000-01-09');
 INSERT INTO sighting VALUES (1930,'ameavo','Palo Alto Duck Pond','','0','0','2000-01-09');
 INSERT INTO sighting VALUES (1931,'bknsti','Palo Alto Duck Pond','','0','0','2000-01-09');
 INSERT INTO sighting VALUES (1932,'buffle','Palo Alto Duck Pond','','1','0','2000-01-09');
@@ -2012,7 +2012,7 @@ INSERT INTO sighting VALUES (2011,'killde','Pillar Point','','0','0','2000-03-11
 INSERT INTO sighting VALUES (2012,'sursco','Pillar Point','','0','0','2000-03-11');
 INSERT INTO sighting VALUES (2013,'wesgre','Pillar Point','','0','0','2000-03-11');
 INSERT INTO sighting VALUES (2014,'willet','Pillar Point','','0','0','2000-03-11');
-INSERT INTO sighting VALUES (2015,'yelleg','Charleston Slough','','1','0','2000-03-12');
+INSERT INTO sighting VALUES (2015,'yelleg','Charleston Slough','','','0','2000-03-12');
 INSERT INTO sighting VALUES (2016,'ameavo','Charleston Slough','','0','0','2000-03-12');
 INSERT INTO sighting VALUES (2017,'amecoo','Charleston Slough','','0','0','2000-03-12');
 INSERT INTO sighting VALUES (2018,'amewig','Charleston Slough','','0','0','2000-03-12');
@@ -2168,7 +2168,7 @@ INSERT INTO sighting VALUES (2167,'pilwoo','Pikes Peak','Mary saw this bird, Bil
 INSERT INTO sighting VALUES (2168,'rthhum','Pikes Peak','','0','0','2000-08-04');
 INSERT INTO sighting VALUES (2169,'turvul','Pikes Peak','','0','0','2000-08-04');
 INSERT INTO sighting VALUES (2170,'whbnut','Pikes Peak','','0','0','2000-08-04');
-INSERT INTO sighting VALUES (2171,'yelleg','Bolinas Lagoon','','1','0','2000-08-26');
+INSERT INTO sighting VALUES (2171,'yelleg','Bolinas Lagoon','','','0','2000-08-26');
 INSERT INTO sighting VALUES (2172,'hummingbird','Bolinas Lagoon','','1','0','2000-08-26');
 INSERT INTO sighting VALUES (2173,'ameavo','Bolinas Lagoon','','0','0','2000-08-26');
 INSERT INTO sighting VALUES (2174,'amekes','Bolinas Lagoon','','0','0','2000-08-26');
