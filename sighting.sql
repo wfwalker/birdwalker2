@@ -3,7 +3,7 @@ INSERT INTO sighting VALUES (2,'amecoo','Charleston Slough','','0','0','1996-02-
 INSERT INTO sighting VALUES (3,'amwpel','Charleston Slough','','0','0','1996-02-10');
 INSERT INTO sighting VALUES (4,'amewig','Charleston Slough','','0','0','1996-02-10');
 INSERT INTO sighting VALUES (5,'annhum','Charleston Slough','','0','0','1996-02-10');
-INSERT INTO sighting VALUES (6,'audwar','Charleston Slough','','1','0','1996-02-10');
+INSERT INTO sighting VALUES (6,'audwar','Charleston Slough','','','','1996-02-10');
 INSERT INTO sighting VALUES (7,'bargol','Charleston Slough','','0','0','1996-02-10');
 INSERT INTO sighting VALUES (8,'blkpho','Charleston Slough','','0','0','1996-02-10');
 INSERT INTO sighting VALUES (9,'bcnher','Charleston Slough','','0','0','1996-02-10');

@@ -1191,7 +1191,7 @@ INSERT INTO species VALUES (22300030300,'magwar','Dendroica magnolia','Magnolia 
 INSERT INTO species VALUES (22300030400,'camwar','Dendroica tigrina','Cape May Warbler','','',1);
 INSERT INTO species VALUES (22300030500,'btbwar','Dendroica caerulescens','Black-throated Blue Warbler','','',1);
 INSERT INTO species VALUES (22300030600,'yerwar','Dendroica coronata','Yellow-rumped Warbler','','',1);
-INSERT INTO species VALUES (22300030601,'audwar','Dendroica coronata 1','Audubon\'s Warbler','','',1);
+INSERT INTO species VALUES (22300030601,'audwar','Dendroica coronata 1','Audubon\'s Warbler','','',0);
 INSERT INTO species VALUES (22300030602,'axmwar','Dendroica coronata 2','Audubon\'s-Myrtle intergrade warbler','','',1);
 INSERT INTO species VALUES (22300030603,'myrwar','Dendroica coronata 3','Myrtle Warbler','','',1);
 INSERT INTO species VALUES (22300030700,'btywar','Dendroica nigrescens','Black-throated Gray Warbler','','',1);
