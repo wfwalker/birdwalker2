@@ -9294,10 +9294,10 @@ INSERT INTO sighting VALUES (9321,'eursta','Other San Benito','','0','0','2004-0
 INSERT INTO sighting VALUES (9322,'houfin','Other San Benito','','0','0','2004-09-18');
 INSERT INTO sighting VALUES (9323,'norhar','Other San Benito','','0','0','2004-09-18');
 INSERT INTO sighting VALUES (9324,'lesyel','Other San Benito','','0','0','2004-09-18');
-INSERT INTO sighting VALUES (9325,'renpha','Other San Benito','','0','0','2004-09-18');
+INSERT INTO sighting VALUES (9325,'renpha','Other San Benito','By our count, there were at least 275 Phalaropes in the ponds next to the Hollister sewage ponds, which RJ described as a surprisingly big number','','','2004-09-18');
 INSERT INTO sighting VALUES (9326,'norsho','Other San Benito','','0','0','2004-09-18');
 INSERT INTO sighting VALUES (9327,'ameavo','Other San Benito','','0','0','2004-09-18');
-INSERT INTO sighting VALUES (9328,'ruff','Other San Benito','Seen by Mary, Bill, and R. J. only.','','','2004-09-18');
+INSERT INTO sighting VALUES (9328,'ruff','Other San Benito','Seen by Mary, Bill, and R. J. only.\r\nThe winter plumage adult ruff was a seen at approximately 1:00.  It was a medium grey/brown shorebird, evenly colored above with a small head. The clean white underside was cleanly divided from the solid colored upper parts in a smooth line. Only Bill and RJ saw it on the ground before the entire shorebird flock was spooked by a Prairie Falcon flying low over the pond.  In flight, the ruff was larger than the dowitchers it flew away with and showed a distinct white pattern of white across the tail and up both sides of the rump, making a U shape.','','','2004-09-18');
 INSERT INTO sighting VALUES (9329,'prafal','Other San Benito','','0','0','2004-09-18');
 INSERT INTO sighting VALUES (9330,'calgul','Other San Benito','','0','0','2004-09-18');
 INSERT INTO sighting VALUES (9331,'pecsan','Other San Benito','','0','0','2004-09-18');
@@ -9307,10 +9307,10 @@ INSERT INTO sighting VALUES (9334,'wesblu','Other San Benito','','0','0','2004-0
 INSERT INTO sighting VALUES (9335,'amewig','Other San Benito','','0','0','2004-09-18');
 INSERT INTO sighting VALUES (9336,'rudduc','Other San Benito','','0','0','2004-09-18');
 INSERT INTO sighting VALUES (9337,'comrav','Other San Benito','','0','0','2004-09-18');
-INSERT INTO sighting VALUES (9338,'yebmag','Other San Benito','','0','0','2004-09-18');
+INSERT INTO sighting VALUES (9338,'yebmag','Other San Benito','','','1','2004-09-18');
 INSERT INTO sighting VALUES (9339,'wiltur','Other San Benito','','0','0','2004-09-18');
 INSERT INTO sighting VALUES (9340,'larspa','Other San Benito','','0','0','2004-09-18');
-INSERT INTO sighting VALUES (9341,'rufhum','Other San Benito','','0','0','2004-09-18');
+INSERT INTO sighting VALUES (9341,'rufhum','Other San Benito','','','1','2004-09-18');
 INSERT INTO sighting VALUES (9342,'whtswi','Other San Benito','','0','0','2004-09-18');
 INSERT INTO sighting VALUES (9343,'goleag','Other San Benito','','0','0','2004-09-18');
 INSERT INTO sighting VALUES (9344,'foxspa','Other San Benito','','0','0','2004-09-18');
