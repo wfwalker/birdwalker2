@@ -60,7 +60,7 @@ INSERT INTO location VALUES (59,'Monte Bello Open Space Preserve','http://www.op
 INSERT INTO location VALUES (60,'Monterey Bay','http://www.shearwaterjourneys.com/','Monterey','Monterey','CA','This location denotes pelagic trips out of Monterey Bay, especially with Debra Shearwater.','mapblast',36.6013,121.882);
 INSERT INTO location VALUES (61,'Morro Bay','http://www.morro-bay.net','Morro Bay','San Luis Obispo','CA','includes Morro Bay estuary, Montana de Oro state park, San Simeon Hearst Memorial beach, etc. The latitude and longitude coordinates given are for our rental house in Baywood Park','NAD-27',35.3318,120.841);
 INSERT INTO location VALUES (62,'Moss Landing State Beach','','Moss Landing','Santa Cruz','CA','','',36.8136,121.789);
-INSERT INTO location VALUES (63,'Mount Hamilton','','San Jose','Santa Clara','CA','','',0,0);
+INSERT INTO location VALUES (63,'Mount Hamilton','','San Jose','Santa Clara','CA','','',37.3419,121.642);
 INSERT INTO location VALUES (64,'Nortel Networks','','Santa Clara','Santa Clara','CA','Mary\'s office, located right next to Great America','NAD-27',37.3944,121.977);
 INSERT INTO location VALUES (65,'Ocean Beach','','San Francisco','San Francisco','CA','','',37.7594,122.51);
 INSERT INTO location VALUES (66,'Oka Ponds','','San Jose','Santa Clara','CA','','',0,0);
@@ -114,8 +114,8 @@ INSERT INTO location VALUES (112,'Stevens Creek County Park','http://www.parkher
 INSERT INTO location VALUES (113,'Stowe Lake','','San Francisco','San Francisco','CA','','',0,0);
 INSERT INTO location VALUES (114,'Sunnyvale Baylands','http://www.ci.sunnyvale.ca.us/baylands/','Sunnyvale','Santa Clara','CA','','',37.4133,121.995);
 INSERT INTO location VALUES (115,'Sunnyvale Water Treatment Plant','','Sunnyvale','Santa Clara','CA','','mapblast',37.4198,122.017);
-INSERT INTO location VALUES (116,'Sutro Baths','','San Francisco','San Francisco','CA','','',0,0);
-INSERT INTO location VALUES (117,'Table Rock','http://nature.org/wherewework/northamerica/states/oregon/preserves/art6805.html','Medford','Jackson','OR','','',0,0);
+INSERT INTO location VALUES (116,'Sutro Baths','','San Francisco','San Francisco','CA','','',37.78,122.512);
+INSERT INTO location VALUES (117,'Table Rock','http://nature.org/wherewework/northamerica/states/oregon/preserves/art6805.html','Medford','Jackson','OR','','',42.4553,122.948);
 INSERT INTO location VALUES (118,'Touvelle State Park','http://www.oregonstateparks.org/park_106.php','Medford','Jackson','OR','','Unknown',42.1843,122.562);
 INSERT INTO location VALUES (119,'Trinidad Harbor','','Trinidad','Humboldt','CA','','',0,0);
 INSERT INTO location VALUES (120,'Trinidad State Beach','http://www.northcoast.com/~rras/hotspot2.htm','Trinidad','Humboldt','CA','','',41.0656,124.149);
@@ -131,7 +131,7 @@ INSERT INTO location VALUES (129,'Woodbridge Ecological Preserve','http://www.sa
 INSERT INTO location VALUES (130,'Yosemite','','Yosemite National Park','Mono','CA','','',37.85,119.567);
 INSERT INTO location VALUES (132,'Leakey','','Leaky','Real','TX','','',29.7286,99.7611);
 INSERT INTO location VALUES (133,'Brownsville','','Brownsville','Cameron','TX','','',25.9014,97.4972);
-INSERT INTO location VALUES (134,'Port Aransas','','Port Aransas','Nueces','TX','','',0,0);
+INSERT INTO location VALUES (134,'Port Aransas','','Port Aransas','Nueces','TX','','',27.8336,97.0608);
 INSERT INTO location VALUES (135,'Laredo','','Laredo','Webb','TX','','',27.5061,99.5072);
 INSERT INTO location VALUES (136,'Corpus Christi','','Corpus Christi','Nueces','TX','','',27.8003,97.3961);
 INSERT INTO location VALUES (137,'Palmetto State Park','http://www.tpwd.state.tx.us/park/palmetto/','San Antonio','Gonzales','TX','','',29.5875,97.5843);
