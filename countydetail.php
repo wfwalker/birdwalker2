@@ -100,7 +100,6 @@ else if ($view == "map")
 {
     $locationQuery = new LocationQuery;
 	$locationQuery->setCounty($county);
-	countHeading($locationQuery->getLocationCount(), "location");
 	$map = new Map("./countydetail.php");
 	$map->setFromRequest($_GET);
 	$map->draw();
