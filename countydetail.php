@@ -37,7 +37,7 @@ $extrema = $locationQuery->findExtrema();
     <div class=contentright>
 	  <div class=pagesubtitle>County Detail</div>
       <div class="titleblock">	  
-<?    if ($view != "photo") { rightThumbnailCounty($county); } ?>
+<?    if (($view != "map") && ($view != "photo")) { rightThumbnailCounty($county); } ?>
 	  <div class=pagetitle> <?= $county ?> County</div>
       <div class=metadata>
         locations:
@@ -98,7 +98,9 @@ elseif ($view == 'locationsbymonth')
 }
 else if ($view == "map")
 {
-	countHeading($locationCount, "location");
+    $locationQuery = new LocationQuery;
+	$locationQuery->setCounty($county);
+	countHeading($locationQuery->getLocationCount(), "location");
 	$map = new Map("./countydetail.php");
 	$map->setFromRequest($_GET);
 	$map->draw();
