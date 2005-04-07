@@ -7,7 +7,7 @@ require_once("./sightingquery.php");
 require_once("./tripquery.php");
 require_once("./map.php");
 
-$locationID = param($_GET, 'locationid', 1);
+$locationID = reqParam($_GET, 'locationid');
 $view = param($_GET, 'view', 'list');
 
 $siteInfo = getLocationInfo($locationID);

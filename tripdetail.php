@@ -6,7 +6,7 @@ require_once("./map.php");
 require_once("./sightingquery.php");
 require_once("./speciesquery.php");
 
-$tripID = param($_GET, 'tripid', 343);
+$tripID = reqParam($_GET, 'tripid');
 $view = param($_GET, 'view', 'list');
 
 $tripInfo = getTripInfo($tripID);

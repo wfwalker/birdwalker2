@@ -3,7 +3,7 @@
 
 require_once("./birdwalker.php");
 
-$sightingID = $_GET['id'];
+$sightingID = reqParam($_GET, 'id');
 
 $sightingInfo = getSightingInfo($sightingID);
 $speciesInfo = performOneRowQuery("SELECT * FROM species WHERE Abbreviation='" . $sightingInfo["SpeciesAbbreviation"] . "'");

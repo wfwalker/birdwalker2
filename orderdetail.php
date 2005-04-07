@@ -8,7 +8,7 @@ require_once("./map.php");
 
 $view = param($_GET, "view", "species");
 
-$orderid = param($_GET, "order", 21);
+$orderid = reqParam($_GET, "order");
 
 $speciesQuery = new SpeciesQuery;
 $speciesQuery->setOrder($orderid);

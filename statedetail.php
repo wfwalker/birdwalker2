@@ -5,7 +5,7 @@ require_once("./birdwalker.php");
 require_once("./speciesquery.php");
 require_once("./map.php");
 
-$id = param($_GET, "stateid", 3);
+$id = reqParam($_GET, "stateid");
 $view = param($_GET, "view", "species");
 
 $info = getStateInfo($id);

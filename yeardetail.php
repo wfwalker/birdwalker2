@@ -8,7 +8,7 @@ require_once("./locationquery.php");
 require_once("./tripquery.php");
 require_once("./map.php");
 
-$year = param($_GET, "year", "1998");
+$year = reqParam($_GET, "year");
 $view = param($_GET, "view", "species");
 
 $speciesQuery = new SpeciesQuery;

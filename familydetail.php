@@ -7,7 +7,7 @@ require_once("./tripquery.php");
 require_once("./locationquery.php");
 require_once("./map.php");
 
-$familyid = param($_GET, "family", 701);
+$familyid = reqParam($_GET, "family");
 $orderid = floor($familyid / 100);
 $view = param($_GET, "view", "species");
 
