@@ -8239,7 +8239,7 @@ INSERT INTO sighting VALUES (8245,'swaspa','Brownsville','','1','','2004-04-17')
 INSERT INTO sighting VALUES (8246,'rewbla','Brownsville','','0','0','2004-04-17');
 INSERT INTO sighting VALUES (8247,'easmea','Brownsville','','0','0','2004-04-17');
 INSERT INTO sighting VALUES (8248,'santer','Brownsville','','','','2004-04-17');
-INSERT INTO sighting VALUES (8249,'gofwoo','Brownsville','','','','2004-04-17');
+INSERT INTO sighting VALUES (8249,'gofwoo','Brownsville','','','1','2004-04-17');
 INSERT INTO sighting VALUES (8252,'normoc','Port Aransas','','0','0','2004-04-16');
 INSERT INTO sighting VALUES (8253,'bnhcow','Port Aransas','','0','0','2004-04-16');
 INSERT INTO sighting VALUES (8254,'uplsan','Port Aransas','','0','0','2004-04-16');
@@ -8424,7 +8424,7 @@ INSERT INTO sighting VALUES (8438,'normoc','Laredo','','0','0','2004-04-19');
 INSERT INTO sighting VALUES (8439,'bktspa','Laredo','','0','0','2004-04-19');
 INSERT INTO sighting VALUES (8440,'larbun','Laredo','We pulled over upon seeing a group of birders stopped at the side of the road. They reported seeing a Lark Bunting, and we all worked together until he popped up into a shrub and waited for all of us to get looks in the scope. Then, we all went to Dairy Queen','','','2004-04-19');
 INSERT INTO sighting VALUES (8441,'pyrrhu','Laredo','','0','0','2004-04-19');
-INSERT INTO sighting VALUES (8442,'incdov','Laredo','','0','0','2004-04-19');
+INSERT INTO sighting VALUES (8442,'incdov','Laredo','','','1','2004-04-19');
 INSERT INTO sighting VALUES (8443,'grnher','Laredo','','0','0','2004-04-19');
 INSERT INTO sighting VALUES (8444,'grnjay','Laredo','','0','0','2004-04-19');
 INSERT INTO sighting VALUES (8499,'larspa','Leakey','','','1','2004-04-20');
