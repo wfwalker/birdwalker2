@@ -10545,7 +10545,7 @@ INSERT INTO sighting VALUES (10579,'amerob','Bear Creek Greenway','','0','0','20
 INSERT INTO sighting VALUES (10580,'amecro','Bear Creek Greenway','','0','0','2005-04-09');
 INSERT INTO sighting VALUES (10581,'turvul','Bear Creek Greenway','','0','0','2005-04-09');
 INSERT INTO sighting VALUES (10582,'herthr','Bear Creek Greenway','','0','0','2005-04-09');
-INSERT INTO sighting VALUES (10583,'spotow','Bear Creek Greenway','','0','0','2005-04-09');
+INSERT INTO sighting VALUES (10583,'spotow','Bear Creek Greenway','','','1','2005-04-09');
 INSERT INTO sighting VALUES (10587,'bushti','Bear Creek Greenway','','','','2005-04-09');
 INSERT INTO sighting VALUES (10585,'bkcchi','Bear Creek Greenway','','0','0','2005-04-09');
 INSERT INTO sighting VALUES (10586,'vigswa','Bear Creek Greenway','','0','0','2005-04-09');
