@@ -141,3 +141,4 @@ INSERT INTO location VALUES (140,'Arrowhead Marsh','http://baytrail.abag.ca.gov/
 INSERT INTO location VALUES (141,'Lake Merritt','','Oakland','Alameda','CA','','',37.8064,-122.254);
 INSERT INTO location VALUES (142,'Bair Island','','Redwood City','San Mateo','CA','','',37.53,-122.221);
 INSERT INTO location VALUES (143,'Downtown Palo Alto','','Palo Alto','Santa Clara','CA','','',37.4444,-122.159);
+INSERT INTO location VALUES (144,'Bear Creek Greenway','http://www.bearcreekgreenway.com/','Talent','Jackson','OR','','',42.2458,-122.787);
