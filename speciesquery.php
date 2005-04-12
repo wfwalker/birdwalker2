@@ -33,6 +33,11 @@ class SpeciesQuery extends BirdWalkerQuery
 	{
 		$selectClause = "SELECT DISTINCT species.objectid, species.CommonName, species.LatinName, species.ABACountable";
 
+		if ($this->mTripID == "")
+		{
+			$selectClause = $selectClause . ", min(sighting.Exclude) AS AllExclude";
+		}
+
 		// TODO how can we get a sightingid into this select clause even if it's not a specific trip id?
 		if ($this->mTripID != "")
 		{
@@ -147,41 +152,6 @@ class SpeciesQuery extends BirdWalkerQuery
           SELECT DISTINCT species.objectid, species.* ".
 			$this->getFromClause() . " " .
 			$this->getWhereClause() . " ORDER BY species.objectid");
-	}
-
-	function getPageTitle()
-	{
-		// todo add species, family, order
-		$pageTitle = "";
-
-		if ($this->mFamily != "") {
-			$familyInfo = getFamilyInfo($family * pow(10, 7));
-			$pageTitle = $familyInfo["CommonName"];
-		}
-
-		// TODO need to cope with both family and location being set!
-		if ($this->mLocationID != "") {
-			$locationInfo = getLocationInfo($this->mLocationID); 
-			$pageTitle = $locationInfo["Name"];
-		} elseif ($this->mCounty != "") {
-			$pageTitle = $this->mCounty . " County";
-		} elseif ($this->mStateID != "") {
-			$pageTitle = getStateNameForAbbreviation($this->mStateID);
-		}
-
-		if ($this->mMonth !="") {
-			if ($pageTitle == "") $pageTitle = getMonthNameForNumber($this->mMonth);
-			else $pageTitle = $pageTitle . ", " . getMonthNameForNumber($this->mMonth);
-		}
-		if ($this->mYear !="") {
-			if ($pageTitle == "") $pageTitle = $this->mYear;
-			else $pageTitle = $pageTitle . ", " . $this->mYear;
-		}
-
-		// todo, need order and family in here
-
-
-		return $pageTitle; 
 	}
 
 	function rightThumbnail()

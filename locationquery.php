@@ -144,33 +144,6 @@ class LocationQuery extends BirdWalkerQuery
 			$this->getWhereClause() . " ORDER BY location.State, location.County, location.Name");
 	}
 
-	function getPageTitle()
-	{
-		// todo need to add species, family, order
-		$pageTitle = "";
-
-		if ($this->mSpeciesID != "") {
-			$speciesInfo = getSpeciesInfo($this->mSpeciesID);
-			$pageTitle = $speciesInfo["CommonName"];
-		}
-
-		if ($this->mCounty != "") {
-			$pageTitle = $this->mCounty . " County";
-		} elseif ($this->mStateID != "") {
-			$stateInfo = getStateInfo($this->mStateID);
-		    $pageTitle = $stateInfo["Name"];
-		}
-		if ($this->mMonth !="") {
-			if ($pageTitle == "") $pageTitle = getMonthNameForNumber($this->mMonth);
-			else $pageTitle = $pageTitle . ", " . getMonthNameForNumber($this->mMonth);
-		}
-		if ($this->mYear !="") {
-			if ($pageTitle == "") $pageTitle = $this->mYear;
-			else $pageTitle = $pageTitle . ", " . $this->mYear;
-		}
-		return $pageTitle; 
-	}
-
 	function findExtrema()
 	{
 		echo "<!-- extrema -->";

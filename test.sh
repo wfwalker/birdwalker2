@@ -36,6 +36,8 @@ chronocayearlist.php \
 countydetail.php \
 familydetail.php \
 locationdetail.php \
+locationdetail.php?location=23 \
+locationdetail.php?locationid=pants \
 monthdetail.php \
 orderdetail.php \
 photodetail.php \

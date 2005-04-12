@@ -25,6 +25,9 @@ function globalMenu()
 		</div>
 <?	} ?>
 
+      <div>&nbsp;</div>
+	  <div><a href="./indexrss.php">RSS</a></div>
+
     </div>
 <?
 }
@@ -385,6 +388,7 @@ function performCount($queryString)
 function performOneRowQuery($queryString)
 {
 	$theQuery = performQuery($queryString);
+	if (mysql_num_rows($theQuery) != 1) die("Fatal error: BirdWalker Object Not Found");
 	$theFirstRow = mysql_fetch_array($theQuery);
 	return $theFirstRow;
 }
@@ -395,7 +399,7 @@ function performOneRowQuery($queryString)
 
 function getSightingInfo($objectid)
 {
-	return performOneRowQuery("SELECT * FROM sighting where objectid=" . $objectid);
+	return performOneRowQuery("SELECT * FROM sighting where objectid='" . $objectid . "'");
 }
 
 /**
@@ -472,7 +476,7 @@ function getFirstYearSightings($theYear)
  */
 function getSpeciesInfo($objectid)
 {
-	return performOneRowQuery("SELECT * FROM species where objectid=" . $objectid);
+	return performOneRowQuery("SELECT * FROM species where objectid='" . $objectid . "'");
 }
 
 function navTrailSpecies($speciesID)
@@ -554,10 +558,11 @@ function formatTwoColumnSpeciesList($speciesQuery, $firstSightings = "", $firstY
 <?      if ($info["Photo"] == "1") { ?><?= getPhotoLinkForSightingInfo($info, "sightingid") ?><? } ?>
 <?		if ($info["ABACountable"] == "0") { ?>NOT ABA COUNTABLE<? } ?>
 <?		if ($info["Exclude"] == "1") { ?>excluded<? } ?>
+<?		if ($info["AllExclude"] == "1") { ?>excluded<? } ?>
 
-<? 		if ($firstSightings[$info["sightingid"]] != null) { ?> life bird <? }
-		else if ($firstSightings[$earliestsightingid] != null) { ?> life bird <? }
-		else if ($firstYearSightings[$sightingid] != null) { ?> year bird <? }
+<? 		if ($speciesQuery->mTripID != "" && $firstSightings[$info["sightingid"]] != null) { ?> life bird <? }
+		else if ($speciesQuery->mTripID != "" && $firstSightings[$earliestsightingid] != null) { ?> life bird <? }
+		else if ($speciesQuery->mTripID != "" && $firstYearSightings[$sightingid] != null) { ?> year bird <? }
 		if (strlen($info["Notes"]) > 0) { ?><div class=sighting-notes><?= $info["Notes"] ?></div><? } ?>
 
 		</div>
@@ -929,7 +934,7 @@ function getTaxonomyInfo($objectid, $blankDigits)
 {
 	$shift = pow(10, $blankDigits - 1);
 	$taxonomyID = floor($objectid / $shift) * $shift;
-	$taxonomyQueryString = "SELECT * FROM taxonomy where objectid=" . $taxonomyID;
+	$taxonomyQueryString = "SELECT * FROM taxonomy where objectid='" . $taxonomyID . "'";
 
 	return performOneRowQuery($taxonomyQueryString);
 }
@@ -940,7 +945,7 @@ function getTaxonomyInfo($objectid, $blankDigits)
 
 function getTripInfo($objectid)
 {
-	return performOneRowQuery("SELECT *, date_format(Date, '%W,  %M %e, %Y') as niceDate FROM trip where objectid=" . $objectid);
+	return performOneRowQuery("SELECT *, date_format(Date, '%W,  %M %e, %Y') as niceDate FROM trip where objectid='" . $objectid . "'");
 }
 
 function getTripInfoForDate($inDate)
@@ -1022,7 +1027,7 @@ function formatTwoColumnTripList($tripQuery)
 
 function getLocationInfo($objectid)
 {
-	return performOneRowQuery("SELECT * FROM location where objectid=" . $objectid);
+	return performOneRowQuery("SELECT * FROM location where objectid='" . $objectid . "'");
 }
 
 function getLocationInfoForName($inLocationName)

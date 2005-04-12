@@ -141,35 +141,6 @@ class TripQuery extends BirdWalkerQuery
 			$this->getWhereClause() . " ORDER BY trip.Date desc");
 	}
 
-	function getPageTitle()
-	{
-		// todo need to add species, family, order
-		$pageTitle = "";
-
-		if ($this->mLocationID != "") {
-			$locationID = getLocationInfo($this->mLocationID);
-			$pageTitle = $locationInfo["Name"];
-		} elseif ($this->mCounty != "") {
-			$pageTitle = $this->mCounty . " County";
-		} elseif ($this->mStateID != "") {
-			$stateInfo = getStateInfo($this->mStateID);
-			$pageTitle = $stateInfo["Name"];
-		}
-
-		if ($this->mMonth !="") {
-			if ($pageTitle == "") $pageTitle = getMonthNameForNumber($this->mMonth);
-			else $pageTitle = $pageTitle . ", " . getMonthNameForNumber($this->mMonth);
-		}
-		if ($this->mYear !="") {
-			if ($pageTitle == "") $pageTitle = $this->mYear;
-			else $pageTitle = $pageTitle . ", " . $this->mYear;
-		}
-
-		// todo, need order and family in here
-
-		return $pageTitle; 
-	}
-
 	function rightThumbnail()
 	{
 		rightThumbnail("

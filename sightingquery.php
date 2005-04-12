@@ -63,8 +63,9 @@ class SightingQuery extends BirdWalkerQuery
 			$whereClause = $whereClause . " AND location.objectid=" . $this->mLocationID;
 		} elseif ($this->mCounty != "") {
 			$whereClause = $whereClause . " AND location.County='" . $this->mCounty . "'";
-		} elseif ($this->mState != "") {
-			$whereClause = $whereClause . " AND location.State='" . $this->mState . "'";
+		} elseif ($this->mStateID != "") {
+			$stateInfo = getStateInfo($this->mStateID);
+			$whereClause = $whereClause . " AND location.State='" . $stateInfo["Abbreviation"] . "'";
 		}
 
 		if ($this->mSpeciesID != "") {
@@ -145,44 +146,6 @@ class SightingQuery extends BirdWalkerQuery
 			$this->getSelectClause() . " " .
 			$this->getFromClause() . " " .
 			$this->getWhereClause() . " AND sighting.Photo='1' ORDER BY sighting.TripDate desc");
-	}
-
-	function getPageTitle()
-	{
-		// todo add species, family, order
-		$pageTitle = "";
-
-		if ($this->mSpeciesID != "") {
-			$speciesInfo = getSpeciesInfo($this->mSpeciesID);
-			$pageTitle = $speciesInfo["CommonName"];
-		}
-
-		if ($this->mLocationID != "") {
-			$locationInfo = getLocationInfo($this->mLocationID); 
-			$pageTitle = $pageTitle . ", " . $locationInfo["Name"];
-		} elseif ($this->mCounty != "") {
-			$pageTitle = $pageTitle . ", " . $pageTitle = $this->mCounty . " County";
-		} elseif ($this->mState != "") {
-			$pageTitle = $pageTitle . ", " . $pageTitle = getStateNameForAbbreviation($this->mState);
-		}
-
-		if ($this->mTripID != "") {
-			$tripInfo = getTripInfo($this->mTripID); 
-			$pageTitle = $pageTitle . ", " . $pageTitle = $tripInfo["Name"];
-		}
-		if ($this->mMonth !="") {
-			if ($pageTitle == "") $pageTitle = getMonthNameForNumber($this->mMonth);
-			else $pageTitle = $pageTitle . ", " . getMonthNameForNumber($this->mMonth);
-		}
-		if ($this->mYear !="") {
-			if ($pageTitle == "") $pageTitle = $this->mYear;
-			else $pageTitle = $pageTitle . ", " . $this->mYear;
-		}
-
-		// todo, need order and family in here
-
-
-		return $pageTitle; 
 	}
 
 	function rightThumbnail($anchorFlag)

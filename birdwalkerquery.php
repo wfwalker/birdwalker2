@@ -62,6 +62,43 @@ class BirdWalkerQuery
 		$this->setStateID(param($_GET, "stateid", ""));
 	}
 
+	function getPageTitle($inPrefix = "")
+	{
+		if ($inPrefix != "") {
+			$pageTitleItems[] = $inPrefix;
+		}
+
+		if ($this->mSpeciesID != "") {
+			$speciesInfo = getSpeciesInfo($this->mSpeciesID);
+			$pageTitleItems[] = $speciesInfo["CommonName"];
+		} elseif ($this->mFamily != "") {
+			$familyInfo = getFamilyInfo($this->mFamily * pow(10, 7));
+			$pageTitleItems[] = $familyInfo["LatinName"];
+		} elseif ($this->mOrder != "") {
+			$orderInfo = getOrderInfo($this->mOrder * pow(10, 9));
+			$pageTitleItems[] = $orderInfo["LatinName"];
+		}
+
+		if ($this->mLocationID != "") {
+			$locationInfo = getLocationInfo($this->mLocationID); 
+			$pageTitleItems[] = $locationInfo["Name"];
+		} elseif ($this->mCounty != "") {
+			$pageTitleItems[] = $this->mCounty . " County";
+		} elseif ($this->mStateID != "") {
+			$stateInfo = getStateInfo($this->mStateID);
+		    $pageTitleItems[] = $stateInfo["Name"];
+		}
+
+		if ($this->mMonth !="") {
+			$pageTitleItems[] = getMonthNameForNumber($this->mMonth);
+		}
+		if ($this->mYear !="") {
+			$pageTitleItems[] = $this->mYear;
+		}
+
+		return implode(", ", $pageTitleItems);
+	}
+
 	function debug()
 	{
 		echo "\n<!-- locationid " . $this->mLocationID . " county " . $this->mCounty .
