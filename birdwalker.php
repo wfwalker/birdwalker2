@@ -897,18 +897,9 @@ function getFamilyDetailLinkFromSpeciesID($speciesid)
 {
 	$taxoInfo = getFamilyInfoFromSpeciesID($speciesid);
 
-	if ($speciesid >= 22000000000)
-	{
-		return "<a href=\"./familydetail.php?family=" . floor($speciesid / pow(10,7)) . "\">" .
-			$taxoInfo["LatinName"] . 
-			"</a>";
-	}
-	else
-	{
-		return "<a href=\"./orderdetail.php?order=" . floor($speciesid / pow(10,9)) . "\">" .
-			$taxoInfo["LatinName"] . 
-			"</a>";
-	}
+	return "<a href=\"./familydetail.php?family=" . floor($speciesid / pow(10,7)) . "\">" .
+		$taxoInfo["LatinName"] . 
+		"</a>";
 }
 
 /**
