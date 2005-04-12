@@ -90,7 +90,6 @@ while($locationInfo = mysql_fetch_array($missingLatLong))
 	echo "<a href=\"./locationcreate.php?id=" . $locationInfo["objectid"] . "\">" . $locationInfo["Name"] . "</a><br/>\n";
 }
 
-<?
 footer();
 ?>
 
