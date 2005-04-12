@@ -10557,3 +10557,10 @@ INSERT INTO sighting VALUES (10592,'mallar','Bear Creek Greenway','','','','2005
 INSERT INTO sighting VALUES (10593,'rewbla','Bear Creek Greenway','','','','2005-04-09');
 INSERT INTO sighting VALUES (10594,'linspa','Bear Creek Greenway','','','','2005-04-09');
 INSERT INTO sighting VALUES (10595,'norfli','Bear Creek Greenway','','','','2005-04-09');
+INSERT INTO sighting VALUES (10596,'lobdow','Starbucks Pond','','','','2005-04-06');
+INSERT INTO sighting VALUES (10597,'amewig','Starbucks Pond','','','','2005-04-06');
+INSERT INTO sighting VALUES (10598,'cangoo','Starbucks Pond','','','','2005-04-06');
+INSERT INTO sighting VALUES (10599,'houspa','Starbucks Pond','','','','2005-04-06');
+INSERT INTO sighting VALUES (10600,'amecoo','Starbucks Pond','','','','2005-04-06');
+INSERT INTO sighting VALUES (10601,'barswa','Starbucks Pond','','','','2005-04-06');
+INSERT INTO sighting VALUES (10602,'forter','Starbucks Pond','','','','2005-04-06');
