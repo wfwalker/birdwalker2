@@ -637,7 +637,7 @@ INSERT INTO species VALUES (13023080200,'whwpar','Brotogeris versicolurus','Whit
 INSERT INTO species VALUES (13023080300,'yecpar','Brotogeris chiriri','Yellow-chevroned Parakeet','','',1);
 INSERT INTO species VALUES (13023090100,'whcpar','Pionus senilis','White-crowned Parrot','','',1);
 INSERT INTO species VALUES (13023100100,'recpar','Amazona viridigenalis','Red-crowned Parrot','','',1);
-INSERT INTO species VALUES (13023100200,'licpar','Amazona finschi','Lilac-crowned Parrot','','',1);
+INSERT INTO species VALUES (13023100200,'licpar','Amazona finschi','Lilac-crowned Parrot','','',0);
 INSERT INTO species VALUES (13023100300,'relpar','Amazona autumnalis','Red-lored Parrot','','',1);
 INSERT INTO species VALUES (13023100400,'meapar','Amazona farinosa','Mealy Parrot','','',1);
 INSERT INTO species VALUES (13023100500,'orwpar','Amazona amazonica','Orange-winged Parrot','','',1);

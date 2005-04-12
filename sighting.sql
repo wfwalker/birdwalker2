@@ -5948,7 +5948,7 @@ INSERT INTO sighting VALUES (5948,'houspa','San Diego','','0','0','2003-03-29');
 INSERT INTO sighting VALUES (5949,'killde','San Diego','','0','0','2003-03-29');
 INSERT INTO sighting VALUES (5950,'larspa','San Diego','','0','0','2003-03-29');
 INSERT INTO sighting VALUES (5951,'lesgol','San Diego','','0','0','2003-03-29');
-INSERT INTO sighting VALUES (5952,'licpar','San Diego','A noisy pair flying over Lake Lindo Park.','1','','2003-03-29');
+INSERT INTO sighting VALUES (5952,'licpar','San Diego','A noisy pair flying over Lake Lindo Park.','','','2003-03-29');
 INSERT INTO sighting VALUES (5953,'dowitc','San Diego','','','0','2003-03-29');
 INSERT INTO sighting VALUES (5954,'libher','San Diego','','0','0','2003-03-29');
 INSERT INTO sighting VALUES (5955,'lobcur','San Diego','','0','0','2003-03-29');
@@ -10556,3 +10556,4 @@ INSERT INTO sighting VALUES (10591,'cangoo','Bear Creek Greenway','','','','2005
 INSERT INTO sighting VALUES (10592,'mallar','Bear Creek Greenway','','','','2005-04-09');
 INSERT INTO sighting VALUES (10593,'rewbla','Bear Creek Greenway','','','','2005-04-09');
 INSERT INTO sighting VALUES (10594,'linspa','Bear Creek Greenway','','','','2005-04-09');
+INSERT INTO sighting VALUES (10595,'norfli','Bear Creek Greenway','','','','2005-04-09');
