@@ -4,6 +4,7 @@
 require_once("./birdwalker.php");
 require_once("./speciesquery.php");
 require_once("./sightingquery.php");
+require_once("./chronolist.php");
 require_once("./tripquery.php");
 require_once("./map.php");
 
@@ -56,6 +57,7 @@ navTrailLocationDetail($siteInfo);
 <? } ?>
 
       species: <a href="./locationdetail.php?locationid=<?=$locationID?>">list</a> |
+      <a href="./locationdetail.php?view=chrono&locationid=<?=$locationID?>">ABA</a> |
       <a href="./locationdetail.php?view=bymonth&locationid=<?=$locationID?>">by month</a> |
       <a href="./locationdetail.php?view=byyear&locationid=<?=$locationID?>">by year</a> |
       <a href="./locationdetail.php?view=photo&locationid=<?=$locationID?>">photos</a>
@@ -103,6 +105,12 @@ navTrailLocationDetail($siteInfo);
 		$map = new Map("./locationdetail.php");
 		$map->setFromRequest($_GET);
 		$map->draw();
+	}
+    else if ($view == "chrono")
+	{
+		$chrono = new ChronoList;
+		$chrono->setFromRequest($_GET);
+		$chrono->draw();
 	}
 
 footer();

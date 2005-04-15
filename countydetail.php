@@ -4,6 +4,7 @@
 require_once("./birdwalker.php");
 require_once("./speciesquery.php");
 require_once("./map.php");
+require_once("./chronolist.php");
 require_once("./sightingquery.php");
 require_once("./tripquery.php");
 
@@ -41,6 +42,7 @@ $extrema = $locationQuery->findExtrema();
 	    <a href="./countydetail.php?view=map&stateid=<?= $stateid ?>&county=<?= $county ?>">map</a> <br/>
         species:	
         <a href="./countydetail.php?view=species&stateid=<?= $stateid ?>&county=<?= $county ?>">list</a> |
+	    <a href="./countydetail.php?view=chrono&stateid=<?= $stateid ?>&county=<?= $county ?>">ABA</a> |
 	    <a href="./countydetail.php?view=speciesbymonth&stateid=<?= $stateid ?>&county=<?= $county ?>">by month</a> |
 	    <a href="./countydetail.php?view=speciesbyyear&stateid=<?= $stateid ?>&county=<?= $county ?>">by year</a> | 
         <a href="./countydetail.php?view=species&view=photo&stateid=<?= $stateid ?>&county=<?= $county ?>">photo</a><br/>
@@ -105,6 +107,12 @@ else if ($view == "map")
 	$map = new Map("./countydetail.php");
 	$map->setFromRequest($_GET);
 	$map->draw();
+}
+else if ($view == "chrono")
+{
+	$chrono = new ChronoList;
+	$chrono->setFromRequest($_GET);
+	$chrono->draw();
 }
 elseif ($view == 'photo')
 {

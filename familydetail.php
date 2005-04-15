@@ -6,6 +6,7 @@ require_once("./speciesquery.php");
 require_once("./tripquery.php");
 require_once("./locationquery.php");
 require_once("./map.php");
+require_once("./chronolist.php");
 
 $familyid = reqParam($_GET, "family");
 $orderid = floor($familyid / 100);
@@ -50,6 +51,7 @@ navTrailBirds($items);
 	        <a href="./familydetail.php?view=map&family=<?= $familyid ?>">map</a> <br/>
           species:	
             <a href="./familydetail.php?view=species&family=<?= $familyid ?>">list</a> |
+	        <a href="./familydetail.php?view=chrono&family=<?= $familyid ?>">ABA</a> |
 	        <a href="./familydetail.php?view=speciesbymonth&family=<?= $familyid ?>">by month</a> |
 	        <a href="./familydetail.php?view=speciesbyyear&family=<?= $familyid ?>">by year</a><br/>
 	    </div>
@@ -114,6 +116,12 @@ else if ($view == "map")
 	$map = new Map("./familydetail.php");
 	$map->setFromRequest($_GET);
 	$map->draw();
+}
+else if ($view == "chrono")
+{
+	$chrono = new ChronoList;
+	$chrono->setFromRequest($_GET);
+	$chrono->draw();
 }
 
 footer();

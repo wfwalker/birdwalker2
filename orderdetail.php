@@ -5,6 +5,7 @@ require_once("./birdwalker.php");
 require_once("./speciesquery.php");
 require_once("./locationquery.php");
 require_once("./map.php");
+require_once("./chronolist.php");
 
 $view = param($_GET, "view", "species");
 
@@ -37,6 +38,7 @@ navTrailBirds($items);
 	        <a href="./orderdetail.php?view=map&order=<?= $orderid ?>">map</a> <br/>
           species:	
             <a href="./orderdetail.php?view=species&order=<?= $orderid ?>">list</a> |
+	        <a href="./orderdetail.php?view=chrono&order=<?= $orderid ?>">ABA</a> |
 	        <a href="./orderdetail.php?view=speciesbymonth&order=<?= $orderid ?>">by month</a> |
 	        <a href="./orderdetail.php?view=speciesbyyear&order=<?= $orderid ?>">by year</a><br/>
 	    </div>
@@ -90,6 +92,12 @@ else if ($view == "map")
 	$map = new Map("./orderdetail.php");
 	$map->setFromRequest($_GET);
 	$map->draw();
+}
+else if ($view == "chrono")
+{
+	$chrono = new ChronoList;
+	$chrono->setFromRequest($_GET);
+	$chrono->draw();
 }
 
 footer();

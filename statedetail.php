@@ -4,6 +4,7 @@
 require_once("./birdwalker.php");
 require_once("./speciesquery.php");
 require_once("./map.php");
+require_once("./chronolist.php");
 
 $id = reqParam($_GET, "stateid");
 $view = param($_GET, "view", "species");
@@ -35,6 +36,7 @@ $extrema = $locationQuery->findExtrema();
 	    <a href="./statedetail.php?view=map&stateid=<?= $id ?>">map</a><br/>
         species:	
         <a href="./statedetail.php?view=species&stateid=<?= $id ?>">list</a> |
+	    <a href="./statedetail.php?view=chrono&stateid=<?= $id ?>">ABA</a> |
 	    <a href="./statedetail.php?view=speciesbymonth&stateid=<?= $id ?>">by month</a> |
 	    <a href="./statedetail.php?view=speciesbyyear&stateid=<?= $id ?>">by year</a><br/>
       </div>
@@ -88,6 +90,12 @@ else if ($view == "map")
 	$map = new Map("./statedetail.php");
 	$map->setFromRequest($_GET);
 	$map->draw();
+}
+else if ($view == "chrono")
+{
+	$chrono = new ChronoList;
+	$chrono->setFromRequest($_GET);
+	$chrono->draw();
 }
 
 footer();

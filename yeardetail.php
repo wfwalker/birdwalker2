@@ -7,6 +7,7 @@ require_once("./sightingquery.php");
 require_once("./locationquery.php");
 require_once("./tripquery.php");
 require_once("./map.php");
+require_once("./chronolist.php");
 
 $year = reqParam($_GET, "year");
 $view = param($_GET, "view", "species");
@@ -38,7 +39,7 @@ navTrailBirds();
               <a href="./yeardetail.php?view=map&year=<?= $year ?>">map</a> <br/>
             species:	
               <a href="./yeardetail.php?view=species&year=<?= $year ?>">list</a> |
-              <a href="./chronocayearlist.php?year=<?= $year ?>">ABA</a> |
+	          <a href="./yeardetail.php?view=chrono&year=<?= $year ?>">ABA</a> |
 	          <a href="./yeardetail.php?view=speciesbymonth&year=<?= $year ?>">by month</a> |
               <a href="./yeardetail.php?view=species&view=photo&year=<?= $year ?>">photo</a><br/>
           </div>
@@ -104,6 +105,12 @@ else if ($view == "map")
 	$map = new Map("./yeardetail.php");
 	$map->setFromRequest($_GET);
 	$map->draw();
+}
+else if ($view == "chrono")
+{
+	$chrono = new ChronoList;
+	$chrono->setFromRequest($_GET);
+	$chrono->draw();
 }
 elseif ($view == 'photo')
 {
