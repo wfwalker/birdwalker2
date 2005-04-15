@@ -96,35 +96,6 @@ class TripQuery extends BirdWalkerQuery
 		return $whereClause;
 	}
 
-	function getParams()
-	{
-		$params = "";
-
-		if ($this->mLocationID != "") {
-			$params = $params . "&locationid=" . $this->mLocationID;
-		} elseif ($this->mCounty != "") {
-			$params = $params . "&county=" . $this->mCounty;
-		} elseif ($this->mStateID != "") {
-			$params = $params . "&stateid=" . $this->mStateID;
-		}
-
-		if ($this->mSpeciesID != "") {
-			$params = $params . "&speciesid=" . $this->mSpeciesID;
-		} elseif ($this->mFamily != "") {
-			$params = $params . "&family=" . $this->mFamily;
-		} elseif ($this->mOrder != "") {
-			$params = $params . "&order=" . $this->mOrder;
-		}
-		
-		if ($this->mMonth !="") {
-			$params = $params . "&month=" . $this->mMonth;
-		} elseif ($this->mYear !="") {
-			$params = $params . "&year=" . $this->mYear;
-		}
-
-		return $params;
-	}
-
 	function getTripCount()
 	{
 		return performCount("

@@ -92,36 +92,6 @@ class SightingQuery extends BirdWalkerQuery
 		return $whereClause;
 	}
 
-	function getParams()
-	{
-		$params = "";
-
-		if ($this->mLocationID != "") {
-			$params = $params . "&locationid=" . $this->mLocationID;
-		} elseif ($this->mCounty != "") {
-			$params = $params . "&county=" . $this->mCounty . "'";
-		} elseif ($this->mState != "") {
-			$params = $params . "&stateid=" . $this->mStateID . "'";
-		}
-
-		if ($this->mSpeciesID != "") {
-			$params = $params . "&speciesID=" . $this->mSpeciesID;
-		} elseif ($this->mFamily != "") {
-			$params = $params . "&family=" . $this->mFamily;
-		} elseif ($this->mOrder != "") {
-			$params = $params . "&order=" . $this->mOrder;
-		}
-		
-		if ($this->mMonth !="") {
-			$params = $params . "&month=" . $this->mMonth;
-		}
-		if ($this->mYear !="") {
-			$params = $params . "&year=" . $this->mYear;
-		}
-
-		return $params;
-	}
-
 	function performQuery()
 	{
 		if (($this->mLocationID == "") && ($this->mCounty == "") && ($this->mState == "") &&
