@@ -14,7 +14,7 @@ function globalMenu()
 	  <div><a href="./credits.php">about</a></div>
       <div>&nbsp;</div>
 	  <div><a href="./slideshow.php">slideshow</a></div>
-	  <div><a href="./chronolifelist.php">life list</a></div>
+	  <div><a href="./speciesindex.php?view=chrono">life list</a></div>
 
 <?	if (getEnableEdit())
 	{ ?>
@@ -90,8 +90,9 @@ function editLink($href)
 
 function pluralize($noun)
 {
-	if ($noun == "species")
-		return "species";
+#	if ($noun == "species")
+	if (substr( $noun, strlen( $noun ) - 7) == "species")
+		return $noun;
 	else
 		return $noun . "s";
 }
