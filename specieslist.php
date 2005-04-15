@@ -22,7 +22,6 @@ navTrailBirds();
       <div class="titleblock">
 <?    $aQuery->rightThumbnail() ?>
       <div class=pagetitle><?= $aQuery->getPageTitle() ?></div>
-<?    if (($state == 'CA') && ($year != "")) { ?><div class=metadata>See also our <a href="./chronocayearlist.php?year=<?=$year?>">California ABA Year List for <?=$year?></a></div><? } ?>
       </div>
 
 	  <div class=heading><?= $aQuery->getSpeciesCount() ?> Species</div>
