@@ -7,8 +7,9 @@ echo -n "" > testresults.txt
 baseURL="http://localhost/~walker/birdwalker2/"
 
 successURLs="\
-chronocayearlist.php?year=1999 \
-chronolifelist.php \
+speciesdetail.php?view=byyear&speciesid=11061111000 \
+yeardetail.php?view=chrono&year=1999 \
+speciesindex.php?view=chrono \
 countydetail.php?county=Santa+Clara&stateid=5 \
 countyindex.php \
 familydetail.php?family=2227 \
@@ -33,7 +34,6 @@ yeardetail.php?year=1999 \
 "
 
 failureURLs="\
-chronocayearlist.php \
 countydetail.php \
 familydetail.php \
 locationdetail.php \
@@ -47,10 +47,6 @@ statedetail.php?ssdftateid=5 \
 tripdetail.php \
 yeardetail.php \
 "
-
-log ""
-log "----------- OTHER PAGES ---------------"
-log ""
 
 echo "" > detailpages.txt
 
