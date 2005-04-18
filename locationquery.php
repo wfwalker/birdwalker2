@@ -138,15 +138,15 @@ class LocationQuery extends BirdWalkerQuery
             ORDER BY shuffle LIMIT 1");
 	}
 
-	function getPhotos()
-	{
-		return performQuery("
-          SELECT sighting.* " .
-			$this->getFromClause() . "  " .
-			$this->getWhereClause() . "
-            AND sighting.Photo='1'
-            ORDER BY sighting.TripDate DESC");
-	}
+// 	function getPhotos()
+// 	{
+// 		return performQuery("
+//           SELECT sighting.* " .
+// 			$this->getFromClause() . "  " .
+// 			$this->getWhereClause() . "
+//             AND sighting.Photo='1'
+//             ORDER BY sighting.TripDate DESC");
+// 	}
 
 	function formatTwoColumnLocationList($countyHeadingOK)
 	{

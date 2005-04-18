@@ -9,8 +9,10 @@ baseURL="http://localhost/~walker/birdwalker2/"
 successURLs="\
 speciesdetail.php?view=byyear&speciesid=11061111000 \
 yeardetail.php?view=chrono&year=1999 \
+yeardetail.php?view=photo&year=2004 \
 speciesindex.php?view=chrono \
 countydetail.php?county=Santa+Clara&stateid=5 \
+countydetail.php?view=photo&county=Santa+Clara&stateid=5 \
 countyindex.php \
 familydetail.php?family=2227 \
 index.php \

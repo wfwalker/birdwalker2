@@ -136,15 +136,15 @@ class SpeciesQuery extends BirdWalkerQuery
             ORDER BY shuffle LIMIT 1", true);
 	}
 
-	function getPhotos()
-	{
-		return performQuery("
-          SELECT sighting.* " .
-			$this->getFromClause() . "  " .
-			$this->getWhereClause() . "
-            AND sighting.Photo='1'
-            ORDER BY sighting.TripDate DESC");
-	}
+// 	function getPhotos()
+// 	{
+// 		return performQuery("
+//           SELECT sighting.* " .
+// 			$this->getFromClause() . "  " .
+// 			$this->getWhereClause() . "
+//             AND sighting.Photo='1'
+//             ORDER BY sighting.TripDate DESC");
+// 	}
 
 	function formatTwoColumnSpeciesList()
 	{
