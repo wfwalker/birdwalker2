@@ -39,7 +39,7 @@ $extrema = $locationQuery->findExtrema();
 	    <a href="./statedetail.php?view=chrono&stateid=<?= $id ?>">ABA</a> |
 	    <a href="./statedetail.php?view=speciesbymonth&stateid=<?= $id ?>">by month</a> |
 	    <a href="./statedetail.php?view=speciesbyyear&stateid=<?= $id ?>">by year</a> | 
-        <a href="./countydetail.php?view=species&view=photo&stateid=<?= $stateid ?>">photo</a><br/>
+        <a href="./statedetail.php?view=species&view=photo&stateid=<?= $id ?>">photo</a><br/>
       </div>
       </div>
 
