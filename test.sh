@@ -29,6 +29,7 @@ slideshow.php \
 speciesindex.php \
 errorcheck.php \
 statedetail.php?stateid=5 \
+statedetail.php?stateid=5&view=photo \
 stateindex.php \
 targetyearbirds.php \
 tripindex.php \

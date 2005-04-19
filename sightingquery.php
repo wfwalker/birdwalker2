@@ -94,7 +94,7 @@ class SightingQuery extends BirdWalkerQuery
 
 	function performQuery()
 	{
-		if (($this->mLocationID == "") && ($this->mCounty == "") && ($this->mState == "") &&
+		if (($this->mLocationID == "") && ($this->mCounty == "") && ($this->mStateID == "") &&
 			($this->mTripID == "") && ($this->mMonth == "") && ($this->mYear == "") &&
 			($this->mFamily == "") && ($this->mOrder == "") && ($this->mSpeciesID == ""))
 			die("No query parameters for sighting query");
@@ -107,7 +107,7 @@ class SightingQuery extends BirdWalkerQuery
 
 	function performPhotoQuery()
 	{
-		if (($this->mLocationID == "") && ($this->mCounty == "") && ($this->mState == "") &&
+		if (($this->mLocationID == "") && ($this->mCounty == "") && ($this->mStateID == "") &&
 			($this->mTripID == "") && ($this->mMonth == "") && ($this->mYear == "") &&
 			($this->mFamily == "") && ($this->mOrder == "") && ($this->mSpeciesID == ""))
 			die("No query parameters for sighting query");

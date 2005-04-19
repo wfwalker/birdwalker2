@@ -38,7 +38,8 @@ $extrema = $locationQuery->findExtrema();
         <a href="./statedetail.php?view=species&stateid=<?= $id ?>">list</a> |
 	    <a href="./statedetail.php?view=chrono&stateid=<?= $id ?>">ABA</a> |
 	    <a href="./statedetail.php?view=speciesbymonth&stateid=<?= $id ?>">by month</a> |
-	    <a href="./statedetail.php?view=speciesbyyear&stateid=<?= $id ?>">by year</a><br/>
+	    <a href="./statedetail.php?view=speciesbyyear&stateid=<?= $id ?>">by year</a> | 
+        <a href="./countydetail.php?view=species&view=photo&stateid=<?= $stateid ?>">photo</a><br/>
       </div>
       </div>
 
@@ -96,6 +97,12 @@ else if ($view == "chrono")
 	$chrono = new ChronoList;
 	$chrono->setFromRequest($_GET);
 	$chrono->draw();
+}
+elseif ($view == 'photo')
+{
+	$sightingQuery = new SightingQuery;
+	$sightingQuery->setFromRequest($_GET);
+	$sightingQuery->formatPhotos();
 }
 
 footer();
