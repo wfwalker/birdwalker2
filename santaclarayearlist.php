@@ -3,7 +3,7 @@
 
 require_once("./birdwalker.php");
 
-$theYear = param($_GET, "year", 2004);
+$theYear = param($_GET, "year", 2005);
 
 performQuery("CREATE TEMPORARY TABLE tmp ( CommonName varchar(32) default NULL, sightingCount varchar(32));");
 
@@ -24,22 +24,31 @@ navTrailBirds(); ?>
 
 <div class="titleblock">
     <div class="pagetitle">Target birds for <?= $theYear ?></div>
-	<div class=metadata><?= mysql_num_rows($latestSightingQuery) ?> santa clara year list</div>
 </div>
+
+<p>
+This page shows birds not seen this year along with their frequency rating as found in the annual Santa Clara
+year list as maintained by Bill Bousman. That list contains <?= mysql_num_rows($latestSightingQuery) ?> birds.
+
+</p>
 
 <table>
 <?php
 
+$prevInfo["Frequency"] = 1;
 while ($info = mysql_fetch_array($latestSightingQuery))
 {
 	if ($info["sightingCount"] == 0)
 	{
+		if ($prevInfo["Frequency"] != $info["Frequency"]) { ?> <tr><td colspan=2><hr></td></tr> <? }
 ?>
         <tr class=report-content>
-        <td align=right><?= $info["sightingCount"] ?></td>
+        <td><?= $info["tripdate"] ?><?= $info["Frequency"] ?></td>
         <td><?= $info["CommonName"] ?></td>
-        <td><?= $info["tripdate"] ?><?= $info["Frequency"] ?></td></tr>
+		</tr>
 <?
+		$prevInfo = $info;
+		
 	}
 }
 ?>
