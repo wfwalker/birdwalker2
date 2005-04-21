@@ -142,3 +142,5 @@ INSERT INTO location VALUES (141,'Lake Merritt','','Oakland','Alameda','CA','','
 INSERT INTO location VALUES (142,'Bair Island','','Redwood City','San Mateo','CA','','',37.53,-122.221);
 INSERT INTO location VALUES (143,'Downtown Palo Alto','','Palo Alto','Santa Clara','CA','','',37.4444,-122.159);
 INSERT INTO location VALUES (144,'Bear Creek Greenway','http://www.bearcreekgreenway.com/','Talent','Jackson','OR','','',42.2458,-122.787);
+INSERT INTO location VALUES (145,'Sabal Palm Audubon Sanctuary','','Brownsville','Cameron','TX','','',0,0);
+INSERT INTO location VALUES (146,'Laguna Atascosa NWR','','McAllen','Hidalgo','TX','','',0,0);
