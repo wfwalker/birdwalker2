@@ -144,3 +144,5 @@ INSERT INTO location VALUES (143,'Downtown Palo Alto','','Palo Alto','Santa Clar
 INSERT INTO location VALUES (144,'Bear Creek Greenway','http://www.bearcreekgreenway.com/','Talent','Jackson','OR','','',42.2458,-122.787);
 INSERT INTO location VALUES (145,'Sabal Palm Audubon Sanctuary','','Brownsville','Cameron','TX','','',0,0);
 INSERT INTO location VALUES (146,'Laguna Atascosa NWR','','McAllen','Hidalgo','TX','','',0,0);
+INSERT INTO location VALUES (147,'South Padre Island','','South Padre','Cameron','TX','','',0,0);
+INSERT INTO location VALUES (148,'Old Port Isabel Road','','Port Isabel','Cameron','TX','','',0,0);
