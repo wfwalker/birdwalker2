@@ -10708,7 +10708,7 @@ INSERT INTO sighting VALUES (10744,'larspa','South Padre Island','','','','2005-
 INSERT INTO sighting VALUES (10745,'savspa','South Padre Island','','','','2005-04-21');
 INSERT INTO sighting VALUES (10746,'linspa','South Padre Island','','','','2005-04-21');
 INSERT INTO sighting VALUES (10747,'norcar','Sabal Palm Audubon Sanctuary','','0','0','2005-04-21');
-INSERT INTO sighting VALUES (10748,'robgro','South Padre Island','female','','','2005-04-21');
+INSERT INTO sighting VALUES (10748,'robgro','South Padre Island','female','','1','2005-04-21');
 INSERT INTO sighting VALUES (10749,'indbun','South Padre Island','','','','2005-04-21');
 INSERT INTO sighting VALUES (10750,'dickci','South Padre Island','as we were leaving','','','2005-04-21');
 INSERT INTO sighting VALUES (10751,'rewbla','Sabal Palm Audubon Sanctuary','','0','0','2005-04-21');
