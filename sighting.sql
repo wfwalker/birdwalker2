@@ -10797,7 +10797,7 @@ INSERT INTO sighting VALUES (10833,'chiswi','Frontera Audubon','heard and seen',
 INSERT INTO sighting VALUES (10834,'bubhum','Santa Ana NWR','','0','0','2005-04-22');
 INSERT INTO sighting VALUES (10835,'gofwoo','Santa Ana NWR','','0','0','2005-04-22');
 INSERT INTO sighting VALUES (10836,'labwoo','Santa Ana NWR','','0','0','2005-04-22');
-INSERT INTO sighting VALUES (10837,'grekis','Santa Ana NWR','','0','0','2005-04-22');
+INSERT INTO sighting VALUES (10837,'grekis','Santa Ana NWR','','','1','2005-04-22');
 INSERT INTO sighting VALUES (10838,'coukin','Santa Ana NWR','','0','0','2005-04-22');
 INSERT INTO sighting VALUES (10839,'sctfly','Laguna Atascosa NWR','','','','2005-04-22');
 INSERT INTO sighting VALUES (10840,'logshr','Laguna Atascosa NWR','','','','2005-04-22');
