@@ -146,3 +146,6 @@ INSERT INTO location VALUES (145,'Sabal Palm Audubon Sanctuary','','Brownsville'
 INSERT INTO location VALUES (146,'Laguna Atascosa NWR','','McAllen','Hidalgo','TX','','',0,0);
 INSERT INTO location VALUES (147,'South Padre Island','','South Padre','Cameron','TX','','',0,0);
 INSERT INTO location VALUES (148,'Old Port Isabel Road','','Port Isabel','Cameron','TX','','',0,0);
+INSERT INTO location VALUES (149,'Santa Ana NWR','','McAllen','Hidalgo','TX','','',0,0);
+INSERT INTO location VALUES (150,'Los Ebanos Wetlands','http://www.losebanospreserve.com/','San Benito','Hidalgo','TX','','',0,0);
+INSERT INTO location VALUES (151,'Frontera Audubon','http://www.fronteraaudubon.org/','Weslaco','Hidalgo','TX','','',0,0);
