@@ -10876,7 +10876,7 @@ INSERT INTO sighting VALUES (10913,'caster','South Padre Island','','0','0','200
 INSERT INTO sighting VALUES (10914,'royter','South Padre Island','','0','0','2005-04-23');
 INSERT INTO sighting VALUES (10915,'santer','South Padre Island','','0','0','2005-04-23');
 INSERT INTO sighting VALUES (10916,'comter','South Padre Island','One individual observed preening in a flock of Royals and Leasts; showed dark red bill with darker tip and dark legs.','','','2005-04-23');
-INSERT INTO sighting VALUES (10917,'leater','South Padre Island','','0','0','2005-04-23');
+INSERT INTO sighting VALUES (10917,'leater','South Padre Island','','','1','2005-04-23');
 INSERT INTO sighting VALUES (10918,'blkski','South Padre Island','','0','0','2005-04-23');
 INSERT INTO sighting VALUES (10919,'rocdov','South Padre Island','','0','0','2005-04-23');
 INSERT INTO sighting VALUES (10920,'whwdov','Bentsen Rio Grande Valley State Park','','','','2005-04-23');
