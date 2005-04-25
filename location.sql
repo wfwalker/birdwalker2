@@ -150,3 +150,4 @@ INSERT INTO location VALUES (149,'Santa Ana NWR','','McAllen','Hidalgo','TX','',
 INSERT INTO location VALUES (150,'Los Ebanos Wetlands','http://www.losebanospreserve.com/','San Benito','Hidalgo','TX','','',0,0);
 INSERT INTO location VALUES (151,'Frontera Audubon','http://www.fronteraaudubon.org/','Weslaco','Hidalgo','TX','','',0,0);
 INSERT INTO location VALUES (152,'Bentsen Rio Grande Valley State Park','http://www.tpwd.state.tx.us/worldbirdingcenter/sites/mission/','Mission','Hidalgo','TX','','',26.1728,-98.3822);
+INSERT INTO location VALUES (153,'Anzalduas County Park','','McAllen','Hidalgo','TX','','',0,0);
