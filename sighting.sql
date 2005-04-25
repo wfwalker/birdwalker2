@@ -10954,7 +10954,7 @@ INSERT INTO sighting VALUES (10992,'chswar','Frontera Audubon','','0','0','2005-
 INSERT INTO sighting VALUES (10993,'btnwar','Frontera Audubon','','0','0','2005-04-24');
 INSERT INTO sighting VALUES (10994,'kenwar','Frontera Audubon','Foraging on the ground like a towhee, beautiful male individual.','','','2005-04-24');
 INSERT INTO sighting VALUES (10995,'comyel','Frontera Audubon','','0','0','2005-04-24');
-INSERT INTO sighting VALUES (10996,'canwar','Frontera Audubon','','0','0','2005-04-24');
+INSERT INTO sighting VALUES (10996,'canwar','Frontera Audubon','A kind-hearted and extremely helpful woman alerted us to a bright male individual headed our way through the very dense vegetation. The whole group got to see its distinctive black necklace and strong white eye ring.','','','2005-04-24');
 INSERT INTO sighting VALUES (10997,'yebcha','Frontera Audubon','','0','0','2005-04-24');
 INSERT INTO sighting VALUES (10998,'olispa','Frontera Audubon','','0','0','2005-04-24');
 INSERT INTO sighting VALUES (10999,'larspa','Anzalduas County Park','','','','2005-04-24');
@@ -10971,3 +10971,4 @@ INSERT INTO sighting VALUES (11009,'gryhaw','Anzalduas County Park','Adult obser
 INSERT INTO sighting VALUES (11010,'whtkit','Anzalduas County Park','','','','2005-04-24');
 INSERT INTO sighting VALUES (11011,'nrbtyr','Anzalduas County Park','','','','2005-04-24');
 INSERT INTO sighting VALUES (11012,'nobtyr','Anzalduas County Park','heard and seen in two locations on opposite sides of the dike. Clear \"bee tee tee tee\" call helped us locate the perched bird and follow it in flight. Tiny flycatcher was very active, moving constantly around trees.','','','2005-04-24');
+INSERT INTO sighting VALUES (11013,'cubthr','Frontera Audubon','','','1','2005-04-24');
