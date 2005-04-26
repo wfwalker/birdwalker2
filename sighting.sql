@@ -10854,7 +10854,7 @@ INSERT INTO sighting VALUES (10891,'categr','South Padre Island','','0','0','200
 INSERT INTO sighting VALUES (10892,'grnher','South Padre Island','','0','0','2005-04-23');
 INSERT INTO sighting VALUES (10893,'whiibi','South Padre Island','','0','0','2005-04-23');
 INSERT INTO sighting VALUES (10894,'rosspo','South Padre Island','','0','0','2005-04-23');
-INSERT INTO sighting VALUES (10895,'osprey','South Padre Island','','0','0','2005-04-23');
+INSERT INTO sighting VALUES (10895,'osprey','South Padre Island','','','1','2005-04-23');
 INSERT INTO sighting VALUES (10896,'commoo','South Padre Island','','0','0','2005-04-23');
 INSERT INTO sighting VALUES (10897,'bkbplo','South Padre Island','','0','0','2005-04-23');
 INSERT INTO sighting VALUES (10898,'wilplo','South Padre Island','','0','0','2005-04-23');
