@@ -10666,7 +10666,7 @@ INSERT INTO sighting VALUES (10702,'moudov','Sabal Palm Audubon Sanctuary','','0
 INSERT INTO sighting VALUES (10703,'incdov','Old Port Isabel Road','','','','2005-04-21');
 INSERT INTO sighting VALUES (10704,'whtdov','Sabal Palm Audubon Sanctuary','','0','0','2005-04-21');
 INSERT INTO sighting VALUES (10705,'grbani','Sabal Palm Audubon Sanctuary','','0','0','2005-04-21');
-INSERT INTO sighting VALUES (10706,'lesnig','South Padre Island','Seen both perched and flying near the convention center for five to ten minutes in broad daylight. Amazing looks.','','','2005-04-21');
+INSERT INTO sighting VALUES (10706,'lesnig','South Padre Island','Seen both perched and flying near the convention center for five to ten minutes in broad daylight. Amazing looks.','','1','2005-04-21');
 INSERT INTO sighting VALUES (10707,'bubhum','Sabal Palm Audubon Sanctuary','','0','0','2005-04-21');
 INSERT INTO sighting VALUES (10708,'rinkin','Sabal Palm Audubon Sanctuary','','0','0','2005-04-21');
 INSERT INTO sighting VALUES (10709,'gofwoo','Sabal Palm Audubon Sanctuary','','0','0','2005-04-21');
@@ -10710,7 +10710,7 @@ INSERT INTO sighting VALUES (10746,'linspa','South Padre Island','','','','2005-
 INSERT INTO sighting VALUES (10747,'norcar','Sabal Palm Audubon Sanctuary','','0','0','2005-04-21');
 INSERT INTO sighting VALUES (10748,'robgro','South Padre Island','female','','1','2005-04-21');
 INSERT INTO sighting VALUES (10749,'indbun','South Padre Island','','','','2005-04-21');
-INSERT INTO sighting VALUES (10750,'dickci','South Padre Island','as we were leaving the convention center, Steve spotted a Dickcissel perched on a low scrubby bush.  Sparrow-shaped bird with black triangular throat patch, yellow above and below the grey auricular area.','','','2005-04-21');
+INSERT INTO sighting VALUES (10750,'dickci','South Padre Island','as we were leaving the convention center, Steve spotted a Dickcissel perched on a low scrubby bush.  Sparrow-shaped bird with black triangular throat patch, yellow above and below the grey auricular area.','','1','2005-04-21');
 INSERT INTO sighting VALUES (10751,'rewbla','Sabal Palm Audubon Sanctuary','','0','0','2005-04-21');
 INSERT INTO sighting VALUES (10752,'easmea','Old Port Isabel Road','','','','2005-04-21');
 INSERT INTO sighting VALUES (10753,'grtgra','Sabal Palm Audubon Sanctuary','','0','0','2005-04-21');
