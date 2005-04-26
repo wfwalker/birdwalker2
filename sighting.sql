@@ -10665,7 +10665,7 @@ INSERT INTO sighting VALUES (10701,'whwdov','Sabal Palm Audubon Sanctuary','','0
 INSERT INTO sighting VALUES (10702,'moudov','Sabal Palm Audubon Sanctuary','','0','0','2005-04-21');
 INSERT INTO sighting VALUES (10703,'incdov','Old Port Isabel Road','','','','2005-04-21');
 INSERT INTO sighting VALUES (10704,'whtdov','Sabal Palm Audubon Sanctuary','','0','0','2005-04-21');
-INSERT INTO sighting VALUES (10705,'grbani','Sabal Palm Audubon Sanctuary','','0','0','2005-04-21');
+INSERT INTO sighting VALUES (10705,'grbani','Sabal Palm Audubon Sanctuary','','','1','2005-04-21');
 INSERT INTO sighting VALUES (10706,'lesnig','South Padre Island','Seen both perched and flying near the convention center for five to ten minutes in broad daylight. Amazing looks.','','1','2005-04-21');
 INSERT INTO sighting VALUES (10707,'bubhum','Sabal Palm Audubon Sanctuary','','0','0','2005-04-21');
 INSERT INTO sighting VALUES (10708,'rinkin','Sabal Palm Audubon Sanctuary','','0','0','2005-04-21');
