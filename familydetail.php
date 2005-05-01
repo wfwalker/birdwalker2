@@ -33,13 +33,13 @@ $prevFamily = performCount("
 htmlHead($familyInfo["LatinName"]);
 
 globalMenu();
-browseButtons("./familydetail.php?view=".$view."&family=", $familyid, $firstFamily, $prevFamily, $nextFamily, $lastFamily);
-$items[] = "<a href=\"./orderdetail.php?order=" . $orderInfo["objectid"] / pow(10, 9) . "\">" . strtolower($orderInfo["LatinName"]) . "</a>";
+$items[] = "<a href=\"./orderdetail.php?orderid=" . round($orderInfo["objectid"] / pow(10, 9)) . "\">" . strtolower($orderInfo["LatinName"]) . "</a>";
 navTrailBirds($items);
  ?>
 
     <div class=contentright>
-      <div class=pagesubtitle>Family Detail</div>
+	<? browseButtons("Family Detail", "./familydetail.php?view=".$view."&family=", $familyid, $firstFamily, $prevFamily, $nextFamily, $lastFamily); ?>
+
 	  <div class="titleblock">
 	    <div class=pagetitle><?= $familyInfo["CommonName"] ?></div>
         <div class=metadata><?= $familyInfo["LatinName"] ?></div>

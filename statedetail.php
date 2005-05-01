@@ -14,7 +14,6 @@ $info = getStateInfo($id);
 htmlHead($info["Name"]);
 
 globalMenu();
-stateBrowseButtons($id, $view);
 navTrailLocations();
 
 $locationQuery = new LocationQuery;
@@ -24,7 +23,7 @@ $extrema = $locationQuery->findExtrema();
 ?>
 
     <div class=contentright>
-      <div class="pagesubtitle">State Detail</div>
+      <? stateBrowseButtons($id, $view); ?>
       <div class="titleblock">	  
 <?    if ($view != "map") rightThumbnailState($info["Abbreviation"]); ?>
 	  <div class=pagetitle><?= $info["Name"] ?></div>

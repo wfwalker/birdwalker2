@@ -10,7 +10,6 @@ $randomPhotoSightings = performQuery("SELECT *, " . dailyRandomSeedColumn() . " 
 htmlHead("Home");
 
 globalMenu();
-disabledBrowseButtons();
 ?>
 
     <div class=contentright>

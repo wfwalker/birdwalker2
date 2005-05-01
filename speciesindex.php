@@ -11,7 +11,6 @@ $view = param($_GET, "view", "");
 htmlHead("Species");
 
 globalMenu();
-disabledBrowseButtons();
 navTrailBirds();
 ?>
 

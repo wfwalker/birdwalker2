@@ -11,7 +11,6 @@ htmlHead("About");
 globalMenu();
 $items[] = "about";
 navTrail($items);
-disabledBrowseButtons();
 ?>
 
     <div class=contentright>

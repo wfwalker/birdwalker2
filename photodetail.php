@@ -33,12 +33,11 @@ if ($prevPhotoID == "") { $prevPhotoID = $sightingID; }
 htmlHead($speciesInfo["CommonName"] . ", " . $tripInfo["niceDate"]);
 
 globalMenu();
-browseButtons("./photodetail.php?id=", $sightingID, $firstPhotoID, $prevPhotoID, $nextPhotoID, $lastPhotoID);
 navTrailPhotos();
 ?>
 
 <div class="contentright">
-  <div class=pagesubtitle>Photo Detail</div>
+  <? browseButtons("Photo Detail", "./photodetail.php?id=", $sightingID, $firstPhotoID, $prevPhotoID, $nextPhotoID, $lastPhotoID); ?>
 
   <div class="titleblock">
 	  <div class=pagetitle>
@@ -49,7 +48,7 @@ navTrailPhotos();
           <a href="./locationdetail.php?locationid=<?= $locationInfo["objectid"] ?>"><?= $locationInfo["Name"] ?>, <?= $locationInfo["State"] ?></a><br/>
           <a href="./tripdetail.php?tripid=<?= $tripInfo["objectid"] ?>"><?= $tripInfo["niceDate"] ?></a>
       </div>
-</div>
+  </div>
 
 <?  if ($sightingInfo["Photo"] == "1")
     {

@@ -9,7 +9,6 @@ $photoSpeciesCount = performCount("select count(distinct(sighting.SpeciesAbbrevi
 htmlHead("Photo List");
 
 globalMenu();
-disabledBrowseButtons();
 navTrailPhotos();
 ?>
 

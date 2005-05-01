@@ -12,7 +12,6 @@ $extrema = $locationQuery->findExtrema();
 htmlHead("Locations");
 
 globalMenu();
-disabledBrowseButtons();
 navTrailLocations();
 ?>
 

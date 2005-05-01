@@ -15,7 +15,6 @@ $view = param($_GET, "view", "species");
 htmlHead($county . " County");
 
 globalMenu();
-disabledBrowseButtons();
 
 $stateInfo = getStateInfo($stateid);
 $stateName = $stateInfo["Name"];
@@ -30,7 +29,7 @@ $extrema = $locationQuery->findExtrema();
 ?>
 
     <div class=contentright>
-	  <div class=pagesubtitle>County Detail</div>
+	<? disabledBrowseButtons("County Detail"); ?>
       <div class="titleblock">	  
 <?    if (($view != "map") && ($view != "photo")) { rightThumbnailCounty($county); } ?>
 	  <div class=pagetitle> <?= $county ?> County</div>

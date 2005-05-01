@@ -20,7 +20,6 @@ htmlHead("This Week in Birding History");
 globalMenu();
 $items[] = "";
 navTrail($items);
-disabledBrowseButtons();
 ?>
 
     <div class="contentright">

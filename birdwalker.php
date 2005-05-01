@@ -113,39 +113,37 @@ function doubleCountHeading($number1, $name1, $number2, $name2)
 ?>   </div> <?
 }
 
-function disabledBrowseButtons()
+function disabledBrowseButtons($pageKind)
 {
-	browseButtons("", 0, 0, 0, 0, 0);
+	browseButtons($pageKind, "", 0, 0, 0, 0, 0);
 }
 
 
-function browseButtons($urlPrefix, $current, $first, $prev, $next, $last)
-{ ?>
-   <div class="navigationleft">
+function browseButtons($pageKind, $urlPrefix, $current, $first, $prev, $next, $last)
+{
+?>  <span class="pagesubtitle"> <?
 
-<?	if ($current == $first)
-	{ ?>
-        <img name="first" border="0" src="./images/first.gif" alt="first"/>
-        <img name="prev" border="0" src="./images/prev.gif" alt="prev"/>
-<?	}
+	if ($current == $first)
+	{
+        ?><img name="first" border="0" src="./images/first.gif" alt="first"/><img name="prev" border="0" src="./images/prev.gif" alt="prev"/><?
+	}
 	else
-	{ ?>
-        <a href="<?= $urlPrefix . $first ?>"><img name="first" border="0" src="./images/first_hilite.gif" alt="first"/></a>
-        <a href="<?= $urlPrefix . $prev ?>"><img name="prev" border="0" src="./images/prev_hilite.gif" alt="prev"/></a>
-<?	}
+	{
+        ?><a href="<?= $urlPrefix . $first ?>"><img name="first" border="0" src="./images/first_hilite.gif" alt="first"/></a><a href="<?= $urlPrefix . $prev ?>"><img name="prev" border="0" src="./images/prev_hilite.gif" alt="prev"/></a><?
+	}
 
 	if ($current == $last)
-	{?>
-        <img name="next" border="0" src="./images/next.gif" alt="next"/>
-        <img name="last" border="0" src="./images/last.gif" alt="last"/>
-<?	}
+	{
+        ?><img name="next" border="0" src="./images/next.gif" alt="next"/><img name="last" border="0" src="./images/last.gif" alt="last"/><?
+	}
 	else
-	{ ?> 
-        <a href="<?= $urlPrefix . $next ?>"><img name="next" border="0" src="./images/next_hilite.gif" alt="next"/></a>
-        <a href="<?= $urlPrefix . $last ?>"><img name="last" border="0" src="./images/last_hilite.gif" alt="last"/></a>
-<?	} ?>
-	</div>
-<?
+	{
+        ?><a href="<?= $urlPrefix . $next ?>"><img name="next" border="0" src="./images/next_hilite.gif" alt="next"/></a><a href="<?= $urlPrefix . $last ?>"><img name="last" border="0" src="./images/last_hilite.gif" alt="last"/></a><?
+	}
+
+    echo " " . $pageKind;
+
+?>  </span> <?
 }
 
 function referenceURL($info)
@@ -249,7 +247,7 @@ function navTrailTrips($extra = "")
 
 function navTrail($extra)
 { ?>
-	<div class=navigationright><a href="./index.php">birdWalker</a>
+	<div class="navigationright"><a href="./index.php">birdWalker</a>
 
 <?	foreach ($extra as $item)
 	{
@@ -259,7 +257,7 @@ function navTrail($extra)
 <?		}
 	} ?>
 
-	</div>
+    </div>
 <?
 }
 
@@ -485,8 +483,8 @@ function navTrailSpecies($speciesID)
 	$orderInfo = getOrderInfo($speciesID);
 	$familyInfo = getFamilyInfo($speciesID);
 
-	$items[] = "<a href=\"./orderdetail.php?order=" . $orderInfo["objectid"] / pow(10, 9) . "\">" . strtolower($orderInfo["LatinName"]) . "</a>";
-	$items[] = "<a href=\"./familydetail.php?family=" . $familyInfo["objectid"] / pow(10, 7) . "\">" . strtolower($familyInfo["LatinName"]) . "</a>";
+	$items[] = "<a href=\"./orderdetail.php?orderid=" . round($orderInfo["objectid"] / pow(10, 9)) . "\">" . strtolower($orderInfo["LatinName"]) . "</a>";
+	$items[] = "<a href=\"./familydetail.php?family=" . round($familyInfo["objectid"] / pow(10, 7)) . "\">" . strtolower($familyInfo["LatinName"]) . "</a>";
 	//	$items[] = strtolower($speciesInfo["CommonName"]);
 	navTrailBirds($items);
 }
@@ -514,7 +512,7 @@ function speciesBrowseButtons($url, $speciesID, $viewMode)
       WHERE sighting.SpeciesAbbreviation=species.Abbreviation
       AND species.objectid<" . $speciesID . " LIMIT 1");
 
-	browseButtons($url . "?view=" . $viewMode . "&speciesid=", $speciesID,
+	browseButtons("Species Detail", $url . "?view=" . $viewMode . "&speciesid=", $speciesID,
 				  $firstSpeciesID, $prevSpeciesID, $nextSpeciesID, $lastSpeciesID);
 }
 
@@ -908,7 +906,7 @@ function getFamilyDetailLinkFromSpeciesID($speciesid)
  */
 function getOrderInfo($objectid)
 {
-	return getTaxonomyInfo($objectid, 9);
+	return getTaxonomyInfo($objectid, 10);
 }
 
 /**
@@ -966,7 +964,7 @@ function tripBrowseButtons($url, $tripID, $viewMode)
 	if ($nextTripID == "") { $nextTripID = $sightingID; }
 	if ($prevTripID == "") { $prevTripID = $sightingID; }
 
-	browseButtons($url . "?view=" . $viewMode . "&tripid=", $tripID,
+	browseButtons("Trip Detail", $url . "?view=" . $viewMode . "&tripid=", $tripID,
 				  $firstTripID, $prevTripID, $nextTripID, $lastTripID);
 }
 
@@ -1047,7 +1045,7 @@ function locationBrowseButtons($url, $locationID, $viewMode)
         WHERE CONCAT(State,County,Name) < '" . $siteInfo["State"] . $siteInfo["County"] . $siteInfo["Name"] . "'
         ORDER BY CONCAT(State,County,Name) DESC LIMIT 1");
 
-	browseButtons($url . "?view=" . $viewMode . "&locationid=", $locationID,
+	browseButtons("Location Detail", $url . "?view=" . $viewMode . "&locationid=", $locationID,
 				  $firstLocationID, $prevLocationID, $nextLocationID, $lastLocationID);
 }
 
@@ -1081,7 +1079,7 @@ function stateBrowseButtons($stateID, $viewMode)
       FROM state, sighting, location
       WHERE sighting.LocationName=location.Name AND location.State=state.Abbreviation and state.objectid<" . $stateID . " LIMIT 1");
 
-	browseButtons("./statedetail.php?view=" . $viewMode . "&stateid=", $stateID,
+	browseButtons("State Detail", "./statedetail.php?view=" . $viewMode . "&stateid=", $stateID,
 				  $firstStateID, $prevStateID, $nextStateID, $lastStateID);
 
 }

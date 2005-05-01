@@ -9,7 +9,6 @@ $tripQuery = new TripQuery;
 htmlHead("Trips");
 
 globalMenu();
-disabledBrowseButtons();
 navTrailTrips("");
 ?>
 

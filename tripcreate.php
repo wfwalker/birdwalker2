@@ -21,7 +21,9 @@ $tripID = performCount("select max(objectid) from trip;");
 
 htmlHead("Create a trip");
 
-globalMenu(); disabledBrowseButtons(); navTrailTrips(); ?>
+globalMenu();
+navTrailTrips();
+?>
 
 <div class="contentright">
   <div class="titleblock">

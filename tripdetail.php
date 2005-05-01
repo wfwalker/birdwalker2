@@ -38,7 +38,6 @@ while($sightingInfo = mysql_fetch_array($tripSightings)) {
 htmlHead( $tripInfo["Name"]);
 
 globalMenu();
-tripBrowseButtons("./tripdetail.php", $tripID, $view);
 $items[] = "<a href=\"./tripindex.php#" . $tripYear . "\">" . $tripYear . "</a>";
 $items[] = "<a href=\"./monthdetail.php?view=trip&year=" . $tripYear . "&month=" . $tripMonth . "\">" . strtolower(getMonthNameForNumber($tripMonth)) . "</a>";
 navTrailTrips($items);
@@ -46,7 +45,7 @@ navTrailTrips($items);
 
 
     <div class="contentright">
-      <div class=pagesubtitle>Trip Detail</div>
+      <? tripBrowseButtons("./tripdetail.php", $tripID, $view); ?>
 
 	  <div class=titleblock>
 

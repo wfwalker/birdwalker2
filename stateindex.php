@@ -31,7 +31,6 @@ while ($info = mysql_fetch_array($stateStats))
 htmlHead("States");
 
 globalMenu();
-disabledBrowseButtons();
 navTrailLocations();
 ?>
 

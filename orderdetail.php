@@ -9,7 +9,7 @@ require_once("./chronolist.php");
 
 $view = param($_GET, "view", "species");
 
-$orderid = reqParam($_GET, "order");
+$orderid = reqParam($_GET, "orderid");
 
 $speciesQuery = new SpeciesQuery;
 $speciesQuery->setOrder($orderid);
@@ -19,14 +19,13 @@ $orderInfo = getOrderInfo($orderid * pow(10, 9));
 htmlHead($orderInfo["LatinName"]);
 
 globalMenu();
-disabledBrowseButtons();
-browseButtons("./orderdetail.php?view=" . $view . "&order=", $orderid, 1, $orderid - 1, $orderid + 1, $orderCount);
 $items[] = strtolower($orderInfo["LatinName"]);
 navTrailBirds($items);
 ?>
 
     <div class=contentright>
-      <div class=pagesubtitle>Order Detail</div>
+	<? browseButtons("Order Detail", "./orderdetail.php?view=" . $view . "&orderid=", $orderid, 1, $orderid - 1, $orderid + 1, 22); ?>
+
 	  <div class="titleblock">
         <div class=pagetitle><?= $orderInfo["CommonName"] ?></div>
         <div class=metadata> <?= $orderInfo["LatinName"] ?></div>

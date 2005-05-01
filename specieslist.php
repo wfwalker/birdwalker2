@@ -14,7 +14,6 @@ $view = param($_GET, "view", "list");
 htmlHead($aQuery->getPageTitle());
 
 globalMenu();
-disabledBrowseButtons();
 navTrailBirds();
 ?>
 

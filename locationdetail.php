@@ -30,12 +30,11 @@ while($sightingInfo = mysql_fetch_array($locationSightings)) {
 htmlHead($siteInfo["Name"]);
 
 globalMenu();
-locationBrowseButtons("./locationdetail.php", $locationID, $view);
 navTrailLocationDetail($siteInfo);
 ?>
 
 <div class="contentright">
-  <div class="pagesubtitle">Location Detail</div>
+  <? locationBrowseButtons("./locationdetail.php", $locationID, $view); ?>
   <div class="titleblock">
 <?  if (($view != "map") && ($view != "photo")) { rightThumbnailLocation($siteInfo["Name"]); } ?>
     <div class=pagetitle>

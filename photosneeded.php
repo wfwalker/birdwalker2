@@ -19,7 +19,6 @@ $speciesCount = 0;
 htmlHead("Birds in need of photos");
 
 globalMenu();
-disabledBrowseButtons();
 navTrailPhotos("missing");
 ?>
 

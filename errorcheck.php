@@ -28,7 +28,6 @@ $missingLatLong = performQuery("
 htmlHead("Bad Records");
 
 globalMenu();
-disabledBrowseButtons();
 navTrailBirds();
 ?>
 

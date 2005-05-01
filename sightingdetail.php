@@ -14,16 +14,16 @@ $sightingCount = performCount("select max(objectid) from sighting");
 htmlHead($speciesInfo["CommonName"] . ", " . $tripInfo["niceDate"]);
 
 globalMenu();
-browseButtons("./sightingdetail.php?id=", $sightingID, 1, $sightingID - 1, $sightingID + 1, $sightingCount);
 navTrailBirds();
 ?>
 
 <div class="contentright">
-<div class="titleblock">
+  <? browseButtons( $tripInfo["niceDate"], "./sightingdetail.php?id=", $sightingID, 1, $sightingID - 1, $sightingID + 1, $sightingCount); ?>
+  <div class="titleblock">
 	  <div class=pagetitle> <?= $speciesInfo["CommonName"] ?></div>
-      <div class=pagesubtitle><?= $tripInfo["niceDate"] ?></div>
+
       <div class=metadata><?= $locationInfo["County"] ?> County, <?= getStateNameForAbbreviation($locationInfo["State"]) ?></div>
-</div>
+  </div>
 
 
 <table class=report-content width=100%>

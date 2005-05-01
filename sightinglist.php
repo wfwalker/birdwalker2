@@ -11,7 +11,6 @@ $dbQuery = $sightingQuery->performQuery();
 htmlHead($sightingQuery->getPageTitle());
 
 globalMenu();
-disabledBrowseButtons();
 navTrailBirds();
 ?>
 

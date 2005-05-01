@@ -15,7 +15,6 @@ $photoCount = performCount("
 htmlHead("Photo List");
 
 globalMenu();
-disabledBrowseButtons();
 navTrailPhotos();
 ?>
 

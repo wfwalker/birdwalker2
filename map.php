@@ -257,7 +257,7 @@ class Map
 
 					 <?=  $this->linkToSelf($mylat, $mylong, $this->mScale * 0.5,
 									   $this->mBackground,
-									   $info["Name"][0] . $info["Name"][1] . "<span>" . $info["Name"] . "</span>",
+									   "+<span>" . $info["Name"] . "</span>",
 									   "info"); ?>
 			   </div>
 <?

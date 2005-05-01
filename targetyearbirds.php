@@ -28,7 +28,6 @@ $sightingThreshold = 10;
 htmlHead("Target CA Year Birds");
 
 globalMenu();
-disabledBrowseButtons();
 navTrailBirds();
 ?>
 

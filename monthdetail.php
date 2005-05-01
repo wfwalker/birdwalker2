@@ -28,14 +28,14 @@ $prev = "year=" . $prevYear . "&month=" . $prevMonth;
 $first = "year=" . getEarliestYear() . "&month=1";
 $last = "year=" . getLatestYear() . "&month=12";
 
-browseButtons("./monthdetail.php?view=" . $view . "&", $current, $first, $prev, $next, $last);
+
 
 $items[] = "<a href=\"./tripindex.php#" . $year . "\">" . $year . "</a>";
 navTrailTrips($items);
 ?>
 
     <div class=contentright>
-      <div class="pagesubtitle">Month Detail</div>
+	  <? browseButtons("Month Detail", "./monthdetail.php?view=" . $view . "&", $current, $first, $prev, $next, $last); ?>
       <div class="titleblock">	  
         <div class=pagetitle><?= getMonthNameForNumber($month) ?>, <a href="./yeardetail.php?year=<?= $year ?>"><?= $year ?></a></div>
           <div class=metadata>

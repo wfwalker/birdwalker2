@@ -55,7 +55,7 @@ echo "" > detailpages.txt
 
 for successURL in $successURLs; do
 	curl -s $baseURL$successURL > detail.html
-	egrep "(404 Not Found|mysql|Fatal error|Parse error)" detail.html >> testresults.txt
+	egrep "(404 Not Found|mysql|Fatal error|Parse error|Warning)" detail.html >> testresults.txt
 	ec=$?
 
 	tidy -e detail.html > /dev/null 2>> testresults.txt

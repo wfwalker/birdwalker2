@@ -18,12 +18,11 @@ $speciesQuery->setFromRequest($_GET);
 htmlHead($year);
 
 globalMenu();
-browseButtons("./yeardetail.php?view=" . $view . "&year=", $year, getEarliestYear(), $year - 1, $year + 1, getLatestYear());
 navTrailBirds();
 ?>
 
     <div class=contentright>
-      <div class="pagesubtitle">Year Detail</div>
+	<? browseButtons("Year Detail", "./yeardetail.php?view=" . $view . "&year=", $year, getEarliestYear(), $year - 1, $year + 1, getLatestYear()); ?>
       <div class="titleblock">	  
 <?    if ($view != "map")
          rightThumbnail("

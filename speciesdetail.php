@@ -25,14 +25,13 @@ if ($view != "photo")
 }
 
 htmlHead($speciesInfo["CommonName"]);
-
 globalMenu();
-speciesBrowseButtons("./speciesdetail.php", $speciesID, $view);
 navTrailSpecies($speciesID);
 ?>
 
   <div class=contentright>
-    <div class="pagesubtitle">Species Detail</div>
+    <? speciesBrowseButtons("./speciesdetail.php", $speciesID, $view); ?>
+
 	<div class="titleblock">
 <?    if (($view != "map") && ($view != "photo")) { rightThumbnailSpecies($speciesInfo["Abbreviation"]); } ?>
       <div class="pagetitle">

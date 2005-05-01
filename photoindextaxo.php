@@ -16,7 +16,6 @@ $thresholdTime = strtotime("-1 month");
 htmlHead("Photo List");
 
 globalMenu();
-disabledBrowseButtons();
 navTrailPhotos();
 ?>
 
