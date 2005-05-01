@@ -10627,7 +10627,7 @@ INSERT INTO sighting VALUES (10663,'triher','Sabal Palm Audubon Sanctuary','','0
 INSERT INTO sighting VALUES (10664,'redegr','South Padre Island','Both red and white morphs were seen.','','','2005-04-21');
 INSERT INTO sighting VALUES (10665,'categr','Sabal Palm Audubon Sanctuary','','0','0','2005-04-21');
 INSERT INTO sighting VALUES (10666,'grnher','Sabal Palm Audubon Sanctuary','','0','0','2005-04-21');
-INSERT INTO sighting VALUES (10667,'ycnher','Sabal Palm Audubon Sanctuary','Following the immature seen at Sabal Palm, and adult bird was seen at South Padre Island convention center boardwalk, showing many unusual preening poses.','','','2005-04-21');
+INSERT INTO sighting VALUES (10667,'ycnher','Sabal Palm Audubon Sanctuary','Following the immature seen at Sabal Palm, and adult bird was seen at South Padre Island convention center boardwalk, showing many unusual preening poses.','','1','2005-04-21');
 INSERT INTO sighting VALUES (10668,'bcnher','Sabal Palm Audubon Sanctuary','','0','0','2005-04-21');
 INSERT INTO sighting VALUES (10669,'blkvul','Sabal Palm Audubon Sanctuary','','0','0','2005-04-21');
 INSERT INTO sighting VALUES (10670,'turvul','Sabal Palm Audubon Sanctuary','','0','0','2005-04-21');
@@ -10867,10 +10867,10 @@ INSERT INTO sighting VALUES (10904,'sptsan','South Padre Island','','0','0','200
 INSERT INTO sighting VALUES (10905,'whimbr','South Padre Island','','0','0','2005-04-23');
 INSERT INTO sighting VALUES (10906,'lobcur','South Padre Island','','0','0','2005-04-23');
 INSERT INTO sighting VALUES (10907,'rudtur','South Padre Island','','0','0','2005-04-23');
-INSERT INTO sighting VALUES (10908,'sander','South Padre Island','','0','0','2005-04-23');
+INSERT INTO sighting VALUES (10908,'sander','South Padre Island','','','1','2005-04-23');
 INSERT INTO sighting VALUES (10909,'dunlin','South Padre Island','','0','0','2005-04-23');
 INSERT INTO sighting VALUES (10910,'laugul','South Padre Island','','','1','2005-04-23');
-INSERT INTO sighting VALUES (10911,'fragul','South Padre Island','','0','0','2005-04-23');
+INSERT INTO sighting VALUES (10911,'fragul','South Padre Island','','','1','2005-04-23');
 INSERT INTO sighting VALUES (10912,'gubter','South Padre Island','','0','0','2005-04-23');
 INSERT INTO sighting VALUES (10913,'caster','South Padre Island','','0','0','2005-04-23');
 INSERT INTO sighting VALUES (10914,'royter','South Padre Island','','0','0','2005-04-23');
