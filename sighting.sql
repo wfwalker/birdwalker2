@@ -10976,3 +10976,9 @@ INSERT INTO sighting VALUES (11014,'clcrob','Anzalduas County Park','','','1','2
 INSERT INTO sighting VALUES (11015,'bawwar','Frontera Audubon','','','','2005-04-24');
 INSERT INTO sighting VALUES (11016,'clcrob','Bentsen Rio Grande Valley State Park','','','','2005-04-23');
 INSERT INTO sighting VALUES (11017,'veery','Frontera Audubon','','','','2005-04-24');
+INSERT INTO sighting VALUES (11018,'houfin','2138 King Court','','0','0','2005-04-30');
+INSERT INTO sighting VALUES (11019,'mallar','2138 King Court','','0','0','2005-04-30');
+INSERT INTO sighting VALUES (11020,'swathr','2138 King Court','','0','0','2005-04-30');
+INSERT INTO sighting VALUES (11021,'bushti','2138 King Court','','0','0','2005-04-30');
+INSERT INTO sighting VALUES (11022,'chbchi','2138 King Court','','0','0','2005-04-30');
+INSERT INTO sighting VALUES (11023,'normoc','2138 King Court','','0','0','2005-04-30');
