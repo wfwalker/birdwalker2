@@ -31,15 +31,15 @@ navTrailBirds($items);
         <div class=metadata> <?= $orderInfo["LatinName"] ?></div>
         <div class=metadata>
           locations:
-            <a href="./orderdetail.php?view=locations&order=<?= $orderid ?>">list</a> |
-            <a href="./orderdetail.php?view=locationsbymonth&order=<?= $orderid ?>">by month</a> |
-	        <a href="./orderdetail.php?view=locationsbyyear&order=<?= $orderid ?>">by year</a> |
-	        <a href="./orderdetail.php?view=map&order=<?= $orderid ?>">map</a> <br/>
+            <a href="./orderdetail.php?view=locations&orderid=<?= $orderid ?>">list</a> |
+            <a href="./orderdetail.php?view=locationsbymonth&orderid=<?= $orderid ?>">by month</a> |
+	        <a href="./orderdetail.php?view=locationsbyyear&orderid=<?= $orderid ?>">by year</a> |
+	        <a href="./orderdetail.php?view=map&orderid=<?= $orderid ?>">map</a> <br/>
           species:	
-            <a href="./orderdetail.php?view=species&order=<?= $orderid ?>">list</a> |
-	        <a href="./orderdetail.php?view=chrono&order=<?= $orderid ?>">ABA</a> |
-	        <a href="./orderdetail.php?view=speciesbymonth&order=<?= $orderid ?>">by month</a> |
-	        <a href="./orderdetail.php?view=speciesbyyear&order=<?= $orderid ?>">by year</a><br/>
+            <a href="./orderdetail.php?view=species&orderid=<?= $orderid ?>">list</a> |
+	        <a href="./orderdetail.php?view=chrono&orderid=<?= $orderid ?>">ABA</a> |
+	        <a href="./orderdetail.php?view=speciesbymonth&orderid=<?= $orderid ?>">by month</a> |
+	        <a href="./orderdetail.php?view=speciesbyyear&orderid=<?= $orderid ?>">by year</a><br/>
 	    </div>
       </div>
 

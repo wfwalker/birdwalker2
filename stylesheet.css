@@ -3,7 +3,9 @@
 {
     font: 9pt "Gill Sans", "Gill Sans MT", SansSerif;
 	left: 2%; top: 18px;
-	padding: 10px;
+	padding-top: 50px;
+	padding-left: 10px;
+	padding-right: 10px;
 	border-left: 5px solid #eaeaea;
 	border-right: 5px solid #eaeaea;
 	background: #f0f0f0;
