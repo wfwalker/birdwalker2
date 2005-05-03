@@ -235,7 +235,7 @@ function navTrailLocations($extra = "")
 
 function navTrailPhotos($extra = "")
 {
-	$photoItems[] = "photos";
+	$photoItems[] = "<a href=\"./photoindex.php\">photos</a>";
 	navTrail(array_merge($photoItems, $extra));
 }
 
