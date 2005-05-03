@@ -65,17 +65,17 @@ navTrailPhotos();
 <?  }
 
     if (strlen($tripInfo["Notes"]) > 0) { ?>
-        <div class=heading>Trip: <?= $tripInfo["Name"] ?></div>
+        <div class=heading>Trip: <a href="./tripdetail.php?tripid=<?= $tripInfo["objectid"] ?>"><?= $tripInfo["Name"] ?></a></div>
         <p class=report-content><?= $tripInfo["Notes"] ?></p>
 <?  }
 
     if (strlen($locationInfo["Notes"]) > 0) { ?>
-	    <div class=heading>Location: <?= $locationInfo["Name"] ?></div>
+	    <div class=heading>Location: <a href="./locationdetail.php?locationid=<?= $locationInfo["objectid"] ?>"><?= $locationInfo["Name"] ?></a></div>
         <p class=report-content><?= $locationInfo["Notes"] ?></p>
 <?  }
 
     if (strlen($speciesInfo["Notes"]) > 0) { ?>
-	    <div class=heading>Species: <?= $speciesInfo["CommonName"] ?></div>
+	    <div class=heading>Species: <a href="./speciesdetail.php?speciesid=<?= $speciesInfo["objectid"] ?>"><?= $speciesInfo["CommonName"] ?></a></div>
 	    <p class=report-content><?= $speciesInfo["Notes"] ?></p>
 <?  }
 
