@@ -17,7 +17,7 @@ INSERT INTO location VALUES (16,'Carmel','','Carmel','Monterey','CA','','',36.55
 INSERT INTO location VALUES (17,'Carmel River','','Carmel','Monterey','CA','','',36.5361,-121.927);
 INSERT INTO location VALUES (18,'Champaign County','','Champaign','Champaign','IL','Our ancestral home.','Unknown',40.113,-88.2649);
 INSERT INTO location VALUES (19,'Charleston Slough','http://www.calmanac.com/paw/paonline/things_do/baylands.shtml','Palo Alto','Santa Clara','CA','Our most visited and most productive site. Includes the adjacent Shoreline Lake.','mapblast',37.461,-122.115);
-INSERT INTO location VALUES (20,'Chesboro Reservoir','','Morgan Hill','Santa Clara','CA','','',37.1158,-121.692);
+INSERT INTO location VALUES (20,'Chesbro Reservoir','','Morgan Hill','Santa Clara','CA','','',37.1158,-121.692);
 INSERT INTO location VALUES (21,'Chez Frankel','','Big Sur','Monterey','CA','Between Gorda and Ragged Point','WGS 84',35.8382,-121.399);
 INSERT INTO location VALUES (22,'China Camp State Park','','San Rafael','Marin','CA','','',38.0011,-122.461);
 INSERT INTO location VALUES (23,'Cleveland National Forest','','Julian','San Diego','CA','','',33.3,-116.8);
