@@ -46,7 +46,7 @@ INSERT INTO location VALUES (45,'Henry Coe State Park','','San Jose','Santa Clar
 INSERT INTO location VALUES (46,'House of Ted','','Palo Alto','Santa Clara','CA','Our friend Pat introduced us to his friend Ted in Palo Alto. Ted has a lovely wooded yard with bird feeders. He attracts an interesting combination of birds I don\'t think of as backyard birds.','',0,0);
 INSERT INTO location VALUES (47,'Humboldt County','','Arcata','Humboldt','CA','','',40.6667,-123.917);
 INSERT INTO location VALUES (48,'Lake Merced','','San Francisco','San Francisco','CA','','',37.7256,-122.498);
-INSERT INTO location VALUES (49,'Las Galinas Sewage Ponds','','San Rafael','Marin','CA','','',38.0256,-122.516);
+INSERT INTO location VALUES (49,'Las Gallinas Sewage Ponds','','San Rafael','Marin','CA','','',38.0256,-122.516);
 INSERT INTO location VALUES (50,'Lithia Park','','Ashland','Jefferson','OR','','NAD-27',42.1876,-122.686);
 INSERT INTO location VALUES (51,'Los Alamitos Water Recharge Pond','','San Jose','Santa Clara','CA','','',37.2458,-121.871);
 INSERT INTO location VALUES (52,'Lower Klamath NWR','http://www.klamathnwr.org/lowerklamath.html','Tulelake','Siskiyou','CA','','mapblast',41.9542,-121.475);
