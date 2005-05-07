@@ -36,9 +36,18 @@ navTrailPhotos();
 <tr valign=top><td width="50%" class=report-content>
 
 <?  while($info = mysql_fetch_array($photoLocations))
-    { ?>
+    {
+		if (($prevInfo["State"] != $info["State"]) || ($prevInfo["County"] != $info["County"])) 
+		{ ?>
+          <div class=subheading><?
+		  if ($prevInfo["State"] != $info["State"]) { echo getStateNameForAbbreviation($info["State"]) . ", "; }
+		  if ($prevInfo["County"] != $info["County"]) { echo $info["County"] . " County"; } ?>
+          </div>
+<?      } ?>
+
         <div><a href="./locationdetail.php?view=photo&locationid=<?= $info["objectid"] ?>"><?= $info["Name"] ?></a> (<?= $info["photoCount"] ?>)</div>
-<?  }
+<?      $prevInfo = $info;
+    }
 
 footer();
 ?>

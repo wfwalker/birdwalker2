@@ -781,13 +781,16 @@ function formatLocationByYearTable($locationQuery, $urlPrefix, $countyHeadingsOK
 	{
 		$theMask = $info["mask"];
 
-		if ($countyHeadingsOK && ($prevInfo["County"] != $info["County"])) { ?>
-             <tr><td class=subheading colspan=11>
+		if ($countyHeadingsOK && ($prevInfo["County"] != $info["County"])) {
+            $stateInfo = getStateInfoForAbbreviation($info["State"]) ?>
+
+            <tr><td class=subheading colspan=13>
 <?          if ($lastStateHeading != $info["State"]) { ?>
-			    <b><?= getStateNameForAbbreviation($info["State"]) ?></b>,
-<?              $lastStateHeading = $info["State"];
+			  <a href="./statedetail.php?stateid=<?= $stateInfo["objectid"] ?>"><?= $stateInfo["Name"] ?></a>,
+<?            $lastStateHeading = $info["State"];
             } ?>
-			<?= $info["County"] ?> County</td></tr>
+			  <a href="./countydetail.php?stateid=<?= $stateInfo["objectid"] ?>&county=<?= urlencode($info["County"]) ?>"><?= $info["County"] ?> County</a></td>
+            </tr>
 <?		} ?>
 
 		<tr>
@@ -842,13 +845,16 @@ function formatLocationByMonthTable($locationQuery, $urlPrefix, $countyHeadingsO
 	{
 		$theMask = $info["mask"];
 
-		if ($countyHeadingsOK && ($prevInfo["County"] != $info["County"])) { ?>
-             <tr><td class=subheading colspan=13>
+		if ($countyHeadingsOK && ($prevInfo["County"] != $info["County"])) {
+            $stateInfo = getStateInfoForAbbreviation($info["State"]) ?>
+
+            <tr><td class=subheading colspan=13>
 <?          if ($lastStateHeading != $info["State"]) { ?>
-			    <b><?= getStateNameForAbbreviation($info["State"]) ?></b>,
-<?              $lastStateHeading = $info["State"];
+			  <a href="./statedetail.php?stateid=<?= $stateInfo["objectid"] ?>"><?= $stateInfo["Name"] ?></a>,
+<?            $lastStateHeading = $info["State"];
             } ?>
-			<?= $info["County"] ?> County</td></tr>
+			  <a href="./countydetail.php?stateid=<?= $stateInfo["objectid"] ?>&county=<?= urlencode($info["County"]) ?>"><?= $info["County"] ?> County</a></td>
+            </tr>
 <?		} ?>
 
 		<tr>
