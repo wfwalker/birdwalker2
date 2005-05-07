@@ -10651,7 +10651,7 @@ INSERT INTO sighting VALUES (10687,'willet','South Padre Island','breeding pluma
 INSERT INTO sighting VALUES (10688,'lobcur','Old Port Isabel Road','','','','2005-04-21');
 INSERT INTO sighting VALUES (10689,'sander','South Padre Island','','','','2005-04-21');
 INSERT INTO sighting VALUES (10690,'leasan','South Padre Island','','','','2005-04-21');
-INSERT INTO sighting VALUES (10691,'pecsan','South Padre Island','','','','2005-04-21');
+INSERT INTO sighting VALUES (10691,'pecsan','South Padre Island','','','1','2005-04-21');
 INSERT INTO sighting VALUES (10692,'dunlin','South Padre Island','breeding plumage','','','2005-04-21');
 INSERT INTO sighting VALUES (10693,'laugul','Sabal Palm Audubon Sanctuary','','0','0','2005-04-21');
 INSERT INTO sighting VALUES (10694,'gubter','South Padre Island','','','','2005-04-21');
