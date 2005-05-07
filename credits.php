@@ -41,7 +41,7 @@ navTrail($items);
           birding.</p>
 
 	  <div class="heading">About the Photos</div>
- 	  <p>I use a <a href="http://www.fredmiranda.com/reviews/showproduct.php?product=39&sort=7&thecat=2">Canon 300mm f/4L IS</a> lens
+ 	   <p>I use a <a href="http://www.fredmiranda.com/reviews/showproduct.php?product=39&sort=7&thecat=2">Canon 300mm f/4L IS</a> lens
         on a <a href="http://www.dpreview.com/reviews/canoneos20d/">Canon 20D</a> camera body for most of the bird photos.
         Sometimes I rent a 500mm lens from my local camera store, <a href="http://www.kspphoto.com/"> Keeble and Shuchat.</a>
 		More and more these days I use the Canon 1.4X II teleconverter.
@@ -53,6 +53,10 @@ navTrail($items);
      	process them using Adobe Photoshop CS and its Camera Raw plug-in.
 	    I sometimes apply the <a href="http://www.picturecode.com/">PictureCode Noise Ninja</a> Photoshop plug-in.
         I print using an Epson R800 printer onto various Epson papers.</p>
+
+      <div class="heading">About using the Photos</div>
+        <p>Interesting in using one of these photographs in your publication or purchasing an 8x10 print?
+	      Email <a href="mailto:walker@shout.net"/>walker@shout.net</a> for more information.</p>
 
 	  <div class="heading">About Field Notes and Listing</div>
 
