@@ -118,6 +118,14 @@ class SpeciesQuery extends BirdWalkerQuery
 			$this->getWhereClause() . " ORDER BY species.objectid");
 	}
 
+	function getPhotoCount()
+	{
+		return performCount("
+          SELECT COUNT(DISTINCT species.objectid) ".
+			$this->getFromClause() . " " .
+			$this->getWhereClause() . " AND sighting.Photo='1' ORDER BY species.objectid");
+	}
+
 	function performQuery()
 	{
 		return performQuery("

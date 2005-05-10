@@ -581,7 +581,10 @@ function formatTwoColumnSpeciesList($speciesQuery, $firstSightings = "", $firstY
 
 function formatSpeciesListWithPhoto($speciesQuery)
 {
-	?><table><?
+    $leftFlag = 0;
+	$showPhotos = $speciesQuery->getPhotoCount() > 0;
+
+	?><table width="100%"><?
 
 	$dbQuery = $speciesQuery->performQuery();
 
@@ -589,25 +592,32 @@ function formatSpeciesListWithPhoto($speciesQuery)
 	{
 		$photoQuery = performQuery("select * from sighting where SpeciesAbbreviation='" . $info["Abbreviation"] . "' and Photo='1' order by TripDate desc");
 
-		?><tr><?
+		if ($leftflag % 2) echo "<tr>";
 
-		?><td class=report-content align=right> <?
-			   
-		if ($photoInfo = mysql_fetch_array($photoQuery))
+		?><td width="40px" class=report-content align=right valign=top> <?
+			
+	    if ($showPhotos)
 		{
-			echo getThumbForSightingInfo($photoInfo);
+			if ($photoInfo = mysql_fetch_array($photoQuery))
+			{
+				echo getThumbForSightingInfo($photoInfo);
+			}
+			else
+			{
+				echo "<img src=\"./images/missingthumb.jpg\"/>";
+			}
 		}
 
-		?> <br/><br/></td>
+		?></td>
 
 		<td class=report-content valign=top>
             <a href="./speciesdetail.php?speciesid=<?= $info["objectid"] ?>"><?= $info["CommonName"] ?></a><br>
             <i><?= $info["LatinName"] ?></i><br><br>
         </td><?
 
-		?></tr><?
+		if ($leftFlag % 2) echo "</tr>";
 
-		$leftFlag = (! $leftFlag);
+		$leftFlag++;
 	}
 
 	?></table><?
