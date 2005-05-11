@@ -73,6 +73,7 @@
 .bordered {border-left: solid 1px #DDDDDD; border-bottom: solid 1px #DDDDDD; width: 25px}
 .yearcell {width: 20px; border-left: solid 1px lightgray; border-bottom: solid 1px lightgray; color: #999999}
 
+.thumbnail { background-color: #cccccc; }
 .copyright { font: 8pt "Gill Sans", "Gill Sans MT", SansSerif }
 
 /* Styles for items within lists */
@@ -82,11 +83,6 @@
 
 a       { color:#484393; text-decoration:none; }
 a:hover { color:#43436e; text-decoration:underline; }
-
-#.rollover { color: white; border: 1px solid black; background-color: blue; padding-left: 3px; padding-right: 3px }
-#.rollover:hover { display: block; color: white; border: 1px solid black; background-color: red; padding-left: 3px; padding-right: 3px }
-
-
 
 a.info{
     position:relative; /*this is the key*/

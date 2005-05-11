@@ -20,12 +20,12 @@ globalMenu();
 
 	  <div class="heading">Today&#39;s Featured Photos</div>
 
-      <table width="100%"><tr>
+      <table cellspacing="20px"><tr>
 
 <?    for ($index = 0; $index < 5; $index++)
 	  {
 		  $info = mysql_fetch_array($randomPhotoSightings); ?>
-		  <td align=right><?= getThumbForSightingInfo($info) ?></td>
+		  <td width="100px" class="thumbnail" align="center"><?= getThumbForSightingInfo($info) ?></td>
 <?	  } ?>
 
       </tr></table>
