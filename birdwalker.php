@@ -581,46 +581,56 @@ function formatTwoColumnSpeciesList($speciesQuery, $firstSightings = "", $firstY
 
 function formatSpeciesListWithPhoto($speciesQuery)
 {
-    $leftFlag = 0;
-	$showPhotos = $speciesQuery->getPhotoCount() > 0;
+	$speciesCount = $speciesQuery->getSpeciesCount();
 
-	?><table width="100%"><?
+	if ($speciesCount > 4)
+		$counter = round($speciesQuery->getSpeciesCount() / 2);
+	else
+		$counter = -1;
+
+	$showPhotos = $speciesQuery->getPhotoCount() > 0;
+	
+	?><table width="100%">
+        <td width="50%" valign="top">
+           <table cellspacing="5"><?
 
 	$dbQuery = $speciesQuery->performQuery();
 
 	while($info = mysql_fetch_array($dbQuery))
 	{
-		$photoQuery = performQuery("select * from sighting where SpeciesAbbreviation='" . $info["Abbreviation"] . "' and Photo='1' order by TripDate desc");
-
-		if ($leftflag % 2) echo "<tr>";
-
-		?><td width="40px" class=report-content align=right valign=top> <?
+		$photoQuery = performQuery("SELECT * FROM sighting WHERE SpeciesAbbreviation='" . $info["Abbreviation"] . "' AND Photo='1' ORDER BY TripDate DESC");
 			
 	    if ($showPhotos)
 		{
+		    ?><tr> <?
+
 			if ($photoInfo = mysql_fetch_array($photoQuery))
-			{
-				echo getThumbForSightingInfo($photoInfo);
+			{ ?>
+               <td width="100px" class="thumbnail" align="center"><?
+				echo getThumbForSightingInfo($photoInfo); ?>
+			   </td><?
 			}
-			else
-			{
-				echo "<img src=\"./images/missingthumb.jpg\"/>";
-			}
-		}
+ 			else
+ 			{ ?>
+			   <td><img src="./images/missingthumb.jpg" width="100px"></td><?
+ 			}
+		} ?>
 
-		?></td>
-
-		<td class=report-content valign=top>
+		<td class="report-content" valign="top">
             <a href="./speciesdetail.php?speciesid=<?= $info["objectid"] ?>"><?= $info["CommonName"] ?></a><br>
             <i><?= $info["LatinName"] ?></i><br><br>
-        </td><?
+        </td></tr><?
 
-		if ($leftFlag % 2) echo "</tr>";
+			if ((--$counter) == 0) { ?>
+           </table>
+        </td>
+        <td width="50%" valign="top">
+          <table cellspacing="5">
+<?
+		}
+   }
 
-		$leftFlag++;
-	}
-
-	?></table><?
+	?></table></td></tr></table><?
 }
 
 /**
