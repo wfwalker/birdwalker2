@@ -15,22 +15,6 @@ navTrail($items);
 
     <div class=contentright>
 
-	  <p>Welcome to <code>birdWalker</code>! This website contains Bill and Mary&#39;s birding field notes, including
-	  trip, county, state, and year lists. Our latest trips are listed below, other indices
-	  are available from the links on the left.</p>
-
-      <table width="100%"><tr>
-
-<?    for ($index = 0; $index < 5; $index++)
-	  {
-		  $info = mysql_fetch_array($randomPhotoSightings); ?>
-		  <td><?= getThumbForSightingInfo($info) ?></td>
-<?	  } ?>
-
-      </tr></table>
-
-	  <p>&nbsp;</p>
-
       <div class="heading">About Birding</div>
         <p>Mary took Bill to a birding class back in 1996, and we&#39;ve been birding ever since.
           We really enjoy the chance to be outside in nature together, meeting other birders and learning
@@ -77,7 +61,7 @@ navTrail($items);
 		is an excellent reference for photos, range maps, and descriptions of field marks.</p>
 
 	  <div class="heading">My favorite photographers</div>
-        Big thanks to the kind words and encouragement I have gotten from
+        Big thanks for the kind words and encouragement I have gotten from
 		<a href="http://www.birdphotography.com/">Pete LaTourette</a>,
      	<a href="http://www.kokophoto.com/">Mark Bohrer</a>,
         <a href="http://www.pbase.com/tgrey/profile">Tom Grey</a>,
@@ -90,7 +74,7 @@ navTrail($items);
         <a href="http://www.pbase.com/birdervan">Gary and Joy Aspenall</a>,
         Steve Shunk,
         and
-        <a href="http://www.avesphoto.com/">Mike Danzenbaker</a>
+        <a href="http://www.avesphoto.com/">Mike Danzenbaker</a>.
 
 <?     footer(); ?>
     </div>
