@@ -20,7 +20,7 @@ locationdetail.php?locationid=70 \
 locationindex.php \
 monthdetail.php?view=trip&year=2005&month=03 \
 onthisdate.php \
-orderdetail.php?order=22 \
+orderdetail.php?orderid=22 \
 photodetail.php?id=8224 \
 photoindex.php \
 photoindexlocation.php \
@@ -44,6 +44,7 @@ locationdetail.php?location=23 \
 locationdetail.php?locationid=pants \
 monthdetail.php \
 orderdetail.php \
+orderdetail.php?order=22 \
 photodetail.php \
 statedetail.php \
 statedetail.php?ssdftateid=5 \
