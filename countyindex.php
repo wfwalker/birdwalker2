@@ -6,7 +6,7 @@ require_once("./birdwalker.php");
 htmlHead("Counties");
 
 globalMenu();
-navTrailLocations();
+navTrailLocations("list");
 ?>
 
 

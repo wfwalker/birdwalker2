@@ -14,7 +14,7 @@ $info = getStateInfo($id);
 htmlHead($info["Name"]);
 
 globalMenu();
-navTrailLocations();
+navTrailLocations($view);
 
 $locationQuery = new LocationQuery;
 $locationQuery->setFromRequest($_GET);

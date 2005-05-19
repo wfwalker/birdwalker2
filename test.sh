@@ -41,6 +41,7 @@ countydetail.php \
 familydetail.php \
 locationdetail.php \
 locationdetail.php?location=23 \
+locationdetail.php?locationid=70&view=pants \
 locationdetail.php?locationid=pants \
 monthdetail.php \
 orderdetail.php \
@@ -62,7 +63,7 @@ for successURL in $successURLs; do
 	tidy -e detail.html > /dev/null 2>> testresults.txt
 
 	if [ $ec -eq 1 ]; then
-		log "PASSED $successURL"
+		log "passed $successURL"
 	else
 		log "FAILED $successURL"
 	fi		
@@ -76,7 +77,7 @@ for failureURL in $failureURLs; do
 	tidy -e detail.html > /dev/null 2>> testresults.txt
 
 	if [ $ec -eq 0 ]; then
-		log "PASSED $failureURL (NEG test)"
+		log "passed $failureURL (NEG test)"
 	else
 		log "FAILED $failureURL (NEG test)"
 	fi		

@@ -223,12 +223,16 @@ class Map
 		
 ?>
 
+
 	   <div style="text-align: right; padding-top: 30px;">
 		 <?= $this->linkToSelfZoom(1.2, "out"); ?> | <?= $this->linkToSelfZoom(0.8, "in"); ?> | <?= $this->drawLayerControls(); ?>
        </div>
 
-	   
-       <div style="position: relative; border: 1px solid gray; background-image: url(<?=$this->getBackgroundImageURL()?>); height:<?= $this->mMapHeight ?>px; width: <?= $this->mMapWidth?>px;">
+       <div id="theMap" style="position: relative; border: 1px solid gray; background-image: url(./images/loading.gif); height:<?= $this->mMapHeight ?>px; width: <?= $this->mMapWidth?>px;">
+
+<script language = javascript>
+document.getElementById('theMap').style.background = "url('<?=$this->getBackgroundImageURL()?>')";
+</script>
 
 <?
 		$this->drawPanControls();
@@ -273,7 +277,7 @@ class Map
 
 <?
 	countHeading($this->mLocationQuery->getLocationCount(), "location");
-	$this->mLocationQuery->formatTwoColumnLocationList(true);
+	$this->mLocationQuery->formatTwoColumnLocationList("map", true);
 
    }
 }

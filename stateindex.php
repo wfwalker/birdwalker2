@@ -31,7 +31,7 @@ while ($info = mysql_fetch_array($stateStats))
 htmlHead("States");
 
 globalMenu();
-navTrailLocations();
+navTrailLocations("list");
 ?>
 
     <div class=contentright>

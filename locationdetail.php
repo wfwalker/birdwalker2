@@ -9,7 +9,7 @@ require_once("./tripquery.php");
 require_once("./map.php");
 
 $locationID = reqParam($_GET, 'locationid');
-$view = param($_GET, 'view', 'list');
+$view = param($_GET, 'view', 'species');
 
 $siteInfo = getLocationInfo($locationID);
 
@@ -30,7 +30,7 @@ while($sightingInfo = mysql_fetch_array($locationSightings)) {
 htmlHead($siteInfo["Name"]);
 
 globalMenu();
-navTrailLocationDetail($siteInfo);
+navTrailLocationDetail($siteInfo, $view);
 ?>
 
 <div class="contentright">
@@ -55,17 +55,18 @@ navTrailLocationDetail($siteInfo);
     </div>
 <? } ?>
 
-      species: <a href="./locationdetail.php?locationid=<?=$locationID?>">list</a> |
+      species:
+      <a href="./locationdetail.php?view=species&locationid=<?=$locationID?>">list</a> |
       <a href="./locationdetail.php?view=chrono&locationid=<?=$locationID?>">ABA</a> |
-      <a href="./locationdetail.php?view=bymonth&locationid=<?=$locationID?>">by month</a> |
-      <a href="./locationdetail.php?view=byyear&locationid=<?=$locationID?>">by year</a> |
+      <a href="./locationdetail.php?view=speciesbymonth&locationid=<?=$locationID?>">by month</a> |
+      <a href="./locationdetail.php?view=speciesbyyear&locationid=<?=$locationID?>">by year</a> |
       <a href="./locationdetail.php?view=photo&locationid=<?=$locationID?>">photos</a>
     </div>
 
     <div class=report-content><?= $siteInfo["Notes"] ?></div>
 
 <?
-	if ($view == "list")
+	if ($view == "species")
 	{
 		$tripQuery = new TripQuery;
 		$tripQuery->setFromRequest($_GET);
@@ -79,14 +80,14 @@ navTrailLocationDetail($siteInfo);
 		countHeading($tripCount, "trip");
 		$tripQuery->formatTwoColumnTripList();
 	}
-	else if ($view == "bymonth")
+	else if ($view == "speciesbymonth")
 	{
 		$speciesQuery = new SpeciesQuery;
 		$speciesQuery->setFromRequest($_GET);
 		doubleCountHeading($speciesQuery->getSpeciesCount(), "species", $locationFirstSightings, "life bird");
 		$speciesQuery->formatSpeciesByMonthTable();
 	}
-	else if ($view == "byyear")
+	else if ($view == "speciesbyyear")
 	{
 		$speciesQuery = new SpeciesQuery;
 		$speciesQuery->setFromRequest($_GET);
@@ -110,6 +111,10 @@ navTrailLocationDetail($siteInfo);
 		$chrono = new ChronoList;
 		$chrono->setFromRequest($_GET);
 		$chrono->draw();
+	}
+	else
+	{
+		die("Fatal error: Unknown view mode '" . $view . "'");
 	}
 
 footer();

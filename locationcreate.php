@@ -65,7 +65,7 @@ htmlHead($locationInfo["Name"] . ", " .  $locationInfo["State"]);
 
 globalMenu();
 locationBrowseButtons("./locationcreate.php", $locationID, $view);
-navTrailLocationDetail($locationInfo);
+navTrailLocationDetail($locationInfo, "list");
 ?>
 
 <div class="contentright">

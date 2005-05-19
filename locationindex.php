@@ -12,7 +12,7 @@ $extrema = $locationQuery->findExtrema();
 htmlHead("Locations");
 
 globalMenu();
-navTrailLocations();
+navTrailLocations($view);
 ?>
 
     <div class=contentright>
@@ -29,7 +29,7 @@ navTrailLocations();
 	</div>
 
 <? if ($view == "list") {
-	  $locationQuery->formatTwoColumnLocationList(true);
+	$locationQuery->formatTwoColumnLocationList($view, true);
    } else if ($view == "bymonth") {
       $locationQuery->formatLocationByMonthTable();
    } else if ($view == "byyear") {

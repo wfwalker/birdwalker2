@@ -20,7 +20,7 @@ $stateInfo = getStateInfo($stateid);
 $stateName = $stateInfo["Name"];
 
 $items[]="<a href=\"./statedetail.php?view=" . $view . "&stateid=" . $stateInfo["objectid"] . "\">" . strtolower($stateInfo["Name"]) . "</a>";
-navTrailLocations($items);
+navTrailLocations($view, $items);
 
 $locationQuery = new LocationQuery;
 $locationQuery->setFromRequest($_GET);
@@ -80,7 +80,7 @@ elseif ($view == 'locations')
     $locationQuery = new LocationQuery;
 	$locationQuery->setFromRequest($_GET);
 	countHeading( $locationQuery->getLocationCount(), "location");
-	$locationQuery->formatTwoColumnLocationList(false);
+	$locationQuery->formatTwoColumnLocationList($view, false);
 
 	$tripQuery = new TripQuery;
 	$tripQuery->setFromRequest($_GET);

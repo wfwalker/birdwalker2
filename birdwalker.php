@@ -228,9 +228,9 @@ function navTrailBirds($extra = "")
 	navTrail(array_merge($birdItems, $extra));
 }
 
-function navTrailLocations($extra = "")
+function navTrailLocations($view, $extra = "")
 {
-    $locationItems[] = "<a href=\"./locationindex.php\">locations</a>";
+    $locationItems[] = "<a href=\"./locationindex.php?view=" . $view . "\">locations</a>";
 	navTrail(array_merge($locationItems, $extra));
 }
 
@@ -1111,20 +1111,20 @@ function stateBrowseButtons($stateID, $viewMode)
 
 }
 
-function navTrailLocationDetail($siteInfo)
+function navTrailLocationDetail($siteInfo, $view)
 {
 	$stateInfo = getStateInfoForAbbreviation($siteInfo["State"]);
 
 	$items[] = "
-    <a href=\"./statedetail.php?view=locations&stateid=" .  $stateInfo["objectid"] . "\">" .
+    <a href=\"./statedetail.php?view=" . $view . "&stateid=" .  $stateInfo["objectid"] . "\">" .
 		strtolower(getStateNameForAbbreviation($siteInfo["State"])) . "
     </a>";
 	$items[] = "
-    <a href=\"./countydetail.php?view=locations&county=" . $siteInfo["County"] . "&stateid=" . $stateInfo["objectid"] . "\">" .
+    <a href=\"./countydetail.php?view=" . $view . "&county=" . $siteInfo["County"] . "&stateid=" . $stateInfo["objectid"] . "\">" .
 		 strtolower($siteInfo["County"]) . " county
     </a>";
 
-	navTrailLocations($items);
+	navTrailLocations($view, $items);
 }
 
 function rightThumbnailSpecies($abbrev)
@@ -1169,7 +1169,7 @@ function rightThumbnailLocation($locationName)
       true);
 }
 
-function formatTwoColumnLocationList($locationQuery, $countyHeadingsOK = true)
+function formatTwoColumnLocationList($locationQuery, $view, $countyHeadingsOK = true)
 {
 	$dbQuery = performQuery(
 			$locationQuery->getSelectClause() . " " .
@@ -1192,14 +1192,14 @@ function formatTwoColumnLocationList($locationQuery, $countyHeadingsOK = true)
 			<div class="subheading">
 <?          if ($lastStateHeading != $info["State"]) {
 				$stateInfo = getStateInfoForAbbreviation($info["State"]); ?>
-			    <a href="./statedetail.php?stateid=<?= $stateInfo["objectid"]?>"><?= $stateInfo["Name"] ?></a>,
+			    <a href="./statedetail.php?view=<?= $view ?>&stateid=<?= $stateInfo["objectid"]?>"><?= $stateInfo["Name"] ?></a>,
 <?              $lastStateHeading = $info["State"];
             } ?>
-			<a href="./countydetail.php?stateid=<?= $stateInfo["objectid"]?>&county=<?= $info["County"] ?>"><?= $info["County"] ?> County</a>
+			<a href="./countydetail.php?view=<?= $view ?>&stateid=<?= $stateInfo["objectid"]?>&county=<?= $info["County"] ?>"><?= $info["County"] ?> County</a>
             </div>
 <?		} ?>
 
-		<div><a href="./locationdetail.php?locationid=<?= $info["objectid"] ?>"><?= $info["Name"] ?></a></div>
+		<div><a href="./locationdetail.php?view=<?= $view ?>&locationid=<?= $info["objectid"] ?>"><?= $info["Name"] ?></a></div>
 
 <?		$prevInfo = $info;   
 		$counter--;
