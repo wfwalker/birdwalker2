@@ -66,7 +66,7 @@ navTrailLocationDetail($siteInfo, $view);
     <div class=report-content><?= $siteInfo["Notes"] ?></div>
 
 <?
-	if ($view == "species")
+	if ($view == "species" or $view == "locations")
 	{
 		$tripQuery = new TripQuery;
 		$tripQuery->setFromRequest($_GET);

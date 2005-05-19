@@ -69,7 +69,7 @@ elseif ($view == 'locations')
     $locationQuery = new LocationQuery;
 	$locationQuery->setFromRequest($_GET);
 	countHeading($locationQuery->getLocationCount(), "location");
-	$locationQuery->formatTwoColumnLocationList(true);
+	$locationQuery->formatTwoColumnLocationList($view, true);
 }
 elseif ($view == 'locationsbyyear')
 {

@@ -7,6 +7,7 @@ echo -n "" > testresults.txt
 baseURL="http://localhost/~walker/birdwalker2/"
 
 successURLs="\
+statedetail.php?view=locations&stateid=5 \
 speciesdetail.php?view=byyear&speciesid=11061111000 \
 yeardetail.php?view=chrono&year=1999 \
 yeardetail.php?view=photo&year=2004 \
