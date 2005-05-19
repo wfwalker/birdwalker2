@@ -11008,3 +11008,4 @@ INSERT INTO sighting VALUES (11046,'calthr','Stevens Creek County Park','','0','
 INSERT INTO sighting VALUES (11047,'wrenti','Stevens Creek County Park','','0','0','2005-05-01');
 INSERT INTO sighting VALUES (11048,'houfin','Stevens Creek County Park','','0','0','2005-05-01');
 INSERT INTO sighting VALUES (11049,'annhum','Stevens Creek County Park','','0','0','2005-05-01');
+INSERT INTO sighting VALUES (11050,'bnhcow','Reactivity','The reflections from the window were very frustrating, and when I tried to use my polarizing filter it was worse -- the tinted film on the window turned all kinds of crazy colors. Despite these difficulties, I wanted to share this closeup view.','','1','2005-05-13');
