@@ -408,3 +408,4 @@ INSERT INTO trip VALUES (408,'Steve Shunk, Paradise Birding','','South Texas Day
 INSERT INTO trip VALUES (409,'Mary and Bill','','Staying Home','A first time visitor to our yard!','2005-04-30');
 INSERT INTO trip VALUES (410,'Bill Walker','','Sunday Stroll','Lots of the usual suspects were flying around the park, gathering nesting materials or food for their offspring.','2005-05-01');
 INSERT INTO trip VALUES (411,'Bill Walker','','Birding at Work','My alert colleagues directed me to a pair of courting Cowbirds  on the ledge directly outside their window.','2005-05-13');
+INSERT INTO trip VALUES (412,'Bob Power','http://www.wildbirdcenter.com/stores/los/map','WBC to Mines Road','In addition to the species listed below, some observers also saw Red-shouldered Hawk, Lewis\'s Woodpecker, Western Wood-Pewee, House Wren, Black-headed Grosbeak, Brown-headed Cowbird.','2005-05-21');
