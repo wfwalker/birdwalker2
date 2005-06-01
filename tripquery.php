@@ -5,25 +5,16 @@ require_once("./birdwalkerquery.php");
 
 class TripQuery extends BirdWalkerQuery
 {
-	function TripQuery()
+	function TripQuery($inReq)
 	{
-		$this->setLocationID("");
-		$this->setCounty("");
-		$this->setStateID("");
-
-		$this->setMonth("");
-		$this->setYear("");
-
-		$this->setSpeciesID("");
-		$this->setFamily("");
-		$this->setOrder("");
+		$this->BirdWalkerQuery($inReq);
 	}
 
 	function getSelectClause()
 	{
  		$selectClause = "SELECT DISTINCT trip.objectid, trip.Name, trip.Date, date_format(trip.Date, '%M %e') AS niceDate, year(trip.Date) as year";
 
-		if ($this->mSpeciesID != "")
+		if ($this->mReq->getSpeciesID() != "")
 		{
 			$selectClause = $selectClause . ", sighting.Notes as sightingNotes, sighting.Exclude, sighting.Photo, sighting.objectid AS sightingid";
 		}
@@ -35,19 +26,19 @@ class TripQuery extends BirdWalkerQuery
 	{
 		$otherTables = "";
 
-		if ($this->mSpeciesID != "") {
+		if ($this->mReq->getSpeciesID() != "") {
 			$otherTables = $otherTables . ", species";
-		} elseif ($this->mFamily != "") {
+		} elseif ($this->mReq->getFamilyID() != "") {
 			$otherTables = $otherTables . ", species";
-		} elseif ($this->mOrder != "") {
+		} elseif ($this->mReq->getOrderID() != "") {
 			$otherTables = $otherTables . ", species";
 		}
 
-		if ($this->mLocationID != "") {
+		if ($this->mReq->getLocationID() != "") {
 			$otherTables = $otherTables . ", location";
-		} elseif ($this->mCounty != "") {
+		} elseif ($this->mReq->getCounty() != "") {
 			$otherTables = $otherTables . ", location";
-		} elseif ($this->mStateID != "") {
+		} elseif ($this->mReq->getStateID() != "") {
 			$otherTables = $otherTables . ", location";
 		}
 
@@ -60,37 +51,37 @@ class TripQuery extends BirdWalkerQuery
 	{
 		$whereClause = "WHERE sighting.TripDate=trip.Date";
 
-		if ($this->mLocationID != "") {
-			$whereClause = $whereClause . " AND location.objectid='" . $this->mLocationID . "'";
+		if ($this->mReq->getLocationID() != "") {
+			$whereClause = $whereClause . " AND location.objectid='" . $this->mReq->getLocationID() . "'";
 			$whereClause = $whereClause . " AND location.Name=sighting.LocationName"; 
-		} elseif ($this->mCounty != "") {
-			$whereClause = $whereClause . " AND location.County='" . $this->mCounty . "'";
+		} elseif ($this->mReq->getCounty() != "") {
+			$whereClause = $whereClause . " AND location.County='" . $this->mReq->getCounty() . "'";
 			$whereClause = $whereClause . " AND location.Name=sighting.LocationName"; 
-		} elseif ($this->mStateID != "") {
-			$whereClause = $whereClause . " AND location.State='" . $this->mState . "'";
+		} elseif ($this->mReq->getStateID() != "") {
+			$whereClause = $whereClause . " AND location.State='" . $this->mReq->getState() . "'";
 			$whereClause = $whereClause . " AND location.Name=sighting.LocationName"; 
 		}
 
-		if ($this->mSpeciesID != "") {
-			$whereClause = $whereClause . " AND species.objectid='" . $this->mSpeciesID . "'";
+		if ($this->mReq->getSpeciesID() != "") {
+			$whereClause = $whereClause . " AND species.objectid='" . $this->mReq->getSpeciesID() . "'";
 			$whereClause = $whereClause . " AND sighting.SpeciesAbbreviation=species.Abbreviation"; 
-		} elseif ($this->mFamily != "") {
+		} elseif ($this->mReq->getFamilyID() != "") {
 			$whereClause = $whereClause . " AND
-              species.objectid >= " . $this->mFamily * pow(10, 7) . " AND
-              species.objectid < " . ($this->mFamily + 1) * pow(10, 7);
+              species.objectid >= " . $this->mReq->getFamilyID() * pow(10, 7) . " AND
+              species.objectid < " . ($this->mReq->getFamilyID() + 1) * pow(10, 7);
 			$whereClause = $whereClause . " AND sighting.SpeciesAbbreviation=species.Abbreviation"; 
-		} elseif ($this->mOrder != "") {
+		} elseif ($this->mReq->getOrderID() != "") {
 			$whereClause = $whereClause . " AND
-              species.objectid >= " . $this->mOrder * pow(10, 9) . " AND
-              species.objectid < " . ($this->mOrder + 1) * pow(10, 9);
+              species.objectid >= " . $this->mReq->getOrderID() * pow(10, 9) . " AND
+              species.objectid < " . ($this->mReq->getOrderID() + 1) * pow(10, 9);
 			$whereClause = $whereClause . " AND sighting.SpeciesAbbreviation=species.Abbreviation"; 
 		}
 		
-		if ($this->mMonth !="") {
-			$whereClause = $whereClause . " AND Month(Date)=" . $this->mMonth;
+		if ($this->mReq->getMonth() !="") {
+			$whereClause = $whereClause . " AND Month(Date)=" . $this->mReq->getMonth();
 		}
-		if ($this->mYear !="") {
-			$whereClause = $whereClause . " AND Year(Date)=" . $this->mYear;
+		if ($this->mReq->getYear() !="") {
+			$whereClause = $whereClause . " AND Year(Date)=" . $this->mReq->getYear();
 		}
 
 		return $whereClause;
@@ -121,17 +112,7 @@ class TripQuery extends BirdWalkerQuery
             AND sighting.Photo='1'
             ORDER BY shuffle LIMIT 1");
 	}
-
-// 	function getPhotos()
-// 	{
-// 		return performQuery("
-//           SELECT sighting.* " .
-// 			$this->getFromClause() . "  " .
-// 			$this->getWhereClause() . "
-//             AND sighting.Photo='1'
-//             ORDER BY sighting.TripDate DESC");
-// 	}
-
+ 
 	function formatTwoColumnTripList()
 	{
 		formatTwoColumnTripList($this);

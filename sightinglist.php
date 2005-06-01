@@ -1,10 +1,12 @@
 <?
 
 require_once("./birdwalker.php");
+require_once("./request.php");
 require_once("./sightingquery.php");
 
-$sightingQuery = new SightingQuery;
-$sightingQuery->setFromRequest($_GET);
+$request = new Request;
+
+$sightingQuery = new SightingQuery($request);
 
 $dbQuery = $sightingQuery->performQuery();
 

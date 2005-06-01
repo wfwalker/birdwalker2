@@ -15,7 +15,7 @@ speciesindex.php?view=chrono \
 countydetail.php?county=Santa+Clara&stateid=5 \
 countydetail.php?view=photo&county=Santa+Clara&stateid=5 \
 countyindex.php \
-familydetail.php?family=2227 \
+familydetail.php?familyid=2227 \
 index.php \
 locationdetail.php?locationid=70 \
 locationindex.php \

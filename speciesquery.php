@@ -4,22 +4,14 @@ require_once("./birdwalkerquery.php");
 
 class SpeciesQuery extends BirdWalkerQuery
 {
-	function SpeciesQuery()
+	function SpeciesQuery($inReq)
 	{
-		$this->setLocationID("");
-		$this->setCounty("");
-		$this->setStateID("");
-
-		$this->setYear("");
-		$this->setMonth("");
-
-		$this->setFamily("");
-		$this->setOrder("");
+		$this->BirdWalkerQuery($inReq);
 	}
 
 	function getGroupByClause()
 	{
-		if ($this->mTripID != "")
+		if ($this->mReq->getTripID() != "")
 		{
 			return "";
 		}
@@ -33,17 +25,17 @@ class SpeciesQuery extends BirdWalkerQuery
 	{
 		$selectClause = "SELECT DISTINCT species.objectid, species.CommonName, species.LatinName, species.ABACountable";
 
-		if ($this->mTripID == "")
+		if ($this->mReq->getTripID() == "")
 		{
 			$selectClause = $selectClause . ", min(sighting.Exclude) AS AllExclude";
 		}
 
 		// TODO how can we get a sightingid into this select clause even if it's not a specific trip id?
-		if ($this->mTripID != "")
+		if ($this->mReq->getTripID() != "")
 		{
 			$selectClause = $selectClause . ", sighting.Notes, sighting.Exclude, sighting.Photo, sighting.objectid AS sightingid";
 		}
-		else if (($this->mLocationID != "") || ($this->mCounty != "") || ($this->mStateID != ""))
+		else if (($this->mReq->getLocationID() != "") || ($this->mReq->getCounty() != "") || ($this->mReq->getStateID() != ""))
 		{
 			$selectClause = $selectClause . ",  min(concat(sighting.TripDate, lpad(sighting.objectid, 6, '0'))) as earliestsighting";
 		}
@@ -56,11 +48,11 @@ class SpeciesQuery extends BirdWalkerQuery
 	{
 		$otherTables = "";
 
-		if ($this->mLocationID != "") {
+		if ($this->mReq->getLocationID() != "") {
 			$otherTables = $otherTables . ", location";
-		} elseif ($this->mCounty != "") {
+		} elseif ($this->mReq->getCounty() != "") {
 			$otherTables = $otherTables . ", location";
-		} elseif ($this->mStateID != "") {
+		} elseif ($this->mReq->getStateID() != "") {
 			$otherTables = $otherTables . ", location";
 		}
 
@@ -73,39 +65,45 @@ class SpeciesQuery extends BirdWalkerQuery
 	{
 		$whereClause = "WHERE species.Abbreviation=sighting.SpeciesAbbreviation";
 
-		if ($this->mTripID != "") {
-			$tripInfo = getTripInfo($this->mTripID);
+		if ($this->mReq->getTripID() != "") {
+			$tripInfo = getTripInfo($this->mReq->getTripID());
 			$whereClause = $whereClause . " AND sighting.TripDate='" . $tripInfo["Date"] . "'";
 		}
 
-		if ($this->mLocationID != "") {
-			$whereClause = $whereClause . " AND location.objectid=" . $this->mLocationID;
+		if ($this->mReq->getLocationID() != "") {
+			$whereClause = $whereClause . " AND location.objectid=" . $this->mReq->getLocationID();
 			$whereClause = $whereClause . " AND location.Name=sighting.LocationName"; 
-		} elseif ($this->mCounty != "") {
-			$whereClause = $whereClause . " AND location.County='" . $this->mCounty . "'";
+		} elseif ($this->mReq->getCounty() != "") {
+			$whereClause = $whereClause . " AND location.County='" . $this->mReq->getCounty() . "'";
 			$whereClause = $whereClause . " AND location.Name=sighting.LocationName"; 
-		} elseif ($this->mStateID != "") {
-			$stateInfo = getStateInfo($this->mStateID);
+		} elseif ($this->mReq->getStateID() != "") {
+			$stateInfo = getStateInfo($this->mReq->getStateID());
 			$whereClause = $whereClause . " AND location.State='" . $stateInfo["Abbreviation"] . "'";
 			$whereClause = $whereClause . " AND location.Name=sighting.LocationName"; 
 		}
 
-		if ($this->mFamily != "") {
+		if ($this->mReq->getFamilyID() != "") {
 			$whereClause = $whereClause . " AND
-              species.objectid >= " . $this->mFamily * pow(10, 7) . " AND
-              species.objectid < " . ($this->mFamily + 1) * pow(10, 7);
-		} elseif ($this->mOrder != "") {
+              species.objectid >= " . $this->mReq->getFamilyID() * pow(10, 7) . " AND
+              species.objectid < " . ($this->mReq->getFamilyID() + 1) * pow(10, 7);
+		} elseif ($this->mReq->getOrderID() != "") {
 			$whereClause = $whereClause . " AND
-              species.objectid >= " . $this->mOrder * pow(10, 9) . " AND
-              species.objectid < " . ($this->mOrder + 1) * pow(10, 9);
+              species.objectid >= " . $this->mReq->getOrderID() * pow(10, 9) . " AND
+              species.objectid < " . ($this->mReq->getOrderID() + 1) * pow(10, 9);
 		}
-		
-		if ($this->mMonth !="") {
-			$whereClause = $whereClause . " AND Month(TripDate)=" . $this->mMonth;
+		else
+		{
+			echo "<!-- where clause for species query -->";
+			$this->mReq->debug();
 		}
-		if ($this->mYear !="") {
-			$whereClause = $whereClause . " AND Year(TripDate)=" . $this->mYear;
+
+		if ($this->mReq->getMonth() !="") {
+			$whereClause = $whereClause . " AND Month(TripDate)=" . $this->mReq->getMonth();
 		}
+		if ($this->mReq->getYear() !="") {
+			$whereClause = $whereClause . " AND Year(TripDate)=" . $this->mReq->getYear();
+		}
+
 
 		return $whereClause;
 	}
@@ -128,6 +126,7 @@ class SpeciesQuery extends BirdWalkerQuery
 
 	function performQuery()
 	{
+		echo "<!-- performQuery -->"; $this->mReq->debug();
 		return performQuery("
           SELECT DISTINCT species.objectid, species.* ".
 			$this->getFromClause() . " " .
@@ -157,7 +156,7 @@ class SpeciesQuery extends BirdWalkerQuery
 		    $this->getWhereClause() . "
 			GROUP BY year");
 
-		formatSpeciesByYearTable($this, $this->getParams(), $annualTotal);
+		formatSpeciesByYearTable($this, $this->mReq->getParams(), $annualTotal);
 	}
 
 	function formatSpeciesByMonthTable()
@@ -168,7 +167,7 @@ class SpeciesQuery extends BirdWalkerQuery
 		    $this->getWhereClause() . "
 			GROUP BY month");
 
-		formatSpeciesByMonthTable($this, $this->getParams(), $monthlyTotal);
+		formatSpeciesByMonthTable($this, $this->mReq->mReq->getParams(), $monthlyTotal);
 	}
 
 	function formatPhotos()

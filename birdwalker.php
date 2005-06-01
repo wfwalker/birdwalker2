@@ -479,14 +479,13 @@ function getSpeciesInfo($objectid)
 	return performOneRowQuery("SELECT * FROM species where objectid='" . $objectid . "'");
 }
 
-function navTrailSpecies($speciesID)
+function navTrailSpecies($speciesID, $view)
 {
 	$orderInfo = getOrderInfo($speciesID);
 	$familyInfo = getFamilyInfo($speciesID);
 
-	$items[] = "<a href=\"./orderdetail.php?orderid=" . round($orderInfo["objectid"] / pow(10, 9)) . "\">" . strtolower($orderInfo["LatinName"]) . "</a>";
-	$items[] = "<a href=\"./familydetail.php?family=" . round($familyInfo["objectid"] / pow(10, 7)) . "\">" . strtolower($familyInfo["LatinName"]) . "</a>";
-	//	$items[] = strtolower($speciesInfo["CommonName"]);
+	$items[] = "<a href=\"./orderdetail.php?view=" . $view . "&orderid=" . round($orderInfo["objectid"] / pow(10, 9)) . "\">" . strtolower($orderInfo["LatinName"]) . "</a>";
+	$items[] = "<a href=\"./familydetail.php?view=" . $view . "&familyid=" . round($familyInfo["objectid"] / pow(10, 7)) . "\">" . strtolower($familyInfo["LatinName"]) . "</a>";
 	navTrailBirds($items);
 }
 
@@ -823,7 +822,7 @@ function formatLocationByYearTable($locationQuery, $urlPrefix, $countyHeadingsOK
 			<td class=bordered align=center>
 <?			if (($theMask >> $index) & 1)
 			{ ?>
-				<a href="<?= $urlPrefix . $locationQuery->getParams() ?>&locationid=<?= $info["locationid"] ?>&year=<?= (1995 + $index) ?>">X</a>
+				<a href="<?= $urlPrefix . $locationQuery->mReq->getParams() ?>&locationid=<?= $info["locationid"] ?>&year=<?= (1995 + $index) ?>">X</a>
 <?			}
 			else
 			{ ?>
@@ -923,7 +922,7 @@ function getFamilyDetailLinkFromSpeciesID($speciesid)
 {
 	$taxoInfo = getFamilyInfoFromSpeciesID($speciesid);
 
-	return "<a href=\"./familydetail.php?family=" . floor($speciesid / pow(10,7)) . "\">" .
+	return "<a href=\"./familydetail.php?familyid=" . floor($speciesid / pow(10,7)) . "\">" .
 		$taxoInfo["LatinName"] . 
 		"</a>";
 }

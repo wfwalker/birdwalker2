@@ -2,18 +2,18 @@
 <?
 
 require_once("./birdwalker.php");
+require_once("./request.php");
 require_once("./speciesquery.php");
 require_once("./sightingquery.php");
 require_once("./locationquery.php");
 require_once("./tripquery.php");
 require_once("./map.php");
 
+$request = new Request;
+
 $year = reqParam($_GET, "year");
 $month = reqParam($_GET, "month");
 $view = param($_GET, "view", "species");
-
-$speciesQuery = new SpeciesQuery;
-$speciesQuery->setFromRequest($_GET);
 
 htmlHead(getMonthNameForNumber($month) . ", " . $year);
 
@@ -84,23 +84,18 @@ if ($view == 'trip')
 }
 else if ($view == "map")
 {
-    $locationQuery = new LocationQuery;
-	$locationQuery->setFromRequest($_GET);
-	$map = new Map("./yeardetail.php");
-	$map->setFromRequest($_GET);
+	$map = new Map("./monthdetail.php", $request);
 	$map->draw();
 }
 else if ($view == "species")
 {
-    $speciesQuery = new SpeciesQuery;
-	$speciesQuery->setFromRequest($_GET);
+    $speciesQuery = new SpeciesQuery($request);
 	countHeading($speciesQuery->getSpeciesCount(), "species");
 	formatTwoColumnSpeciesList($speciesQuery);
 }
 elseif ($view == 'photo')
 {
-	$sightingQuery = new SightingQuery;
-	$sightingQuery->setFromRequest($_GET);
+	$sightingQuery = new SightingQuery($request);
 	$sightingQuery->formatPhotos();
 }
 

@@ -2,9 +2,11 @@
 <?php
 
 require_once("./birdwalker.php");
+require_once("./request.php");
 require_once("./tripquery.php");
 
-$tripQuery = new TripQuery;
+$request = new Request;
+$tripQuery = new TripQuery($request);
 
 htmlHead("Trips");
 

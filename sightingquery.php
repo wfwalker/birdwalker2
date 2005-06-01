@@ -5,30 +5,20 @@ require_once("./birdwalkerquery.php");
 
 class SightingQuery extends BirdWalkerQuery
 {
-	function SightingQuery()
+	function SightingQuery($inReq)
 	{
-		$this->setLocationID("");
-		$this->setCounty("");
-		$this->setStateID("");
-
-		$this->setTripID("");
-		$this->setMonth("");
-		$this->setYear("");
-
-		$this->setSpeciesID("");
-		$this->setFamily("");
-		$this->setOrder("");
+		$this->BirdWalkerQuery($inReq);
 	}
 
 	function getSightingTitle($sightingInfo)
 	{
-		if ($this->mSpeciesID == "") return $sightingInfo["CommonName"];
-		if ($this->mTripID == "") return $sightingInfo["niceDate"];
+		if ($this->mReq->getSpeciesID() == "") return $sightingInfo["CommonName"];
+		if ($this->mReq->getTripID() == "") return $sightingInfo["niceDate"];
 	}
 
 	function getSightingSubtitle($sightingInfo)
 	{
-		if ($this->mLocationID == "") return $sightingInfo["LocationName"];
+		if ($this->mReq->getLocationID() == "") return $sightingInfo["LocationName"];
 		else return $sightingInfo["niceDate"];
 	}
 
@@ -54,39 +44,39 @@ class SightingQuery extends BirdWalkerQuery
             species.Abbreviation=sighting.SpeciesAbbreviation AND
             trip.Date=sighting.TripDate ";
 
-		if ($this->mTripID != "") {
-			$tripInfo = getTripInfo($this->mTripID);
+		if ($this->mReq->getTripID() != "") {
+			$tripInfo = getTripInfo($this->mReq->getTripID());
 			$whereClause = $whereClause . " AND sighting.TripDate='" . $tripInfo["Date"] . "'";
 		}
 
-		if ($this->mLocationID != "") {
-			$whereClause = $whereClause . " AND location.objectid=" . $this->mLocationID;
-		} elseif ($this->mCounty != "") {
-			$whereClause = $whereClause . " AND location.County='" . $this->mCounty . "'";
-		} elseif ($this->mStateID != "") {
-			$stateInfo = getStateInfo($this->mStateID);
+		if ($this->mReq->getLocationID() != "") {
+			$whereClause = $whereClause . " AND location.objectid=" . $this->mReq->getLocationID();
+		} elseif ($this->mReq->getCounty() != "") {
+			$whereClause = $whereClause . " AND location.County='" . $this->mReq->getCounty() . "'";
+		} elseif ($this->mReq->getStateID() != "") {
+			$stateInfo = getStateInfo($this->mReq->getStateID());
 			$whereClause = $whereClause . " AND location.State='" . $stateInfo["Abbreviation"] . "'";
 		}
 
-		if ($this->mSpeciesID != "") {
-			$speciesInfo = getSpeciesInfo($this->mSpeciesID);
+		if ($this->mReq->getSpeciesID() != "") {
+			$speciesInfo = getSpeciesInfo($this->mReq->getSpeciesID());
 			$whereClause = $whereClause . " AND
               sighting.SpeciesAbbreviation='" . $speciesInfo["Abbreviation"] . "'"; 
-		} elseif ($this->mFamily != "") {
+		} elseif ($this->mReq->getFamilyID() != "") {
 			$whereClause = $whereClause . " AND
-              species.objectid >= " . $this->mFamily * pow(10, 7) . " AND
-              species.objectid < " . ($this->mFamily + 1) * pow(10, 7);
-		} elseif ($this->mOrder != "") {
+              species.objectid >= " . $this->mReq->getFamilyID() * pow(10, 7) . " AND
+              species.objectid < " . ($this->mReq->getFamilyID() + 1) * pow(10, 7);
+		} elseif ($this->mReq->getOrderID() != "") {
 			$whereClause = $whereClause . " AND
-              species.objectid >= " . $this->mOrder * pow(10, 9) . " AND
-              species.objectid < " . ($this->mOrder + 1) * pow(10, 9);
+              species.objectid >= " . $this->mReq->getOrderID() * pow(10, 9) . " AND
+              species.objectid < " . ($this->mReq->getOrderID() + 1) * pow(10, 9);
 		}
 		
-		if ($this->mMonth !="") {
-			$whereClause = $whereClause . " AND Month(TripDate)=" . $this->mMonth;
+		if ($this->mReq->getMonth() !="") {
+			$whereClause = $whereClause . " AND Month(TripDate)=" . $this->mReq->getMonth();
 		}
-		if ($this->mYear !="") {
-			$whereClause = $whereClause . " AND Year(TripDate)=" . $this->mYear;
+		if ($this->mReq->getYear() !="") {
+			$whereClause = $whereClause . " AND Year(TripDate)=" . $this->mReq->getYear();
 		}
 
 		return $whereClause;
@@ -94,9 +84,9 @@ class SightingQuery extends BirdWalkerQuery
 
 	function performQuery()
 	{
-		if (($this->mLocationID == "") && ($this->mCounty == "") && ($this->mStateID == "") &&
-			($this->mTripID == "") && ($this->mMonth == "") && ($this->mYear == "") &&
-			($this->mFamily == "") && ($this->mOrder == "") && ($this->mSpeciesID == ""))
+		if (($this->mReq->getLocationID() == "") && ($this->mReq->getCounty() == "") && ($this->mReq->getStateID() == "") &&
+			($this->mReq->getTripID() == "") && ($this->mReq->getMonth() == "") && ($this->mReq->getYear() == "") &&
+			($this->mReq->getFamilyID() == "") && ($this->mReq->getOrderID() == "") && ($this->mReq->getSpeciesID() == ""))
 			die("No query parameters for sighting query");
 
 		return performQuery(
@@ -107,9 +97,9 @@ class SightingQuery extends BirdWalkerQuery
 
 	function performPhotoQuery()
 	{
-		if (($this->mLocationID == "") && ($this->mCounty == "") && ($this->mStateID == "") &&
-			($this->mTripID == "") && ($this->mMonth == "") && ($this->mYear == "") &&
-			($this->mFamily == "") && ($this->mOrder == "") && ($this->mSpeciesID == ""))
+		if (($this->mReq->getLocationID() == "") && ($this->mReq->getCounty() == "") && ($this->mReq->getStateID() == "") &&
+			($this->mReq->getTripID() == "") && ($this->mReq->getMonth() == "") && ($this->mReq->getYear() == "") &&
+			($this->mReq->getFamilyID() == "") && ($this->mReq->getOrderID() == "") && ($this->mReq->getSpeciesID() == ""))
 			die("No query parameters for sighting query");
 
 		return performQuery(

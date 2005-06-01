@@ -1,6 +1,7 @@
 
 <?php
 
+require_once("./request.php");
 require_once("./birdwalker.php");
 require_once("./speciesquery.php");
 require_once("./sightingquery.php");
@@ -10,6 +11,8 @@ require_once("./map.php");
 
 $locationID = reqParam($_GET, 'locationid');
 $view = param($_GET, 'view', 'species');
+
+$request = new Request;
 
 $siteInfo = getLocationInfo($locationID);
 
@@ -68,12 +71,10 @@ navTrailLocationDetail($siteInfo, $view);
 <?
 	if ($view == "species" or $view == "locations")
 	{
-		$tripQuery = new TripQuery;
-		$tripQuery->setFromRequest($_GET);
+		$tripQuery = new TripQuery($request);
 		$tripCount = $tripQuery->getTripCount();
 
-		$speciesQuery = new SpeciesQuery;
-		$speciesQuery->setFromRequest($_GET);
+		$speciesQuery = new SpeciesQuery($request);
 
 		doubleCountHeading($speciesQuery->getSpeciesCount(), "species", $locationFirstSightings, "life bird");
 		$speciesQuery->formatTwoColumnSpeciesList();
@@ -82,34 +83,29 @@ navTrailLocationDetail($siteInfo, $view);
 	}
 	else if ($view == "speciesbymonth")
 	{
-		$speciesQuery = new SpeciesQuery;
-		$speciesQuery->setFromRequest($_GET);
+		$speciesQuery = new SpeciesQuery($request);
 		doubleCountHeading($speciesQuery->getSpeciesCount(), "species", $locationFirstSightings, "life bird");
 		$speciesQuery->formatSpeciesByMonthTable();
 	}
 	else if ($view == "speciesbyyear")
 	{
-		$speciesQuery = new SpeciesQuery;
-		$speciesQuery->setFromRequest($_GET);
+		$speciesQuery = new SpeciesQuery($request);
 		doubleCountHeading($speciesQuery->getSpeciesCount(), "species", $locationFirstSightings, "life bird");
 		$speciesQuery->formatSpeciesByYearTable();
 	}
 	else if ($view == "photo")
 	{
-		$sightingQuery = new SightingQuery;
-		$sightingQuery->setFromRequest($_GET);
+		$sightingQuery = new SightingQuery($request);
 		$sightingQuery->formatPhotos();
 	}
     else if ($view == "map")
 	{
-		$map = new Map("./locationdetail.php");
-		$map->setFromRequest($_GET);
+		$map = new Map("./locationdetail.php", $request);
 		$map->draw();
 	}
     else if ($view == "chrono")
 	{
-		$chrono = new ChronoList;
-		$chrono->setFromRequest($_GET);
+		$chrono = new ChronoList($request);
 		$chrono->draw();
 	}
 	else

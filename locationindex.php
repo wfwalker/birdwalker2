@@ -2,11 +2,14 @@
 <?php
 
 require_once("./birdwalker.php");
+require_once("./request.php");
 require_once("./map.php");
+
+$request = new Request;
 
 $view = param($_GET, "view", "locations");
 
-$locationQuery = new LocationQuery;
+$locationQuery = new LocationQuery($request);
 $extrema = $locationQuery->findExtrema();
 
 htmlHead("Locations");
@@ -35,8 +38,7 @@ navTrailLocations($view);
    } else if ($view == "locationsbyyear") {
       $locationQuery->formatLocationByYearTable();
    } else if ($view == "map") {
-      $map = new Map("./locationindex.php");
-	  $map->setFromRequest($_GET);
+	$map = new Map("./locationindex.php", $request);
       $map->draw();
    }
 

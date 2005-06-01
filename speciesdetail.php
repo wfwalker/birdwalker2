@@ -2,23 +2,25 @@
 <?php
 
 require_once("./birdwalker.php");
+require_once("./request.php");
 require_once("./sightingquery.php");
 require_once("./map.php");
 require_once("./tripquery.php");
 
 $view = param($_GET, "view", "lists");
 
-$speciesID = param($_GET, 'speciesid', 22330150100);
+$request = new Request;
+
+$speciesID = reqParam($_GET, 'speciesid');
 $speciesInfo = getSpeciesInfo($speciesID);
 
-$locationQuery = new LocationQuery;
-$locationQuery->setFromRequest($_GET);
+$locationQuery = new LocationQuery($request);
 $extrema = $locationQuery->findExtrema();
 
 if ($view != "photo")
 {
-	$tripQuery = new TripQuery;
-	$tripQuery->setSpeciesID($speciesID);
+	$tripQuery = new TripQuery($request);
+	$tripQuery->mReq->setSpeciesID($speciesID);
 	$tripCount = $tripQuery->getTripCount();
 	
 	$locationCount = $locationQuery->getLocationCount();
@@ -26,7 +28,7 @@ if ($view != "photo")
 
 htmlHead($speciesInfo["CommonName"]);
 globalMenu();
-navTrailSpecies($speciesID);
+navTrailSpecies($speciesID, $view);
 ?>
 
   <div class=contentright>
@@ -63,7 +65,7 @@ navTrailSpecies($speciesID);
 		  countHeading($tripCount, "trip");
 		  $tripQuery->formatTwoColumnTripList();
 		  countHeading($locationCount, "location");
-		  $locationQuery->formatTwoColumnLocationList(true);
+		  $locationQuery->formatTwoColumnLocationList("species", true);
 	  } elseif ($view == "bymonth") {
 		  doubleCountHeading($tripCount, "trip", $locationCount, "location");
 		  $locationQuery->formatLocationByMonthTable();
@@ -71,13 +73,10 @@ navTrailSpecies($speciesID);
 		  doubleCountHeading($tripCount, "trip", $locationCount, "location");
 		  $locationQuery->formatLocationByYearTable();
 	  } else if ($view == "map") {
-		  $map = new Map("./speciesdetail.php");
-		  //		echo "<br clear=\"all\">";
-		  $map->setFromRequest($_GET);
+		  $map = new Map("./speciesdetail.php", $request);
 		  $map->draw();
 	  } elseif ($view == "photo") {
-		  $sightingQuery = new SightingQuery;
-		  $sightingQuery->setSpeciesID($speciesID);
+		  $sightingQuery = new SightingQuery($request);
 		  $sightingQuery->formatPhotos();
 	  }
 

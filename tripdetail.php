@@ -2,9 +2,12 @@
 <?php
 
 require_once("./birdwalker.php");
+require_once("./request.php");
 require_once("./map.php");
 require_once("./sightingquery.php");
 require_once("./speciesquery.php");
+
+$request = new Request;
 
 $tripID = reqParam($_GET, 'tripid');
 $view = param($_GET, 'view', 'list');
@@ -13,11 +16,9 @@ $tripInfo = getTripInfo($tripID);
 $tripYear = substr($tripInfo["Date"], 0, 4);
 $tripMonth = substr($tripInfo["Date"], 5, 2);
 
-$sightingQuery = new SightingQuery;
-$sightingQuery->setFromRequest($_GET);
+$sightingQuery = new SightingQuery($request);
 
-$locationQuery = new LocationQuery;
-$locationQuery->setFromRequest($_GET);
+$locationQuery = new LocationQuery($request);
 $locationCount = $locationQuery->getLocationCount();
 
 $firstSightings = getFirstSightings();
@@ -69,9 +70,7 @@ navTrailTrips($items);
          <div class=report-content><p><?= $tripInfo["Notes"] ?></p></div>
       </div>
 
-
 <?
-
 
 if ($view == "photo")
 {
@@ -79,8 +78,7 @@ if ($view == "photo")
 }
 else if ($view == "map")
 {
-	$map = new Map("./tripdetail.php");
-	$map->setFromRequest($_GET);
+	$map = new Map("./tripdetail.php", $request);
 	$map->draw();
 }
 else if ($view="list")
@@ -92,13 +90,13 @@ else if ($view="list")
 	$dbLocation = $locationQuery->performQuery();
 	while($locationInfo = mysql_fetch_array($dbLocation))
 	{
-		$speciesQuery = new SpeciesQuery;
-		$speciesQuery->setTripID($tripID);
-		$speciesQuery->setLocationID($locationInfo["objectid"]);
+		$speciesQuery = new SpeciesQuery($request);
+		$speciesQuery->mReq->setTripID($tripID);
+		$speciesQuery->mReq->setLocationID($locationInfo["objectid"]);
 
-		$locationSightingQuery = new SightingQuery;
-		$locationSightingQuery->setTripID($tripID);
-		$locationSightingQuery->setLocationID($locationInfo["objectid"]);
+		$locationSightingQuery = new SightingQuery($request);
+		$locationSightingQuery->mReq->setTripID($tripID);
+		$locationSightingQuery->mReq->setLocationID($locationInfo["objectid"]);
 
 		$dbLocationSightings = $locationSightingQuery->performQuery();
 

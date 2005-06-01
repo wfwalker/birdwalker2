@@ -5,19 +5,9 @@ require_once("./birdwalkerquery.php");
 
 class LocationQuery extends BirdWalkerQuery
 {
-	function LocationQuery()
+	function LocationQuery($inReq)
 	{
-		$this->setCounty("");
-		$this->setStateID("");
-
-		$this->setLocationID("");
-		$this->setTripID("");
-		$this->setMonth("");
-		$this->setYear("");
-
-		$this->setSpeciesID("");
-		$this->setFamily("");
-		$this->setOrder("");
+		$this->BirdWalkerQuery($inReq);
 	}
 
 	function getSelectClause()
@@ -31,11 +21,11 @@ class LocationQuery extends BirdWalkerQuery
 	{
 		$otherTables = "";
 
-		if ($this->mSpeciesID != "") {
+		if ($this->mReq->getSpeciesID() != "") {
 			$otherTables = $otherTables . ", species";
-		} elseif ($this->mFamily != "") {
+		} elseif ($this->mReq->getFamilyID() != "") {
 			$otherTables = $otherTables . ", species";
-		} elseif ($this->mOrder != "") {
+		} elseif ($this->mReq->getOrderID() != "") {
 			$otherTables = $otherTables . ", species";
 		}
 
@@ -43,51 +33,48 @@ class LocationQuery extends BirdWalkerQuery
             FROM sighting, location" . $otherTables . " ";
 	}
 
-
 	function getWhereClause()
 	{
-		$this->debug();
-
 		$whereClause = "WHERE sighting.LocationName=location.Name";
 
-		if ($this->mTripID != "") {
-			$tripInfo = getTripInfo($this->mTripID);
+		if ($this->mReq->getTripID() != "") {
+			$tripInfo = getTripInfo($this->mReq->getTripID());
 			$whereClause = $whereClause . " AND sighting.TripDate='" . $tripInfo["Date"] . "'";
 		}
 
-		if ($this->mCounty != "") {
-			$whereClause = $whereClause . " AND location.County='" . $this->mCounty . "'";
+		if ($this->mReq->getCounty() != "") {
+			$whereClause = $whereClause . " AND location.County='" . $this->mReq->getCounty() . "'";
 			$whereClause = $whereClause . " AND location.Name=sighting.LocationName"; 
-		} elseif ($this->mStateID != "") {
-			$stateInfo = getStateInfo($this->mStateID);
+		} elseif ($this->mReq->getStateID() != "") {
+			$stateInfo = getStateInfo($this->mReq->getStateID());
 			$whereClause = $whereClause . " AND location.State='" . $stateInfo["Abbreviation"] . "'";
 			$whereClause = $whereClause . " AND location.Name=sighting.LocationName"; 
-		} elseif ($this->mLocationID != "") {
-			echo "<!-- LOCATION " . $this->mLocationID . " -->\n";
-			$whereClause = $whereClause . " AND location.objectid='" . $this->mLocationID . "'";
+		} elseif ($this->mReq->getLocationID() != "") {
+			echo "<!-- LOCATION " . $this->mReq->getLocationID() . " -->\n";
+			$whereClause = $whereClause . " AND location.objectid='" . $this->mReq->getLocationID() . "'";
 			$whereClause = $whereClause . " AND location.Name=sighting.LocationName"; 
 		}
 
-		if ($this->mSpeciesID != "") {
-			$whereClause = $whereClause . " AND species.objectid='" . $this->mSpeciesID . "'";
+		if ($this->mReq->getSpeciesID() != "") {
+			$whereClause = $whereClause . " AND species.objectid='" . $this->mReq->getSpeciesID() . "'";
 			$whereClause = $whereClause . " AND sighting.SpeciesAbbreviation=species.Abbreviation"; 
-		} elseif ($this->mFamily != "") {
+		} elseif ($this->mReq->getFamilyID() != "") {
 			$whereClause = $whereClause . " AND
-              species.objectid >= " . $this->mFamily * pow(10, 7) . " AND
-              species.objectid < " . ($this->mFamily + 1) * pow(10, 7);
+              species.objectid >= " . $this->mReq->getFamilyID() * pow(10, 7) . " AND
+              species.objectid < " . ($this->mReq->getFamilyID() + 1) * pow(10, 7);
 			$whereClause = $whereClause . " AND sighting.SpeciesAbbreviation=species.Abbreviation"; 
-		} elseif ($this->mOrder != "") {
+		} elseif ($this->mReq->getOrderID() != "") {
 			$whereClause = $whereClause . " AND
-              species.objectid >= " . $this->mOrder * pow(10, 9) . " AND
-              species.objectid < " . ($this->mOrder + 1) * pow(10, 9);
+              species.objectid >= " . $this->mReq->getOrderID() * pow(10, 9) . " AND
+              species.objectid < " . ($this->mReq->getOrderID() + 1) * pow(10, 9);
 			$whereClause = $whereClause . " AND sighting.SpeciesAbbreviation=species.Abbreviation"; 
 		}
 		
-		if ($this->mMonth !="") {
-			$whereClause = $whereClause . " AND Month(TripDate)=" . $this->mMonth;
+		if ($this->mReq->getMonth() !="") {
+			$whereClause = $whereClause . " AND Month(TripDate)=" . $this->mReq->getMonth();
 		}
-		if ($this->mYear !="") {
-			$whereClause = $whereClause . " AND Year(TripDate)=" . $this->mYear;
+		if ($this->mReq->getYear() !="") {
+			$whereClause = $whereClause . " AND Year(TripDate)=" . $this->mReq->getYear();
 		}
 
 		return $whereClause;
@@ -112,7 +99,6 @@ class LocationQuery extends BirdWalkerQuery
 	function findExtrema()
 	{
 		echo "<!-- extrema -->";
-		$this->debug();
 
 		// TODO, we want both a minimum map dimension, and a minimum margin around the group of points
 		$extrema = performOneRowQuery("
@@ -146,17 +132,17 @@ class LocationQuery extends BirdWalkerQuery
 	function formatLocationByYearTable()
 	{
 		$urlPrefix = "specieslist.php?";
-		if ($this->mSpeciesID != "") $urlPrefix = "sightinglist.php?";
+		if ($this->mReq->getSpeciesID() != "") $urlPrefix = "sightinglist.php?";
 
-		formatLocationByYearTable($this, $urlPrefix, ($this->mCounty == ""));
+		formatLocationByYearTable($this, $urlPrefix, ($this->mReq->getCounty() == ""));
 	}
 
 	function formatLocationByMonthTable()
 	{
 		$urlPrefix = "specieslist.php?";
-		if ($this->mSpeciesID != "") $urlPrefix = "sightinglist.php?";
+		if ($this->mReq->getSpeciesID() != "") $urlPrefix = "sightinglist.php?";
 
-		formatLocationByMonthTable($this, $urlPrefix, ($this->mCounty == ""));
+		formatLocationByMonthTable($this, $urlPrefix, ($this->mReq->getCounty() == ""));
 	}
 
 	function formatPhotos()

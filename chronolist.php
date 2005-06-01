@@ -8,14 +8,9 @@ class ChronoList
 {
 	var $mSightingQuery;
 
-	function ChronoList()
+	function ChronoList($request)
 	{
-		$this->mSightingQuery = new SightingQuery;
-	}
-
-	function setFromRequest($get)
-	{
-		$this->mSightingQuery->setFromRequest($get);
+		$this->mSightingQuery = new SightingQuery($request);
 	}
 
 	function draw()

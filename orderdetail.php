@@ -2,6 +2,7 @@
 <?php
 
 require_once("./birdwalker.php");
+require_once("./request.php");
 require_once("./speciesquery.php");
 require_once("./locationquery.php");
 require_once("./map.php");
@@ -11,9 +12,9 @@ $view = param($_GET, "view", "species");
 
 $orderid = reqParam($_GET, "orderid");
 
-$speciesQuery = new SpeciesQuery;
-$speciesQuery->setOrder($orderid);
+$request = new Request;
 
+$speciesQuery = new SpeciesQuery($request);
 $orderInfo = getOrderInfo($orderid * pow(10, 9));
 
 htmlHead($orderInfo["LatinName"]);
@@ -44,58 +45,50 @@ navTrailBirds($items);
       </div>
 
 <?
-if ($view == 'species')
+if ($view == 'species' || $view == "photo") // TODO is this a good idea?
 {
-	$speciesQuery = new SpeciesQuery;
-	$speciesQuery->setOrder($orderid);
+	$speciesQuery = new SpeciesQuery($request);
 	countHeading($speciesQuery->getSpeciesCount(), "species");
     formatSpeciesListWithPhoto($speciesQuery);
 }
 elseif ($view == 'speciesbyyear')
 {
-	$speciesQuery = new SpeciesQuery;
-	$speciesQuery->setOrder($orderid);
+	$speciesQuery = new SpeciesQuery($request);
 	countHeading( $speciesQuery->getSpeciesCount(), "species");
 	$speciesQuery->formatSpeciesByYearTable(); 
 }
 elseif ($view == 'speciesbymonth')
 {
-	$speciesQuery = new SpeciesQuery;
-	$speciesQuery->setFromRequest($_GET);
+	$speciesQuery = new SpeciesQuery($request);
 	countHeading( $speciesQuery->getSpeciesCount(), "species");
 	$speciesQuery->formatSpeciesByMonthTable(); 
 }
 elseif ($view == 'locations')
 {
-    $locationQuery = new LocationQuery;
-	$locationQuery->setFromRequest($_GET);
+    $locationQuery = new LocationQuery($request);
 	countHeading( $locationQuery->getLocationCount(), "location");
 	$locationQuery->formatTwoColumnLocationList(true);
 }
 elseif ($view == 'locationsbyyear')
 {
-    $locationQuery = new LocationQuery;
-	$locationQuery->setFromRequest($_GET);
+    $locationQuery = new LocationQuery($request);
 	countHeading( $locationQuery->getLocationCount(), "location");
 	$locationQuery->formatLocationByYearTable();
 }
 elseif ($view == 'locationsbymonth')
 {
-    $locationQuery = new LocationQuery;
-	$locationQuery->setFromRequest($_GET);
+    $locationQuery = new LocationQuery($request);
 	countHeading($locationQuery->getLocationCount(), "location");
 	$locationQuery->formatLocationByMonthTable();
 }
 else if ($view == "map")
 {
-	$map = new Map("./orderdetail.php");
-	$map->setFromRequest($_GET);
+	$map = new Map("./orderdetail.php", $request);
 	$map->draw();
 }
 else if ($view == "chrono")
 {
-	$chrono = new ChronoList;
-	$chrono->setFromRequest($_GET);
+	$chrono = new ChronoList($request);
 	$chrono->draw();
 }
 

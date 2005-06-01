@@ -2,12 +2,15 @@
 <?php
 
 require_once("./birdwalker.php");
+require_once("./request.php");
 require_once("./speciesquery.php");
 require_once("./map.php");
 require_once("./chronolist.php");
 
 $id = reqParam($_GET, "stateid");
 $view = param($_GET, "view", "species");
+
+$request = new Request;
 
 $info = getStateInfo($id);
 
@@ -16,8 +19,7 @@ htmlHead($info["Name"]);
 globalMenu();
 navTrailLocations($view);
 
-$locationQuery = new LocationQuery;
-$locationQuery->setFromRequest($_GET);
+$locationQuery = new LocationQuery($request);
 $extrema = $locationQuery->findExtrema();
 
 ?>
@@ -45,62 +47,53 @@ $extrema = $locationQuery->findExtrema();
 <?
 if ($view == 'species')
 {
-	$speciesQuery = new SpeciesQuery;
-	$speciesQuery->setFromRequest($_GET);
+	$speciesQuery = new SpeciesQuery($request);
 	countHeading($speciesQuery->getSpeciesCount(), "species");
 	$speciesQuery->formatTwoColumnSpeciesList(); 
 }
 elseif ($view == 'speciesbyyear')
 {
-	$speciesQuery = new SpeciesQuery;
-	$speciesQuery->setFromRequest($_GET);
+	$speciesQuery = new SpeciesQuery($request);
 	countHeading($speciesQuery->getSpeciesCount(), "species");
 	$speciesQuery->formatSpeciesByYearTable(); 
 }
 elseif ($view == 'speciesbymonth')
 {
-	$speciesQuery = new SpeciesQuery;
-	$speciesQuery->setFromRequest($_GET);
+	$speciesQuery = new SpeciesQuery($request);
 	countHeading($speciesQuery->getSpeciesCount(), "species");
 	$speciesQuery->formatSpeciesByMonthTable(); 
 }
 elseif ($view == 'locations')
 {
-    $locationQuery = new LocationQuery;
-	$locationQuery->setFromRequest($_GET);
+    $locationQuery = new LocationQuery($request);
 	countHeading($locationQuery->getLocationCount(), "location");
 	$locationQuery->formatTwoColumnLocationList($view, true);
 }
 elseif ($view == 'locationsbyyear')
 {
-    $locationQuery = new LocationQuery;
-	$locationQuery->setFromRequest($_GET);
+    $locationQuery = new LocationQuery($request);
 	countHeading($locationQuery->getLocationCount(), "location");
 	$locationQuery->formatLocationByYearTable();
 }
 elseif ($view == 'locationsbymonth')
 {
-    $locationQuery = new LocationQuery;
-	$locationQuery->setFromRequest($_GET);
+    $locationQuery = new LocationQuery($request);
 	countHeading($locationQuery->getLocationCount(), "location");
 	$locationQuery->formatLocationByMonthTable();
 }
 else if ($view == "map")
 {
-	$map = new Map("./statedetail.php");
-	$map->setFromRequest($_GET);
+	$map = new Map("./statedetail.php", $request);
 	$map->draw();
 }
 else if ($view == "chrono")
 {
-	$chrono = new ChronoList;
-	$chrono->setFromRequest($_GET);
+	$chrono = new ChronoList($request);
 	$chrono->draw();
 }
 elseif ($view == 'photo')
 {
-	$sightingQuery = new SightingQuery;
-	$sightingQuery->setFromRequest($_GET);
+	$sightingQuery = new SightingQuery($request);
 	$sightingQuery->formatPhotos();
 }
 

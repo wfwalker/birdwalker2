@@ -2,10 +2,13 @@
 <?php
 
 require_once("./birdwalker.php");
+require_once("./request.php");
 require_once("./speciesquery.php");
 require_once("./chronolist.php");
 
-$speciesQuery = new SpeciesQuery;
+$request = new Request;
+
+$speciesQuery = new SpeciesQuery($request);
 $view = param($_GET, "view", "");
 
 htmlHead("Species");
@@ -39,7 +42,7 @@ if ($view == "") {
 	countHeading($speciesQuery->getSpeciesCount(), "species");
 	$speciesQuery->formatSpeciesByYearTable($speciesQuery);
 } else if ($view == "chrono") {
-	$chrono = new ChronoList;
+	$chrono = new ChronoList($request);
 	$chrono->draw();
 }
 
