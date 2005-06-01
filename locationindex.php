@@ -31,6 +31,8 @@ navTrailLocations($view);
     </div>
 	</div>
 
+<br clear="all"/>
+
 <? if ($view == "locations") {
 	$locationQuery->formatTwoColumnLocationList($view, true);
    } else if ($view == "locationsbymonth") {

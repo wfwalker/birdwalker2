@@ -62,7 +62,7 @@ navTrailBirds($items);
 
 
 <?
-if ($view == 'species' || $view == "photo") // TODO is this a good idea? 
+if ($view == 'species' || $view == 'lists' || $view == "photo") // TODO is this a good idea? 
 {
 	$speciesQuery = new SpeciesQuery($request);
 	countHeading($speciesQuery->getSpeciesCount(), "species");
@@ -115,6 +115,10 @@ else if ($view == "chrono")
 {
 	$chrono = new ChronoList($request);
 	$chrono->draw();
+}
+else
+{
+	die("Fatal error: unknown view mode " . $view);
 }
 
 footer();

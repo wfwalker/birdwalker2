@@ -133,7 +133,6 @@ class Map
 	{
 		return $this->linkToSelf($this->mReq->getLatitude(), $this->mReq->getLongitude(), $this->mReq->getScale(),
 								 $background, $background);
-		
 	}
 
 	function linkToSelfZoom($zoomFactor, $anchortext)
@@ -191,9 +190,7 @@ class Map
 
 		$longPan = $longRange * 0.1;
 		$latPan = $latRange * 0.3; 
-		
 ?>
-
 
 	   <div style="text-align: right; padding-top: 30px;">
 		 <?= $this->linkToSelfZoom(1.2, "out"); ?> | <?= $this->linkToSelfZoom(0.8, "in"); ?> | <?= $this->drawLayerControls(); ?>
@@ -245,8 +242,7 @@ class Map
 
    </div>
   
-
-	 <p>&nbsp;</p>
+   <p>&nbsp;</p>
 
 <?
 	countHeading($this->mLocationQuery->getLocationCount(), "location");
