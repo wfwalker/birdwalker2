@@ -11,8 +11,6 @@ $request = new Request;
 
 $aQuery = new SpeciesQuery($request);
 
-$view = param($_GET, "view", "list");
-
 htmlHead($aQuery->getPageTitle());
 
 globalMenu();
@@ -28,11 +26,11 @@ navTrailBirds();
 	  <div class=heading><?= $aQuery->getSpeciesCount() ?> Species</div>
 
 <?
-	  if ($view == "list")
+	  if ($request->getView() == "")
 	  {
 		  $aQuery->formatTwoColumnSpeciesList();
 	  }
-	  else if ($view == "checklist")
+	  else if ($request->getView() == "checklist")
 	  { ?>
 		  <form method="GET" action="./index.php">
 		      <div><input type="text" value="Date"/></div>

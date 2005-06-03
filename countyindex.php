@@ -42,8 +42,6 @@ while ($info = mysql_fetch_array($countyStats))
 	$theYear = $info["theyear"];
 	$speciesCount = $info["SpeciesCount"];
 
-?><!-- <?= $lastStateAccumulated ?> is <?= $prevState ?> --> <?
-
 	if ($lastStateAccumulated != $prevState)
 	{
 		$stateInfo = getStateInfo($stateid); ?>
