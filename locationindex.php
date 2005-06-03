@@ -7,21 +7,19 @@ require_once("./map.php");
 
 $request = new Request;
 
-$view = param($_GET, "view", "locations");
-
 $locationQuery = new LocationQuery($request);
 $extrema = $locationQuery->findExtrema();
 
 htmlHead("Locations");
 
 globalMenu();
-navTrailLocations($view);
+navTrailLocations($request->getView());
 ?>
 
     <div class=contentright>
 	  <div class="pagesubtitle">Index</div>
       <div class="titleblock">	  
-<?    if ($view != "map" ) rightThumbnailAll(); ?>
+<?    if ($request->getView() != "map" ) rightThumbnailAll(); ?>
 	  <div class=pagetitle>Locations</div>
     <div class=metadata>
       <a href="./locationindex.php?view=locations">list</a> |
@@ -33,16 +31,17 @@ navTrailLocations($view);
 
 <br clear="all"/>
 
-<? if ($view == "locations") {
-	$locationQuery->formatTwoColumnLocationList($view, true);
-   } else if ($view == "locationsbymonth") {
-      $locationQuery->formatLocationByMonthTable();
-   } else if ($view == "locationsbyyear") {
-      $locationQuery->formatLocationByYearTable();
-   } else if ($view == "map") {
-	$map = new Map("./locationindex.php", $request);
-      $map->draw();
-   }
+<?
+	  if ($request->getView() == "locations") {
+		  $locationQuery->formatTwoColumnLocationList($request->getView(), true);
+	  } else if ($request->getView() == "locationsbymonth") {
+		  $locationQuery->formatLocationByMonthTable();
+	  } else if ($request->getView() == "locationsbyyear") {
+		  $locationQuery->formatLocationByYearTable();
+	  } else if ($request->getView() == "map") {
+		  $map = new Map("./locationindex.php", $request);
+		  $map->draw();
+	  }
 
 footer();
 ?>

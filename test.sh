@@ -7,8 +7,9 @@ echo -n "" > testresults.txt
 baseURL="http://localhost/~walker/birdwalker2/"
 
 successURLs="\
+statedetail.php?view=locationsbymonth&stateid=5\
 statedetail.php?view=locations&stateid=5 \
-speciesdetail.php?view=byyear&speciesid=11061111000 \
+speciesdetail.php?view=locationsbyyear&speciesid=11061111000 \
 yeardetail.php?view=chrono&year=1999 \
 yeardetail.php?view=photo&year=2004 \
 speciesindex.php?view=chrono \
@@ -22,7 +23,7 @@ locationindex.php \
 monthdetail.php?view=trip&year=2005&month=03 \
 onthisdate.php \
 orderdetail.php?orderid=22 \
-photodetail.php?id=8224 \
+photodetail.php?sightingid=8224 \
 photoindex.php \
 photoindexlocation.php \
 photoindextaxo.php \
@@ -44,7 +45,6 @@ locationdetail.php \
 locationdetail.php?location=23 \
 locationdetail.php?locationid=70&view=pants \
 locationdetail.php?locationid=pants \
-monthdetail.php \
 orderdetail.php \
 orderdetail.php?order=22 \
 photodetail.php \
@@ -58,7 +58,7 @@ echo "" > detailpages.txt
 
 for successURL in $successURLs; do
 	curl -s $baseURL$successURL > detail.html
-	egrep "(404 Not Found|mysql|Fatal error|Parse error|Warning)" detail.html >> testresults.txt
+	egrep "(Notice|404 Not Found|mysql|Fatal error|Parse error|Warning)" detail.html >> testresults.txt
 	ec=$?
 
 	tidy -e detail.html > /dev/null 2>> testresults.txt

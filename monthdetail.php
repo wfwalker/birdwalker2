@@ -11,18 +11,14 @@ require_once("./map.php");
 
 $request = new Request;
 
-$year = reqParam($_GET, "year");
-$month = reqParam($_GET, "month");
-$view = param($_GET, "view", "species");
-
-htmlHead(getMonthNameForNumber($month) . ", " . $year);
+htmlHead(getMonthNameForNumber($request->getMonth()) . ", " . $request->getYear());
 
 globalMenu();
 
-if ($month == 1) { $prevMonth = 12; $prevYear = $year - 1; } else { $prevMonth = $month - 1; $prevYear = $year; }
-if ($month == 12) { $nextMonth = 1; $nextYear = $year + 1; } else { $nextMonth = $month + 1; $nextYear = $year; }
+if ($request->getMonth() == 1) { $prevMonth = 12; $prevYear = $request->getYear() - 1; } else { $prevMonth = $request->getMonth() - 1; $prevYear = $request->getYear(); }
+if ($request->getMonth() == 12) { $nextMonth = 1; $nextYear = $request->getYear() + 1; } else { $nextMonth = $request->getMonth() + 1; $nextYear = $request->getYear(); }
 
-$current = "year=" . $year . "&month=" . $month;
+$current = "year=" . $request->getYear() . "&month=" . $request->getMonth();
 $next = "year=" . $nextYear . "&month=" . $nextMonth;
 $prev = "year=" . $prevYear . "&month=" . $prevMonth;
 $first = "year=" . getEarliestYear() . "&month=1";
@@ -30,28 +26,28 @@ $last = "year=" . getLatestYear() . "&month=12";
 
 
 
-$items[] = "<a href=\"./tripindex.php#" . $year . "\">" . $year . "</a>";
+$items[] = "<a href=\"./tripindex.php#" . $request->getYear() . "\">" . $request->getYear() . "</a>";
 navTrailTrips($items);
 ?>
 
     <div class=contentright>
-	  <? browseButtons("Month Detail", "./monthdetail.php?view=" . $view . "&", $current, $first, $prev, $next, $last); ?>
+	  <? browseButtons("Month Detail", "./monthdetail.php?view=" . $request->getView() . "&", $current, $first, $prev, $next, $last); ?>
       <div class="titleblock">	  
-        <div class=pagetitle><?= getMonthNameForNumber($month) ?>, <a href="./yeardetail.php?year=<?= $year ?>"><?= $year ?></a></div>
+        <div class=pagetitle><?= getMonthNameForNumber($request->getMonth()) ?>, <a href="./yeardetail.php?year=<?= $request->getYear() ?>"><?= $request->getYear() ?></a></div>
           <div class=metadata>
-              <a href="./monthdetail.php?view=trip&month=<?= $month ?>&year=<?= $year ?>">trip</a> |
-              <a href="./monthdetail.php?view=species&month=<?= $month ?>&year=<?= $year ?>">species</a> |
-              <a href="./monthdetail.php?view=map&month=<?= $month ?>&year=<?= $year ?>">map</a> | 
-              <a href="./monthdetail.php?view=photo&month=<?= $month ?>&year=<?= $year ?>">photo</a><br/>
+	          <?= $request->linkToSelfChangeView("trip", "trip") ?> |
+	          <?= $request->linkToSelfChangeView("species", "species") ?> |
+	          <?= $request->linkToSelfChangeView("map", "map") ?> |
+	          <?= $request->linkToSelfChangeView("photo", "photo") ?><br/>
           </div>
 		</div>
 
 <?
-if ($view == 'trip')
+if ($request->getView() == 'trip')
 {
       $latestTrips = performQuery("
           SELECT *, date_format(Date, '%M %e') AS niceDate
-              FROM trip WHERE Month(Date)=" . $month . " AND Year(Date)=" . $year . "
+              FROM trip WHERE Month(Date)=" . $request->getMonth() . " AND Year(Date)=" . $request->getYear() . "
               ORDER BY Date DESC");
 
 ?>
@@ -82,18 +78,18 @@ if ($view == 'trip')
 
 <?	  }
 }
-else if ($view == "map")
+else if ($request->getView() == "map")
 {
 	$map = new Map("./monthdetail.php", $request);
 	$map->draw();
 }
-else if ($view == "species")
+else if ($request->getView() == "species")
 {
     $speciesQuery = new SpeciesQuery($request);
 	countHeading($speciesQuery->getSpeciesCount(), "species");
 	formatTwoColumnSpeciesList($speciesQuery);
 }
-elseif ($view == 'photo')
+elseif ($request->getView() == 'photo')
 {
 	$sightingQuery = new SightingQuery($request);
 	$sightingQuery->formatPhotos();

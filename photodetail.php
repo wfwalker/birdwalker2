@@ -2,10 +2,12 @@
 <?php
 
 require_once("./birdwalker.php");
+require_once("./request.php");
 
-$sightingID = reqParam($_GET, 'id');
+$request = new Request;
 
-$sightingInfo = getSightingInfo($sightingID);
+$sightingInfo = $request->getSightingInfo();
+
 $speciesInfo = performOneRowQuery("SELECT * FROM species WHERE Abbreviation='" . $sightingInfo["SpeciesAbbreviation"] . "'");
 $tripInfo = performOneRowQuery("
     SELECT *, date_format(Date, '%W,  %M %e, %Y') AS niceDate
@@ -20,15 +22,15 @@ $lastPhotoID = performCount("
 
 $nextPhotoID = performCount("
     SELECT objectid FROM sighting
-      WHERE Photo='1' AND CONCAT(TripDate,objectid) > '" . $sightingInfo["TripDate"] . $sightingID . "'
+      WHERE Photo='1' AND CONCAT(TripDate,objectid) > '" . $sightingInfo["TripDate"] . $request->getSightingID() . "'
       ORDER BY CONCAT(TripDate,objectid) LIMIT 1");
 $prevPhotoID = performCount("
     SELECT objectid FROM sighting
-      WHERE Photo='1' AND CONCAT(TripDate,objectid) < '" . $sightingInfo["TripDate"] . $sightingID . "'
+      WHERE Photo='1' AND CONCAT(TripDate,objectid) < '" . $sightingInfo["TripDate"] . $request->getSightingID() . "'
       ORDER BY CONCAT(TripDate,objectid) DESC LIMIT 1");
 
-if ($nextPhotoID == "") { $nextPhotoID = $sightingID; }
-if ($prevPhotoID == "") { $prevPhotoID = $sightingID; }
+if ($nextPhotoID == "") { $nextPhotoID = $request->getSightingID(); }
+if ($prevPhotoID == "") { $prevPhotoID = $request->getSightingID(); }
 
 htmlHead($speciesInfo["CommonName"] . ", " . $tripInfo["niceDate"]);
 
@@ -37,12 +39,12 @@ navTrailPhotos();
 ?>
 
 <div class="contentright">
-  <? browseButtons("Photo Detail", "./photodetail.php?id=", $sightingID, $firstPhotoID, $prevPhotoID, $nextPhotoID, $lastPhotoID); ?>
+  <? browseButtons("Photo Detail", "./photodetail.php?sightingid=", $request->getSightingID(), $firstPhotoID, $prevPhotoID, $nextPhotoID, $lastPhotoID); ?>
 
   <div class="titleblock">
 	  <div class=pagetitle>
           <a href="./speciesdetail.php?speciesid=<?= $speciesInfo["objectid"] ?>"><?= $speciesInfo["CommonName"] ?></a>
-<?        editLink("./sightingedit.php?id=" . $sightingID); ?>
+<?        editLink("./sightingedit.php?id=" . $request->getSightingID()); ?>
       </div>
       <div class=metadata>
           <a href="./locationdetail.php?locationid=<?= $locationInfo["objectid"] ?>"><?= $locationInfo["Name"] ?>, <?= $locationInfo["State"] ?></a><br/>

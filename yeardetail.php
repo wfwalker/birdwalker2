@@ -12,100 +12,40 @@ require_once("./chronolist.php");
 
 $request = new Request;
 
-$year = reqParam($_GET, "year");
-$view = param($_GET, "view", "species");
+$request->getYear() == "" && die("Fatal error: missing year");
 
-htmlHead($year);
+htmlHead($request->getYear());
 
 globalMenu();
 navTrailBirds();
 ?>
 
     <div class=contentright>
-	<? browseButtons("Year Detail", "./yeardetail.php?view=" . $view . "&year=", $year, getEarliestYear(), $year - 1, $year + 1, getLatestYear()); ?>
+	<? browseButtons("Year Detail", "./yeardetail.php?view=" . $request->getView() . "&year=", $request->getYear(), getEarliestYear(), $request->getYear() - 1, $request->getYear() + 1, getLatestYear()); ?>
+
       <div class="titleblock">	  
-<?    if ($view != "map")
+<?    if ($request->getView() != "map")
          rightThumbnail("
             SELECT sighting.*, " . dailyRandomSeedColumn() . "
                 FROM sighting
-                WHERE sighting.Photo='1' AND Year(TripDate)='" . $year . "'
+                WHERE sighting.Photo='1' AND Year(TripDate)='" . $request->getYear() . "'
                 ORDER BY shuffle LIMIT 1", true); ?>
-        <div class=pagetitle><?= $year ?></div>
+        <div class=pagetitle><?= $request->getYear() ?></div>
           <div class=metadata>
             locations:
-              <a href="./yeardetail.php?view=locations&year=<?= $year ?>">list</a> |
-	          <a href="./yeardetail.php?view=locationsbymonth&year=<?= $year ?>">by month</a> |
-              <a href="./yeardetail.php?view=map&year=<?= $year ?>">map</a> <br/>
+			  <?= $request->linkToSelfChangeView("locations", "list") ?> |
+			  <?= $request->linkToSelfChangeView("locationsbymonth", "by month") ?> |
+			  <?= $request->linkToSelfChangeView("map", "map") ?><br/>
             species:	
-              <a href="./yeardetail.php?view=species&year=<?= $year ?>">list</a> |
-	          <a href="./yeardetail.php?view=chrono&year=<?= $year ?>">ABA</a> |
-	          <a href="./yeardetail.php?view=speciesbymonth&year=<?= $year ?>">by month</a> |
-              <a href="./yeardetail.php?view=species&view=photo&year=<?= $year ?>">photo</a><br/>
+			  <?= $request->linkToSelfChangeView("species", "list") ?> |
+			  <?= $request->linkToSelfChangeView("chrono", "ABA") ?> |
+			  <?= $request->linkToSelfChangeView("speciesbymonth", "by month") ?> |
+			  <?= $request->linkToSelfChangeView("photo", "photo") ?><br/>
           </div>
 		</div>
 
 <?
-if ($view == 'species')
-{
-	$speciesQuery = new SpeciesQuery($request);
-	countHeading( $speciesQuery->getSpeciesCount(), "species");
-	$speciesQuery->formatTwoColumnSpeciesList(); 
-
-	$tripQuery = new TripQuery($request);
-	countHeading( $tripQuery->getTripCount(), "trip");
-	$tripQuery->formatTwoColumnTripList();
-}
-elseif ($view == 'speciesbyyear')
-{
-	$speciesQuery = new SpeciesQuery;
-	$speciesQuery->setFromRequest($_GET);
-	countHeading( $speciesQuery->getSpeciesCount(), "species");
-	$speciesQuery->formatSpeciesByYearTable(); 
-}
-elseif ($view == 'speciesbymonth')
-{
-	$speciesQuery = new SpeciesQuery($request);
-	countHeading( $speciesQuery->getSpeciesCount(), "species");
-	$speciesQuery->formatSpeciesByMonthTable(); 
-}
-elseif ($view == 'locations')
-{
-    $locationQuery = new LocationQuery($request);
-	countHeading( $locationQuery->getLocationCount(), "location");
-	$locationQuery->formatTwoColumnLocationList("species", true);
-
-	$tripQuery = new TripQuery($request);
-	countHeading( $tripQuery->getTripCount(), "trip");
-	$tripQuery->formatTwoColumnTripList();
-}
-elseif ($view == 'locationsbyyear')
-{
-    $locationQuery = new LocationQuery($request);
-	countHeading( $locationQuery->getLocationCount(), "location");
-	$locationQuery->formatLocationByYearTable();
-}
-elseif ($view == 'locationsbymonth')
-{
-    $locationQuery = new LocationQuery($request);
-	countHeading( $locationQuery->getLocationCount(), "location");
-	$locationQuery->formatLocationByMonthTable();
-}
-else if ($view == "map")
-{
-	$map = new Map("./yeardetail.php", $request);
-	$map->draw();
-}
-else if ($view == "chrono")
-{
-	$chrono = new ChronoList($request);
-	$chrono->draw();
-}
-elseif ($view == 'photo')
-{
-	$sightingQuery = new SightingQuery($request);
-	$sightingQuery->formatPhotos();
-}
-
+$request->handleStandardViews("species");
 footer();
 ?>
 

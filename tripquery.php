@@ -58,7 +58,8 @@ class TripQuery extends BirdWalkerQuery
 			$whereClause = $whereClause . " AND location.County='" . $this->mReq->getCounty() . "'";
 			$whereClause = $whereClause . " AND location.Name=sighting.LocationName"; 
 		} elseif ($this->mReq->getStateID() != "") {
-			$whereClause = $whereClause . " AND location.State='" . $this->mReq->getState() . "'";
+			$stateInfo = $this->mReq->getStateInfo();
+			$whereClause = $whereClause . " AND location.State='" . $stateInfo["Abbreviation"] . "'";
 			$whereClause = $whereClause . " AND location.Name=sighting.LocationName"; 
 		}
 

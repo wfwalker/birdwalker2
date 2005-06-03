@@ -35,13 +35,15 @@ navTrailPhotos();
 <table width="100%">
 <tr valign=top><td width="50%" class=report-content>
 
-<?  while($info = mysql_fetch_array($photoLocations))
+<?
+	$prevInfo = "";
+	while($info = mysql_fetch_array($photoLocations))
     {
-		if (($prevInfo["State"] != $info["State"]) || ($prevInfo["County"] != $info["County"])) 
+		if ($prevInfo == "" || ($prevInfo["State"] != $info["State"]) || ($prevInfo["County"] != $info["County"])) 
 		{ ?>
           <div class=subheading><?
-		  if ($prevInfo["State"] != $info["State"]) { echo getStateNameForAbbreviation($info["State"]) . ", "; }
-		  if ($prevInfo["County"] != $info["County"]) { echo $info["County"] . " County"; } ?>
+		  if ($prevInfo == "" || $prevInfo["State"] != $info["State"]) { echo getStateNameForAbbreviation($info["State"]) . ", "; }
+		  if ($prevInfo == "" || $prevInfo["County"] != $info["County"]) { echo $info["County"] . " County"; } ?>
           </div>
 <?      } ?>
 

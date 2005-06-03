@@ -7,17 +7,14 @@ require_once("./speciesquery.php");
 require_once("./map.php");
 require_once("./chronolist.php");
 
-$id = reqParam($_GET, "stateid");
-$view = param($_GET, "view", "species");
-
 $request = new Request;
 
-$info = getStateInfo($id);
+$info = $request->getStateInfo();
 
 htmlHead($info["Name"]);
 
 globalMenu();
-navTrailLocations($view);
+navTrailLocations($request->getView());
 
 $locationQuery = new LocationQuery($request);
 $extrema = $locationQuery->findExtrema();
@@ -25,78 +22,28 @@ $extrema = $locationQuery->findExtrema();
 ?>
 
     <div class=contentright>
-      <? stateBrowseButtons($id, $view); ?>
+      <? stateBrowseButtons($request->getStateID(), $request->getView()); ?>
       <div class="titleblock">	  
-<?    if ($view != "map") rightThumbnailState($info["Abbreviation"]); ?>
+<?    if ($request->getView() != "map") rightThumbnailState($info["Abbreviation"]); ?>
 	  <div class=pagetitle><?= $info["Name"] ?></div>
       <div class=metadata>
         locations:
-        <a href="./statedetail.php?view=locations&stateid=<?= $id ?>">list</a> |
-	    <a href="./statedetail.php?view=locationsbymonth&stateid=<?= $id ?>">by month</a> |
-	    <a href="./statedetail.php?view=locationsbyyear&stateid=<?= $id ?>">by year</a> |
-	    <a href="./statedetail.php?view=map&stateid=<?= $id ?>">map</a><br/>
+		<?= $request->linkToSelfChangeView("locations", "list") ?> | 
+		<?= $request->linkToSelfChangeView("locationsbymonth", "by month") ?> | 
+		<?= $request->linkToSelfChangeView("locationsbyyear", "by year") ?> | 
+		<?= $request->linkToSelfChangeView("map", "map") ?><br/>
         species:	
-        <a href="./statedetail.php?view=species&stateid=<?= $id ?>">list</a> |
-	    <a href="./statedetail.php?view=chrono&stateid=<?= $id ?>">ABA</a> |
-	    <a href="./statedetail.php?view=speciesbymonth&stateid=<?= $id ?>">by month</a> |
-	    <a href="./statedetail.php?view=speciesbyyear&stateid=<?= $id ?>">by year</a> | 
-        <a href="./statedetail.php?view=species&view=photo&stateid=<?= $id ?>">photo</a><br/>
+		<?= $request->linkToSelfChangeView("species", "list") ?> | 
+		<?= $request->linkToSelfChangeView("chrono", "ABA") ?> | 
+		<?= $request->linkToSelfChangeView("speciesbymonth", "by month") ?> | 
+		<?= $request->linkToSelfChangeView("speciesbyyear", "by year") ?> | 
+		<?= $request->linkToSelfChangeView("photo", "photo") ?><br/>
       </div>
       </div>
 
 <?
-if ($view == 'species')
-{
-	$speciesQuery = new SpeciesQuery($request);
-	countHeading($speciesQuery->getSpeciesCount(), "species");
-	$speciesQuery->formatTwoColumnSpeciesList(); 
-}
-elseif ($view == 'speciesbyyear')
-{
-	$speciesQuery = new SpeciesQuery($request);
-	countHeading($speciesQuery->getSpeciesCount(), "species");
-	$speciesQuery->formatSpeciesByYearTable(); 
-}
-elseif ($view == 'speciesbymonth')
-{
-	$speciesQuery = new SpeciesQuery($request);
-	countHeading($speciesQuery->getSpeciesCount(), "species");
-	$speciesQuery->formatSpeciesByMonthTable(); 
-}
-elseif ($view == 'locations')
-{
-    $locationQuery = new LocationQuery($request);
-	countHeading($locationQuery->getLocationCount(), "location");
-	$locationQuery->formatTwoColumnLocationList($view, true);
-}
-elseif ($view == 'locationsbyyear')
-{
-    $locationQuery = new LocationQuery($request);
-	countHeading($locationQuery->getLocationCount(), "location");
-	$locationQuery->formatLocationByYearTable();
-}
-elseif ($view == 'locationsbymonth')
-{
-    $locationQuery = new LocationQuery($request);
-	countHeading($locationQuery->getLocationCount(), "location");
-	$locationQuery->formatLocationByMonthTable();
-}
-else if ($view == "map")
-{
-	$map = new Map("./statedetail.php", $request);
-	$map->draw();
-}
-else if ($view == "chrono")
-{
-	$chrono = new ChronoList($request);
-	$chrono->draw();
-}
-elseif ($view == 'photo')
-{
-	$sightingQuery = new SightingQuery($request);
-	$sightingQuery->formatPhotos();
-}
 
+$request->handleStandardViews("species");
 footer();
 
 ?>

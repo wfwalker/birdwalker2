@@ -9,10 +9,8 @@ require_once("./speciesquery.php");
 
 $request = new Request;
 
-$tripID = reqParam($_GET, 'tripid');
-$view = param($_GET, 'view', 'list');
+$tripInfo = $request->getTripInfo();
 
-$tripInfo = getTripInfo($tripID);
 $tripYear = substr($tripInfo["Date"], 0, 4);
 $tripMonth = substr($tripInfo["Date"], 5, 2);
 
@@ -33,7 +31,7 @@ $tripSpeciesCount = mysql_num_rows($tripSightings);
 // how many life birds were on this trip?
 $tripFirstSightings = 0;
 while($sightingInfo = mysql_fetch_array($tripSightings)) {
-	if ($firstSightings[$sightingInfo['objectid']] != null) { $tripFirstSightings++; }
+	if (array_key_exists($sightingInfo['objectid'], $firstSightings)) { $tripFirstSightings++; }
 }
 
 htmlHead( $tripInfo["Name"]);
@@ -46,14 +44,14 @@ navTrailTrips($items);
 
 
     <div class="contentright">
-      <? tripBrowseButtons("./tripdetail.php", $tripID, $view); ?>
+      <? tripBrowseButtons("./tripdetail.php", $request->getTripID(), $request->getView()); ?>
 
 	  <div class=titleblock>
 
-<?      if (($view != "map") && ($view != "photo")) { $sightingQuery->rightThumbnail(true); }?>
+<?      if (($request->getView() != "map") && ($request->getView() != "photo")) { $sightingQuery->rightThumbnail(true); }?>
         <div class=pagetitle>
             <?= $tripInfo["Name"] ?>
-            <?= editLink("./tripedit.php?tripid=" . $tripID); ?>
+            <?= editLink("./tripedit.php?tripid=" . $request->getTripID()); ?>
         </div>
         <div class=metadata>
           <?= $tripInfo["niceDate"] ?><br/>
@@ -61,9 +59,9 @@ navTrailTrips($items);
 <?        referenceURL($tripInfo); ?>
         </div>
         <div class=metadata>
-	        <a href="./tripdetail.php?view=list&tripid=<?= $tripID ?>">list</a> | 
-	        <a href="./tripdetail.php?view=photo&tripid=<?= $tripID ?>">photo</a> |
-            <a href="./tripdetail.php?view=map&tripid=<?= $tripID ?>">map</a><br/>
+	        <a href="./tripdetail.php?view=list&tripid=<?= $request->getTripID() ?>">list</a> | 
+	        <a href="./tripdetail.php?view=photo&tripid=<?= $request->getTripID() ?>">photo</a> |
+            <a href="./tripdetail.php?view=map&tripid=<?= $request->getTripID() ?>">map</a><br/>
         </div>
 
 
@@ -72,16 +70,16 @@ navTrailTrips($items);
 
 <?
 
-if ($view == "photo")
+if ($request->getView() == "photo")
 {
 	$sightingQuery->formatPhotos();
 }
-else if ($view == "map")
+else if ($request->getView() == "map")
 {
 	$map = new Map("./tripdetail.php", $request);
 	$map->draw();
 }
-else if ($view="list")
+else if ($request->getView() == "list")
 {
 	if ($locationCount > 1) {
 		doubleCountHeading($tripSpeciesCount, "species", $tripFirstSightings, "life bird");
@@ -91,11 +89,9 @@ else if ($view="list")
 	while($locationInfo = mysql_fetch_array($dbLocation))
 	{
 		$speciesQuery = new SpeciesQuery($request);
-		$speciesQuery->mReq->setTripID($tripID);
 		$speciesQuery->mReq->setLocationID($locationInfo["objectid"]);
 
 		$locationSightingQuery = new SightingQuery($request);
-		$locationSightingQuery->mReq->setTripID($tripID);
 		$locationSightingQuery->mReq->setLocationID($locationInfo["objectid"]);
 
 		$dbLocationSightings = $locationSightingQuery->performQuery();
@@ -104,7 +100,7 @@ else if ($view="list")
 
 		$locationFirstSightings = 0;
 		while($sightingInfo = mysql_fetch_array($dbLocationSightings)) {
-			if ($firstSightings[$sightingInfo['sightingid']] != null) { $locationFirstSightings++; }
+			if (array_key_exists($sightingInfo['sightingid'], $firstSightings)) { $locationFirstSightings++; }
 		}
  ?>
 

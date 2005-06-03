@@ -7,20 +7,16 @@ require_once("./sightingquery.php");
 require_once("./map.php");
 require_once("./tripquery.php");
 
-$view = param($_GET, "view", "lists");
-
 $request = new Request;
 
-$speciesID = reqParam($_GET, 'speciesid');
-$speciesInfo = getSpeciesInfo($speciesID);
+$speciesInfo = getSpeciesInfo($request->getSpeciesID());
 
 $locationQuery = new LocationQuery($request);
 $extrema = $locationQuery->findExtrema();
 
-if ($view != "photo")
+if ($request->getView() != "photo")
 {
 	$tripQuery = new TripQuery($request);
-	$tripQuery->mReq->setSpeciesID($speciesID);
 	$tripCount = $tripQuery->getTripCount();
 	
 	$locationCount = $locationQuery->getLocationCount();
@@ -28,17 +24,17 @@ if ($view != "photo")
 
 htmlHead($speciesInfo["CommonName"]);
 globalMenu();
-navTrailSpecies($speciesID, $view);
+$request->navTrailBirds();
 ?>
 
   <div class=contentright>
-    <? speciesBrowseButtons("./speciesdetail.php", $speciesID, $view); ?>
+    <? speciesBrowseButtons("./speciesdetail.php", $request->getSpeciesID(), $request->getView()); ?>
 
 	<div class="titleblock">
-<?    if (($view != "map") && ($view != "photo")) { rightThumbnailSpecies($speciesInfo["Abbreviation"]); } ?>
+<?    if (($request->getView() != "map") && ($request->getView() != "photo")) { rightThumbnailSpecies($speciesInfo["Abbreviation"]); } ?>
       <div class="pagetitle">
         <?= $speciesInfo["CommonName"] ?>
-        <?= editlink("./speciesedit.php?speciesid=" . $speciesID) ?>
+        <?= editlink("./speciesedit.php?speciesid=" . $request->getSpeciesID()) ?>
       </div>
       <div class=metadata>
         <?= $speciesInfo["LatinName"] ?><br/>
@@ -48,39 +44,19 @@ navTrailSpecies($speciesID, $view);
     if ($speciesInfo["ABACountable"] == '0') { ?>
         <div>NOT ABA COUNTABLE</div>
 <?  } ?>
-      <a href="./speciesdetail.php?speciesid=<?=$speciesID?>">list</a> |
-      <a href="./speciesdetail.php?view=bymonth&speciesid=<?=$speciesID?>">by month</a> |
-      <a href="./speciesdetail.php?view=byyear&speciesid=<?=$speciesID?>">by year</a> |
-      <a href="./speciesdetail.php?view=photo&speciesid=<?=$speciesID?>">photo</a> |
-      <a href="./speciesdetail.php?view=map&speciesid=<?=$speciesID?>">map</a><br/>
-
+      <?= $request->linkToSelfChangeView("lists", "lists") ?> |
+      <?= $request->linkToSelfChangeView("locationsbymonth", "by month") ?> |
+      <?= $request->linkToSelfChangeView("locationsbyyear", "by year") ?> |
+      <?= $request->linkToSelfChangeView("photo", "photo") ?> |
+      <?= $request->linkToSelfChangeView("map", "map") ?><br/>
       </div>
    </div>
 
    <div class=report-content><?= $speciesInfo["Notes"] ?></div>
 
 <?
-	
-	  if ($view == "lists") {
-		  countHeading($tripCount, "trip");
-		  $tripQuery->formatTwoColumnTripList();
-		  countHeading($locationCount, "location");
-		  $locationQuery->formatTwoColumnLocationList("species", true);
-	  } elseif ($view == "bymonth") {
-		  doubleCountHeading($tripCount, "trip", $locationCount, "location");
-		  $locationQuery->formatLocationByMonthTable();
-	  } elseif ($view == "byyear") {
-		  doubleCountHeading($tripCount, "trip", $locationCount, "location");
-		  $locationQuery->formatLocationByYearTable();
-	  } else if ($view == "map") {
-		  $map = new Map("./speciesdetail.php", $request);
-		  $map->draw();
-	  } elseif ($view == "photo") {
-		  $sightingQuery = new SightingQuery($request);
-		  $sightingQuery->formatPhotos();
-	  }
-
-      footer();
+$request->handleStandardViews("locations");
+footer();
 ?>
 
    </div>

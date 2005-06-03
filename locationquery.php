@@ -124,25 +124,19 @@ class LocationQuery extends BirdWalkerQuery
             ORDER BY shuffle LIMIT 1");
 	}
 
-	function formatTwoColumnLocationList($view, $countyHeadingOK)
+	function formatTwoColumnLocationList()
 	{
-		formatTwoColumnLocationList($this, $view, $countyHeadingOK);
+		formatTwoColumnLocationList($this);
 	}
 
 	function formatLocationByYearTable()
 	{
-		$urlPrefix = "specieslist.php?";
-		if ($this->mReq->getSpeciesID() != "") $urlPrefix = "sightinglist.php?";
-
-		formatLocationByYearTable($this, $urlPrefix, ($this->mReq->getCounty() == ""));
+		formatLocationByYearTable($this);
 	}
 
 	function formatLocationByMonthTable()
 	{
-		$urlPrefix = "specieslist.php?";
-		if ($this->mReq->getSpeciesID() != "") $urlPrefix = "sightinglist.php?";
-
-		formatLocationByMonthTable($this, $urlPrefix, ($this->mReq->getCounty() == ""));
+		formatLocationByMonthTable($this);
 	}
 
 	function formatPhotos()

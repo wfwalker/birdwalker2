@@ -156,7 +156,7 @@ class SpeciesQuery extends BirdWalkerQuery
 		    $this->getWhereClause() . "
 			GROUP BY year");
 
-		formatSpeciesByYearTable($this, $this->mReq->getParams(), $annualTotal);
+		formatSpeciesByYearTable($this, $annualTotal);
 	}
 
 	function formatSpeciesByMonthTable()
@@ -167,7 +167,7 @@ class SpeciesQuery extends BirdWalkerQuery
 		    $this->getWhereClause() . "
 			GROUP BY month");
 
-		formatSpeciesByMonthTable($this, $this->mReq->mReq->getParams(), $monthlyTotal);
+		formatSpeciesByMonthTable($this, $monthlyTotal);
 	}
 
 	function formatPhotos()

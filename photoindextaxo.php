@@ -38,11 +38,12 @@ navTrailPhotos();
 <?
 $counter = round(mysql_num_rows($photoSpecies)  * 0.6);
 
+$prevInfo = "";
 while($info = mysql_fetch_array($photoSpecies))
 {
 	$orderNum =  floor($info["objectid"] / pow(10, 9));
 	
-	if (getFamilyIDFromSpeciesID($prevInfo["objectid"]) != getFamilyIDFromSpeciesID($info["objectid"]))
+	if ($prevInfo == "" || getFamilyIDFromSpeciesID($prevInfo["objectid"]) != getFamilyIDFromSpeciesID($info["objectid"]))
 	{
 		$taxoInfo = getFamilyInfoFromSpeciesID($info["objectid"]); ?>
 		<div class="subheading"><?= strtolower($taxoInfo["LatinName"]) ?></div>

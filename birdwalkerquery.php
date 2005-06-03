@@ -21,8 +21,8 @@ class BirdWalkerQuery
 		} elseif ($this->mReq->getFamilyID() != "") {
 			$familyInfo = getFamilyInfo($this->mReq->getFamilyID() * pow(10, 7));
 			$pageTitleItems[] = $familyInfo["LatinName"];
-		} elseif ($this->mReq->getOrder() != "") {
-			$orderInfo = getOrderInfo($this->mReq->getOrder() * pow(10, 9));
+		} elseif ($this->mReq->getOrderID() != "") {
+			$orderInfo = getOrderInfo($this->mReq->getOrderID() * pow(10, 9));
 			$pageTitleItems[] = $orderInfo["LatinName"];
 		}
 

@@ -54,8 +54,13 @@ navTrailLocations("list");
 	  { ?>
 		  <td class=bordered align=right>
               &nbsp;
-              <a href="./specieslist.php?stateid=<?= $id ?>&year=<?= $year ?>"><?= $table[$state][$year] ?></a>
-          </td>
+<?
+		if (array_key_exists($year, $table[$state]))
+	    {
+			echo "<a href=\"./specieslist.php?stateid=". $id . "&year=" . $year  . "\">" . $table[$state][$year] . "</a>";
+		} ?>
+
+         </td>
 <?	  } ?>
     </tr>
 <? } ?>

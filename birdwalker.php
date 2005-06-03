@@ -1,5 +1,7 @@
 <?php
 
+error_reporting(E_ALL);
+
 function globalMenu()
 { ?>
 	<div class="contentleft">
@@ -63,23 +65,6 @@ function htmlFoot()
   </body>
 </html>
 <?
-}
-
-
-function reqParam($getParams, $paramName)
-{
-	if ($getParams[$paramName] != "")
-		return $getParams[$paramName];
-	else
-		die("Fatal error: Missing required parameter '" . $paramName . "'");
-}
-
-function param($getParams, $paramName, $defaultValue)
-{
-	if ($getParams[$paramName] != "")
-		return $getParams[$paramName];
-	else
-		return $defaultValue;
 }
 
 function editLink($href)
@@ -178,7 +163,7 @@ function rightThumbnail($photoQueryString, $addLink)
 		if ($width > 0) { $sizeAttributes = $sizeAttributes . " width=" . $width; }
 		if ($height > 0) { $sizeAttributes = $sizeAttributes . "  height=" . $height; }
 
-		if ($addLink == true) { ?> <a href="./photodetail.php?id=<?= $photoInfo["objectid"] ?>">  <? } ?>
+		if ($addLink == true) { ?> <a href="./photodetail.php?sightingid=<?= $photoInfo["objectid"] ?>">  <? } ?>
            <img <?= $sizeAttributes ?> src="./images/thumb/<?= $filename ?>" border=0 align="right" class="inlinepict" alt="bird">
 <?		if ($addLink == true) { ?> </a> <? }
 	}
@@ -321,7 +306,7 @@ function getPhotoFilename($sightingInfo)
 
 function getPhotoLinkForSightingInfo($sightingInfo, $fieldName="objectid")
 { ?>
-	<a href="./photodetail.php?id=<?= $sightingInfo[$fieldName] ?>"><img border=0 align=center src="./images/camera.gif" alt="photo"></a>
+	<a href="./photodetail.php?sightingid=<?= $sightingInfo[$fieldName] ?>"><img border=0 align=center src="./images/camera.gif" alt="photo"></a>
 <?
 }
 
@@ -342,7 +327,7 @@ function getThumbForSightingInfo($sightingInfo)
 	if ($height != "") { $sizeAttributes = $sizeAttributes . "  height=" . $height; }
 
 	return
-		"<a href=\"./photodetail.php?id=" . $sightingInfo["objectid"] . "\">" .
+		"<a href=\"./photodetail.php?sightingid=" . $sightingInfo["objectid"] . "\">" .
 		"<img " . $sizeAttributes . " src=\"./images/thumb/" . $thumbFilename . "\" border=0 alt=\"bird\">" . 
 		"</a>";
 }
@@ -540,29 +525,35 @@ function formatTwoColumnSpeciesList($speciesQuery, $firstSightings = "", $firstY
       <tr valign=top><td width="50%">
 
 <?
+    $prevInfo = "";
 	while($info = mysql_fetch_array($dbQuery))
 	{
 		$orderNum =  floor($info["objectid"] / pow(10, 9));
-		$temp = $info["earliestsighting"];
+		$temp = "";
+		array_key_exists("earliestsighting", $info) && $temp = $info["earliestsighting"];
 		$earliestsightingid = round(substr($temp, 10));
 		
-		if ($divideByFamily && (getFamilyIDFromSpeciesID($prevInfo["objectid"]) != getFamilyIDFromSpeciesID($info["objectid"])))
+		if ($divideByFamily && ($prevInfo != "") && (getFamilyIDFromSpeciesID($prevInfo["objectid"]) != getFamilyIDFromSpeciesID($info["objectid"])))
 		{ ?>
 			<div class=subheading><?= getFamilyDetailLinkFromSpeciesID($info["objectid"]) ?></div>
 <?		} ?>
 
 		<div><a href="./speciesdetail.php?speciesid=<?= $info["objectid"] ?>"><?= $info["CommonName"] ?></a>
+<?
+        if (array_key_exists("sightingid", $info)) { editLink("./sightingedit.php?id=" . $info["sightingid"]); }
+        if (array_key_exists("Photo", $info) && $info["Photo"] == "1") { echo getPhotoLinkForSightingInfo($info, "sightingid"); }
+		if (array_key_exists("ABACountable", $info) && $info["ABACountable"] == "0") { echo "NOT ABA COUNTABLE"; }
+		if (array_key_exists("Exclude", $info) && $info["Exclude"] == "1") { echo "excluded"; }
+		if (array_key_exists("AllExclude", $info) && $info["AllExclude"] == "1") { echo "excluded"; }
 
-<?      if ($info["sightingid"] != "") editLink("./sightingedit.php?id=" . $info["sightingid"]); ?>
-<?      if ($info["Photo"] == "1") { ?><?= getPhotoLinkForSightingInfo($info, "sightingid") ?><? } ?>
-<?		if ($info["ABACountable"] == "0") { ?>NOT ABA COUNTABLE<? } ?>
-<?		if ($info["Exclude"] == "1") { ?>excluded<? } ?>
-<?		if ($info["AllExclude"] == "1") { ?>excluded<? } ?>
+ 		if ($speciesQuery->mReq->getTripID() != "") 
+		{
+			if (array_key_exists("sightingid", $info) && $firstSightings != "" && array_key_exists($info["sightingid"], $firstSightings)) { echo "life bird"; }
+			else if ($earliestsightingid != "" && array_key_exists($earliestsightingid, $firstSightings)) { echo "life bird"; }
+			else if (array_key_exists("sightingid", $info) && $firstYearSightings != "" && array_key_exists($info["sightingid"], $firstYearSightings)) { echo "year bird"; }
+		}
 
-<? 		if ($speciesQuery->mTripID != "" && $firstSightings[$info["sightingid"]] != null) { ?> life bird <? }
-		else if ($speciesQuery->mTripID != "" && $firstSightings[$earliestsightingid] != null) { ?> life bird <? }
-		else if ($speciesQuery->mTripID != "" && $firstYearSightings[$sightingid] != null) { ?> year bird <? }
-		if (strlen($info["Notes"]) > 0) { ?><div class=sighting-notes><?= $info["Notes"] ?></div><? } ?>
+		if (array_key_exists("Notes", $info) && strlen($info["Notes"]) > 0) { ?><div class="sighting-notes"><?= $info["Notes"] ?></div><? } ?>
 
 		</div>
 
@@ -635,7 +626,7 @@ function formatSpeciesListWithPhoto($speciesQuery)
 /**
  * Show a set of sightings, species by rows, years by columns.
  */
-function formatSpeciesByYearTable($sightingQuery, $extraSightingListParams, $yearTotals)
+function formatSpeciesByYearTable($sightingQuery, $yearTotals)
 {
     $gridQueryString="
     SELECT DISTINCT(CommonName), species.objectid as speciesid, bit_or(1 << (year(TripDate) - 1995)) AS mask " .
@@ -668,11 +659,12 @@ function formatSpeciesByYearTable($sightingQuery, $extraSightingListParams, $yea
 
         </tr>
 
-<?	while ($info = mysql_fetch_array($gridQuery))
+<?	$prevInfo = "";
+    while ($info = mysql_fetch_array($gridQuery))
 	{
 		$theMask = $info["mask"];
 
-		if (getFamilyIDFromSpeciesID($prevInfo["speciesid"]) != getFamilyIDFromSpeciesID($info["speciesid"]))
+		if ($prevInfo == "" || getFamilyIDFromSpeciesID($prevInfo["speciesid"]) != getFamilyIDFromSpeciesID($info["speciesid"]))
 		{
 			$taxoInfo = getFamilyInfoFromSpeciesID($info["speciesid"]); ?>
 			<tr><td class=subheading colspan=11><?= strtolower($taxoInfo["LatinName"]) ?></td></tr>
@@ -685,20 +677,24 @@ function formatSpeciesByYearTable($sightingQuery, $extraSightingListParams, $yea
 			<td class=bordered align=center>
 
 <?			if (($info["mask"] >> $index) & 1)
-			{ ?>				
-				<a href="./sightinglist.php?speciesid=<?= $info["speciesid"] ?>&year=<?= (1995 + $index) . $extraSightingListParams?>">X</a>
-<?			}
+			{
+				$clickRequest = new Request; // make a new request from current params and modify
+				$clickRequest->setSpeciesID($info["speciesid"]);
+				$clickRequest->setYear(1995 + $index);
+				$clickRequest->setView("");
+				$clickRequest->setPageScript("sightinglist.php");
+				echo $clickRequest->linkToSelf("X");
+			}
 			else
 			{ ?>
 				&nbsp;
 <?			} ?>
-			 </td>
+			</td>
 <?		} ?>
 
 		</tr>
 
 <?		$prevInfo = $info;
-		$reprintYears++;
 	} ?>
 
 	</table>
@@ -709,7 +705,7 @@ function formatSpeciesByYearTable($sightingQuery, $extraSightingListParams, $yea
 /**
  * Show a set of sightings, species by rows, months by columns.
  */
-function formatSpeciesByMonthTable($sightingQuery, $extraSightingListParams, $monthTotals)
+function formatSpeciesByMonthTable($sightingQuery, $monthTotals)
 {
     $gridQueryString="
     SELECT DISTINCT(CommonName), species.objectid AS speciesid, bit_or(1 << month(TripDate)) AS mask " . 
@@ -742,11 +738,13 @@ function formatSpeciesByMonthTable($sightingQuery, $extraSightingListParams, $mo
 
         </tr>
 
-<?	while ($info = mysql_fetch_array($gridQuery))
+<?	
+	$prevInfo = "";
+	while ($info = mysql_fetch_array($gridQuery))
 	{
 		$theMask = $info["mask"];
 
-		if (getFamilyIDFromSpeciesID($prevInfo["speciesid"]) != getFamilyIDFromSpeciesID($info["speciesid"]))
+		if ($prevInfo == "" || getFamilyIDFromSpeciesID($prevInfo["speciesid"]) != getFamilyIDFromSpeciesID($info["speciesid"]))
 		{
 			$taxoInfo = getFamilyInfoFromSpeciesID($info["speciesid"]); ?>
 			<tr><td class=subheading colspan=13><?= strtolower($taxoInfo["LatinName"]) ?></td></tr>
@@ -759,9 +757,14 @@ function formatSpeciesByMonthTable($sightingQuery, $extraSightingListParams, $mo
 			<td class=bordered align=center>
 
 <?			if (($info["mask"] >> $index) & 1)
-			{ ?>				
-				<a href="./sightinglist.php?speciesid=<?= $info["speciesid"] ?>&month=<?= $index . $extraSightingListParams?>">X</a>
-<?			}
+			{ 
+				$clickRequest = new Request; // make a new request from current params and modify
+				$clickRequest->setSpeciesID($info["speciesid"]);
+				$clickRequest->setMonth($index);
+				$clickRequest->setView("");
+				$clickRequest->setPageScript("sightinglist.php");
+				echo $clickRequest->linkToSelf("X");
+			}
 			else
 			{ ?>
 				&nbsp;
@@ -772,7 +775,6 @@ function formatSpeciesByMonthTable($sightingQuery, $extraSightingListParams, $mo
 		</tr>
 
 <?		$prevInfo = $info;
-		$reprintMonths++;
 	} ?>
 
 	</table>
@@ -782,8 +784,10 @@ function formatSpeciesByMonthTable($sightingQuery, $extraSightingListParams, $mo
 /**
  * Show locations as rows, years as columns
  */
-function formatLocationByYearTable($locationQuery, $urlPrefix, $countyHeadingsOK = true)
+function formatLocationByYearTable($locationQuery)
 {
+	$countyHeadingsOK = ($locationQuery->mReq->getCounty() == "");
+
 	$lastStateHeading="";
     $gridQueryString="
       SELECT distinct(LocationName), County, State, location.objectid as locationid, bit_or(1 << (year(TripDate) - 1995)) as mask " . 
@@ -796,11 +800,12 @@ function formatLocationByYearTable($locationQuery, $urlPrefix, $countyHeadingsOK
     <table cellpadding=0 cellspacing=0 class="report-content" width="100%">
     <tr><td></td><? insertYearLabels() ?></tr>
 
-<?	while ($info = mysql_fetch_array($gridQuery))
+<?  $prevInfo = "";
+	while ($info = mysql_fetch_array($gridQuery))
 	{
 		$theMask = $info["mask"];
 
-		if ($countyHeadingsOK && ($prevInfo["County"] != $info["County"])) {
+		if ($countyHeadingsOK && $prevInfo == "" || ($prevInfo["County"] != $info["County"])) {
             $stateInfo = getStateInfoForAbbreviation($info["State"]) ?>
 
             <tr><td class=subheading colspan=13>
@@ -821,9 +826,14 @@ function formatLocationByYearTable($locationQuery, $urlPrefix, $countyHeadingsOK
 		{ ?>
 			<td class=bordered align=center>
 <?			if (($theMask >> $index) & 1)
-			{ ?>
-				<a href="<?= $urlPrefix . $locationQuery->mReq->getParams() ?>&locationid=<?= $info["locationid"] ?>&year=<?= (1995 + $index) ?>">X</a>
-<?			}
+			{
+				$clickRequest = new Request; // make a new request from current params and modify
+				$clickRequest->setLocationID($info["locationid"]);
+				$clickRequest->setYear(1995 + $index);
+				$clickRequest->setView("");
+				$clickRequest->setPageScript($locationQuery->mReq->getTimeAndLocationScript());
+				echo $clickRequest->linkToSelf("X");
+			}
 			else
 			{ ?>
 				&nbsp;
@@ -833,7 +843,6 @@ function formatLocationByYearTable($locationQuery, $urlPrefix, $countyHeadingsOK
 		</tr>
 <?
 		$prevInfo = $info;
-		$reprintYears++;
 	} ?>
 
 	 </table>
@@ -844,10 +853,11 @@ function formatLocationByYearTable($locationQuery, $urlPrefix, $countyHeadingsOK
 /**
  * Show locations as rows, months as columns
  */
-function formatLocationByMonthTable($locationQuery, $urlPrefix, $countyHeadingsOK = true)
+function formatLocationByMonthTable($locationQuery)
 {
-	$lastStateHeading="";
+	$countyHeadingsOK = ($locationQuery->mReq->getCounty() == "");
 
+	$lastStateHeading="";
     $gridQueryString="
       SELECT distinct(LocationName), County, State, location.objectid AS locationid, bit_or(1 << month(TripDate)) AS mask " .
       $locationQuery->getFromClause() . " " .
@@ -860,11 +870,13 @@ function formatLocationByMonthTable($locationQuery, $urlPrefix, $countyHeadingsO
     <table cellpadding=0 cellspacing=0 cols=11 class="report-content" width="100%">
     <tr><td></td><? insertMonthLabels() ?></tr>
 
-<?	while ($info = mysql_fetch_array($gridQuery))
+<?
+    $prevInfo = "";
+	while ($info = mysql_fetch_array($gridQuery))
 	{
 		$theMask = $info["mask"];
 
-		if ($countyHeadingsOK && ($prevInfo["County"] != $info["County"])) {
+		if ($prevInfo == "" || $countyHeadingsOK && ($prevInfo["County"] != $info["County"])) {
             $stateInfo = getStateInfoForAbbreviation($info["State"]) ?>
 
             <tr><td class=subheading colspan=13>
@@ -885,9 +897,14 @@ function formatLocationByMonthTable($locationQuery, $urlPrefix, $countyHeadingsO
 		{ ?>
 			<td class=bordered align=center>
 <?			if (($theMask >> $index) & 1)
-			{ ?>
-				<a href="<?= $urlPrefix . $locationQuery->mReq->getParams() ?>&locationid=<?= $info["locationid"] ?>&month=<?= $index ?>">X</a>
-<?			}
+			{
+				$clickRequest = new Request; // make a new request from current params and modify
+				$clickRequest->setLocationID($info["locationid"]);
+				$clickRequest->setMonth($index);
+				$clickRequest->setView("");
+				$clickRequest->setPageScript($locationQuery->mReq->getTimeAndLocationScript());
+				echo $clickRequest->linkToSelf("X");
+			}
 			else
 			{ ?>
 				&nbsp;
@@ -897,7 +914,6 @@ function formatLocationByMonthTable($locationQuery, $urlPrefix, $countyHeadingsO
 		</tr>
 <?
 		$prevInfo = $info;
-		$reprintMonths++;
 	} ?>
 
 	 </table>
@@ -987,8 +1003,8 @@ function tripBrowseButtons($url, $tripID, $viewMode)
       WHERE Date < '" . $tripInfo["Date"] . "'
       ORDER BY Date DESC LIMIT 1");
 
-	if ($nextTripID == "") { $nextTripID = $sightingID; }
-	if ($prevTripID == "") { $prevTripID = $sightingID; }
+	if ($nextTripID == "") { $nextTripID = $tripID; }
+	if ($prevTripID == "") { $prevTripID = $tripID; }
 
 	browseButtons("Trip Detail", $url . "?view=" . $viewMode . "&tripid=", $tripID,
 				  $firstTripID, $prevTripID, $nextTripID, $lastTripID);
@@ -997,7 +1013,7 @@ function tripBrowseButtons($url, $tripID, $viewMode)
 function formatTwoColumnTripList($tripQuery)
 {
 	$tripCount = $tripQuery->getTripCount();
-    $subdivideByYears = ($tripCount > 20) && ($tripQuery->mYear == "");
+    $subdivideByYears = ($tripCount > 20) && ($tripQuery->mReq->getYear() == "");
 	$prevYear = "";
 	$counter = round($tripCount  * 0.52); ?>
 	
@@ -1019,12 +1035,12 @@ function formatTwoColumnTripList($tripQuery)
 
 			 <div>
                 <a href="./tripdetail.php?tripid=<?= $info["objectid"] ?>">
-				  <?= $info["Name"] ?>, <?= $info["niceDate"] ?><? if (($tripQuery->mYear == "") && (! $subdivideByYears)) { echo ", " . $info["year"]; } ?>
+				  <?= $info["Name"] ?>, <?= $info["niceDate"] ?><? if (($tripQuery->mReq->getYear() == "") && (! $subdivideByYears)) { echo ", " . $info["year"]; } ?>
                 </a>
-                <? if ($info["Photo"] == "1") { ?><?= getPhotoLinkForSightingInfo($info, "sightingid") ?><? } ?>
-                <? if ($info["Exclude"] == "1") { ?>excluded<? } ?>
+			    <? if (array_key_exists("Photo", $info) && $info["Photo"] == "1") { ?><?= getPhotoLinkForSightingInfo($info, "sightingid") ?><? } ?>
+				<? if (array_key_exists("Exclude", $info) && $info["Exclude"] == "1") { ?>excluded<? } ?>
              </div>
-             <? if ($info["sightingNotes"] != "") { ?> <div class=sighting-notes><?= $info["sightingNotes"] ?></div> <? } ?>
+				<? if (array_key_exists("sightingNotes", $info) && $info["sightingNotes"] != "") { ?> <div class=sighting-notes><?= $info["sightingNotes"] ?></div> <? } ?>
 
 <?		$prevYear = $thisYear;
 		$counter--;
@@ -1168,8 +1184,10 @@ function rightThumbnailLocation($locationName)
       true);
 }
 
-function formatTwoColumnLocationList($locationQuery, $view, $countyHeadingsOK = true)
+function formatTwoColumnLocationList($locationQuery)
 {
+	$countyHeadingsOK = ($locationQuery->mReq->getCounty() == "");
+
 	$dbQuery = performQuery(
 			$locationQuery->getSelectClause() . " " .
 			$locationQuery->getFromClause() . " " .
@@ -1191,14 +1209,14 @@ function formatTwoColumnLocationList($locationQuery, $view, $countyHeadingsOK = 
 			<div class="subheading">
 <?          if ($lastStateHeading != $info["State"]) {
 				$stateInfo = getStateInfoForAbbreviation($info["State"]); ?>
-			    <a href="./statedetail.php?view=<?= $view ?>&stateid=<?= $stateInfo["objectid"]?>"><?= $stateInfo["Name"] ?></a>,
+			    <a href="./statedetail.php?view=<?= $locationQuery->mReq->getView() ?>&stateid=<?= $stateInfo["objectid"]?>"><?= $stateInfo["Name"] ?></a>,
 <?              $lastStateHeading = $info["State"];
             } ?>
-			<a href="./countydetail.php?view=<?= $view ?>&stateid=<?= $stateInfo["objectid"]?>&county=<?= $info["County"] ?>"><?= $info["County"] ?> County</a>
+			<a href="./countydetail.php?view=<?= $locationQuery->mReq->getView() ?>&stateid=<?= $stateInfo["objectid"]?>&county=<?= $info["County"] ?>"><?= $info["County"] ?> County</a>
             </div>
 <?		} ?>
 
-		<div><a href="./locationdetail.php?view=<?= $view ?>&locationid=<?= $info["objectid"] ?>"><?= $info["Name"] ?></a></div>
+		<div><a href="./locationdetail.php?view=<?= $locationQuery->mReq->getView() ?>&locationid=<?= $info["objectid"] ?>"><?= $info["Name"] ?></a></div>
 
 <?		$prevInfo = $info;   
 		$counter--;

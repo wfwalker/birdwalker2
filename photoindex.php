@@ -49,8 +49,7 @@ while($info = mysql_fetch_array($photoQuery))
     <td class=report-content valign=top>
 	    <?= $info["CommonName"] ?><br/>
         <?= $info["niceDate"] ?><br/>
-        <?= $info["LocationName"] ?><br/>
-        <?= $info[""] ?></td>
+        <?= $info["LocationName"] ?></td>
 <?
     if (($counter % 4) == 1)
 	{

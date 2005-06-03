@@ -2,12 +2,14 @@
 <?php
 
 require_once("./birdwalker.php");
+require_once("./request.php");
 require_once("./speciesquery.php");
 
 $locationList = performQuery("select Name, objectid from location order by Name");
 
-$aQuery = new SpeciesQuery;
-$aQuery->setFromRequest($_GET);
+$request = new Request;
+
+$aQuery = new SpeciesQuery($request);
 
 $view = param($_GET, "view", "list");
 

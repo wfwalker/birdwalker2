@@ -22,7 +22,7 @@ class Map
 			// put the map in the center of the extrema
 			$this->mReq->setLatitude(($extrema["minLat"] + $extrema["maxLat"]) / 2.0);
 			$this->mReq->setLongitude(($extrema["minLong"] + $extrema["maxLong"]) / 2.0);
-			$this->mReq->setBackground(param($_GET, "backgnd", "roads"));
+			$this->mReq->setBackground($inReq->getBackground());
 
 			// compute lat and long ranges, with a lower bound in case there's only one location in the set
 			$longRange = max(0.25, abs($extrema["maxLong"] - $extrema["minLong"]));
@@ -179,10 +179,10 @@ class Map
 
 	function draw()
 	{
-		$centerLong = ($this->mMinimumLongitude + $this->mMaximumLongitude) / 2.0;
-		$centerLat = ($this->mMinimumLatitude + $this->mMaximumLatitude) / 2.0;
+		$centerLong = ($this->getMinimumLongitude() + $this->getMaximumLongitude()) / 2.0;
+		$centerLat = ($this->getMinimumLatitude() + $this->getMaximumLatitude()) / 2.0;
 
-		$minRange = min($this->mMaximumLongitude - $this->mMinimumLongitude, $this->mMaximumLatitude - $this->mMinimumLatitude);
+		$minRange = min($this->getMaximumLongitude() - $this->getMinimumLongitude(), $this->getMaximumLatitude() - $this->getMinimumLatitude());
 		$minPixels = min($this->mReq->getMapWidth(), $this->mReq->getMapHeight());
 
 		$longRange = $minRange * $this->mReq->getMapHeight() / $minPixels;

@@ -62,12 +62,13 @@ class ChronoList
 		<table class=report-content width="600px">
 
 <?
+		$prevSightingInfo = "";
 		while($sightingInfo = mysql_fetch_array($firstSightingQuery))
 		{ ?>
 		    <tr>
 		    <td nowrap>
 <?
-		    if ($prevSightingInfo['TripDate'] != $sightingInfo['TripDate']) { ?>
+		    if ($prevSightingInfo == "" || $prevSightingInfo['TripDate'] != $sightingInfo['TripDate']) { ?>
                 <a href="./tripdetail.php?tripid=<?= $sightingInfo['tripid'] ?>"><?= $sightingInfo['niceDate'] ?></a><?
 		    } 
 ?>

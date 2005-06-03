@@ -70,7 +70,7 @@ while ($info = mysql_fetch_array($countyStats))
 	{ ?>
         <td class=bordered align=right>
             <a href="./specieslist.php?stateid=<?= $stateid ?>&county=<?= urlEncode($countyToAccumulate) ?>&year=<?= $year ?>">
-				&nbsp; <?= $yearArray[$year] ?>
+	          &nbsp; <? if (array_key_exists($year, $yearArray)) echo $yearArray[$year]; ?>
             </a>
         </td>
 <?	}?>

@@ -9,7 +9,6 @@ require_once("./chronolist.php");
 $request = new Request;
 
 $speciesQuery = new SpeciesQuery($request);
-$view = param($_GET, "view", "");
 
 htmlHead("Species");
 
@@ -32,16 +31,16 @@ navTrailBirds();
 
 <?
 
-if ($view == "") {
+if ($request->getView() == "") {
 	countHeading($speciesQuery->getSpeciesCount(), "species");
 	$speciesQuery->formatTwoColumnSpeciesList(); 
-} else if ($view == "bymonth") {
+} else if ($request->getView() == "speciesbymonth") {
 	countHeading($speciesQuery->getSpeciesCount(), "species");
 	$speciesQuery->formatSpeciesByMonthTable($speciesQuery);
-} else if ($view == "byyear") {
+} else if ($request->getView() == "speciesbyyear") {
 	countHeading($speciesQuery->getSpeciesCount(), "species");
 	$speciesQuery->formatSpeciesByYearTable($speciesQuery);
-} else if ($view == "chrono") {
+} else if ($request->getView() == "chrono") {
 	$chrono = new ChronoList($request);
 	$chrono->draw();
 }
