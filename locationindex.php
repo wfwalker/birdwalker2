@@ -32,7 +32,7 @@ navTrailLocations($request->getView());
 <br clear="all"/>
 
 <?
-	  if ($request->getView() == "locations") {
+	  if ($request->getView() == "locations" || $request->getView() == "") {
 		  $locationQuery->formatTwoColumnLocationList($request->getView(), true);
 	  } else if ($request->getView() == "locationsbymonth") {
 		  $locationQuery->formatLocationByMonthTable();
