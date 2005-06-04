@@ -116,40 +116,26 @@ class Request
 	{
 		$params = "";
 
-		if ($this->mView != "") {
-			$params[] = "view=" . $this->mView;
-		}
+		if ($this->mView != "") { $params[] = "view=" . $this->mView; }
 
-		if ($this->mLocationID != "") {
-			$params[] = "locationid=" . $this->mLocationID;
-		}
-		if ($this->mCounty != "") {
-			$params[] = "county=" . $this->mCounty;
-		}
-		if ($this->mStateID != "") {
-			$params[] = "stateid=" . $this->mStateID;
-		}
+		if ($this->mLocationID != "") { $params[] = "locationid=" . $this->mLocationID; }
+		if ($this->mCounty != "") { $params[] = "county=" . $this->mCounty; }
+		if ($this->mStateID != "") { $params[] = "stateid=" . $this->mStateID; }
 
-		if ($this->mTripID != "") {
-			$params[] = "tripid=" . $this->mTripID;
-		}
+		if ($this->mTripID != "") { $params[] = "tripid=" . $this->mTripID; }
 
-		if ($this->mSpeciesID != "") {
-			$params[] = "speciesid=" . $this->mSpeciesID;
-		}
-		if ($this->mFamilyID != "") {
-			$params[] = "familyid=" . $this->mFamilyID;
-		} 
-		if ($this->mOrderID != "") {
-			$params[] = "orderid=" . $this->mOrderID;
-		}
+		if ($this->mSpeciesID != "") { $params[] = "speciesid=" . $this->mSpeciesID; }
+		if ($this->mFamilyID != "") { $params[] = "familyid=" . $this->mFamilyID; } 
+		if ($this->mOrderID != "") { $params[] = "orderid=" . $this->mOrderID; }
 		
-		if ($this->mMonth !="") {
-			$params[] = "month=" . $this->mMonth;
-		}
-		if ($this->mYear !="") {
-			$params[] = "year=" . $this->mYear;
-		}
+		if ($this->mMonth !="") { $params[] = "month=" . $this->mMonth; }
+		if ($this->mYear !="") { $params[] = "year=" . $this->mYear; }
+
+		if ($this->mLatitude !="") { $params[] = "lat=" . $this->mLatitude; }
+		if ($this->mLongitude !="") { $params[] = "long=" . $this->mLongitude; }
+
+		if ($this->mScale !="") { $params[] = "scale=" . $this->mScale; }
+		if ($this->mBackground !="") { $params[] = "backgnd=" . $this->mBackground; }
 
 		return implode("&", $params);
 	}
@@ -162,9 +148,16 @@ class Request
 			" speciesid " . $this->mSpeciesID . " family " . $this->mFamilyID . " order " . $this->mOrderID . " -->\n\n";
 	}
 
-	function linkToSelf($linkText)
+	function linkToSelf($linkText, $class = "")
 	{
-		return "<a href=\"./" . $this->getPageScript() . "?" . $this->getParams() . "\">" . $linkText . "</a>";
+		if ($class == "")
+		{
+			return "<a href=\"./" . $this->getPageScript() . "?" . $this->getParams() . "\">" . $linkText . "</a>";
+		}
+		else
+		{
+			return "<a class=\"" . $class . "\" href=\"./" . $this->getPageScript() . "?" . $this->getParams() . "\">" . $linkText . "</a>";
+		}
 	}
 
 	function linkToSelfChangeView($view, $linkText)
@@ -315,5 +308,45 @@ class Request
 		{
 			die("Fatal error: Unknown view mode '" . $this->getView() . "'");
 		}
+	}
+
+	function viewLinks()
+	{ 
+		?><div class=metadata><?
+			
+		if ($this->getLocationID() == "")
+		{
+			echo "locations: "; 
+			echo $this->linkToSelfChangeView("locations", "list") . " | ";
+			if ($this->getMonth() == "" )
+			{
+				echo $this->linkToSelfChangeView("locationsbymonth", "by month") . " | ";
+				if ($this->getYear() == "" )
+				{
+					echo $this->linkToSelfChangeView("locationsbyyear", "by year") . " | ";
+				}
+			}
+			echo $this->linkToSelfChangeView("map", "map");
+			echo "<br/>";
+		}
+		
+		if ($this->getSpeciesID() == "")
+		{
+			echo "species: ";
+			echo $this->linkToSelfChangeView("species", "list") . " | "; 
+			echo $this->linkToSelfChangeView("chrono", "ABA") . " | "; 
+			if ($this->getMonth() == "" )
+			{
+				echo $this->linkToSelfChangeView("speciesbymonth", "by month") . " | "; 
+				if ($this->getYear() == "" )
+				{
+					echo $this->linkToSelfChangeView("speciesbyyear", "by year") . " | "; 
+				}
+			}
+			echo $this->linkToSelfChangeView("photo", "photo");
+			echo "<br/>";
+		}
+
+		?></div><?
 	}
 }
