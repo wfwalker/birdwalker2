@@ -15,7 +15,7 @@ $photoCount = performCount("
 htmlHead("Photo List");
 
 globalMenu();
-navTrailPhotos();
+navTrail();
 ?>
 
     <div class=contentright>

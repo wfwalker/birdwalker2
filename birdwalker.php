@@ -76,7 +76,6 @@ function editLink($href)
 
 function pluralize($noun)
 {
-#	if ($noun == "species")
 	if (substr( $noun, strlen( $noun ) - 7) == "species")
 		return $noun;
 	else
@@ -136,7 +135,7 @@ function referenceURL($info)
 {
 	if (strlen($info["ReferenceURL"]) > 0) { ?>
 		<div><a href="<?= $info["ReferenceURL"] ?>">See also...</a></div>
-<? }
+<?  }
 }
 
 
@@ -207,18 +206,6 @@ function formatPhotos($query)
 	}
 }
 
-function navTrailBirds($extra = "")
-{
-    $birdItems[] = "<a href=\"./speciesindex.php\">birds</a>";
-	navTrail(array_merge($birdItems, $extra));
-}
-
-function navTrailLocations($view, $extra = "")
-{
-    $locationItems[] = "<a href=\"./locationindex.php?view=" . $view . "\">locations</a>";
-	navTrail(array_merge($locationItems, $extra));
-}
-
 function navTrailPhotos($extra = "")
 {
 	$photoItems[] = "<a href=\"./photoindex.php\">photos</a>";
@@ -231,17 +218,21 @@ function navTrailTrips($extra = "")
 	navTrail(array_merge($tripItems, $extra));
 }
 
-function navTrail($extra)
+function navTrail($extra = "")
 { ?>
 	<div class="navigationright"><a href="./index.php">birdWalker</a>
 
-<?	foreach ($extra as $item)
+<?
+	if ($extra != "")
 	{
-		if (strlen($item) > 0)
-		{ ?>
-		  &gt; <?= $item ?>
-<?		}
-	} ?>
+		foreach ($extra as $item)
+		{
+			if (strlen($item) > 0)
+			{ ?>
+			    &gt; <?= $item ?>
+<?          }
+	    }
+    } ?>
 
     </div>
 <?
@@ -464,17 +455,6 @@ function getSpeciesInfo($objectid)
 	return performOneRowQuery("SELECT * FROM species where objectid='" . $objectid . "'");
 }
 
-function navTrailSpecies($speciesID, $view)
-{
-	$orderInfo = getOrderInfo($speciesID);
-	$familyInfo = getFamilyInfo($speciesID);
-
-	$items[] = "<a href=\"./orderdetail.php?view=" . $view . "&orderid=" . round($orderInfo["objectid"] / pow(10, 9)) . "\">" . strtolower($orderInfo["LatinName"]) . "</a>";
-	$items[] = "<a href=\"./familydetail.php?view=" . $view . "&familyid=" . round($familyInfo["objectid"] / pow(10, 7)) . "\">" . strtolower($familyInfo["LatinName"]) . "</a>";
-	navTrailBirds($items);
-}
-
-
 function speciesBrowseButtons($url, $speciesID, $viewMode)
 {
 	$firstAndLastSpecies = performOneRowQuery("
@@ -499,74 +479,6 @@ function speciesBrowseButtons($url, $speciesID, $viewMode)
 
 	browseButtons("Species Detail", $url . "?view=" . $viewMode . "&speciesid=", $speciesID,
 				  $firstSpeciesID, $prevSpeciesID, $nextSpeciesID, $lastSpeciesID);
-}
-
-/**
- * Displays a list of species common names that result from a search over
- * species and sighting tables.
- */
-function formatTwoColumnSpeciesList($speciesQuery, $firstSightings = "", $firstYearSightings = "")
-{
-	// todo what about $speciesQuery->performQuery()
-
-	$dbQuery = performQuery(
-			$speciesQuery->getSelectClause() . " " .
-			$speciesQuery->getFromClause() . " " .
-			$speciesQuery->getWhereClause() . " " .
-			$speciesQuery->getGroupByClause() . " ORDER BY species.objectid");
-
-	if ($firstSightings == "") $firstSightings = getFirstSightings();
-
-	$speciesCount = mysql_num_rows($dbQuery);
-	$divideByFamily = ($speciesCount > 30);
-	$counter = round($speciesCount  * 0.52); ?>
-
-	<table width="100%" class=report-content>
-      <tr valign=top><td width="50%">
-
-<?
-    $prevInfo = "";
-	while($info = mysql_fetch_array($dbQuery))
-	{
-		$orderNum =  floor($info["objectid"] / pow(10, 9));
-		$temp = "";
-		array_key_exists("earliestsighting", $info) && $temp = $info["earliestsighting"];
-		$earliestsightingid = round(substr($temp, 10));
-		
-		if ($divideByFamily && ($prevInfo != "") && (getFamilyIDFromSpeciesID($prevInfo["objectid"]) != getFamilyIDFromSpeciesID($info["objectid"])))
-		{ ?>
-			<div class=subheading><?= getFamilyDetailLinkFromSpeciesID($info["objectid"]) ?></div>
-<?		} ?>
-
-		<div><a href="./speciesdetail.php?speciesid=<?= $info["objectid"] ?>"><?= $info["CommonName"] ?></a>
-<?
-        if (array_key_exists("sightingid", $info)) { editLink("./sightingedit.php?id=" . $info["sightingid"]); }
-        if (array_key_exists("Photo", $info) && $info["Photo"] == "1") { echo getPhotoLinkForSightingInfo($info, "sightingid"); }
-		if (array_key_exists("ABACountable", $info) && $info["ABACountable"] == "0") { echo "NOT ABA COUNTABLE"; }
-		if (array_key_exists("Exclude", $info) && $info["Exclude"] == "1") { echo "excluded"; }
-		if (array_key_exists("AllExclude", $info) && $info["AllExclude"] == "1") { echo "excluded"; }
-
- 		if ($speciesQuery->mReq->getTripID() != "") 
-		{
-			if (array_key_exists("sightingid", $info) && $firstSightings != "" && array_key_exists($info["sightingid"], $firstSightings)) { echo "life bird"; }
-			else if ($earliestsightingid != "" && array_key_exists($earliestsightingid, $firstSightings)) { echo "life bird"; }
-			else if (array_key_exists("sightingid", $info) && $firstYearSightings != "" && array_key_exists($info["sightingid"], $firstYearSightings)) { echo "year bird"; }
-		}
-
-		if (array_key_exists("Notes", $info) && strlen($info["Notes"]) > 0) { ?><div class="sighting-notes"><?= $info["Notes"] ?></div><? } ?>
-
-		</div>
-
-<?		$prevInfo = $info;
-		$counter--;
-		if ($counter == 0)
-		{ ?>
-			</td><td width="50%">
-<?		}
-	} ?>
-
-	</td></tr></table>
-<?
 }
 
 function formatSpeciesListWithPhoto($speciesQuery)
@@ -1136,22 +1048,6 @@ function stateBrowseButtons($stateID, $viewMode)
 	browseButtons("State Detail", "./statedetail.php?view=" . $viewMode . "&stateid=", $stateID,
 				  $firstStateID, $prevStateID, $nextStateID, $lastStateID);
 
-}
-
-function navTrailLocationDetail($siteInfo, $view)
-{
-	$stateInfo = getStateInfoForAbbreviation($siteInfo["State"]);
-
-	$items[] = "
-    <a href=\"./statedetail.php?view=" . $view . "&stateid=" .  $stateInfo["objectid"] . "\">" .
-		strtolower(getStateNameForAbbreviation($siteInfo["State"])) . "
-    </a>";
-	$items[] = "
-    <a href=\"./countydetail.php?view=" . $view . "&county=" . $siteInfo["County"] . "&stateid=" . $stateInfo["objectid"] . "\">" .
-		 strtolower($siteInfo["County"]) . " county
-    </a>";
-
-	navTrailLocations($view, $items);
 }
 
 function rightThumbnailSpecies($abbrev)

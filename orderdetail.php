@@ -13,7 +13,7 @@ htmlHead($orderInfo["LatinName"]);
 
 globalMenu();
 $items[] = strtolower($orderInfo["LatinName"]);
-navTrailBirds($items);
+$request->navTrailBirds();
 ?>
 
     <div class=contentright>

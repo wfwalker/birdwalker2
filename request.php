@@ -8,6 +8,10 @@ require_once("./chronolist.php");
 
 class Request
 {
+	//
+	// INSTANCE VARIABLES
+	//
+
 	var $mView; // what viewing mode for this page
 	var $mPageScript; // which PHP page script is this
 
@@ -32,6 +36,10 @@ class Request
 	var $mScale; // map scale
 	var $mBackground; // which map background
 
+	//
+	// CONSTRUCTOR
+	//
+
 	function Request()
 	{
 		array_key_exists("view", $_GET) && $this->setView($_GET["view"]);
@@ -39,13 +47,13 @@ class Request
 
 		array_key_exists("sightingid", $_GET) && $this->setSightingID($_GET["sightingid"]);
 		
-		array_key_exists("locationid", $_GET) && $this->setLocationID($_GET["locationid"]);
-		array_key_exists("county", $_GET) && $this->setCounty($_GET["county"]);
 		array_key_exists("stateid", $_GET) && $this->setStateID($_GET["stateid"]);
+		array_key_exists("county", $_GET) && $this->setCounty($_GET["county"]);
+		array_key_exists("locationid", $_GET) && $this->setLocationID($_GET["locationid"]);
 
-		array_key_exists("tripid", $_GET) && $this->setTripID($_GET["tripid"]);
-		array_key_exists("month", $_GET) && $this->setMonth($_GET["month"]);
 		array_key_exists("year", $_GET) && $this->setYear($_GET["year"]);
+		array_key_exists("month", $_GET) && $this->setMonth($_GET["month"]);
+		array_key_exists("tripid", $_GET) && $this->setTripID($_GET["tripid"]);
 
 		array_key_exists("orderid", $_GET) && $this->setOrderID($_GET["orderid"]);
 		array_key_exists("familyid", $_GET) && $this->setFamilyID($_GET["familyid"]);
@@ -62,27 +70,63 @@ class Request
 		$this->debug();
 	}
 
+	//
+	// GETTERS AND SETTERS
+	//
+
+
+	// PAGE MANAGEMENT
+
 	function setView($inValue) { $this->mView = $inValue; }
 	function getView() { return $this->mView; }
 	function setPageScript($inValue) { $this->mPageScript = $inValue; }
 	function getPageScript() { return $this->mPageScript; }
 
+	// SIGHTINGS
+
 	function setSightingID($inValue) { $this->mSightingID = $inValue; }
 	function getSightingID() { return $this->mSightingID; }
 
-	function setLocationID($inValue) { $this->mLocationID = $inValue; }
+	// GEOGRAPHY
+
+	function setLocationID($inValue)
+	{
+		$this->mLocationID = $inValue;
+
+		if ($inValue != "")
+		{
+			$locationInfo = $this->getLocationInfo();
+			$stateInfo = getStateInfoForAbbreviation($locationInfo["State"]);
+			$this->setStateID($stateInfo["objectid"]);
+			$this->setCounty($locationInfo["County"]);
+		}
+	}
 	function getLocationID() { return $this->mLocationID; }
 	function setCounty($inValue) { $this->mCounty = $inValue; }
 	function getCounty() { return $this->mCounty; }
 	function setStateID($inValue) { $this->mStateID = $inValue; }
 	function getStateID() { return $this->mStateID; }
 
-	function setTripID($inValue) { $this->mTripID = $inValue; }
+	// CHRONOLOGY
+
+	function setTripID($inValue)
+	{
+		$this->mTripID = $inValue;
+
+		if ($inValue != "")
+		{
+			$tripInfo = $this->getTripInfo();
+			$this->setYear(substr($tripInfo["Date"], 0, 4));
+			$this->setMonth(substr($tripInfo["Date"], 5, 2));
+		}
+	}
 	function getTripID() { return $this->mTripID; }
 	function setMonth($inValue) { $this->mMonth = $inValue; }
 	function getMonth() { return $this->mMonth; }
 	function setYear($inValue) { $this->mYear = $inValue; }
 	function getYear() { return $this->mYear; }
+
+	// TAXONOMY
 
     function setSpeciesID($inValue)
 	{
@@ -98,6 +142,8 @@ class Request
 	function getFamilyID() { return $this->mFamilyID;  }
 	function setOrderID($inValue) { $this->mOrderID = $inValue; }
 	function getOrderID() { return $this->mOrderID; }
+
+	// MAPS
 
 	function setMapHeight($inValue) { $this->mMapHeight = $inValue; }
 	function getMapHeight() { return $this->mMapHeight; }
@@ -220,25 +266,62 @@ class Request
 
 	function navTrailBirds()
 	{
-		$items = "";
+		$items[] = "<a href=\"./speciesindex.php\">birds</a>";
 
-		$this->debug();
-
-		if ($this->getSpeciesID() != "")
+		if ($this->getFamilyID() != "")
 		{
 			$orderInfo = $this->getOrderInfo();
+			
 			$orderRequest = new Request;
 			$orderRequest->setPageScript("orderdetail.php");
+			$orderRequest->setSpeciesID("");
+			$orderRequest->setFamilyID("");
 			
+			$items[] = $orderRequest->linkToSelf(strtolower($orderInfo["LatinName"]));
+		}
+		
+		if ($this->getSpeciesID() != "")
+		{
 			$familyInfo = $this->getFamilyInfo();
+			
 			$familyRequest = new Request;
 			$familyRequest->setPageScript("familydetail.php");
-
-			$items[] = $orderRequest->linkToSelf(strtolower($orderInfo["LatinName"]));
+			$familyRequest->setSpeciesID("");
+			
 			$items[] = $familyRequest->linkToSelf(strtolower($familyInfo["LatinName"]));
 		}
 		
-		navTrailBirds($items);
+		navTrail($items);
+	}
+
+	function navTrailLocations()
+	{
+		$items[] = "<a href=\"./locationindex.php\">locations</a>";
+
+		$this->debug();
+
+		if ($this->getCounty() != "")
+		{
+			$stateInfo = $this->getStateInfo();
+			
+			$stateRequest = new Request;
+			$stateRequest->setPageScript("statedetail.php");
+			$stateRequest->setLocationID("");
+			$stateRequest->setCounty("");
+			
+			$items[] = $stateRequest->linkToSelf(strtolower($stateInfo["Name"]));
+		}
+		
+		if ($this->getLocationID() != "")
+		{
+			$countyRequest = new Request;
+			$countyRequest->setPageScript("countydetail.php");
+			$countyRequest->setLocationID("");
+			
+			$items[] = $countyRequest->linkToSelf(strtolower($this->getCounty()));
+		}
+		
+		navTrail($items);
 	}
 
 	function handleStandardViews($inDefaultView)

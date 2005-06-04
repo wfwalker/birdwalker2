@@ -16,7 +16,7 @@ $thresholdTime = strtotime("-1 month");
 htmlHead("Photo List");
 
 globalMenu();
-navTrailPhotos();
+navTrail();
 ?>
 
     <div class=contentright>

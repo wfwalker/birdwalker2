@@ -31,11 +31,9 @@ $prevFamily = performCount("
       AND species.objectid<" . ($request->getFamilyID() - 1) * pow(10, 7) . " LIMIT 1");
 
 htmlHead($familyInfo["LatinName"]);
-
 globalMenu();
-$items[] = "<a href=\"./orderdetail.php?view=" . $request->getView() . "&orderid=" . round($orderInfo["objectid"] / pow(10, 9)) . "\">" . strtolower($orderInfo["LatinName"]) . "</a>";
-navTrailBirds($items);
- ?>
+$request->navTrailBirds();
+?>
 
     <div class=contentright>
 	<? browseButtons("Family Detail", "./familydetail.php?view=".$request->getView()."&familyid=", $request->getFamilyID(), $firstFamily, $prevFamily, $nextFamily, $lastFamily); ?>

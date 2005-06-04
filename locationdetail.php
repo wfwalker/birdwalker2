@@ -3,11 +3,6 @@
 
 require_once("./request.php");
 require_once("./birdwalker.php");
-require_once("./speciesquery.php");
-require_once("./sightingquery.php");
-require_once("./chronolist.php");
-require_once("./tripquery.php");
-require_once("./map.php");
 
 $request = new Request;
 
@@ -30,7 +25,7 @@ while($sightingInfo = mysql_fetch_array($locationSightings)) {
 htmlHead($siteInfo["Name"]);
 
 globalMenu();
-navTrailLocationDetail($siteInfo, $request->getView());
+$request->navTrailLocations();
 ?>
 
 <div class="contentright">

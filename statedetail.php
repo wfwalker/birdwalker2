@@ -14,10 +14,7 @@ $info = $request->getStateInfo();
 htmlHead($info["Name"]);
 
 globalMenu();
-navTrailLocations($request->getView());
-
-$locationQuery = new LocationQuery($request);
-$extrema = $locationQuery->findExtrema();
+$request->navTrailLocations();
 
 ?>
 
