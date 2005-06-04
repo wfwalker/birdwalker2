@@ -143,9 +143,92 @@ class SpeciesQuery extends BirdWalkerQuery
             ORDER BY shuffle LIMIT 1", true);
 	}
 
-	function formatTwoColumnSpeciesList()
+	/**
+	 * Displays a list of species common names that result from a search over
+	 * species and sighting tables.
+	 */
+	function formatTwoColumnSpeciesList($firstSightings = "", $firstYearSightings = "")
 	{
-		formatTwoColumnSpeciesList($this);
+		$dbQuery = performQuery(
+								$this->getSelectClause() . " " .
+								$this->getFromClause() . " " .
+								$this->getWhereClause() . " " .
+								$this->getGroupByClause() . " ORDER BY species.objectid");
+		
+		if ($firstSightings == "") $firstSightings = getFirstSightings();
+
+		if ($firstYearSightings == "" && $this->mReq->getYear() != "")
+		{
+			$firstYearSightings = getFirstYearSightings($this->mReq->getYear());
+		}
+
+		
+		$speciesCount = mysql_num_rows($dbQuery);
+		$divideByFamily = ($speciesCount > 30);
+		$counter = round($speciesCount  * 0.52); ?>
+
+	    <table width="100%" class=report-content>
+		  <tr valign=top>
+		    <td width="50%">
+<?
+			 $prevInfo = "";
+		     while($info = mysql_fetch_array($dbQuery))
+			 {
+				 $orderNum =  floor($info["objectid"] / pow(10, 9));
+				 $temp = "";
+				 array_key_exists("earliestsighting", $info) && $temp = $info["earliestsighting"];
+				 $earliestsightingid = round(substr($temp, 10));
+		
+				 if ($divideByFamily && ($prevInfo != "") &&
+					 (getFamilyIDFromSpeciesID($prevInfo["objectid"]) != getFamilyIDFromSpeciesID($info["objectid"])))
+				 { ?>
+					 <div class=subheading><?= getFamilyDetailLinkFromSpeciesID($info["objectid"]) ?></div>
+<?               } ?>
+
+		             <div><a href="./speciesdetail.php?speciesid=<?= $info["objectid"] ?>"><?= $info["CommonName"] ?></a>
+<?
+				 if (array_key_exists("sightingid", $info)) { editLink("./sightingedit.php?id=" . $info["sightingid"]); }
+				 if (array_key_exists("Photo", $info) && $info["Photo"] == "1") { echo getPhotoLinkForSightingInfo($info, "sightingid"); }
+				 if (array_key_exists("ABACountable", $info) && $info["ABACountable"] == "0") { echo "NOT ABA COUNTABLE"; }
+				 if (array_key_exists("Exclude", $info) && $info["Exclude"] == "1") { echo "excluded"; }
+				 if (array_key_exists("AllExclude", $info) && $info["AllExclude"] == "1") { echo "excluded"; }
+
+				 if ($this->mReq->getTripID() != "") 
+				 {
+					 if (array_key_exists("sightingid", $info) &&
+						 array_key_exists($info["sightingid"], $firstSightings))
+					 {
+						 echo "life bird";
+					 }
+					 else if ($earliestsightingid != "" &&
+							  array_key_exists($earliestsightingid, $firstSightings))
+					 {
+						 echo "life bird";
+					 }
+					 else if (array_key_exists("sightingid", $info) &&
+							  $firstYearSightings != "" && array_key_exists($info["sightingid"], $firstYearSightings))
+					 {
+						 echo "year bird";
+					 }
+				 }
+
+				 if (array_key_exists("Notes", $info) && ($info["Notes"]) > 0)
+				 { ?>
+					 <div class="sighting-notes"><?= $info["Notes"] ?></div><?
+				 } ?>
+
+		    </div>
+
+<?		    $prevInfo = $info;
+		    $counter--;
+		    if ($counter == 0)
+		    { ?>
+			    </td><td width="50%">
+<?		    }
+	    } ?>
+
+	    </td></tr></table>
+<?
 	}
 
 	function formatSpeciesByYearTable()
