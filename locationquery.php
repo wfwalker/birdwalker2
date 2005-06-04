@@ -42,16 +42,16 @@ class LocationQuery extends BirdWalkerQuery
 			$whereClause = $whereClause . " AND sighting.TripDate='" . $tripInfo["Date"] . "'";
 		}
 
-		if ($this->mReq->getCounty() != "") {
+		if ($this->mReq->getLocationID() != "") {
+			echo "<!-- LOCATION " . $this->mReq->getLocationID() . " -->\n";
+			$whereClause = $whereClause . " AND location.objectid='" . $this->mReq->getLocationID() . "'";
+			$whereClause = $whereClause . " AND location.Name=sighting.LocationName"; 
+		} elseif ($this->mReq->getCounty() != "") {
 			$whereClause = $whereClause . " AND location.County='" . $this->mReq->getCounty() . "'";
 			$whereClause = $whereClause . " AND location.Name=sighting.LocationName"; 
 		} elseif ($this->mReq->getStateID() != "") {
 			$stateInfo = getStateInfo($this->mReq->getStateID());
 			$whereClause = $whereClause . " AND location.State='" . $stateInfo["Abbreviation"] . "'";
-			$whereClause = $whereClause . " AND location.Name=sighting.LocationName"; 
-		} elseif ($this->mReq->getLocationID() != "") {
-			echo "<!-- LOCATION " . $this->mReq->getLocationID() . " -->\n";
-			$whereClause = $whereClause . " AND location.objectid='" . $this->mReq->getLocationID() . "'";
 			$whereClause = $whereClause . " AND location.Name=sighting.LocationName"; 
 		}
 
