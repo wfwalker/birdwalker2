@@ -223,7 +223,7 @@ class Map
 ?>
 
 	   <div style="text-align: right; padding-top: 30px;">
-		 <?= $this->linkToSelfZoom(1.2, "out"); ?> | <?= $this->linkToSelfZoom(0.8, "in"); ?> | <?= $this->drawLayerControls(); ?>
+		 <?= $this->linkToSelfZoom(1.5, "out"); ?> | <?= $this->linkToSelfZoom(0.6, "in"); ?> | <?= $this->drawLayerControls(); ?>
        </div>
 
        <div style="position: relative; border: 1px solid gray; height:<?= $this->mReq->getMapHeight() ?>px; width: <?= $this->mReq->getMapWidth()?>px;">
