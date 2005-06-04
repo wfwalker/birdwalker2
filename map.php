@@ -111,40 +111,70 @@ class Map
 			 "&WIDTH=" . $this->mReq->getMapWidth() . "&HEIGHT=" . $this->mReq->getMapHeight() .
 			 "&format=image/jpeg&Exceptions=se_xml";
 
-		if ($this->mReq->getBackground() == "roads") return $roads;
-		else if ($this->mReq->getBackground() == "relief") return $relief2;
-		else if ($this->mReq->getBackground() == "landcover") return $landcover;
-		else return $terraserver;
-	}
-
-	function linkToSelf($lat, $long, $scale, $backgnd, $anchorText, $style = "")
-	{
-		return "<a href=\"" . $this->mPageURL . "?" .
-			"view=map&" . 
-			"lat=" . $lat . "&long=" . $long . "&scale=" . $scale .
-			"&backgnd=" . $backgnd .
-			$this->mReq->getParams() . "\"" . 
-			" class=\"" . $style . "\">" .
-			$anchorText . 
-			"</a>";
+		if ($this->mReq->getBackground() == "roads")
+		{
+			return $roads;
+		}
+		else if ($this->mReq->getBackground() == "relief")
+		{
+			if ($this->mReq->getScale() > 1.3)
+			{
+				return $relief2;
+			}
+			else
+			{
+				return $relief;
+			}
+		}
+		else if ($this->mReq->getBackground() == "landcover")
+		{
+			return $landcover;
+		}
+		else
+		{
+			if ($this->mReq->getScale() > 0.02)
+			{
+				return $landsat;
+			}
+			else
+			{
+				return $terraserver;
+			}
+		}
 	}
 
 	function linkToSelfChangeBackground($background)
 	{
-		return $this->linkToSelf($this->mReq->getLatitude(), $this->mReq->getLongitude(), $this->mReq->getScale(),
-								 $background, $background);
+		$oldBackground = $this->mReq->getBackground();
+		$this->mReq->setBackground($background);
+		$link = $this->mReq->linkToSelf($background);
+		$this->mReq->setBackground($oldBackground);
+		return $link;
 	}
 
-	function linkToSelfZoom($zoomFactor, $anchortext)
+	function linkToSelfZoom($zoomFactor, $anchorText)
 	{
-		return $this->linkToSelf($this->mReq->getLatitude(), $this->mReq->getLongitude(), $this->mReq->getScale() * $zoomFactor,
-								 $this->mReq->getBackground(), $anchortext);
+		$oldScale = $this->mReq->getScale();
+		$this->mReq->setScale($zoomFactor * $oldScale);
+		$link = $this->mReq->linkToSelf($anchorText);
+		$this->mReq->setScale($oldScale);
+		return $link;
 	}
 
-	function linkToSelfPan($latPan, $longPan, $anchortext)
+	function linkToSelfPan($latPan, $longPan, $anchorText)
 	{
-		return $this->linkToSelf($this->mReq->getLatitude() + $latPan, $this->mReq->getLongitude() + $longPan, $this->mReq->getScale(),
-								 $this->mReq->getBackground(), $anchortext);
+		$oldLat = $this->mReq->getLatitude();
+		$oldLong = $this->mReq->getLongitude();
+
+		$this->mReq->setLongitude($oldLong + $longPan);
+		$this->mReq->setLatitude($oldLat + $latPan);
+
+		$link = $this->mReq->linkToSelf($anchorText);
+
+		$this->mReq->setLatitude($oldLat);
+		$this->mReq->setLongitude($oldLong);
+
+		return $link;
 	}
 
 	function drawLayerControls()
@@ -224,18 +254,17 @@ class Map
 			if (($left > 0) && ($left < $this->mReq->getMapWidth()) && ($top > 0) && ($top < $this->mReq->getMapHeight()))
 			{
 				$locationInfo[$counter] = $info;
-				$mylat = $info["Latitude"];
-				$mylong = $info["Longitude"]; ?>
-				
-			    <div style="position: absolute; left: <?= $left ?>px; top: <?= $top ?>px" nowrap>
 
-					 <?=  $this->linkToSelf($mylat, $mylong, $this->mReq->getScale() * 0.5,
-									   $this->mReq->getBackground(),
-									   "+<span>" . $info["Name"] . "</span>",
-									   "info"); ?>
-			   </div>
+				$clickRequest = new Request;
+				$clickRequest->setLatitude($info["Latitude"]);
+				$clickRequest->setLongitude($info["Longitude"]);
+				$clickRequest->setScale(0.5 * $this->mReq->getScale());
+ ?>
+			    <div style="position: absolute; left: <?= $left ?>px; top: <?= $top ?>px" nowrap>
+				  <?=  $clickRequest->linkToSelf("+<span>" . $info["Name"] . "</span>", "info") ?>
+			    </div>
 <?
-			   $counter++;
+			    $counter++;
 			}
 		}
 ?>
