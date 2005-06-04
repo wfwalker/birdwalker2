@@ -12,7 +12,7 @@ class TripQuery extends BirdWalkerQuery
 
 	function getSelectClause()
 	{
- 		$selectClause = "SELECT DISTINCT trip.objectid, trip.Name, trip.Date, date_format(trip.Date, '%M %e') AS niceDate, year(trip.Date) as year";
+ 		$selectClause = "SELECT DISTINCT trip.objectid, trip.Name, trip.Notes, trip.Date, date_format(trip.Date, '%M %e') AS niceDate, year(trip.Date) as year";
 
 		if ($this->mReq->getSpeciesID() != "")
 		{
@@ -122,6 +122,44 @@ class TripQuery extends BirdWalkerQuery
 	function formatPhotos()
 	{
 		formatPhotos($this);
+	}
+
+
+
+	function formatSummaries()
+	{
+		$dbQuery = $this->performQuery();
+
+?>
+	  <div class="heading">Trips</div>
+
+<?    while ($info = mysql_fetch_array($dbQuery))
+	  {
+          $tripSpeciesCount = performCount("
+              SELECT COUNT(DISTINCT(sighting.objectid))
+                  FROM sighting
+                  WHERE sighting.TripDate='" . $info["Date"] . "'"); ?>
+
+          <div class="pagesubtitle"><?= $info["niceDate"] ?></div>
+
+		  <div class="titleblock">
+              <span class="heading">
+                  <a href="./tripdetail.php?tripid=<?=$info["objectid"]?>">
+<?                    rightThumbnail("SELECT * FROM sighting WHERE Photo='1' AND TripDate='" . $info["Date"] . "' LIMIT 1", false); ?>
+                      <?= $info["Name"] ?>
+                  </a>
+              </span>
+              <div class="subheading"><?= $tripSpeciesCount ?> species</div>
+          </div>
+
+
+          <div class=report-content>
+<?		    if (array_key_exists("Notes", $info)) { echo $info["Notes"]; } ?>
+            <br clear="all"/>
+          </div>
+		  <p>&nbsp;</p>
+
+<?	  }
 	}
 }
 ?>
