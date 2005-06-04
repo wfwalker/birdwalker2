@@ -59,9 +59,9 @@ navTrailTrips($items);
 <?        referenceURL($tripInfo); ?>
         </div>
         <div class=metadata>
-	        <a href="./tripdetail.php?view=list&tripid=<?= $request->getTripID() ?>">list</a> | 
-	        <a href="./tripdetail.php?view=photo&tripid=<?= $request->getTripID() ?>">photo</a> |
-            <a href="./tripdetail.php?view=map&tripid=<?= $request->getTripID() ?>">map</a><br/>
+	        <?= $request->linkToSelfChangeView("list", "list"); ?> |
+	        <?= $request->linkToSelfChangeView("photo", "photo"); ?>|
+	        <?= $request->linkToSelfChangeView("map", "map"); ?><br/>
         </div>
 
 
@@ -79,7 +79,7 @@ else if ($request->getView() == "map")
 	$map = new Map("./tripdetail.php", $request);
 	$map->draw();
 }
-else if ($request->getView() == "list")
+else if ($request->getView() == "" || $request->getView() == "list")
 {
 	if ($locationCount > 1) {
 		doubleCountHeading($tripSpeciesCount, "species", $tripFirstSightings, "life bird");
