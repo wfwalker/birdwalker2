@@ -647,7 +647,13 @@ function formatSpeciesByYearTable($sightingQuery, $yearTotals)
 		if ($info["year"] == (getEarliestYear() - 1) + $index)
 		{ ?>
 			<td class=bordered align=center>
-                <a href="./specieslist.php?year=<?= 1995 + $index ?><?= $extraSightingListParams ?>"><?= $info["count"] ?></a>
+<?
+				$clickRequest = new Request; // make a new request from current params and modify
+				$clickRequest->setYear(1995 + $index);
+				$clickRequest->setView("");
+				$clickRequest->setPageScript("specieslist.php");
+				echo $clickRequest->linkToSelf($info["count"]);
+?>
             </td>
 <?			$info = mysql_fetch_array($yearTotals);
 		}
@@ -726,7 +732,13 @@ function formatSpeciesByMonthTable($sightingQuery, $monthTotals)
 		if ($info["month"] == $index)
 		{ ?>
 			<td class=bordered align=center>
-                <a href="./specieslist.php?month=<?= $index ?><?= $extraSightingListParams ?>"><?= $info["count"] ?></a>
+<?
+				$clickRequest = new Request; // make a new request from current params and modify
+				$clickRequest->setMonth($index);
+				$clickRequest->setView("");
+				$clickRequest->setPageScript("specieslist.php");
+				echo $clickRequest->linkToSelf($info["count"]);
+?>
             </td>
 <?			$info = mysql_fetch_array($monthTotals);
 		}
