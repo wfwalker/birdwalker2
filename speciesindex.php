@@ -11,9 +11,9 @@ $request = new Request;
 $speciesQuery = new SpeciesQuery($request);
 
 htmlHead("Species");
-
 globalMenu();
-navTrailBirds();
+navTrail();
+
 ?>
 
     <div class=contentright>
@@ -22,16 +22,16 @@ navTrailBirds();
 <?    rightThumbnailAll(); ?>
 	  <div class=pagetitle>Species</div>
 	    <div class=metadata>
-          <a href="./speciesindex.php">list</a> |
-          <a href="./speciesindex.php?view=chrono">ABA</a> |
-          <a href="./speciesindex.php?view=bymonth">by month</a> |
-          <a href="./speciesindex.php?view=byyear">by year</a>
+          <?= $request->linkToSelfChangeView("list", "list") ?> |
+          <?= $request->linkToSelfChangeView("chrono", "ABA") ?> |
+          <?= $request->linkToSelfChangeView("speciesbymonth", "by month") ?> |
+          <?= $request->linkToSelfChangeView("speciesbyyear", "by year") ?><br/>
         </div>
       </div>
 
 <?
 
-if ($request->getView() == "") {
+if ($request->getView() == "" || $request->getView() == "list") {
 	countHeading($speciesQuery->getSpeciesCount(), "species");
 	$speciesQuery->formatTwoColumnSpeciesList(); 
 } else if ($request->getView() == "speciesbymonth") {

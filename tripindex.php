@@ -11,7 +11,7 @@ $tripQuery = new TripQuery($request);
 htmlHead("Trips");
 
 globalMenu();
-navTrailTrips("");
+navTrail("");
 ?>
 
     <div class=contentright>

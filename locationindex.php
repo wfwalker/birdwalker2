@@ -13,7 +13,7 @@ $extrema = $locationQuery->findExtrema();
 htmlHead("Locations");
 
 globalMenu();
-navTrailLocations($request->getView());
+navTrail();
 ?>
 
     <div class=contentright>
