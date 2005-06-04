@@ -31,19 +31,10 @@ $extrema = $locationQuery->findExtrema();
       <div class="titleblock">	  
 <?    if (($request->getView() != "map") && ($request->getView() != "photo")) { rightThumbnailCounty($request->getCounty()); } ?>
 	  <div class=pagetitle> <?= $request->getCounty() ?> County</div>
-      <div class=metadata>
-        locations:
-		<?= $request->linkToSelfChangeView("locations", "list") ?> | 
-		<?= $request->linkToSelfChangeView("locationsbymonth", "by month") ?> | 
-		<?= $request->linkToSelfChangeView("locationsbyyear", "by year") ?> | 
-		<?= $request->linkToSelfChangeView("map", "map") ?><br/>
-        species:	
-		<?= $request->linkToSelfChangeView("species", "list") ?> | 
-		<?= $request->linkToSelfChangeView("chrono", "ABA") ?> | 
-		<?= $request->linkToSelfChangeView("speciesbymonth", "by month") ?> | 
-		<?= $request->linkToSelfChangeView("speciesbyyear", "by year") ?> | 
-		<?= $request->linkToSelfChangeView("photo", "photo") ?><br/>
-      </div>
+
+
+<?    $request->viewLinks(); ?>
+
     </div>
 
 <?

@@ -10,6 +10,7 @@ require_once("./map.php");
 require_once("./chronolist.php");
 
 $request = new Request;
+$request->setSpeciesID("");
 
 $familyInfo = $request->getFamilyInfo();
 $orderInfo = $request->getOrderInfo();
@@ -42,18 +43,9 @@ navTrailBirds($items);
 	  <div class="titleblock">
 	    <div class=pagetitle><?= $familyInfo["CommonName"] ?></div>
         <div class=metadata><?= $familyInfo["LatinName"] ?></div>
-        <div class=metadata>
-          locations:
-            <a href="./familydetail.php?view=locations&familyid=<?= $request->getFamilyID() ?>">list</a> |
-            <a href="./familydetail.php?view=locationsbymonth&familyid=<?= $request->getFamilyID() ?>">by month</a> |
-	        <a href="./familydetail.php?view=locationsbyyear&familyid=<?= $request->getFamilyID() ?>">by year</a> |
-	        <a href="./familydetail.php?view=map&familyid=<?= $request->getFamilyID() ?>">map</a> <br/>
-          species:	
-            <a href="./familydetail.php?view=species&familyid=<?= $request->getFamilyID() ?>">list</a> |
-	        <a href="./familydetail.php?view=chrono&familyid=<?= $request->getFamilyID() ?>">ABA</a> |
-	        <a href="./familydetail.php?view=speciesbymonth&familyid=<?= $request->getFamilyID() ?>">by month</a> |
-	        <a href="./familydetail.php?view=speciesbyyear&familyid=<?= $request->getFamilyID() ?>">by year</a><br/>
-	    </div>
+ 
+<?      $request->viewLinks(); ?>
+
       </div>
 
 
