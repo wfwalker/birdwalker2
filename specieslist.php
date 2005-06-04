@@ -9,26 +9,27 @@ $locationList = performQuery("select Name, objectid from location order by Name"
 
 $request = new Request;
 
-$aQuery = new SpeciesQuery($request);
+$speciesQuery = new SpeciesQuery($request);
 
-htmlHead($aQuery->getPageTitle());
+htmlHead($speciesQuery->getPageTitle());
 
 globalMenu();
-navTrailBirds();
+$request->navTrailBirds();
 ?>
 
     <div class=contentright>
+	  <div class=pagesubtitle><?= disabledBrowseButtons("Species List") ?></div>
       <div class="titleblock">
-<?    $aQuery->rightThumbnail() ?>
-      <div class=pagetitle><?= $aQuery->getPageTitle() ?></div>
+<?    $speciesQuery->rightThumbnail() ?>
+      <div class=pagetitle><?= $speciesQuery->getPageTitle() ?></div>
       </div>
 
-	  <div class=heading><?= $aQuery->getSpeciesCount() ?> Species</div>
+	  <div class=heading><?= $speciesQuery->getSpeciesCount() ?> Species</div>
 
 <?
 	  if ($request->getView() == "")
 	  {
-		  $aQuery->formatTwoColumnSpeciesList();
+		  $speciesQuery->formatTwoColumnSpeciesList();
 	  }
 	  else if ($request->getView() == "checklist")
 	  { ?>
@@ -39,7 +40,7 @@ navTrailBirds();
               </select></div>
 		      <div><input type="submit" value="Submit"/></div>
 <?
-		  $dbQuery = $aQuery->performQuery();
+		  $dbQuery = $speciesQuery->performQuery();
 		  $divideByTaxo = mysql_num_rows($dbQuery) > 20;
 
 		  while($info = mysql_fetch_array($dbQuery))

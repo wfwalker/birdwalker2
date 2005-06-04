@@ -13,11 +13,11 @@ $dbQuery = $sightingQuery->performQuery();
 htmlHead($sightingQuery->getPageTitle());
 
 globalMenu();
-navTrailBirds();
+navTrail();
 ?>
 
     <div class=contentright>
-      <div class=pagesubtitle><?= $pageSubtitle ?></div>
+	<div class=pagesubtitle><?= disabledBrowseButtons("Sighting List") ?></div>
       <div class="titleblock">	  
           <div class=pagetitle><?= $sightingQuery->getPageTitle() ?></div>
       </div>
@@ -25,13 +25,14 @@ navTrailBirds();
       <div class=heading><?= mysql_num_rows($dbQuery) ?> Sightings</div>
 
 <table class=report-content width="600px">
-<?php
+<?
+$prevSightingInfo = "";
 while($sightingInfo = mysql_fetch_array($dbQuery)) {
 ?>
     <tr>
     <td nowrap> 
 <?
-	if ($prevSightingInfo["TripDate"] != $sightingInfo["TripDate"]) {
+	if ($prevSightingInfo == "" || $prevSightingInfo["TripDate"] != $sightingInfo["TripDate"]) {
 ?>
         <a href="./tripdetail.php?tripid=<?= $sightingInfo["tripid"] ?>"><?= $sightingInfo["niceDate"] ?></a>
 <?
@@ -41,7 +42,7 @@ while($sightingInfo = mysql_fetch_array($dbQuery)) {
     <td>
 <?
 
- if ($speciesid == "") { echo $sightingInfo["CommonName"]; }
+    if ($request->getSpeciesID() == "") { echo $sightingInfo["CommonName"]; }
 
     editLink("./sightingedit.php?id=" . $sightingInfo["sightingid"]);
 
@@ -54,7 +55,7 @@ while($sightingInfo = mysql_fetch_array($dbQuery)) {
     </td>
     <td nowrap>
 <?
-    if (($locationid == "") && ($prevSightingInfo["LocationName"] != $sightingInfo["LocationName"])) {
+	  if (($request->getLocationID() == "") && ($prevSightingInfo == "" || $prevSightingInfo["LocationName"] != $sightingInfo["LocationName"])) {
 ?>
 		<?= $sightingInfo["LocationName"] ?>, <?= $sightingInfo["County"] ?> County, <?= $sightingInfo["State"] ?>
 <?
