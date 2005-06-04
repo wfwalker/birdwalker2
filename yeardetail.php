@@ -31,17 +31,9 @@ navTrailBirds();
                 WHERE sighting.Photo='1' AND Year(TripDate)='" . $request->getYear() . "'
                 ORDER BY shuffle LIMIT 1", true); ?>
         <div class=pagetitle><?= $request->getYear() ?></div>
-          <div class=metadata>
-            locations:
-			  <?= $request->linkToSelfChangeView("locations", "list") ?> |
-			  <?= $request->linkToSelfChangeView("locationsbymonth", "by month") ?> |
-			  <?= $request->linkToSelfChangeView("map", "map") ?><br/>
-            species:	
-			  <?= $request->linkToSelfChangeView("species", "list") ?> |
-			  <?= $request->linkToSelfChangeView("chrono", "ABA") ?> |
-			  <?= $request->linkToSelfChangeView("speciesbymonth", "by month") ?> |
-			  <?= $request->linkToSelfChangeView("photo", "photo") ?><br/>
-          </div>
+
+<?        $request->viewLinks(); ?>
+
 		</div>
 
 <?

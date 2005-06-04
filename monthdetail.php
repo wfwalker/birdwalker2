@@ -45,38 +45,8 @@ navTrailTrips($items);
 <?
 if ($request->getView() == 'trip')
 {
-      $latestTrips = performQuery("
-          SELECT *, date_format(Date, '%M %e') AS niceDate
-              FROM trip WHERE Month(Date)=" . $request->getMonth() . " AND Year(Date)=" . $request->getYear() . "
-              ORDER BY Date DESC");
-
-?>
-	  <div class="heading">Trips</div>
-
-<?    while ($info = mysql_fetch_array($latestTrips))
-	  {
-          $tripSpeciesCount = performCount("
-              SELECT COUNT(DISTINCT(sighting.objectid))
-                  FROM sighting
-                  WHERE sighting.TripDate='" . $info["Date"] . "'"); ?>
-
-          <div class="pagesubtitle"><?= $info["niceDate"] ?></div>
-
-		  <div class="titleblock">
-              <span class="heading">
-                  <a href="./tripdetail.php?tripid=<?=$info["objectid"]?>">
-<?                    rightThumbnail("SELECT * FROM sighting WHERE Photo='1' AND TripDate='" . $info["Date"] . "' LIMIT 1", false); ?>
-                      <?= $info["Name"] ?>
-                  </a>
-              </span>
-              <div class="subheading"><?= $tripSpeciesCount ?> species</div>
-          </div>
-
-
-          <div class=report-content><?= $info["Notes"] ?><br clear="all"/></div>
-		  <p>&nbsp;</p>
-
-<?	  }
+	$tripQuery = new TripQuery($request);
+	$tripQuery->formatSummaries();
 }
 else if ($request->getView() == "map")
 {
