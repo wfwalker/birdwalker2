@@ -145,25 +145,6 @@ class SightingQuery extends BirdWalkerQuery
 		formatSpeciesByMonthTable($this, $this->getParams(), $monthlyTotal);
 	}
 
-// 	function getPhotos()
-// 	{
-// 		return performQuery("
-//           SELECT sighting.* " .
-// 			$this->getFromClause() . "  " .
-// 			$this->getWhereClause() . "
-//             AND sighting.Photo='1'
-//             ORDER BY sighting.TripDate DESC");
-// 	}
-
-// 	function getPhotoCount()
-// 	{
-// 		return performCount("
-//           SELECT COUNT(DISTINCT sighting.objectid) " .
-// 			$this->getFromClause() . "  " .
-// 			$this->getWhereClause() . "
-//             AND sighting.Photo='1'");
-// 	}
-
 	function formatPhotos()
 	{
 		formatPhotos($this);
