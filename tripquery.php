@@ -128,12 +128,9 @@ class TripQuery extends BirdWalkerQuery
 
 	function formatSummaries()
 	{
-		$dbQuery = $this->performQuery();
+	  $dbQuery = $this->performQuery();
 
-?>
-	  <div class="heading">Trips</div>
-
-<?    while ($info = mysql_fetch_array($dbQuery))
+      while ($info = mysql_fetch_array($dbQuery))
 	  {
           $tripSpeciesCount = performCount("
               SELECT COUNT(DISTINCT(sighting.objectid))
