@@ -3,19 +3,19 @@
 
 require_once("./birdwalker.php");
 
-$tripID = $_GET['tripid'];
-$postTripID = $_POST['tripid'];
-$save = $_POST['Save'];
+$tripID = getValue('tripid');
+$postTripID = postValue('tripid');
+$save = postValue('Save');
 
 getEnableEdit() or die("Editing disabled");
 
 if (($postTripID != "") && ($save == "Save"))
 {
-	$leader = $_POST['Leader'];
-	$referenceURL = $_POST['ReferenceURL'];
-	$date = $_POST['Date'];
-	$notes = $_POST['Notes'];
-	$name = $_POST['Name'];
+	$leader = postValue('Leader');
+	$referenceURL = postValue('ReferenceURL');
+	$date = postValue('Date');
+	$notes = postValue('Notes');
+	$name = postValue('Name');
 
 	performQuery("update trip set Leader='" . $leader . 
 				 "', ReferenceURL='" . $referenceURL . 
@@ -34,17 +34,17 @@ $tripInfo = getTripInfo($tripID);
 htmlHead($tripInfo["Name"] . ", " .$tripInfo["niceDate"]);
 
 globalMenu();
-tripBrowseButtons("./tripedit.php", $tripID, "edit");
 navTrailTrips();
 ?>
 
 <div class="contentright">
 
-<div class=pagesubtitle><?= $tripInfo["niceDate"] ?></div>
+<? tripBrowseButtons("./tripedit.php", $tripID, "edit"); ?>
 <div class="titleblock">
   <a href="./tripdetail.php?tripid=<?= $tripInfo["objectid"] ?>">
     <div class=pagetitle><?= $tripInfo["Name"] ?></div>
 </a>
+<div class=metadata><?= $tripInfo["niceDate"] ?></div>
 </div>
 
 <form method="post" action="./tripedit.php?tripid=<?= $tripID ?>">

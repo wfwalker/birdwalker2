@@ -8,27 +8,27 @@ getEnableEdit() or die("Editing disabled");
 $sightingCount = performCount("select max(objectid) from sighting");
 
 // the GET id determines which record to show
-$sightingID = $_GET['id'];
+$sightingID = getValue("sightingid");
 
 // the POST id determines which record to update
-$postSightingID = $_POST['id'];
+$postSightingID = postValue("sightingid");
 
 // The SAVE and NEW buttons determine whether to update or createa a new record
-$save = $_POST['Save'];
-$new = $_POST['New'];
-$delete = $_POST['Delete'];
+$save = postValue("Save");
+$new = postValue("New");
+$delete = postValue("Delete");
 
 // if NEW, set the POST id to a new unique sighting objectid
 if ($new == "New") { $postSightingID = 1 + performCount("select max(objectid) from sighting"); }
 
 // if we have a POST id and either a new or a save button, then time to update
 if ($postSightingID != "") {
-	$speciesAbbreviation = $_POST['SpeciesAbbreviation'];
-	$locationName = $_POST['LocationName'];
-	$tripDate = $_POST['TripDate'];
-	$notes = $_POST['Notes'];
-	$exclude = $_POST['Exclude'];
-	$photo = $_POST['Photo'];
+	$speciesAbbreviation = postValue('SpeciesAbbreviation');
+	$locationName = postValue('LocationName');
+	$tripDate = postValue('TripDate');
+	$notes = postValue('Notes');
+	$exclude = postValue('Exclude');
+	$photo = postValue('Photo');
 
 	if ($save != "") {
 		performQuery("update sighting set SpeciesAbbreviation='" . $speciesAbbreviation . 
@@ -65,26 +65,28 @@ $locationList = performQuery("select Name, objectid from location");
 htmlHead($speciesInfo["CommonName"] . ", " . $tripInfo["niceDate"]);
 
 globalMenu();
-browseButtons("./sightingedit.php?id=", $sightingID, 1, $sightingID - 1, $sightingID + 1, $sightingCount);
-navTrailBirds();
+navTrail();
 ?>
 
 <div class="contentright">
 
 <div class=pagesubtitle>
-  <a href="./tripdetail.php?tripid=<?= $tripInfo["objectid"] ?>"><?= $tripInfo["niceDate"] ?></a>
+
+<? browseButtons("Sighting Detail", "./sightingedit.php?sightingid=", $sightingID, 1, $sightingID - 1, $sightingID + 1, $sightingCount); ?>
 </div>
 <div class="titleblock">
   <div class=pagetitle>
     <a href="./speciesdetail.php?speciesid=<?= $speciesInfo["objectid"] ?>"><?= $speciesInfo["CommonName"] ?></a>
   </div>
   <div class=metadata>
-    <a href="./countydetail.php?stateid=<?= $stateInfo["objectid"] ?>&county=<?= $locationInfo["County"] ?>"><?= $locationInfo["County"] ?> County</a>,
-    <a href="./statedetail.php?stateid=<?= $stateInfo["objectid"] ?>"><?= $stateInfo["Name"] ?></a>
+    <a href="./countydetail.php?stateid=<?= $stateInfo["objectid"] ?>&county=<?= $locationInfo["County"] ?>"><?= $locationInfo["County"] ?> County</a>, 
+    <a href="./statedetail.php?stateid=<?= $stateInfo["objectid"] ?>"><?= $stateInfo["Name"] ?></a><br/>
+    <a href="./tripdetail.php?tripid=<?= $tripInfo["objectid"] ?>"><?= $tripInfo["niceDate"] ?></a><br/>
+
   </div>
 </div>
 
-<form method="post" action="./sightingedit.php?id=<?= $sightingID ?>">
+<form method="post" action="./sightingedit.php?sightingid=<?= $sightingID ?>">
 
 <table class=report-content width=100%>
   <tr>
@@ -126,7 +128,7 @@ navTrailBirds();
 	<td><input type="text" name="TripDate" value="<?= $sightingInfo["TripDate"] ?>" size=20/></td>
   </tr>
   <tr>
-	<td><input type="hidden" name="id" value="<?= $sightingID ?>"/></td>
+	<td><input type="hidden" name="sightingid" value="<?= $sightingID ?>"/></td>
 	<td><input type="submit" name="Save" value="Save"/></td>
   </tr>
 </table>
