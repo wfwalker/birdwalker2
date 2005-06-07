@@ -21,7 +21,7 @@ familydetail.php?familyid=2227 \
 index.php \
 locationdetail.php?locationid=70 \
 locationindex.php \
-monthdetail.php?view=trip&year=2005&month=03 \
+monthdetail.php?view=trips&year=2005&month=03 \
 onthisdate.php \
 orderdetail.php?orderid=22 \
 photodetail.php?sightingid=8224 \
