@@ -298,8 +298,6 @@ class Request
 	{
 		$items[] = "<a href=\"./locationindex.php\">locations</a>";
 
-		$this->debug();
-
 		if ($this->getCounty() != "")
 		{
 			$stateInfo = $this->getStateInfo();
@@ -324,19 +322,55 @@ class Request
 		navTrail($items);
 	}
 
+	function navTrailTrips()
+	{
+		$items[] = "<a href=\"./tripindex.php\">trips</a>";
+
+		if ($this->getMonth() != "")
+		{
+			$yearRequest = new Request;
+			$yearRequest->setPageScript("yeardetail.php");
+			$yearRequest->setTripID("");
+			$yearRequest->setMonth("");
+			$yearRequest->setView("trips");
+			
+			$items[] = $yearRequest->linkToSelf($this->getYear());
+		}
+		
+		if ($this->getTripID() != "")
+		{
+			$monthRequest = new Request;
+			$monthRequest->setPageScript("monthdetail.php");
+			$monthRequest->setTripID("");
+			$monthRequest->setView("tripsummaries");
+			
+			$items[] = $monthRequest->linkToSelf(strtolower(getMonthNameForNumber($this->getMonth())));
+		}
+		
+		navTrail($items);
+	}
+
 	function handleStandardViews($inDefaultView)
 	{
 		if ($this->getView() == "") { $this->setView($inDefaultView); } 
 
-		if ($this->getView() == 'species')
+		if ($this->getView() == 'trips')
+		{
+			$tripQuery = new TripQuery($this);
+			countHeading( $tripQuery->getTripCount(), "trip");
+			$tripQuery->formatTwoColumnTripList();
+		}
+		elseif ($this->getView() == 'tripsummaries')
+		{
+			$tripQuery = new TripQuery($this);
+			countHeading( $tripQuery->getTripCount(), "trip");
+			$tripQuery->formatSummaries();
+		}
+		elseif ($this->getView() == 'species')
 		{
 			$speciesQuery = new SpeciesQuery($this);
 			countHeading( $speciesQuery->getSpeciesCount(), "species");
 			$speciesQuery->formatTwoColumnSpeciesList(); 
-
-			$tripQuery = new TripQuery($this);
-			countHeading( $tripQuery->getTripCount(), "trip");
-			$tripQuery->formatTwoColumnTripList();
 		}
 		elseif ($this->getView() == 'speciesbyyear')
 		{
@@ -355,10 +389,6 @@ class Request
 			$locationQuery = new LocationQuery($this);
 			countHeading( $locationQuery->getLocationCount(), "location");
 			$locationQuery->formatTwoColumnLocationList($this->getView(), false);
-
-			$tripQuery = new TripQuery($this);
-			countHeading( $tripQuery->getTripCount(), "trip");
-			$tripQuery->formatTwoColumnTripList();
 		}
 		elseif ($this->getView() == 'locationsbyyear')
 		{
@@ -396,7 +426,14 @@ class Request
 	function viewLinks()
 	{ 
 		?><div class=metadata><?
-			
+
+		if ($this->getTripID() == "")
+		{
+			echo "trips: ";
+			echo $this->linkToSelfChangeView("trips", "list") . " | ";			
+			echo $this->linkToSelfChangeView("tripsummaries", "summaries") . "<br/>";			
+		}
+
 		if ($this->getLocationID() == "")
 		{
 			echo "locations: "; 
