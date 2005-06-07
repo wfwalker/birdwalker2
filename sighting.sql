@@ -11065,3 +11065,11 @@ INSERT INTO sighting VALUES (11103,'houspa','San Antonio Valley','','0','0','200
 INSERT INTO sighting VALUES (11104,'greroa','San Antonio Valley','','','','2005-05-21');
 INSERT INTO sighting VALUES (11105,'rocwre','San Antonio Valley','','','','2005-05-21');
 INSERT INTO sighting VALUES (11107,'bushti','San Antonio Valley','','','','2005-05-21');
+INSERT INTO sighting VALUES (11109,'houfin','Ulistac Natural Area','','','','2005-05-24');
+INSERT INTO sighting VALUES (11110,'rewbla','Ulistac Natural Area','','','','2005-05-24');
+INSERT INTO sighting VALUES (11111,'amecro','Charleston Slough','','0','0','2005-05-24');
+INSERT INTO sighting VALUES (11112,'houspa','Ulistac Natural Area','','','','2005-05-24');
+INSERT INTO sighting VALUES (11113,'forter','Charleston Slough','','0','0','2005-05-24');
+INSERT INTO sighting VALUES (11114,'cangoo','Charleston Slough','','0','0','2005-05-24');
+INSERT INTO sighting VALUES (11115,'ameavo','Charleston Slough','','','1','2005-05-24');
+INSERT INTO sighting VALUES (11116,'cliswa','Charleston Slough','','0','0','2005-05-24');
