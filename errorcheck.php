@@ -28,10 +28,11 @@ $missingLatLong = performQuery("
 htmlHead("Bad Records");
 
 globalMenu();
-navTrailBirds();
+navTrail();
 ?>
 
     <div class=contentright>
+	  <div class=pagesubtitle>Index</div>
       <div class="titleblock">	  
 	  <div class=pagetitle>Bad Records</div>
       </div>
