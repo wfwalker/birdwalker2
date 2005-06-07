@@ -28,11 +28,11 @@ $sightingThreshold = 10;
 htmlHead("Target CA Year Birds");
 
 globalMenu();
-navTrailBirds();
+navTrail();
 ?>
 
 <div class="contentright">
-
+<div class=pagesubtitle>Index</div>
 <div class="titleblock">
     <div class="pagetitle">Target CA birds for <?= getLatestYear() ?></div>
 	<div class=metadata>
