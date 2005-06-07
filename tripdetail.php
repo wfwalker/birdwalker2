@@ -37,9 +37,7 @@ while($sightingInfo = mysql_fetch_array($tripSightings)) {
 htmlHead( $tripInfo["Name"]);
 
 globalMenu();
-$items[] = "<a href=\"./tripindex.php#" . $tripYear . "\">" . $tripYear . "</a>";
-$items[] = "<a href=\"./monthdetail.php?view=trip&year=" . $tripYear . "&month=" . $tripMonth . "\">" . strtolower(getMonthNameForNumber($tripMonth)) . "</a>";
-navTrailTrips($items);
+$request->navTrailTrips();
 ?>
 
 
@@ -59,8 +57,8 @@ navTrailTrips($items);
 <?        referenceURL($tripInfo); ?>
         </div>
         <div class=metadata>
-	        <?= $request->linkToSelfChangeView("list", "list"); ?> |
-	        <?= $request->linkToSelfChangeView("photo", "photo"); ?>|
+	        <?= $request->linkToSelfChangeView("list", "species"); ?> |
+	        <?= $request->linkToSelfChangeView("photo", "photo"); ?> |
 	        <?= $request->linkToSelfChangeView("map", "map"); ?><br/>
         </div>
 

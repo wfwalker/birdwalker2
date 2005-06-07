@@ -50,12 +50,16 @@ $request->navTrailLocations();
     </div>
 <? } ?>
 
+      trips:
+	  <?= $request->linkToSelfChangeView("trips", "list"); ?> | 
+	  <?= $request->linkToSelfChangeView("tripsummaries", "summaries"); ?><br/>
+
       species:
-      <a href="./locationdetail.php?view=species&locationid=<?=$request->getLocationID()?>">list</a> |
-      <a href="./locationdetail.php?view=chrono&locationid=<?=$request->getLocationID()?>">ABA</a> |
-      <a href="./locationdetail.php?view=speciesbymonth&locationid=<?=$request->getLocationID()?>">by month</a> |
-      <a href="./locationdetail.php?view=speciesbyyear&locationid=<?=$request->getLocationID()?>">by year</a> |
-      <a href="./locationdetail.php?view=photo&locationid=<?=$request->getLocationID()?>">photos</a>
+	  <?= $request->linkToSelfChangeView("species", "list"); ?> | 
+	  <?= $request->linkToSelfChangeView("chrono", "ABA"); ?> | 
+	  <?= $request->linkToSelfChangeView("speciesbymonth", "by month"); ?> | 
+	  <?= $request->linkToSelfChangeView("speciesbyyear", "by year"); ?> | 
+	  <?= $request->linkToSelfChangeView("photo", "photo"); ?><br/>
     </div>
 
     <div class=report-content><?= $siteInfo["Notes"] ?></div>

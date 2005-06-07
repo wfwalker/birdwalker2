@@ -3,11 +3,6 @@
 
 require_once("./birdwalker.php");
 require_once("./request.php");
-require_once("./speciesquery.php");
-require_once("./sightingquery.php");
-require_once("./locationquery.php");
-require_once("./tripquery.php");
-require_once("./map.php");
 
 $request = new Request;
 
@@ -24,48 +19,25 @@ $prev = "year=" . $prevYear . "&month=" . $prevMonth;
 $first = "year=" . getEarliestYear() . "&month=1";
 $last = "year=" . getLatestYear() . "&month=12";
 
+$request->navTrailTrips();
 
-
-$items[] = "<a href=\"./tripindex.php#" . $request->getYear() . "\">" . $request->getYear() . "</a>";
-navTrailTrips($items);
 ?>
 
     <div class=contentright>
 	  <? browseButtons("Month Detail", "./monthdetail.php?view=" . $request->getView() . "&", $current, $first, $prev, $next, $last); ?>
       <div class="titleblock">	  
         <div class=pagetitle><?= getMonthNameForNumber($request->getMonth()) ?>, <a href="./yeardetail.php?year=<?= $request->getYear() ?>"><?= $request->getYear() ?></a></div>
-          <div class=metadata>
-	          <?= $request->linkToSelfChangeView("trip", "trip") ?> |
-	          <?= $request->linkToSelfChangeView("species", "species") ?> |
-	          <?= $request->linkToSelfChangeView("map", "map") ?> |
-	          <?= $request->linkToSelfChangeView("photo", "photo") ?><br/>
-          </div>
+
+
+<?        $request->viewLinks(); ?>
+
 		</div>
 
 <?
-if ($request->getView() == 'trip')
-{
-	$tripQuery = new TripQuery($request);
-	$tripQuery->formatSummaries();
-}
-else if ($request->getView() == "map")
-{
-	$map = new Map("./monthdetail.php", $request);
-	$map->draw();
-}
-else if ($request->getView() == "species")
-{
-    $speciesQuery = new SpeciesQuery($request);
-	countHeading($speciesQuery->getSpeciesCount(), "species");
-	formatTwoColumnSpeciesList($speciesQuery);
-}
-elseif ($request->getView() == 'photo')
-{
-	$sightingQuery = new SightingQuery($request);
-	$sightingQuery->formatPhotos();
-}
 
+$request->handleStandardViews("tripsummaries");
 footer();
+
 ?>
 
     </div>

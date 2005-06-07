@@ -10,7 +10,7 @@ $request->getYear() == "" && die("Fatal error: missing year");
 htmlHead($request->getYear());
 
 globalMenu();
-navTrail();
+$request->navTrailTrips();
 ?>
 
     <div class=contentright>

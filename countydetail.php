@@ -6,6 +6,8 @@ require_once("./request.php");
 
 $request = new Request;
 
+$request->getCounty() == "" && die("Fatal error: missing county");
+
 htmlHead($request->getCounty() . " County");
 
 globalMenu();
