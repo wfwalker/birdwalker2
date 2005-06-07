@@ -187,7 +187,7 @@ class SpeciesQuery extends BirdWalkerQuery
 
 		             <div><a href="./speciesdetail.php?speciesid=<?= $info["objectid"] ?>"><?= $info["CommonName"] ?></a>
 <?
-				 if (array_key_exists("sightingid", $info)) { editLink("./sightingedit.php?id=" . $info["sightingid"]); }
+				 if (array_key_exists("sightingid", $info)) { editLink("./sightingedit.php?sightingid=" . $info["sightingid"]); }
 				 if (array_key_exists("Photo", $info) && $info["Photo"] == "1") { echo getPhotoLinkForSightingInfo($info, "sightingid"); }
 				 if (array_key_exists("ABACountable", $info) && $info["ABACountable"] == "0") { echo "NOT ABA COUNTABLE"; }
 				 if (array_key_exists("Exclude", $info) && $info["Exclude"] == "1") { echo "excluded"; }
