@@ -189,7 +189,7 @@ function formatPhotos($query)
         <div class=heading>
           <div class=pagesubtitle>
 			<?= $query->getSightingTitle($sightingInfo) ?>
-<?          editLink("./sightingedit.php?id=" . $sightingInfo["sightingid"]); ?>
+<?          editLink("./sightingedit.php?sightingid=" . $sightingInfo["sightingid"]); ?>
           </div>
           <div class=metadata>
 			<?= $query->getSightingSubtitle($sightingInfo) ?>
@@ -729,7 +729,8 @@ function formatLocationByYearTable($locationQuery)
 	{
 		$theMask = $info["mask"];
 
-		if ($countyHeadingsOK && $prevInfo == "" || ($prevInfo["County"] != $info["County"])) {
+		if ($countyHeadingsOK && ($prevInfo == "" || $prevInfo["County"] != $info["County"]))
+		{
             $stateInfo = getStateInfoForAbbreviation($info["State"]) ?>
 
             <tr><td class=subheading colspan=13>
@@ -1193,5 +1194,14 @@ function getStateNameForAbbreviation($abbreviation)
 	return performCount("SELECT Name from state where Abbreviation='" . $abbreviation . "'");
 }
 
+function getValue($inName)
+{
+	if (array_key_exists($inName, $_GET)) return $_GET[$inName]; else return "";
+}
+
+function postValue($inName)
+{
+	if (array_key_exists($inName, $_POST)) return $_POST[$inName]; else return "";
+}
 
 ?>
