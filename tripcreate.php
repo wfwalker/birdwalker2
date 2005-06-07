@@ -5,13 +5,13 @@ require_once("./birdwalker.php");
 
 getEnableEdit() or die("Editing disabled");
 
-$save = $_POST['Save'];
-$abbreviations = $_POST['Abbreviations'];
-$notes = $_POST['Notes'];
-$locationName = $_POST['LocationName'];
-$leader = $_POST['Leader'];
-$tripDate = $_POST['TripDate'];
-$tripName = $_POST['TripName'];
+$save = ""; array_key_exists("Save", $_POST) && $save = $_POST['Save'];
+$abbreviations = ""; array_key_exists("Abbreviations", $_POST) && $abbreviations = $_POST['Abbreviations'];
+$notes = ""; array_key_exists("Notes", $_POST) && $notes = $_POST['Notes'];
+$locationName = ""; array_key_exists("LocationName", $_POST) && $locationName = $_POST['LocationName'];
+$leader = ""; array_key_exists("Leader", $_POST) && $leader = $_POST['Leader'];
+$tripDate = ""; array_key_exists("TripDate", $_POST) && $tripDate = $_POST['TripDate'];
+$tripName = ""; array_key_exists("TripName", $_POST) && $tripName = $_POST['TripName'];
 
 $locationList = performQuery("select Name, objectid from location order by Name");
 $dateArray = getdate();
