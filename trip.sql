@@ -410,3 +410,4 @@ INSERT INTO trip VALUES (410,'Bill Walker','','Sunday Stroll','Lots of the usual
 INSERT INTO trip VALUES (411,'Bill Walker','','Birding at Work','My alert colleagues directed me to a pair of courting Cowbirds  on the ledge directly outside their window.','2005-05-13');
 INSERT INTO trip VALUES (412,'Bob Power','http://www.wildbirdcenter.com/stores/los/map','WBC to Mines Road','In addition to the species listed below, some observers also saw Red-shouldered Hawk, Lewis\'s Woodpecker, Western Wood-Pewee, House Wren, Black-headed Grosbeak, Brown-headed Cowbird.','2005-05-21');
 INSERT INTO trip VALUES (413,'Bill Walker','','Looking for Light','I spent some early morning time at Ulistac, then stopped by Charleston Slough on the way home.','2005-05-24');
+INSERT INTO trip VALUES (414,'Mary and Bill','','Cape May Day One','','2005-06-09');
