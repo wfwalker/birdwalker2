@@ -208,10 +208,15 @@ class Request
 
 	function linkToSelfChangeView($view, $linkText)
 	{
-		$oldview = $this->getView();
-		$this->setView($view);
-		$link = $this->linkToSelf($linkText);
-		$this->setView($oldview);
+		$newRequest = new Request;
+
+		$newRequest->setView($view);
+		$newRequest->setLatitude("");
+		$newRequest->setLongitude("");
+		$newRequest->setScale("");
+
+		$link = $newRequest->linkToSelf($linkText);
+
 		return $link;
 	}
 
