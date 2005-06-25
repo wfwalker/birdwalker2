@@ -151,3 +151,6 @@ INSERT INTO location VALUES (150,'Estero Llano Grande State Park','http://www.tp
 INSERT INTO location VALUES (151,'Frontera Audubon','http://www.fronteraaudubon.org/','Weslaco','Hidalgo','TX','','',26.1468,-97.9903);
 INSERT INTO location VALUES (152,'Bentsen Rio Grande Valley State Park','http://www.tpwd.state.tx.us/worldbirdingcenter/sites/mission/','Mission','Hidalgo','TX','','',26.1728,-98.3822);
 INSERT INTO location VALUES (153,'Anzalduas County Park','','McAllen','Hidalgo','TX','','',0,0);
+INSERT INTO location VALUES (154,'Kern River Preserve','','Kernville','Kern','CA','','',0,0);
+INSERT INTO location VALUES (155,'Piute Mountains','','Kernville','Kern','CA','','',0,0);
+INSERT INTO location VALUES (156,'Fay Ranch Road','','Kernville','Kern','CA','','',0,0);
