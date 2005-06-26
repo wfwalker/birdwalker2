@@ -154,3 +154,6 @@ INSERT INTO location VALUES (153,'Anzalduas County Park','','McAllen','Hidalgo',
 INSERT INTO location VALUES (154,'Kern River Preserve','','Kernville','Kern','CA','','',0,0);
 INSERT INTO location VALUES (155,'Piute Mountains','','Kernville','Kern','CA','','',0,0);
 INSERT INTO location VALUES (156,'Fay Ranch Road','','Kernville','Kern','CA','','',0,0);
+INSERT INTO location VALUES (157,'Chimney Creek Campground','','Kernville','Kern','CA','','',0,0);
+INSERT INTO location VALUES (158,'Kennedy Meadows','','Kernville','Kern','CA','','',0,0);
+INSERT INTO location VALUES (159,'Troy Meadow Campground','','Kernville','Kern','CA','','',0,0);
