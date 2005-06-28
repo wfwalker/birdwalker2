@@ -157,3 +157,6 @@ INSERT INTO location VALUES (156,'Fay Ranch Road','','Kernville','Kern','CA','',
 INSERT INTO location VALUES (157,'Chimney Creek Campground','','Kernville','Kern','CA','','',0,0);
 INSERT INTO location VALUES (158,'Kennedy Meadows','','Kernville','Kern','CA','','',0,0);
 INSERT INTO location VALUES (159,'Troy Meadow Campground','','Kernville','Kern','CA','','',0,0);
+INSERT INTO location VALUES (160,'Johnsondale Bridge','','Johnsondale','Kern','CA','','',0,0);
+INSERT INTO location VALUES (161,'Holey Meadow','','','Kern','CA','','',0,0);
+INSERT INTO location VALUES (162,'Quaking Aspen Meadow','','','Kern','CA','','',0,0);

@@ -416,3 +416,4 @@ INSERT INTO trip VALUES (416,'Bill','','Photos after work','I decided to check o
 INSERT INTO trip VALUES (417,'Bob Power','','KRP 2005','Other observers saw Say\'s Phoebe, White-breasted Nuthatch, Bewick\'s Wren, Lazuli Bunting, Summer Tanager, Spotted Towhee','2005-06-23');
 INSERT INTO trip VALUES (418,'Bob Power','','KRP 2005 Day 2','','2005-06-24');
 INSERT INTO trip VALUES (419,'Bob Power','','KRP 2005 Day 3','Others on the trip observed: Warbling Vireo, Orange-crowned Warbler, Western-screech Owl','2005-06-25');
+INSERT INTO trip VALUES (420,'Bob Power','','KRP 2005 Day 4','An awesome drive through the mountains concluded this excellent four day weekend. Thanks, Bob!','2005-06-26');
