@@ -413,7 +413,7 @@ INSERT INTO trip VALUES (413,'Bill Walker','','Looking for Light','I spent some 
 INSERT INTO trip VALUES (414,'Mary and Bill','','Cape May Day One','Weather was warm and humid, but a nice breeze plus some fog and cloud cover kept us from overheating. Migration seems to be mostly done, but we did see a lot of the regional specialties, many of which are unusual to us west-coasters','2005-06-09');
 INSERT INTO trip VALUES (415,'Mary and Bill','','Cape May Day Two','A strong wind from offshore made the idea of a seawatch highly unappetizing, but nevertheless we got a life bird out of it, and met some cool people from New Jersey Audubon.','2005-06-10');
 INSERT INTO trip VALUES (416,'Bill','','Photos after work','I decided to check out reports of White-faced Ibis at Charleston Slough, and got lucky.','2005-06-14');
-INSERT INTO trip VALUES (417,'Bob Power','','KRP 2005','Other observers saw Say\'s Phoebe, White-breasted Nuthatch, Bewick\'s Wren, Lazuli Bunting, Summer Tanager, Spotted Towhee','2005-06-23');
-INSERT INTO trip VALUES (418,'Bob Power','','KRP 2005 Day 2','','2005-06-24');
-INSERT INTO trip VALUES (419,'Bob Power','','KRP 2005 Day 3','Others on the trip observed: Warbling Vireo, Orange-crowned Warbler, Western-screech Owl','2005-06-25');
-INSERT INTO trip VALUES (420,'Bob Power','','KRP 2005 Day 4','An awesome drive through the mountains concluded this excellent four day weekend. Thanks, Bob!','2005-06-26');
+INSERT INTO trip VALUES (417,'Bob Power','','Kern River Day One','Other observers saw Say\'s Phoebe, White-breasted Nuthatch, Bewick\'s Wren, Lazuli Bunting, Summer Tanager, Spotted Towhee','2005-06-23');
+INSERT INTO trip VALUES (418,'Bob Power','','Kern River Day Two','A very productive day. I was very fortunate to get several close up shots from the car as we drove from stop to stop. Great light today!','2005-06-24');
+INSERT INTO trip VALUES (419,'Bob Power','','Kern River Day Three','Others on the trip observed: Warbling Vireo, Orange-crowned Warbler, Western-screech Owl','2005-06-25');
+INSERT INTO trip VALUES (420,'Bob Power','','Kern River Day Four','An awesome drive through the mountains concluded this excellent four day weekend. Thanks, Bob!','2005-06-26');
