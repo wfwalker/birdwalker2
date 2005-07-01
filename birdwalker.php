@@ -364,7 +364,8 @@ function performCount($queryString)
 function performOneRowQuery($queryString)
 {
 	$theQuery = performQuery($queryString);
-	if (mysql_num_rows($theQuery) != 1) die("Fatal error: BirdWalker Object Not Found");
+	if (mysql_num_rows($theQuery) > 1) die("Fatal error: BirdWalker Too Many Objects");
+	if (mysql_num_rows($theQuery) == 0) die("Fatal error: BirdWalker No Object Found");
 	$theFirstRow = mysql_fetch_array($theQuery);
 	return $theFirstRow;
 }
@@ -1123,7 +1124,7 @@ function formatTwoColumnLocationList($locationQuery)
             } ?>
 			<a href="./countydetail.php?view=<?= $locationQuery->mReq->getView() ?>&stateid=<?= $stateInfo["objectid"]?>&county=<?= $info["County"] ?>"><?= $info["County"] ?> County</a>
             </div>
-<?		} ?>
+	  <?		} // TODO, list below the county and state name if not dividing by county/state ?>
 
 		<div><a href="./locationdetail.php?view=<?= $locationQuery->mReq->getView() ?>&locationid=<?= $info["objectid"] ?>"><?= $info["Name"] ?></a></div>
 
