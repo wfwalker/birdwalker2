@@ -87,7 +87,7 @@ while($sightingInfo = mysql_fetch_array($badSightingLocations))
 <?
 while($locationInfo = mysql_fetch_array($missingLatLong))
 {
-	echo "<a href=\"./locationcreate.php?id=" . $locationInfo["objectid"] . "\">" . $locationInfo["Name"] . "</a><br/>\n";
+	echo "<a href=\"./locationcreate.php?locationid=" . $locationInfo["objectid"] . "\">" . $locationInfo["Name"] . "</a><br/>\n";
 }
 
 footer();
