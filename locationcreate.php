@@ -2,18 +2,25 @@
 <?
 
 require_once("./birdwalker.php");
+require_once("./request.php");
+
+$request = new Request;
 
 getEnableEdit() or die("Editing disabled");
 
 // the GET id determines which record to show
-$locationID = $_GET['locationid'];
+$locationid = "";
+array_key_exists('locationid', $_GET) && $locationID = $_GET['locationid'];
 
 // the POST id determines which record to update
-$postLocationID = $_POST['locationid'];
+$postLocationID = "";
+array_key_exists('locationid', $_POST) && $postLocationID = $_POST['locationid'];
 
 // The SAVE and NEW buttons determine whether to update or createa a new record
-$save = $_POST['Save'];
-$new = $_POST['New'];
+$save = "";
+array_key_exists('Save', $_POST) && $save = $_POST['Save'];
+$new = "";
+array_key_exists('New', $_POST) && $new = $_POST['New'];
 
 // if NEW, set the POST id to a new unique location objectid
 if ($new == "New") { $postLocationID = 1 + performCount("select max(objectid) from location"); }
@@ -64,15 +71,14 @@ $locationInfo = getLocationInfo($locationID);
 htmlHead($locationInfo["Name"] . ", " .  $locationInfo["State"]);
 
 globalMenu();
-locationBrowseButtons("./locationcreate.php", $locationID, $view);
-navTrailLocationDetail($locationInfo, "list");
+$request->navTrailLocations();
 ?>
 
 <div class="contentright">
+ <? locationBrowseButtons("./locationcreate.php", $locationID, "lists"); ?>
 <div class="titleblock">
   <a href="./locationdetail.php?locationid=<?= $locationInfo["objectid"] ?>">
-    <div class=pagetitle><?= $locationInfo["Name"] ?></div>
-  <div class=pagesubtitle><?= $locationInfo["niceDate"] ?></div>
+  <div class=pagetitle><?= $locationInfo["Name"] ?></div>
 </a>
 </div>
 
