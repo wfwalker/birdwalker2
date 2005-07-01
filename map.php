@@ -17,20 +17,26 @@ class Map
 
 		if ($this->mReq->getLatitude() == "") // get parameters from location query
 		{
-			$extrema = $this->mLocationQuery->findExtrema();
+// 			$extrema = $this->mLocationQuery->findExtrema();
 
-			// put the map in the center of the extrema
-			$this->mReq->setLatitude(($extrema["minLat"] + $extrema["maxLat"]) / 2.0);
-			$this->mReq->setLongitude(($extrema["minLong"] + $extrema["maxLong"]) / 2.0);
-			$this->mReq->setBackground($inReq->getBackground());
+// 			// put the map in the center of the extrema
+// 			$this->mReq->setLatitude(($extrema["minLat"] + $extrema["maxLat"]) / 2.0);
+// 			$this->mReq->setLongitude(($extrema["minLong"] + $extrema["maxLong"]) / 2.0);
+// 			$this->mReq->setBackground($inReq->getBackground());
 
-			// compute lat and long ranges, with a lower bound in case there's only one location in the set
-			$longRange = max(0.25, abs($extrema["maxLong"] - $extrema["minLong"]));
-			$latRange = max(0.25, abs($extrema["maxLat"] - $extrema["minLat"]));
+// 			// compute lat and long ranges, with a lower bound in case there's only one location in the set
+// 			$longRange = max(0.25, abs($extrema["maxLong"] - $extrema["minLong"]));
+// 			$latRange = max(0.25, abs($extrema["maxLat"] - $extrema["minLat"]));
 
-			// using the aspect ratio, decide on how to scale the map so it fits all the points
-			$minRange = max(0.25 , min($latRange, $longRange * ($this->mReq->getMapWidth() / $this->mReq->getMapHeight())));
-			$this->mReq->setScale(0.75 * $minRange);
+// 			// using the aspect ratio, decide on how to scale the map so it fits all the points
+// 			$minRange = max(0.25 , min($latRange, $longRange * ($this->mReq->getMapWidth() / $this->mReq->getMapHeight())));
+// 			$this->mReq->setScale(0.75 * $minRange);
+
+ 			$this->mReq->setLatitude(38);
+ 			$this->mReq->setLongitude(-96);
+ 			$this->mReq->setBackground($inReq->getBackground());
+			$this->mReq->setScale(15);
+			// &lat=34.962350845337&long=-97.099552154539&scale=20.466563701631
 		}
 	}
 
@@ -118,22 +124,11 @@ class Map
 		{
 			return $roads;
 		}
-		else if ($this->mReq->getBackground() == "relief")
-		{
-			if ($this->mReq->getScale() > 1.3)
-			{
-				return $relief2;
-			}
-			else
-			{
-				return $relief;
-			}
-		}
 		else if ($this->mReq->getBackground() == "landcover")
 		{
 			return $landcover;
 		}
-		else
+		else if ($this->mReq->getBackground() == "photo")
 		{
 			if ($this->mReq->getScale() > 0.02)
 			{
@@ -142,6 +137,17 @@ class Map
 			else
 			{
 				return $terraserver;
+			}
+		}
+		else //if ($this->mReq->getBackground() == "relief")
+		{
+			if ($this->mReq->getScale() > 1.3)
+			{
+				return $relief2;
+			}
+			else
+			{
+				return $relief;
 			}
 		}
 	}
@@ -210,7 +216,7 @@ class Map
 	}
 
 
-	function draw()
+	function draw($inDrawControls = false)
 	{
 		$centerLong = ($this->getMinimumLongitude() + $this->getMaximumLongitude()) / 2.0;
 		$centerLat = ($this->getMinimumLatitude() + $this->getMaximumLatitude()) / 2.0;
@@ -226,7 +232,11 @@ class Map
 ?>
 
 	   <div style="text-align: right; padding-top: 30px;">
-		 <?= $this->linkToSelfZoom(1.5, "out"); ?> | <?= $this->linkToSelfZoom(0.6, "in"); ?> | <?= $this->drawLayerControls(); ?>
+	   <? if ($inDrawControls) { ?>
+		    <?= $this->linkToSelfZoom(1.5, "out") ?> | 
+			<?= $this->linkToSelfZoom(0.6, "in") ?> |
+			<?= $this->drawLayerControls() ?>
+	   <? } ?>
        </div>
 
        <div style="position: relative; border: 1px solid gray; height:<?= $this->mReq->getMapHeight() ?>px; width: <?= $this->mReq->getMapWidth()?>px;">
@@ -238,7 +248,7 @@ class Map
        </script>
 
 <?
-		$this->drawPanControls();
+		if ($inDrawControls) $this->drawPanControls();
 
 		$dbQuery = $this->performDBQuery();
 
@@ -279,9 +289,10 @@ class Map
    <p>&nbsp;</p>
 
 <?
-	countHeading($this->mLocationQuery->getLocationCount(), "location");
-	$this->mLocationQuery->formatTwoColumnLocationList("map", true);
-
+     if ($inDrawControls) {
+	   countHeading($this->mLocationQuery->getLocationCount(), "location");
+	   $this->mLocationQuery->formatTwoColumnLocationList("map", true);
+     }
    }
 }
 

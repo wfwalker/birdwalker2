@@ -75,7 +75,7 @@ if ($request->getView() == "photo")
 else if ($request->getView() == "map")
 {
 	$map = new Map("./tripdetail.php", $request);
-	$map->draw();
+	$map->draw(true);
 }
 else if ($request->getView() == "" || $request->getView() == "list")
 {

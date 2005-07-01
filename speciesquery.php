@@ -126,11 +126,18 @@ class SpeciesQuery extends BirdWalkerQuery
 
 	function performQuery()
 	{
-		echo "<!-- performQuery -->"; $this->mReq->debug();
 		return performQuery("
           SELECT DISTINCT species.objectid, species.* ".
 			$this->getFromClause() . " " .
 			$this->getWhereClause() . " ORDER BY species.objectid");
+	}
+
+	function getOneRandom()
+	{
+		return performOneRowQuery("
+          SELECT DISTINCT species.objectid, species.*, " . dailyRandomSeedColumn() . " " .
+			$this->getFromClause() . " " .
+			$this->getWhereClause() . " ORDER BY shuffle LIMIT 1");
 	}
 
 	function rightThumbnail()

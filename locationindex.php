@@ -8,7 +8,6 @@ require_once("./map.php");
 $request = new Request;
 
 $locationQuery = new LocationQuery($request);
-$extrema = $locationQuery->findExtrema();
 
 htmlHead("Locations");
 
@@ -25,7 +24,7 @@ navTrail();
       <a href="./locationindex.php?view=locations">list</a> |
       <a href="./locationindex.php?view=locationsbymonth">by month</a> |
 	  <a href="./locationindex.php?view=locationsbyyear">by year<a/> |
-      <a href="./locationindex.php?view=map&minlat=<?= $extrema["minLat"]-0.01 ?>&maxlat=<?= $extrema["maxLat"]+0.01 ?>&minlong=<?= $extrema["minLong"]-0.01 ?>&maxlong=<?= $extrema["maxLong"]+0.01 ?>">map</a><br/>
+      <a href="./locationindex.php?view=map">map</a><br/>
     </div>
 	</div>
 
@@ -40,7 +39,7 @@ navTrail();
 		  $locationQuery->formatLocationByYearTable();
 	  } else if ($request->getView() == "map") {
 		  $map = new Map("./locationindex.php", $request);
-		  $map->draw();
+		  $map->draw(true);
 	  }
 
 footer();

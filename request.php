@@ -410,7 +410,7 @@ class Request
 		else if ($this->getView() == "map")
 		{
 			$map = new Map("./" . $this->getPageScript(), $this);
-			$map->draw();
+			$map->draw(true);
 		}
 		else if ($this->getView() == "chrono")
 		{
