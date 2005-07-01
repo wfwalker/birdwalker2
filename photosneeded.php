@@ -2,7 +2,7 @@
 
 require_once("./birdwalker.php");
 
-$threshold = 10;
+$threshold = 5;
 
 $sortCriteria = $_GET['sort'];
 $localtimearray = localtime(time(), 1);
