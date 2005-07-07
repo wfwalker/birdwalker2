@@ -63,11 +63,12 @@
 .heading { font-weight: bold; margin-top: 20px; margin-bottom: 10px; clear: both; color: #484393 }
 .subheading {  font-weight: bold; margin-top: 7px; margin-bottom: 2px; color: #484393 }
 
-.titleblock { border-top: solid 1px #AAAAAA; padding-top: 5px; margin-bottom: 5px }
+.titleblock { border-top: solid 1px #AAAAAA; padding-top: 15px; margin-bottom: 5px }
 
 .inlinepict { margin-left: 10px; margin-bottom: 10px }
 
 .report-content {font: 10pt "Gill Sans", "Gill Sans MT", SansSerif}
+
 .firstcell {padding-left: 15px; white-space: nowrap; }
 .fieldlabel {padding-left: 15px; font: 9pt Courier, Fixed; text-align: right; vertical-align: top}
 .bordered {border-left: solid 1px #DDDDDD; border-bottom: solid 1px #DDDDDD; width: 25px}
@@ -77,9 +78,16 @@
 .copyright { font: 8pt "Gill Sans", "Gill Sans MT", SansSerif }
 
 /* Styles for items within lists */
+
 .sighting-notes {margin-left: 2%; margin-right: 2%; margin-bottom: 2px; margin-top: 2px}
 
-/* detail anchors are ugly!! */
+/* textual browse buttons */
+
+.nextlink { text-align: right; font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-style: italic; }
+.prevlink { text-align: left; font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-style: italic; }
+.pagekind { text-align: center; font: 14pt "Gill Sans", "Gill Sans MT", SansSerif; font-style: italic; color: #99999 }
+
+/* Anchors, and especially magic rollover popup anchors for Maps. */
 
 a       { color:#484393; text-decoration:none; }
 a:hover { color:#43436e; text-decoration:underline; }

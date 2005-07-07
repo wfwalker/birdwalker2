@@ -2,6 +2,8 @@
 <?php
 
 require_once("./birdwalker.php");
+require_once("./request.php");
+require_once("./speciesquery.php");
 
 $numberOfTrips = 10;
 $latestTrips = performQuery("select *, date_format(Date, '%M %e, %Y') AS niceDate from trip order by Date desc LIMIT " . $numberOfTrips);
@@ -18,20 +20,41 @@ globalMenu();
 	  trip, county, state, and year lists. Our latest trips are listed below, other indices
 	  are available from the links on the left.</p>
 
-	  <div class="heading">Today&#39;s Featured Photos</div>
+	  <table>
+	  <tr valign="top">
+	  <td width="50%">
+	  <div class="heading">Species of the Day</div>
+<?
+	  $request = new Request;
+      $request->setMapWidth(300);
+      $request->setMapHeight(300);
+      $request->setLatitude(38.25389517844);
+      $request->setLongitude(-98.953048706054);
+      $request->setScale(28);
+      $request->setBackground("relief");
+	  $speciesQuery = new SpeciesQuery($request);
+      $info = $speciesQuery->getOneRandom();
+      $request->setSpeciesID($info["objectid"]);
+	  $sightingQuery = new SightingQuery($request);
+      $map = new Map("pants", $request);
 
-      <table cellspacing="20px"><tr>
+	  $photos = $sightingQuery->performPhotoQuery();
+?>
+      <div class="pagesubtitle"><?= $info["LatinName"] ?></div>
+	  <div class="titleblock">
+        <span class="subheading"><?= $info["CommonName"] ?></span>
 
-<?    for ($index = 0; $index < 5; $index++)
-	  {
-		  $info = mysql_fetch_array($randomPhotoSightings); ?>
-		  <td width="100px" class="thumbnail" align="center"><?= getThumbForSightingInfo($info) ?></td>
-<?	  } ?>
+	  <? if (mysql_num_rows($photos) > 0) { $photoInfo = mysql_fetch_array($photos);
+	    $photoFilename = getPhotoFilename($photoInfo);
+		list($width, $height, $type, $attr) = getimagesize("./images/photo/" . $photoFilename); ?>
+		<img width="300px" src="<?= getPhotoURLForSightingInfo($photoInfo) ?>" alt="bird">
+	  <? } ?>
 
-      </tr></table>
+	  <? $map->draw(); ?>
 
-	  <p>&nbsp;</p>
-
+	  </div>
+	  </td>
+	  <td width="50%">
 	  <div class="heading">Latest Trips</div>
 
 <?    for ($index = 0; $index < $numberOfTrips; $index++)
@@ -55,9 +78,13 @@ globalMenu();
           <div class=report-content><?= $info["Notes"] ?><br clear="all"/></div>
 		  <p>&nbsp;</p>
 
-<?	  }
+<?	  } ?>
 
-      footer();
+      </td>
+	  </tr>
+	  </table>
+
+<?    footer();
 ?>
     </div>
 

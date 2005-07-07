@@ -160,7 +160,7 @@ class Request
 
 	function getParams()
 	{
-		$params = "";
+		$params = NULL;
 
 		if ($this->mView != "") { $params[] = "view=" . $this->mView; }
 
@@ -183,7 +183,14 @@ class Request
 		if ($this->mScale !="") { $params[] = "scale=" . $this->mScale; }
 		if ($this->mBackground !="") { $params[] = "backgnd=" . $this->mBackground; }
 
-		return implode("&", $params);
+		if (count($params) == 0)
+		{
+			return "";
+		}
+		else 
+		{
+			return implode("&", $params);
+		}
 	}
 
 	function debug()

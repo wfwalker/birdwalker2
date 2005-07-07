@@ -2,11 +2,17 @@
 <?php
 
 require_once("./birdwalker.php");
+require_once("./request.php");
+require_once("./sightingquery.php");
+
+$request = new Request;
+
+$sightingQuery = new SightingQuery($request);
 
 $randomPhotoSightings = performQuery("
-    SELECT *, date_format(TripDate, '%W,  %M %e, %Y') as niceDate, rand() AS shuffle
-      FROM species, sighting
-      WHERE sighting.Photo='1' and species.Abbreviation=sighting.SpeciesAbbreviation
+    SELECT *, date_format(TripDate, '%W,  %M %e, %Y') as niceDate, rand() AS shuffle ".
+	  $sightingQuery->getFromClause() . " " . 
+	  $sightingQuery->getWhereClause() .  " AND sighting.Photo='1'
       ORDER BY shuffle
       LIMIT 1");
 
@@ -17,7 +23,7 @@ $tripYear =  substr($sightingInfo["TripDate"], 0, 4);
 <html>
 
 <head>
-<META HTTP-EQUIV=Refresh CONTENT="10; URL=./slideshow.php">
+<META HTTP-EQUIV=Refresh CONTENT="10; URL=./slideshow.php?<?= $request->getParams() ?>">
 <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
 <title>birdWalker | Slideshow</title>
 </head>

@@ -9,12 +9,16 @@ $request->getYear() == "" && die("Fatal error: missing year");
 
 htmlHead($request->getYear());
 
+$prevYear = performCount("SELECT MAX(Year(TripDate)) FROM sighting WHERE Year(TripDate) < " . $request->getYear());
+$nextYear = performCount("SELECT MIN(Year(TripDate)) FROM sighting WHERE Year(TripDate) > " . $request->getYear());
+
 globalMenu();
 $request->navTrailTrips();
 ?>
 
     <div class=contentright>
-	<? browseButtons("Year Detail", "./yeardetail.php?view=" . $request->getView() . "&year=", $request->getYear(), getEarliestYear(), $request->getYear() - 1, $request->getYear() + 1, getLatestYear()); ?>
+	<? browseButtons("Year Detail", "./yeardetail.php?view=" . $request->getView() . "&year=", $request->getYear(),
+					 $prevYear, $prevYear, $nextYear, $nextYear); ?>
 
       <div class="titleblock">	  
 <?    if ($request->getView() != "map" && $request->getView() != "photo")

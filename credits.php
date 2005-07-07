@@ -62,6 +62,7 @@ navTrail($items);
 
 	  <div class="heading">My favorite photographers</div>
         Big thanks for the kind words and encouragement I have gotten from
+		<a href="http://www.khosla.com/forthebirds/index.html">Ashok Khosla</a>,
 		<a href="http://www.birdphotography.com/">Pete LaTourette</a>,
      	<a href="http://www.kokophoto.com/">Mark Bohrer</a>,
         <a href="http://www.pbase.com/tgrey/profile">Tom Grey</a>,

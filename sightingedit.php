@@ -72,7 +72,8 @@ navTrail();
 
 <div class=pagesubtitle>
 
-<? browseButtons("Sighting Detail", "./sightingedit.php?sightingid=", $sightingID, 1, $sightingID - 1, $sightingID + 1, $sightingCount); ?>
+	<? browseButtons("Sighting Detail", "./sightingedit.php?sightingid=", $sightingID,
+					 $sightingID - 1, $sightingID - 1, $sightingID + 1, $sightingID + 1); ?>
 </div>
 <div class="titleblock">
   <div class=pagetitle>

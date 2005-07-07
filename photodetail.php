@@ -15,22 +15,35 @@ $tripInfo = performOneRowQuery("
 $tripYear =  substr($tripInfo["Date"], 0, 4);
 $locationInfo = performOneRowQuery("SELECT * FROM location WHERE Name='" . $sightingInfo["LocationName"] . "'");
 
-$firstPhotoID = performCount("
-    SELECT objectid FROM sighting WHERE Photo='1' ORDER BY CONCAT(TripDate,objectid) LIMIT 1");
-$lastPhotoID = performCount("
-    SELECT objectid FROM sighting WHERE Photo='1' ORDER BY CONCAT(TripDate, objectid) DESC LIMIT 1");
-
 $nextPhotoID = performCount("
     SELECT objectid FROM sighting
       WHERE Photo='1' AND CONCAT(TripDate,objectid) > '" . $sightingInfo["TripDate"] . $request->getSightingID() . "'
       ORDER BY CONCAT(TripDate,objectid) LIMIT 1");
+
+if ($nextPhotoID != "") {
+	$nextPhotoInfo = getSightingInfo($nextPhotoID);
+	//$nextPhotoLinkText = getThumbForSightingInfo($nextPhotoInfo);
+	$nextPhotoLinkText = $nextPhotoInfo["niceDate"];
+}
+else
+{
+	$nextPhotoLinkText = "";
+}
+
 $prevPhotoID = performCount("
     SELECT objectid FROM sighting
       WHERE Photo='1' AND CONCAT(TripDate,objectid) < '" . $sightingInfo["TripDate"] . $request->getSightingID() . "'
       ORDER BY CONCAT(TripDate,objectid) DESC LIMIT 1");
 
-if ($nextPhotoID == "") { $nextPhotoID = $request->getSightingID(); }
-if ($prevPhotoID == "") { $prevPhotoID = $request->getSightingID(); }
+if ($prevPhotoID != "") {
+	$prevPhotoInfo = getSightingInfo($prevPhotoID);
+	//$prevPhotoLinkText = getThumbForSightingInfo($prevPhotoInfo);
+	$prevPhotoLinkText = $prevPhotoInfo["niceDate"];
+}
+else
+{
+	$prevPhotoLinkText = "";
+}
 
 htmlHead($speciesInfo["CommonName"] . ", " . $tripInfo["niceDate"]);
 
@@ -39,7 +52,7 @@ navTrailPhotos();
 ?>
 
 <div class="contentright">
-  <? browseButtons("Photo Detail", "./photodetail.php?sightingid=", $request->getSightingID(), $firstPhotoID, $prevPhotoID, $nextPhotoID, $lastPhotoID); ?>
+	<? browseButtons("Photo Detail", "./photodetail.php?sightingid=", $request->getSightingID(), $prevPhotoID,$prevPhotoLinkText, $nextPhotoID, $nextPhotoLinkText); ?>
 
   <div class="titleblock">
 	  <div class=pagetitle>
