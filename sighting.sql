@@ -10645,7 +10645,7 @@ INSERT INTO sighting VALUES (10681,'amecoo','Sabal Palm Audubon Sanctuary','','0
 INSERT INTO sighting VALUES (10682,'pipplo','South Padre Island','','','','2005-04-21');
 INSERT INTO sighting VALUES (10683,'killde','South Padre Island','','','','2005-04-21');
 INSERT INTO sighting VALUES (10684,'bknsti','South Padre Island','','','','2005-04-21');
-INSERT INTO sighting VALUES (10685,'lesyel','Sabal Palm Audubon Sanctuary','','0','0','2005-04-21');
+INSERT INTO sighting VALUES (10685,'lesyel','Sabal Palm Audubon Sanctuary','','','1','2005-04-21');
 INSERT INTO sighting VALUES (10686,'solsan','Sabal Palm Audubon Sanctuary','','0','0','2005-04-21');
 INSERT INTO sighting VALUES (10687,'willet','South Padre Island','breeding plumage Eastern bird looked unusually to these calfornia birders.','','','2005-04-21');
 INSERT INTO sighting VALUES (10688,'lobcur','Old Port Isabel Road','','','','2005-04-21');
@@ -11196,7 +11196,7 @@ INSERT INTO sighting VALUES (11236,'bkchum','Kern River Preserve','','0','0','20
 INSERT INTO sighting VALUES (11237,'nutwoo','Kern River Preserve','','0','0','2005-06-23');
 INSERT INTO sighting VALUES (11238,'dowwoo','Kern River Preserve','','0','0','2005-06-23');
 INSERT INTO sighting VALUES (11239,'norfli','Kern River Preserve','','0','0','2005-06-23');
-INSERT INTO sighting VALUES (11240,'wilfly','Kern River Preserve','','0','0','2005-06-23');
+INSERT INTO sighting VALUES (11240,'wilfly','Kern River Preserve','','','1','2005-06-23');
 INSERT INTO sighting VALUES (11241,'wewpew','Kern River Preserve','','0','0','2005-06-23');
 INSERT INTO sighting VALUES (11242,'blkpho','Kern River Preserve','','0','0','2005-06-23');
 INSERT INTO sighting VALUES (11243,'astfly','Kern River Preserve','','0','0','2005-06-23');
@@ -11321,7 +11321,7 @@ INSERT INTO sighting VALUES (11361,'buggna','Chimney Creek Campground','','0','0
 INSERT INTO sighting VALUES (11362,'amerob','Chimney Creek Campground','','0','0','2005-06-25');
 INSERT INTO sighting VALUES (11363,'wesblu','Chimney Creek Campground','','0','0','2005-06-25');
 INSERT INTO sighting VALUES (11364,'moublu','Chimney Creek Campground','','','1','2005-06-25');
-INSERT INTO sighting VALUES (11365,'towsol','Chimney Creek Campground','','0','0','2005-06-25');
+INSERT INTO sighting VALUES (11365,'towsol','Chimney Creek Campground','','','1','2005-06-25');
 INSERT INTO sighting VALUES (11366,'yerwar','Chimney Creek Campground','','0','0','2005-06-25');
 INSERT INTO sighting VALUES (11367,'btywar','Chimney Creek Campground','','','1','2005-06-25');
 INSERT INTO sighting VALUES (11368,'yelwar','Chimney Creek Campground','','0','0','2005-06-25');
@@ -11393,7 +11393,7 @@ INSERT INTO sighting VALUES (11433,'normoc','Merced NWR','','','','2005-06-26');
 INSERT INTO sighting VALUES (11434,'yelwar','Holey Meadow','','0','0','2005-06-26');
 INSERT INTO sighting VALUES (11435,'yerwar','Quaking Aspen Meadow','','','','2005-06-26');
 INSERT INTO sighting VALUES (11436,'herwar','Holey Meadow','','0','0','2005-06-26');
-INSERT INTO sighting VALUES (11437,'macwar','Holey Meadow','','0','0','2005-06-26');
+INSERT INTO sighting VALUES (11437,'macwar','Holey Meadow','','','1','2005-06-26');
 INSERT INTO sighting VALUES (11438,'westan','Quaking Aspen Meadow','','','','2005-06-26');
 INSERT INTO sighting VALUES (11439,'gnttow','Holey Meadow','','','1','2005-06-26');
 INSERT INTO sighting VALUES (11440,'spotow','Holey Meadow','','0','0','2005-06-26');
@@ -11401,7 +11401,7 @@ INSERT INTO sighting VALUES (11441,'caltow','Johnsondale Bridge','','','','2005-
 INSERT INTO sighting VALUES (11442,'vesspa','Holey Meadow','','0','0','2005-06-26');
 INSERT INTO sighting VALUES (11443,'foxspa','Holey Meadow','','0','0','2005-06-26');
 INSERT INTO sighting VALUES (11444,'sonspa','Merced NWR','','','','2005-06-26');
-INSERT INTO sighting VALUES (11445,'linspa','Holey Meadow','','0','0','2005-06-26');
+INSERT INTO sighting VALUES (11445,'linspa','Holey Meadow','','','1','2005-06-26');
 INSERT INTO sighting VALUES (11446,'daejun','Holey Meadow','','0','0','2005-06-26');
 INSERT INTO sighting VALUES (11447,'lazbun','Holey Meadow','','0','0','2005-06-26');
 INSERT INTO sighting VALUES (11448,'rewbla','Merced NWR','','','','2005-06-26');
@@ -11429,3 +11429,10 @@ INSERT INTO sighting VALUES (11469,'cangoo','Don Edwards Center','','0','0','200
 INSERT INTO sighting VALUES (11470,'rewbla','Don Edwards Center','','0','0','2005-06-27');
 INSERT INTO sighting VALUES (11471,'bcnher','Don Edwards Center','','0','0','2005-06-27');
 INSERT INTO sighting VALUES (11472,'killde','Don Edwards Center','','0','0','2005-06-27');
+INSERT INTO sighting VALUES (11473,'cliswa','Don Edwards Center','','','','2005-06-27');
+INSERT INTO sighting VALUES (11474,'houfin','Don Edwards Center','','','','2005-06-27');
+INSERT INTO sighting VALUES (11475,'normoc','Don Edwards Center','','','','2005-06-27');
+INSERT INTO sighting VALUES (11476,'caster','Don Edwards Center','','','','2005-06-27');
+INSERT INTO sighting VALUES (11477,'moudov','Don Edwards Center','','','','2005-06-27');
+INSERT INTO sighting VALUES (11478,'margod','Foster City Radio Tower','','','1','2005-06-28');
+INSERT INTO sighting VALUES (11479,'forter','Foster City Radio Tower','','','','2005-06-28');
