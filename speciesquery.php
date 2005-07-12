@@ -186,8 +186,8 @@ class SpeciesQuery extends BirdWalkerQuery
 				 array_key_exists("earliestsighting", $info) && $temp = $info["earliestsighting"];
 				 $earliestsightingid = round(substr($temp, 10));
 		
-				 if ($divideByFamily && ($prevInfo != "") &&
-					 (getFamilyIDFromSpeciesID($prevInfo["objectid"]) != getFamilyIDFromSpeciesID($info["objectid"])))
+				 if ($divideByFamily && ($prevInfo == "" ||
+					 (getFamilyIDFromSpeciesID($prevInfo["objectid"]) != getFamilyIDFromSpeciesID($info["objectid"]))))
 				 { ?>
 					 <div class=subheading><?= getFamilyDetailLinkFromSpeciesID($info["objectid"]) ?></div>
 <?               } ?>
