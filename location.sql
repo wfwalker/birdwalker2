@@ -53,7 +53,7 @@ INSERT INTO location VALUES (52,'Lower Klamath NWR','http://www.klamathnwr.org/l
 INSERT INTO location VALUES (53,'Magic Brush Pile','','San Francisco','San Francisco','CA','Well, this is what Steve and Bob called it!\r\n\r\n(near Harding Park Municipal Golf Course)','',37.7225,-122.488);
 INSERT INTO location VALUES (54,'Malheur NWR','','Burns','Harney','OR','','',43.2658,-118.843);
 INSERT INTO location VALUES (55,'Marin County','','Marin','Marin','CA','denotes birds seen while driving the roads of Marin County.','',38.0667,-122.733);
-INSERT INTO location VALUES (56,'McClellan Ranch','http://www.cupertino.org/update/rec/facility.htm','Cupertino','Santa Clara','CA','the home of the Santa Clara Valley Audubon Society','',37.3139,-122.062);
+INSERT INTO location VALUES (56,'McClellan Ranch','http://www.scvas.org/office.html','Cupertino','Santa Clara','CA','the home of the Santa Clara Valley Audubon Society','',37.3139,-122.062);
 INSERT INTO location VALUES (57,'Merced County','','Los Banos','Merced','CA','','',37.1667,-120.751);
 INSERT INTO location VALUES (58,'Merced NWR','http://www.gorp.com/gorp/resource/us_nwr/ca_merce.htm','Merced','Merced','CA','','mapblast',37.2963,-120.484);
 INSERT INTO location VALUES (59,'Monte Bello Open Space Preserve','http://www.openspace.org/MBELLO.html','Saratoga','Santa Clara','CA','','',37.3167,-122.147);
