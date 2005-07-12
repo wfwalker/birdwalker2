@@ -15,8 +15,8 @@ navTrail($items);
 
     <div class=contentright>
 
-      <div class="heading">About Birding</div>
-        <p>Mary took Bill to a birding class back in 1996, and we&#39;ve been birding ever since.
+      <div class="heading">Birding</div>
+        <p class="report-content">Mary took Bill to a birding class back in 1996, and we&#39;ve been birding ever since.
           We really enjoy the chance to be outside in nature together, meeting other birders and learning
           how to make those tough identifications.
           Our favorite birding guide (who led Bill on his first trip back in 1996) is Steve Shunk from
@@ -24,43 +24,44 @@ navTrail($items);
           Steve is a very gifted birder, an excellent teacher and naturalist, and a wonderful ambassador for
           birding.</p>
 
-	  <div class="heading">About the Photos</div>
- 	   <p>I use a <a href="http://www.fredmiranda.com/reviews/showproduct.php?product=39&sort=7&thecat=2">Canon 300mm f/4L IS</a> lens
+	  <div class="heading">The Photos</div>
+ 	   <p class="report-content">I use a <a href="http://www.fredmiranda.com/reviews/showproduct.php?product=39&sort=7&thecat=2">Canon 300mm f/4L IS</a> lens
         on a <a href="http://www.dpreview.com/reviews/canoneos20d/">Canon 20D</a> camera body for most of the bird photos.
-        Sometimes I rent a 500mm lens from my local camera store, <a href="http://www.kspphoto.com/"> Keeble and Shuchat.</a>
-		More and more these days I use the Canon 1.4X II teleconverter.
-		I use  a Gitzo 1227 tripod with an
+        Sometimes I rent a <a href="http://consumer.usa.canon.com/ir/controller?act=ModelDetailAct&fcategoryid=154&modelid=7318">500mm lens</a> from my local camera store, <a href="http://www.kspphoto.com/"> Keeble and Shuchat.</a>
+		More and more these days I use the <a href="http://consumer.usa.canon.com/ir/controller?act=ModelDetailAct&fcategoryid=154&modelid=7462">Canon 1.4X II teleconverter</a>.
+		I use a <a href="http://www.gitzo.com/products/metric/tripods/mountaineer/rightscreen.php3">Gitzo 1227 tripod</a> with an
 		<a href="http://acratech.net/">Acratech Ultimate Ballhead</a>.
-		I use the camera in RAW mode, writing to Lexar 1GB 40X Compact Flash cards.</p>
+		I use the camera in <a href="http://www.luminous-landscape.com/tutorials/understanding-series/u-raw-files.shtml">Raw mode</a>, writing to <a href="http://www.sandisk.com/retail/ultra2-cf.asp">SanDisk Ultra II 2GB</a> and Lexar 1GB 40X Compact Flash cards.</p>
 
-        <p>I catalog my images using <a href="http://www.iview-multimedia.com/">iView MediaPro</a> on my Powerbook.
-     	process them using Adobe Photoshop CS and its Camera Raw plug-in.
-	    I sometimes apply the <a href="http://www.picturecode.com/">PictureCode Noise Ninja</a> Photoshop plug-in.
-        I print using an Epson R800 printer onto various Epson papers.</p>
+        <p class="report-content">I catalog my images using <a href="http://www.iview-multimedia.com/">iView MediaPro</a> on my Powerbook.
+     	process them using Adobe Photoshop CS and its <a href="http://www.adobe.com/products/photoshop/cameraraw.html">Camera Raw</a> plug-in.
+        I print using an <a href="http://www.luminous-landscape.com/reviews/printers/epson-r800.shtml">Epson R800 printer</a> onto various Epson papers.</p>
 
-      <div class="heading">About using the Photos</div>
-        <p>Interesting in using one of these photographs in your publication or purchasing an 8x10 print?
+      <div class="heading">Using the Photos</div>
+        <p class="report-content">Interesting in using one of these photographs in your publication or purchasing an 8x10 print?
 	      Email <a href="mailto:walker@shout.net"/>walker@shout.net</a> for more information.</p>
 
-	  <div class="heading">About Field Notes and Listing</div>
+	  <div class="heading"> Field Notes and Listing</div>
 
-		<p>Mary and Bill maintain a joint life list, meaning that both of us have to see a particular species
+		<p class="report-content">Mary and Bill maintain a joint life list, meaning that both of us have to see a particular species
         before we put it on the life list. When one of us sees a bird the other doesn&#39;t see, we mark that sighting
         "excluded" so that it doesn&#39;t get added to the life list.</p>
 
-		<p>In the field, we use John Shipman&#39;s <a href="http://www.nmt.edu/~shipman/z/nom/6home.html">six letter code</a>
+		<p class="report-content">In the field, we use John Shipman&#39;s <a href="http://www.nmt.edu/~shipman/z/nom/6home.html">six letter code</a>
         of bird abbreviations rather than the usual four letter bird banding codes. We find six letters much easier to remember.</p>
 
-	  <div class="heading">About your Sightings</div>
+	  <div class="heading">Your Sightings</div>
 
-		<p>If you have bird sightings that you&#39;d like to report,
+		<p class="report-content">If you have bird sightings that you&#39;d like to report,
 		  please take a look at Cornell University&#39;s excellent <a href="http://www.ebird.com/">eBird</a> site.</p>
 
-		<p>If you are struggling with a particular bird identification, the
+		<p class="report-content">If you are struggling with a particular bird identification, the
 	    <a href="http://www.mbr-pwrc.usgs.gov/Infocenter/infocenter.html">Patuxent Bird Identification InfoCenter</a>
 		is an excellent reference for photos, range maps, and descriptions of field marks.</p>
 
 	  <div class="heading">My favorite photographers</div>
+
+		<p class="report-content">
         Big thanks for the kind words and encouragement I have gotten from
 		<a href="http://www.khosla.com/forthebirds/index.html">Ashok Khosla</a>,
 		<a href="http://www.birdphotography.com/">Pete LaTourette</a>,
@@ -70,12 +71,12 @@ navTrail($items);
         <a href="http://www.kevinsmithnaturephotos.com/">Kevin Smith</a>,
         <a href="http://www.pbase.com/robpavey/birding">Rob Pavey</a>,
         Terry Steele,
-        Kris Falco,
+        <a href="http://www.horsewings.com/whoweare.html">Kris Falco</a>,
         Cort Vaughn,
         <a href="http://www.pbase.com/birdervan">Gary and Joy Aspenall</a>,
-        Steve Shunk,
+        <a href="http://www.paradisebirding.com/sys-tmpl/pictures/">Steve Shunk</a>,
         and
-        <a href="http://www.avesphoto.com/">Mike Danzenbaker</a>.
+        <a href="http://www.avesphoto.com/">Mike Danzenbaker</a>.</p>
 
 <?     footer(); ?>
     </div>
