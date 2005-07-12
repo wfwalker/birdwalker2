@@ -5,8 +5,9 @@ error_reporting(E_ALL);
 function globalMenu()
 { ?>
 	<div class="contentleft">
-      <div style="padding-bottom: 20px">
-		<a href="http://wfwalker.blogspot.com/"><img src="./images/bill.jpg" border=0 alt="Bill"></a></br>
+      <div style="padding-bottom: 10px">
+		<a href="http://wfwalker.blogspot.com/"><img src="./images/bill.jpg" border=0 alt="Bill"></a></div>
+      <div style="padding-bottom: 10px">
         <a href="http://spinnity.blogspot.com/"><img src="./images/mary.jpg" border=0 alt="Mary"></a>
       </div>
 	  <div><a href="./tripindex.php">trips</a></div>

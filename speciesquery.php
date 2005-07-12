@@ -137,7 +137,7 @@ class SpeciesQuery extends BirdWalkerQuery
 		return performOneRowQuery("
           SELECT DISTINCT species.objectid, species.*, " . dailyRandomSeedColumn() . " " .
 			$this->getFromClause() . " " .
-			$this->getWhereClause() . " ORDER BY shuffle LIMIT 1");
+			$this->getWhereClause() . " AND sighting.Photo='1' ORDER BY shuffle LIMIT 1");
 	}
 
 	function rightThumbnail()

@@ -108,3 +108,5 @@ a.info:hover span{ /*the span will display just on :hover state*/
     top: 0em; left: 0em; width: 15em;
     background-color: #484393;
 	color: white; padding-left: 3px; padding-right: 3px; }
+
+.logotype { font: 48pt Courier; color: #484393; text-align: center; }
