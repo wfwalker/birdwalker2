@@ -9,9 +9,9 @@ require_once("./speciesquery.php");
 // *************** modules for the front page
 //
 
-function speciesOfTheDay()
+function birdOfTheDay()
 {
-	// pick a species
+	// pick a bird
 	$speciesRequest = new Request;
 	$speciesQuery = new SpeciesQuery($speciesRequest);
 	$info = $speciesQuery->getOneRandom();
@@ -29,11 +29,12 @@ function speciesOfTheDay()
 	$map = new Map("pants", $mapRequest);
 	
 	$photos = $sightingQuery->performPhotoQuery();
+
 ?>
-	  <div class="heading">Species of the Day</div>
+	  <div class="heading">Bird of the Day</div>
         <div class="pagesubtitle"><?= $info["LatinName"] ?></div>
 	    <div class="titleblock">
-          <span class="subheading"><?= $info["CommonName"] ?></span>
+          <span class="heading"><a href="./speciesdetail.php?speciesid=<?=$info['objectid']?>"><?= $info["CommonName"] ?></a></div>
 
 	  <? if (mysql_num_rows($photos) > 0)
 	     {
@@ -41,7 +42,7 @@ function speciesOfTheDay()
 			 $photoFilename = getPhotoFilename($photoInfo);
 			 list($width, $height, $type, $attr) = getimagesize("./images/photo/" . $photoFilename); ?>
 
-			 <img width="300px" src="<?= getPhotoURLForSightingInfo($photoInfo) ?>" alt="bird">
+			 <a href="./speciesdetail.php?speciesid=<?=$info['objectid']?>"><img width="300px" border="0" src="<?= getPhotoURLForSightingInfo($photoInfo) ?>" alt="bird"></a>
 
 	  <? } ?>
 
@@ -102,7 +103,7 @@ globalMenu();
 	  <table>
 	    <tr valign="top">
 	      <td width="300px">
-	        <? speciesOfTheDay(); ?>
+	        <? birdOfTheDay(); ?>
 	      </td>
 
 	      <td width="15px"></td>
