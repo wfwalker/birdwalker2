@@ -65,9 +65,6 @@ class Request
 		array_key_exists("long", $_GET) && $this->setLongitude($_GET["long"]);
 		array_key_exists("scale", $_GET) && $this->setScale($_GET["scale"]);
 		array_key_exists("backgnd", $_GET) && $this->setBackground($_GET["backgnd"]);
-
-		echo "<!-- constructed Request -->";
-		$this->debug();
 	}
 
 	//
@@ -215,6 +212,7 @@ class Request
 
 	function linkToSelfChangeView($view, $linkText)
 	{
+		// TODO: this can cause redundant queries by calling setLocationID...
 		$newRequest = new Request;
 
 		$newRequest->setView($view);
@@ -398,6 +396,7 @@ class Request
 		}
 		elseif ($this->getView() == 'locations')
 		{
+			$this->setView("species"); // TODO: need to switch to species view here
 			$locationQuery = new LocationQuery($this);
 			countHeading( $locationQuery->getLocationCount(), "location");
 			$locationQuery->formatTwoColumnLocationList($this->getView(), false);

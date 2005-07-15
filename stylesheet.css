@@ -6,26 +6,13 @@
 	padding-top: 50px;
 	padding-left: 10px;
 	padding-right: 10px;
-	border-left: 5px solid #eaeaea;
-	border-right: 5px solid #eaeaea;
+	border-left: 2px solid #DDDDDD;
+	border-right: 2px solid #DDDDDD;
 	background: #f0f0f0;
 	position: absolute;
     text-decoration: none;
 	padding-bottom: 30px;
 	white-space: nowrap;
- }
-
-.navigationleft
-{
-    font: 9pt "Gill Sans", "Gill Sans MT", SansSerif;
-	left: 2%; top: 18px;
-	padding-left: 8px;
-	padding-right: 8px;
-	white-space: nowrap;
-	border-left: 5px solid #eaeaea;
-	border-right: 5px solid #eaeaea;
-	background: #f0f0f0;
-	position: absolute; text-decoration: none;
  }
 
 .navigationright
@@ -55,14 +42,15 @@
 
 /* Styles for section headers, page titles, and overall report content */
 
-.pagetitle {font: 18pt "Gill Sans", "Gill Sans MT", SansSerif; color:#484393}
+.pagetitle {font: 18pt "Gill Sans", "Gill Sans MT", SansSerif; font-weight: bold; color:#484393}
 .pagesubtitle {font: 12pt "Gill Sans", "Gill Sans MT", SansSerif; font-style: italic; color: #999999}
 
 .metadata {font: 9pt "Gill Sans", "Gill Sans MT", SansSerif}
 
-.heading { font-weight: bold; margin-top: 20px; margin-bottom: 10px; clear: both; color: #484393 }
-.subheading {  font-weight: bold; margin-top: 7px; margin-bottom: 2px; color: #484393 }
+.heading { font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-weight: bold; margin-top: 20px; margin-bottom: 10px; clear: both; color: #484393 }
+.subheading { font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-weight: bold; margin-top: 7px; margin-bottom: 2px; color: #484393 }
 
+.summaryblock { border-top: solid 1px #AAAAAA; padding-top: 5px; margin-bottom: 5px }
 .titleblock { border-top: solid 1px #AAAAAA; padding-top: 15px; margin-bottom: 5px }
 
 .inlinepict { margin-left: 10px; margin-bottom: 10px }

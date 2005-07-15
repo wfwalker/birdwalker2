@@ -33,7 +33,7 @@ function birdOfTheDay()
 ?>
 	  <div class="heading">Bird of the Day</div>
         <div class="pagesubtitle"><?= $info["LatinName"] ?></div>
-	    <div class="titleblock">
+	    <div class="summaryblock">
           <span class="heading"><a href="./speciesdetail.php?speciesid=<?=$info['objectid']?>"><?= $info["CommonName"] ?></a></div>
 
 	  <? if (mysql_num_rows($photos) > 0)
@@ -65,7 +65,7 @@ function latestTrips()
 
 		<div class="pagesubtitle"><?= $info["niceDate"] ?></div>
 
-		<div class="titleblock">
+		<div class="summaryblock">
 		    <span class="heading">
 		        <a href="./tripdetail.php?tripid=<?=$info["objectid"]?>">
 <?                 rightThumbnail("SELECT * FROM sighting WHERE Photo='1' AND TripDate='" . $info["Date"] . "' LIMIT 1", false); ?>
@@ -96,8 +96,12 @@ globalMenu();
 
 	  <div class="logotype">birdWalker</div>
 
-	  <p>Welcome to <code>birdWalker</code>! This website contains Bill and Mary&#39;s birding field notes, including
-	  trip, county, state, and year lists. Our latest trips are listed below, other indices
+	  <p>Welcome to <code>birdWalker</code>! This website contains Bill Walker and Mary Wisnewski&#39;s birding field notes, including
+	  <a href="./tripindex.php">trip</a>,
+	  <a href="./countyindex.php">county</a>,
+	  <a href="./stateindex.php">state</a>, and
+	  <a href="./speciesindex.php?view=speciesbyyear">year</a> lists.
+	  Our latest trips are listed below, other indices
 	  are available from the links on the left.</p>
 
 	  <table>
