@@ -326,7 +326,7 @@ class Request
 			$countyRequest->setPageScript("countydetail.php");
 			$countyRequest->setLocationID("");
 			
-			$items[] = $countyRequest->linkToSelf(strtolower($this->getCounty()));
+			$items[] = $countyRequest->linkToSelf(strtolower($this->getCounty() . " county"));
 		}
 		
 		navTrail($items);
