@@ -419,3 +419,4 @@ INSERT INTO trip VALUES (419,'Bob Power','','Kern River Day Three','Others on th
 INSERT INTO trip VALUES (420,'Bob Power','','Kern River Day Four','An awesome drive through the mountains concluded this excellent four day weekend. Thanks, Bob!','2005-06-26');
 INSERT INTO trip VALUES (421,'Bill','','Morning Photo Safari','I made one last trip with the 500mm looking for nesting passerines. I had only a few good shots, but it was a very nice walk.','2005-06-28');
 INSERT INTO trip VALUES (422,'Mary and Bill','','Stroll after work','So, there we were fresh from four days of birding in the mountains, three days left on the 500mm f/4L rental. We had to go back out in the field!','2005-06-27');
+INSERT INTO trip VALUES (423,'Mary and Bill','','Stroll after work','We went to check out reports of Phalaropes on the pond, which we found. We tried to make some of the Curlews into Whimbrels, but did not succeed.','2005-07-19');
