@@ -2,9 +2,11 @@
 
 require_once("./birdwalker.php");
 
-$threshold = 5;
+$threshold = 10;
 
-$sortCriteria = $_GET['sort'];
+$sortCriteria = "";
+array_key_exists("sort", $_GET) && $sortCriteria = $_GET['sort'];
+
 $localtimearray = localtime(time(), 1);
 $monthNum = $localtimearray["tm_mon"] + 1;
 $dayStart = $localtimearray["tm_yday"] - 3;
@@ -25,7 +27,7 @@ navTrailPhotos("missing");
     <div class="contentright">
 	  <div class=titleblock>
 	    <div class=pagetitle>Birds in need of photos</div>
-        <div class=pagesubtitle>Birds seen at least <?= $threshold ?> times with no photo</div>
+        <div class=metadata>Birds seen at least <?= $threshold ?> times with no photo</div>
       </div>
 
 <a href="./photosneeded.php?sort=objectid">taxo</a>
