@@ -48,7 +48,7 @@ while($sightingInfo = mysql_fetch_array($dbQuery)) {
 
 	if ($sightingInfo["Photo"] == "1") {
 ?>
-        <?= getPhotoLinkForSightingInfo($sightingInfo) ?>
+        <?= getPhotoLinkForSightingInfo($sightingInfo, "sightingid") ?>
 <?
     }
 ?>
