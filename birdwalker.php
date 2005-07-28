@@ -6,10 +6,9 @@ function globalMenu()
 { ?>
 	<div class="contentleft">
       <div style="padding-bottom: 10px">
-		<a href="http://wfwalker.blogspot.com/"><img src="./images/bill.jpg" border=0 alt="Bill"></a></div>
+        <a href="http://wfwalker.blogspot.com/"><img src="./images/bill.jpg" border=0 alt="Bill"></a></div>
       <div style="padding-bottom: 10px">
-        <a href="http://spinnity.blogspot.com/"><img src="./images/mary.jpg" border=0 alt="Mary"></a>
-      </div>
+        <a href="http://spinnity.blogspot.com/"><img src="./images/mary.jpg" border=0 alt="Mary"></a></div>
 	  <div><a href="./tripindex.php">trips</a></div>
 	  <div><a href="./speciesindex.php">birds</a></div>
 	  <div><a href="./locationindex.php">locations</a></div>
@@ -204,10 +203,17 @@ function formatPhotos($query)
 <?	    if ($sightingInfo["Photo"] == "1") {
 			$photoFilename = getPhotoFilename($sightingInfo);
 
-			list($width, $height, $type, $attr) = getimagesize("./images/photo/" . $photoFilename); ?>
+			list($width, $height, $type, $attr) = getimagesize("./images/photo/" . $photoFilename);
 
-			<img width=<?= $width ?> height=<?= $height ?> src="<?= getPhotoURLForSightingInfo($sightingInfo) ?>" alt="bird">
-<?      }
+			if (mysql_num_rows($dbQuery) > 4)
+			{
+				echo getThumbForSightingInfo($sightingInfo);
+			}
+			else
+			{ ?>
+			   <img width=<?= $width ?> height=<?= $height ?> src="<?= getPhotoURLForSightingInfo($sightingInfo) ?>" alt="bird">
+<?          }
+      }
 	}
 }
 
@@ -323,7 +329,7 @@ function getThumbForSightingInfo($sightingInfo)
 	if ($height != "") { $sizeAttributes = $sizeAttributes . "  height=" . $height; }
 
 	return
-		"<a href=\"./photodetail.php?sightingid=" . $sightingInfo["objectid"] . "\">" .
+		"<a href=\"./photodetail.php?sightingid=" . $sightingInfo["sightingid"] . "\">" .
 		"<img " . $sizeAttributes . " src=\"./images/thumb/" . $thumbFilename . "\" border=0 alt=\"bird\">" . 
 		"</a>";
 }
@@ -1035,16 +1041,38 @@ function stateBrowseButtons($stateID, $viewMode)
     SELECT min(state.objectid)
       FROM state, sighting, location
       WHERE sighting.LocationName=location.Name AND location.State=state.Abbreviation and state.objectid>" . $stateID . " LIMIT 1");
-	if ($nextStateID != "") $nextStateInfo = getStateInfo($nextStateID); else $nextStateInfo = "";
+
+	if ($nextStateID != "")
+	{
+		$nextStateInfo = getStateInfo($nextStateID);
+		$nextStateLinkText = $nextStateInfo["Name"];
+		$nextStateObjectID = $nextStateInfo["objectid"];
+	}
+	else
+	{
+		$nextStateLinkText = "";
+		$nextStateObjectID = "";
+	}
 
 	$prevStateID = performCount("
     SELECT max(state.objectid)
       FROM state, sighting, location
       WHERE sighting.LocationName=location.Name AND location.State=state.Abbreviation and state.objectid<" . $stateID . " LIMIT 1");
-	if ($prevStateID != "" ) $prevStateInfo = getStateInfo($prevStateID); else $prevStateInfo = "";
+
+	if ($prevStateID != "" )
+	{
+		$prevStateInfo = getStateInfo($prevStateID);
+		$prevStateLinkText = $prevStateInfo["Name"];
+		$prevStateObjectID = $prevStateInfo["objectid"];
+	}
+	else
+	{
+		$prevStateLinkText = "";
+		$prevStateObjectID = "";
+	}
 
 	browseButtons("State Detail", "./statedetail.php?view=" . $viewMode . "&stateid=", $stateID,
-				  $prevStateInfo["objectid"], $prevStateInfo["Name"], $nextStateInfo["objectid"], $nextStateInfo["Name"]);
+				  $prevStateObjectID, $prevStateLinkText, $nextStateObjectID, $nextStateLinkText);
 }
 
 function rightThumbnailSpecies($abbrev)
