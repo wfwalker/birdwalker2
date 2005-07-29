@@ -30,7 +30,7 @@ navTrail();
 
 <?php
 $photoQuery = performQuery("
-  SELECT CONCAT(sighting.TripDate, sighting.objectid) AS photoOrder, sighting.*,
+  SELECT CONCAT(sighting.TripDate, sighting.objectid) AS photoOrder, sighting.*, sighting.objectid as sightingid,
       species.CommonName, DATE_FORMAT(sighting.TripDate, '%M %e, %Y') AS niceDate
     FROM sighting, species WHERE Photo='1' AND sighting.SpeciesAbbreviation=species.Abbreviation
     ORDER BY photoOrder DESC");

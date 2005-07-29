@@ -184,37 +184,49 @@ function formatPhotos($query)
 
     countHeading(mysql_num_rows($dbQuery), "photo");
 
+	$counter = round(mysql_num_rows($dbQuery)  * 0.5); ?>
+
+    <table class="report-content" width="100%">
+	  <tr><td width="50%" valign="top">
+
+<?
 	while ($sightingInfo = mysql_fetch_array($dbQuery))
 	{
 		$tripInfo = getTripInfoForDate($sightingInfo["TripDate"]);
 		$tripYear =  substr($tripInfo["Date"], 0, 4);
-		$locationInfo = getLocationInfoForName($sightingInfo["LocationName"]); ?>
+		$locationInfo = getLocationInfoForName($sightingInfo["LocationName"]);
+?>
+		    <div class=heading>
+              <div class=pagesubtitle>
+			    <?= $query->getSightingTitle($sightingInfo) ?>
+<?              editLink("./sightingedit.php?sightingid=" . $sightingInfo["sightingid"]); ?>
+              </div>
+              <div class=metadata>
+			    <?= $query->getSightingSubtitle($sightingInfo) ?>
+              </div>
+            </div>
 
-        <div class=heading>
-          <div class=pagesubtitle>
-			<?= $query->getSightingTitle($sightingInfo) ?>
-<?          editLink("./sightingedit.php?sightingid=" . $sightingInfo["sightingid"]); ?>
-          </div>
-          <div class=metadata>
-			<?= $query->getSightingSubtitle($sightingInfo) ?>
-          </div>
-        </div>
-
-<?	    if ($sightingInfo["Photo"] == "1") {
+<?	    if ($sightingInfo["Photo"] == "1")
+		{
 			$photoFilename = getPhotoFilename($sightingInfo);
 
 			list($width, $height, $type, $attr) = getimagesize("./images/photo/" . $photoFilename);
 
-			if (mysql_num_rows($dbQuery) > 4)
-			{
-				echo getThumbForSightingInfo($sightingInfo);
-			}
-			else
-			{ ?>
-			   <img width=<?= $width ?> height=<?= $height ?> src="<?= getPhotoURLForSightingInfo($sightingInfo) ?>" alt="bird">
-<?          }
-      }
+			echo getThumbForSightingInfo($sightingInfo);
+		}
+
+		$counter--;
+
+		if ($counter == 0)
+		{ ?>
+		</td><td valign="top" width="50%">
+<?		}
 	}
+	
+?>
+	   </td>
+	</tr>
+  </table><?
 }
 
 function navTrailPhotos($extra = "")

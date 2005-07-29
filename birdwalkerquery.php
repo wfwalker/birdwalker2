@@ -9,30 +9,55 @@ class BirdWalkerQuery
 		$this->mReq = $inReq;
 	}
 
+ 	function isTripSpecified()
+	{
+		return ($this->mReq->getTripID() == '');
+	}
+
+ 	function isSpeciesSpecified()
+	{
+		return ($this->mReq->getSpeciesID() == '');
+	}
+
+ 	function isFamilySpecified()
+	{
+		return ($this->mReq->getFamilyID() == '');
+	}
+ 
+ 	function isOrderSpecified()
+	{
+		return ($this->mReq->getOrderID() == '');
+	}
+
+	function isLocationSpecified()
+	{
+		return ($this->mReq->getLocationID() == '');
+	}
+
 	function getPageTitle($inPrefix = "")
 	{
 		if ($inPrefix != "") {
 			$pageTitleItems[] = $inPrefix;
 		}
 
-		if ($this->mReq->getSpeciesID() != "") {
-			$speciesInfo = getSpeciesInfo($this->mReq->getSpeciesID());
+		if (! $this->isSpeciesSpecified()) {
+			$speciesInfo = $this->mReq->getSpeciesInfo();
 			$pageTitleItems[] = $speciesInfo["CommonName"];
-		} elseif ($this->mReq->getFamilyID() != "") {
-			$familyInfo = getFamilyInfo($this->mReq->getFamilyID() * pow(10, 7));
+		} elseif (! $this->isFamilySpecified()) {
+			$familyInfo = $this->mReq->getFamilyInfo();
 			$pageTitleItems[] = $familyInfo["LatinName"];
-		} elseif ($this->mReq->getOrderID() != "") {
-			$orderInfo = getOrderInfo($this->mReq->getOrderID() * pow(10, 9));
+		} elseif (! $this->isOrderSpecified()) {
+			$orderInfo = $this->mReq->getOrderInfo();
 			$pageTitleItems[] = $orderInfo["LatinName"];
 		}
 
-		if ($this->mReq->getLocationID() != "") {
-			$locationInfo = getLocationInfo($this->mReq->getLocationID()); 
+		if (! $this->isLocationSpecified()) {
+			$locationInfo = $this->mReq->getLocationInfo();
 			$pageTitleItems[] = $locationInfo["Name"];
-		} elseif ($this->mReq->getCounty() != "") {
+		} elseif (! $this->isCountySpecified()) {
 			$pageTitleItems[] = $this->mReq->getCounty() . " County";
-		} elseif ($this->mReq->getStateID() != "") {
-			$stateInfo = getStateInfo($this->mReq->getStateID());
+		} elseif (! $this->isStateSpecified()) {
+			$stateInfo = $this->mReq->getStateInfo();
 		    $pageTitleItems[] = $stateInfo["Name"];
 		}
 

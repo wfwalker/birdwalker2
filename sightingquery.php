@@ -18,7 +18,7 @@ class SightingQuery extends BirdWalkerQuery
 
 	function getSightingSubtitle($sightingInfo)
 	{
-		if ($this->mReq->getLocationID() == "") return $sightingInfo["LocationName"];
+		if ($this->mReq->getLocationID() == "") return $sightingInfo["LocationName"] . ", " . $sightingInfo["State"];
 		else return $sightingInfo["niceDate"];
 	}
 

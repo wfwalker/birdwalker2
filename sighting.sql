@@ -8876,7 +8876,7 @@ INSERT INTO sighting VALUES (8886,'wooduc','Lithia Park','','','1','2004-06-05')
 INSERT INTO sighting VALUES (8885,'mallar','Lithia Park','','0','0','2004-06-05');
 INSERT INTO sighting VALUES (8884,'wesjay','Lithia Park','','0','0','2004-06-05');
 INSERT INTO sighting VALUES (8883,'rethaw','Merced NWR','','','1','2004-01-19');
-INSERT INTO sighting VALUES (8882,'bcnher','San Mateo County','','','1','2002-07-27');
+INSERT INTO sighting VALUES (8882,'bcnher','San Mateo County','','','','2002-07-27');
 INSERT INTO sighting VALUES (8903,'snoegr','Palo Alto Duck Pond','','0','0','2004-05-22');
 INSERT INTO sighting VALUES (8904,'greegr','Palo Alto Duck Pond','','0','0','2004-05-22');
 INSERT INTO sighting VALUES (8905,'amecoo','Palo Alto Duck Pond','','','1','2004-05-22');
@@ -11243,7 +11243,7 @@ INSERT INTO sighting VALUES (11283,'acowoo','Piute Mountains','','0','0','2005-0
 INSERT INTO sighting VALUES (11284,'nutwoo','Piute Mountains','','0','0','2005-06-24');
 INSERT INTO sighting VALUES (11285,'dowwoo','Piute Mountains','','0','0','2005-06-24');
 INSERT INTO sighting VALUES (11286,'norfli','Piute Mountains','','0','0','2005-06-24');
-INSERT INTO sighting VALUES (11287,'wewpew','Piute Mountains','','0','0','2005-06-24');
+INSERT INTO sighting VALUES (11287,'wewpew','Piute Mountains','','','1','2005-06-24');
 INSERT INTO sighting VALUES (11288,'wilfly','Kern River Preserve','','','','2005-06-24');
 INSERT INTO sighting VALUES (11289,'blkpho','Piute Mountains','','0','0','2005-06-24');
 INSERT INTO sighting VALUES (11290,'weskin','Piute Mountains','','0','0','2005-06-24');

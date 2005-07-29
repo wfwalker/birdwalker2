@@ -238,6 +238,12 @@ class Request
 		}
 	}
 
+	function getSpeciesInfo()
+	{
+		if ($this->getSpeciesID() == '') die("Fatal error: missing SpeciesID");
+		return getSpeciesInfo($this->getSpeciesID());
+	}
+
 	function getOrderInfo()
 	{
 		if ($this->getOrderID() == '') die("Fatal error: missing Order ID");
