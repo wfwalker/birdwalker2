@@ -11,27 +11,37 @@ class BirdWalkerQuery
 
  	function isTripSpecified()
 	{
-		return ($this->mReq->getTripID() == '');
+		if ($this->mReq->getTripID() == '') return false; else return true;
 	}
 
  	function isSpeciesSpecified()
 	{
-		return ($this->mReq->getSpeciesID() == '');
+		if ($this->mReq->getSpeciesID() == "") return false; else return true;
 	}
 
  	function isFamilySpecified()
 	{
-		return ($this->mReq->getFamilyID() == '');
+		if ($this->mReq->getFamilyID() == '') return false; else return true;
 	}
  
  	function isOrderSpecified()
 	{
-		return ($this->mReq->getOrderID() == '');
+		if ($this->mReq->getOrderID() == '') return false; else return true;
 	}
 
 	function isLocationSpecified()
 	{
-		return ($this->mReq->getLocationID() == '');
+		if ($this->mReq->getLocationID() == '') return false; else return true;
+	}
+
+	function isCountySpecified()
+	{
+		if ($this->mReq->getCounty() == '') return false; else return true;
+	}
+
+	function isStateSpecified()
+	{
+		if ($this->mReq->getStateID() == '') return false; else return true;
 	}
 
 	function getPageTitle($inPrefix = "")
