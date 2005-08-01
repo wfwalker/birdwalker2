@@ -12,13 +12,13 @@ class SightingQuery extends BirdWalkerQuery
 
 	function getSightingTitle($sightingInfo)
 	{
-		if ($this->mReq->getSpeciesID() == "") return $sightingInfo["CommonName"];
-		if ($this->mReq->getTripID() == "") return $sightingInfo["niceDate"];
+		if (! $this->isSpeciesSpecified()) return $sightingInfo["CommonName"];
+		if (! $this->isTripSpecified()) return $sightingInfo["niceDate"];
 	}
 
 	function getSightingSubtitle($sightingInfo)
 	{
-		if ($this->mReq->getLocationID() == "") return $sightingInfo["LocationName"] . ", " . $sightingInfo["State"];
+		if (! $this->isLocationSpecified()) return $sightingInfo["LocationName"] . ", " . $sightingInfo["State"];
 		else return $sightingInfo["niceDate"];
 	}
 
@@ -35,7 +35,6 @@ class SightingQuery extends BirdWalkerQuery
 	{
 		return " FROM sighting, species, location, trip";
 	}
-
 
 	function getWhereClause()
 	{
@@ -116,33 +115,6 @@ class SightingQuery extends BirdWalkerQuery
 			$this->getWhereClause() . "
             AND sighting.Photo='1'
             ORDER BY shuffle LIMIT 1", $anchorFlag);
-	}
-
-	function formatTwoColumnSpeciesList()
-	{
-		formatTwoColumnSpeciesList($this);
-	}
-
-	function formatSpeciesByYearTable()
-	{
-		$annualTotal = performQuery("
-          SELECT COUNT(DISTINCT species.objectid) AS count, year(sighting.TripDate) AS year " .
-            $this->getFromClause() . " " .
-		    $this->getWhereClause() . "
-			GROUP BY year");
-
-		formatSpeciesByYearTable($this, $this->getParams(), $annualTotal);
-	}
-
-	function formatSpeciesByMonthTable()
-	{
-		$monthlyTotal = performQuery("
-          SELECT COUNT(DISTINCT species.objectid) AS count, month(sighting.TripDate) AS month " .
-            $this->getFromClause() . " " .
-		    $this->getWhereClause() . "
-			GROUP BY month");
-
-		formatSpeciesByMonthTable($this, $this->getParams(), $monthlyTotal);
 	}
 
 	function formatPhotos()
