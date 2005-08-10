@@ -124,24 +124,197 @@ class LocationQuery extends BirdWalkerQuery
             ORDER BY shuffle LIMIT 1");
 	}
 
-	function formatTwoColumnLocationList()
-	{
-		formatTwoColumnLocationList($this);
-	}
-
-	function formatLocationByYearTable()
-	{
-		formatLocationByYearTable($this);
-	}
-
-	function formatLocationByMonthTable()
-	{
-		formatLocationByMonthTable($this);
-	}
-
 	function formatPhotos()
 	{
 		formatPhotos($this);
+	}
+
+
+	/**
+	 * Show locations as rows, years as columns
+	 */
+	function formatLocationByYearTable()
+	{
+		$countyHeadingsOK = ($this->mReq->getCounty() == "");
+
+		$lastStateHeading="";
+		$gridQueryString="
+      SELECT distinct(LocationName), County, State, location.objectid as locationid, bit_or(1 << (year(TripDate) - 1995)) as mask " . 
+		  $this->getFromClause() . " " .
+		  $this->getWhereClause() . " 
+        GROUP BY sighting.LocationName
+        ORDER BY location.State, location.County, location.Name;";
+		$gridQuery = performQuery($gridQueryString); ?>
+
+		<table cellpadding=0 cellspacing=0 class="report-content" width="100%">
+		<tr><td></td><? insertYearLabels() ?></tr>
+
+	<?  $prevInfo = "";
+		while ($info = mysql_fetch_array($gridQuery))
+		{
+			$theMask = $info["mask"];
+
+			if ($countyHeadingsOK && ($prevInfo == "" || $prevInfo["County"] != $info["County"]))
+			{
+				$stateInfo = getStateInfoForAbbreviation($info["State"]) ?>
+
+				<tr><td class=subheading colspan=13>
+	<?          if ($lastStateHeading != $info["State"]) { ?>
+				  <a href="./statedetail.php?stateid=<?= $stateInfo["objectid"] ?>"><?= $stateInfo["Name"] ?></a>,
+	<?            $lastStateHeading = $info["State"];
+				} ?>
+				  <a href="./countydetail.php?stateid=<?= $stateInfo["objectid"] ?>&county=<?= urlencode($info["County"]) ?>"><?= $info["County"] ?> County</a></td>
+				</tr>
+	<?		} ?>
+
+			<tr>
+				<td width="40%">
+					<a href="./locationdetail.php?locationid=<?= $info["locationid"] ?>"><?= $info["LocationName"] ?></a>
+				</td>
+
+	<?		for ($index = 1; $index <= (1 + getLatestYear() - getEarliestYear()); $index++)
+			{ ?>
+				<td class=bordered align=center>
+	<?			if (($theMask >> $index) & 1)
+				{
+					$clickRequest = new Request; // make a new request from current params and modify
+					$clickRequest->setLocationID($info["locationid"]);
+					$clickRequest->setYear(1995 + $index);
+					$clickRequest->setView("");
+					$clickRequest->setPageScript($this->mReq->getTimeAndLocationScript());
+					echo $clickRequest->linkToSelf("X");
+				}
+				else
+				{ ?>
+					&nbsp;
+	<?			} ?>
+				</td>
+	<?		} ?>
+			</tr>
+	<?
+			$prevInfo = $info;
+		} ?>
+
+		 </table>
+	<?
+	} 
+
+
+	/**
+	 * Show locations as rows, months as columns
+	 */
+	function formatLocationByMonthTable()
+	{
+		$countyHeadingsOK = ($this->mReq->getCounty() == "");
+
+		$lastStateHeading="";
+		$gridQueryString="
+      SELECT distinct(LocationName), County, State, location.objectid AS locationid, bit_or(1 << month(TripDate)) AS mask " .
+		  $this->getFromClause() . " " .
+		  $this->getWhereClause() . " 
+        GROUP BY sighting.LocationName
+        ORDER BY location.State, location.County, location.Name;";
+
+		$gridQuery = performQuery($gridQueryString); ?>
+
+		<table cellpadding=0 cellspacing=0 cols=11 class="report-content" width="100%">
+		<tr><td></td><? insertMonthLabels() ?></tr>
+
+	<?
+		$prevInfo = "";
+		while ($info = mysql_fetch_array($gridQuery))
+		{
+			$theMask = $info["mask"];
+
+			if ($prevInfo == "" || $countyHeadingsOK && ($prevInfo["County"] != $info["County"])) {
+				$stateInfo = getStateInfoForAbbreviation($info["State"]) ?>
+
+				<tr><td class=subheading colspan=13>
+	<?          if ($lastStateHeading != $info["State"]) { ?>
+				  <a href="./statedetail.php?stateid=<?= $stateInfo["objectid"] ?>"><?= $stateInfo["Name"] ?></a>,
+	<?            $lastStateHeading = $info["State"];
+				} ?>
+				  <a href="./countydetail.php?stateid=<?= $stateInfo["objectid"] ?>&county=<?= urlencode($info["County"]) ?>"><?= $info["County"] ?> County</a></td>
+				</tr>
+	<?		} ?>
+
+			<tr>
+				<td>
+					<a href="./locationdetail.php?locationid=<?= $info["locationid"] ?>"><?= $info["LocationName"] ?></a>
+				</td>
+
+	<?		for ($index = 1; $index <= 12; $index++)
+			{ ?>
+				<td class=bordered align=center>
+	<?			if (($theMask >> $index) & 1)
+				{
+					$clickRequest = new Request; // make a new request from current params and modify
+					$clickRequest->setLocationID($info["locationid"]);
+					$clickRequest->setMonth($index);
+					$clickRequest->setView("");
+					$clickRequest->setPageScript($this->mReq->getTimeAndLocationScript());
+					echo $clickRequest->linkToSelf("X");
+				}
+				else
+				{ ?>
+					&nbsp;
+	<?			} ?>
+				</td>
+	<?		} ?>
+			</tr>
+	<?
+			$prevInfo = $info;
+		} ?>
+
+		 </table>
+	<?
+	} 
+
+
+	function formatTwoColumnLocationList()
+	{
+		$countyHeadingsOK = ($this->mReq->getCounty() == "");
+
+		$dbQuery = performQuery(
+				$this->getSelectClause() . " " .
+				$this->getFromClause() . " " .
+				$this->getWhereClause() . " ORDER BY location.State, location.County, location.Name");
+
+		$lastStateHeading="";
+		$prevInfo=null;
+		$locationCount = mysql_num_rows($dbQuery);
+		$divideByCounties = ($locationCount > 20);
+		$counter = round($locationCount  * 0.5); ?>
+
+		<table class=report-content width="100%">
+		  <tr valign=top><td width="50%">
+
+	<?	while($info = mysql_fetch_array($dbQuery))
+		{
+			if ($countyHeadingsOK && $divideByCounties && (($prevInfo["State"] != $info["State"]) || ($prevInfo["County"] != $info["County"])))
+			{ ?>
+				<div class="subheading">
+	<?          if ($lastStateHeading != $info["State"]) {
+					$stateInfo = getStateInfoForAbbreviation($info["State"]); ?>
+					<a href="./statedetail.php?view=<?= $this->mReq->getView() ?>&stateid=<?= $stateInfo["objectid"]?>"><?= $stateInfo["Name"] ?></a>,
+	<?              $lastStateHeading = $info["State"];
+				} ?>
+				<a href="./countydetail.php?view=<?= $this->mReq->getView() ?>&stateid=<?= $stateInfo["objectid"]?>&county=<?= $info["County"] ?>"><?= $info["County"] ?> County</a>
+				</div>
+		  <?		} // TODO, list below the county and state name if not dividing by county/state ?>
+
+			<div><a href="./locationdetail.php?view=<?= $this->mReq->getView() ?>&locationid=<?= $info["objectid"] ?>"><?= $info["Name"] ?></a></div>
+
+	<?		$prevInfo = $info;   
+			$counter--;
+			if ($counter == 0)
+			{ ?>
+			</td><td width="50%">
+	<?		}
+		} ?>
+
+		</tr></table>
+	<?
 	}
 }
 ?>

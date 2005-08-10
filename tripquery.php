@@ -114,17 +114,53 @@ class TripQuery extends BirdWalkerQuery
             ORDER BY shuffle LIMIT 1");
 	}
  
-	function formatTwoColumnTripList()
-	{
-		formatTwoColumnTripList($this);
-	}
-
 	function formatPhotos()
 	{
 		formatPhotos($this);
 	}
 
+	function formatTwoColumnTripList()
+	{
+		$tripCount = $this->getTripCount();
+		$subdivideByYears = ($tripCount > 20) && ($this->mReq->getYear() == "");
+		$prevYear = "";
+		$counter = round($tripCount  * 0.52); ?>
 
+	   <table class=report-content width="100%">
+		  <tr valign=top><td>
+
+	<?	$dbQuery = $this->performQuery();
+		while($info = mysql_fetch_array($dbQuery))
+		{
+			$thisYear =  substr($info["Date"], 0, 4);
+
+			if (strcmp($thisYear, $prevYear) && $subdivideByYears)
+			{ ?>
+				<div class="subheading">
+					<a name="<?= $thisYear ?>"></a>
+					<a href="./yeardetail.php?year=<?= $info["year"] ?>"><?= $info["year"] ?></a>
+				</div>
+	<?		} ?>
+
+				 <div>
+					<a href="./tripdetail.php?tripid=<?= $info["objectid"] ?>">
+					  <?= $info["Name"] ?>, <?= $info["niceDate"] ?><? if (($this->mReq->getYear() == "") && (! $subdivideByYears)) { echo ", " . $info["year"]; } ?>
+					</a>
+					<? if (array_key_exists("Photo", $info) && $info["Photo"] == "1") { ?><?= getPhotoLinkForSightingInfo($info, "sightingid") ?><? } ?>
+					<? if (array_key_exists("Exclude", $info) && $info["Exclude"] == "1") { ?>excluded<? } ?>
+				 </div>
+					<? if (array_key_exists("sightingNotes", $info) && $info["sightingNotes"] != "") { ?> <div class=sighting-notes><?= $info["sightingNotes"] ?></div> <? } ?>
+
+	<?		$prevYear = $thisYear;
+			$counter--;
+			if ($counter == 0)
+			{ ?>
+			</td><td width="50%">
+	<?		}
+		} ?>
+		  </td></tr>
+		</table> <?
+	}
 
 	function formatSummaries()
 	{

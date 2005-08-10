@@ -238,196 +238,186 @@ class SpeciesQuery extends BirdWalkerQuery
 <?
 	}
 
-	function formatPhotos()
+	/**
+	 * Show a set of sightings, species by rows, years by columns.
+	 */
+	function formatSpeciesByYearTable()
 	{
-		formatPhotos($this);
-	}
-
-/**
- * Show a set of sightings, species by rows, years by columns.
- */
-function formatSpeciesByYearTable()
-{
-	$yearTotals = performQuery("
+		$yearTotals = performQuery("
           SELECT COUNT(DISTINCT species.objectid) AS count, year(sighting.TripDate) AS year " .
-            $this->getFromClause() . " " .
-		    $this->getWhereClause() . "
+				$this->getFromClause() . " " .
+				$this->getWhereClause() . "
 			GROUP BY year");
 
-    $gridQueryString="
+		$gridQueryString="
     SELECT DISTINCT(CommonName), species.objectid as speciesid, bit_or(1 << (year(TripDate) - 1995)) AS mask " .
-      $this->getFromClause() . " " .
-      $this->getWhereClause() . " 
+		  $this->getFromClause() . " " .
+		  $this->getWhereClause() . " 
       GROUP BY sighting.SpeciesAbbreviation
       ORDER BY speciesid";
 
-	$gridQuery = performQuery($gridQueryString); ?>
+		$gridQuery = performQuery($gridQueryString); ?>
 
-	<table cellpadding=0 cellspacing=0 class="report-content" width="100%">
-	    <tr><td></td><? insertYearLabels() ?></tr>
-        <tr><td class=bordered>TOTAL</td>
+		<table cellpadding=0 cellspacing=0 class="report-content" width="100%">
+			<tr><td></td><? insertYearLabels() ?></tr>
+			<tr><td class=bordered>TOTAL</td>
 
-<?	$info = mysql_fetch_array($yearTotals);
-	for ($index = 1; $index <= (1 + getLatestYear() - getEarliestYear()); $index++)
-	{
-		if ($info["year"] == (getEarliestYear() - 1) + $index)
-		{ ?>
-			<td class=bordered align=center>
-<?
-				$clickRequest = new Request; // make a new request from current params and modify
-				$clickRequest->setYear(1995 + $index);
-				$clickRequest->setView("");
-				$clickRequest->setPageScript("specieslist.php");
-				echo $clickRequest->linkToSelf($info["count"]);
-?>
-            </td>
-<?			$info = mysql_fetch_array($yearTotals);
-		}
-		else
-		{ ?>
-			<td class=bordered align=center>&nbsp;</td>
-<?		}
-	} ?>
-
-        </tr>
-
-<?	$prevInfo = "";
-    while ($info = mysql_fetch_array($gridQuery))
-	{
-		$theMask = $info["mask"];
-
-		if ($prevInfo == "" || getFamilyIDFromSpeciesID($prevInfo["speciesid"]) != getFamilyIDFromSpeciesID($info["speciesid"]))
+	<?	$info = mysql_fetch_array($yearTotals);
+		for ($index = 1; $index <= (1 + getLatestYear() - getEarliestYear()); $index++)
 		{
-			$taxoInfo = getFamilyInfoFromSpeciesID($info["speciesid"]); ?>
-			<tr><td class=subheading colspan=11><?= strtolower($taxoInfo["LatinName"]) ?></td></tr>
-<?		} ?>
-
-		<tr><td><a href="./speciesdetail.php?speciesid=<?= $info["speciesid"] ?>"><?= $info["CommonName"] ?></a></td>
-
-<?		for ($index = 1; $index <=  (1 + getLatestYear() - getEarliestYear()); $index++)
-		{ ?>
-			<td class=bordered align=center>
-
-<?			if (($info["mask"] >> $index) & 1)
-			{
-				$clickRequest = new Request; // make a new request from current params and modify
-				$clickRequest->setSpeciesID($info["speciesid"]);
-				$clickRequest->setYear(1995 + $index);
-				$clickRequest->setView("");
-				$clickRequest->setPageScript("sightinglist.php");
-				echo $clickRequest->linkToSelf("X");
+			if ($info["year"] == (getEarliestYear() - 1) + $index)
+			{ ?>
+				<td class=bordered align=center>
+	<?
+					$clickRequest = new Request; // make a new request from current params and modify
+					$clickRequest->setYear(1995 + $index);
+					$clickRequest->setView("");
+					$clickRequest->setPageScript("specieslist.php");
+					echo $clickRequest->linkToSelf($info["count"]);
+	?>
+				</td>
+	<?			$info = mysql_fetch_array($yearTotals);
 			}
 			else
 			{ ?>
-				&nbsp;
-<?			} ?>
-			</td>
-<?		} ?>
+				<td class=bordered align=center>&nbsp;</td>
+	<?		}
+		} ?>
 
-		</tr>
+			</tr>
 
-<?		$prevInfo = $info;
-	} ?>
+	<?	$prevInfo = "";
+		while ($info = mysql_fetch_array($gridQuery))
+		{
+			$theMask = $info["mask"];
 
-	</table>
-<?
-}
+			if ($prevInfo == "" || getFamilyIDFromSpeciesID($prevInfo["speciesid"]) != getFamilyIDFromSpeciesID($info["speciesid"]))
+			{
+				$taxoInfo = getFamilyInfoFromSpeciesID($info["speciesid"]); ?>
+				<tr><td class=subheading colspan=11><?= strtolower($taxoInfo["LatinName"]) ?></td></tr>
+	<?		} ?>
 
+			<tr><td><a href="./speciesdetail.php?speciesid=<?= $info["speciesid"] ?>"><?= $info["CommonName"] ?></a></td>
 
-/**
- * Show a set of sightings, species by rows, months by columns.
- */
-function formatSpeciesByMonthTable()
-{
-	$monthTotals = performQuery("
+	<?		for ($index = 1; $index <=  (1 + getLatestYear() - getEarliestYear()); $index++)
+			{ ?>
+				<td class=bordered align=center>
+
+	<?			if (($info["mask"] >> $index) & 1)
+				{
+					$clickRequest = new Request; // make a new request from current params and modify
+					$clickRequest->setSpeciesID($info["speciesid"]);
+					$clickRequest->setYear(1995 + $index);
+					$clickRequest->setView("");
+					$clickRequest->setPageScript("sightinglist.php");
+					echo $clickRequest->linkToSelf("X");
+				}
+				else
+				{ ?>
+					&nbsp;
+	<?			} ?>
+				</td>
+	<?		} ?>
+
+			</tr>
+
+	<?		$prevInfo = $info;
+		} ?>
+
+		</table>
+	<?
+	}
+
+	/**
+	 * Show a set of sightings, species by rows, months by columns.
+	 */
+	function formatSpeciesByMonthTable()
+	{
+		$monthTotals = performQuery("
           SELECT COUNT(DISTINCT species.objectid) AS count, month(sighting.TripDate) AS month " .
-            $this->getFromClause() . " " .
-		    $this->getWhereClause() . "
+				$this->getFromClause() . " " .
+				$this->getWhereClause() . "
 			GROUP BY month");
 
-    $gridQueryString="
+		$gridQueryString="
     SELECT DISTINCT(CommonName), species.objectid AS speciesid, bit_or(1 << month(TripDate)) AS mask " . 
-      $this->getFromClause() . " " .
-      $this->getWhereClause() . " 
+		  $this->getFromClause() . " " .
+		  $this->getWhereClause() . " 
       GROUP BY sighting.SpeciesAbbreviation
       ORDER BY speciesid";
 
-	$gridQuery = performQuery($gridQueryString); ?>
+		$gridQuery = performQuery($gridQueryString); ?>
 
-	<table cellpadding=0 cellspacing=0 class="report-content" width="100%">
-	    <tr><td></td><? insertMonthLabels() ?></tr>
-        <tr><td class=bordered>TOTAL</td>
+		<table cellpadding=0 cellspacing=0 class="report-content" width="100%">
+			<tr><td></td><? insertMonthLabels() ?></tr>
+			<tr><td class=bordered>TOTAL</td>
 
-<?	$info = mysql_fetch_array($monthTotals);
-	for ($index = 1; $index <= 12; $index++)
-	{
-		if ($info["month"] == $index)
-		{ ?>
-			<td class=bordered align=center>
-<?
-				$clickRequest = new Request; // make a new request from current params and modify
-				$clickRequest->setMonth($index);
-				$clickRequest->setView("");
-				$clickRequest->setPageScript("specieslist.php");
-				echo $clickRequest->linkToSelf($info["count"]);
-?>
-            </td>
-<?			$info = mysql_fetch_array($monthTotals);
-		}
-		else
-		{ ?>
-			<td class=bordered align=center>&nbsp;</td>
-<?		}
-	} ?>
-
-        </tr>
-
-<?	
-	$prevInfo = "";
-	while ($info = mysql_fetch_array($gridQuery))
-	{
-		$theMask = $info["mask"];
-
-		if ($prevInfo == "" || getFamilyIDFromSpeciesID($prevInfo["speciesid"]) != getFamilyIDFromSpeciesID($info["speciesid"]))
+	<?	$info = mysql_fetch_array($monthTotals);
+		for ($index = 1; $index <= 12; $index++)
 		{
-			$taxoInfo = getFamilyInfoFromSpeciesID($info["speciesid"]); ?>
-			<tr><td class=subheading colspan=13><?= strtolower($taxoInfo["LatinName"]) ?></td></tr>
-<?		} ?>
-
-		<tr><td width="40%"><a href="./speciesdetail.php?speciesid=<?= $info["speciesid"] ?>"><?= $info["CommonName"] ?></a></td>
-
-<?		for ($index = 1; $index <= 12; $index++)
-		{ ?>
-			<td class=bordered align=center>
-
-<?			if (($info["mask"] >> $index) & 1)
-			{ 
-				$clickRequest = new Request; // make a new request from current params and modify
-				$clickRequest->setSpeciesID($info["speciesid"]);
-				$clickRequest->setMonth($index);
-				$clickRequest->setView("");
-				$clickRequest->setPageScript("sightinglist.php");
-				echo $clickRequest->linkToSelf("X");
+			if ($info["month"] == $index)
+			{ ?>
+				<td class=bordered align=center>
+	<?
+					$clickRequest = new Request; // make a new request from current params and modify
+					$clickRequest->setMonth($index);
+					$clickRequest->setView("");
+					$clickRequest->setPageScript("specieslist.php");
+					echo $clickRequest->linkToSelf($info["count"]);
+	?>
+				</td>
+	<?			$info = mysql_fetch_array($monthTotals);
 			}
 			else
 			{ ?>
-				&nbsp;
-<?			} ?>
-			 </td>
-<?		} ?>
+				<td class=bordered align=center>&nbsp;</td>
+	<?		}
+		} ?>
 
-		</tr>
+			</tr>
 
-<?		$prevInfo = $info;
-	} ?>
+	<?	
+		$prevInfo = "";
+		while ($info = mysql_fetch_array($gridQuery))
+		{
+			$theMask = $info["mask"];
 
-	</table>
-<?
-}
+			if ($prevInfo == "" || getFamilyIDFromSpeciesID($prevInfo["speciesid"]) != getFamilyIDFromSpeciesID($info["speciesid"]))
+			{
+				$taxoInfo = getFamilyInfoFromSpeciesID($info["speciesid"]); ?>
+				<tr><td class=subheading colspan=13><?= strtolower($taxoInfo["LatinName"]) ?></td></tr>
+	<?		} ?>
 
+			<tr><td width="40%"><a href="./speciesdetail.php?speciesid=<?= $info["speciesid"] ?>"><?= $info["CommonName"] ?></a></td>
 
+	<?		for ($index = 1; $index <= 12; $index++)
+			{ ?>
+				<td class=bordered align=center>
 
+	<?			if (($info["mask"] >> $index) & 1)
+				{ 
+					$clickRequest = new Request; // make a new request from current params and modify
+					$clickRequest->setSpeciesID($info["speciesid"]);
+					$clickRequest->setMonth($index);
+					$clickRequest->setView("");
+					$clickRequest->setPageScript("sightinglist.php");
+					echo $clickRequest->linkToSelf("X");
+				}
+				else
+				{ ?>
+					&nbsp;
+	<?			} ?>
+				 </td>
+	<?		} ?>
 
+			</tr>
+
+	<?		$prevInfo = $info;
+		} ?>
+
+		</table>
+	<?
+	}
 }
 
 ?>

@@ -94,7 +94,7 @@ globalMenu();
 
 	  <img align="right" src="./images/logo.jpg" width="104" height="105" class="inlinepict"/>
 
-	  <div class="logotype">birdWalker</div>
+	  <div class="logotype"><img src="./images/logotype.gif" width="389" height="61"/></div>
 
 	  <p>Welcome to <code>birdWalker</code>! This website contains Bill Walker and Mary Wisnewski&#39;s birding field notes, including
 	  <a href="./tripindex.php">trip</a>,

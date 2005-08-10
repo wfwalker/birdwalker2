@@ -50,31 +50,31 @@ class BirdWalkerQuery
 			$pageTitleItems[] = $inPrefix;
 		}
 
-		if (! $this->isSpeciesSpecified()) {
+		if ($this->isSpeciesSpecified()) {
 			$speciesInfo = $this->mReq->getSpeciesInfo();
 			$pageTitleItems[] = $speciesInfo["CommonName"];
-		} elseif (! $this->isFamilySpecified()) {
+		} elseif ($this->isFamilySpecified()) {
 			$familyInfo = $this->mReq->getFamilyInfo();
 			$pageTitleItems[] = $familyInfo["LatinName"];
-		} elseif (! $this->isOrderSpecified()) {
+		} elseif ($this->isOrderSpecified()) {
 			$orderInfo = $this->mReq->getOrderInfo();
 			$pageTitleItems[] = $orderInfo["LatinName"];
 		}
 
-		if (! $this->isLocationSpecified()) {
+		if ($this->isLocationSpecified()) {
 			$locationInfo = $this->mReq->getLocationInfo();
 			$pageTitleItems[] = $locationInfo["Name"];
-		} elseif (! $this->isCountySpecified()) {
+		} elseif ($this->isCountySpecified()) {
 			$pageTitleItems[] = $this->mReq->getCounty() . " County";
-		} elseif (! $this->isStateSpecified()) {
+		} elseif ($this->isStateSpecified()) {
 			$stateInfo = $this->mReq->getStateInfo();
 		    $pageTitleItems[] = $stateInfo["Name"];
 		}
 
-		if ($this->mReq->getMonth() !="") {
+		if ($this->mReq->getMonth() != "") {
 			$pageTitleItems[] = getMonthNameForNumber($this->mReq->getMonth());
 		}
-		if ($this->mReq->getYear() !="") {
+		if ($this->mReq->getYear() != "") {
 			$pageTitleItems[] = $this->mReq->getYear();
 		}
 
