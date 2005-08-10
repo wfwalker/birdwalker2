@@ -13,10 +13,11 @@ function globalMenu()
 	  <div><a href="./speciesindex.php">birds</a></div>
 	  <div><a href="./locationindex.php">locations</a></div>
 	  <div><a href="./photoindextaxo.php">photos</a></div>
+	  <div><a href="./speciesindex.php?view=chrono">life list</a></div>
+      <div>&nbsp;</div>
 	  <div><a href="./credits.php">about</a></div>
       <div>&nbsp;</div>
 	  <div><a href="./slideshow.php">slideshow</a></div>
-	  <div><a href="./speciesindex.php?view=chrono">life list</a></div>
 
 <?	if (getEnableEdit())
 	{ ?>
