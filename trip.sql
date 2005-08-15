@@ -420,4 +420,5 @@ INSERT INTO trip VALUES (420,'Bob Power','','Kern River Day Four','An awesome dr
 INSERT INTO trip VALUES (421,'Bill','','Morning Photo Safari','I made one last trip with the 500mm looking for nesting passerines. I had only a few good shots, but it was a very nice walk.','2005-06-28');
 INSERT INTO trip VALUES (422,'Mary and Bill','','Stroll after work','So, there we were fresh from four days of birding in the mountains, three days left on the 500mm f/4L rental. We had to go back out in the field!','2005-06-27');
 INSERT INTO trip VALUES (423,'Mary and Bill','','Stroll after work','We went to check out reports of Phalaropes on the pond, which we found. We tried to make some of the Curlews into Whimbrels, but did not succeed.','2005-07-19');
-INSERT INTO trip VALUES (424,'Mary and Bill','','Grandma\'s Birthday','','2005-08-08');
+INSERT INTO trip VALUES (424,'Mary and Bill','','Grandma\'s Birthday','We went with most of the family to the park in hopes of finding woodpeckers. A good time was had by all.','2005-08-08');
+INSERT INTO trip VALUES (425,'Mary and Bill','','Vacation Stroll','We hiked up to the top of the rock mesa. Fortunately, there were no forest fires this time.','2005-08-13');
