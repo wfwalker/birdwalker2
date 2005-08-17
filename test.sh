@@ -19,6 +19,8 @@ countydetail.php?view=photo&county=Santa+Clara&stateid=5 \
 countyindex.php \
 familydetail.php?familyid=2227 \
 index.php \
+tripdetail.php?tripid=1 \
+tripdetail.php?tripid=100 \
 locationdetail.php?locationid=70 \
 locationindex.php \
 monthdetail.php?view=trips&year=2005&month=03 \
@@ -55,10 +57,11 @@ tripdetail.php \
 yeardetail.php \
 "
 
-echo "" > detailpages.txt
+echo "" > detailpages.html
 
 for successURL in $successURLs; do
 	curl -s $baseURL$successURL > detail.html
+	cat detail.html >> detailpages.html
 	egrep "(Notice|404 Not Found|mysql|Fatal error|Parse error|Warning)" detail.html >> testresults.txt
 	ec=$?
 
@@ -90,3 +93,6 @@ log "------------------------------------"
 log ""
 
 exit 0
+
+# to find delimiters
+# grep class detailpages.html | sed 's/.*class=["]*//g' | sed 's/[>"]/ /g' | cut -f 1 -d' ' | sort -u
