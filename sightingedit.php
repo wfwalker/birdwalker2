@@ -5,8 +5,6 @@ require_once("./birdwalker.php");
 
 getEnableEdit() or die("Editing disabled");
 
-$sightingCount = performCount("select max(objectid) from sighting");
-
 // the GET id determines which record to show
 $sightingID = getValue("sightingid");
 
