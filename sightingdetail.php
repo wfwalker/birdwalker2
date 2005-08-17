@@ -3,22 +3,27 @@
 
 require_once("./birdwalker.php");
 
-$sightingID = $_GET['id'];
+require_once("./birdwalker.php");
+
+getEnableEdit() or die("Editing disabled");
+
+// the GET id determines which record to show
+$sightingID = getValue("sightingid");
+
 $sightingInfo = getSightingInfo($sightingID);
 $speciesInfo = performOneRowQuery("select * from species where Abbreviation='" . $sightingInfo["SpeciesAbbreviation"] . "'");
 $tripInfo = performOneRowQuery("select *, date_format(Date, '%W,  %M %e, %Y') as niceDate from trip where Date='" . $sightingInfo["TripDate"] . "'");
 $tripYear =  substr($tripInfo["Date"], 0, 4);
 $locationInfo = performOneRowQuery("select * from location where Name='" . $sightingInfo["LocationName"] . "'");
-$sightingCount = performCount("select max(objectid) from sighting");
 
 htmlHead($speciesInfo["CommonName"] . ", " . $tripInfo["niceDate"]);
 
 globalMenu();
-navTrailBirds();
+navTrail();
 ?>
 
 <div class="contentright">
-  <? browseButtons( $tripInfo["niceDate"], "./sightingdetail.php?id=", $sightingID, 1, $sightingID - 1, $sightingID + 1, $sightingCount); ?>
+<? browseButtons("Sighting Detail", "./sightingdetail.php?sightingid=", $sightingID, $sightingID - 1, $sightingID - 1, $sightingID + 1, $sightingID + 1); ?>
   <div class="titleblock">
 	  <div class=pagetitle> <?= $speciesInfo["CommonName"] ?></div>
 
