@@ -46,6 +46,8 @@ class BirdWalkerQuery
 
 	function getPageTitle($inPrefix = "")
 	{
+		$pageTitleItems = "";
+
 		if ($inPrefix != "") {
 			$pageTitleItems[] = $inPrefix;
 		}
@@ -78,6 +80,13 @@ class BirdWalkerQuery
 			$pageTitleItems[] = $this->mReq->getYear();
 		}
 
-		return implode(", ", $pageTitleItems);
+		if ($pageTitleItems == "")
+		{
+			return "";
+		}
+		else
+		{
+			return implode(", ", $pageTitleItems);
+		}
 	}
 }
