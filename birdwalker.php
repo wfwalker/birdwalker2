@@ -109,24 +109,24 @@ function browseButtons($pageKind, $urlPrefix, $currentID, $prevID, $prevName, $n
 {
 ?>  <table width="100%" class="pagesubtitle"><tr> <?
 
-	if ($currentID == $prevID)
+	if ($prevID == "")
 	{
         ?><td width="33%"  class="prevlink">&lt; prev</td><?
 	}
 	else
 	{
-        ?><td width="33%" class="prevlink">&lt; prev <a href="<?= $urlPrefix . $prevID ?>"><?= strtolower($prevName) ?></a></td><?
+        ?><td width="33%" class="prevlink"><a href="<?= $urlPrefix . $prevID ?>">&lt; prev <?= strtolower($prevName) ?></a></td><?
 	}
 
     ?> <td width="33%"  class="pagekind"><?= $pageKind ?></td> <?
 
-	if ($currentID == $nextID)
+	if ($nextID == "")
 	{
         ?><td width="33%"  class="nextlink">next &gt;</td><?
 	}
 	else
 	{
-        ?><td width="33%"  class="nextlink"><a href="<?= $urlPrefix . $nextID ?>"><?= strtolower($nextName) ?></a> next  &gt;</td><?
+        ?><td width="33%"  class="nextlink"><a href="<?= $urlPrefix . $nextID ?>"><?= strtolower($nextName) ?> next  &gt;</a></td><?
 	}
 
 ?>  </tr></table> <?
