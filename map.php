@@ -256,7 +256,7 @@ class Map
 
 		while($info = mysql_fetch_array($dbQuery))
 		{
-			$margin = 20;
+			$margin = 5;
 			$lat = $info["Latitude"];
 			$top = round($this->scaleLat($lat)) - 8;
 			
