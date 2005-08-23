@@ -144,7 +144,6 @@ class SightingQuery extends BirdWalkerQuery
 				  <div class=metadata>
 					<?= $this->getSightingSubtitle($sightingInfo) ?>
 				  </div>
-				</div>
 
 	<?	    if ($sightingInfo["Photo"] == "1")
 			{
@@ -154,6 +153,8 @@ class SightingQuery extends BirdWalkerQuery
 
 				echo getThumbForSightingInfo($sightingInfo);
 			}
+
+    ?>         </div> <?
 
 			$counter--;
 
