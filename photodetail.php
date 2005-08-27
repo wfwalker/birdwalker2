@@ -57,7 +57,7 @@ navTrailPhotos();
   <div class="titleblock">
 	  <div class=pagetitle>
           <a href="./speciesdetail.php?speciesid=<?= $speciesInfo["objectid"] ?>"><?= $speciesInfo["CommonName"] ?></a>
-<?        editLink("./sightingedit.php?id=" . $request->getSightingID()); ?>
+<?        editLink("./sightingedit.php?sightingid=" . $request->getSightingID()); ?>
       </div>
       <div class=metadata>
           <a href="./locationdetail.php?locationid=<?= $locationInfo["objectid"] ?>"><?= $locationInfo["Name"] ?>, <?= $locationInfo["State"] ?></a><br/>
