@@ -161,3 +161,4 @@ INSERT INTO location VALUES (160,'Johnsondale Bridge','','Johnsondale','Tulare',
 INSERT INTO location VALUES (161,'Holey Meadow','','','Tulare','CA','','',35.9533,-118.619);
 INSERT INTO location VALUES (162,'Quaking Aspen Meadow','','','Tulare','CA','','',36.1192,-118.547);
 INSERT INTO location VALUES (163,'Quaking Aspen Campground','','','Tulare','CA','','',36.1192,-118.547);
+INSERT INTO location VALUES (164,'Hayward Regional Shoreline','','Hayward','Alameda','CA','','',37.6689,-122.08);
