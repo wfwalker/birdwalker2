@@ -11512,7 +11512,7 @@ INSERT INTO sighting VALUES (11552,'comrav','Hayward Regional Shoreline','','0',
 INSERT INTO sighting VALUES (11553,'dowitc','Hayward Regional Shoreline','','0','0','2005-08-31');
 INSERT INTO sighting VALUES (11554,'wessan','Hayward Regional Shoreline','','','1','2005-08-31');
 INSERT INTO sighting VALUES (11555,'leasan','Hayward Regional Shoreline','','0','0','2005-08-31');
-INSERT INTO sighting VALUES (11556,'willet','Hayward Regional Shoreline','','0','0','2005-08-31');
+INSERT INTO sighting VALUES (11556,'willet','Hayward Regional Shoreline','','','1','2005-08-31');
 INSERT INTO sighting VALUES (11557,'margod','Hayward Regional Shoreline','','0','0','2005-08-31');
 INSERT INTO sighting VALUES (11558,'ameavo','Hayward Regional Shoreline','','0','0','2005-08-31');
 INSERT INTO sighting VALUES (11559,'bkbplo','Hayward Regional Shoreline','','0','0','2005-08-31');
