@@ -423,3 +423,4 @@ INSERT INTO trip VALUES (423,'Mary and Bill','','Stroll after work','We went to 
 INSERT INTO trip VALUES (424,'Mary and Bill','','Grandma\'s Birthday','We went with most of the family to the park in hopes of finding woodpeckers. A good time was had by all.','2005-08-08');
 INSERT INTO trip VALUES (425,'Mary and Bill','','Vacation Stroll','We hiked up to the top of the rock mesa. Fortunately, there were no forest fires this time.','2005-08-13');
 INSERT INTO trip VALUES (426,'Ashok and Bill','','Early Morning Photo Safari','A momentous occassion! Ashok took me on both my first trip to \"Frank\'s Dump\" and my first serious shoot with my new Canon 500mm f/4L. The sunlight was gorgeous, the shorebirds were plentiful, the company was great. What a morning!','2005-08-31');
+INSERT INTO trip VALUES (427,'Mary and Bill','','Weekend Stroll','We had great evening light for this walk, and great looks at pelicans flying overhead.','2005-09-05');
