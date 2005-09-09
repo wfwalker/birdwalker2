@@ -44,7 +44,8 @@ $request->navTrailBirds();
     if ($speciesInfo["ABACountable"] == '0') { ?>
         <div>NOT ABA COUNTABLE</div>
 <?  } ?>
-      <?= $request->linkToSelfChangeView("locations", "lists") ?> |
+      <?= $request->linkToSelfChangeView("trips", "trips") ?> |
+      <?= $request->linkToSelfChangeView("locations", "locations") ?> |
       <?= $request->linkToSelfChangeView("locationsbymonth", "by month") ?> |
       <?= $request->linkToSelfChangeView("locationsbyyear", "by year") ?> |
       <?= $request->linkToSelfChangeView("photo", "photo") ?> |
