@@ -50,16 +50,7 @@ $request->navTrailLocations();
     </div>
 <? } ?>
 
-      trips:
-	  <?= $request->linkToSelfChangeView("trips", "list"); ?> | 
-	  <?= $request->linkToSelfChangeView("tripsummaries", "summaries"); ?><br/>
-
-      species:
-	  <?= $request->linkToSelfChangeView("species", "list"); ?> | 
-	  <?= $request->linkToSelfChangeView("chrono", "ABA"); ?> | 
-	  <?= $request->linkToSelfChangeView("speciesbymonth", "by month"); ?> | 
-	  <?= $request->linkToSelfChangeView("speciesbyyear", "by year"); ?> | 
-	  <?= $request->linkToSelfChangeView("photo", "photo"); ?><br/>
+     <? $request->viewLinks(); ?>
     </div>
 
     <div class=report-content><?= $siteInfo["Notes"] ?></div>

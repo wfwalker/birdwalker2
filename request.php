@@ -210,6 +210,19 @@ class Request
 		}
 	}
 
+	function linkToSlideshow()
+	{
+		// TODO: this can cause redundant queries by calling setLocationID...
+		$newRequest = new Request;
+
+		$newRequest->setView("");
+		$newRequest->setLatitude("");
+		$newRequest->setLongitude("");
+		$newRequest->setScale("");
+
+		return "<a target=\"slideshow\" href=\"./slideshow.php?" . $this->getParams() . "\">slideshow</a>";
+	}
+
 	function linkToSelfChangeView($view, $linkText)
 	{
 		// TODO: this can cause redundant queries by calling setLocationID...
@@ -477,12 +490,14 @@ class Request
 				echo $this->linkToSelfChangeView("speciesbymonth", "by month") . " | "; 
 				if ($this->getYear() == "" )
 				{
-					echo $this->linkToSelfChangeView("speciesbyyear", "by year") . " | "; 
+					echo $this->linkToSelfChangeView("speciesbyyear", "by year"); 
 				}
 			}
-			echo $this->linkToSelfChangeView("photo", "photo");
 			echo "<br/>";
 		}
+
+		echo "photos: ";
+		echo $this->linkToSlideshow() . " | " . $this->linkToSelfChangeView("photo", "thumbnails");
 
 		?></div><?
 	}

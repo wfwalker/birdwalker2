@@ -17,7 +17,7 @@ function globalMenu()
       <div>&nbsp;</div>
 	  <div><a href="./credits.php">about</a></div>
       <div>&nbsp;</div>
-	  <div><a href="./slideshow.php">slideshow</a></div>
+	  <div><a href="./slideshow.php" target="slideshow">slideshow</a></div>
 
 <?	if (getEnableEdit())
 	{ ?>

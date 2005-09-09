@@ -58,7 +58,8 @@ $request->navTrailTrips();
         </div>
         <div class=metadata>
 	        <?= $request->linkToSelfChangeView("list", "species"); ?> |
-	        <?= $request->linkToSelfChangeView("photo", "photo"); ?> |
+		    <?= $request->linkToSlideshow() ?> |
+	        <?= $request->linkToSelfChangeView("photo", "thumbnails"); ?> |
 	        <?= $request->linkToSelfChangeView("map", "map"); ?><br/>
         </div>
 
