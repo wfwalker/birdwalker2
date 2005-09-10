@@ -7,6 +7,7 @@ require_once("./sightingquery.php");
 
 $request = new Request;
 $sightingQuery = new SightingQuery($request);
+$pageTitle =  $sightingQuery->getPageTitle();
 
 if ($request->getSightingID() == "")
 { 
@@ -15,6 +16,11 @@ if ($request->getSightingID() == "")
 	$sightingQuery->getFromClause() . " " .
 	$sightingQuery->getWhereClause() . "
       AND Photo='1' ORDER BY CONCAT(TripDate,sighting.objectid) LIMIT 1"));
+}
+
+if ($request->getSightingID() == "")
+{
+	die("No photos for " . $pageTitle);
 }
 
 $sightingInfo = $request->getSightingInfo();
@@ -35,8 +41,6 @@ $prevPhotoID = performCount(
       ORDER BY CONCAT(TripDate,sighting.objectid) DESC LIMIT 1");
 
 $tripYear =  substr($sightingInfo["TripDate"], 0, 4);
-
-$pageTitle =  $sightingQuery->getPageTitle();
 
 ?>
 

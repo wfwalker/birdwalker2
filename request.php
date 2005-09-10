@@ -487,10 +487,10 @@ class Request
 			echo $this->linkToSelfChangeView("chrono", "ABA") . " | "; 
 			if ($this->getMonth() == "" )
 			{
-				echo $this->linkToSelfChangeView("speciesbymonth", "by month") . " | "; 
+				echo $this->linkToSelfChangeView("speciesbymonth", "by month"); 
 				if ($this->getYear() == "" )
 				{
-					echo $this->linkToSelfChangeView("speciesbyyear", "by year"); 
+					echo " | " . $this->linkToSelfChangeView("speciesbyyear", "by year"); 
 				}
 			}
 			echo "<br/>";
