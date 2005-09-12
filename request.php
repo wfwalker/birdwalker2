@@ -455,7 +455,7 @@ class Request
 
 	function viewLinks()
 	{ 
-		?><div class=metadata><?
+		?><div class="viewlinks"><?
 
 		if ($this->getTripID() == "")
 		{

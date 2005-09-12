@@ -8,7 +8,7 @@
 	padding-right: 10px;
 	border-left: 2px solid #DDDDDD;
 	border-right: 2px solid #DDDDDD;
-	background: #f0f0f0;
+	background: #F4F4FF;
 	position: absolute;
     text-decoration: none;
 	padding-bottom: 30px;
@@ -42,13 +42,14 @@
 
 /* Styles for section headers, page titles, and overall report content */
 
-.pagetitle {font: 18pt "Gill Sans", "Gill Sans MT", SansSerif; font-weight: bold; color:#484393}
-.pagesubtitle {font: 12pt "Gill Sans", "Gill Sans MT", SansSerif; font-style: italic; color: #999999}
+.pagetitle {font: 18pt "Gill Sans", "Gill Sans MT", SansSerif; font-weight: bold; color:#666666}
+.pagesubtitle {font: 12pt "Gill Sans", "Gill Sans MT", SansSerif; font-style: italic; color: #666666}
 
-.metadata {font: 9pt "Gill Sans", "Gill Sans MT", SansSerif}
+.metadata {font: 9pt "Gill Sans", "Gill Sans MT", SansSerif; color: #666666; padding-left: 5px; }
+.viewlinks {font: 9pt "Gill Sans", "Gill Sans MT", SansSerif; color: #666666; padding-left: 5px; }
 
-.heading { font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-weight: bold; margin-top: 20px; margin-bottom: 10px; clear: both; color: #484393 }
-.subheading { font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-weight: bold; margin-top: 7px; margin-bottom: 2px; color: #484393 }
+.heading { font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-weight: bold; margin-top: 20px; margin-bottom: 10px; clear: both; color: #666666 }
+.subheading { font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-weight: bold; margin-top: 7px; margin-bottom: 2px; color: #666666 }
 
 .summaryblock { border-top: solid 1px #AAAAAA; padding-top: 5px; margin-bottom: 5px }
 .titleblock { border-top: solid 1px #AAAAAA; padding-top: 15px; margin-bottom: 5px }
@@ -60,7 +61,7 @@
 .firstcell {padding-left: 15px; white-space: nowrap; }
 .fieldlabel {padding-left: 15px; font: 9pt Courier, Fixed; text-align: right; vertical-align: top}
 .bordered {border-left: solid 1px #DDDDDD; border-bottom: solid 1px #DDDDDD; width: 25px}
-.yearcell {width: 20px; border-left: solid 1px lightgray; border-bottom: solid 1px lightgray; color: #999999}
+.yearcell {width: 20px; border-left: solid 1px lightgray; border-bottom: solid 1px lightgray; color: #777777}
 
 .copyright { font: 8pt "Gill Sans", "Gill Sans MT", SansSerif }
 

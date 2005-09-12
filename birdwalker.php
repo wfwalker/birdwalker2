@@ -135,7 +135,7 @@ function browseButtons($pageKind, $urlPrefix, $currentID, $prevID, $prevName, $n
 function referenceURL($info)
 {
 	if (strlen($info["ReferenceURL"]) > 0) { ?>
-		<div><a href="<?= $info["ReferenceURL"] ?>">See also...</a></div>
+		<div class="viewlinks"><a href="<?= $info["ReferenceURL"] ?>">See also...</a></div>
 <?  }
 }
 

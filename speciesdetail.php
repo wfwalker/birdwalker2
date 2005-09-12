@@ -44,9 +44,8 @@ $request->navTrailBirds();
     if ($speciesInfo["ABACountable"] == '0') { ?>
         <div>NOT ABA COUNTABLE</div>
 <?  } ?>
-
-      <?= $request->viewLinks(); ?>
       </div>
+      <?= $request->viewLinks(); ?>
    </div>
 
    <div class=report-content><?= $speciesInfo["Notes"] ?></div>
