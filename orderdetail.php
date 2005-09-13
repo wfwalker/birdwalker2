@@ -55,8 +55,8 @@ else
 
 
 	  <div class="titleblock">
-        <div class=pagetitle><?= $orderInfo["CommonName"] ?></div>
-        <div class=metadata> <?= $orderInfo["LatinName"] ?></div>
+        <div class="pagetitle"><?= $orderInfo["CommonName"] ?></div>
+        <div class="pagesubtitle"> <?= $orderInfo["LatinName"] ?></div>
 
 
 <?       $request->viewLinks(); ?>
