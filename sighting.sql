@@ -11560,3 +11560,17 @@ INSERT INTO sighting VALUES (11600,'houfin','Coyote Hills','','0','0','2005-09-0
 INSERT INTO sighting VALUES (11601,'reshaw','Coyote Hills','','0','0','2005-09-05');
 INSERT INTO sighting VALUES (11602,'gadwal','Coyote Hills','','0','0','2005-09-05');
 INSERT INTO sighting VALUES (11603,'clarai','Coyote Hills','','0','0','2005-09-05');
+INSERT INTO sighting VALUES (11604,'whtkit','Arastradero Preserve','','0','0','2005-09-07');
+INSERT INTO sighting VALUES (11605,'goleag','Arastradero Preserve','','0','0','2005-09-07');
+INSERT INTO sighting VALUES (11606,'norhar','Arastradero Preserve','','0','0','2005-09-07');
+INSERT INTO sighting VALUES (11607,'rethaw','Arastradero Preserve','','0','0','2005-09-07');
+INSERT INTO sighting VALUES (11608,'amekes','Arastradero Preserve','','0','0','2005-09-07');
+INSERT INTO sighting VALUES (11609,'coohaw','Arastradero Preserve','','0','0','2005-09-07');
+INSERT INTO sighting VALUES (11610,'oaktit','Arastradero Preserve','','0','0','2005-09-07');
+INSERT INTO sighting VALUES (11611,'bushti','Arastradero Preserve','','0','0','2005-09-07');
+INSERT INTO sighting VALUES (11612,'nutwoo','Arastradero Preserve','','0','0','2005-09-07');
+INSERT INTO sighting VALUES (11613,'whbnut','Arastradero Preserve','','0','0','2005-09-07');
+INSERT INTO sighting VALUES (11614,'blkpho','Arastradero Preserve','','0','0','2005-09-07');
+INSERT INTO sighting VALUES (11615,'calqua','Arastradero Preserve','','0','0','2005-09-07');
+INSERT INTO sighting VALUES (11616,'acowoo','Arastradero Preserve','','0','0','2005-09-07');
+INSERT INTO sighting VALUES (11617,'wesjay','Arastradero Preserve','','0','0','2005-09-07');
