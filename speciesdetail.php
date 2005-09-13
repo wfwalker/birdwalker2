@@ -36,8 +36,9 @@ $request->navTrailBirds();
         <?= $speciesInfo["CommonName"] ?>
         <?= editlink("./speciesedit.php?speciesid=" . $request->getSpeciesID()) ?>
       </div>
-      <div class=metadata>
-        <?= $speciesInfo["LatinName"] ?><br/>
+      <div class="pagesubtitle">
+        <?= $speciesInfo["LatinName"] ?></div>
+	  <div class="metadata">
 <?  if (strlen($speciesInfo["ReferenceURL"]) > 0) { ?>
         <div><a href="<?= $speciesInfo["ReferenceURL"] ?>">See also...</a></div>
 <?  }

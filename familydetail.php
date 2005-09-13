@@ -57,7 +57,7 @@ $request->navTrailBirds();
 
 	  <div class="titleblock">
 	    <div class=pagetitle><?= $familyInfo["CommonName"] ?></div>
-        <div class=metadata><?= $familyInfo["LatinName"] ?></div>
+        <div class=pagesubtitle><?= $familyInfo["LatinName"] ?></div>
  
 <?      $request->viewLinks(); ?>
 

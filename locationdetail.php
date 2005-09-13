@@ -32,10 +32,13 @@ $request->navTrailLocations();
 <? locationBrowseButtons("./locationdetail.php", $request->getLocationID(), $request->getView()); ?>
   <div class="titleblock">
 <?  if (($request->getView() != "map") && ($request->getView() != "photo")) { rightThumbnailLocation($siteInfo["Name"]); } ?>
-    <div class=pagetitle>
+    <div class="pagetitle">
         <?= $siteInfo["Name"] ?>
 	    <? editLink("./locationcreate.php?locationid=" . $request->getLocationID()); ?>
     </div>
+	<div class="pagesubtitle">
+	    <?= $siteInfo["County"] ?> County, <?= $siteInfo["State"] ?>
+	</div>
 
 <? referenceURL($siteInfo);
    if ($siteInfo["Latitude"] > 0)
