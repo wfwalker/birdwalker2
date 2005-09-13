@@ -25,16 +25,17 @@ navTrail($items);
           birding.</p>
 
 	  <div class="heading">The Photos</div>
- 	   <p class="report-content">I use a <a href="http://www.fredmiranda.com/reviews/showproduct.php?product=39&sort=7&thecat=2">Canon 300mm f/4L IS</a> lens
+ 	   <p class="report-content">I use Canon <a href="http://www.fredmiranda.com/reviews/showproduct.php?product=39&sort=7&thecat=2">300mm f/4L IS</a> and
+		<a href="http://consumer.usa.canon.com/ir/controller?act=ModelDetailAct&fcategoryid=154&modelid=7318">500mm f/4L</a> lenses bought at <a href="http://www.kspphoto.com/">Keeble and Shuchat</a>
         on a <a href="http://www.dpreview.com/reviews/canoneos20d/">Canon 20D</a> camera body for most of the bird photos.
-        Sometimes I rent a <a href="http://consumer.usa.canon.com/ir/controller?act=ModelDetailAct&fcategoryid=154&modelid=7318">500mm lens</a> from my local camera store, <a href="http://www.kspphoto.com/"> Keeble and Shuchat.</a>
+
 		More and more these days I use the <a href="http://consumer.usa.canon.com/ir/controller?act=ModelDetailAct&fcategoryid=154&modelid=7462">Canon 1.4X II teleconverter</a>.
 		I use a <a href="http://www.gitzo.com/products/metric/tripods/mountaineer/rightscreen.php3">Gitzo 1227 tripod</a> with an
 		<a href="http://acratech.net/">Acratech Ultimate Ballhead</a>.
 		I use the camera in <a href="http://www.luminous-landscape.com/tutorials/understanding-series/u-raw-files.shtml">Raw mode</a>, writing to <a href="http://www.sandisk.com/retail/ultra2-cf.asp">SanDisk Ultra II 2GB</a> and Lexar 1GB 40X Compact Flash cards.</p>
 
         <p class="report-content">I catalog my images using <a href="http://www.iview-multimedia.com/">iView MediaPro</a> on my Powerbook.
-     	process them using Adobe Photoshop CS and its <a href="http://www.adobe.com/products/photoshop/cameraraw.html">Camera Raw</a> plug-in.
+     	process them using Adobe Photoshop CS2 and its <a href="http://www.adobe.com/products/photoshop/cameraraw.html">Camera Raw</a> plug-in.
         I print using an <a href="http://www.luminous-landscape.com/reviews/printers/epson-r800.shtml">Epson R800 printer</a> onto various Epson papers.</p>
 
       <div class="heading">Using the Photos</div>
