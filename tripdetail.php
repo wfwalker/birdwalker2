@@ -47,12 +47,12 @@ $request->navTrailTrips();
 	  <div class=titleblock>
 
 <?      if (($request->getView() != "map") && ($request->getView() != "photo")) { $sightingQuery->rightThumbnail(true); }?>
-        <div class=pagetitle>
+        <div class="pagetitle">
             <?= $tripInfo["Name"] ?>
             <?= editLink("./tripedit.php?tripid=" . $request->getTripID()); ?>
         </div>
-        <div class=metadata>
-          <?= $tripInfo["niceDate"] ?><br/>
+        <div class="pagesubtitle"><?= $tripInfo["niceDate"] ?></div>
+		<div class="metadata">
           Led by  <?= $tripInfo["Leader"] ?>
 <?        referenceURL($tripInfo); ?>
         </div>

@@ -16,6 +16,7 @@ $request->navTrailLocations();
 
 $locationQuery = new LocationQuery($request);
 $extrema = $locationQuery->findExtrema();
+$stateInfo =  $request->getStateInfo();
 
 ?>
 
@@ -23,7 +24,8 @@ $extrema = $locationQuery->findExtrema();
 	<? disabledBrowseButtons("County Detail"); ?>
       <div class="titleblock">	  
 <?    if (($request->getView() != "map") && ($request->getView() != "photo")) { rightThumbnailCounty($request->getCounty()); } ?>
-	  <div class=pagetitle> <?= $request->getCounty() ?> County</div>
+	  <div class="pagetitle"> <?= $request->getCounty() ?> County</div>
+	  <div class="pagesubtitle"> <?= $stateInfo["Name"] ?></div>
 
 
 <?    $request->viewLinks(); ?>
