@@ -136,12 +136,12 @@ class SightingQuery extends BirdWalkerQuery
 			$tripYear =  substr($tripInfo["Date"], 0, 4);
 			$locationInfo = getLocationInfoForName($sightingInfo["LocationName"]);
 	?>
-				<div class=heading>
-				  <div class=pagesubtitle>
+				<p class=report-content>
+				  <div>
 					<?= $this->getSightingTitle($sightingInfo) ?>
 	<?              editLink("./sightingedit.php?sightingid=" . $sightingInfo["sightingid"]); ?>
 				  </div>
-				  <div class=metadata>
+				  <div>
 					<?= $this->getSightingSubtitle($sightingInfo) ?>
 				  </div>
 
@@ -154,7 +154,7 @@ class SightingQuery extends BirdWalkerQuery
 				echo getThumbForSightingInfo($sightingInfo);
 			}
 
-    ?>         </div> <?
+    ?>         </p> <?
 
 			$counter--;
 
