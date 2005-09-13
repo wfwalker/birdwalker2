@@ -19,8 +19,8 @@ navTrail();
 	  <div class="pagesubtitle">Index</div>
       <div class="titleblock">	  
 <?    if ($request->getView() != "map" ) rightThumbnailAll(); ?>
-	  <div class=pagetitle>Locations</div>
-    <div class=metadata>
+	  <div class="pagetitle">Locations</div>
+    <div class="metadata">
       <a href="./locationindex.php?view=locations">list</a> |
       <a href="./locationindex.php?view=locationsbymonth">by month</a> |
 	  <a href="./locationindex.php?view=locationsbyyear">by year<a/> |
