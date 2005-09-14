@@ -55,13 +55,13 @@ navTrailPhotos();
 	<? browseButtons("Photo Detail", "./photodetail.php?sightingid=", $request->getSightingID(), $prevPhotoID,$prevPhotoLinkText, $nextPhotoID, $nextPhotoLinkText); ?>
 
   <div class="titleblock">
-	  <div class=pagetitle>
+	  <div class="pagetitle">
           <a href="./speciesdetail.php?speciesid=<?= $speciesInfo["objectid"] ?>"><?= $speciesInfo["CommonName"] ?></a>
 <?        editLink("./sightingedit.php?sightingid=" . $request->getSightingID()); ?>
       </div>
-      <div class=metadata>
-          <a href="./locationdetail.php?locationid=<?= $locationInfo["objectid"] ?>"><?= $locationInfo["Name"] ?>, <?= $locationInfo["State"] ?></a><br/>
-          <a href="./tripdetail.php?tripid=<?= $tripInfo["objectid"] ?>"><?= $tripInfo["niceDate"] ?></a>
+      <div class="pagesubtitle">
+	     <a href="./tripdetail.php?tripid=<?= $tripInfo["objectid"] ?>"><?= $tripInfo["niceDate"] ?></a>,
+         <a href="./locationdetail.php?locationid=<?= $locationInfo["objectid"] ?>"><?= $locationInfo["Name"] ?>, <?= $locationInfo["State"] ?></a>
       </div>
   </div>
 

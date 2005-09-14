@@ -57,10 +57,11 @@ $tripYear =  substr($sightingInfo["TripDate"], 0, 4);
 					 $sightingInfo["objectid"],
 					 $prevPhotoID, "", $nextPhotoID, ""); ?>
 
-<div class=titleblock>
-<div class=pagetitle><?= $speciesInfo["CommonName"] ?></div>
-<div class=metadata><?= $sightingInfo["niceDate"] ?></div>
-<div class=metadata><?= $sightingInfo["LocationName"] ?></div>
+<div class="titleblock">
+<div class="pagetitle"><?= $speciesInfo["CommonName"] ?></div>
+<div class="pagesubtitle">
+	<?= $sightingInfo["niceDate"] ?>, <?= $sightingInfo["LocationName"] ?>
+</div>
 </div>
 
 <div>

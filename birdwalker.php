@@ -107,7 +107,7 @@ function disabledBrowseButtons($pageKind)
 
 function browseButtons($pageKind, $urlPrefix, $currentID, $prevID, $prevName, $nextID, $nextName)
 {
-?>  <table width="100%" class="pagesubtitle"><tr> <?
+?>  <table width="100%" padding=0 spacing=0 cellpadding=0><tr> <?
 
 	if ($prevID == "")
 	{
@@ -118,7 +118,7 @@ function browseButtons($pageKind, $urlPrefix, $currentID, $prevID, $prevName, $n
         ?><td width="33%" class="prevlink"><a href="<?= $urlPrefix . $prevID ?>">&lt; prev <?= strtolower($prevName) ?></a></td><?
 	}
 
-    ?> <td width="33%"  class="pagekind"><?= $pageKind ?></td> <?
+    ?> <td width="33%"  class="pagekind"><?= strtolower($pageKind) ?></td> <?
 
 	if ($nextID == "")
 	{
