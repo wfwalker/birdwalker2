@@ -38,19 +38,19 @@
 	padding-bottom: 30px;
 	margin-top: 60px;
 	position: static;
-    color: #666666;
 }
 
 /* Styles for section headers, page titles, and overall report content */
 
-.pagetitle {font: 18pt "Gill Sans", "Gill Sans MT", SansSerif; font-weight: bold; color:#666666; padding-left: 1px }
-.pagesubtitle {font: 12pt "Gill Sans", "Gill Sans MT", SansSerif; font-style: italic; color: #666666; padding-bottom: 7px; padding-left: 3px }
+.pagetitle {font: 18pt "Gill Sans", "Gill Sans MT", SansSerif; font-weight: bold; color:#444444; padding-left: 1px }
+.pagesubtitle {font: 12pt "Gill Sans", "Gill Sans MT", SansSerif; font-style: italic; color: #444444; padding-bottom: 7px; padding-left: 3px }
 
-.metadata {font: 9pt "Gill Sans", "Gill Sans MT", SansSerif; color: #666666; padding-left: 4px; }
-.viewlinks {font: 9pt "Gill Sans", "Gill Sans MT", SansSerif; color: #666666; padding-left: 4px; }
+.metadata {font: 9pt "Gill Sans", "Gill Sans MT", SansSerif; padding-left: 4px; }
+.viewlinks {font: 9pt "Gill Sans", "Gill Sans MT", SansSerif; padding-left: 4px; }
 
-.heading { font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-weight: bold; margin-top: 20px; margin-bottom: 10px; clear: both; color: #666666 }
-.subheading { font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-weight: bold; margin-top: 7px; margin-bottom: 2px; color: #666666 }
+.superheading {font: 12pt "Gill Sans", "Gill Sans MT", SansSerif; font-style: italic; color: #444444; }
+.heading { font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-weight: bold; margin-top: 20px; margin-bottom: 10px; clear: both; color: #444444 }
+.subheading { font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-weight: bold; margin-top: 7px; margin-bottom: 2px; color: #444444 }
 
 .summaryblock { border-top: solid 1px #AAAAAA; padding-top: 5px; margin-bottom: 5px }
 .titleblock { border-top: solid 1px #AAAAAA; padding-top: 11px; margin-bottom: 5px }
@@ -74,7 +74,7 @@
 
 .nextlink { text-align: right; font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-style: italic; }
 .prevlink { text-align: left; font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-style: italic; }
-.pagekind { text-align: center; font: 11pt "Gill Sans", "Gill Sans MT", SansSerif; font-style: italic; color: #666666 }
+.pagekind { text-align: center; font: 11pt "Gill Sans", "Gill Sans MT", SansSerif; font-style: italic; }
 
 /* Anchors, and especially magic rollover popup anchors for Maps. */
 
