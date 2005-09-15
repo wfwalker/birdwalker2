@@ -32,7 +32,8 @@ function birdOfTheDay()
 
 ?>
 	  <div class="heading">Bird of the Day</div>
-        <div class="pagesubtitle"><?= $info["LatinName"] ?></div>
+
+        <div class="superheading"><?= $info["LatinName"] ?></div>
 	    <div class="summaryblock">
           <span class="heading"><a href="./speciesdetail.php?speciesid=<?=$info['objectid']?>"><?= $info["CommonName"] ?></a></div>
 
@@ -63,7 +64,7 @@ function latestTrips()
 		$info = mysql_fetch_array($latestTrips);
 		$tripSpeciesCount = performCount("SELECT COUNT(DISTINCT(sighting.objectid)) from sighting where sighting.TripDate='" . $info["Date"] . "'"); ?>
 
-		<div class="pagesubtitle"><?= $info["niceDate"] ?></div>
+		<div class="superheading"><?= $info["niceDate"] ?></div>
 
 		<div class="summaryblock">
 		    <span class="heading">
