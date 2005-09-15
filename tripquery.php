@@ -173,9 +173,9 @@ class TripQuery extends BirdWalkerQuery
                   FROM sighting
                   WHERE sighting.TripDate='" . $info["Date"] . "'"); ?>
 
-          <div class="pagesubtitle"><?= $info["niceDate"] ?></div>
+          <div class="superheading"><?= $info["niceDate"] ?></div>
 
-		  <div class="titleblock">
+		  <div class="summaryblock">
               <span class="heading">
                   <a href="./tripdetail.php?tripid=<?=$info["objectid"]?>">
 <?                    rightThumbnail("SELECT * FROM sighting WHERE Photo='1' AND TripDate='" . $info["Date"] . "' LIMIT 1", false); ?>
