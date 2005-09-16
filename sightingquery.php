@@ -96,11 +96,6 @@ class SightingQuery extends BirdWalkerQuery
 
 	function performPhotoQuery()
 	{
-		if (($this->mReq->getLocationID() == "") && ($this->mReq->getCounty() == "") && ($this->mReq->getStateID() == "") &&
-			($this->mReq->getTripID() == "") && ($this->mReq->getMonth() == "") && ($this->mReq->getYear() == "") &&
-			($this->mReq->getFamilyID() == "") && ($this->mReq->getOrderID() == "") && ($this->mReq->getSpeciesID() == ""))
-			die("No query parameters for sighting query");
-
 		return performQuery(
 			$this->getSelectClause() . " " .
 			$this->getFromClause() . " " .
@@ -137,24 +132,21 @@ class SightingQuery extends BirdWalkerQuery
 			$locationInfo = getLocationInfoForName($sightingInfo["LocationName"]);
 	?>
 				<p class=report-content>
-				  <div>
-					<?= $this->getSightingTitle($sightingInfo) ?>
-	<?              editLink("./sightingedit.php?sightingid=" . $sightingInfo["sightingid"]); ?>
-				  </div>
-				  <div>
-					<?= $this->getSightingSubtitle($sightingInfo) ?>
-				  </div>
-
 	<?	    if ($sightingInfo["Photo"] == "1")
 			{
 				$photoFilename = getPhotoFilename($sightingInfo);
 
 				list($width, $height, $type, $attr) = getimagesize("./images/photo/" . $photoFilename);
 
-				echo getThumbForSightingInfo($sightingInfo);
-			}
+				echo "<div style=\"margin-right: 5px; float: left; width: 100px;\">" . getThumbForSightingInfo($sightingInfo) . "</div>";
+			} ?>
 
-    ?>         </p> <?
+					<?= $this->getSightingTitle($sightingInfo) ?>
+	<?              editLink("./sightingedit.php?sightingid=" . $sightingInfo["sightingid"]); ?><br/>
+					<?= $this->getSightingSubtitle($sightingInfo) ?>
+
+			        <br clear="all"/>
+                </p> <?
 
 			$counter--;
 
