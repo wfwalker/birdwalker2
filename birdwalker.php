@@ -291,7 +291,7 @@ function getThumbForSightingInfo($sightingInfo)
 
 	return
 		"<a href=\"./photodetail.php?sightingid=" . $sightingInfo["sightingid"] . "\">" .
-		"<img " . $sizeAttributes . " src=\"./images/thumb/" . $thumbFilename . "\" border=0 alt=\"bird\">" . 
+		"<img " . $sizeAttributes . " src=\"./images/thumb/" . $thumbFilename . "\" border=0 alt=\"". $sightingInfo["CommonName"] . "\">" . 
 		"</a>";
 }
 
