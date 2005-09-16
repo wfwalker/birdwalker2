@@ -425,4 +425,4 @@ INSERT INTO trip VALUES (425,'Mary and Bill','','Vacation Stroll','We hiked up t
 INSERT INTO trip VALUES (426,'Ashok and Bill','','Early Morning Photo Safari','A momentous occassion! Ashok took me on both my first trip to \"Frank\'s Dump\" and my first serious shoot with my new Canon 500mm f/4L. The sunlight was gorgeous, the shorebirds were plentiful, the company was great. What a morning!','2005-08-31');
 INSERT INTO trip VALUES (427,'Mary and Bill','','Weekend Stroll','We had great evening light for this walk, and great looks at pelicans flying overhead.','2005-09-05');
 INSERT INTO trip VALUES (428,'Ashok, Thomas, and Bill','','Wednesday Photo Safari','I really enjoyed hanging out with Ashok and Thomas, practicing flight shots and watching some really great inter-species squabbling between the Kites and the Hawks.','2005-09-07');
-INSERT INTO trip VALUES (429,'Ashok and Bill','','Morning Photo Safari','','2005-09-14');
+INSERT INTO trip VALUES (429,'Ashok and Bill','','Morning Photo Safari','Not the warm morning sunlight that we hoped for, but a great chance to observe Caspian Terns fishing and interacting.','2005-09-14');
