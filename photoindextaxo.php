@@ -24,7 +24,7 @@ navTrail();
       <div class="titleblock">
 <?      rightThumbnailAll(); ?>
 	    <div class=pagetitle>Photos</div>
-        <div class=metadata>
+        <div class="viewlinks">
           <a href="./photoindextaxo.php">by species<a/> |
           <a href="./photoindex.php">by date</a> |
           <a href="./photoindexlocation.php">by location</a>
