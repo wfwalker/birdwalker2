@@ -122,7 +122,7 @@ INSERT INTO location VALUES (120,'Trinidad State Beach','http://www.northcoast.c
 INSERT INTO location VALUES (121,'Ulistac Natural Area','http://www.scu.edu/envs/ulistac/','San Jose','Santa Clara','CA','','',37.4025,-121.968);
 INSERT INTO location VALUES (122,'University Lutheran Church','http://www.stanford.edu/group/LSM/','Palo Alto','Santa Clara','CA','','NAD-27',37.4189,-122.155);
 INSERT INTO location VALUES (123,'University of Wisconsin Arboretum','http://wiscinfo.doit.wisc.edu/arboretum/','Madison','Dane','WI','','',43.0467,-89.4161);
-INSERT INTO location VALUES (124,'Unknown','','Unknown','Unknown','CA','','',0,0);
+INSERT INTO location VALUES (124,'Unknown','','','Santa Clara','CA','','',0,0);
 INSERT INTO location VALUES (125,'Upper Mississippi NWR','http://refuges.fws.gov/profiles/index.cfm?id=32579','Prairie Du Chien','Crawford','WI','','',42.3403,-90.4158);
 INSERT INTO location VALUES (126,'Uvas Canyon Reservoir','http://www.parkhere.org/channel/0,4770,chid%253D16516,00.html','San Jose','Santa Clara','CA','','',37.0658,-121.689);
 INSERT INTO location VALUES (127,'Vasona Creek','http://claraweb.co.santa-clara.ca.us/parks/prkpages/vasndch.htm','Los Gatos','Santa Clara','CA','','mapblast',37.2432,-121.969);
