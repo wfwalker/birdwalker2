@@ -70,8 +70,8 @@ $locationInfo = getLocationInfo($locationID);
 
 htmlHead($locationInfo["Name"] . ", " .  $locationInfo["State"]);
 
-globalMenu();
-$request->navTrailLocations();
+
+$request->globalMenu();
 ?>
 
 <div class="contentright">
