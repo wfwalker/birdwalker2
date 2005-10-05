@@ -83,7 +83,7 @@ class ChronoList
 		        <?= getPhotoLinkForSightingInfo($sightingInfo) ?>
 <?          }
 
-		    editLink("./sightingedit.php?id=" . $sightingInfo['objectid']); ?>
+		    editLink("./sightingedit.php?sightingid=" . $sightingInfo['objectid']); ?>
 
 		    </td>
 		    </tr>
