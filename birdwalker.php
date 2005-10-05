@@ -2,39 +2,6 @@
 
 error_reporting(E_ALL);
 
-function globalMenu()
-{ ?>
-	<div class="contentleft">
-      <div style="padding-bottom: 10px">
-        <a href="http://wfwalker.blogspot.com/"><img src="./images/bill.jpg" border=0 alt="Bill"></a></div>
-      <div style="padding-bottom: 10px">
-        <a href="http://spinnity.blogspot.com/"><img src="./images/mary.jpg" border=0 alt="Mary"></a></div>
-	  <div><a href="./tripindex.php">trips</a></div>
-	  <div><a href="./speciesindex.php">birds</a></div>
-	  <div><a href="./locationindex.php">locations</a></div>
-	  <div><a href="./photoindextaxo.php">photos</a></div>
-	  <div><a href="./speciesindex.php?view=chrono">life list</a></div>
-      <div>&nbsp;</div>
-	  <div><a href="./credits.php">about</a></div>
-      <div>&nbsp;</div>
-	  <div><a href="./slideshow.php" target="slideshow">slideshow</a></div>
-
-<?	if (getEnableEdit())
-	{ ?>
-		<br><div>
-		<a href="./tripcreate.php">create trip</a><br>
-		<a href="./photosneeded.php">photo todo</a><br>
-		<a href="./errorcheck.php">db todo</a><br>
-		</div>
-<?	} ?>
-
-      <div>&nbsp;</div>
-	  <div><a href="./indexrss.php">RSS</a></div>
-
-    </div>
-<?
-}
-
 function htmlHead($title)
 {
 echo "<!DOCTYPE  HTML PUBLIC  \"-//W3C//DTD HTML 4.01 Transitional//EN\">";
@@ -46,7 +13,14 @@ echo "<!DOCTYPE  HTML PUBLIC  \"-//W3C//DTD HTML 4.01 Transitional//EN\">";
     <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
       <title>birdWalker | <?= $title ?></title>
   </head>
-  <body>
+
+<? if (strstr(getenv("SCRIPT_NAME"), "slideshow")) 
+   { ?>
+       <body>
+<? } else { ?>
+       <body class="withcontentleft">
+<? } ?>
+
 <?
 }
 
@@ -135,7 +109,7 @@ function browseButtons($pageKind, $urlPrefix, $currentID, $prevID, $prevName, $n
 function referenceURL($info)
 {
 	if (strlen($info["ReferenceURL"]) > 0) { ?>
-		<div class="viewlinks"><a href="<?= $info["ReferenceURL"] ?>">See also...</a></div>
+		<div><a href="<?= $info["ReferenceURL"] ?>">See also...</a></div>
 <?  }
 }
 
@@ -176,38 +150,6 @@ function rightThumbnail($photoQueryString, $addLink)
 function rightThumbnailAll()
 {
 	rightThumbnail("SELECT *, " . dailyRandomSeedColumn() . " FROM sighting WHERE Photo='1' ORDER BY shuffle LIMIT 1", true);
-}
-
-function navTrailPhotos($extra = "")
-{
-	$photoItems[] = "<a href=\"./photoindex.php\">photos</a>";
-	navTrail(array_merge($photoItems, $extra));
-}
-
-function navTrailTrips($extra = "")
-{
-	$tripItems[] = "<a href=\"./tripindex.php\">trips</a>";
-	navTrail(array_merge($tripItems, $extra));
-}
-
-function navTrail($extra = "")
-{ ?>
-	<div class="navigationright"><a href="./index.php">birdWalker</a>
-
-<?
-	if ($extra != "")
-	{
-		foreach ($extra as $item)
-		{
-			if (strlen($item) > 0)
-			{ ?>
-			    - <?= $item ?>
-<?          }
-	    }
-    } ?>
-
-    </div>
-<?
 }
 
 //
