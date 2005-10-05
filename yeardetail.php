@@ -12,13 +12,17 @@ htmlHead($request->getYear());
 $prevYear = performCount("SELECT MAX(Year(TripDate)) FROM sighting WHERE Year(TripDate) < " . $request->getYear());
 $nextYear = performCount("SELECT MIN(Year(TripDate)) FROM sighting WHERE Year(TripDate) > " . $request->getYear());
 
-globalMenu();
-$request->navTrailTrips();
+$request->globalMenu();
+//$request->navTrailTrips();
 ?>
 
-    <div class=contentright>
-	<? browseButtons("Year Detail", "./yeardetail.php?view=" . $request->getView() . "&year=", $request->getYear(),
+    <div class="topright">
+	  <? browseButtons("Year Detail", "./yeardetail.php?view=" . $request->getView() . "&year=", $request->getYear(),
 					 $prevYear, $prevYear, $nextYear, $nextYear); ?>
+      <div class=pagetitle><?= $request->getYear() ?></div>
+	</div>
+
+    <div class="contentright">
 
       <div class="titleblock">	  
 <?    if ($request->getView() != "map" && $request->getView() != "photo")
@@ -27,14 +31,13 @@ $request->navTrailTrips();
                 FROM sighting
                 WHERE sighting.Photo='1' AND Year(TripDate)='" . $request->getYear() . "'
                 ORDER BY shuffle LIMIT 1", true); ?>
-        <div class=pagetitle><?= $request->getYear() ?></div>
 
-<?        $request->viewLinks(); ?>
+<?        $request->viewLinks("species"); ?>
 
 		</div>
 
 <?
-$request->handleStandardViews("species");
+$request->handleStandardViews();
 footer();
 ?>
 
