@@ -10,15 +10,17 @@ $tripQuery = new TripQuery($request);
 
 htmlHead("Trips");
 
-globalMenu();
-navTrail("");
+$request->globalMenu();
 ?>
 
-    <div class=contentright>
-	  <div class="pagesubtitle">Index</div>
+    <div class="topright">
+	  <div class="pagesubtitle">index</div>
+      <div class="pagetitle">Trips</div>
+	</div>
+
+    <div class="contentright">
 	  <div class="titleblock">
 <?       rightThumbnailAll(); ?>
-        <div class=pagetitle>Trips</div>
 	  </div>
 
 	  <div class=heading> <?= $tripQuery->getTripCount() ?> trips</div>
