@@ -2,6 +2,7 @@
 <?php
 
 require_once("./birdwalker.php");
+require_once("./request.php");
 
 $tripID = getValue('tripid');
 $postTripID = postValue('tripid');
@@ -33,8 +34,10 @@ $tripInfo = getTripInfo($tripID);
 
 htmlHead($tripInfo["Name"] . ", " .$tripInfo["niceDate"]);
 
-globalMenu();
-navTrailTrips();
+$request = new Request;
+
+$request->globalMenu();
+
 ?>
 
 <div class="contentright">
