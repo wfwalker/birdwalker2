@@ -2,6 +2,7 @@
 <?php
 
 require_once("./birdwalker.php");
+require_once("./request.php");
 
 getEnableEdit() or die("Editing disabled");
 
@@ -21,8 +22,9 @@ $tripID = performCount("select max(objectid) from trip;");
 
 htmlHead("Create a trip");
 
-globalMenu();
-navTrailTrips();
+$request = new Request;
+
+$request->globalMenu();
 ?>
 
 <div class="contentright">

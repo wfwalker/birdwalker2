@@ -2,6 +2,7 @@
 <?php
 
 require_once("./birdwalker.php");
+require_once("./request.php");
 
 performQuery("
     CREATE TEMPORARY TABLE tmp (
@@ -27,8 +28,8 @@ $sightingThreshold = 10;
 
 htmlHead("Target CA Year Birds");
 
-globalMenu();
-navTrail();
+$request = new Request;
+$request->globalMenu();
 ?>
 
 <div class="contentright">

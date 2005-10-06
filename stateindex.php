@@ -2,6 +2,7 @@
 <?php
 
 require_once("./birdwalker.php");
+require_once("./request.php");
 
 $yearArray = null;
 $stateStats = performQuery("SELECT
@@ -30,8 +31,8 @@ while ($info = mysql_fetch_array($stateStats))
 
 htmlHead("States");
 
-globalMenu();
-navTrail();
+$request = new Request;
+$request->globalMenu();
 ?>
 
     <div class=contentright>
