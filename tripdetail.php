@@ -36,36 +36,33 @@ while($sightingInfo = mysql_fetch_array($tripSightings)) {
 
 htmlHead( $tripInfo["Name"]);
 
-globalMenu();
-$request->navTrailTrips();
+$request->globalMenu();
 ?>
 
 
-    <div class="contentright">
+    <div class="topright">
       <? tripBrowseButtons("./tripdetail.php", $request->getTripID(), $request->getView()); ?>
-
-	  <div class=titleblock>
-
-<?      if (($request->getView() != "map") && ($request->getView() != "photo")) { $sightingQuery->rightThumbnail(true); }?>
         <div class="pagetitle">
             <?= $tripInfo["Name"] ?>
             <?= editLink("./tripedit.php?tripid=" . $request->getTripID()); ?>
         </div>
         <div class="pagesubtitle"><?= $tripInfo["niceDate"] ?></div>
+	</div>
+
+    <div class="contentright">
+<?    if (($request->getView() != "map") && ($request->getView() != "photo")) { $sightingQuery->rightThumbnail(true); }?>
+
+      <?= $request->viewLinks("species"); ?>
+
+	  <div class="titleblock">
 		<div class="metadata">
           Led by  <?= $tripInfo["Leader"] ?>
 <?        referenceURL($tripInfo); ?>
         </div>
-        <div class=metadata>
-	        <?= $request->linkToSelfChangeView("list", "species"); ?> |
-		    <?= $request->linkToSlideshow() ?> |
-	        <?= $request->linkToSelfChangeView("photo", "thumbnails"); ?> |
-	        <?= $request->linkToSelfChangeView("map", "map"); ?><br/>
-        </div>
 
-
-         <div class=report-content><p><?= $tripInfo["Notes"] ?></p></div>
       </div>
+
+      <div class=report-content><p><?= $tripInfo["Notes"] ?></p></div>
 
 <?
 
@@ -78,7 +75,7 @@ else if ($request->getView() == "map")
 	$map = new Map("./tripdetail.php", $request);
 	$map->draw(true);
 }
-else if ($request->getView() == "" || $request->getView() == "list")
+else if ($request->getView() == "" || $request->getView() == "species")
 {
 	if ($locationCount > 1) {
 		doubleCountHeading($tripSpeciesCount, "species", $tripFirstSightings, "life bird");
@@ -123,3 +120,4 @@ footer();
 <?
 htmlFoot();
 ?>
+
