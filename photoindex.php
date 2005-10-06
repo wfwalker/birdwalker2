@@ -9,8 +9,8 @@ $photoSpeciesCount = performCount("select count(distinct(sighting.SpeciesAbbrevi
 
 htmlHead("Photo List");
 
-globalMenu();
-navTrail();
+$request = new Request;
+$request->globalMenu();
 ?>
 
 
@@ -30,7 +30,6 @@ navTrail();
 
 <?
 
-$request = new Request;
 $sightingQuery = new SightingQuery($request);
 $sightingQuery->formatPhotos(); ?>
 

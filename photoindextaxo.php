@@ -2,6 +2,7 @@
 <?php
 
 require_once("./birdwalker.php");
+require_once("./request.php");
 
 $photoSpecies = performQuery("
     SELECT DISTINCT species.*, COUNT(DISTINCT sighting.objectid) AS photoCount, max(sighting.TripDate) as latestPhoto
@@ -15,8 +16,8 @@ $thresholdTime = strtotime("-1 month");
 
 htmlHead("Photo List");
 
-globalMenu();
-navTrail();
+$request = new Request;
+$request->globalMenu();
 ?>
 
     <div class=contentright>
