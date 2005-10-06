@@ -13,15 +13,17 @@ $speciesQuery = new SpeciesQuery($request);
 
 htmlHead($speciesQuery->getPageTitle());
 
-globalMenu();
-$request->navTrailBirds();
+//$request->globalMenu();
 ?>
 
-    <div class=contentright>
-	  <div class=pagesubtitle><?= disabledBrowseButtons("Species List") ?></div>
+    <div class="topright">
+	  <?= disabledBrowseButtons("Species List") ?>
+      <div class="pagetitle"><?= $speciesQuery->getPageTitle() ?></div>
+	</div>
+
+    <div class="contentright">
       <div class="titleblock">
 <?    $speciesQuery->rightThumbnail() ?>
-      <div class=pagetitle><?= $speciesQuery->getPageTitle() ?></div>
       </div>
 
 	  <div class=heading><?= $speciesQuery->getSpeciesCount() ?> Species</div>

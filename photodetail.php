@@ -47,14 +47,11 @@ else
 
 htmlHead($speciesInfo["CommonName"] . ", " . $tripInfo["niceDate"]);
 
-globalMenu();
-navTrailPhotos();
+$request->globalMenu();
 ?>
 
-<div class="contentright">
+<div class="topright">
 	<? browseButtons("Photo Detail", "./photodetail.php?sightingid=", $request->getSightingID(), $prevPhotoID,$prevPhotoLinkText, $nextPhotoID, $nextPhotoLinkText); ?>
-
-  <div class="titleblock">
 	  <div class="pagetitle">
           <a href="./speciesdetail.php?speciesid=<?= $speciesInfo["objectid"] ?>"><?= $speciesInfo["CommonName"] ?></a>
 <?        editLink("./sightingedit.php?sightingid=" . $request->getSightingID()); ?>
@@ -63,7 +60,9 @@ navTrailPhotos();
 	     <a href="./tripdetail.php?tripid=<?= $tripInfo["objectid"] ?>"><?= $tripInfo["niceDate"] ?></a>,
          <a href="./locationdetail.php?locationid=<?= $locationInfo["objectid"] ?>"><?= $locationInfo["Name"] ?>, <?= $locationInfo["State"] ?></a>
       </div>
-  </div>
+</div>
+
+<div class="contentright">
 
 <?  if ($sightingInfo["Photo"] == "1")
     {

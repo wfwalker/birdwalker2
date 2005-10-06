@@ -13,24 +13,27 @@ $info = $request->getStateInfo();
 
 htmlHead($info["Name"]);
 
-globalMenu();
-$request->navTrailLocations();
+$request->globalMenu();
+//$request->navTrailLocations();
 
 ?>
 
-    <div class=contentright>
+    <div class="topright">
       <? stateBrowseButtons($request->getStateID(), $request->getView()); ?>
+	  <div class=pagetitle><?= $info["Name"] ?></div>
+	</div>
+
+    <div class="contentright">
       <div class="titleblock">	  
 <?    if ($request->getView() != "map") rightThumbnailState($info["Abbreviation"]); ?>
-	  <div class=pagetitle><?= $info["Name"] ?></div>
 
-<?    $request->viewLinks(); ?>
+<?    $request->viewLinks("species"); ?>
 
     </div>
 
 <?
 
-$request->handleStandardViews("species");
+$request->handleStandardViews();
 footer();
 
 ?>
