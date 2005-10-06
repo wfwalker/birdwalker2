@@ -24,14 +24,12 @@ while($sightingInfo = mysql_fetch_array($locationSightings)) {
 
 htmlHead($siteInfo["Name"]);
 
-globalMenu();
-$request->navTrailLocations();
+$request->globalMenu();
 ?>
 
-<div class="contentright">
-<? locationBrowseButtons("./locationdetail.php", $request->getLocationID(), $request->getView()); ?>
-  <div class="titleblock">
-<?  if (($request->getView() != "map") && ($request->getView() != "photo")) { rightThumbnailLocation($siteInfo["Name"]); } ?>
+<div class="topright">
+  <? locationBrowseButtons("./locationdetail.php", $request->getLocationID(), $request->getView()); ?>
+
     <div class="pagetitle">
         <?= $siteInfo["Name"] ?>
 	    <? editLink("./locationcreate.php?locationid=" . $request->getLocationID()); ?>
@@ -39,6 +37,14 @@ $request->navTrailLocations();
 	<div class="pagesubtitle">
 	    <?= $siteInfo["County"] ?> County, <?= $siteInfo["State"] ?>
 	</div>
+</div>
+
+<div class="contentright">
+<?  if (($request->getView() != "map") && ($request->getView() != "photo")) { rightThumbnailLocation($siteInfo["Name"]); } ?>
+
+  <? $request->viewLinks("species"); ?>
+
+  <div class="titleblock">
 
 <? referenceURL($siteInfo);
    if ($siteInfo["Latitude"] > 0)
@@ -53,13 +59,12 @@ $request->navTrailLocations();
     </div>
 <? } ?>
 
-     <? $request->viewLinks(); ?>
     </div>
 
     <div class=report-content><?= $siteInfo["Notes"] ?></div>
 
 <?
-$request->handleStandardViews("species");
+$request->handleStandardViews();
 footer();
 
 ?>
