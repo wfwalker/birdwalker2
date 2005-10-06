@@ -10,6 +10,7 @@ $tripQuery = new TripQuery($request);
 
 htmlHead("Trips");
 
+$request->setView("trips");
 $request->globalMenu();
 ?>
 
@@ -19,15 +20,9 @@ $request->globalMenu();
 	</div>
 
     <div class="contentright">
-	  <div class="titleblock">
-<?       rightThumbnailAll(); ?>
-	  </div>
-
-	  <div class=heading> <?= $tripQuery->getTripCount() ?> trips</div>
-
 
 <?
-      $tripQuery->formatTwoColumnTripList();
+      $request->handleStandardViews();
 
 
 footer();
