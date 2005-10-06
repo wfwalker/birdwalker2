@@ -46,26 +46,28 @@ else
 }
 
 htmlHead($familyInfo["LatinName"]);
-globalMenu();
-$request->navTrailBirds();
+$request->globalMenu();
 ?>
 
-    <div class=contentright>
+  <div class="topright">
 	<? browseButtons("Family Detail", "./familydetail.php?view=".$request->getView()."&familyid=", $request->getFamilyID(),
 					 $prevFamily, $prevFamilyLinkText,
 					 $nextFamily, $nextFamilyLinkText); ?>
 
+	    <div class=pagetitle><?= $familyInfo["LatinName"] ?></div>
+        <div class=pagesubtitle><?= $familyInfo["CommonName"] ?></div>
+  </div>
+
+    <div class="contentright">
 	  <div class="titleblock">
-	    <div class=pagetitle><?= $familyInfo["CommonName"] ?></div>
-        <div class=pagesubtitle><?= $familyInfo["LatinName"] ?></div>
  
-<?      $request->viewLinks(); ?>
+<?      $request->viewLinks("species"); ?>
 
       </div>
 
 
 <?
-$request->handleStandardViews("species");
+$request->handleStandardViews();
 footer();
 ?>
 
