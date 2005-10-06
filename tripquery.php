@@ -96,6 +96,14 @@ class TripQuery extends BirdWalkerQuery
 			$this->getWhereClause());
 	}
 
+	function getPhotoCount()
+	{
+		return performCount("
+          SELECT COUNT(DISTINCT trip.objectid) ".
+			$this->getFromClause() . " " .
+			$this->getWhereClause() . " AND sighting.Photo='1'");
+	}
+
 	function performQuery()
 	{
 		return performQuery(
