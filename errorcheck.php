@@ -2,6 +2,7 @@
 <?php
 
 require_once("./birdwalker.php");
+require_once("./request.php");
 
 $badAbbrevs = performQuery("
     SELECT species.*,sighting.*, sighting.objectid AS sightingid
@@ -27,23 +28,27 @@ $missingLatLong = performQuery("
 
 htmlHead("Bad Records");
 
-globalMenu();
-navTrail();
+$request = new Request;
+
+$request->globalMenu();
 ?>
 
-    <div class=contentright>
-	  <div class=pagesubtitle>Index</div>
+    <div class="topright">
+	  <div class="pagesubtitle">Index</div>
       <div class="titleblock">	  
-	  <div class=pagetitle>Bad Records</div>
+	  <div class="pagetitle">Bad Records</div>
       </div>
+	</div>
 
-<div class=heading>sightings with bad abbreviations</div>
+    <div class="contentright">
+
+<div class="heading">sightings with bad abbreviations</div>
 
 <?
 while($sightingInfo = mysql_fetch_array($badAbbrevs))
 {
 	if ($sightingInfo["CommonName"] == "") { ?>
-        <a href="./sightingedit.php?id=<?= $sightingInfo["sightingid"] ?>">
+        <a href="./sightingedit.php?sightingid=<?= $sightingInfo["sightingid"] ?>">
         <?= $sightingInfo["SpeciesAbbreviation"] ?> <?= $sightingInfo["LocationName"] ?> <?= $sightingInfo["TripDate"] ?>
         </a><br>
  <?	} else {
@@ -52,7 +57,7 @@ while($sightingInfo = mysql_fetch_array($badAbbrevs))
 }
 ?>
 
-<div class=heading>sightings with bad trip dates</div>
+<div class="heading">sightings with bad trip dates</div>
 
 <?
 while($sightingInfo = mysql_fetch_array($badSightingDates))
@@ -67,7 +72,7 @@ while($sightingInfo = mysql_fetch_array($badSightingDates))
 }
 ?>
 
-<div class=heading>sightings with bad location names</div>
+<div class="heading">sightings with bad location names</div>
 
 <?
 while($sightingInfo = mysql_fetch_array($badSightingLocations))
@@ -82,7 +87,7 @@ while($sightingInfo = mysql_fetch_array($badSightingLocations))
 }
 ?>
 
-<div class=heading>locations without lat or long</div>
+<div class="heading">locations without lat or long</div>
 
 <?
 while($locationInfo = mysql_fetch_array($missingLatLong))
