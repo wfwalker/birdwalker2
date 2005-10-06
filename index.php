@@ -87,15 +87,16 @@ function latestTrips()
 //
 
 htmlHead("Home");
-
-globalMenu();
+$request = new Request;
+$request->globalMenu();
 ?>
 
-    <div class=contentright>
-
-	  <img align="right" src="./images/logo.jpg" width="104" height="105" class="inlinepict"/>
-
+    <div class="topright">
 	  <div class="logotype"><img src="./images/logotype.gif" width="389" height="61" alt="birdWalker"/></div>
+	</div>
+
+    <div class="contentright">
+
 
 	  <p>Welcome to <code>birdWalker</code>! This website contains Bill Walker and Mary Wisnewski&#39;s birding field notes, including
 	  <a href="./tripindex.php">trip</a>,
