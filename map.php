@@ -66,7 +66,7 @@ class Map
 							$this->mLocationQuery->getSelectClause() . ", location.Latitude, location.Longitude" .
 							$this->mLocationQuery->getFromClause() . " " . 
 							$this->mLocationQuery->getWhereClause() .
-							" ORDER BY location.Latitude desc, location.Longitude");
+							" GROUP BY location.objectid ORDER BY location.Latitude desc, location.Longitude");
 	}
 
 	function getBackgroundImageURL()
