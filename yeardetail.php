@@ -13,7 +13,6 @@ $prevYear = performCount("SELECT MAX(Year(TripDate)) FROM sighting WHERE Year(Tr
 $nextYear = performCount("SELECT MIN(Year(TripDate)) FROM sighting WHERE Year(TripDate) > " . $request->getYear());
 
 $request->globalMenu();
-//$request->navTrailTrips();
 ?>
 
     <div class="topright">
