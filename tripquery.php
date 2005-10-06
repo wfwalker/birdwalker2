@@ -12,7 +12,7 @@ class TripQuery extends BirdWalkerQuery
 
 	function getSelectClause()
 	{
- 		$selectClause = "SELECT DISTINCT trip.objectid, trip.Name, trip.Notes, trip.Date, date_format(trip.Date, '%M %e') AS niceDate, year(trip.Date) as year";
+ 		$selectClause = "SELECT DISTINCT trip.objectid, trip.Name, trip.Notes, trip.Date, date_format(trip.Date, '%M %e') AS niceDate, year(trip.Date) as year, sum(sighting.Photo) as tripPhotos";
 
 		if ($this->mReq->getSpeciesID() != "")
 		{
@@ -101,7 +101,7 @@ class TripQuery extends BirdWalkerQuery
 		return performQuery(
 			$this->getSelectClause() . " " .
 			$this->getFromClause() . " " .
-			$this->getWhereClause() . " ORDER BY trip.Date desc");
+			$this->getWhereClause() . "  GROUP BY trip.objectid ORDER BY trip.Date desc");
 	}
 
 	function rightThumbnail()
@@ -127,7 +127,7 @@ class TripQuery extends BirdWalkerQuery
 		$counter = round($tripCount  * 0.52); ?>
 
 	   <table class=report-content width="100%">
-		  <tr valign=top><td>
+		  <tr valign=top><td width="50%" style="padding-left: 30px; padding-right: 30px;">
 
 	<?	$dbQuery = $this->performQuery();
 		while($info = mysql_fetch_array($dbQuery))
@@ -146,7 +146,15 @@ class TripQuery extends BirdWalkerQuery
 					<a href="./tripdetail.php?tripid=<?= $info["objectid"] ?>">
 					  <?= $info["Name"] ?>, <?= $info["niceDate"] ?><? if (($this->mReq->getYear() == "") && (! $subdivideByYears)) { echo ", " . $info["year"]; } ?>
 					</a>
-					<? if (array_key_exists("Photo", $info) && $info["Photo"] == "1") { ?><?= getPhotoLinkForSightingInfo($info, "sightingid") ?><? } ?>
+					<? if (array_key_exists("Photo", $info) && $info["Photo"] == "1") { ?><?= getPhotoLinkForSightingInfo($info, "sightingid") ?><? }
+			           else if (array_key_exists("tripPhotos", $info) && $info["tripPhotos"] > 0)
+					   {
+						   $photoRequest = new Request;
+						   $photoRequest->setPageScript("tripdetail.php");
+						   $photoRequest->setView("photo");
+						   $photoRequest->setTripID($info["objectid"]);
+						   echo $photoRequest->linkToSelf("<img border=\"0\" src=\"./images/camera.gif\">");
+					   } ?>
 					<? if (array_key_exists("Exclude", $info) && $info["Exclude"] == "1") { ?>excluded<? } ?>
 				 </div>
 					<? if (array_key_exists("sightingNotes", $info) && $info["sightingNotes"] != "") { ?> <div class=sighting-notes><?= $info["sightingNotes"] ?></div> <? } ?>
@@ -155,7 +163,7 @@ class TripQuery extends BirdWalkerQuery
 			$counter--;
 			if ($counter == 0)
 			{ ?>
-			</td><td width="50%">
+			</td><td width="50%" style="padding-left: 30px; padding-right: 30px;">
 	<?		}
 		} ?>
 		  </td></tr>
