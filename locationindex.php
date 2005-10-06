@@ -11,38 +11,23 @@ $locationQuery = new LocationQuery($request);
 
 htmlHead("Locations");
 
-globalMenu();
-navTrail();
+$request->globalMenu();
 ?>
 
-    <div class=contentright>
-	  <div class="pagesubtitle">Index</div>
-      <div class="titleblock">	  
-<?    if ($request->getView() != "map" ) rightThumbnailAll(); ?>
+    <div class="topright">
+	  <div class="pagesubtitle">index</div>
 	  <div class="pagetitle">Locations</div>
-    <div class="metadata">
-      <a href="./locationindex.php?view=locations">list</a> |
-      <a href="./locationindex.php?view=locationsbymonth">by month</a> |
-	  <a href="./locationindex.php?view=locationsbyyear">by year<a/> |
-      <a href="./locationindex.php?view=map">map</a><br/>
-    </div>
 	</div>
 
-<br clear="all"/>
+    <div class="contentright">
+      <div class="titleblock">
+	    <? $request->viewLinks("locations"); ?>
+	  </div>
 
 <?
-	  if ($request->getView() == "locations" || $request->getView() == "") {
-		  $locationQuery->formatTwoColumnLocationList($request->getView(), true);
-	  } else if ($request->getView() == "locationsbymonth") {
-		  $locationQuery->formatLocationByMonthTable();
-	  } else if ($request->getView() == "locationsbyyear") {
-		  $locationQuery->formatLocationByYearTable();
-	  } else if ($request->getView() == "map") {
-		  $map = new Map("./locationindex.php", $request);
-		  $map->draw(true);
-	  }
+	$request->handleStandardViews(); 
 
-footer();
+    footer();
 ?>
 
     </div>
