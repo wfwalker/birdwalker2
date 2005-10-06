@@ -7,6 +7,10 @@ echo -n "" > testresults.txt
 baseURL="http://localhost/~walker/birdwalker2/"
 
 successURLs="\
+sightingedit.php?sightingid=11631 \
+tripedit.php?tripid=430 \
+countyindex.php \
+tripcreate.php \
 slideshow.php \
 slideshow.php?speciesid=8012080300 \
 slideshow.php?month=09 \
