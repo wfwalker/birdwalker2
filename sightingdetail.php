@@ -2,10 +2,11 @@
 <?php
 
 require_once("./birdwalker.php");
-
-require_once("./birdwalker.php");
+require_once("./request.php");
 
 getEnableEdit() or die("Editing disabled");
+
+$request = new Request;
 
 // the GET id determines which record to show
 $sightingID = getValue("sightingid");
@@ -18,18 +19,18 @@ $locationInfo = performOneRowQuery("select * from location where Name='" . $sigh
 
 htmlHead($speciesInfo["CommonName"] . ", " . $tripInfo["niceDate"]);
 
-globalMenu();
-navTrail();
+$request->globalMenu();
 ?>
 
-<div class="contentright">
+<div class="topright">
 <? browseButtons("Sighting Detail", "./sightingdetail.php?sightingid=", $sightingID, $sightingID - 1, $sightingID - 1, $sightingID + 1, $sightingID + 1); ?>
-  <div class="titleblock">
-	  <div class=pagetitle> <?= $speciesInfo["CommonName"] ?></div>
+  <div class="pagetitle"> <?= $speciesInfo["CommonName"] ?></div>
 
-      <div class=metadata><?= $locationInfo["County"] ?> County, <?= getStateNameForAbbreviation($locationInfo["State"]) ?></div>
-  </div>
+  <div class="pagesubtitle"><?= $locationInfo["County"] ?> County, <?= getStateNameForAbbreviation($locationInfo["State"]) ?></div>
+</div>
 
+
+<div class="contentright">
 
 <table class=report-content width=100%>
   <tr><td class=heading colspan=2>Sighting</td></tr>

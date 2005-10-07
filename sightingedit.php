@@ -2,6 +2,7 @@
 <?php
 
 require_once("./birdwalker.php");
+require_once("./request.php");
 
 getEnableEdit() or die("Editing disabled");
 
@@ -62,28 +63,27 @@ $locationList = performQuery("select Name, objectid from location");
 
 htmlHead($speciesInfo["CommonName"] . ", " . $tripInfo["niceDate"]);
 
-globalMenu();
-navTrail();
+$request = new Request;
+
+$request->globalMenu();
 ?>
 
-<div class="contentright">
-
-<div class=pagesubtitle>
-
+<div class="topright">
 	<? browseButtons("Sighting Detail", "./sightingedit.php?sightingid=", $sightingID,
 					 $sightingID - 1, $sightingID - 1, $sightingID + 1, $sightingID + 1); ?>
-</div>
-<div class="titleblock">
-  <div class=pagetitle>
+
+  <div class="pagetitle">
     <a href="./speciesdetail.php?speciesid=<?= $speciesInfo["objectid"] ?>"><?= $speciesInfo["CommonName"] ?></a>
   </div>
-  <div class=metadata>
-    <a href="./countydetail.php?stateid=<?= $stateInfo["objectid"] ?>&county=<?= $locationInfo["County"] ?>"><?= $locationInfo["County"] ?> County</a>, 
-    <a href="./statedetail.php?stateid=<?= $stateInfo["objectid"] ?>"><?= $stateInfo["Name"] ?></a><br/>
-    <a href="./tripdetail.php?tripid=<?= $tripInfo["objectid"] ?>"><?= $tripInfo["niceDate"] ?></a><br/>
 
+  <div class="pagesubtitle">
+    <a href="./countydetail.php?stateid=<?= $stateInfo["objectid"] ?>&county=<?= $locationInfo["County"] ?>"><?= $locationInfo["County"] ?> County</a>, 
+    <a href="./statedetail.php?stateid=<?= $stateInfo["objectid"] ?>"><?= $stateInfo["Name"] ?></a>,
+    <a href="./tripdetail.php?tripid=<?= $tripInfo["objectid"] ?>"><?= $tripInfo["niceDate"] ?></a>
   </div>
 </div>
+
+<div class="contentright">
 
 <form method="post" action="./sightingedit.php?sightingid=<?= $sightingID ?>">
 
@@ -93,7 +93,7 @@ navTrail();
 	<td><input type="submit" name="New" value="New"/></td>
   </tr>
   <tr>
-	<td class=fieldlabel>Abbreviation</td>
+	<td class="fieldlabel">Abbreviation</td>
 	<td><input type="text" name="SpeciesAbbreviation" value="<?= $sightingInfo["SpeciesAbbreviation"] ?>" size=6/></td>
   </tr>
   <tr>

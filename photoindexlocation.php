@@ -19,22 +19,24 @@ $request = new Request;
 $request->globalMenu();
 ?>
 
-    <div class=contentright>
+  <div class="topright">
 	  <div class="pagesubtitle">Index</div>
+	  <div class="pagetitle">Photos</div>
+  </div>
+
+    <div class="contentright">
       <div class="titleblock">
-<?      rightThumbnailAll(); ?>
-	    <div class=pagetitle>Photos</div>
-        <div class=metadata>
+        <div class="metadata">
           <a href="./photoindextaxo.php">by species<a/> |
           <a href="./photoindex.php">by date</a> |
           <a href="./photoindexlocation.php">by location</a>
         </div>
       </div>
 
-   <div class=heading><?= $photoCount ?> photos made at <?= mysql_num_rows($photoLocations) ?> locations</div>
+   <div class="heading"><?= $photoCount ?> photos made at <?= mysql_num_rows($photoLocations) ?> locations</div>
 
 <table width="100%">
-<tr valign=top><td width="50%" class=report-content>
+<tr valign=top><td width="50%" class="report-content">
 
 <?
 	$prevInfo = "";

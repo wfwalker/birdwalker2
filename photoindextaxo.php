@@ -20,11 +20,13 @@ $request = new Request;
 $request->globalMenu();
 ?>
 
-    <div class=contentright>
+    <div class="topright">
 	  <div class="pagesubtitle">Index</div>
+	  <div class="pagetitle">Photos</div>
+	</div>
+
+    <div class=contentright>
       <div class="titleblock">
-<?      rightThumbnailAll(); ?>
-	    <div class=pagetitle>Photos</div>
         <div class="viewlinks">
           <a href="./photoindextaxo.php">by species<a/> |
           <a href="./photoindex.php">by date</a> |
