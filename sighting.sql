@@ -11669,10 +11669,10 @@ INSERT INTO sighting VALUES (11709,'sursco','Bodega Bay','','0','0','2005-09-25'
 INSERT INTO sighting VALUES (11710,'comloo','Bodega Bay','','0','0','2005-09-25');
 INSERT INTO sighting VALUES (11711,'pibgre','Bodega Bay','','0','0','2005-09-25');
 INSERT INTO sighting VALUES (11712,'bkfalb','Bodega Bay','','','1','2005-09-25');
-INSERT INTO sighting VALUES (11713,'norful','Bodega Bay','','0','0','2005-09-25');
-INSERT INTO sighting VALUES (11714,'pifshe','Bodega Bay','','0','0','2005-09-25');
+INSERT INTO sighting VALUES (11713,'norful','Bodega Bay','','','1','2005-09-25');
+INSERT INTO sighting VALUES (11714,'pifshe','Bodega Bay','','','1','2005-09-25');
 INSERT INTO sighting VALUES (11715,'flfshe','Bodega Bay','','0','0','2005-09-25');
-INSERT INTO sighting VALUES (11716,'bulshe','Bodega Bay','','0','0','2005-09-25');
+INSERT INTO sighting VALUES (11716,'bulshe','Bodega Bay','','','1','2005-09-25');
 INSERT INTO sighting VALUES (11717,'sooshe','Bodega Bay','','0','0','2005-09-25');
 INSERT INTO sighting VALUES (11718,'asspet','Bodega Bay','','0','0','2005-09-25');
 INSERT INTO sighting VALUES (11719,'brnpel','Bodega Bay','','0','0','2005-09-25');
@@ -11696,9 +11696,9 @@ INSERT INTO sighting VALUES (11736,'hergul','Bodega Bay','','0','0','2005-09-25'
 INSERT INTO sighting VALUES (11737,'wesgul','Bodega Bay','','0','0','2005-09-25');
 INSERT INTO sighting VALUES (11738,'sabgul','Bodega Bay','','0','0','2005-09-25');
 INSERT INTO sighting VALUES (11739,'forter','Bodega Bay','','0','0','2005-09-25');
-INSERT INTO sighting VALUES (11740,'commur','Bodega Bay','','0','0','2005-09-25');
+INSERT INTO sighting VALUES (11740,'commur','Bodega Bay','','','1','2005-09-25');
 INSERT INTO sighting VALUES (11741,'casauk','Bodega Bay','','0','0','2005-09-25');
-INSERT INTO sighting VALUES (11742,'rhiauk','Bodega Bay','','0','0','2005-09-25');
+INSERT INTO sighting VALUES (11742,'rhiauk','Bodega Bay','','','1','2005-09-25');
 INSERT INTO sighting VALUES (11743,'tufpuf','Bodega Bay','','0','0','2005-09-25');
 INSERT INTO sighting VALUES (11744,'rocdov','Bodega Bay','','0','0','2005-09-25');
 INSERT INTO sighting VALUES (11745,'belkin','Bodega Bay','','0','0','2005-09-25');
