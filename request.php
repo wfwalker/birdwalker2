@@ -405,7 +405,7 @@ function launchSlideshow() {
 
 	function optionSelectedViewHelper($inName, $inValue)
 	{
-		echo "<option value=\"" . $inValue . "\"";
+		echo "\n<option value=\"" . $inValue . "\"";
 		if ($this->getView() == $inValue) echo " selected";
 		echo ">" . $inName . "</option>";
 	}
@@ -436,10 +436,10 @@ function changeView()
 
 		if ($this->getTripID() == "")
 		{ ?>
-		  <optgroup label="trips"><?
-		    $this->optionSelectedViewHelper("trip list", "trips");
-		    $this->optionSelectedViewHelper("trip summaries", "tripsummaries");
-		}
+		  <optgroup label="trips">
+<?		    $this->optionSelectedViewHelper("list", "trips"); ?>
+		  </optgroup>
+<?		}
 
 		if ($this->getLocationID() == "")
 		{ ?>
@@ -447,16 +447,16 @@ function changeView()
 			
 			if ($this->getTripID() == "" )
 			{
-				$this->optionSelectedViewHelper("location list", "locations");
+				$this->optionSelectedViewHelper("list", "locations");
 			}
 
 			if ($this->getMonth() == "" )
 			{
-				$this->optionSelectedViewHelper("locations by month", "locationsbymonth");
+				$this->optionSelectedViewHelper("by month", "locationsbymonth");
 
 				if ($this->getYear() == "" )
 				{
-					$this->optionSelectedViewHelper("locations by year", "locationsbyyear");
+					$this->optionSelectedViewHelper("by year", "locationsbyyear");
 				}
 			}
 
@@ -467,29 +467,29 @@ function changeView()
 		if ($this->getSpeciesID() == "")
 		{ ?>
 			<optgroup label="species"> <?
-		    $this->optionSelectedViewHelper("species list", "species");
+		    $this->optionSelectedViewHelper("by taxonomy", "species");
 		    if ($this->getTripID() == "" )
 			{
-				$this->optionSelectedViewHelper("ABA", "chrono");
+				$this->optionSelectedViewHelper("by date", "chrono");
 			}
 
 			if ($this->getMonth() == "" )
 			{
-				$this->optionSelectedViewHelper("species by month", "speciesbymonth");
+				$this->optionSelectedViewHelper("by month", "speciesbymonth");
 
 				if ($this->getYear() == "" )
 				{
-					$this->optionSelectedViewHelper("species by year", "speciesbyyear");
+					$this->optionSelectedViewHelper("by year", "speciesbyyear");
 				}
-			}
-		} ?>
+			} ?>
+			</optgroup><?
+		}  ?>
 
 		<optgroup label="photos"> <?
-		   $this->optionSelectedViewHelper("thumbnails", "photo");
-		   $this->optionSelectedViewHelper("slideshow", "slideshow"); ?>
+		   $this->optionSelectedViewHelper("thumbnails", "photo"); ?>
 		</optgroup>
 
-		?></select><? $this->linkToSlideshow(); ?></form><?
+		?></select> <? $this->linkToSlideshow(); ?></form><?
 	}
 
 	function globalMenuBirds()
