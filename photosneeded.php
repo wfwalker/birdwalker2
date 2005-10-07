@@ -1,6 +1,7 @@
 <?php
 
 require_once("./birdwalker.php");
+require_once("./request.php");
 
 $threshold = 10;
 
@@ -20,13 +21,17 @@ $speciesCount = 0;
 
 htmlHead("Birds in need of photos");
 
-globalMenu();
-navTrailPhotos("missing");
+$request = new Request;
+$request->globalMenu();
 ?>
+
+    <div class="topright">
+	    <div class="pagesubtitle">Index</div>
+	    <div class="pagetitle">Birds in need of photos</div>
+	</div>
 
     <div class="contentright">
 	  <div class=titleblock>
-	    <div class=pagetitle>Birds in need of photos</div>
         <div class=metadata>Birds seen at least <?= $threshold ?> times with no photo</div>
       </div>
 
