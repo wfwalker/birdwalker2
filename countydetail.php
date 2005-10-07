@@ -19,7 +19,7 @@ $stateInfo =  $request->getStateInfo();
 ?>
 
     <div class="topright">
-	<? disabledBrowseButtons("County Detail"); ?>
+	  <div class="pagesubtitle">County Detail</div>
 	  <div class="pagetitle"> <?= $request->getCounty() ?> County</div>
 	  <div class="pagesubtitle"> <?= $stateInfo["Name"] ?></div>
 	</div>
