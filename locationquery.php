@@ -12,7 +12,7 @@ class LocationQuery extends BirdWalkerQuery
 
 	function getSelectClause()
 	{
- 		$selectClause = "SELECT DISTINCT location.objectid, location.Name, location.County, location.State";
+ 		$selectClause = "SELECT DISTINCT location.objectid, location.*, SUM(sighting.Photo) as locationPhotos";
 
 		return $selectClause;
 	}
@@ -88,12 +88,20 @@ class LocationQuery extends BirdWalkerQuery
 			$this->getWhereClause());
 	}
 
+	function getPhotoCount()
+	{
+		return performCount("
+          SELECT COUNT(DISTINCT location.objectid) ".
+			$this->getFromClause() . " " .
+			$this->getWhereClause() . " AND sighting.Photo='1'");
+	}
+
 	function performQuery()
 	{
-		return performQuery("
-          SELECT DISTINCT location.objectid, location.* ".
+		return performQuery(
+			$this->getSelectClause() . " " . 
 			$this->getFromClause() . " " .
-			$this->getWhereClause() . " ORDER BY location.State, location.County, location.Name");
+			$this->getWhereClause() . " GROUP BY location.objectid ORDER BY location.State, location.County, location.Name");
 	}
 
 	function findExtrema()
@@ -121,7 +129,7 @@ class LocationQuery extends BirdWalkerQuery
 			$this->getFromClause() . "  " .
 			$this->getWhereClause() . "
             AND sighting.Photo='1'
-            ORDER BY shuffle LIMIT 1");
+            ORDER BY shuffle LIMIT 1", false);
 	}
 
 	function formatPhotos()
@@ -275,10 +283,7 @@ class LocationQuery extends BirdWalkerQuery
 	{
 		$countyHeadingsOK = ($this->mReq->getCounty() == "");
 
-		$dbQuery = performQuery(
-				$this->getSelectClause() . " " .
-				$this->getFromClause() . " " .
-				$this->getWhereClause() . " ORDER BY location.State, location.County, location.Name");
+		$dbQuery = $this->performQuery();
 
 		$lastStateHeading="";
 		$prevInfo=null;
@@ -287,7 +292,7 @@ class LocationQuery extends BirdWalkerQuery
 		$counter = round($locationCount  * 0.5); ?>
 
 		<table class=report-content width="100%">
-		  <tr valign=top><td width="50%">
+		  <tr valign=top><td width="50%" style="padding-left: 30px;">
 
 	<?	while($info = mysql_fetch_array($dbQuery))
 		{
@@ -303,13 +308,22 @@ class LocationQuery extends BirdWalkerQuery
 				</div>
 		  <?		} // TODO, list below the county and state name if not dividing by county/state ?>
 
-			<div><a href="./locationdetail.php?view=<?= $this->mReq->getView() ?>&locationid=<?= $info["objectid"] ?>"><?= $info["Name"] ?></a></div>
+			<div>
+			  <a href="./locationdetail.php?view=species&locationid=<?= $info["objectid"] ?>"><?= $info["Name"] ?></a>
+
+<?          if ($info["locationPhotos"] > 0) { ?>
+              <a href="./locationdetail.php?view=photo&locationid=<?= $info["objectid"] ?>">
+			      <img border=0 align=center src="./images/camera.gif" alt="photo">
+			  </a>
+<?           } ?>
+
+			</div>
 
 	<?		$prevInfo = $info;   
 			$counter--;
 			if ($counter == 0)
 			{ ?>
-			</td><td width="50%">
+			</td><td width="50%" style="padding-left: 30px;">
 	<?		}
 		} ?>
 
