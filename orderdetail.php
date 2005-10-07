@@ -11,10 +11,8 @@ $orderInfo = $request->getOrderInfo();
 
 htmlHead($orderInfo["LatinName"]);
 
-globalMenu();
 $items[] = strtolower($orderInfo["LatinName"]);
-$request->navTrailBirds();
-
+$request->globalMenu();
 
 $nextOrder = performCount("
     SELECT FLOOR(MIN(species.objectid) / POW(10,9)) FROM species, sighting
@@ -48,23 +46,25 @@ else
 
 ?>
 
-    <div class=contentright>
+    <div class="topright">
 	<? browseButtons("Order Detail", "./orderdetail.php?view=" . $request->getView() . "&orderid=", $request->getOrderID(),
 					 $prevOrder, $prevOrderLinkText,
 					 $nextOrder, $nextOrderLinkText); ?>
 
+        <div class="pagetitle"><?= $orderInfo["LatinName"] ?></div>
+        <div class="pagesubtitle"> <?= $orderInfo["CommonName"] ?></div>
+	</div>
 
+    <div class="contentright">
 	  <div class="titleblock">
-        <div class="pagetitle"><?= $orderInfo["CommonName"] ?></div>
-        <div class="pagesubtitle"> <?= $orderInfo["LatinName"] ?></div>
 
 
-<?       $request->viewLinks(); ?>
+<?       $request->viewLinks("species"); ?>
 
       </div>
 
 <?
-$request->handleStandardViews("species");
+$request->handleStandardViews();
 footer();
 
 ?>
