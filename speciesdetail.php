@@ -23,21 +23,28 @@ if ($request->getView() != "photo")
 }
 
 htmlHead($speciesInfo["CommonName"]);
-globalMenu();
-$request->navTrailBirds();
+$request->globalMenu();
+
 ?>
 
-  <div class=contentright>
+  <div class="topright">
     <? speciesBrowseButtons("./speciesdetail.php", $request->getSpeciesID(), $request->getView()); ?>
 
-	<div class="titleblock">
-<?    if (($request->getView() != "map") && ($request->getView() != "photo")) { rightThumbnailSpecies($speciesInfo["Abbreviation"]); } ?>
       <div class="pagetitle">
         <?= $speciesInfo["CommonName"] ?>
         <?= editlink("./speciesedit.php?speciesid=" . $request->getSpeciesID()) ?>
       </div>
       <div class="pagesubtitle">
-        <?= $speciesInfo["LatinName"] ?></div>
+        <?= $speciesInfo["LatinName"] ?>
+	  </div>
+  </div>
+
+  <div class="contentright">
+<?   if (($request->getView() != "map") && ($request->getView() != "photo")) { rightThumbnailSpecies($speciesInfo["Abbreviation"]); } ?>
+
+    <?= $request->viewLinks("locations"); ?>
+
+	<div class="titleblock">
 	  <div class="metadata">
 <?  if (strlen($speciesInfo["ReferenceURL"]) > 0) { ?>
         <div><a href="<?= $speciesInfo["ReferenceURL"] ?>">See also...</a></div>
@@ -46,13 +53,12 @@ $request->navTrailBirds();
         <div>NOT ABA COUNTABLE</div>
 <?  } ?>
       </div>
-      <?= $request->viewLinks(); ?>
    </div>
 
    <div class=report-content><?= $speciesInfo["Notes"] ?></div>
 
 <?
-$request->handleStandardViews("locations");
+$request->handleStandardViews();
 footer();
 ?>
 
