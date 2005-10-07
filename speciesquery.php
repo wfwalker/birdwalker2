@@ -11,19 +11,12 @@ class SpeciesQuery extends BirdWalkerQuery
 
 	function getGroupByClause()
 	{
-		if ($this->mReq->getTripID() != "")
-		{
-			return "";
-		}
-		else
-		{
-			return "GROUP BY species.objectid";
-		} 
+		return "GROUP BY species.objectid";
 	}
 
 	function getSelectClause()
 	{
-		$selectClause = "SELECT DISTINCT species.objectid, species.CommonName, species.LatinName, species.ABACountable";
+		$selectClause = "SELECT DISTINCT species.objectid, species.CommonName, species.LatinName, species.ABACountable, sum(sighting.Photo) as speciesPhotos";
 
 		if ($this->mReq->getTripID() == "")
 		{
@@ -174,9 +167,9 @@ class SpeciesQuery extends BirdWalkerQuery
 		$divideByFamily = ($speciesCount > 30);
 		$counter = round($speciesCount  * 0.52); ?>
 
-	    <table width="100%" class=report-content>
-		  <tr valign=top>
-		    <td width="50%">
+	    <table width="100%" class="report-content">
+		  <tr valign="top">
+		    <td width="50%" style="padding-left: 30px; padding-right: 30px">
 <?
 			 $prevInfo = "";
 		     while($info = mysql_fetch_array($dbQuery))
@@ -189,16 +182,26 @@ class SpeciesQuery extends BirdWalkerQuery
 				 if ($divideByFamily && ($prevInfo == "" ||
 					 (getFamilyIDFromSpeciesID($prevInfo["objectid"]) != getFamilyIDFromSpeciesID($info["objectid"]))))
 				 { ?>
-					 <div class=subheading><?= getFamilyDetailLinkFromSpeciesID($info["objectid"]) ?></div>
+					 <div class="subheading"><?= getFamilyDetailLinkFromSpeciesID($info["objectid"]) ?></div>
 <?               } ?>
 
 		             <div><a href="./speciesdetail.php?speciesid=<?= $info["objectid"] ?>"><?= $info["CommonName"] ?></a>
 <?
 				 if (array_key_exists("sightingid", $info)) { editLink("./sightingedit.php?sightingid=" . $info["sightingid"]); }
-				 if (array_key_exists("Photo", $info) && $info["Photo"] == "1") { echo getPhotoLinkForSightingInfo($info, "sightingid"); }
 				 if (array_key_exists("ABACountable", $info) && $info["ABACountable"] == "0") { echo "NOT ABA COUNTABLE"; }
 				 if (array_key_exists("Exclude", $info) && $info["Exclude"] == "1") { echo "excluded"; }
 				 if (array_key_exists("AllExclude", $info) && $info["AllExclude"] == "1") { echo "excluded"; }
+
+				 if (array_key_exists("Photo", $info) && $info["Photo"] == "1")
+				 {
+					 echo getPhotoLinkForSightingInfo($info, "sightingid");
+				 }
+				 else if (array_key_exists("speciesPhotos", $info) && $info["speciesPhotos"]  > 0)
+				 { ?>
+		             <a href="./speciesdetail.php?view=photo&speciesid=<?= $info["objectid"] ?>">
+						 <img border="0" src="./images/camera.gif"/>
+					 </a>
+<?			     }
 
 				 if ($this->mReq->getTripID() != "") 
 				 {
@@ -230,7 +233,7 @@ class SpeciesQuery extends BirdWalkerQuery
 		    $counter--;
 		    if ($counter == 0)
 		    { ?>
-			    </td><td width="50%">
+			    </td><td width="50%" style="padding-left: 30px; padding-right: 30px;">
 <?		    }
 	    } ?>
 
