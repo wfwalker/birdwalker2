@@ -21,9 +21,9 @@ $request->globalMenu();
 	</div>
 
     <div class="contentright">
+
       <div class="titleblock">	  
-<?    rightThumbnailAll(); ?>
-<?    $request->viewLinks("species"); ?>
+        <? $request->viewLinks("species"); ?>
       </div>
 
 <?
