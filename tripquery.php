@@ -156,13 +156,11 @@ class TripQuery extends BirdWalkerQuery
 					</a>
 					<? if (array_key_exists("Photo", $info) && $info["Photo"] == "1") { ?><?= getPhotoLinkForSightingInfo($info, "sightingid") ?><? }
 			           else if (array_key_exists("tripPhotos", $info) && $info["tripPhotos"] > 0)
-					   {
-						   $photoRequest = new Request;
-						   $photoRequest->setPageScript("tripdetail.php");
-						   $photoRequest->setView("photo");
-						   $photoRequest->setTripID($info["objectid"]);
-						   echo $photoRequest->linkToSelf("<img border=\"0\" src=\"./images/camera.gif\">");
-					   } ?>
+					   { ?>
+						   <a href="./tripdetail.php?view=photo&tripid=<?= $info["objectid"] ?>">
+							   <img border="0" src="./images/camera.gif"/>
+						   </a>
+<?					   } ?>
 					<? if (array_key_exists("Exclude", $info) && $info["Exclude"] == "1") { ?>excluded<? } ?>
 				 </div>
 					<? if (array_key_exists("sightingNotes", $info) && $info["sightingNotes"] != "") { ?> <div class=sighting-notes><?= $info["sightingNotes"] ?></div> <? } ?>
