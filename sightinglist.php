@@ -12,17 +12,19 @@ $dbQuery = $sightingQuery->performQuery();
 
 htmlHead($sightingQuery->getPageTitle());
 
-globalMenu();
-navTrail();
+// $request->globalMenu();
 ?>
 
-    <div class=contentright>
-	<div class=pagesubtitle><?= disabledBrowseButtons("Sighting List") ?></div>
+    <div class="topright">
+	  <?= disabledBrowseButtons("Sighting List") ?>
+      <div class="pagetitle"><?= $sightingQuery->getPageTitle() ?></div>
+	</div>
+
+    <div class="contentright">
       <div class="titleblock">	  
-          <div class=pagetitle><?= $sightingQuery->getPageTitle() ?></div>
       </div>
 
-      <div class=heading><?= mysql_num_rows($dbQuery) ?> Sightings</div>
+      <div class="heading"><?= mysql_num_rows($dbQuery) ?> Sightings</div>
 
 <table class=report-content width="600px">
 <?
