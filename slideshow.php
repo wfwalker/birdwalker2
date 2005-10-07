@@ -15,7 +15,7 @@ if ($request->getSightingID() == "")
 	$sightingQuery->getSelectClause() . " " .
 	$sightingQuery->getFromClause() . " " .
 	$sightingQuery->getWhereClause() . "
-      AND Photo='1' ORDER BY CONCAT(TripDate,sighting.objectid) LIMIT 1"));
+      AND Photo='1' ORDER BY CONCAT(TripDate,sighting.objectid) DESC LIMIT 1"));
 }
 
 if ($request->getSightingID() == "")
@@ -30,15 +30,15 @@ $nextPhotoID = performCount(
 	$sightingQuery->getSelectClause() . " " .
 	$sightingQuery->getFromClause() . " " .
 	$sightingQuery->getWhereClause() . "
-      AND Photo='1' AND CONCAT(TripDate,sighting.objectid) > '" . $sightingInfo["TripDate"] . $sightingInfo["objectid"] . "'
-      ORDER BY CONCAT(TripDate,sighting.objectid) LIMIT 1");
+      AND Photo='1' AND CONCAT(TripDate,sighting.objectid) < '" . $sightingInfo["TripDate"] . $sightingInfo["objectid"] . "'
+      ORDER BY CONCAT(TripDate,sighting.objectid) DESC LIMIT 1");
 
 $prevPhotoID = performCount(
 	$sightingQuery->getSelectClause() . " " .
 	$sightingQuery->getFromClause() . " " .
 	$sightingQuery->getWhereClause() . "
-      AND Photo='1' AND CONCAT(TripDate,sighting.objectid) < '" . $sightingInfo["TripDate"] . $sightingInfo["objectid"] . "'
-      ORDER BY CONCAT(TripDate,sighting.objectid) DESC LIMIT 1");
+      AND Photo='1' AND CONCAT(TripDate,sighting.objectid) > '" . $sightingInfo["TripDate"] . $sightingInfo["objectid"] . "'
+      ORDER BY CONCAT(TripDate,sighting.objectid) LIMIT 1");
 
 $tripYear =  substr($sightingInfo["TripDate"], 0, 4);
 
@@ -69,7 +69,10 @@ $tripYear =  substr($sightingInfo["TripDate"], 0, 4);
 
 	    list($width, $height, $type, $attr) = getimagesize("./images/photo/" . $photoFilename); ?>
 
+<center>
 	    <img width=<?= $width ?> height=<?= $height ?> src="<?= getPhotoURLForSightingInfo($sightingInfo) ?>">
         <div class=copyright>@<?= $tripYear ?> W. F. Walker</div>
+</center>
+
 </div>
 </html>
