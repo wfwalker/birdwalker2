@@ -10965,11 +10965,8 @@ INSERT INTO sighting VALUES (11003,'grtgra','Anzalduas County Park','','','','20
 INSERT INTO sighting VALUES (11004,'brocow','Anzalduas County Park','','','','2005-04-24');
 INSERT INTO sighting VALUES (11005,'lesgol','Frontera Audubon','','0','0','2005-04-24');
 INSERT INTO sighting VALUES (11006,'houspa','Anzalduas County Park','','','','2005-04-24');
-INSERT INTO sighting VALUES (11007,'grahaw','Anzalduas County Park','Adult observed in the nest right in the middle of an established picnic area.','','','2005-04-24');
-INSERT INTO sighting VALUES (11008,'grehaw','Anzalduas County Park','Adult observed in the nest right in the middle of an established picnic area.','','','2005-04-24');
 INSERT INTO sighting VALUES (11009,'gryhaw','Anzalduas County Park','Adult observed in the nest right in the middle of an established picnic area.','','','2005-04-24');
 INSERT INTO sighting VALUES (11010,'whtkit','Anzalduas County Park','','','','2005-04-24');
-INSERT INTO sighting VALUES (11011,'nrbtyr','Anzalduas County Park','','','','2005-04-24');
 INSERT INTO sighting VALUES (11012,'nobtyr','Anzalduas County Park','heard and seen in two locations on opposite sides of the dike. Clear \"bee tee tee tee\" call helped us locate the perched bird and follow it in flight. Tiny flycatcher was very active, moving constantly around trees.','','','2005-04-24');
 INSERT INTO sighting VALUES (11013,'cubthr','Frontera Audubon','','','1','2005-04-24');
 INSERT INTO sighting VALUES (11014,'clcrob','Anzalduas County Park','','','1','2005-04-24');
@@ -11673,7 +11670,7 @@ INSERT INTO sighting VALUES (11713,'norful','Bodega Bay','','','1','2005-09-25')
 INSERT INTO sighting VALUES (11714,'pifshe','Bodega Bay','','','1','2005-09-25');
 INSERT INTO sighting VALUES (11715,'flfshe','Bodega Bay','','0','0','2005-09-25');
 INSERT INTO sighting VALUES (11716,'bulshe','Bodega Bay','','','1','2005-09-25');
-INSERT INTO sighting VALUES (11717,'sooshe','Bodega Bay','','0','0','2005-09-25');
+INSERT INTO sighting VALUES (11717,'sooshe','Bodega Bay','','','1','2005-09-25');
 INSERT INTO sighting VALUES (11718,'asspet','Bodega Bay','','0','0','2005-09-25');
 INSERT INTO sighting VALUES (11719,'brnpel','Bodega Bay','','0','0','2005-09-25');
 INSERT INTO sighting VALUES (11720,'bracor','Bodega Bay','','0','0','2005-09-25');
