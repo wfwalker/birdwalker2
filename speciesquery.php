@@ -263,31 +263,6 @@ class SpeciesQuery extends BirdWalkerQuery
 
 		<table cellpadding=0 cellspacing=0 class="report-content" width="100%">
 			<tr><td></td><? insertYearLabels() ?></tr>
-			<tr><td class=bordered>TOTAL</td>
-
-	<?	$info = mysql_fetch_array($yearTotals);
-		for ($index = 1; $index <= (1 + getLatestYear() - getEarliestYear()); $index++)
-		{
-			if ($info["year"] == (getEarliestYear() - 1) + $index)
-			{ ?>
-				<td class=bordered align=center>
-	<?
-					$clickRequest = new Request; // make a new request from current params and modify
-					$clickRequest->setYear(1995 + $index);
-					$clickRequest->setView("");
-					$clickRequest->setPageScript("specieslist.php");
-					echo $clickRequest->linkToSelf($info["count"]);
-	?>
-				</td>
-	<?			$info = mysql_fetch_array($yearTotals);
-			}
-			else
-			{ ?>
-				<td class=bordered align=center>&nbsp;</td>
-	<?		}
-		} ?>
-
-			</tr>
 
 	<?	$prevInfo = "";
 		while ($info = mysql_fetch_array($gridQuery))
@@ -327,6 +302,32 @@ class SpeciesQuery extends BirdWalkerQuery
 	<?		$prevInfo = $info;
 		} ?>
 
+		<tr><td class="heading">total</td>
+
+	<?	$info = mysql_fetch_array($yearTotals);
+		for ($index = 1; $index <= (1 + getLatestYear() - getEarliestYear()); $index++)
+		{
+			if ($info["year"] == (getEarliestYear() - 1) + $index)
+			{ ?>
+				<td class=bordered align=center>
+	<?
+					$clickRequest = new Request; // make a new request from current params and modify
+					$clickRequest->setYear(1995 + $index);
+					$clickRequest->setView("");
+					$clickRequest->setPageScript("specieslist.php");
+					echo $clickRequest->linkToSelf($info["count"]);
+	?>
+				</td>
+	<?			$info = mysql_fetch_array($yearTotals);
+			}
+			else
+			{ ?>
+				<td class=bordered align=center>&nbsp;</td>
+	<?		}
+		} ?>
+
+			</tr>
+
 		</table>
 	<?
 	}
@@ -353,31 +354,6 @@ class SpeciesQuery extends BirdWalkerQuery
 
 		<table cellpadding=0 cellspacing=0 class="report-content" width="100%">
 			<tr><td></td><? insertMonthLabels() ?></tr>
-			<tr><td class=bordered>TOTAL</td>
-
-	<?	$info = mysql_fetch_array($monthTotals);
-		for ($index = 1; $index <= 12; $index++)
-		{
-			if ($info["month"] == $index)
-			{ ?>
-				<td class=bordered align=center>
-	<?
-					$clickRequest = new Request; // make a new request from current params and modify
-					$clickRequest->setMonth($index);
-					$clickRequest->setView("");
-					$clickRequest->setPageScript("specieslist.php");
-					echo $clickRequest->linkToSelf($info["count"]);
-	?>
-				</td>
-	<?			$info = mysql_fetch_array($monthTotals);
-			}
-			else
-			{ ?>
-				<td class=bordered align=center>&nbsp;</td>
-	<?		}
-		} ?>
-
-			</tr>
 
 	<?	
 		$prevInfo = "";
@@ -417,6 +393,33 @@ class SpeciesQuery extends BirdWalkerQuery
 
 	<?		$prevInfo = $info;
 		} ?>
+
+		<tr><td class="heading">total</td>
+
+	<?	$info = mysql_fetch_array($monthTotals);
+		for ($index = 1; $index <= 12; $index++)
+		{
+			if ($info["month"] == $index)
+			{ ?>
+				<td class=bordered align=center>
+	<?
+					$clickRequest = new Request; // make a new request from current params and modify
+					$clickRequest->setMonth($index);
+					$clickRequest->setView("");
+					$clickRequest->setPageScript("specieslist.php");
+					echo $clickRequest->linkToSelf($info["count"]);
+	?>
+				</td>
+	<?			$info = mysql_fetch_array($monthTotals);
+			}
+			else
+			{ ?>
+				<td class=bordered align=center>&nbsp;</td>
+	<?		}
+		} ?>
+
+			</tr>
+
 
 		</table>
 	<?
