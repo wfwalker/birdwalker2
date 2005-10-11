@@ -2,20 +2,23 @@
 <?php
 
 require_once("./birdwalker.php");
+require_once("./request.php");
 
 $randomPhotoSightings = performQuery("SELECT *, " . dailyRandomSeedColumn() . " FROM sighting WHERE Photo='1' ORDER BY shuffle LIMIT 5");
 
 
 htmlHead("About");
 
-globalMenu();
-$items[] = "about";
-navTrail($items);
+$request = new Request;
+$request->globalMenu();
 ?>
+    <div class="topright">
+	  <div class="logotype"><img src="./images/logotype.gif" width="389" height="61" alt="birdWalker"/></div>
+	</div>
 
-    <div class=contentright>
-
+    <div class="contentright">
       <div class="heading">Birding</div>
+        <a href="http://spinnity.blogspot.com/"><img src="./images/mary.jpg" border=0 alt="Mary" align="right"></a>
         <p class="report-content">Mary took Bill to a birding class back in 1996, and we&#39;ve been birding ever since.
           We really enjoy the chance to be outside in nature together, meeting other birders and learning
           how to make those tough identifications.
@@ -25,6 +28,7 @@ navTrail($items);
           birding.</p>
 
 	  <div class="heading">The Photos</div>
+       <a href="http://wfwalker.blogspot.com/"><img src="./images/bill.jpg" border=0 alt="Bill" align="right"></a>
  	   <p class="report-content">I use Canon <a href="http://www.fredmiranda.com/reviews/showproduct.php?product=39&sort=7&thecat=2">300mm f/4L IS</a> and
 		<a href="http://consumer.usa.canon.com/ir/controller?act=ModelDetailAct&fcategoryid=154&modelid=7318">500mm f/4L</a> lenses bought at <a href="http://www.kspphoto.com/">Keeble and Shuchat</a>
         on a <a href="http://www.dpreview.com/reviews/canoneos20d/">Canon 20D</a> camera body for most of the bird photos.
