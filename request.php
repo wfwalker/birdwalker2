@@ -497,9 +497,10 @@ function changeView()
 	{
 		if (! strstr(getenv("SCRIPT_NAME"), "species") &&
 			$this->getOrderID() == "" && $this->getFamilyID() == "" && $this->getSpeciesID() == "")
-		{ ?>
-			<div class="command-disabled"><a href="./speciesindex.php">birds</a></div<?
-		}
+		{
+?>
+			<div class="command-disabled"><a href="./speciesindex.php">birds</a></div>
+<?		}
 		else
 		{
 ?>			<div class="command"><a class="commandlink" href="./speciesindex.php">birds</a>
@@ -512,7 +513,7 @@ function changeView()
 				$orderRequest->setSpeciesID("");
 				$orderRequest->setFamilyID(""); ?>
 			
-				<div class="subcommand1"><?= $orderRequest->command($orderInfo["LatinName"]) ?></div>
+				<div><?= $orderRequest->command($orderInfo["LatinName"]) ?></div>
 <?		    }
 		
 			if ($this->getFamilyID() != "")
@@ -523,7 +524,7 @@ function changeView()
 				$familyRequest->setPageScript("familydetail.php");
 				$familyRequest->setSpeciesID(""); ?>
 					 
-				<div class="subcommand2"><?= $familyRequest->command($familyInfo["LatinName"]) ?></div>
+				<div><?= $familyRequest->command($familyInfo["LatinName"]) ?></div>
 <?		    }
 
 			if ($this->getSpeciesID() != "")
@@ -533,10 +534,10 @@ function changeView()
 				$speciesRequest = new Request;
 				$speciesRequest->setPageScript("speciesdetail.php"); ?>
 			
-				 <div class="subcommand3"><?= $speciesRequest->command($speciesInfo["CommonName"]) ?></div>
+				 <div><?= $speciesRequest->command($speciesInfo["CommonName"]) ?></div>
 <?		    }
-?>          </div><?
-		}
+?>          </div>
+<?		}
 	}
 
 
@@ -545,8 +546,8 @@ function changeView()
 		if (! strstr(getenv("SCRIPT_NAME"), "location") &&
 			$this->getStateID() == "" && $this->getCounty() == "" && $this->getLocationID() == "")
 		{ ?>
-			<div class="command-disabled"><a href="./locationindex.php">locations</a></div><?
-		}
+			<div class="command-disabled"><a href="./locationindex.php">locations</a></div>
+<?		}
 		else
 		{
 ?>			<div class="command"><a class="commandlink" href="./locationindex.php">locations</a>
@@ -559,7 +560,7 @@ function changeView()
 				$stateRequest->setLocationID("");
 				$stateRequest->setCounty(""); ?>
 			
-				<div class="subcommand1"><?= $stateRequest->command($stateInfo["Name"]) ?></div>
+				<div><?= $stateRequest->command($stateInfo["Name"]) ?></div>
 <?		    }
 		
 			if ($this->getCounty() != "")
@@ -568,7 +569,7 @@ function changeView()
 				$countyRequest->setPageScript("countydetail.php");
 				$countyRequest->setLocationID(""); ?>
 					 
-				<div class="subcommand2"><?= $countyRequest->command($this->getCounty() . " county") ?></div>
+				<div><?= $countyRequest->command($this->getCounty() . " county") ?></div>
 <?		    }
 
 			if ($this->getLocationID() != "")
@@ -577,7 +578,7 @@ function changeView()
 				$locationRequest = new Request;
 				$locationRequest->setPageScript("locationdetail.php"); ?>
 			
-				<div class="subcommand3"><?= $locationRequest->command($locationInfo["Name"]) ?></div>
+				<div><?= $locationRequest->command($locationInfo["Name"]) ?></div>
 <?		    }
 ?>          </div><?
 		}
@@ -588,8 +589,8 @@ function changeView()
 		if (! strstr(getenv("SCRIPT_NAME"), "trip") &&
 			$this->getYear() == "" && $this->getMonth() == "" && $this->getTripID() == "")
 		{ ?>
-			<div class="command-disabled"><a href="./tripindex.php">trips</a></div><?
-		}
+			<div class="command-disabled"><a href="./tripindex.php">trips</a></div>
+<?		}
 		else
 		{
 ?>			<div class="command">
@@ -602,7 +603,7 @@ function changeView()
 				$yearRequest->setTripID("");
 				$yearRequest->setMonth(""); ?>
 			
-				<div class="subcommand1"><?= $yearRequest->command($this->getYear()) ?></div>
+				<div><?= $yearRequest->command($this->getYear()) ?></div>
 <?		    }
 		
 			if ($this->getMonth() != "")
@@ -611,7 +612,7 @@ function changeView()
 				$monthRequest->setPageScript("monthdetail.php");
 				$monthRequest->setTripID(""); ?>
 					 
-				<div class="subcommand2"><?= $monthRequest->command(getMonthNameForNumber($this->getMonth())) ?></div>
+				<div><?= $monthRequest->command(getMonthNameForNumber($this->getMonth())) ?></div>
 <?		    }
 
 			if ($this->getTripID() != "")
@@ -621,7 +622,7 @@ function changeView()
 				$tripRequest = new Request;
 				$tripRequest->setPageScript("tripdetail.php"); ?>
 			
-				<div class="subcommand3"<?= $tripRequest->command($dayOfMonth) ?></div>
+				<div><?= $tripRequest->command($dayOfMonth) ?></div>
 <?		    }
 ?>          </div><?
 		}
