@@ -439,30 +439,31 @@ function changeView()
 		  <optgroup label="trips">
 <?		    $this->optionSelectedViewHelper("list", "trips"); ?>
 		  </optgroup>
-<?		}
+<?		} ?>
 
-		if ($this->getLocationID() == "")
-		{ ?>
-			<optgroup label="locations"><?
-			
-			if ($this->getTripID() == "" )
-			{
-				$this->optionSelectedViewHelper("list", "locations");
-			}
+		  <optgroup label="locations"><?
 
-			if ($this->getMonth() == "" )
-			{
-				$this->optionSelectedViewHelper("by month", "locationsbymonth");
+		  if ($this->getLocationID() == "")
+		  {
+			  if ($this->getTripID() == "" )
+			  {
+				  $this->optionSelectedViewHelper("list", "locations");
+			  }
+			  
+			  if ($this->getMonth() == "" )
+			  {
+				  $this->optionSelectedViewHelper("by month", "locationsbymonth");
+				  
+				  if ($this->getYear() == "" )
+				  {
+					  $this->optionSelectedViewHelper("by year", "locationsbyyear");
+				  }
+			  }
+		  }
 
-				if ($this->getYear() == "" )
-				{
-					$this->optionSelectedViewHelper("by year", "locationsbyyear");
-				}
-			}
+	      $this->optionSelectedViewHelper("map", "map"); ?>
 
-			$this->optionSelectedViewHelper("map", "map"); ?>
-			</optgroup> <?
-		}
+		  </optgroup> <?
 		
 		if ($this->getSpeciesID() == "")
 		{ ?>
@@ -625,9 +626,6 @@ function changeView()
 ?>          </div><?
 		}
 	}
-
-
-
 
 	function globalMenu()
 	{ ?>
