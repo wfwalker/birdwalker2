@@ -1,21 +1,23 @@
 
 <?
 require_once("./birdwalker.php");
+require_once("./request.php");
+
+$request = new Request;
 
 htmlHead("Counties");
-globalMenu();
-navTrail();
 
+$request->globalMenu();
 ?>
 
-
-    <div class=contentright>
+    <div class="topright">
       <div class="pagesubtitle">Index</div>
-      <div class="titleblock">	  
-        <div class=pagetitle>Counties</div>
-      </div>
+        <div class="pagetitle">Counties</div>
+	</div>
 
-<table class=metadata cellpadding=0 cellspacing=0 width="100%">
+    <div class="contentright">
+
+<table class="metadata" cellpadding="0" cellspacing="0" width="100%">
 
 <?php
 
@@ -29,9 +31,16 @@ $countyStats = performQuery("
       FROM location, sighting, state
       WHERE sighting.LocationName=location.Name AND state.Abbreviation=location.State
       GROUP BY location.County, theyear
-      ORDER BY State, County, theyear"); ?>
+      ORDER BY State, County, theyear");
 
-    <tr><td></td><? insertYearLabels(); ?></tr>
+$countyTotals = performQuery("
+    SELECT location.County, location.State, state.objectid as StateID, COUNT(DISTINCT sighting.SpeciesAbbreviation) AS SpeciesCount
+      FROM location, sighting, state
+      WHERE sighting.LocationName=location.Name AND state.Abbreviation=location.State
+      GROUP BY location.County
+      ORDER BY State, County"); ?>
+
+    <tr><td></td><? insertYearLabels(); ?><td class="bordered">Total</td></tr>
 
 <?
 while ($info = mysql_fetch_array($countyStats))
@@ -46,7 +55,7 @@ while ($info = mysql_fetch_array($countyStats))
 		$stateInfo = getStateInfo($stateid); ?>
 
 		<tr>
-            <td colspan=11 class=heading>
+            <td colspan="12" class="heading">
                 <a href="statedetail.php?stateid=<?= $prevState ?>"><?= $stateInfo["Name"] ?></a>
             </td>
         </tr>
@@ -57,7 +66,7 @@ while ($info = mysql_fetch_array($countyStats))
 	if (($yearArray != null) && ($countyToAccumulate != $county))
 	{ ?>
 
-		<tr><td class=firstcell>
+		<tr><td class="firstcell">
 			<a href="./countydetail.php?stateid=<?= $prevState ?>&county=<?= urlencode($countyToAccumulate) ?>">
 			<?= $countyToAccumulate ?> County
 			</a>
@@ -65,12 +74,16 @@ while ($info = mysql_fetch_array($countyStats))
 
 <?	for ($year = getEarliestYear(); $year <= getLatestYear(); $year++)
 	{ ?>
-        <td class=bordered align=right>
+        <td class="bordered">
             <a href="./specieslist.php?stateid=<?= $stateid ?>&county=<?= urlEncode($countyToAccumulate) ?>&year=<?= $year ?>">
 	          &nbsp; <? if (array_key_exists($year, $yearArray)) echo $yearArray[$year]; ?>
             </a>
         </td>
-<?	}?>
+<?	}
+
+	$countyTotal = mysql_fetch_array($countyTotals); ?>
+
+		 <td class="bordered"><?= $countyTotal["SpeciesCount"] ?></td>
 
 		</tr>
 

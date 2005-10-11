@@ -35,11 +35,12 @@ $request = new Request;
 $request->globalMenu();
 ?>
 
-    <div class=contentright>
+    <div class="topright">
       <div class="pagesubtitle">Index</div>
-      <div class="titleblock">	  
-        <div class=pagetitle>States</div>
-      </div>
+      <div class="pagetitle">States</div>
+	</div>
+
+    <div class="contentright">
 
 <table class=metadata cellpadding=1 cellspacing=0 width=80%>
 
