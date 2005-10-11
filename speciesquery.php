@@ -169,7 +169,7 @@ class SpeciesQuery extends BirdWalkerQuery
 
 	    <table width="100%" class="report-content">
 		  <tr valign="top">
-		    <td width="50%" style="padding-left: 30px; padding-right: 30px">
+		    <td width="50%" class="leftcolumn">
 <?
 			 $prevInfo = "";
 		     while($info = mysql_fetch_array($dbQuery))
@@ -233,7 +233,7 @@ class SpeciesQuery extends BirdWalkerQuery
 		    $counter--;
 		    if ($counter == 0)
 		    { ?>
-			    </td><td width="50%" style="padding-left: 30px; padding-right: 30px;">
+			    </td><td width="50%" class="rightcolumn">
 <?		    }
 	    } ?>
 

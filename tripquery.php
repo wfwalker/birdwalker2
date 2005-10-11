@@ -134,8 +134,8 @@ class TripQuery extends BirdWalkerQuery
 		$prevYear = "";
 		$counter = round($tripCount  * 0.52); ?>
 
-	   <table class=report-content width="100%">
-		  <tr valign=top><td width="50%" style="padding-left: 30px; padding-right: 30px;">
+	   <table class="report-content" width="100%">
+		  <tr valign="top"><td width="50%" class="leftcolumn">
 
 	<?	$dbQuery = $this->performQuery();
 		while($info = mysql_fetch_array($dbQuery))
@@ -169,7 +169,7 @@ class TripQuery extends BirdWalkerQuery
 			$counter--;
 			if ($counter == 0)
 			{ ?>
-			</td><td width="50%" style="padding-left: 30px; padding-right: 30px;">
+			</td><td width="50%" class="rightcolumn">
 	<?		}
 		} ?>
 		  </td></tr>

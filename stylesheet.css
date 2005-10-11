@@ -131,7 +131,5 @@ a.info:hover span{ /*the span will display just on :hover state*/
   padding-left: 16px; margin: 7px; white-space: nowrap;
 }
 
-/* .subcommand1 { margin-left: 3px; } */
-/* .subcommand2 { margin-left: 7px; } */
-/* .subcommand3 { margin-left: 11px; } */
-/* .commandlink { font-weight: bold; } */
+.leftcolumn { padding-left: 30px; }
+.rightcolumn { padding-left: 30px; }

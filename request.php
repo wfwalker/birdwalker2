@@ -257,7 +257,7 @@ function launchSlideshow() {
 
 // -->
 </SCRIPT>
-<a  href="javascript:void(0)" onclick="launchSlideshow()">slideshow</a>
+or <a  href="javascript:void(0)" onclick="launchSlideshow()">as slideshow...</a>
 <?
 	}
 
