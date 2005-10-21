@@ -74,13 +74,13 @@ htmlHead($locationInfo["Name"] . ", " .  $locationInfo["State"]);
 $request->globalMenu();
 ?>
 
-<div class="contentright">
+<div class="topright">
  <? locationBrowseButtons("./locationcreate.php", $locationID, "lists"); ?>
-<div class="titleblock">
   <a href="./locationdetail.php?locationid=<?= $locationInfo["objectid"] ?>">
-  <div class=pagetitle><?= $locationInfo["Name"] ?></div>
-</a>
+  <div class=pagetitle><?= $locationInfo["Name"] ?></div></a>
 </div>
+
+<div class="contentright">
 
 <?
 ?>

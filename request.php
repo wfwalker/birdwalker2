@@ -251,7 +251,7 @@ function launch(newURL, newName, newFeatures, orgName) {
 function launchSlideshow() {
   myRemote = launch("./slideshow.php?<?= $this->getParams() ?>",
                     "myRemote",
-                    "height=600,width=650,alwaysLowered=0,alwaysRaised=0,channelmode=0,dependent=0,directories=0,fullscreen=0,hotkeys=1,location=0,menubar=0,resizable=0,scrollbars=0,status=0,titlebar=1,toolbar=0,z-lock=0",
+                    "height=600,width=660,alwaysLowered=0,alwaysRaised=0,channelmode=0,dependent=0,directories=0,fullscreen=0,hotkeys=1,location=0,menubar=0,resizable=0,scrollbars=0,status=0,titlebar=1,toolbar=0,z-lock=0",
                     "myWindow");
 }
 
