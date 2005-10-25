@@ -35,8 +35,7 @@ class ChronoList
 		// TODO count rows in the first sightings table!
 
 		$firstSightingQuery = performQuery("
-          SELECT
-             date_format(sighting.TripDate, '%M %e, %Y') as niceDate,
+          SELECT " . niceDateColumn("sighting.TripDate") . ",
              sighting.*, 
              species.CommonName,
              species.objectid as speciesid,

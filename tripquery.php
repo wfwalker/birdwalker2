@@ -12,7 +12,7 @@ class TripQuery extends BirdWalkerQuery
 
 	function getSelectClause()
 	{
- 		$selectClause = "SELECT DISTINCT trip.objectid, trip.Name, trip.Notes, trip.Date, date_format(trip.Date, '%M %e') AS niceDate, year(trip.Date) as year, sum(sighting.Photo) as tripPhotos";
+ 		$selectClause = "SELECT DISTINCT trip.objectid, trip.Name, trip.Notes, trip.Date, date_format(trip.Date, '%M %D') AS niceDate, year(trip.Date) as year, sum(sighting.Photo) as tripPhotos";
 
 		if ($this->mReq->getSpeciesID() != "")
 		{

@@ -9,7 +9,7 @@ $dayStart = $localtimearray["tm_yday"] - 3;
 $dayStop = $localtimearray["tm_yday"] + 3;
 
 $tripsOnThisDate = performQuery("
-    SELECT *, date_format(Date, '%M %e, %Y') AS niceDate
+    SELECT *, " . niceDateColumn() . "
       FROM trip
       WHERE Month(Date)='" . ($localtimearray["tm_mon"] + 1) . "' AND
         DayOfYear(Date)>='" . $dayStart . "' AND DayOfYear(Date)<='" . $dayStop . "'

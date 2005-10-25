@@ -115,7 +115,7 @@ function referenceURL($info)
 
 function niceDateColumn($inDateColumnName = "Date")
 {
-	return "date_format(" . $inDateColumnName . ", '%W,  %M %e, %Y') as niceDate";
+	return "date_format(" . $inDateColumnName . ", '%W,  %M %D, %Y') as niceDate";
 }
 
 function dailyRandomSeedColumn()
@@ -464,12 +464,12 @@ function getTaxonomyInfo($objectid, $blankDigits)
 
 function getTripInfo($objectid)
 {
-	return performOneRowQuery("SELECT *, date_format(Date, '%W,  %M %e, %Y') as niceDate FROM trip where objectid='" . $objectid . "'");
+	return performOneRowQuery("SELECT *, date_format(Date, '%W,  %M %D, %Y') as niceDate FROM trip where objectid='" . $objectid . "'");
 }
 
 function getTripInfoForDate($inDate)
 {
-	return performOneRowQuery("SELECT *, date_format(Date, '%W,  %M %e, %Y') as niceDate FROM trip where Date='" . $inDate . "'");
+	return performOneRowQuery("SELECT *, date_format(Date, '%W,  %M %D, %Y') as niceDate FROM trip where Date='" . $inDate . "'");
 }
 
 function tripBrowseButtons($url, $tripID, $viewMode)
@@ -477,11 +477,11 @@ function tripBrowseButtons($url, $tripID, $viewMode)
 	$tripInfo = getTripInfo($tripID);
 
 	$nextTripInfo = performOneRowQuery("
-    SELECT objectid, " . niceDateColumn() . " FROM trip
+    SELECT objectid, date_format(Date, '%b %D, %Y') as niceDate FROM trip
       WHERE Date > '" . $tripInfo["Date"] . "'
       ORDER BY Date LIMIT 1", false);
 	$prevTripInfo = performOneRowQuery("
-    SELECT objectid, " . niceDateColumn() . " FROM trip
+    SELECT objectid, date_format(Date, '%b %D, %Y') as niceDate FROM trip
       WHERE Date < '" . $tripInfo["Date"] . "'
       ORDER BY Date DESC LIMIT 1", false);
 

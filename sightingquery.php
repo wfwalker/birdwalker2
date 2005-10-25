@@ -26,7 +26,7 @@ class SightingQuery extends BirdWalkerQuery
 	{
 		return "SELECT DISTINCT sighting.objectid as sightingid,
             sighting.*,
-            trip.objectid as tripid, date_format(sighting.TripDate, '%M %e, %Y') AS niceDate, trip.*,
+            trip.objectid as tripid, " . niceDateColumn("sighting.TripDate") . ", trip.*,
             location.objectid as locationid, location.*,
             species.objectid as speciesid, species.*";
 	}

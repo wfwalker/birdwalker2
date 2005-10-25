@@ -10,7 +10,7 @@ $sightingInfo = $request->getSightingInfo();
 
 $speciesInfo = performOneRowQuery("SELECT * FROM species WHERE Abbreviation='" . $sightingInfo["SpeciesAbbreviation"] . "'");
 $tripInfo = performOneRowQuery("
-    SELECT *, date_format(Date, '%W,  %M %e, %Y') AS niceDate
+    SELECT *, " . niceDateColumn() . "
       FROM trip WHERE Date='" . $sightingInfo["TripDate"] . "'");
 $tripYear =  substr($tripInfo["Date"], 0, 4);
 $locationInfo = performOneRowQuery("SELECT * FROM location WHERE Name='" . $sightingInfo["LocationName"] . "'");

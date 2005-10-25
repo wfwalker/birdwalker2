@@ -55,7 +55,7 @@ if ($postSightingID != "") {
 
 $sightingInfo = getSightingInfo($sightingID);
 $speciesInfo = performOneRowQuery("select * from species where Abbreviation='" . $sightingInfo["SpeciesAbbreviation"] . "'");
-$tripInfo = performOneRowQuery("select *, date_format(Date, '%W,  %M %e, %Y') as niceDate from trip where Date='" . $sightingInfo["TripDate"] . "'");
+$tripInfo = performOneRowQuery("select *, " . niceDateColumn() . " FROM trip WHERE Date='" . $sightingInfo["TripDate"] . "'");
 $locationInfo = performOneRowQuery("select * from location where Name='" . $sightingInfo["LocationName"] . "'");
 $stateInfo = getStateInfoForAbbreviation($locationInfo["State"]);
 

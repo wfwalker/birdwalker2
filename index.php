@@ -55,7 +55,7 @@ function birdOfTheDay()
 function latestTrips()
 {
 	$numberOfTrips = 8;
-	$latestTrips = performQuery("select *, date_format(Date, '%M %e, %Y') AS niceDate from trip order by Date desc LIMIT " . $numberOfTrips);
+	$latestTrips = performQuery("SELECT *, " . niceDateColumn() . " FROM trip ORDER BY Date DESC LIMIT " . $numberOfTrips);
  ?>
 	<div class="heading">Latest Trips</div>
 
