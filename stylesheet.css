@@ -124,7 +124,7 @@ a.info:hover span{ /*the span will display just on :hover state*/
 .command
 {
   border-top: solid 1px #BBBBBB;
-  background: #F2F2F2;
+  background: #F8F8F8;
   width: 95px;
   background-image: url(./images/open.gif);
   background-repeat: no-repeat;
