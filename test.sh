@@ -10,6 +10,8 @@ successURLs="\
 sightingedit.php?sightingid=11631 \
 tripedit.php?tripid=430 \
 countyindex.php \
+santaclarayearlist.php?year=2005 \
+targetyearbirds.php \
 tripcreate.php \
 slideshow.php \
 slideshow.php?speciesid=8012080300 \
