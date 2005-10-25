@@ -453,11 +453,10 @@ function changeView()
 			  if ($this->getMonth() == "" )
 			  {
 				  $this->optionSelectedViewHelper("by month", "locationsbymonth");
-				  
-				  if ($this->getYear() == "" )
-				  {
-					  $this->optionSelectedViewHelper("by year", "locationsbyyear");
-				  }
+			  }  
+			  if ($this->getYear() == "" )
+			  {
+				  $this->optionSelectedViewHelper("by year", "locationsbyyear");
 			  }
 		  }
 
@@ -477,12 +476,12 @@ function changeView()
 			if ($this->getMonth() == "" )
 			{
 				$this->optionSelectedViewHelper("by month", "speciesbymonth");
-
-				if ($this->getYear() == "" )
-				{
-					$this->optionSelectedViewHelper("by year", "speciesbyyear");
-				}
-			} ?>
+			}
+			if ($this->getYear() == "" )
+			{
+				$this->optionSelectedViewHelper("by year", "speciesbyyear");
+			}
+			?>
 			</optgroup><?
 		}  ?>
 
