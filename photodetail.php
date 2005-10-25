@@ -9,6 +9,7 @@ $request = new Request;
 $sightingInfo = $request->getSightingInfo();
 
 $speciesInfo = performOneRowQuery("SELECT * FROM species WHERE Abbreviation='" . $sightingInfo["SpeciesAbbreviation"] . "'");
+
 $tripInfo = performOneRowQuery("
     SELECT *, " . niceDateColumn() . "
       FROM trip WHERE Date='" . $sightingInfo["TripDate"] . "'");
@@ -21,7 +22,9 @@ $nextPhotoID = performCount("
       ORDER BY CONCAT(TripDate,objectid) LIMIT 1");
 
 if ($nextPhotoID != "") {
-	$nextPhotoInfo = getSightingInfo($nextPhotoID);
+	$nextPhotoInfo = performOneRowQuery("
+       SELECT objectid, date_format(TripDate, '%b %D, %Y') as niceDate
+         FROM sighting WHERE objectid='" . $nextPhotoID . "'", false);
 	//$nextPhotoLinkText = getThumbForSightingInfo($nextPhotoInfo);
 	$nextPhotoLinkText = $nextPhotoInfo["niceDate"];
 }
@@ -36,7 +39,9 @@ $prevPhotoID = performCount("
       ORDER BY CONCAT(TripDate,objectid) DESC LIMIT 1");
 
 if ($prevPhotoID != "") {
-	$prevPhotoInfo = getSightingInfo($prevPhotoID);
+	$prevPhotoInfo = performOneRowQuery("
+       SELECT objectid, date_format(TripDate, '%b %D, %Y') as niceDate
+         FROM sighting WHERE objectid='" . $prevPhotoID . "'", false);
 	//$prevPhotoLinkText = getThumbForSightingInfo($prevPhotoInfo);
 	$prevPhotoLinkText = $prevPhotoInfo["niceDate"];
 }
@@ -51,7 +56,8 @@ $request->globalMenu();
 ?>
 
 <div class="topright">
-	<? browseButtons("Photo Detail", "./photodetail.php?sightingid=", $request->getSightingID(), $prevPhotoID,$prevPhotoLinkText, $nextPhotoID, $nextPhotoLinkText); ?>
+	<? browseButtons("Photo Detail", "./photodetail.php?sightingid=", $request->getSightingID(),
+					 $prevPhotoID, $prevPhotoLinkText, $nextPhotoID, $nextPhotoLinkText); ?>
 	  <div class="pagetitle">
           <a href="./speciesdetail.php?speciesid=<?= $speciesInfo["objectid"] ?>"><?= $speciesInfo["CommonName"] ?></a>
 <?        editLink("./sightingedit.php?sightingid=" . $request->getSightingID()); ?>
@@ -71,26 +77,32 @@ $request->globalMenu();
 	    list($width, $height, $type, $attr) = getimagesize("./images/photo/" . $photoFilename); ?>
 
 	    <img width=<?= $width ?> height=<?= $height ?> src="<?= getPhotoURLForSightingInfo($sightingInfo) ?>" alt="<?= $speciesInfo['CommonName'] ?>">
-        <div class=copyright>@<?= $tripYear ?> W. F. Walker</div>
+        <div class="copyright">@<?= $tripYear ?> W. F. Walker</div>
 <?  }
 
     if (strlen($sightingInfo["Notes"]) > 0) { ?>
-		<p class=report-content><?= $sightingInfo["Notes"] ?></p>
+		<p class="report-content"><?= $sightingInfo["Notes"] ?></p>
 <?  }
 
     if (strlen($tripInfo["Notes"]) > 0) { ?>
-        <div class=heading>Trip: <a href="./tripdetail.php?tripid=<?= $tripInfo["objectid"] ?>"><?= $tripInfo["Name"] ?></a></div>
-        <p class=report-content><?= $tripInfo["Notes"] ?></p>
+        <div class="heading">
+			Trip: <a href="./tripdetail.php?tripid=<?= $tripInfo["objectid"] ?>"><?= $tripInfo["Name"] ?></a>
+		</div>
+        <p class="report-content"><?= $tripInfo["Notes"] ?></p>
 <?  }
 
     if (strlen($locationInfo["Notes"]) > 0) { ?>
-	    <div class=heading>Location: <a href="./locationdetail.php?locationid=<?= $locationInfo["objectid"] ?>"><?= $locationInfo["Name"] ?></a></div>
-        <p class=report-content><?= $locationInfo["Notes"] ?></p>
+	    <div class="heading">
+			Location: <a href="./locationdetail.php?locationid=<?= $locationInfo["objectid"] ?>"><?= $locationInfo["Name"] ?></a>
+		</div>
+        <p class="report-content"><?= $locationInfo["Notes"] ?></p>
 <?  }
 
     if (strlen($speciesInfo["Notes"]) > 0) { ?>
-	    <div class=heading>Species: <a href="./speciesdetail.php?speciesid=<?= $speciesInfo["objectid"] ?>"><?= $speciesInfo["CommonName"] ?></a></div>
-	    <p class=report-content><?= $speciesInfo["Notes"] ?></p>
+	    <div class="heading">
+			Species: <a href="./speciesdetail.php?speciesid=<?= $speciesInfo["objectid"] ?>"><?= $speciesInfo["CommonName"] ?></a>
+		</div>
+	    <p class="report-content"><?= $speciesInfo["Notes"] ?></p>
 <?  }
 
     footer();
