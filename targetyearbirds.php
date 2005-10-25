@@ -20,7 +20,7 @@ performQuery("
       GROUP BY SpeciesAbbreviation;");
 
 $latestSightingQuery = performQuery("
-    SELECT *, Year(tripdate) as latestYear, date_format(tripdate, '%M %e, %Y') AS niceDate
+    SELECT *, Year(tripdate) as latestYear, " . niceDateColumn("tripdate") . "
       FROM tmp
       ORDER BY tripdate desc;");
 
@@ -32,17 +32,18 @@ $request = new Request;
 $request->globalMenu();
 ?>
 
-<div class="contentright">
-<div class=pagesubtitle>Index</div>
-<div class="titleblock">
+<div class="topright">
+	<div class="pagesubtitle">Index</div>
     <div class="pagetitle">Target CA birds for <?= getLatestYear() ?></div>
-	<div class=metadata>
-        Birds we have seen at least <?= $sightingThreshold ?> times, but not seen yet in <?= getLatestYear() ?>
-    </div>
 </div>
 
+<div class="contentright">
+	<p class="metadata">
+        Birds we have seen at least <?= $sightingThreshold ?> times, but not seen yet in <?= getLatestYear() ?>
+    </p>
+
 <table>
-	<tr class=report-content><td>Sightings</td><td>Name</td><td>Last Seen</td></tr>
+	<tr class="report-content"><td>Sightings</td><td>Name</td><td>Last Seen</td></tr>
 
 <?
 while ($info = mysql_fetch_array($latestSightingQuery))
@@ -50,8 +51,8 @@ while ($info = mysql_fetch_array($latestSightingQuery))
 	if ($info["latestYear"] < getLatestYear() && $info["sightingCount"] >= $sightingThreshold)
 	{
 ?>
-		<tr class=report-content>
-		  <td align=right><a href="./sightinglist.php?speciesid=<?= $info["speciesid"] ?>"><?= $info["sightingCount"] ?></a></td>
+		<tr class="report-content">
+		  <td align="right"><a href="./sightinglist.php?speciesid=<?= $info["speciesid"] ?>"><?= $info["sightingCount"] ?></a></td>
           <td><a href="./speciesdetail.php?speciesid=<?= $info["speciesid"] ?>"><?= $info["CommonName"] ?></a></td>
           <td><?= $info["niceDate"] ?></td>
 		</tr>
