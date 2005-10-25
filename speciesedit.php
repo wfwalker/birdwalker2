@@ -2,14 +2,18 @@
 <?php
 
 require_once("./birdwalker.php");
+require_once("./request.php");
 
-$speciesID = $_GET['speciesid'];
-$postSpeciesID = $_POST['speciesid'];
-$save = $_POST['Save'];
+$request = new Request;
+
+array_key_exists('speciesid', $_GET) && $request->setSpeciesID($_GET['speciesid']);
+array_key_exists('speciesid', $_POST) && $request->setSpeciesID($_POST['speciesid']);
+
+$save = array_key_exists('Save', $_POST) ? $_POST['Save'] : "";
 
 getEnableEdit() or die("Editing disabled");
 
-if (($postSpeciesID != "") && ($save == "Save"))
+if (($request->getSpeciesID() != "") && ($save == "Save"))
 {
 	$commonName = $_POST['CommonName'];
 	$latinName = $_POST['LatinName'];
@@ -24,63 +28,62 @@ if (($postSpeciesID != "") && ($save == "Save"))
 				 "', Notes='" . $notes . 
 				 "', ReferenceURL='" . $referenceURL . 
 				 "', ABACountable='" . $abaCountable . 
-				 "' where objectid='" . $postSpeciesID . "'");
+				 "' where objectid='" . $request->getSpeciesID() . "'");
 
-	$speciesID = $postSpeciesID;
-
-	echo "<a href=\"./speciesdetail.php?speciesid=" . $speciesID . "\"><b>Species Updated</b></a>";
+	echo "<a href=\"./speciesdetail.php?speciesid=" . $request->getSpeciesID() . "\"><b>Species Updated</b></a>";
 }
 
-$speciesInfo = getSpeciesInfo($speciesID);
+$speciesInfo = getSpeciesInfo($request->getSpeciesID());
 
-htmlHead($speciesInfo["Name"] . ", " . $speciesInfo["niceDate"]);
+htmlHead($speciesInfo["CommonName"]);
 
-globalMenu();
-speciesBrowseButtons("./speciesedit.php", $speciesID, "edit");
-navTrailSpecies($speciesID);
+$request->globalMenu();
 ?>
 
-<div class="contentright">
-
-<div class=pagesubtitle><?= $speciesInfo["niceDate"] ?></div>
-<div class="titleblock">
+<div class="topright">
+    <? speciesBrowseButtons("./speciesedit.php", $request->getSpeciesID(), $request->getView()); ?>
   <a href="./speciesdetail.php?speciesid=<?= $speciesInfo["objectid"] ?>">
-    <div class=pagetitle><?= $speciesInfo["Name"] ?></div>
+    <div class="pagetitle"><?= $speciesInfo["CommonName"] ?></div>
 </a>
 </div>
 
-<form method="post" action="./speciesedit.php?speciesid=<?= $speciesID ?>">
+<div class="contentright">
 
-<table class=report-content width=100%>
+<div class="titleblock">
+</div>
+
+<form method="post" action="./speciesedit.php?speciesid=<?= $request->getSpeciesID() ?>">
+
+<table class="report-content" width=100%>
   <tr>
-	<td class=fieldlabel>Common Name</td>
+	<td class="fieldlabel">Common Name</td>
 	<td><input type="text" name="CommonName" value="<?= $speciesInfo["CommonName"] ?>" size=30/></td>
   </tr>
   <tr>
-	<td class=fieldlabel>Latin Name</td>
+	<td class="fieldlabel">Latin Name</td>
 	<td><input type="text" name="LatinName" value="<?= $speciesInfo["LatinName"] ?>" size=30/></td>
   </tr>
   <tr>
-	<td class=fieldlabel>Abbreviation</td>
+	<td class="fieldlabel">Abbreviation</td>
 	<td><input type="text" name="Abbreviation" value="<?= $speciesInfo["Abbreviation"] ?>" size=30/></td>
   </tr>
   <tr>
-	<td class=fieldlabel>Notes</td>
+	<td class="fieldlabel">Notes</td>
 	<td><textarea name="Notes" cols=60 rows=20><?= $speciesInfo["Notes"] ?></textarea></td>
   </tr>
 
   <tr>
-	<td class=fieldlabel>ReferenceURL</td>
+	<td class="fieldlabel">ReferenceURL</td>
 	<td><input type="text" name="ReferenceURL" value="<?= $speciesInfo["ReferenceURL"] ?>" size=80/></td>
   </tr>
 
   <tr>
-	<td class=fieldlabel>ABACountable</td>
+	<td class="fieldlabel">ABACountable</td>
 	<td><input type="text" name="ABACountable" value="<?= $speciesInfo["ABACountable"] ?>" size=20/></td>
   </tr>
 
   <tr>
-	<td><input type="hidden" name="speciesid" value="<?= $speciesID ?>"/></td>
+	<td><input type="hidden" name="speciesid" value="<?= $request->getSpeciesID() ?>"/></td>
 	<td><input type="submit" name="Save" value="Save"/></td>
   </tr>
 </table>
