@@ -552,7 +552,7 @@ INSERT INTO species VALUES (11083040200,'blknod','Anous minutus','Black Noddy','
 INSERT INTO species VALUES (11083040201,'hawnod','Anous minutus 1','Hawaiian Noddy','','',1);
 INSERT INTO species VALUES (11083050100,'bugnod','Procelsterna cerulea','Blue-gray Noddy','','',1);
 INSERT INTO species VALUES (11083060100,'cowter','Gygis alba','Common White-Tern','','',1);
-INSERT INTO species VALUES (11084010100,'blkski','Rynchops niger','Black Skimmer','','http://www.mbr-pwrc.usgs.gov/id/framlst/i0800id.html',1);
+INSERT INTO species VALUES (11084010100,'blkski','Rynchops niger','Black Skimmer','Skimmers were an early favorite of ours ever since we found the small population at Charleston Slough. The way they flop right down on the ground is very endearing.','http://www.mbr-pwrc.usgs.gov/id/framlst/i0800id.html',1);
 INSERT INTO species VALUES (11090010100,'doveki','Alle alle','Dovekie','','',1);
 INSERT INTO species VALUES (11090020100,'commur','Uria aalge','Common Murre','','',1);
 INSERT INTO species VALUES (11090020101,'calmur','Uria aalge 1','California Murre','','',1);
