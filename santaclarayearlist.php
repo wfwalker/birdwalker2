@@ -6,11 +6,12 @@ require_once("./request.php");
 
 $request = new Request;
 
-performQuery("CREATE TEMPORARY TABLE tmp ( CommonName varchar(32) default NULL, objectid varchar(32) default NULL, sightingCount varchar(32));");
+performQuery("Make Temp Table", "CREATE TEMPORARY TABLE tmp ( CommonName varchar(32) default NULL, objectid varchar(32) default NULL, sightingCount varchar(32));");
 
-performQuery("INSERT INTO tmp SELECT species.CommonName, species.objectid, 0 FROM species");
+performQuery("Put in defaults for all speciesw", "INSERT INTO tmp SELECT species.CommonName, species.objectid, 0 FROM species");
 
-performQuery("INSERT INTO tmp
+performQuery("Put Santa Clara County Sightings into Tmp",
+  "INSERT INTO tmp
     SELECT species.CommonName, species.objectid, count(sighting.objectid) as sightingCount
     FROM sighting, species, location
     WHERE species.Abbreviation=sighting.SpeciesAbbreviation
@@ -18,8 +19,8 @@ performQuery("INSERT INTO tmp
       AND Exclude!='1' and Year(TripDate)='". $request->getYear() . "'
     GROUP BY SpeciesAbbreviation;");
 
-$latestSightingQuery = performQuery("
-    SELECT countyfrequency.Frequency, tmp.CommonName, tmp.objectid, max(sightingCount) AS sightingCount
+$latestSightingQuery = performQuery("Get Latest Sighting and Frequency",
+    "SELECT countyfrequency.Frequency, tmp.CommonName, tmp.objectid, max(sightingCount) AS sightingCount
       FROM tmp, countyfrequency WHERE tmp.CommonName=countyfrequency.CommonName
       GROUP BY tmp.CommonName
       ORDER BY countyfrequency.Frequency");

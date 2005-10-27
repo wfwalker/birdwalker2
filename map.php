@@ -62,7 +62,7 @@ class Map
 
 	function performDBQuery()
 	{
-		return performQuery(
+		return performQuery("Find map items",
 							$this->mLocationQuery->getSelectClause() . ", location.Latitude, location.Longitude" .
 							$this->mLocationQuery->getFromClause() . " " . 
 							$this->mLocationQuery->getWhereClause() .

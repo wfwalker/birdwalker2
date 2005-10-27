@@ -8,8 +8,8 @@ $monthNum = $localtimearray["tm_mon"] + 1;
 $dayStart = $localtimearray["tm_yday"] - 3;
 $dayStop = $localtimearray["tm_yday"] + 3;
 
-$tripsOnThisDate = performQuery("
-    SELECT *, " . niceDateColumn() . "
+$tripsOnThisDate = performQuery("Find Trips On This Date",
+    "SELECT *, " . niceDateColumn() . "
       FROM trip
       WHERE Month(Date)='" . ($localtimearray["tm_mon"] + 1) . "' AND
         DayOfYear(Date)>='" . $dayStart . "' AND DayOfYear(Date)<='" . $dayStop . "'
@@ -31,7 +31,9 @@ $request->globalMenu();
 
 <?    while ($info = mysql_fetch_array($tripsOnThisDate))
       {
-          $tripSpeciesCount = performCount("SELECT COUNT(DISTINCT(sighting.objectid)) from sighting where sighting.TripDate='" . $info["Date"] . "'"); ?>
+          $tripSpeciesCount = performCount("Count Species For This Trip",
+		      "SELECT COUNT(DISTINCT(sighting.objectid)) from sighting where sighting.TripDate='" . $info["Date"] . "'"); ?>
+
 		  <p>&nbsp;</p>
 
           <div class="superheading"><?= $info["niceDate"] ?></div>

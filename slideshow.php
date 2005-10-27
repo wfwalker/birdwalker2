@@ -11,7 +11,7 @@ $pageTitle =  $sightingQuery->getPageTitle();
 
 if ($request->getSightingID() == "")
 { 
-	$request->setSightingID(performCount(
+	$request->setSightingID(performCount("Get First Photo Sighting ID",
 	$sightingQuery->getSelectClause() . " " .
 	$sightingQuery->getFromClause() . " " .
 	$sightingQuery->getWhereClause() . "
@@ -24,16 +24,17 @@ if ($request->getSightingID() == "")
 }
 
 $sightingInfo = $request->getSightingInfo();
-$speciesInfo = performOneRowQuery("SELECT * FROM species WHERE Abbreviation='" . $sightingInfo["SpeciesAbbreviation"] . "'");
 
-$nextPhotoID = performCount(
+$speciesInfo = performOneRowQuery("Get Species Info", "SELECT * FROM species WHERE Abbreviation='" . $sightingInfo["SpeciesAbbreviation"] . "'");
+
+$nextPhotoID = performCount("Get Next Photo Sighting ID",
 	$sightingQuery->getSelectClause() . " " .
 	$sightingQuery->getFromClause() . " " .
 	$sightingQuery->getWhereClause() . "
       AND Photo='1' AND CONCAT(TripDate,sighting.objectid) < '" . $sightingInfo["TripDate"] . $sightingInfo["objectid"] . "'
       ORDER BY CONCAT(TripDate,sighting.objectid) DESC LIMIT 1");
 
-$prevPhotoID = performCount(
+$prevPhotoID = performCount("Get Prev Photo Sighting ID",
 	$sightingQuery->getSelectClause() . " " .
 	$sightingQuery->getFromClause() . " " .
 	$sightingQuery->getWhereClause() . "
@@ -71,7 +72,7 @@ $tripYear =  substr($sightingInfo["TripDate"], 0, 4);
 
 <center>
 	    <img width=<?= $width ?> height=<?= $height ?> src="<?= getPhotoURLForSightingInfo($sightingInfo) ?>">
-        <div class=copyright>@<?= $tripYear ?> W. F. Walker</div>
+        <div class="copyright">@<?= $tripYear ?> W. F. Walker</div>
 </center>
 
 </div>

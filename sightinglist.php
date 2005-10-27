@@ -10,19 +10,17 @@ $sightingQuery = new SightingQuery($request);
 
 $dbQuery = $sightingQuery->performQuery();
 
-htmlHead($sightingQuery->getPageTitle());
-
-// $request->globalMenu();
 ?>
 
-    <div class="topright">
-	  <?= disabledBrowseButtons("Sighting List") ?>
-      <div class="pagetitle"><?= $sightingQuery->getPageTitle() ?></div>
-	</div>
+<html>
 
-    <div class="contentright">
-      <div class="titleblock">	  
-      </div>
+<link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
+<title>birdWalker | Species List</title>
+</head>
+
+<body>
+
+      <div class="pagetitle"><?= $sightingQuery->getPageTitle() ?></div>
 
       <div class="heading"><?= mysql_num_rows($dbQuery) ?> Sightings</div>
 

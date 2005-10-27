@@ -4,13 +4,14 @@
 require_once("./birdwalker.php");
 require_once("./request.php");
 
-$photoLocations = performQuery("
-    SELECT DISTINCT location.*, COUNT(DISTINCT sighting.objectid) AS photoCount
+$photoLocations = performQuery("Find Locations with Photos",
+    "SELECT DISTINCT location.*, COUNT(DISTINCT sighting.objectid) AS photoCount
       FROM location, sighting
       WHERE location.Name=sighting.LocationName AND sighting.Photo='1'
       GROUP BY location.objectid ORDER BY location.State, location.County, location.Name");
-$photoCount = performCount("
-    SELECT COUNT(*) FROM sighting WHERE Photo='1'");
+
+$photoCount = performCount("Count Photos",
+    "SELECT COUNT(*) FROM sighting WHERE Photo='1'");
 
 
 htmlHead("Photo List");

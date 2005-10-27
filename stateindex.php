@@ -5,7 +5,8 @@ require_once("./birdwalker.php");
 require_once("./request.php");
 
 $yearArray = null;
-$stateStats = performQuery("SELECT
+$stateStats = performQuery("Get State Statistics",
+  "SELECT
     location.State,
     count(distinct sighting.SpeciesAbbreviation) AS SpeciesCount,
     year(sighting.TripDate) AS theyear
@@ -15,8 +16,8 @@ $stateStats = performQuery("SELECT
   ORDER BY State, theyear");
 
 // todo could build some kind of set of visited states while running through the stateStats?
-$visitedStatesQuery = performQuery("
-    SELECT DISTINCT(state.objectid)
+$visitedStatesQuery = performQuery("Get List of visited States",
+    "SELECT DISTINCT(state.objectid)
       FROM state, location, sighting
       WHERE state.Abbreviation=location.State and location.Name=sighting.LocationName ORDER BY state.Name");
 

@@ -8,22 +8,26 @@ $request = new Request;
 
 $sightingInfo = $request->getSightingInfo();
 
-$speciesInfo = performOneRowQuery("SELECT * FROM species WHERE Abbreviation='" . $sightingInfo["SpeciesAbbreviation"] . "'");
+$speciesInfo = performOneRowQuery("Get Species Info", "SELECT * FROM species WHERE Abbreviation='" . $sightingInfo["SpeciesAbbreviation"] . "'");
 
-$tripInfo = performOneRowQuery("
-    SELECT *, " . niceDateColumn() . "
+$tripInfo = performOneRowQuery(
+    "Get Trip Info", 
+    "SELECT *, " . niceDateColumn() . "
       FROM trip WHERE Date='" . $sightingInfo["TripDate"] . "'");
 $tripYear =  substr($tripInfo["Date"], 0, 4);
-$locationInfo = performOneRowQuery("SELECT * FROM location WHERE Name='" . $sightingInfo["LocationName"] . "'");
 
-$nextPhotoID = performCount("
-    SELECT objectid FROM sighting
+$locationInfo = performOneRowQuery("Get Location Info", "SELECT * FROM location WHERE Name='" . $sightingInfo["LocationName"] . "'");
+
+$nextPhotoID = performCount(
+	"Get Next Photo", 
+    "SELECT objectid FROM sighting
       WHERE Photo='1' AND CONCAT(TripDate,objectid) > '" . $sightingInfo["TripDate"] . $request->getSightingID() . "'
       ORDER BY CONCAT(TripDate,objectid) LIMIT 1");
 
-if ($nextPhotoID != "") {
-	$nextPhotoInfo = performOneRowQuery("
-       SELECT objectid, date_format(TripDate, '%b %D, %Y') as niceDate
+if ($nextPhotoID != "")
+{
+	$nextPhotoInfo = performOneRowQuery("Get Next Photo Info", 
+       "SELECT objectid, date_format(TripDate, '%b %D, %Y') as niceDate
          FROM sighting WHERE objectid='" . $nextPhotoID . "'", false);
 	//$nextPhotoLinkText = getThumbForSightingInfo($nextPhotoInfo);
 	$nextPhotoLinkText = $nextPhotoInfo["niceDate"];
@@ -33,14 +37,15 @@ else
 	$nextPhotoLinkText = "";
 }
 
-$prevPhotoID = performCount("
-    SELECT objectid FROM sighting
+$prevPhotoID = performCount(
+	"Get Previous Photo",
+    "SELECT objectid FROM sighting
       WHERE Photo='1' AND CONCAT(TripDate,objectid) < '" . $sightingInfo["TripDate"] . $request->getSightingID() . "'
       ORDER BY CONCAT(TripDate,objectid) DESC LIMIT 1");
 
 if ($prevPhotoID != "") {
-	$prevPhotoInfo = performOneRowQuery("
-       SELECT objectid, date_format(TripDate, '%b %D, %Y') as niceDate
+	$prevPhotoInfo = performOneRowQuery("Get Previous Photo Info",
+       "SELECT objectid, date_format(TripDate, '%b %D, %Y') as niceDate
          FROM sighting WHERE objectid='" . $prevPhotoID . "'", false);
 	//$prevPhotoLinkText = getThumbForSightingInfo($prevPhotoInfo);
 	$prevPhotoLinkText = $prevPhotoInfo["niceDate"];

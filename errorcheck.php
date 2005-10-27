@@ -4,27 +4,27 @@
 require_once("./birdwalker.php");
 require_once("./request.php");
 
-$badAbbrevs = performQuery("
-    SELECT species.*,sighting.*, sighting.objectid AS sightingid
+$badAbbrevs = performQuery("Find Bad Abbreviations",
+    "SELECT species.*,sighting.*, sighting.objectid AS sightingid
       FROM sighting
       LEFT JOIN species ON species.Abbreviation=sighting.SpeciesAbbreviation
       ORDER BY species.CommonName, sighting.SpeciesAbbreviation");
 
-$badSightingDates = performQuery("
-    SELECT trip.*,sighting.*, sighting.objectid AS sightingid
+$badSightingDates = performQuery("Find Bad Sighting Dates",
+    "SELECT trip.*,sighting.*, sighting.objectid AS sightingid
       FROM sighting
       LEFT JOIN trip ON trip.Date=sighting.TripDate
       ORDER BY trip.Name, sighting.TripDate");
 
-$badSightingLocations = performQuery("
-    SELECT location.*,sighting.*, sighting.objectid AS sightingid
+$badSightingLocations = performQuery("Find Bad Sighting Locations",
+    "SELECT location.*,sighting.*, sighting.objectid AS sightingid
       FROM sighting
       LEFT JOIN location ON location.Name=sighting.LocationName
       ORDER BY location.County, sighting.LocationName");
 
 
-$missingLatLong = performQuery("
-    SELECT * FROM location WHERE Latitude=0 OR Longitude=0");
+$missingLatLong = performQuery("Find Missing Lat/Long",
+    "SELECT * FROM location WHERE Latitude=0 OR Longitude=0");
 
 htmlHead("Bad Records");
 

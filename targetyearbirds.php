@@ -4,23 +4,23 @@
 require_once("./birdwalker.php");
 require_once("./request.php");
 
-performQuery("
-    CREATE TEMPORARY TABLE tmp (
+performQuery("Create Temp Table",
+    "CREATE TEMPORARY TABLE tmp (
       CommonName varchar(32) default NULL,
       speciesid varchar(32) default NULL,
       tripdate date default NULL,
       sightingCount varchar(32));");
 
-performQuery("
-    INSERT INTO tmp
+performQuery("Count Sightings for Species",
+    "INSERT INTO tmp
       SELECT species.CommonName, species.objectid, max(TripDate), count(sighting.objectid) as sightingCount
       FROM sighting, species, location
       WHERE species.Abbreviation=sighting.SpeciesAbbreviation AND
         sighting.LocationName=location.Name AND location.State='CA' AND Exclude!='1'
       GROUP BY SpeciesAbbreviation;");
 
-$latestSightingQuery = performQuery("
-    SELECT *, Year(tripdate) as latestYear, " . niceDateColumn("tripdate") . "
+$latestSightingQuery = performQuery("Find Latest Sighting",
+    "SELECT *, Year(tripdate) as latestYear, " . niceDateColumn("tripdate") . "
       FROM tmp
       ORDER BY tripdate desc;");
 
@@ -60,7 +60,7 @@ while ($info = mysql_fetch_array($latestSightingQuery))
 	}
 }
 
-performQuery("DROP TABLE tmp;");
+performQuery("Clean up tmp Table", "DROP TABLE tmp;");
 ?>
 
 </table>

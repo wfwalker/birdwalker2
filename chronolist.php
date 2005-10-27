@@ -15,7 +15,8 @@ class ChronoList
 
 	function draw()
 	{
-		performQuery("CREATE TEMPORARY TABLE tmp (
+		performQuery("Create Temp Table",
+		  "CREATE TEMPORARY TABLE tmp (
             SpeciesAbbreviation varchar(16) default NULL,
             TripDate date default NULL,
             objectid varchar(16) default NULL);");
@@ -23,8 +24,8 @@ class ChronoList
         // here's what section 3.6.4 of the mysql manual calls:
         // "a quite inefficient trick called the MAX-CONCAT trick"
 		// TODO upgrade to mysql 4.1 and use a subquery
-		performQuery("
-          INSERT INTO tmp
+		performQuery("Put Sightings into Temp Table",
+          "INSERT INTO tmp
             SELECT SpeciesAbbreviation,
               LEFT(        MIN( CONCAT(TripDate,lpad(sighting.objectid,6,'0')) ), 10) AS TripDate,
               0+SUBSTRING( MIN( CONCAT(TripDate,lpad(sighting.objectid,6,'0')) ),  11) AS objectid ".
@@ -34,8 +35,8 @@ class ChronoList
 
 		// TODO count rows in the first sightings table!
 
-		$firstSightingQuery = performQuery("
-          SELECT " . niceDateColumn("sighting.TripDate") . ",
+		$firstSightingQuery = performQuery("Choose first sightings",
+          "SELECT " . niceDateColumn("sighting.TripDate") . ",
              sighting.*, 
              species.CommonName,
              species.objectid as speciesid,
@@ -94,7 +95,7 @@ class ChronoList
 		    $prevSightingInfo = $sightingInfo;
 		}
 
-		performQuery("DROP TABLE tmp;");
+		performQuery("Remove temporary table", "DROP TABLE tmp;");
 ?>
 
 		</table>

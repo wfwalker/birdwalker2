@@ -25,16 +25,16 @@ $yearArray = null;
 $lastStateAccumulated = "NONE";
 $prevState = "NONE";
 $countyToAccumulate = "NONE";
-$countyStats = performQuery("
-    SELECT location.County, location.State, state.objectid as StateID, location.objectid, COUNT(DISTINCT sighting.SpeciesAbbreviation) AS
+$countyStats = performQuery("Get County Statistics By Year",
+    "SELECT location.County, location.State, state.objectid as StateID, location.objectid, COUNT(DISTINCT sighting.SpeciesAbbreviation) AS
       SpeciesCount, year(sighting.TripDate) AS theyear
       FROM location, sighting, state
       WHERE sighting.LocationName=location.Name AND state.Abbreviation=location.State
       GROUP BY location.County, theyear
       ORDER BY State, County, theyear");
 
-$countyTotals = performQuery("
-    SELECT location.County, location.State, state.objectid as StateID, COUNT(DISTINCT sighting.SpeciesAbbreviation) AS SpeciesCount
+$countyTotals = performQuery("Get County Totals",
+    "SELECT location.County, location.State, state.objectid as StateID, COUNT(DISTINCT sighting.SpeciesAbbreviation) AS SpeciesCount
       FROM location, sighting, state
       WHERE sighting.LocationName=location.Name AND state.Abbreviation=location.State
       GROUP BY location.County

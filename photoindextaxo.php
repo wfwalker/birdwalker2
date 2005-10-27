@@ -4,13 +4,13 @@
 require_once("./birdwalker.php");
 require_once("./request.php");
 
-$photoSpecies = performQuery("
-    SELECT DISTINCT species.*, COUNT(DISTINCT sighting.objectid) AS photoCount, max(sighting.TripDate) as latestPhoto
+$photoSpecies = performQuery("Find Species With Photos",
+    "SELECT DISTINCT species.*, COUNT(DISTINCT sighting.objectid) AS photoCount, max(sighting.TripDate) as latestPhoto
       FROM species, sighting
       WHERE species.Abbreviation=sighting.SpeciesAbbreviation AND sighting.Photo='1'
       GROUP BY sighting.SpeciesAbbreviation ORDER BY species.objectid");
-$photoCount = performCount("
-    SELECT COUNT(*) FROM sighting WHERE Photo='1'");
+$photoCount = performCount("Count Photos",
+    "SELECT COUNT(*) FROM sighting WHERE Photo='1'");
 
 $thresholdTime = strtotime("-1 month");
 

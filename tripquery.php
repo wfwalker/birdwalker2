@@ -90,16 +90,18 @@ class TripQuery extends BirdWalkerQuery
 
 	function getTripCount()
 	{
-		return performCount("
-          SELECT COUNT(DISTINCT trip.objectid) ".
+		return performCount(
+		  "Count Trips", 
+          "SELECT COUNT(DISTINCT trip.objectid) ".
 			$this->getFromClause() . " " .
 			$this->getWhereClause());
 	}
 
 	function getPhotoCount()
 	{
-		return performCount("
-          SELECT COUNT(DISTINCT trip.objectid) ".
+		return performCount(
+		  "Count Photos",
+          "SELECT COUNT(DISTINCT trip.objectid) ".
 			$this->getFromClause() . " " .
 			$this->getWhereClause() . " AND sighting.Photo='1'");
 	}
@@ -107,6 +109,7 @@ class TripQuery extends BirdWalkerQuery
 	function performQuery()
 	{
 		return performQuery(
+			"Query Trips",
 			$this->getSelectClause() . " " .
 			$this->getFromClause() . " " .
 			$this->getWhereClause() . "  GROUP BY trip.objectid ORDER BY trip.Date desc");
@@ -182,8 +185,9 @@ class TripQuery extends BirdWalkerQuery
 
       while ($info = mysql_fetch_array($dbQuery))
 	  {
-          $tripSpeciesCount = performCount("
-              SELECT COUNT(DISTINCT(sighting.objectid))
+          $tripSpeciesCount = performCount(
+			  "Count Sightings", 
+              "SELECT COUNT(DISTINCT(sighting.objectid))
                   FROM sighting
                   WHERE sighting.TripDate='" . $info["Date"] . "'"); ?>
 

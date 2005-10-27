@@ -103,32 +103,32 @@ class SpeciesQuery extends BirdWalkerQuery
 
 	function getSpeciesCount()
 	{
-		return performCount("
-          SELECT COUNT(DISTINCT species.objectid) ".
+		return performCount("Count Species",
+          "SELECT COUNT(DISTINCT species.objectid) ".
 			$this->getFromClause() . " " .
 			$this->getWhereClause() . " ORDER BY species.objectid");
 	}
 
 	function getPhotoCount()
 	{
-		return performCount("
-          SELECT COUNT(DISTINCT species.objectid) ".
+		return performCount("Count Species With Photos",
+          "SELECT COUNT(DISTINCT species.objectid) ".
 			$this->getFromClause() . " " .
 			$this->getWhereClause() . " AND sighting.Photo='1' ORDER BY species.objectid");
 	}
 
 	function performQuery()
 	{
-		return performQuery("
-          SELECT DISTINCT species.objectid, species.* ".
+		return performQuery("Query for Species",
+          "SELECT DISTINCT species.objectid, species.* ".
 			$this->getFromClause() . " " .
 			$this->getWhereClause() . " ORDER BY species.objectid");
 	}
 
 	function getOneRandom()
 	{
-		return performOneRowQuery("
-          SELECT DISTINCT species.objectid, species.*, " . dailyRandomSeedColumn() . " " .
+		return performOneRowQuery("Find one random bird with photo",
+          "SELECT DISTINCT species.objectid, species.*, " . dailyRandomSeedColumn() . " " .
 			$this->getFromClause() . " " .
 			$this->getWhereClause() . " AND sighting.Photo='1' ORDER BY shuffle LIMIT 1");
 	}
@@ -149,7 +149,7 @@ class SpeciesQuery extends BirdWalkerQuery
 	 */
 	function formatTwoColumnSpeciesList($firstSightings = "", $firstYearSightings = "")
 	{
-		$dbQuery = performQuery(
+		$dbQuery = performQuery("Two Column Species List Query",
 								$this->getSelectClause() . " " .
 								$this->getFromClause() . " " .
 								$this->getWhereClause() . " " .
@@ -246,8 +246,8 @@ class SpeciesQuery extends BirdWalkerQuery
 	 */
 	function formatSpeciesByYearTable()
 	{
-		$yearTotals = performQuery("
-          SELECT COUNT(DISTINCT species.objectid) AS count, year(sighting.TripDate) AS year " .
+		$yearTotals = performQuery("Species By Year 1",
+          "SELECT COUNT(DISTINCT species.objectid) AS count, year(sighting.TripDate) AS year " .
 				$this->getFromClause() . " " .
 				$this->getWhereClause() . "
 			GROUP BY year");
@@ -259,7 +259,7 @@ class SpeciesQuery extends BirdWalkerQuery
       GROUP BY sighting.SpeciesAbbreviation
       ORDER BY speciesid";
 
-		$gridQuery = performQuery($gridQueryString); ?>
+		$gridQuery = performQuery("Species By Year 2", $gridQueryString); ?>
 
 		<table cellpadding=0 cellspacing=0 class="report-content" width="100%">
 			<tr><td></td><? insertYearLabels() ?></tr>
@@ -337,8 +337,8 @@ class SpeciesQuery extends BirdWalkerQuery
 	 */
 	function formatSpeciesByMonthTable()
 	{
-		$monthTotals = performQuery("
-          SELECT COUNT(DISTINCT species.objectid) AS count, month(sighting.TripDate) AS month " .
+		$monthTotals = performQuery("Species by Month Query 1",
+          "SELECT COUNT(DISTINCT species.objectid) AS count, month(sighting.TripDate) AS month " .
 				$this->getFromClause() . " " .
 				$this->getWhereClause() . "
 			GROUP BY month");
@@ -350,7 +350,7 @@ class SpeciesQuery extends BirdWalkerQuery
       GROUP BY sighting.SpeciesAbbreviation
       ORDER BY speciesid";
 
-		$gridQuery = performQuery($gridQueryString); ?>
+		$gridQuery = performQuery("Species by Month Query 2", $gridQueryString); ?>
 
 		<table cellpadding=0 cellspacing=0 class="report-content" width="100%">
 			<tr><td></td><? insertMonthLabels() ?></tr>

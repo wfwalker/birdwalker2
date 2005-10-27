@@ -55,14 +55,16 @@ function birdOfTheDay()
 function latestTrips()
 {
 	$numberOfTrips = 8;
-	$latestTrips = performQuery("SELECT *, " . niceDateColumn() . " FROM trip ORDER BY Date DESC LIMIT " . $numberOfTrips);
+	$latestTrips = performQuery("Get Latest Trips", "SELECT *, " . niceDateColumn() . " FROM trip ORDER BY Date DESC LIMIT " . $numberOfTrips);
  ?>
 	<div class="heading">Latest Trips</div>
 
 <?  for ($index = 0; $index < $numberOfTrips; $index++)
 	{
 		$info = mysql_fetch_array($latestTrips);
-		$tripSpeciesCount = performCount("SELECT COUNT(DISTINCT(sighting.objectid)) from sighting where sighting.TripDate='" . $info["Date"] . "'"); ?>
+		$tripSpeciesCount = performCount(
+		  "Count trips",
+		  "SELECT COUNT(DISTINCT(sighting.objectid)) from sighting where sighting.TripDate='" . $info["Date"] . "'"); ?>
 
 		<div class="superheading"><?= $info["niceDate"] ?></div>
 

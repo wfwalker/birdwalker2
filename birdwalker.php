@@ -129,7 +129,7 @@ function dailyRandomSeedColumn()
 
 function rightThumbnail($photoQueryString, $addLink)
 {
-	$photoQuery = performQuery($photoQueryString);
+	$photoQuery = performQuery("Right Thumbnail", $photoQueryString);
 
 	if (mysql_num_rows($photoQuery) > 0)
 	{
@@ -248,15 +248,23 @@ function getmicrotime()
 /**
  * Select the birdwalker database, perform a query, die on error, return the query.
  */
-function performQuery($inQueryString, $inDescription = "NEED DESC")
+function performQuery($inDescription, $inQueryString)
 {
+	if ($inDescription == "") die("Fatal error: Need description");
+
 	$start = getmicrotime();
 	selectDatabase();
 	$theQuery = mysql_query($inQueryString) or die("<p>Error during query: " . $inQueryString . "</p><p>" . mysql_error() . "</p>");
 	if (getEnableEdit())
 	{ ?>
 
-<!-- <?= round(getmicrotime() - $start, 3) ?> seconds, <?= $inDescription ?>: <?= $inQueryString ?> -->
+<!-- <?= round(getmicrotime() - $start, 3) ?> seconds, <?= $inDescription ?>
+
+
+<?= $inQueryString ?> -->
+
+
+
 <?	}
 	return $theQuery;
 }
@@ -264,9 +272,9 @@ function performQuery($inQueryString, $inDescription = "NEED DESC")
 /**
  * Select the birdwalker database, perform a counting query, die on error, return the count.
  */
-function performCount($queryString)
+function performCount($inDescription, $queryString)
 {
-	$theQuery = performQuery($queryString);
+	$theQuery = performQuery($inDescription, $queryString);
 	$theCount = mysql_fetch_array($theQuery);
 	echo "<!-- count = " . $theCount[0] . " -->";
 	return $theCount[0];
@@ -275,9 +283,9 @@ function performCount($queryString)
 /**
  * Select the birdwalker database, perform a one row query, die on error, return the first row.
  */
-function performOneRowQuery($queryString, $errorChecking = true)
+function performOneRowQuery($inDescription, $queryString, $errorChecking = true)
 {
-	$theQuery = performQuery($queryString);
+	$theQuery = performQuery($inDescription, $queryString);
 	if ($errorChecking && mysql_num_rows($theQuery) > 1) die("Fatal error: BirdWalker Too Many Objects");
 	if ($errorChecking && mysql_num_rows($theQuery) == 0) die("Fatal error: BirdWalker No Object Found");
 	$theFirstRow = mysql_fetch_array($theQuery);
@@ -290,7 +298,8 @@ function performOneRowQuery($queryString, $errorChecking = true)
 
 function getSightingInfo($objectid)
 {
-	return performOneRowQuery("SELECT *, " . niceDateColumn("TripDate") . " FROM sighting where objectid='" . $objectid . "'");
+	return performOneRowQuery("Find sighting info",
+			  "SELECT *, " . niceDateColumn("TripDate") . " FROM sighting where objectid='" . $objectid . "'");
 }
 
 /**
@@ -302,7 +311,8 @@ function buildFirstSightingsTable($whereClause)
 {
 	$firstSightings = null;
 
- 	performQuery("CREATE TEMPORARY TABLE tmp (
+ 	performQuery("Make tmp table",
+	  "CREATE TEMPORARY TABLE tmp (
         SpeciesAbbreviation varchar(16) default NULL,
         TripDate date default NULL,
         objectid varchar(16) default NULL);");
@@ -310,8 +320,8 @@ function buildFirstSightingsTable($whereClause)
 	// here's what section 3.6.4 of the mysql manual calls:
 	// "a quite inefficient trick called the MAX-CONCAT trick"
 	// TODO upgrade to mysql 4.1 and use a subquery
-	performQuery("
-      INSERT INTO tmp
+	performQuery("Insert into tmp", 
+      "INSERT INTO tmp
         SELECT SpeciesAbbreviation,
           LEFT(        MIN( CONCAT(TripDate,lpad(objectid,6,'0')) ), 10) AS TripDate,
           0+SUBSTRING( MIN( CONCAT(TripDate,lpad(objectid,6,'0')) ),  11) AS objectid
@@ -329,8 +339,9 @@ function getFirstSightings($whereClause="WHERE Exclude!='1'")
 
 	buildFirstSightingsTable($whereClause);
 
-	$firstSightingQuery = performQuery("
-      SELECT tmp.TripDate, tmp.objectid as objectid, tmp.SpeciesAbbreviation
+	$firstSightingQuery = performQuery(
+	  "Find First Sighting",
+      "SELECT tmp.TripDate, tmp.objectid as objectid, tmp.SpeciesAbbreviation
         FROM tmp, species
         WHERE tmp.SpeciesAbbreviation=species.Abbreviation AND species.ABACountable='1' 
         ORDER BY tripdate, species.objectid;");
@@ -344,7 +355,7 @@ function getFirstSightings($whereClause="WHERE Exclude!='1'")
 		$index++;
 	}
 
-	performQuery("DROP TABLE tmp;");
+	performQuery("Finish temp table", "DROP TABLE tmp;");
 
 	return $firstSightings;
 }
@@ -367,13 +378,13 @@ function getFirstYearSightings($theYear)
  */
 function getSpeciesInfo($objectid)
 {
-	return performOneRowQuery("SELECT * FROM species where objectid='" . $objectid . "'");
+	return performOneRowQuery("Get species info", "SELECT * FROM species where objectid='" . $objectid . "'");
 }
 
 function speciesBrowseButtons($url, $speciesID, $viewMode)
 {
-	$nextSpeciesID = performCount("
-    SELECT min(species.objectid)
+	$nextSpeciesID = performCount("Get Next Species ID",
+    "SELECT min(species.objectid)
       FROM species, sighting
       WHERE sighting.SpeciesAbbreviation=species.Abbreviation
       AND species.objectid>" . $speciesID . " LIMIT 1", false);
@@ -388,8 +399,8 @@ function speciesBrowseButtons($url, $speciesID, $viewMode)
 		$nextSpeciesLinkText = "";
 	}
 
-	$prevSpeciesID = performCount("
-    SELECT max(species.objectid)
+	$prevSpeciesID = performCount("Get Previous Species ID",
+    "SELECT max(species.objectid)
       FROM species, sighting
       WHERE sighting.SpeciesAbbreviation=species.Abbreviation
       AND species.objectid<" . $speciesID . " LIMIT 1", false);
@@ -414,7 +425,7 @@ function speciesBrowseButtons($url, $speciesID, $viewMode)
 
 function getFamilyInfoFromSpeciesID($speciesid)
 {
-	return performOneRowQuery("select * from taxonomy where objectid='" . getFamilyIDFromSpeciesID($speciesid) . "'");
+	return performOneRowQuery("Get Family Info", "select * from taxonomy where objectid='" . getFamilyIDFromSpeciesID($speciesid) . "'");
 }
 
 function getFamilyIDFromSpeciesID($speciesid)
@@ -456,7 +467,7 @@ function getTaxonomyInfo($objectid, $blankDigits)
 	$taxonomyID = floor($objectid / $shift) * $shift;
 	$taxonomyQueryString = "SELECT * FROM taxonomy where objectid='" . $taxonomyID . "'";
 
-	return performOneRowQuery($taxonomyQueryString);
+	return performOneRowQuery("Get Taxonomy Info", $taxonomyQueryString);
 }
 
 //
@@ -465,24 +476,26 @@ function getTaxonomyInfo($objectid, $blankDigits)
 
 function getTripInfo($objectid)
 {
-	return performOneRowQuery("SELECT *, date_format(Date, '%W,  %M %D, %Y') as niceDate FROM trip where objectid='" . $objectid . "'");
+	return performOneRowQuery("Get Trip Info",
+			  "SELECT *, date_format(Date, '%W,  %M %D, %Y') as niceDate FROM trip where objectid='" . $objectid . "'");
 }
 
 function getTripInfoForDate($inDate)
 {
-	return performOneRowQuery("SELECT *, date_format(Date, '%W,  %M %D, %Y') as niceDate FROM trip where Date='" . $inDate . "'");
+	return performOneRowQuery("Get Trip Info for Date", 
+              "SELECT *, date_format(Date, '%W,  %M %D, %Y') as niceDate FROM trip where Date='" . $inDate . "'");
 }
 
 function tripBrowseButtons($url, $tripID, $viewMode)
 {
 	$tripInfo = getTripInfo($tripID);
 
-	$nextTripInfo = performOneRowQuery("
-    SELECT objectid, date_format(Date, '%b %D, %Y') as niceDate FROM trip
+	$nextTripInfo = performOneRowQuery("Get Next Trip", 
+    "SELECT objectid, date_format(Date, '%b %D, %Y') as niceDate FROM trip
       WHERE Date > '" . $tripInfo["Date"] . "'
       ORDER BY Date LIMIT 1", false);
-	$prevTripInfo = performOneRowQuery("
-    SELECT objectid, date_format(Date, '%b %D, %Y') as niceDate FROM trip
+	$prevTripInfo = performOneRowQuery("Get Previous Trip", 
+    "SELECT objectid, date_format(Date, '%b %D, %Y') as niceDate FROM trip
       WHERE Date < '" . $tripInfo["Date"] . "'
       ORDER BY Date DESC LIMIT 1", false);
 
@@ -496,25 +509,25 @@ function tripBrowseButtons($url, $tripID, $viewMode)
 
 function getLocationInfo($objectid)
 {
-	return performOneRowQuery("SELECT * FROM location where objectid='" . $objectid . "'");
+	return performOneRowQuery("Get Location Info", "SELECT * FROM location where objectid='" . $objectid . "'");
 }
 
 function getLocationInfoForName($inLocationName)
 {
-	return performOneRowQuery("SELECT * FROM location WHERE Name='" . $inLocationName . "'");
+	return performOneRowQuery("Get Location Info for Name", "SELECT * FROM location WHERE Name='" . $inLocationName . "'");
 }
 
 function locationBrowseButtons($url, $locationID, $viewMode)
 {
 	$siteInfo = getLocationInfo($locationID);
 
-	$prevLocationInfo = performOneRowQuery("
-      SELECT objectid, Name FROM location
+	$prevLocationInfo = performOneRowQuery("Get Previous Location", 
+      "SELECT objectid, Name FROM location
         WHERE CONCAT(State,County,Name) < '" . $siteInfo["State"] . $siteInfo["County"] . $siteInfo["Name"] . "'
         ORDER BY CONCAT(State,County,Name) DESC LIMIT 1", false);
 
-	$nextLocationInfo = performOneRowQuery("
-      SELECT objectid, Name FROM location
+	$nextLocationInfo = performOneRowQuery("Get Next Location", 
+      "SELECT objectid, Name FROM location
         WHERE CONCAT(State,County,Name) > '" . $siteInfo["State"] . $siteInfo["County"] . $siteInfo["Name"] . "'
         ORDER BY CONCAT(State,County,Name) LIMIT 1", false);
 
@@ -524,18 +537,18 @@ function locationBrowseButtons($url, $locationID, $viewMode)
 
 function getStateInfo($id)
 {
-	return performOneRowQuery("SELECT * FROM state where objectid='" . $id . "'");
+	return performOneRowQuery("Get State Info", "SELECT * FROM state where objectid='" . $id . "'");
 }
 
 function getStateInfoForAbbreviation($abbrev)
 {
-	return performOneRowQuery("SELECT * FROM state where Abbreviation='" . $abbrev . "'");
+	return performOneRowQuery("Get State Info for Abbreviation", "SELECT * FROM state where Abbreviation='" . $abbrev . "'");
 }
 
 function stateBrowseButtons($stateID, $viewMode)
 {
-	$nextStateID = performCount("
-    SELECT min(state.objectid)
+	$nextStateID = performCount("Get Next State", 
+    "SELECT min(state.objectid)
       FROM state, sighting, location
       WHERE sighting.LocationName=location.Name AND location.State=state.Abbreviation and state.objectid>" . $stateID . " LIMIT 1");
 
@@ -551,8 +564,8 @@ function stateBrowseButtons($stateID, $viewMode)
 		$nextStateObjectID = "";
 	}
 
-	$prevStateID = performCount("
-    SELECT max(state.objectid)
+	$prevStateID = performCount("Get Previous State",
+    "SELECT max(state.objectid)
       FROM state, sighting, location
       WHERE sighting.LocationName=location.Name AND location.State=state.Abbreviation and state.objectid<" . $stateID . " LIMIT 1");
 
@@ -621,24 +634,24 @@ function insertYearLabels()
 {
 	for ($year = getEarliestYear(); $year <= getLatestYear(); $year++)
 	{ ?>
-		<td class=yearcell align=center><a href="./yeardetail.php?year=<?= $year ?>"><?= $year ?></td>
+		<td class="yearcell" align="center"><a href="./yeardetail.php?year=<?= $year ?>"><?= $year ?></td>
 <?	}
 }
 
 function insertMonthLabels()
 { ?>
-    <td class=yearcell align=center>Jan</td>
-    <td class=yearcell align=center>Feb</td>
-    <td class=yearcell align=center>Mar</td>
-    <td class=yearcell align=center>Apr</td>
-    <td class=yearcell align=center>May</td>
-    <td class=yearcell align=center>Jun</td>
-    <td class=yearcell align=center>Jul</td>
-    <td class=yearcell align=center>Aug</td>
-    <td class=yearcell align=center>Sep</td>
-    <td class=yearcell align=center>Oct</td>
-    <td class=yearcell align=center>Nov</td>
-    <td class=yearcell align=center>Dec</td>
+    <td class="yearcell" align="center">Jan</td>
+    <td class="yearcell" align="center">Feb</td>
+    <td class="yearcell" align="center">Mar</td>
+    <td class="yearcell" align="center">Apr</td>
+    <td class="yearcell" align="center">May</td>
+    <td class="yearcell" align="center">Jun</td>
+    <td class="yearcell" align="center">Jul</td>
+    <td class="yearcell" align="center">Aug</td>
+    <td class="yearcell" align="center">Sep</td>
+    <td class="yearcell" align="center">Oct</td>
+    <td class="yearcell" align="center">Nov</td>
+    <td class="yearcell" align="center">Dec</td>
 <?
 }
 
@@ -665,7 +678,7 @@ function getMonthNameForNumber($month)
 
 function getStateNameForAbbreviation($abbreviation)
 {
-	return performCount("SELECT Name from state where Abbreviation='" . $abbreviation . "'");
+	return performCount("Get State Name", "SELECT Name from state where Abbreviation='" . $abbreviation . "'");
 }
 
 function getValue($inName)

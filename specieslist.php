@@ -5,27 +5,23 @@ require_once("./birdwalker.php");
 require_once("./request.php");
 require_once("./speciesquery.php");
 
-$locationList = performQuery("select Name, objectid from location order by Name");
+$locationList = performQuery("Get All Locations", "select Name, objectid from location order by Name");
 
 $request = new Request;
 
 $speciesQuery = new SpeciesQuery($request);
 
-htmlHead($speciesQuery->getPageTitle());
-
-//$request->globalMenu();
 ?>
 
-    <div class="topright">
-	  <?= disabledBrowseButtons("Species List") ?>
+<html>
+
+<link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
+<title>birdWalker | Species List</title>
+</head>
+
+<body>
+
       <div class="pagetitle"><?= $speciesQuery->getPageTitle() ?></div>
-	</div>
-
-    <div class="contentright">
-      <div class="titleblock">
-<?    $speciesQuery->rightThumbnail() ?>
-      </div>
-
 	  <div class=heading><?= $speciesQuery->getSpeciesCount() ?> Species</div>
 
 <?
@@ -65,7 +61,6 @@ htmlHead($speciesQuery->getPageTitle());
       footer();
  ?>
 
-    </div>
 
 <?
 htmlFoot();

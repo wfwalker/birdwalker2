@@ -88,7 +88,7 @@ class SightingQuery extends BirdWalkerQuery
 			($this->mReq->getFamilyID() == "") && ($this->mReq->getOrderID() == "") && ($this->mReq->getSpeciesID() == ""))
 			die("No query parameters for sighting query");
 
-		return performQuery(
+		return performQuery("Find sightings", 
 			$this->getSelectClause() . " " .
 			$this->getFromClause() . " " .
 			$this->getWhereClause() . " ORDER BY sighting.TripDate desc");
@@ -96,7 +96,7 @@ class SightingQuery extends BirdWalkerQuery
 
 	function performPhotoQuery()
 	{
-		return performQuery(
+		return performQuery("Find sightings with photos", 
 			$this->getSelectClause() . " " .
 			$this->getFromClause() . " " .
 			$this->getWhereClause() . " AND sighting.Photo='1' ORDER BY sighting.TripDate desc");

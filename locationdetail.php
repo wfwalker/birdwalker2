@@ -8,8 +8,8 @@ $request = new Request;
 
 $siteInfo = $request->getLocationInfo();
 
-$locationSightings = performQuery("
-    SELECT sighting.objectid FROM sighting, location
+$locationSightings = performQuery("Get Location Sightings",
+    "SELECT sighting.objectid FROM sighting, location
       WHERE sighting.LocationName=location.Name
       AND location.objectid='" . $request->getLocationID() ."'");
 

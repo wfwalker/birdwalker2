@@ -14,8 +14,8 @@ htmlHead($orderInfo["LatinName"]);
 $items[] = strtolower($orderInfo["LatinName"]);
 $request->globalMenu();
 
-$nextOrder = performCount("
-    SELECT FLOOR(MIN(species.objectid) / POW(10,9)) FROM species, sighting
+$nextOrder = performCount("Find Next Order",
+    "SELECT FLOOR(MIN(species.objectid) / POW(10,9)) FROM species, sighting
       WHERE sighting.SpeciesAbbreviation=species.Abbreviation
       AND species.objectid > " . ($request->getOrderID() + 1) * pow(10, 9) . " LIMIT 1");
 
@@ -29,8 +29,8 @@ else
 	$nextOrderLinkText = "";
 }
 
-$prevOrder = performCount("
-    SELECT FLOOR(MAX(species.objectid) / POW(10,9)) FROM species, sighting
+$prevOrder = performCount("Find Previous Order",
+    "SELECT FLOOR(MAX(species.objectid) / POW(10,9)) FROM species, sighting
       WHERE sighting.SpeciesAbbreviation=species.Abbreviation
       AND species.objectid < " . $request->getOrderID() * pow(10, 9) . " LIMIT 1");
 

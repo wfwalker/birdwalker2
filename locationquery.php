@@ -82,23 +82,25 @@ class LocationQuery extends BirdWalkerQuery
 
 	function getLocationCount()
 	{
-		return performCount("
-          SELECT COUNT(DISTINCT location.objectid) ".
+		return performCount(
+		  "Count Locations",
+          "SELECT COUNT(DISTINCT location.objectid) ".
 			$this->getFromClause() . " " .
 			$this->getWhereClause());
 	}
 
 	function getPhotoCount()
 	{
-		return performCount("
-          SELECT COUNT(DISTINCT location.objectid) ".
+		return performCount(
+		  "Count Photos",
+          "SELECT COUNT(DISTINCT location.objectid) ".
 			$this->getFromClause() . " " .
 			$this->getWhereClause() . " AND sighting.Photo='1'");
 	}
 
 	function performQuery()
 	{
-		return performQuery(
+		return performQuery("Perform Query",
 			$this->getSelectClause() . " " . 
 			$this->getFromClause() . " " .
 			$this->getWhereClause() . " GROUP BY location.objectid ORDER BY location.State, location.County, location.Name");
@@ -106,11 +108,9 @@ class LocationQuery extends BirdWalkerQuery
 
 	function findExtrema()
 	{
-		echo "<!-- extrema -->";
-
 		// TODO, we want both a minimum map dimension, and a minimum margin around the group of points
-		$extrema = performOneRowQuery("
-          SELECT
+		$extrema = performOneRowQuery("Find Location Extrema",
+          "SELECT
             max(location.Latitude) as maxLat, 
             min(location.Latitude) as minLat, 
             max(location.Longitude) as maxLong, 
@@ -146,13 +146,15 @@ class LocationQuery extends BirdWalkerQuery
 		$countyHeadingsOK = ($this->mReq->getCounty() == "");
 
 		$lastStateHeading="";
+
 		$gridQueryString="
-      SELECT distinct(LocationName), County, State, location.objectid as locationid, bit_or(1 << (year(TripDate) - 1995)) as mask " . 
+        SELECT distinct(LocationName), County, State, location.objectid as locationid, bit_or(1 << (year(TripDate) - 1995)) as mask " . 
 		  $this->getFromClause() . " " .
 		  $this->getWhereClause() . " 
         GROUP BY sighting.LocationName
         ORDER BY location.State, location.County, location.Name;";
-		$gridQuery = performQuery($gridQueryString); ?>
+
+		$gridQuery = performQuery("Location By Year Query", $gridQueryString); ?>
 
 		<table cellpadding=0 cellspacing=0 class="report-content" width="100%">
 		<tr><td></td><? insertYearLabels() ?></tr>
@@ -216,14 +218,15 @@ class LocationQuery extends BirdWalkerQuery
 		$countyHeadingsOK = ($this->mReq->getCounty() == "");
 
 		$lastStateHeading="";
+
 		$gridQueryString="
-      SELECT distinct(LocationName), County, State, location.objectid AS locationid, bit_or(1 << month(TripDate)) AS mask " .
+        SELECT distinct(LocationName), County, State, location.objectid AS locationid, bit_or(1 << month(TripDate)) AS mask " .
 		  $this->getFromClause() . " " .
 		  $this->getWhereClause() . " 
         GROUP BY sighting.LocationName
         ORDER BY location.State, location.County, location.Name;";
 
-		$gridQuery = performQuery($gridQueryString); ?>
+		$gridQuery = performQuery("Location By Month Query", $gridQueryString); ?>
 
 		<table cellpadding=0 cellspacing=0 cols=11 class="report-content" width="100%">
 		<tr><td></td><? insertMonthLabels() ?></tr>
@@ -283,7 +286,7 @@ class LocationQuery extends BirdWalkerQuery
 	{
 		$countyHeadingsOK = ($this->mReq->getCounty() == "");
 
-		$dbQuery = $this->performQuery();
+		$dbQuery = $this->performQuery("Two Column Location List");
 
 		$lastStateHeading="";
 		$prevInfo=null;
@@ -291,8 +294,8 @@ class LocationQuery extends BirdWalkerQuery
 		$divideByCounties = ($locationCount > 20);
 		$counter = round($locationCount  * 0.5); ?>
 
-		<table class=report-content width="100%">
-		  <tr valign=top><td width="50%" style="padding-left: 30px;">
+		<table class="report-content" width="100%">
+		  <tr valign="top"><td width="50%" style="padding-left: 30px;">
 
 	<?	while($info = mysql_fetch_array($dbQuery))
 		{

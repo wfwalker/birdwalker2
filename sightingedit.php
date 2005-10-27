@@ -30,7 +30,7 @@ if ($postSightingID != "") {
 	$photo = postValue('Photo');
 
 	if ($save != "") {
-		performQuery("update sighting set SpeciesAbbreviation='" . $speciesAbbreviation . 
+		performQuery("UPDATE sighting SET SpeciesAbbreviation='" . $speciesAbbreviation . 
 					 "', LocationName='" . $locationName . 
 					 "', TripDate='" . $tripDate . 
 					 "', Notes='" . $notes . 
@@ -54,12 +54,12 @@ if ($postSightingID != "") {
 }
 
 $sightingInfo = getSightingInfo($sightingID);
-$speciesInfo = performOneRowQuery("select * from species where Abbreviation='" . $sightingInfo["SpeciesAbbreviation"] . "'");
-$tripInfo = performOneRowQuery("select *, " . niceDateColumn() . " FROM trip WHERE Date='" . $sightingInfo["TripDate"] . "'");
-$locationInfo = performOneRowQuery("select * from location where Name='" . $sightingInfo["LocationName"] . "'");
+$speciesInfo = performOneRowQuery("Get Species Info", "SELECT * from species where Abbreviation='" . $sightingInfo["SpeciesAbbreviation"] . "'");
+$tripInfo = performOneRowQuery("Get Trip Info", "SELECT *, " . niceDateColumn() . " FROM trip WHERE Date='" . $sightingInfo["TripDate"] . "'");
+$locationInfo = performOneRowQuery("Get Location Info", "SELECT * from location where Name='" . $sightingInfo["LocationName"] . "'");
 $stateInfo = getStateInfoForAbbreviation($locationInfo["State"]);
 
-$locationList = performQuery("select Name, objectid from location");
+$locationList = performQuery("Get Location List", "SELECT Name, objectid from location");
 
 htmlHead($speciesInfo["CommonName"] . ", " . $tripInfo["niceDate"]);
 

@@ -14,11 +14,11 @@ $leader = ""; array_key_exists("Leader", $_POST) && $leader = $_POST['Leader'];
 $tripDate = ""; array_key_exists("TripDate", $_POST) && $tripDate = $_POST['TripDate'];
 $tripName = ""; array_key_exists("TripName", $_POST) && $tripName = $_POST['TripName'];
 
-$locationList = performQuery("select Name, objectid from location order by Name");
+$locationList = performQuery("Get All Locations", "SELECT Name, objectid FROM location ORDER BY Name");
 $dateArray = getdate();
 $dateString = $dateArray["year"] . "-" . $dateArray["mon"] . "-" .  $dateArray["mday"];
-$sightingID = performCount("select max(objectid) from sighting;");
-$tripID = performCount("select max(objectid) from trip;");
+$sightingID = performCount("Get Highest Sighting ID", "SELECT MAX(objectid) from sighting;");
+$tripID = performCount("Get Highest Trip ID", "SELECT MAX(objectid) from trip;");
 
 htmlHead("Create a trip");
 

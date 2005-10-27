@@ -15,8 +15,8 @@ $request->setSpeciesID("");
 $familyInfo = $request->getFamilyInfo();
 $orderInfo = $request->getOrderInfo();
 
-$nextFamily = performCount("
-    SELECT FLOOR(MIN(species.objectid)/pow(10,7)) FROM species, sighting
+$nextFamily = performCount("Find Next Family",
+    "SELECT FLOOR(MIN(species.objectid)/pow(10,7)) FROM species, sighting
       WHERE sighting.SpeciesAbbreviation=species.Abbreviation
       AND species.objectid >" . ($request->getFamilyID() + 1) * pow(10, 7) . " LIMIT 1");
 
@@ -30,8 +30,8 @@ else
 	$nextFamilyLinkText = "";
 }
 
-$prevFamily = performCount("
-    SELECT FLOOR(MAX(species.objectid)/POW(10,7)) FROM species, sighting
+$prevFamily = performCount("Find Previous Family",
+    "SELECT FLOOR(MAX(species.objectid)/POW(10,7)) FROM species, sighting
       WHERE sighting.SpeciesAbbreviation=species.Abbreviation
       AND species.objectid < " . $request->getFamilyID() * pow(10, 7) . " LIMIT 1");
 

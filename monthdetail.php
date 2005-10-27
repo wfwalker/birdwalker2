@@ -19,14 +19,14 @@ $request->globalMenu();
 <?
 if ($request->getYear() != "")
 {
-	$nextMonthInfo = performCount("
-    SELECT min(" . $concatenation . ") FROM sighting WHERE " . $concatenation . " > '" . $request->getYear() . $request->getMonth() . "'");
+	$nextMonthInfo = performCount("Find Next Month",
+    "SELECT min(" . $concatenation . ") FROM sighting WHERE " . $concatenation . " > '" . $request->getYear() . $request->getMonth() . "'");
 	
 	$nextYear = substr($nextMonthInfo, 0, 4);
 	$nextMonth = substr($nextMonthInfo, 4, 2);
 	
-	$prevMonthInfo = performCount("
-    SELECT max(" . $concatenation . ") FROM sighting WHERE " . $concatenation . " < '" . $request->getYear() . $request->getMonth() . "'");
+	$prevMonthInfo = performCount("Find Previous Month",
+    "SELECT max(" . $concatenation . ") FROM sighting WHERE " . $concatenation . " < '" . $request->getYear() . $request->getMonth() . "'");
 	
 	$prevYear = substr($prevMonthInfo, 0, 4);
 	$prevMonth = substr($prevMonthInfo, 4, 2);
