@@ -30,7 +30,8 @@ if ($postSightingID != "") {
 	$photo = postValue('Photo');
 
 	if ($save != "") {
-		performQuery("UPDATE sighting SET SpeciesAbbreviation='" . $speciesAbbreviation . 
+		performQuery("Update the sighting", 
+					 "UPDATE sighting SET SpeciesAbbreviation='" . $speciesAbbreviation . 
 					 "', LocationName='" . $locationName . 
 					 "', TripDate='" . $tripDate . 
 					 "', Notes='" . $notes . 
@@ -38,7 +39,8 @@ if ($postSightingID != "") {
 					 "', Exclude='" . $exclude . 
 					 "' where objectid='" . $postSightingID . "'");
 	} else if ($new != "") {
-		performQuery("insert into sighting values (". $postSightingID .
+		performQuery("Insert a new sighting",
+					 "insert into sighting values (". $postSightingID .
 					 ", '" . $speciesAbbreviation . 
 					 "', '" . $locationName . 
 					 "', '" . $notes . 
@@ -46,7 +48,8 @@ if ($postSightingID != "") {
 					 "', '" . $photo . 
 					 "', '" . $tripDate . "');");
 	} else if ($delete != "") {
-		performQuery("delete from sighting where objectid='" . $postSightingID . "'");
+		performQuery("Delete a sighting",
+					 "delete from sighting where objectid='" . $postSightingID . "'");
 		$postSightingID--;
 	}
 
