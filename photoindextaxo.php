@@ -7,7 +7,7 @@ require_once("./request.php");
 $photoSpecies = performQuery("Find Species With Photos",
     "SELECT DISTINCT species.*, COUNT(DISTINCT sighting.objectid) AS photoCount, max(sighting.TripDate) as latestPhoto
       FROM species, sighting
-      WHERE species.Abbreviation=sighting.SpeciesAbbreviation AND sighting.Photo='1'
+      WHERE species.Abbreviation=sighting.SpeciesAbbreviation AND sighting.Photo='1' AND species.ABACountable != '0'
       GROUP BY sighting.SpeciesAbbreviation ORDER BY species.objectid");
 $photoCount = performCount("Count Photos",
     "SELECT COUNT(*) FROM sighting WHERE Photo='1'");
@@ -34,7 +34,7 @@ $request->globalMenu();
         </div>
       </div>
 
-   <div class=heading><?= $photoCount ?> photos covering <?= mysql_num_rows($photoSpecies) ?> species</div>
+   <div class=heading><?= $photoCount ?> photos covering <?= mysql_num_rows($photoSpecies) ?> ABA-countable species</div>
 
 <table width="100%">
 <tr valign=top><td width="50%" class=report-content>
