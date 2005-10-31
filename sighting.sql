@@ -11206,7 +11206,7 @@ INSERT INTO sighting VALUES (11244,'verfly','Kern River Preserve','','0','0','20
 INSERT INTO sighting VALUES (11245,'weskin','Kern River Preserve','','0','0','2005-06-23');
 INSERT INTO sighting VALUES (11246,'amecro','Kern River Preserve','','0','0','2005-06-23');
 INSERT INTO sighting VALUES (11247,'comrav','Kern River Preserve','','0','0','2005-06-23');
-INSERT INTO sighting VALUES (11248,'treswa','Kern River Preserve','','0','0','2005-06-23');
+INSERT INTO sighting VALUES (11248,'treswa','Kern River Preserve','','','1','2005-06-23');
 INSERT INTO sighting VALUES (11249,'vigswa','Kern River Preserve','','0','0','2005-06-23');
 INSERT INTO sighting VALUES (11250,'cliswa','Kern River Preserve','','0','0','2005-06-23');
 INSERT INTO sighting VALUES (11251,'oaktit','Kern River Preserve','','0','0','2005-06-23');
@@ -11691,10 +11691,10 @@ INSERT INTO sighting VALUES (11729,'willet','Bodega Bay','','0','0','2005-09-25'
 INSERT INTO sighting VALUES (11730,'blktur','Bodega Bay','','0','0','2005-09-25');
 INSERT INTO sighting VALUES (11731,'surfbi','Bodega Bay','','0','0','2005-09-25');
 INSERT INTO sighting VALUES (11732,'sopsku','Bodega Bay','','','1','2005-09-25');
-INSERT INTO sighting VALUES (11733,'heegul','Bodega Bay','','0','0','2005-09-25');
+INSERT INTO sighting VALUES (11733,'heegul','Bodega Bay','','','','2005-09-25');
 INSERT INTO sighting VALUES (11734,'ribgul','Bodega Bay','','0','0','2005-09-25');
 INSERT INTO sighting VALUES (11735,'calgul','Bodega Bay','','0','0','2005-09-25');
-INSERT INTO sighting VALUES (11736,'hergul','Bodega Bay','','0','0','2005-09-25');
+INSERT INTO sighting VALUES (11736,'hergul','Bodega Bay','','','1','2005-09-25');
 INSERT INTO sighting VALUES (11737,'wesgul','Bodega Bay','','0','0','2005-09-25');
 INSERT INTO sighting VALUES (11738,'sabgul','Bodega Bay','','0','0','2005-09-25');
 INSERT INTO sighting VALUES (11739,'forter','Bodega Bay','','0','0','2005-09-25');
