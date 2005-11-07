@@ -45,7 +45,7 @@ if ($save == "Save")
 		if (trim($abbrev) != "")
 		{
 			// check for valid species abbrev
-			performCount("select count(*) from species where Abbreviation='" . trim($abbrev) . "'") or die ("This is not a valid abbreviation " . $abbrev);
+			performCount("Verify abbreviation", "SELECT COUNT(*) FROM species WHERE Abbreviation='" . trim($abbrev) . "'") or die ("This is not a valid abbreviation " . $abbrev);
 		}
 
 		$abbrev = strtok(" \n");
@@ -59,14 +59,14 @@ if ($save == "Save")
 		{
 			// insert this species
 			$sightingID++;
-			performQuery("\nINSERT INTO sighting VALUES (" . $sightingID . ", '" . trim($abbrev) . "', '" . $locationName . "', '', '0', '0', '" . $tripDate . "');\n");
+			performQuery("Insert new sighting", "\nINSERT INTO sighting VALUES (" . $sightingID . ", '" . trim($abbrev) . "', '" . $locationName . "', '', '0', '0', '" . $tripDate . "');\n");
 		}
 
 		$abbrev = strtok(" \n");
 	}
 
 	// FINALLY insert the trip record
-	performQuery("INSERT INTO trip VALUES (" . ($tripID + 1) . ", '" . $leader . "', '', '" . $tripName . "', '" . $notes . "', '" . $tripDate . "');");
+	performQuery("Insert trip record", "INSERT INTO trip VALUES (" . ($tripID + 1) . ", '" . $leader . "', '', '" . $tripName . "', '" . $notes . "', '" . $tripDate . "');");
 
 	echo "<a href=\"./tripdetail.php?tripid=" . ($tripID + 1) . "\">Trip Created</a>";
 }

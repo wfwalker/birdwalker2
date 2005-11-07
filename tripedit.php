@@ -18,7 +18,7 @@ if (($postTripID != "") && ($save == "Save"))
 	$notes = postValue('Notes');
 	$name = postValue('Name');
 
-	performQuery("update trip set Leader='" . $leader . 
+	performQuery("Update trip", "update trip set Leader='" . $leader . 
 				 "', ReferenceURL='" . $referenceURL . 
 				 "', Name='" . $name . 
 				 "', Date='" . $date . 
