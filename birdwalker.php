@@ -256,16 +256,10 @@ function performQuery($inDescription, $inQueryString)
 	selectDatabase();
 	$theQuery = mysql_query($inQueryString) or die("<p>Error during query: " . $inQueryString . "</p><p>" . mysql_error() . "</p>");
 	if (getEnableEdit())
-	{ ?>
+	{
+		echo "\n\n<!-- " . round(getmicrotime() - $start, 3) . " seconds, " . $inDescription . "\n\n" . $inQueryString . " -->\n\n";
+	}
 
-<!-- <?= round(getmicrotime() - $start, 3) ?> seconds, <?= $inDescription ?>
-
-
-<?= $inQueryString ?> -->
-
-
-
-<?	}
 	return $theQuery;
 }
 
@@ -276,7 +270,6 @@ function performCount($inDescription, $queryString)
 {
 	$theQuery = performQuery($inDescription, $queryString);
 	$theCount = mysql_fetch_array($theQuery);
-	echo "<!-- count = " . $theCount[0] . " -->";
 	return $theCount[0];
 }
 
