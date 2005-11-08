@@ -74,21 +74,21 @@ if ($save == "Save")
 
 <form method="post" action="./tripcreate.php">
 
-<table class=report-content width=100%>
+<table class="report-content" width=100%>
   <tr>
-	<td class=fieldlabel>Leader</td>
-	<td><input type="text" name="Leader" value="" size=20/></td>
+	<td class="fieldlabel">Leader</td>
+	<td><input type="text" name="Leader" value="" size="20"/></td>
   </tr>
   <tr>
-	<td class=fieldlabel>Trip Name</td>
-	<td><input type="text" name="TripName" value="" size=20/></td>
+	<td class="fieldlabel">Trip Name</td>
+	<td><input type="text" name="TripName" value="" size="20"/></td>
   </tr>
   <tr>
-	<td class=fieldlabel>TripDate</td>
-	<td><input type="text" name="TripDate" value="<?= $dateString; ?>" size=20/></td>
+	<td class="fieldlabel">TripDate</td>
+	<td><input type="text" name="TripDate" value="<?= $dateString; ?>" size="20"/></td>
   </tr>
   <tr>
-	<td class=fieldlabel>Location</td>
+	<td class="fieldlabel">Location</td>
 	<td>
 	  <select name="LocationName">
         <?php while($info = mysql_fetch_array($locationList)) { echo "<option>" . $info["Name"] . "</option>\n"; } ?>
@@ -96,12 +96,12 @@ if ($save == "Save")
 	</td>
   </tr>
   <tr>
-	<td class=fieldlabel>Abbreviations</td>
-	<td><textarea name="Abbreviations" cols=10 rows=20></textarea></td>
+	<td class="fieldlabel">Abbreviations</td>
+	<td><textarea name="Abbreviations" cols="10" rows="20"></textarea></td>
   </tr>
   <tr>
-	<td class=fieldlabel>Notes</td>
-	<td><textarea name="Notes" cols=60 rows=20></textarea></td>
+	<td class="fieldlabel">Notes</td>
+	<td><textarea name="Notes" cols="60" rows="20"></textarea></td>
   </tr>
   <tr>
 	<td><input type="submit" name="Save" value="Save"/></td>
