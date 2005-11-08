@@ -11,6 +11,7 @@ speciesedit.php?speciesid=9022020100 \
 sightingedit.php?sightingid=11631 \
 tripedit.php?tripid=430 \
 countyindex.php \
+credits.php \
 santaclarayearlist.php?year=2005 \
 targetyearbirds.php \
 tripcreate.php \
