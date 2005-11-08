@@ -4,9 +4,6 @@
 require_once("./birdwalker.php");
 require_once("./request.php");
 
-$randomPhotoSightings = performQuery("SELECT *, " . dailyRandomSeedColumn() . " FROM sighting WHERE Photo='1' ORDER BY shuffle LIMIT 5");
-
-
 htmlHead("About");
 
 $request = new Request;
