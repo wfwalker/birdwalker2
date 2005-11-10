@@ -434,4 +434,4 @@ INSERT INTO trip VALUES (434,'Mary and Bill','','Leaving Yosemite','We had a gre
 INSERT INTO trip VALUES (435,'Ashok, Thomas, and Bill','','Morning Photo Safari','We found some very cooperative subjects today, especially the Sora.','2005-09-28');
 INSERT INTO trip VALUES (436,'Bill','','Photo Safari','I had only a few minutes of daylight left when I arrived, I spent them trying to track the skimmers as the swooped low over the water.','2005-10-10');
 INSERT INTO trip VALUES (437,'Bob Power','','Class Field Trip','We had a great time being sherpas to Bob Power\'s excellent class field trip at Las Gallinas. In addition to some great looks at raptors hunting we worked on ducks, shorebirds, and waders. Lots of fun!','2005-11-07');
-INSERT INTO trip VALUES (438,'Ashok and Bill','','Photo Safari','','2005-11-09');
+INSERT INTO trip VALUES (438,'Ashok and Bill','','Photo Safari','We had a wonderful time photographing several subjects that we found right at eye level. I had hoped for direct sunlight, but the overcast light was very interesting, too.','2005-11-09');
