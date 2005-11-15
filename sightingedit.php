@@ -18,7 +18,7 @@ $new = postValue("New");
 $delete = postValue("Delete");
 
 // if NEW, set the POST id to a new unique sighting objectid
-if ($new == "New") { $postSightingID = 1 + performCount("select max(objectid) from sighting"); }
+if ($new == "New") { $postSightingID = 1 + performCount("Find highest sighting ID", "select max(objectid) from sighting"); }
 
 // if we have a POST id and either a new or a save button, then time to update
 if ($postSightingID != "") {
