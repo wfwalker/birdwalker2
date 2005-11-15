@@ -11802,3 +11802,10 @@ INSERT INTO sighting VALUES (11845,'greegr','Las Gallinas Sewage Ponds','','0','
 INSERT INTO sighting VALUES (11846,'greyel','Las Gallinas Sewage Ponds','','0','0','2005-11-07');
 INSERT INTO sighting VALUES (11847,'norfli','Oka Ponds','','','1','2005-11-09');
 INSERT INTO sighting VALUES (11848,'sptsan','Oka Ponds','','','1','2005-11-09');
+INSERT INTO sighting VALUES (11850,'annhum','Oka Ponds','','','1','2005-11-09');
+INSERT INTO sighting VALUES (11851,'doccor','Charleston Slough','','','1','2005-11-03');
+INSERT INTO sighting VALUES (11852,'pibgre','Charleston Slough','','','','2005-11-03');
+INSERT INTO sighting VALUES (11853,'gadwal','Charleston Slough','','','1','2005-11-03');
+INSERT INTO sighting VALUES (11854,'bcnher','Charleston Slough','','','1','2005-11-03');
+INSERT INTO sighting VALUES (11855,'mallar','Charleston Slough','','','','2005-11-03');
+INSERT INTO sighting VALUES (11856,'amewig','Charleston Slough','','','','2005-11-03');
