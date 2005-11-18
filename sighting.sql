@@ -11809,3 +11809,13 @@ INSERT INTO sighting VALUES (11853,'gadwal','Charleston Slough','','','1','2005-
 INSERT INTO sighting VALUES (11854,'bcnher','Charleston Slough','','','1','2005-11-03');
 INSERT INTO sighting VALUES (11855,'mallar','Charleston Slough','','','','2005-11-03');
 INSERT INTO sighting VALUES (11856,'amewig','Charleston Slough','','','','2005-11-03');
+INSERT INTO sighting VALUES (11857,'foxspa','Coyote Creek Field Station','','0','0','2005-11-16');
+INSERT INTO sighting VALUES (11858,'herthr','Coyote Creek Field Station','','0','0','2005-11-16');
+INSERT INTO sighting VALUES (11859,'houfin','Coyote Creek Field Station','','0','0','2005-11-16');
+INSERT INTO sighting VALUES (11860,'blkpho','Coyote Creek Field Station','','0','0','2005-11-16');
+INSERT INTO sighting VALUES (11861,'rethaw','Coyote Creek Field Station','','0','0','2005-11-16');
+INSERT INTO sighting VALUES (11862,'ruckin','Coyote Creek Field Station','','0','0','2005-11-16');
+INSERT INTO sighting VALUES (11863,'norsho','Coyote Creek Field Station','','0','0','2005-11-16');
+INSERT INTO sighting VALUES (11864,'bknsti','Coyote Creek Field Station','','0','0','2005-11-16');
+INSERT INTO sighting VALUES (11865,'dowitc','Coyote Creek Field Station','','0','0','2005-11-16');
+INSERT INTO sighting VALUES (11866,'wesmea','Coyote Creek Field Station','','','1','2005-11-16');
