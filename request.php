@@ -642,17 +642,17 @@ function changeView()
 <?          $this->globalMenuBirds(); ?>
 <?          $this->globalMenuLocations(); ?>
 
-			<div class="command-disabled"><a href="./speciesindex.php?view=chrono">life list</a></div>
-	        <div class="command-disabled"><a href="./credits.php">about</a></div>
+			<div class="command-simple"><a href="./speciesindex.php?view=chrono">life list</a></div>
+	        <div class="command-simple"><a href="./credits.php">about</a></div>
 
 <?	        if (getEnableEdit())
 	        { ?>
-	        <div class="command-disabled"><a href="./tripcreate.php">create trip</a></div>
-            <div class="command-disabled"><a href="./photosneeded.php">photo todo</a></div>
-	        <div class="command-disabled"><a href="./errorcheck.php">db todo</a></div>
+	        <div class="command-simple"><a href="./tripcreate.php">create trip</a></div>
+            <div class="command-simple"><a href="./photosneeded.php">photo todo</a></div>
+	        <div class="command-simple"><a href="./errorcheck.php">db todo</a></div>
 <?	        } ?>
 
-	        <div class="command-disabled"><a href="./indexrss.php">RSS</a></div>
+	        <div class="command-simple"><a href="./indexrss.php">RSS</a></div>
 
         </div>
 <?  }

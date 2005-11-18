@@ -121,6 +121,11 @@ a.info:hover span{ /*the span will display just on :hover state*/
   padding-left: 16px; margin: 7px;
 }
 
+.command-simple
+{
+  padding-left: 16px; margin: 7px;
+}
+
 .command
 {
   border-top: solid 1px #BBBBBB;
