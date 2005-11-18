@@ -57,14 +57,27 @@ if ($postSightingID != "") {
 }
 
 $sightingInfo = getSightingInfo($sightingID);
-$speciesInfo = performOneRowQuery("Get Species Info", "SELECT * from species where Abbreviation='" . $sightingInfo["SpeciesAbbreviation"] . "'");
+
+if (performCount("Test for Species Info", "SELECT COUNT(*) from species where Abbreviation='" . $sightingInfo["SpeciesAbbreviation"] . "'")  == 1)
+{
+	$speciesInfo = performOneRowQuery("Get Species Info", "SELECT * from species where Abbreviation='" . $sightingInfo["SpeciesAbbreviation"] . "'");
+}
+else
+{
+	$speciesInfo = "";
+}
+
 $tripInfo = performOneRowQuery("Get Trip Info", "SELECT *, " . niceDateColumn() . " FROM trip WHERE Date='" . $sightingInfo["TripDate"] . "'");
 $locationInfo = performOneRowQuery("Get Location Info", "SELECT * from location where Name='" . $sightingInfo["LocationName"] . "'");
 $stateInfo = getStateInfoForAbbreviation($locationInfo["State"]);
 
 $locationList = performQuery("Get Location List", "SELECT Name, objectid from location");
 
-htmlHead($speciesInfo["CommonName"] . ", " . $tripInfo["niceDate"]);
+if ($speciesInfo == "") {
+    htmlHead("Invalid Species Abbreivation, " . $tripInfo["niceDate"]);
+} else {
+    htmlHead($speciesInfo["CommonName"] . ", " . $tripInfo["niceDate"]);
+}
 
 $request = new Request;
 
@@ -76,7 +89,11 @@ $request->globalMenu();
 					 $sightingID - 1, $sightingID - 1, $sightingID + 1, $sightingID + 1); ?>
 
   <div class="pagetitle">
-    <a href="./speciesdetail.php?speciesid=<?= $speciesInfo["objectid"] ?>"><?= $speciesInfo["CommonName"] ?></a>
+	<? if ($speciesInfo == "") { ?>
+	    Invalid Species Abbreviation
+    <? } else { ?>
+        <a href="./speciesdetail.php?speciesid=<?= $speciesInfo["objectid"] ?>"><?= $speciesInfo["CommonName"] ?></a>
+	<? } ?>
   </div>
 
   <div class="pagesubtitle">

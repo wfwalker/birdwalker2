@@ -30,7 +30,7 @@ $request->globalMenu();
 
     <div class="topright">
 	    <div class="pagesubtitle">Index</div>
-	    <div class="pagetitle">Birds in need of photos</div>
+	    <div class="pagetitle">Photography Target Species </div>
 	</div>
 
     <div class="contentright">
