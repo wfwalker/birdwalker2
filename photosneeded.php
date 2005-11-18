@@ -13,9 +13,12 @@ $monthNum = $localtimearray["tm_mon"] + 1;
 $dayStart = $localtimearray["tm_yday"] - 3;
 $dayStop = $localtimearray["tm_yday"] + 3;
 
-if ($sortCriteria == "") { $sortCriteria = "theCount desc"; }
+if ($sortCriteria == "") { $sortCriteria = "objectid"; }
 
-$photoCount = performQuery("select species.CommonName, species.objectid, sum(sighting.Photo) as theSum, count(sighting.objectid) as theCount from species, sighting where sighting.SpeciesAbbreviation=species.Abbreviation group by species.CommonName order by " . $sortCriteria);
+$photoCount = performQuery("Count Photos", "
+    SELECT species.CommonName, species.objectid, SUM(sighting.Photo) AS theSum, COUNT(sighting.objectid) as theCount
+      FROM species, sighting WHERE sighting.SpeciesAbbreviation=species.Abbreviation AND species.ABACountable != '0'
+      GROUP BY species.CommonName ORDER BY " . $sortCriteria);
 
 $speciesCount = 0;
 
@@ -32,14 +35,16 @@ $request->globalMenu();
 
     <div class="contentright">
 	  <div class=titleblock>
-        <div class=metadata>Birds seen at least <?= $threshold ?> times with no photo</div>
+        <div class="metadata">ABA-countable Birds I have seen at least <?= $threshold ?> times but never photographed</div>
       </div>
 
-<a href="./photosneeded.php?sort=objectid">taxo</a>
-| <a href="./photosneeded.php?sort=theCount+desc">sighting count</a>
-| <a href="./photosneeded.php?sort=CommonName">alphabetical</a>
+<div class="metadata">
+	Sort by <a href="./photosneeded.php?sort=objectid">taxo</a> or <a href="./photosneeded.php?sort=theCount+desc">sighting count</a>
+</div>
 
-<table class=report-content>
+<p>&nbsp;</p>
+
+<table class="report-content">
 <tr class=titleblock><td>Species</td><td>Sightings</td></tr>
 
 <?php
