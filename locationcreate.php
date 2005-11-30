@@ -23,7 +23,7 @@ $new = "";
 array_key_exists('New', $_POST) && $new = $_POST['New'];
 
 // if NEW, set the POST id to a new unique location objectid
-if ($new == "New") { $postLocationID = 1 + performCount("select max(objectid) from location"); }
+if ($new == "New") { $postLocationID = 1 + performCount("Find new objectid", "select max(objectid) from location"); }
 
 // if we have a POST id and either a new or a save button, then time to update
 if ($postLocationID != "") {
@@ -40,7 +40,7 @@ if ($postLocationID != "") {
 
 	if ($save == "Save")
 	{
-		performQuery("UPDATE location SET ".
+		performQuery("Update location", "UPDATE location SET ".
 					 "Name='" . $name . "', " .
 					 "ReferenceURL='". $referenceURL . "', " .
 					 "City='" . $city . "', " .
@@ -51,7 +51,7 @@ if ($postLocationID != "") {
 					 "Latitude='" . $latitude . "', " .
 					 "Longitude='" . $longitude . "' where objectid='" . $postLocationID . "'");
 	} else if ($new != "") {
-		performQuery("INSERT INTO location VALUES (" . $postLocationID . ", '" .
+		performQuery("Create new location", "INSERT INTO location VALUES (" . $postLocationID . ", '" .
 					 $name . "', '" .
 					 $referenceURL . "', '" .
 					 $city . "', '" .
