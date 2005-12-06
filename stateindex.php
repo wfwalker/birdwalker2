@@ -52,7 +52,7 @@ $request->globalMenu();
 	 $info = getStateInfo($id);
      $state = $info["Abbreviation"]; ?>
     <tr>
-      <td class=firstcell><a href="./statedetail.php?id=<?= $info["objectid"] ?>"><?= getStateNameForAbbreviation($state) ?></a></td>
+      <td class=firstcell><a href="./statedetail.php?stateid=<?= $info["objectid"] ?>"><?= getStateNameForAbbreviation($state) ?></a></td>
 <?	  for ($year = getEarliestYear(); $year <= getLatestYear(); $year++)
 	  { ?>
 		  <td class=bordered align=right>
