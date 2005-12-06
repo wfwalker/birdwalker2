@@ -82,7 +82,7 @@ $request->globalMenu();
 	    list($width, $height, $type, $attr) = getimagesize("./images/photo/" . $photoFilename); ?>
 
 	    <img width=<?= $width ?> height=<?= $height ?> src="<?= getPhotoURLForSightingInfo($sightingInfo) ?>" alt="<?= $speciesInfo['CommonName'] ?>">
-        <div class="copyright">@<?= $tripYear ?> W. F. Walker</div>
+        <div class="copyright">&copy; <?= $tripYear ?> W. F. Walker</div>
 <?  }
 
     if (strlen($sightingInfo["Notes"]) > 0) { ?>
