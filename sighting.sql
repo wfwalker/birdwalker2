@@ -2267,7 +2267,6 @@ INSERT INTO sighting VALUES (2266,'whcspa','Coyote Hills','','0','0','2000-09-24
 INSERT INTO sighting VALUES (2267,'willet','Coyote Hills','','0','0','2000-09-24');
 INSERT INTO sighting VALUES (2268,'yelwar','Coyote Hills','','0','0','2000-09-24');
 INSERT INTO sighting VALUES (2269,'yerwar','Coyote Hills','','0','0','2000-09-24');
-INSERT INTO sighting VALUES (2270,'tohscr','Champaign County','tow-headed screamer','1','0','2000-10-06');
 INSERT INTO sighting VALUES (2271,'amegfi','Champaign County','','0','0','2000-10-06');
 INSERT INTO sighting VALUES (2272,'amerob','Champaign County','','0','0','2000-10-06');
 INSERT INTO sighting VALUES (2273,'blujay','Champaign County','','0','0','2000-10-06');
