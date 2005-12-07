@@ -2267,7 +2267,7 @@ INSERT INTO sighting VALUES (2266,'whcspa','Coyote Hills','','0','0','2000-09-24
 INSERT INTO sighting VALUES (2267,'willet','Coyote Hills','','0','0','2000-09-24');
 INSERT INTO sighting VALUES (2268,'yelwar','Coyote Hills','','0','0','2000-09-24');
 INSERT INTO sighting VALUES (2269,'yerwar','Coyote Hills','','0','0','2000-09-24');
-INSERT INTO sighting VALUES (11867,'snogoo','Bosque del Apache NWR','','0','0','2005-11-26');
+INSERT INTO sighting VALUES (11867,'snogoo','Bosque del Apache NWR','Numerous blue morph geese seen all week, as high as 5%','','','2005-11-26');
 INSERT INTO sighting VALUES (2271,'amegfi','Champaign County','','0','0','2000-10-06');
 INSERT INTO sighting VALUES (2272,'amerob','Champaign County','','0','0','2000-10-06');
 INSERT INTO sighting VALUES (2273,'blujay','Champaign County','','0','0','2000-10-06');
@@ -11939,3 +11939,5 @@ INSERT INTO sighting VALUES (12009,'pyrrhu','Bosque del Apache NWR','','','1','2
 INSERT INTO sighting VALUES (12010,'rewbla','Bosque del Apache NWR','','0','0','2005-11-29');
 INSERT INTO sighting VALUES (12011,'wesmea','Bosque del Apache NWR','','0','0','2005-11-29');
 INSERT INTO sighting VALUES (12012,'houspa','Bosque del Apache NWR','','0','0','2005-11-29');
+INSERT INTO sighting VALUES (12013,'gadwal','Bosque del Apache NWR','','','','2005-11-26');
+INSERT INTO sighting VALUES (12014,'houspa','Bosque del Apache NWR','','','','2005-11-26');

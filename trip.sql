@@ -437,7 +437,7 @@ INSERT INTO trip VALUES (437,'Bob Power','','Class Field Trip','We had a great t
 INSERT INTO trip VALUES (438,'Ashok and Bill','','Photo Safari','We had a wonderful time photographing several subjects that we found right at eye level. I had hoped for direct sunlight, but the overcast light was very interesting, too.','2005-11-09');
 INSERT INTO trip VALUES (439,'Bill','','Photo Safari','Inspired by Pete L, I decided to try some flight shots at this spot. Man those ducks move fast!','2005-11-03');
 INSERT INTO trip VALUES (440,'Ashok and Bill','','Morning Photo Safari','We heard a lot of songbirds, and glimpsed a few, but most of our photos were of Red-tails.','2005-11-16');
-INSERT INTO trip VALUES (441,'Arthur Morris','','Bosque IPT Day One','','2005-11-26');
-INSERT INTO trip VALUES (442,'Arthur Morris','','Bosque IPT Day Two','','2005-11-27');
+INSERT INTO trip VALUES (441,'Arthur Morris','','Bosque IPT Day One','In two photo sessions from dawn until 11am and from 3:30pm til dusk we ranged around the farm loop of the Refuge seeking the right lighting and wind conditions to photograph large flocks of white geese and cranes. Arthur Morris\'s sharp eyes spotted Greater Roadrunner, Northern Flicker, Wilson\'s Snipe, and Great Horned Owl from his car.','2005-11-26');
+INSERT INTO trip VALUES (442,'Arthur Morris','','Bosque IPT Day Two','Arthur Morris described this as the second worst weather at Bosque in ten years of photographing there. Bitter cold and blasting wind toppled cameras and nearly knocked us off our feet. We gave up early and had a long lunch.','2005-11-27');
 INSERT INTO trip VALUES (443,'Arthur Morris','','Bosque IPT Day Three','','2005-11-28');
 INSERT INTO trip VALUES (444,'Arthur Morris','','Bosque IPT Day Four','','2005-11-29');
