@@ -11833,7 +11833,7 @@ INSERT INTO sighting VALUES (11878,'rudduc','Bosque del Apache NWR','','0','0','
 INSERT INTO sighting VALUES (11879,'eargre','Bosque del Apache NWR','','0','0','2005-11-26');
 INSERT INTO sighting VALUES (11880,'grbher','Bosque del Apache NWR','','0','0','2005-11-26');
 INSERT INTO sighting VALUES (11936,'amecro','Bosque del Apache NWR','','0','0','2005-11-27');
-INSERT INTO sighting VALUES (11935,'labwoo','Bosque del Apache NWR','','0','0','2005-11-27');
+INSERT INTO sighting VALUES (11935,'labwoo','Bosque del Apache NWR','','','1','2005-11-27');
 INSERT INTO sighting VALUES (11883,'norhar','Bosque del Apache NWR','','0','0','2005-11-26');
 INSERT INTO sighting VALUES (11884,'rethaw','Bosque del Apache NWR','','0','0','2005-11-26');
 INSERT INTO sighting VALUES (11885,'amekes','Bosque del Apache NWR','','0','0','2005-11-26');
@@ -11871,7 +11871,7 @@ INSERT INTO sighting VALUES (11920,'snogoo','Bosque del Apache NWR','','0','0','
 INSERT INTO sighting VALUES (11940,'rewbla','Bosque del Apache NWR','','0','0','2005-11-27');
 INSERT INTO sighting VALUES (11941,'wesmea','Bosque del Apache NWR','','0','0','2005-11-27');
 INSERT INTO sighting VALUES (11942,'grtgra','Bosque del Apache NWR','','0','0','2005-11-27');
-INSERT INTO sighting VALUES (11943,'snogoo','Bosque del Apache NWR','','0','0','2005-11-28');
+INSERT INTO sighting VALUES (11943,'snogoo','Bosque del Apache NWR','','','1','2005-11-28');
 INSERT INTO sighting VALUES (11944,'rosgoo','Bosque del Apache NWR','','0','0','2005-11-28');
 INSERT INTO sighting VALUES (11945,'cangoo','Bosque del Apache NWR','','0','0','2005-11-28');
 INSERT INTO sighting VALUES (11946,'amewig','Bosque del Apache NWR','','0','0','2005-11-28');
@@ -11889,7 +11889,7 @@ INSERT INTO sighting VALUES (11957,'norhar','Bosque del Apache NWR','','0','0','
 INSERT INTO sighting VALUES (11958,'rethaw','Bosque del Apache NWR','','0','0','2005-11-28');
 INSERT INTO sighting VALUES (11959,'amekes','Bosque del Apache NWR','','0','0','2005-11-28');
 INSERT INTO sighting VALUES (11960,'amecoo','Bosque del Apache NWR','','0','0','2005-11-28');
-INSERT INTO sighting VALUES (11961,'sancra','Bosque del Apache NWR','','0','0','2005-11-28');
+INSERT INTO sighting VALUES (11961,'sancra','Bosque del Apache NWR','','','1','2005-11-28');
 INSERT INTO sighting VALUES (11962,'killde','Bosque del Apache NWR','','0','0','2005-11-28');
 INSERT INTO sighting VALUES (11963,'rocdov','Bosque del Apache NWR','','0','0','2005-11-28');
 INSERT INTO sighting VALUES (11964,'whwdov','Bosque del Apache NWR','','0','0','2005-11-28');
@@ -11922,7 +11922,7 @@ INSERT INTO sighting VALUES (11992,'amekes','Bosque del Apache NWR','','0','0','
 INSERT INTO sighting VALUES (11993,'amecoo','Bosque del Apache NWR','','0','0','2005-11-29');
 INSERT INTO sighting VALUES (11994,'sancra','Bosque del Apache NWR','','0','0','2005-11-29');
 INSERT INTO sighting VALUES (11995,'greyel','Bosque del Apache NWR','','0','0','2005-11-29');
-INSERT INTO sighting VALUES (11996,'comsni','Bosque del Apache NWR','','0','0','2005-11-29');
+INSERT INTO sighting VALUES (11996,'comsni','Bosque del Apache NWR','','','1','2005-11-29');
 INSERT INTO sighting VALUES (11997,'moudov','Bosque del Apache NWR','','0','0','2005-11-29');
 INSERT INTO sighting VALUES (11998,'saypho','Bosque del Apache NWR','','0','0','2005-11-29');
 INSERT INTO sighting VALUES (11999,'amecro','Bosque del Apache NWR','','0','0','2005-11-29');
@@ -11933,9 +11933,9 @@ INSERT INTO sighting VALUES (12003,'eursta','Bosque del Apache NWR','','0','0','
 INSERT INTO sighting VALUES (12004,'amepip','Bosque del Apache NWR','','0','0','2005-11-29');
 INSERT INTO sighting VALUES (12005,'gnttow','Bosque del Apache NWR','','0','0','2005-11-29');
 INSERT INTO sighting VALUES (12006,'spotow','Bosque del Apache NWR','','0','0','2005-11-29');
-INSERT INTO sighting VALUES (12007,'whcspa','Bosque del Apache NWR','','0','0','2005-11-29');
+INSERT INTO sighting VALUES (12007,'whcspa','Bosque del Apache NWR','','','1','2005-11-29');
 INSERT INTO sighting VALUES (12008,'daejun','Bosque del Apache NWR','','0','0','2005-11-29');
-INSERT INTO sighting VALUES (12009,'pyrrhu','Bosque del Apache NWR','','0','0','2005-11-29');
+INSERT INTO sighting VALUES (12009,'pyrrhu','Bosque del Apache NWR','','','1','2005-11-29');
 INSERT INTO sighting VALUES (12010,'rewbla','Bosque del Apache NWR','','0','0','2005-11-29');
 INSERT INTO sighting VALUES (12011,'wesmea','Bosque del Apache NWR','','0','0','2005-11-29');
 INSERT INTO sighting VALUES (12012,'houspa','Bosque del Apache NWR','','0','0','2005-11-29');

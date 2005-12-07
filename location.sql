@@ -163,4 +163,4 @@ INSERT INTO location VALUES (162,'Quaking Aspen Meadow','','','Tulare','CA','','
 INSERT INTO location VALUES (163,'Quaking Aspen Campground','','','Tulare','CA','','',36.1192,-118.547);
 INSERT INTO location VALUES (164,'Hayward Regional Shoreline','','Hayward','Alameda','CA','','',37.6689,-122.08);
 INSERT INTO location VALUES (165,'Chevron Meadow','','Yosemite National Park','Mono','CA','The famous meadow behind the Chevron station at Crane Flat','',37.85,-119.567);
-INSERT INTO location VALUES (166,'Bosque del Apache NWR','','San Antonio','Unknown','NM','','',0,0);
+INSERT INTO location VALUES (166,'Bosque del Apache NWR','','San Antonio','Socorro','NM','','',33.805,-106.907);
