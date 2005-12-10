@@ -1,3 +1,4 @@
+<?php header("Content-type: text/xml"); ?>
 <?php echo "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>"?>
 
 <?
@@ -5,7 +6,7 @@ require_once("./birdwalker.php");
 
 // Sat, 07 Sep 2002 00:00:01 GMT
 $numberOfTrips = 10;
-$latestTrips = performQuery("select *, date_format(Date, '%a, %d %b %Y %T GMT') AS niceDate from trip order by Date desc limit " . $numberOfTrips);
+$latestTrips = performQuery("Find latest trips", "select *, date_format(Date, '%a, %d %b %Y %T GMT') AS niceDate from trip order by Date desc limit " . $numberOfTrips);
 ?>
 
 <rss version="2.0">
