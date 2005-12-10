@@ -199,7 +199,7 @@ class SpeciesQuery extends BirdWalkerQuery
 				 else if (array_key_exists("speciesPhotos", $info) && $info["speciesPhotos"]  > 0)
 				 { ?>
 		             <a href="./speciesdetail.php?view=photo&speciesid=<?= $info["objectid"] ?>">
-						 <img border="0" src="./images/camera.gif"/>
+						 <img border="0" valign="top" src="./images/camera.gif"/>
 					 </a>
 <?			     }
 
