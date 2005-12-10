@@ -231,13 +231,13 @@ class Map
 		$latPan = $latRange * 0.3; 
 ?>
 
-	   <div style="text-align: right; padding-top: 30px;">
 	   <? if ($inDrawControls) { ?>
+	      <div style="text-align: right; padding-top: 30px;">
 		    <?= $this->linkToSelfZoom(1.5, "out") ?> | 
 			<?= $this->linkToSelfZoom(0.6, "in") ?> |
 			<?= $this->drawLayerControls() ?>
+          </div>
 	   <? } ?>
-       </div>
 
        <div style="position: relative; border: 1px solid gray; height:<?= $this->mReq->getMapHeight() ?>px; width: <?= $this->mReq->getMapWidth()?>px;">
 
