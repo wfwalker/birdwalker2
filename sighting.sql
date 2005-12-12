@@ -11874,12 +11874,12 @@ INSERT INTO sighting VALUES (11942,'grtgra','Bosque del Apache NWR','','0','0','
 INSERT INTO sighting VALUES (11943,'snogoo','Bosque del Apache NWR','','','1','2005-11-28');
 INSERT INTO sighting VALUES (11944,'rosgoo','Bosque del Apache NWR','','0','0','2005-11-28');
 INSERT INTO sighting VALUES (11945,'cangoo','Bosque del Apache NWR','','0','0','2005-11-28');
-INSERT INTO sighting VALUES (11946,'amewig','Bosque del Apache NWR','','0','0','2005-11-28');
+INSERT INTO sighting VALUES (11946,'yerwar','Bosque del Apache NWR','','','1','2005-11-28');
 INSERT INTO sighting VALUES (11947,'mallar','Bosque del Apache NWR','','0','0','2005-11-28');
 INSERT INTO sighting VALUES (11948,'norsho','Bosque del Apache NWR','','0','0','2005-11-28');
 INSERT INTO sighting VALUES (11949,'norpin','Bosque del Apache NWR','','0','0','2005-11-28');
 INSERT INTO sighting VALUES (11950,'gnwtea','Bosque del Apache NWR','','0','0','2005-11-28');
-INSERT INTO sighting VALUES (11951,'rinduc','Bosque del Apache NWR','','0','0','2005-11-28');
+INSERT INTO sighting VALUES (11951,'rinduc','Bosque del Apache NWR','','','1','2005-11-28');
 INSERT INTO sighting VALUES (11952,'buffle','Bosque del Apache NWR','','0','0','2005-11-28');
 INSERT INTO sighting VALUES (11953,'hoomer','Bosque del Apache NWR','','0','0','2005-11-28');
 INSERT INTO sighting VALUES (11954,'rudduc','Bosque del Apache NWR','','0','0','2005-11-28');
@@ -11955,3 +11955,11 @@ INSERT INTO sighting VALUES (12025,'willet','Charleston Slough','','','1','2005-
 INSERT INTO sighting VALUES (12026,'bknsti','Charleston Slough','','','','2005-12-07');
 INSERT INTO sighting VALUES (12027,'clarai','Charleston Slough','','','','2005-12-07');
 INSERT INTO sighting VALUES (12028,'sonspa','Charleston Slough','','','','2005-12-07');
+INSERT INTO sighting VALUES (12029,'lesgol','2138 King Court','','0','0','2005-12-10');
+INSERT INTO sighting VALUES (12030,'houspa','2138 King Court','','0','0','2005-12-10');
+INSERT INTO sighting VALUES (12031,'houfin','2138 King Court','','0','0','2005-12-10');
+INSERT INTO sighting VALUES (12032,'chbchi','2138 King Court','','0','0','2005-12-10');
+INSERT INTO sighting VALUES (12033,'moudov','2138 King Court','','0','0','2005-12-10');
+INSERT INTO sighting VALUES (12034,'caltow','2138 King Court','','0','0','2005-12-10');
+INSERT INTO sighting VALUES (12035,'bushti','2138 King Court','','0','0','2005-12-10');
+INSERT INTO sighting VALUES (12036,'amegfi','2138 King Court','','','','2005-12-10');

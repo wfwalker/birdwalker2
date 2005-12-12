@@ -442,3 +442,4 @@ INSERT INTO trip VALUES (442,'Arthur Morris','','Bosque IPT Day Two','Arthur Mor
 INSERT INTO trip VALUES (443,'Arthur Morris','','Bosque IPT Day Three','','2005-11-28');
 INSERT INTO trip VALUES (444,'Arthur Morris','','Bosque IPT Day Four','','2005-11-29');
 INSERT INTO trip VALUES (445,'Bill','','Photo Safari','The high overcast worked really well for photographing high contrast plumages like the adult Surf Scoter; a cold but productive morning.','2005-12-07');
+INSERT INTO trip VALUES (446,'Mary and Bill','','Saturday Yard Work','','2005-12-10');
