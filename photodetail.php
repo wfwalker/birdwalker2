@@ -61,7 +61,7 @@ $request->globalMenu();
 ?>
 
 <div class="topright">
-	<? browseButtons("Photo Detail", "./photodetail.php?sightingid=", $request->getSightingID(),
+	<? browseButtons("<img align=\"top\" src=\"./images/camera.gif\"/> Photo Detail", "./photodetail.php?sightingid=", $request->getSightingID(),
 					 $prevPhotoID, $prevPhotoLinkText, $nextPhotoID, $nextPhotoLinkText); ?>
 	  <div class="pagetitle">
           <a href="./speciesdetail.php?speciesid=<?= $speciesInfo["objectid"] ?>"><?= $speciesInfo["CommonName"] ?></a>
@@ -81,8 +81,10 @@ $request->globalMenu();
 
 	    list($width, $height, $type, $attr) = getimagesize("./images/photo/" . $photoFilename); ?>
 
-	    <img width=<?= $width ?> height=<?= $height ?> src="<?= getPhotoURLForSightingInfo($sightingInfo) ?>" alt="<?= $speciesInfo['CommonName'] ?>">
-        <div class="copyright">&copy; <?= $tripYear ?> W. F. Walker</div>
+		<center>
+	      <img width=<?= $width ?> height=<?= $height ?> src="<?= getPhotoURLForSightingInfo($sightingInfo) ?>" alt="<?= $speciesInfo['CommonName'] ?>">
+          <div class="copyright">&copy; <?= $tripYear ?> W. F. Walker</div>
+		</center>
 <?  }
 
     if (strlen($sightingInfo["Notes"]) > 0) { ?>
