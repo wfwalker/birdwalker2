@@ -200,16 +200,16 @@ class Map
 		$latPan = $this->getLatitudeRadius() * 0.25; 
 		echo "<!-- PAN " . $longPan . ", " . $latPan . " -->";
 ?>
-	<div style="position: absolute; left: <?= $this->mReq->getMapWidth() / 2 ?>px; top: -20px">
+	<div style="z-index: 900; text-align: center; width: 20px; height: 20px; border: 1px solid gray; font-weight: bold; background-color: white; position: absolute; left: 26px; top: 5px">
 		 <?= $this->linkToSelfPan($latPan, 0, "N"); ?>
 	</div>
-	<div style="position: absolute; left: <?= $this->mReq->getMapWidth() / 2 ?>px; top: <?= $this->mReq->getMapHeight() + 5 ?>px">
+	<div style="z-index: 900; text-align: center; width: 20px; height: 20px; border: 1px solid gray; font-weight: bold; background-color: white; position: absolute; left: 26px; top: 47px">
 		 <?= $this->linkToSelfPan(-$latPan, 0, "S"); ?>
 	</div>
-	<div style="position: absolute; left: -20px; top: <?= $this->mReq->getMapHeight() / 2 ?>px">
+	<div style="z-index: 900; text-align: center; width: 20px; height: 20px; border: 1px solid gray; font-weight: bold; background-color: white; position: absolute; left: 5px; top: 26px">
 		 <?= $this->linkToSelfPan(0, $longPan, "W"); ?>
 	</div>
-	<div style="position: absolute; left: <?= $this->mReq->getMapWidth() + 10 ?>px; top: <?= $this->mReq->getMapHeight() / 2 ?>px">
+	<div style="z-index: 900; text-align: center; width: 20px; height: 20px; border: 1px solid gray; font-weight: bold; background-color: white; position: absolute; left: 47px; top: 26px">
 		 <?= $this->linkToSelfPan(0, -$longPan, "E"); ?>
 	</div>
 <?
