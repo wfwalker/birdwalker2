@@ -50,7 +50,7 @@ $request->globalMenu();
 ?>
 
   <div class="topright">
-	<? browseButtons("Family Detail", "./familydetail.php?view=".$request->getView()."&familyid=", $request->getFamilyID(),
+	<? browseButtons("<img align=\"center\" src=\"./images/species.gif\"> Family Detail", "./familydetail.php?view=".$request->getView()."&familyid=", $request->getFamilyID(),
 					 $prevFamily, $prevFamilyLinkText,
 					 $nextFamily, $nextFamilyLinkText); ?>
 

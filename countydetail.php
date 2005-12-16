@@ -19,14 +19,12 @@ $stateInfo =  $request->getStateInfo();
 ?>
 
     <div class="topright">
-	  <div class="pagesubtitle">County Detail</div>
+	  <div class="pagesubtitle"><img align="center" src="./images/location.gif"> county detail</div>
 	  <div class="pagetitle"> <?= $request->getCounty() ?> County</div>
 	  <div class="pagesubtitle"> <?= $stateInfo["Name"] ?></div>
 	</div>
 
     <div class=contentright>
-<?    if (($request->getView() != "map") && ($request->getView() != "photo")) { rightThumbnailCounty($request->getCounty()); } ?>
-
       <div class="titleblock">	  
 <?    $request->viewLinks("species"); ?>
       </div>
