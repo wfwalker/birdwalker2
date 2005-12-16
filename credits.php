@@ -66,6 +66,8 @@ $request->globalMenu();
 		<p class="report-content">
         Big thanks for the kind words and encouragement I have gotten from
 		<a href="http://www.khosla.com/forthebirds/index.html">Ashok Khosla</a>,
+		<a href="http://www.cahabariverpublishing.com/about.php">Beth Maynor Young</a>,
+		<a href="http://www.birdsasart.com/about.html">Arthur Morris</a>,
 		<a href="http://www.birdphotography.com/">Pete LaTourette</a>,
      	<a href="http://www.kokophoto.com/">Mark Bohrer</a>,
         <a href="http://www.pbase.com/tgrey/profile">Tom Grey</a>,
