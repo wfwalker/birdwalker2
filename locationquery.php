@@ -316,7 +316,7 @@ class LocationQuery extends BirdWalkerQuery
 
 <?          if ($info["locationPhotos"] > 0) { ?>
               <a href="./locationdetail.php?view=photo&locationid=<?= $info["objectid"] ?>">
-			      <img border=0 align=center src="./images/camera.gif" alt="photo">
+			      <img border="0" align="bottom" src="./images/camera.gif" alt="photo">
 			  </a>
 <?           } ?>
 
