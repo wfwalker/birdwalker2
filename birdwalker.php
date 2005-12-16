@@ -46,7 +46,7 @@ function htmlFoot()
 function editLink($href)
 { 
     if (getEnableEdit()) { ?>
-       <a href="<?= $href ?>"><img src="./images/edit.gif" border=0 alt="edit"></a>
+       <a href="<?= $href ?>"><img src="./images/edit.gif" border="0" alt="edit"></a>
 <?  }
 }
 
@@ -82,26 +82,26 @@ function disabledBrowseButtons($pageKind)
 
 function browseButtons($pageKind, $urlPrefix, $currentID, $prevID, $prevName, $nextID, $nextName)
 {
-?>  <table width="100%" padding=0 spacing=0 cellpadding=0><tr> <?
+?>  <table width="100%" padding="0" spacing="0" cellpadding="0"><tr> <?
 
 	if ($prevID == "")
 	{
-        ?><td width="33%"  class="prevlink">&lt; prev</td><?
+        ?><td width="33%" valign="top" class="prevlink">&lt; prev</td><?
 	}
 	else
 	{
-        ?><td width="33%" class="prevlink"><a href="<?= $urlPrefix . $prevID ?>">&lt; prev <?= strtolower($prevName) ?></a></td><?
+        ?><td width="33%" valign="top" class="prevlink"><a href="<?= $urlPrefix . $prevID ?>">&lt; prev <?= strtolower($prevName) ?></a></td><?
 	}
 
-    ?> <td width="33%"  class="pagekind"><?= strtolower($pageKind) ?></td> <?
+    ?> <td width="33%" valign="top" class="pagekind"><?= strtolower($pageKind) ?></td> <?
 
 	if ($nextID == "")
 	{
-        ?><td width="33%"  class="nextlink">next &gt;</td><?
+        ?><td width="33%" valign="top" class="nextlink">next &gt;</td><?
 	}
 	else
 	{
-        ?><td width="33%"  class="nextlink"><a href="<?= $urlPrefix . $nextID ?>"><?= strtolower($nextName) ?> next  &gt;</a></td><?
+        ?><td width="33%" valign="top" class="nextlink"><a href="<?= $urlPrefix . $nextID ?>"><?= strtolower($nextName) ?> next  &gt;</a></td><?
 	}
 
 ?>  </tr></table> <?
@@ -212,7 +212,7 @@ function getPhotoFilename($sightingInfo)
 
 function getPhotoLinkForSightingInfo($sightingInfo, $fieldName="objectid")
 { ?>
-	<a href="./photodetail.php?sightingid=<?= $sightingInfo[$fieldName] ?>"><img border=0 align=center src="./images/camera.gif" alt="photo"></a>
+	<a href="./photodetail.php?sightingid=<?= $sightingInfo[$fieldName] ?>"><img border="0" align="to"p src="./images/camera.gif" alt="photo"></a>
 <?
 }
 
@@ -408,7 +408,7 @@ function speciesBrowseButtons($url, $speciesID, $viewMode)
 		$prevSpeciesLinkText = "";
 	}
 
-	browseButtons("Species Detail", $url . "?view=" . $viewMode . "&speciesid=", $speciesID,
+	browseButtons("<img align=\"center\" src=\"./images/species.gif\"> Species Detail", $url . "?view=" . $viewMode . "&speciesid=", $speciesID,
 				  $prevSpeciesID, $prevSpeciesLinkText, $nextSpeciesID, $nextSpeciesLinkText);
 }
 
@@ -492,7 +492,7 @@ function tripBrowseButtons($url, $tripID, $viewMode)
       WHERE Date < '" . $tripInfo["Date"] . "'
       ORDER BY Date DESC LIMIT 1", false);
 
-	browseButtons("Trip Detail", $url . "?view=" . $viewMode . "&tripid=", $tripID,
+	browseButtons("<img align=\"center\" src=\"./images/trip.gif\"/> Trip Detail", $url . "?view=" . $viewMode . "&tripid=", $tripID,
 				  $prevTripInfo["objectid"], $prevTripInfo["niceDate"], $nextTripInfo["objectid"], $nextTripInfo["niceDate"]);
 }
 
@@ -524,7 +524,7 @@ function locationBrowseButtons($url, $locationID, $viewMode)
         WHERE CONCAT(State,County,Name) > '" . $siteInfo["State"] . $siteInfo["County"] . $siteInfo["Name"] . "'
         ORDER BY CONCAT(State,County,Name) LIMIT 1", false);
 
-	browseButtons("Location Detail", $url . "?view=" . $viewMode . "&locationid=", $locationID,
+	browseButtons("<img src=\"./images/location.gif\" align=\"center\"> Location Detail", $url . "?view=" . $viewMode . "&locationid=", $locationID,
 				  $prevLocationInfo["objectid"], $prevLocationInfo["Name"], $nextLocationInfo["objectid"], $nextLocationInfo["Name"]);
 }
 
@@ -574,7 +574,7 @@ function stateBrowseButtons($stateID, $viewMode)
 		$prevStateObjectID = "";
 	}
 
-	browseButtons("State Detail", "./statedetail.php?view=" . $viewMode . "&stateid=", $stateID,
+	browseButtons("<img align=\"center\" src=\"./images/location.gif\"> State Detail", "./statedetail.php?view=" . $viewMode . "&stateid=", $stateID,
 				  $prevStateObjectID, $prevStateLinkText, $nextStateObjectID, $nextStateLinkText);
 }
 
