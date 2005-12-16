@@ -47,7 +47,7 @@ else
 ?>
 
     <div class="topright">
-	<? browseButtons("Order Detail", "./orderdetail.php?view=" . $request->getView() . "&orderid=", $request->getOrderID(),
+	<? browseButtons("<img align=\"center\" src=\"./images/species.gif\"> Order Detail", "./orderdetail.php?view=" . $request->getView() . "&orderid=", $request->getOrderID(),
 					 $prevOrder, $prevOrderLinkText,
 					 $nextOrder, $nextOrderLinkText); ?>
 

@@ -35,7 +35,7 @@ if ($request->getYear() != "")
 	$next = "year=" . $nextYear . "&month=" . $nextMonth;
 	$prev = "year=" . $prevYear . "&month=" . $prevMonth;
 
-	browseButtons("Month Detail", "./monthdetail.php?view=" . $request->getView() . "&", $current,
+	browseButtons("<img align=\"center\" src=\"./images/trip.gif\"> Month Detail", "./monthdetail.php?view=" . $request->getView() . "&", $current,
 				  $prev, getMonthNameForNumber($prevMonth) . ", " . $prevYear,
 				  $next, getMonthNameForNumber($nextMonth) . ", " . $nextYear);
 }
