@@ -60,9 +60,11 @@ $request->globalMenu();
 
       </div>
 
-      <div class=report-content><p><?= $tripInfo["Notes"] ?></p></div>
-
 <?
+   if ($tripInfo["Notes"] != "") { ?>
+	<div class="heading">Notes</div>
+    <div class=report-content><?= $tripInfo["Notes"] ?></div>
+<? }
 
 if ($request->getView() == "photo")
 {
