@@ -212,7 +212,7 @@ INSERT INTO trip VALUES (208,'Bill','','Coffee Run','','2002-11-11');
 INSERT INTO trip VALUES (209,'Mary and Bill','','Saturday Stroll','','2002-11-16');
 INSERT INTO trip VALUES (210,'Mary and Bill','','Sunday Stroll','Using instructions found in \"Birding at the Bottom of the Bay\", we explored parts of the park we\'d never seen before.','2002-11-17');
 INSERT INTO trip VALUES (211,'Mary and Bill','','Wine Tasting','','2002-11-30');
-INSERT INTO trip VALUES (212,'Mary and Bill','','Sunday Stroll','','2002-12-01');
+INSERT INTO trip VALUES (212,'Mary and Bill','','Sunday Stroll','This trip included both Ulistac Natural Area and Coyote Creek Field Station','2002-12-01');
 INSERT INTO trip VALUES (213,'Mary and Bill, Bracey and Richard','','Chrismas Bird Count','','2002-12-15');
 INSERT INTO trip VALUES (214,'Mary and Bill','','Holiday Birding','','2002-12-23');
 INSERT INTO trip VALUES (215,'Mary and Bill','','Holiday Owling','many thanks to Champaign Audubon\'s Beth Chato for giving us detailed instructions on how to find this owl!','2002-12-24');
@@ -443,3 +443,6 @@ INSERT INTO trip VALUES (443,'Arthur Morris','','Bosque IPT Day Three','','2005-
 INSERT INTO trip VALUES (444,'Arthur Morris','','Bosque IPT Day Four','','2005-11-29');
 INSERT INTO trip VALUES (445,'Bill','','Photo Safari','The high overcast worked really well for photographing high contrast plumages like the adult Surf Scoter; a cold but productive morning.','2005-12-07');
 INSERT INTO trip VALUES (446,'Mary and Bill','','Saturday Yard Work','','2005-12-10');
+INSERT INTO trip VALUES (447,'Ray Boehmer','','Birding with Ray','','2005-12-29');
+INSERT INTO trip VALUES (448,'Mary and Bill','','First Birding of the Year','','2006-01-01');
+INSERT INTO trip VALUES (449,'Mary and Bill','','Rained out','','2006-01-02');
