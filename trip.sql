@@ -439,10 +439,10 @@ INSERT INTO trip VALUES (439,'Bill','','Photo Safari','Inspired by Pete L, I dec
 INSERT INTO trip VALUES (440,'Ashok and Bill','','Morning Photo Safari','We heard a lot of songbirds, and glimpsed a few, but most of our photos were of Red-tails.','2005-11-16');
 INSERT INTO trip VALUES (441,'Arthur Morris','','Bosque IPT Day One','In two photo sessions from dawn until 11am and from 3:30pm til dusk we ranged around the farm loop of the Refuge seeking the right lighting and wind conditions to photograph large flocks of white geese and cranes. Arthur Morris\'s sharp eyes spotted Greater Roadrunner, Northern Flicker, Wilson\'s Snipe, and Great Horned Owl from his car.','2005-11-26');
 INSERT INTO trip VALUES (442,'Arthur Morris','','Bosque IPT Day Two','Arthur Morris described this as the second worst weather at Bosque in ten years of photographing there. Bitter cold and blasting wind toppled cameras and nearly knocked us off our feet. We gave up early and had a long lunch.','2005-11-27');
-INSERT INTO trip VALUES (443,'Arthur Morris','','Bosque IPT Day Three','','2005-11-28');
-INSERT INTO trip VALUES (444,'Arthur Morris','','Bosque IPT Day Four','','2005-11-29');
+INSERT INTO trip VALUES (443,'Arthur Morris','','Bosque IPT Day Three','We took a break from the refuge today to visit Art\'s secret Wigeon pond, where we had dozens of Wigeon within a few yards. ','2005-11-28');
+INSERT INTO trip VALUES (444,'Arthur Morris','','Bosque IPT Day Four','With an afternoon flight, we had a few hours in the morning, so we showed up for the sunrise shoot one more time, then hit the visitor center to see some passerines. What a great weekend!','2005-11-29');
 INSERT INTO trip VALUES (445,'Bill','','Photo Safari','The high overcast worked really well for photographing high contrast plumages like the adult Surf Scoter; a cold but productive morning.','2005-12-07');
-INSERT INTO trip VALUES (446,'Mary and Bill','','Saturday Yard Work','','2005-12-10');
-INSERT INTO trip VALUES (447,'Ray Boehmer','','Birding with Ray','','2005-12-29');
-INSERT INTO trip VALUES (448,'Mary and Bill','','First Birding of the Year','','2006-01-01');
-INSERT INTO trip VALUES (449,'Mary and Bill','','Rained out','','2006-01-02');
+INSERT INTO trip VALUES (446,'Mary and Bill','','Saturday Yard Work','While refilling the feeders and raking up the leaves, we found a few yard favorites.','2005-12-10');
+INSERT INTO trip VALUES (447,'Ray Boehmer','','Birding with Ray','It turns out my high school science teacher is a bigtime birder. While visiting my parents I got a chance to go birding with Ray, we did great on woodpeckers.','2005-12-29');
+INSERT INTO trip VALUES (448,'Mary and Bill','','First Birding of the Year','It looked like it might be a good high tide, so we set out to see what could be seen. No luck with black rail, but we still had fun, despite the powerful winds.','2006-01-01');
+INSERT INTO trip VALUES (449,'Mary and Bill','','Rained out','We hoped to spend the day in the field, but the steady, all-day rain was not encouraging, and the couch was very comfy, so we worked on our yard list.','2006-01-02');

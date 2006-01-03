@@ -12016,3 +12016,4 @@ INSERT INTO sighting VALUES (12086,'annhum','2138 King Court','','0','0','2006-0
 INSERT INTO sighting VALUES (12087,'wesjay','2138 King Court','','0','0','2006-01-02');
 INSERT INTO sighting VALUES (12088,'caltow','2138 King Court','','0','0','2006-01-02');
 INSERT INTO sighting VALUES (12089,'houspa','2138 King Court','','0','0','2006-01-02');
+INSERT INTO sighting VALUES (12090,'herthr','2138 King Court','','','','2006-01-02');
