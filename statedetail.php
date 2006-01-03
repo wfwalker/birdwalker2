@@ -25,7 +25,6 @@ $request->globalMenu();
 
     <div class="contentright">
       <div class="titleblock">	  
-<?    if ($request->getView() != "map") rightThumbnailState($info["Abbreviation"]); ?>
 
 <?    $request->viewLinks("species"); ?>
 

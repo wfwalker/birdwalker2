@@ -50,8 +50,6 @@ $request->globalMenu();
 	</div>
 
     <div class="contentright">
-<?    if (($request->getView() != "map") && ($request->getView() != "photo")) { $sightingQuery->rightThumbnail(true); }?>
-
       <?= $request->viewLinks("species"); ?>
 
 	  <div class="titleblock">
