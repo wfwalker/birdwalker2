@@ -20,7 +20,7 @@ $request->globalMenu();
 ?>
 
     <div class="topright">
-	  <? browseButtons("Year Detail", "./yeardetail.php?view=" . $request->getView() . "&year=", $request->getYear(),
+	  <? browseButtons("<img align=\"center\" src=\"./images/trip.gif\"> Year Detail", "./yeardetail.php?view=" . $request->getView() . "&year=", $request->getYear(),
 					 $prevYear, $prevYear, $nextYear, $nextYear); ?>
 
       <div class=pagetitle><?= $request->getYear() ?></div>
@@ -29,16 +29,8 @@ $request->globalMenu();
     <div class="contentright">
 
       <div class="titleblock">	  
-<?    if ($request->getView() != "map" && $request->getView() != "photo")
-         rightThumbnail("
-            SELECT sighting.*, " . dailyRandomSeedColumn() . "
-                FROM sighting
-                WHERE sighting.Photo='1' AND Year(TripDate)='" . $request->getYear() . "'
-                ORDER BY shuffle LIMIT 1", true); ?>
-
 <?        $request->viewLinks("species"); ?>
-
-		</div>
+	  </div>
 
 <?
 $request->handleStandardViews();
