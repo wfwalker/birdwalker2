@@ -9,8 +9,31 @@ require_once("./speciesquery.php");
 // *************** modules for the front page
 //
 
+function welcomeMessage()
+{
+ ?>
+	  <div class="heading">Welcome</div>
+
+      <div class="summaryblock">
+	  <div class="report-content">
+	  <img class="inlinepict" src="./images/bill.jpg" align="right"/>
+		This website contains the birding field notes of Bill Walker and Mary Wisnewski, including
+	  <a href="./tripindex.php">trip</a>,
+	  <a href="./countyindex.php">county</a>,
+	  <a href="./stateindex.php">state</a>, and
+	  <a href="./speciesindex.php?view=speciesbyyear">year</a> lists.
+		   Our latest trips are listed to the right, other indices
+	  are available from the links on the left.
+      </div>
+	  </div>
+	  <p>&nbsp;</p>
+<?
+}
+
 function birdOfTheDay()
 {
+    $today = performCount("format date", "select date_format(current_date, '%M %D, %Y')");
+
 	// pick a bird
 	$speciesRequest = new Request;
 	$speciesQuery = new SpeciesQuery($speciesRequest);
@@ -31,11 +54,17 @@ function birdOfTheDay()
 	$photos = $sightingQuery->performPhotoQuery();
 
 ?>
-	  <div class="heading">Bird of the Day</div>
+
+		 <div class="heading">Bird of the Day, <?= $today ?></div>
+
+		<p class="report-content">
+		   Randomly chosen from among all the species Bill has photographed.
+		   The map below the photograph marks locations where we have observed this species.
+		</p>
 
         <div class="superheading"><?= $info["LatinName"] ?></div>
 	    <div class="summaryblock">
-          <span class="heading"><a href="./speciesdetail.php?speciesid=<?=$info['objectid']?>"><?= $info["CommonName"] ?></a></div>
+          <span class="heading"><a href="./speciesdetail.php?speciesid=<?=$info['objectid']?>"><?= $info["CommonName"] ?></a></span>
 
 	  <? if (mysql_num_rows($photos) > 0)
 	     {
@@ -47,9 +76,11 @@ function birdOfTheDay()
 
 	  <? } ?>
 
+		   <div class="heading"><a href="./speciesdetail.php?speciesid=<?=$info['objectid']?>">Our Sightings</a></div>
           <? $map->draw(); ?>
 
-	  </div><?
+	  </div>
+     <p>&nbsp;</p><?
 }
 
 function latestTrips()
@@ -92,25 +123,16 @@ htmlHead("Home");
 $request = new Request;
 $request->globalMenu();
 ?>
-
     <div class="topright">
-	  <div class="logotype"><img src="./images/logotype.gif" width="389" height="61" alt="birdWalker"/></div>
-	</div>
+        <div class="logotype"><img src="./images/logotype.gif" width="389" height="61" alt="birdWalker"/></div>
+      </div>
 
     <div class="contentright">
-
-
-	  <p>Welcome to <code>birdWalker</code>! This website contains Bill Walker and Mary Wisnewski&#39;s birding field notes, including
-	  <a href="./tripindex.php">trip</a>,
-	  <a href="./countyindex.php">county</a>,
-	  <a href="./stateindex.php">state</a>, and
-	  <a href="./speciesindex.php?view=speciesbyyear">year</a> lists.
-	  Our latest trips are listed below, other indices
-	  are available from the links on the left.</p>
 
 	  <table>
 	    <tr valign="top">
 	      <td width="300px">
+	        <? welcomeMessage(); ?>
 	        <? birdOfTheDay(); ?>
 	      </td>
 
