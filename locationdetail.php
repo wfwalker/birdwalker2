@@ -40,8 +40,6 @@ $request->globalMenu();
 </div>
 
 <div class="contentright">
-<?  if (($request->getView() != "map") && ($request->getView() != "photo")) { rightThumbnailLocation($siteInfo["Name"]); } ?>
-
   <? $request->viewLinks("species"); ?>
 
   <div class="titleblock">
@@ -57,13 +55,13 @@ $request->globalMenu();
       <a href="http://terraserver.microsoft.com/image.aspx?Lon=<?=$long?>&Lat=<?=$lat?>&w=1">terraserver</a> |
 		<a href="./locationdetail.php?view=map&locationid=<?=$request->getLocationID()?>">opengis</a>
     </div> -->
-<? } ?>
+<? }
 
-    </div>
-
+   if ($siteInfo["Notes"] != "") { ?>
+	<div class="heading">Notes</div>
     <div class=report-content><?= $siteInfo["Notes"] ?></div>
+<? }
 
-<?
 $request->handleStandardViews();
 footer();
 
