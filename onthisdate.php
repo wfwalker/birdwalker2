@@ -5,8 +5,8 @@ require_once("./request.php");
 
 $localtimearray = localtime(time(), 1);
 $monthNum = $localtimearray["tm_mon"] + 1;
-$dayStart = $localtimearray["tm_yday"] - 3;
-$dayStop = $localtimearray["tm_yday"] + 3;
+$dayStart = $localtimearray["tm_yday"] - 1;
+$dayStop = $localtimearray["tm_yday"] + 1;
 
 $tripsOnThisDate = performQuery("Find Trips On This Date",
     "SELECT *, " . niceDateColumn() . "
