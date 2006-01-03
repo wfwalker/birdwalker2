@@ -59,12 +59,12 @@ function birdOfTheDay()
 
 	    <div class="summaryblock">
 
-		  <p class="report-content">
+		  <div class="report-content">
 		    Randomly chosen from among all the species Bill has photographed.
 		    The map below the photograph marks locations where we have observed this species.
-		  </p>
+		  </div>
 
-          <span class="heading"><a href="./speciesdetail.php?speciesid=<?=$info['objectid']?>"><?= $info["CommonName"] ?></a></span>
+          <div class="heading"><a href="./speciesdetail.php?speciesid=<?=$info['objectid']?>"><?= $info["CommonName"] ?></a></div>
 
 	  <? if (mysql_num_rows($photos) > 0)
 	     {
