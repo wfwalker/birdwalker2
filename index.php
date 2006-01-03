@@ -55,15 +55,15 @@ function birdOfTheDay()
 
 ?>
 
-		 <div class="heading">Bird of the Day, <?= $today ?></div>
+		<div class="heading">Bird of the Day for <?= $today ?></div>
 
-		<p class="report-content">
-		   Randomly chosen from among all the species Bill has photographed.
-		   The map below the photograph marks locations where we have observed this species.
-		</p>
-
-        <div class="superheading"><?= $info["LatinName"] ?></div>
 	    <div class="summaryblock">
+
+		  <p class="report-content">
+		    Randomly chosen from among all the species Bill has photographed.
+		    The map below the photograph marks locations where we have observed this species.
+		  </p>
+
           <span class="heading"><a href="./speciesdetail.php?speciesid=<?=$info['objectid']?>"><?= $info["CommonName"] ?></a></span>
 
 	  <? if (mysql_num_rows($photos) > 0)
