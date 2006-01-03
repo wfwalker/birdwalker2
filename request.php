@@ -222,45 +222,6 @@ class Request
 		}
 	}
 
-	function linkToSlideshow()
-	{
-		// TODO: this can cause redundant queries by calling setLocationID...
-		$newRequest = new Request;
-
-		$newRequest->setView("");
-		$newRequest->setLatitude("");
-		$newRequest->setLongitude("");
-		$newRequest->setScale("");
-?>
-<SCRIPT LANGUAGE="JavaScript">
-<!--
-
-// Copyright (c) 2000 internet.com Corp.
-// http://www.webreference.com/js/
-// License is granted if and only if this entire
-// copyright notice is included. By Tomer Shiran.
-
-function launch(newURL, newName, newFeatures, orgName) {
-  var remote = open(newURL, newName, newFeatures);
-  if (remote.opener == null)
-    remote.opener = window;
-  remote.opener.name = orgName;
-  return remote;
-}
-
-function launchSlideshow() {
-  myRemote = launch("./slideshow.php?<?= $this->getParams() ?>",
-                    "myRemote",
-                    "height=600,width=660,alwaysLowered=0,alwaysRaised=0,channelmode=0,dependent=0,directories=0,fullscreen=0,hotkeys=1,location=0,menubar=0,resizable=0,scrollbars=0,status=0,titlebar=1,toolbar=0,z-lock=0",
-                    "myWindow");
-}
-
-// -->
-</SCRIPT>
-or <a  href="javascript:void(0)" onclick="launchSlideshow()">watch slideshow...</a>
-<?
-	}
-
 	function linkToSelfChangeView($view, $linkText)
 	{
 		// TODO: this can cause redundant queries by calling setLocationID...
@@ -421,18 +382,40 @@ or <a  href="javascript:void(0)" onclick="launchSlideshow()">watch slideshow...<
 
 <SCRIPT LANGUAGE="JavaScript">
 <!--
+function launch(newURL, newName, newFeatures, orgName) {
+  var remote = open(newURL, newName, newFeatures);
+  if (remote.opener == null)
+    remote.opener = window;
+  remote.opener.name = orgName;
+  return remote;
+}
+
+function launchSlideshow() {
+  myRemote = launch("./slideshow.php?<?= $this->getParams() ?>",
+                    "myRemote",
+                    "height=600,width=660,alwaysLowered=0,alwaysRaised=0,channelmode=0,dependent=0,directories=0,fullscreen=0,hotkeys=1,location=0,menubar=0,resizable=0,scrollbars=0,status=0,titlebar=1,toolbar=0,z-lock=0",
+                    "myWindow");
+}
+
 function changeView()
 {
 	box = document.forms[0].viewChooser;
-	destination = "./<?= $tempRequest->getPageScript() ?>?<?= $tempRequest->getParams() ?>&view=" + box.options[box.selectedIndex].value;
-	if (destination) location.href = destination;
+	if (box.options[box.selectedIndex].value == "slideshow")
+	{
+		launchSlideshow();
+	}
+	else
+	{
+		destination = "./<?= $tempRequest->getPageScript() ?>?<?= $tempRequest->getParams() ?>&view=" + box.options[box.selectedIndex].value;
+		if (destination) location.href = destination;
+	}
 }
 // -->
 </SCRIPT>
 
 	    <div class="viewlinks">
 	      <form class="viewlinks">
-	        view: <select name="viewChooser" onChange="changeView()"> <?
+	        VIEW: <select name="viewChooser" onChange="changeView()"> <?
 
 		if ($this->getTripID() == "")
 		{ ?>
@@ -486,11 +469,12 @@ function changeView()
 		}  ?>
 
 		<optgroup label="photos"> <?
-		   $this->optionSelectedViewHelper("thumbnails", "photo"); ?>
+		   $this->optionSelectedViewHelper("thumbnails", "photo");
+		   $this->optionSelectedViewHelper("slideshow...", "slideshow"); ?>
 		</optgroup>
 
-		?></select> <? $this->linkToSlideshow(); ?></form><?
-	}
+	    </select>
+<?	}
 
 	function globalMenuBirds()
 	{
@@ -630,9 +614,9 @@ function changeView()
 	function globalMenu()
 	{ ?>
 		<div class="topleft">
-		    <a href="./index.php">
-		        <img src="./images/logo.gif" border=0 width="50px" alt="birdWalker logo"><br/>
-		        <div>Birding field notes and photos from Bill Walker</div>
+		    <a href="./index.php" style=" color:#999999; font: 10pt 'Gill Sans', 'Gill Sans MT', SansSerif; font-style: italic;">
+			  <img src="images/logotype.gif" width="100px" border="0"/>
+			  <div>Birding field notes and photos from William Walker</div>
 		    </a>
 		</div>
 
