@@ -9,8 +9,8 @@
 {
     font: 9pt "Gill Sans", "Gill Sans MT", SansSerif;
     font-style: italic;
-	left: 1px; top: 120px; width: 112px;
-	padding-left: 5px;
+	left: 5px; top: 90px; width: 112px;
+	padding-left: 1px;
 	padding-right: 10px;
 	position: absolute;
     text-decoration: none;
@@ -19,27 +19,25 @@
 
 .topright
 {
-	left: 150px; width: 640px; top: 10px; height: 90px;
+	left: 150px; width: 640px; top: 5px; height: 90px;
 	position: absolute;
-    border-bottom: solid 1px #AAAAAA;
  }
 
 .topleft
 {
-	left: 1px; width: 120; top: 10px; height: 90px; margin-left: 10px;
+	left: 1px; width: 120; top: 5px; height: 90px; margin-left: 10px;
 	position: absolute;
 
     font: 9pt "Gill Sans", "Gill Sans MT", SansSerif;
     font-style: italic;
 
     text-align: center;
- border-bottom: solid 1px #AAAAAA;
  }
 
 .contentright
 {
     font: 10pt "Gill Sans", "Gill Sans MT", SansSerif;
-	left: 150px; width: 640px; top: 120px;
+	left: 150px; width: 640px; top: 90px;
 	padding-bottom: 30px;
 	position: absolute;
 }
@@ -56,7 +54,7 @@
 
 /* Styles for section headers, page titles, and overall report content */
 
-.pagetitle {text-align: center; font: 18pt "Gill Sans", "Gill Sans MT", SansSerif; font-weight: bold; color:#444444; padding-top: 8px }
+.pagetitle {text-align: center; font: 18pt "Gill Sans", "Gill Sans MT", SansSerif; font-weight: bold; color:#444444; padding-top: 2px }
 .pagesubtitle {text-align: center; font: 12pt "Gill Sans", "Gill Sans MT", SansSerif; font-style: italic; color: #444444; padding-bottom: 7px; padding-left: 3px }
 
 .metadata {font: 9pt "Gill Sans", "Gill Sans MT", SansSerif; padding-left: 4px; }
@@ -118,12 +116,12 @@ a.info:hover span{ /*the span will display just on :hover state*/
 {
   background-image: url(./images/closed.gif);
   background-repeat: no-repeat;
-  padding-left: 16px; margin: 7px;
+  padding-left: 16px; margin-left: 7px; margin-bottom: 7px;
 }
 
 .command-simple
 {
-  padding-left: 16px; margin: 7px;
+  padding-left: 16px; margin-left: 7px; margin-bottom: 7px;
 }
 
 .command
@@ -133,7 +131,8 @@ a.info:hover span{ /*the span will display just on :hover state*/
   width: 95px;
   background-image: url(./images/open.gif);
   background-repeat: no-repeat;
-  padding-left: 16px; margin: 7px; white-space: nowrap;
+  padding-left: 16px; margin-left: 7px; margin-bottom: 7px;
+  white-space: nowrap;
 }
 
 .leftcolumn { padding-left: 30px; }
