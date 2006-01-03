@@ -40,8 +40,6 @@ $request->globalMenu();
   </div>
 
   <div class="contentright">
-<?   if (($request->getView() != "map") && ($request->getView() != "photo")) { rightThumbnailSpecies($speciesInfo["Abbreviation"]); } ?>
-
     <?= $request->viewLinks("locations"); ?>
 
 	<div class="titleblock">
@@ -54,10 +52,12 @@ $request->globalMenu();
 <?  } ?>
       </div>
    </div>
-
-   <div class=report-content><?= $speciesInfo["Notes"] ?></div>
-
 <?
+   if ($speciesInfo["Notes"] != "") { ?>
+	<div class="heading">Notes</div>
+    <div class=report-content><?= $speciesInfo["Notes"] ?></div>
+<? }
+
 $request->handleStandardViews();
 footer();
 ?>
