@@ -222,7 +222,7 @@ class SpeciesQuery extends BirdWalkerQuery
 					 }
 				 }
 
-				 if (array_key_exists("Notes", $info) && ($info["Notes"]) > 0)
+				 if (array_key_exists("Notes", $info) && strlen($info["Notes"]) > 0)
 				 { ?>
 					 <div class="sighting-notes"><?= $info["Notes"] ?></div><?
 				 } ?>
