@@ -12169,3 +12169,6 @@ INSERT INTO sighting VALUES (12239,'amecro','Ogier Ponds','','0','0','2006-01-08
 INSERT INTO sighting VALUES (12240,'ribgul','Ogier Ponds','','0','0','2006-01-08');
 INSERT INTO sighting VALUES (12241,'houfin','Ogier Ponds','','0','0','2006-01-08');
 INSERT INTO sighting VALUES (12242,'dowwoo','Coyote Creek Field Station','','','1','2006-01-07');
+INSERT INTO sighting VALUES (12243,'gocspa','Coyote Creek Field Station','','','','2006-01-07');
+INSERT INTO sighting VALUES (12244,'whcspa','Coyote Creek Field Station','','','','2006-01-07');
+INSERT INTO sighting VALUES (12245,'foxspa','Coyote Creek Field Station','','','','2006-01-07');
