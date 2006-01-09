@@ -12088,7 +12088,7 @@ INSERT INTO sighting VALUES (12158,'houspa','Drawbridge','','0','0','2005-12-18'
 INSERT INTO sighting VALUES (12159,'glwgul','Drawbridge','','0','0','2005-12-18');
 INSERT INTO sighting VALUES (12160,'belkin','Drawbridge','','0','0','2005-12-18');
 INSERT INTO sighting VALUES (12161,'treswa','Drawbridge','','0','0','2005-12-18');
-INSERT INTO sighting VALUES (12162,'greegr','Sunnyvale Baylands','','','1','2006-01-07');
+INSERT INTO sighting VALUES (12162,'greegr','Sunnyvale Baylands','20 individuals seen in the \"seasonal wetlands\" hunting small mammals in the flooded areas.','','1','2006-01-07');
 INSERT INTO sighting VALUES (12163,'cangoo','Coyote Creek Field Station','','0','0','2006-01-07');
 INSERT INTO sighting VALUES (12164,'norsho','Coyote Creek Field Station','','0','0','2006-01-07');
 INSERT INTO sighting VALUES (12165,'rudduc','Coyote Creek Field Station','','0','0','2006-01-07');
@@ -12102,7 +12102,7 @@ INSERT INTO sighting VALUES (12172,'bknsti','Coyote Creek Field Station','','0',
 INSERT INTO sighting VALUES (12173,'greyel','Coyote Creek Field Station','','0','0','2006-01-07');
 INSERT INTO sighting VALUES (12174,'rocdov','Coyote Creek Field Station','','0','0','2006-01-07');
 INSERT INTO sighting VALUES (12175,'annhum','Coyote Creek Field Station','','0','0','2006-01-07');
-INSERT INTO sighting VALUES (12176,'haiwoo','Coyote Creek Field Station','','0','0','2006-01-07');
+INSERT INTO sighting VALUES (12176,'mallar','Sunnyvale Baylands','','','','2006-01-07');
 INSERT INTO sighting VALUES (12177,'nutwoo','Coyote Creek Field Station','','0','0','2006-01-07');
 INSERT INTO sighting VALUES (12178,'norfli','Coyote Creek Field Station','','0','0','2006-01-07');
 INSERT INTO sighting VALUES (12179,'logshr','Sunnyvale Baylands','','','','2006-01-07');
@@ -12172,3 +12172,11 @@ INSERT INTO sighting VALUES (12242,'dowwoo','Coyote Creek Field Station','','','
 INSERT INTO sighting VALUES (12243,'gocspa','Coyote Creek Field Station','','','','2006-01-07');
 INSERT INTO sighting VALUES (12244,'whcspa','Coyote Creek Field Station','','','','2006-01-07');
 INSERT INTO sighting VALUES (12245,'foxspa','Coyote Creek Field Station','','','','2006-01-07');
+INSERT INTO sighting VALUES (12246,'moudov','Coyote Creek Field Station','','','','2006-01-07');
+INSERT INTO sighting VALUES (12247,'wesmea','Coyote Creek Field Station','','','','2006-01-07');
+INSERT INTO sighting VALUES (12248,'wesjay','Coyote Creek Field Station','','','','2006-01-07');
+INSERT INTO sighting VALUES (12249,'eursta','Coyote Creek Field Station','','','','2006-01-07');
+INSERT INTO sighting VALUES (12250,'houfin','Coyote Creek Field Station','','','','2006-01-07');
+INSERT INTO sighting VALUES (12251,'belkin','Coyote Creek Field Station','','','','2006-01-07');
+INSERT INTO sighting VALUES (12252,'calgul','Coyote Creek Field Station','','','','2006-01-07');
+INSERT INTO sighting VALUES (12253,'treswa','Coyote Creek Field Station','','','','2006-01-07');
