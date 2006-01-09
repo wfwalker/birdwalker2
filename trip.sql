@@ -449,3 +449,4 @@ INSERT INTO trip VALUES (449,'Mary and Bill','','Rained out','We hoped to spend 
 INSERT INTO trip VALUES (450,'Ashok and Bill','','Morning Photo Safari','We explored this park for the first time, and think we will definitely try again at high tide.','2006-01-05');
 INSERT INTO trip VALUES (451,'Mary and Bill','','Christmas Bird Count','We were out from around 8am until 3pm in very strong winds and occasional rain. The wind mostly prevented use of the spotting scopes. Some previously accessible boardwalks were locked. In spite of all that, we had a good day. We discovered that we had been misreading our section map for several years, and next year we\'ll have to try to cover more ground.','2005-12-18');
 INSERT INTO trip VALUES (452,'Mary and Bill','','Saturday Stroll','','2006-01-07');
+INSERT INTO trip VALUES (453,'Kirsten Holmquist','','SCVAS at Ogier Ponds','','2006-01-08');

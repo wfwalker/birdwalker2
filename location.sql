@@ -166,3 +166,4 @@ INSERT INTO location VALUES (165,'Chevron Meadow','','Yosemite National Park','M
 INSERT INTO location VALUES (166,'Bosque del Apache NWR','','San Antonio','Socorro','NM','','',33.805,-106.907);
 INSERT INTO location VALUES (167,'Shoreline Lake','','Mountain View','Santa Clara','CA','','mapblast',37.461,-122.115);
 INSERT INTO location VALUES (168,'Tidelands Park','','San Mateo','San Mateo','CA','','',0,0);
+INSERT INTO location VALUES (169,'Ogier Ponds','','San Jose','Santa Clara','CA','','',0,0);
