@@ -448,5 +448,5 @@ INSERT INTO trip VALUES (448,'Mary and Bill','','First Birding of the Year','It 
 INSERT INTO trip VALUES (449,'Mary and Bill','','Rained out','We hoped to spend the day in the field, but the steady, all-day rain was not encouraging, and the couch was very comfy, so we worked on our yard list.','2006-01-02');
 INSERT INTO trip VALUES (450,'Ashok and Bill','','Morning Photo Safari','We explored this park for the first time, and think we will definitely try again at high tide.','2006-01-05');
 INSERT INTO trip VALUES (451,'Mary and Bill','','Christmas Bird Count','We were out from around 8am until 3pm in very strong winds and occasional rain. The wind mostly prevented use of the spotting scopes. Some previously accessible boardwalks were locked. In spite of all that, we had a good day. We discovered that we had been misreading our section map for several years, and next year we\'ll have to try to cover more ground.','2005-12-18');
-INSERT INTO trip VALUES (452,'Mary and Bill','','Saturday Stroll','','2006-01-07');
-INSERT INTO trip VALUES (453,'Kirsten Holmquist','','SCVAS at Ogier Ponds','','2006-01-08');
+INSERT INTO trip VALUES (452,'Mary and Bill','','Saturday Stroll','We had a stroll around the Field Station looking for a rare gull and listening to stealthy passerines.','2006-01-07');
+INSERT INTO trip VALUES (453,'Kirsten Holmquist','','SCVAS at Ogier Ponds','Great light and many watchful eyes helped us find a bunch of year birds and all the trip\'s target birds. Lots of fun!','2006-01-08');

@@ -23,7 +23,6 @@ class SpeciesQuery extends BirdWalkerQuery
 			$selectClause = $selectClause . ", min(sighting.Exclude) AS AllExclude";
 		}
 
-		// TODO how can we get a sightingid into this select clause even if it's not a specific trip id?
 		if ($this->mReq->getTripID() != "")
 		{
 			$selectClause = $selectClause . ", sighting.Notes, sighting.Exclude, sighting.Photo, sighting.objectid AS sightingid";
