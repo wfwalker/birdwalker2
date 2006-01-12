@@ -2,34 +2,44 @@
 
 require_once("./birdwalker.php");
 require_once("./request.php");
+require_once("./speciesquery.php");
+require_once("./onthisdatespeciesquery.php");
 
 $localtimearray = localtime(time(), 1);
 $monthNum = $localtimearray["tm_mon"] + 1;
-$dayStart = $localtimearray["tm_yday"] - 1;
-$dayStop = $localtimearray["tm_yday"] + 1;
+$dayNum = $localtimearray["tm_yday"] + 1;
 
 $tripsOnThisDate = performQuery("Find Trips On This Date",
     "SELECT *, " . niceDateColumn() . "
       FROM trip
       WHERE Month(Date)='" . ($localtimearray["tm_mon"] + 1) . "' AND
-        DayOfYear(Date)>='" . $dayStart . "' AND DayOfYear(Date)<='" . $dayStop . "'
+        DayOfYear(Date)='" . $dayNum . "'
         AND Year(Date)<" . getLatestYear() . "
       ORDER BY Date DESC");
 
-htmlHead("This Week in Birding History");
+$today = performCount("format date", "select date_format(current_date, '%M %D')");
+
+htmlHead($today);
 
 $request = new Request;
 $request->globalMenu();
+
 ?>
 
     <div class="topright">
 	    <div class="pagesubtitle">index</div>
-	    <div class="pagetitle">This Week in Birding History</div>
+	    <div class="pagetitle"><?= $today ?></div>
       </div>
 
     <div class="contentright">
 
-<?    while ($info = mysql_fetch_array($tripsOnThisDate))
+<?
+
+$onthisdatespeciesQuery = new OnThisDateSpeciesQuery($request);
+doubleCountHeading($onthisdatespeciesQuery->getSpeciesCount(), "species", $onthisdatespeciesQuery->getPhotoCount(), "with photo");
+$onthisdatespeciesQuery->formatTwoColumnSpeciesList();
+
+      while ($info = mysql_fetch_array($tripsOnThisDate))
       {
           $tripSpeciesCount = performCount("Count Species For This Trip",
 		      "SELECT COUNT(DISTINCT(sighting.objectid)) from sighting where sighting.TripDate='" . $info["Date"] . "'"); ?>
