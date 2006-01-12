@@ -54,8 +54,8 @@
 
 /* Styles for section headers, page titles, and overall report content */
 
-.pagetitle {text-align: center; font: 18pt "Gill Sans", "Gill Sans MT", SansSerif; font-weight: bold; color:#444444; padding-top: 2px }
-.pagesubtitle {text-align: center; font: 12pt "Gill Sans", "Gill Sans MT", SansSerif; font-style: italic; color: #444444; padding-bottom: 7px; padding-left: 3px }
+.pagetitle {text-align: center; font: 16pt "Gill Sans", "Gill Sans MT", SansSerif; font-weight: bold; color:#444444; padding-top: 2px }
+.pagesubtitle {text-align: center; font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-style: italic; color: #444444; padding-bottom: 7px; padding-left: 3px }
 
 .metadata {font: 9pt "Gill Sans", "Gill Sans MT", SansSerif; padding-left: 4px; }
 .viewlinks {font: 9pt "Gill Sans", "Gill Sans MT", SansSerif; }
@@ -86,7 +86,7 @@
 
 .nextlink { text-align: right; font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-style: italic; }
 .prevlink { text-align: left; font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-style: italic; }
-.pagekind { text-align: center; font: 12pt "Gill Sans", "Gill Sans MT", SansSerif; font-style: italic; }
+.pagekind { text-align: center; font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-style: italic; }
 
 /* Anchors, and especially magic rollover popup anchors for Maps. */
 
