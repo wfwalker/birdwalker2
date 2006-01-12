@@ -6,3 +6,5 @@ find images/thumb | sort > folderlist2.txt
 
 diff --ignore-case databaselist.txt folderlist.txt
 diff --ignore-case databaselist2.txt folderlist2.txt
+
+rm -f folderlist.txt folderlist2.txt databaselist.txt databaselist2.txt
