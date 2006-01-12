@@ -22,6 +22,7 @@ function welcomeMessage()
 	  <a href="./countyindex.php">county</a>,
 	  <a href="./stateindex.php">state</a>, and
 	  <a href="./speciesindex.php?view=speciesbyyear">year</a> lists.
+	  You can also see what happened <a href="./onthisdate.php">on this date</a>.
 		   Our latest trips are listed to the right, other indices
 	  are available from the links on the left.
       </div>
