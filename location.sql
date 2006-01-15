@@ -167,3 +167,6 @@ INSERT INTO location VALUES (166,'Bosque del Apache NWR','','San Antonio','Socor
 INSERT INTO location VALUES (167,'Shoreline Lake','','Mountain View','Santa Clara','CA','','mapblast',37.461,-122.115);
 INSERT INTO location VALUES (168,'Tidelands Park','','San Mateo','San Mateo','CA','','',0,0);
 INSERT INTO location VALUES (169,'Ogier Ponds','','San Jose','Santa Clara','CA','','',0,0);
+INSERT INTO location VALUES (170,'Liberty Island Road','','Yolano','Solano','CA','','',0,0);
+INSERT INTO location VALUES (171,'Flannery Road','','Yolano','Solano','CA','','',0,0);
+INSERT INTO location VALUES (172,'Putah Creek Bridge','','Yolano','Solano','CA','','',0,0);
