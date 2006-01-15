@@ -12215,7 +12215,7 @@ INSERT INTO sighting VALUES (12285,'killde','Flannery Road','','0','0','2006-01-
 INSERT INTO sighting VALUES (12286,'lobcur','Liberty Island Road','','','','2006-01-14');
 INSERT INTO sighting VALUES (12287,'moudov','Flannery Road','','0','0','2006-01-14');
 INSERT INTO sighting VALUES (12288,'rocdov','Flannery Road','','0','0','2006-01-14');
-INSERT INTO sighting VALUES (12289,'snoowl','Liberty Island Road','','','','2006-01-14');
+INSERT INTO sighting VALUES (12289,'snoowl','Liberty Island Road','','','1','2006-01-14');
 INSERT INTO sighting VALUES (12290,'belkin','Putah Creek Bridge','','','','2006-01-14');
 INSERT INTO sighting VALUES (12291,'norfli','Putah Creek Bridge','','','','2006-01-14');
 INSERT INTO sighting VALUES (12292,'saypho','Flannery Road','','0','0','2006-01-14');

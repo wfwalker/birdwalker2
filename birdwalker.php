@@ -160,7 +160,7 @@ function rightThumbnailAll()
 function getIsLaptop()
 {
  	$serverName = getenv("SERVER_NAME");
- 	return ($serverName == "127.0.0.1") || ($serverName == "localhost") || ($serverName == "") || ($serverName == "vermillion.local");
+ 	return ($serverName != "www.spflrc.org");
 }
 
 function getEnableEdit()
