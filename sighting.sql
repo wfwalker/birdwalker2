@@ -12190,7 +12190,7 @@ INSERT INTO sighting VALUES (12260,'rethaw','Coyote Hills','','0','0','2006-01-1
 INSERT INTO sighting VALUES (12261,'amekes','Coyote Hills','','0','0','2006-01-12');
 INSERT INTO sighting VALUES (12262,'turvul','Coyote Hills','','0','0','2006-01-12');
 INSERT INTO sighting VALUES (12263,'coohaw','Coyote Hills','','0','0','2006-01-12');
-INSERT INTO sighting VALUES (12264,'bushti','Coyote Hills','','0','0','2006-01-12');
+INSERT INTO sighting VALUES (12264,'bushti','Coyote Hills','','','1','2006-01-12');
 INSERT INTO sighting VALUES (12265,'ruckin','Coyote Hills','','0','0','2006-01-12');
 INSERT INTO sighting VALUES (12266,'sonspa','Coyote Hills','','0','0','2006-01-12');
 INSERT INTO sighting VALUES (12267,'marwre','Coyote Hills','','0','0','2006-01-12');
@@ -12208,8 +12208,8 @@ INSERT INTO sighting VALUES (12278,'turvul','Putah Creek Bridge','','','','2006-
 INSERT INTO sighting VALUES (12279,'whtkit','Liberty Island Road','','','','2006-01-14');
 INSERT INTO sighting VALUES (12280,'rethaw','Flannery Road','','0','0','2006-01-14');
 INSERT INTO sighting VALUES (12281,'reshaw','Putah Creek Bridge','','','','2006-01-14');
-INSERT INTO sighting VALUES (12282,'ferhaw','Flannery Road','','0','0','2006-01-14');
-INSERT INTO sighting VALUES (12283,'amekes','Flannery Road','','0','0','2006-01-14');
+INSERT INTO sighting VALUES (12282,'ferhaw','Flannery Road','','','1','2006-01-14');
+INSERT INTO sighting VALUES (12283,'amekes','Flannery Road','','','1','2006-01-14');
 INSERT INTO sighting VALUES (12284,'mouplo','Flannery Road','','0','0','2006-01-14');
 INSERT INTO sighting VALUES (12285,'killde','Flannery Road','','0','0','2006-01-14');
 INSERT INTO sighting VALUES (12286,'lobcur','Liberty Island Road','','','','2006-01-14');
@@ -12222,14 +12222,14 @@ INSERT INTO sighting VALUES (12292,'saypho','Flannery Road','','0','0','2006-01-
 INSERT INTO sighting VALUES (12293,'blkpho','Putah Creek Bridge','','','','2006-01-14');
 INSERT INTO sighting VALUES (12294,'logshr','Flannery Road','','0','0','2006-01-14');
 INSERT INTO sighting VALUES (12295,'wesjay','Putah Creek Bridge','','','','2006-01-14');
-INSERT INTO sighting VALUES (12296,'horlar','Flannery Road','','0','0','2006-01-14');
+INSERT INTO sighting VALUES (12296,'horlar','Flannery Road','','','1','2006-01-14');
 INSERT INTO sighting VALUES (12297,'treswa','Flannery Road','','0','0','2006-01-14');
 INSERT INTO sighting VALUES (12298,'vigswa','Flannery Road','','0','0','2006-01-14');
 INSERT INTO sighting VALUES (12299,'amerob','Flannery Road','','0','0','2006-01-14');
 INSERT INTO sighting VALUES (12300,'eursta','Flannery Road','','0','0','2006-01-14');
 INSERT INTO sighting VALUES (12301,'amepip','Liberty Island Road','','','','2006-01-14');
 INSERT INTO sighting VALUES (12302,'yerwar','Putah Creek Bridge','','','','2006-01-14');
-INSERT INTO sighting VALUES (12303,'savspa','Liberty Island Road','','','','2006-01-14');
+INSERT INTO sighting VALUES (12303,'savspa','Liberty Island Road','','','1','2006-01-14');
 INSERT INTO sighting VALUES (12304,'whcspa','Flannery Road','','0','0','2006-01-14');
 INSERT INTO sighting VALUES (12305,'gocspa','Putah Creek Bridge','','','','2006-01-14');
 INSERT INTO sighting VALUES (12306,'daejun','Putah Creek Bridge','','','','2006-01-14');
