@@ -170,4 +170,8 @@ INSERT INTO location VALUES (169,'Ogier Ponds','','San Jose','Santa Clara','CA',
 INSERT INTO location VALUES (170,'Liberty Island Road','','Yolano','Solano','CA','','',0,0);
 INSERT INTO location VALUES (171,'Flannery Road','','Yolano','Solano','CA','','',0,0);
 INSERT INTO location VALUES (172,'Putah Creek Bridge','','Yolano','Solano','CA','','',0,0);
-INSERT INTO location VALUES (173,'West Cliff Drive','','Santa Cruz','Santa Cruz','CA','','',0,0);
+INSERT INTO location VALUES (173,'West Cliff Drive','','Santa Cruz','Santa Cruz','CA','','',36.953,-122.037);
+INSERT INTO location VALUES (174,'Long Marine Laboratory','http://seymourcenter.ucsc.edu/','Santa Cruz','Santa Cruz','CA','','',36.9548,-122.063);
+INSERT INTO location VALUES (175,'Fishermans Wharf','','Monterey','Monterey','CA','','',36.6043,-121.893);
+INSERT INTO location VALUES (177,'Monterey Beach Resort','','Monterey','Monterey','CA','','',36.6104,-121.858);
+INSERT INTO location VALUES (178,'Lee Road','','Watsonville','Santa Cruz','CA','','',0,0);
