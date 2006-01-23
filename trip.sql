@@ -452,3 +452,5 @@ INSERT INTO trip VALUES (452,'Mary and Bill','','Saturday Stroll','We had a stro
 INSERT INTO trip VALUES (453,'Kirsten Holmquist','','SCVAS at Ogier Ponds','Great light and many watchful eyes helped us find a bunch of year birds and all the trip\'s target birds. Lots of fun!','2006-01-08');
 INSERT INTO trip VALUES (454,'Ashok and Bill','','Morning Photo Safari','Great morning light, good company, mostly cooperative birds','2006-01-12');
 INSERT INTO trip VALUES (455,'Mary and Bill','','Owl Quest','Despite the really discouraging weather reports and unfamiliar terrain, we set out in search of the first Snowy Owl recorded in California since 1978. What a day!','2006-01-14');
+INSERT INTO trip VALUES (456,'Mary and Bill','','Our Wings over Monterey','','2006-01-21');
+INSERT INTO trip VALUES (457,'Mary and Bill','','Sunday Stroll','','2006-01-22');

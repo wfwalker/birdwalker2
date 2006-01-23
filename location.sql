@@ -170,3 +170,4 @@ INSERT INTO location VALUES (169,'Ogier Ponds','','San Jose','Santa Clara','CA',
 INSERT INTO location VALUES (170,'Liberty Island Road','','Yolano','Solano','CA','','',0,0);
 INSERT INTO location VALUES (171,'Flannery Road','','Yolano','Solano','CA','','',0,0);
 INSERT INTO location VALUES (172,'Putah Creek Bridge','','Yolano','Solano','CA','','',0,0);
+INSERT INTO location VALUES (173,'West Cliff Drive','','Santa Cruz','Santa Cruz','CA','','',0,0);
