@@ -454,3 +454,4 @@ INSERT INTO trip VALUES (454,'Ashok and Bill','','Morning Photo Safari','Great m
 INSERT INTO trip VALUES (455,'Mary and Bill','','Owl Quest','Despite the really discouraging weather reports and unfamiliar terrain, we set out in search of the first Snowy Owl recorded in California since 1978. What a day!','2006-01-14');
 INSERT INTO trip VALUES (456,'Mary and Bill','','Our Wings over Monterey','We finally decided to try this big trip on our own.','2006-01-21');
 INSERT INTO trip VALUES (457,'Mary and Bill','','Sunday Stroll','We had to investigate the Eurasian Wigeon report.','2006-01-22');
+INSERT INTO trip VALUES (458,'Bill','','Lunchtime Walk','','2006-01-24');
