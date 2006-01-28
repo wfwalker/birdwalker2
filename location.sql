@@ -175,3 +175,4 @@ INSERT INTO location VALUES (174,'Long Marine Laboratory','http://seymourcenter.
 INSERT INTO location VALUES (175,'Fishermans Wharf','','Monterey','Monterey','CA','','',36.6043,-121.893);
 INSERT INTO location VALUES (177,'Monterey Beach Resort','','Monterey','Monterey','CA','','',36.6104,-121.858);
 INSERT INTO location VALUES (178,'Lee Road','','Watsonville','Santa Cruz','CA','','',0,0);
+INSERT INTO location VALUES (179,'Upper Stevens Creek County Park','','Cupertino','Santa Clara','CA','','',0,0);

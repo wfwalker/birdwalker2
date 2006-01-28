@@ -12336,3 +12336,12 @@ INSERT INTO sighting VALUES (12407,'buffle','Foster City Radio Tower','','0','0'
 INSERT INTO sighting VALUES (12408,'greegr','Foster City Radio Tower','','0','0','2006-01-24');
 INSERT INTO sighting VALUES (12409,'mallar','Foster City Radio Tower','','0','0','2006-01-24');
 INSERT INTO sighting VALUES (12410,'rudduc','Foster City Radio Tower','','','','2006-01-24');
+INSERT INTO sighting VALUES (12411,'batpig','Upper Stevens Creek County Park','','','1','2006-01-26');
+INSERT INTO sighting VALUES (12412,'amerob','Upper Stevens Creek County Park','','0','0','2006-01-26');
+INSERT INTO sighting VALUES (12413,'varthr','Upper Stevens Creek County Park','','0','0','2006-01-26');
+INSERT INTO sighting VALUES (12414,'chbchi','Upper Stevens Creek County Park','','0','0','2006-01-26');
+INSERT INTO sighting VALUES (12415,'cedwax','Upper Stevens Creek County Park','','0','0','2006-01-26');
+INSERT INTO sighting VALUES (12416,'ruckin','Upper Stevens Creek County Park','','0','0','2006-01-26');
+INSERT INTO sighting VALUES (12417,'calqua','Upper Stevens Creek County Park','','0','0','2006-01-26');
+INSERT INTO sighting VALUES (12418,'wesjay','Upper Stevens Creek County Park','','0','0','2006-01-26');
+INSERT INTO sighting VALUES (12419,'stejay','Upper Stevens Creek County Park','','0','0','2006-01-26');
