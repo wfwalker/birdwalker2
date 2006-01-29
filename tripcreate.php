@@ -65,10 +65,17 @@ if ($save == "Save")
 		$abbrev = strtok(" \n");
 	}
 
-	// FINALLY insert the trip record
-	performQuery("Insert trip record", "INSERT INTO trip VALUES (" . ($tripID + 1) . ", '" . $leader . "', '', '" . $tripName . "', '" . $notes . "', '" . $tripDate . "');");
+	echo "sightings inserted... ";
 
-	echo "<a href=\"./tripdetail.php?tripid=" . ($tripID + 1) . "\">Trip Created</a>";
+	$todayTripRecordCount = performCount("Trip recoprd already for today", "SELECT count(*) from trip WHERE Date='" . $tripDate . "';");
+
+	if ($todayTripRecordCount == 0)
+	{
+		// FINALLY insert the trip record
+		performQuery("Insert trip record", "INSERT INTO trip VALUES (" . ($tripID + 1) . ", '" . $leader . "', '', '" . $tripName . "', '" . $notes . "', '" . $tripDate . "');");
+		echo "<a href=\"./tripdetail.php?tripid=" . ($tripID + 1) . "\">Trip Created</a>";
+	}
+
 }
 ?>
 
