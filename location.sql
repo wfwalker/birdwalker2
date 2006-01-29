@@ -176,3 +176,8 @@ INSERT INTO location VALUES (175,'Fishermans Wharf','','Monterey','Monterey','CA
 INSERT INTO location VALUES (177,'Monterey Beach Resort','','Monterey','Monterey','CA','','',36.6104,-121.858);
 INSERT INTO location VALUES (178,'Lee Road','','Watsonville','Santa Cruz','CA','','',0,0);
 INSERT INTO location VALUES (179,'Upper Stevens Creek County Park','','Cupertino','Santa Clara','CA','','',0,0);
+INSERT INTO location VALUES (180,'Waldos Dike','http://www.nps.gov/pore/','Point Reyes Station','Marin','CA','','Unknown',0,0);
+INSERT INTO location VALUES (181,'Bear Valley Visitors Center','http://www.nps.gov/pore/','Point Reyes Station','Marin','CA','','Unknown',0,0);
+INSERT INTO location VALUES (182,'Bolinas Harbor','','Bolinas','Marin','CA','','Unknown',0,0);
+INSERT INTO location VALUES (183,'Stafford Lake Park','','Novato','Marin','CA','','',0,0);
+INSERT INTO location VALUES (184,'Five Brooks','','Point Reyes Station','Marin','CA','','',0,0);
