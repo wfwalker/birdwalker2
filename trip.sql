@@ -457,3 +457,5 @@ INSERT INTO trip VALUES (457,'Mary and Bill','','Sunday Stroll','We had to inves
 INSERT INTO trip VALUES (458,'Bill','','Lunchtime Walk','My second birdwalk with co-workers. The weather was outstanding.','2006-01-24');
 INSERT INTO trip VALUES (459,'Ashok and Bill','','Hiking Charcoal Road','','2006-01-26');
 INSERT INTO trip VALUES (460,'Steve Shunk','','Bay Area High Tide Weekend','From Novato we headed first to Stafford Lake Park, a Marin County park were we saw many of today\'s land birds. The guide heard a Red-breasted Sapsucker which was never found. It was not yet raining, but very overcast and rather threatening. We then headed directly to Waldo\'s Dike to await the high tide. While at the Dike, other observers saw Swamp Sparrow. During the day, other observers Bewick\'s Wren, Winter Wren, and Violet-green Swallow.','2006-01-28');
+INSERT INTO trip VALUES (461,'Mary and Bill','','Bird the County','We\'re still trying to catch up with Mike and Mike\'s 137 county birds on January 1st of this year.','2006-01-29');
+INSERT INTO trip VALUES (462,'Ashok and Bill','','Morning Photo Safari','','2005-12-14');
