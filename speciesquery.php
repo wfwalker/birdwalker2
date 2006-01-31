@@ -252,11 +252,11 @@ class SpeciesQuery extends BirdWalkerQuery
 			GROUP BY year");
 
 		$gridQueryString="
-    SELECT DISTINCT(CommonName), species.objectid as speciesid, bit_or(1 << (year(TripDate) - 1995)) AS mask " .
-		  $this->getFromClause() . " " .
-		  $this->getWhereClause() . " 
-      GROUP BY sighting.SpeciesAbbreviation
-      ORDER BY speciesid";
+          SELECT DISTINCT(CommonName), species.objectid as speciesid, bit_or(1 << (year(TripDate) - 1995)) AS mask " .
+		      $this->getFromClause() . " " .
+		      $this->getWhereClause() . " 
+            GROUP BY sighting.SpeciesAbbreviation
+            ORDER BY speciesid";
 
 		$gridQuery = performQuery("Species By Year 2", $gridQueryString); ?>
 
