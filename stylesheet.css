@@ -13,7 +13,6 @@
 	padding-left: 1px;
 	padding-right: 10px;
 	position: absolute;
-    text-decoration: none;
 	padding-bottom: 60px;
  }
 
@@ -58,7 +57,7 @@
 .pagesubtitle {text-align: center; font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-style: italic; color: #444444; padding-bottom: 7px; padding-left: 3px }
 
 .metadata {font: 9pt "Gill Sans", "Gill Sans MT", SansSerif; padding-left: 4px; }
-.viewlinks {font: 9pt "Gill Sans", "Gill Sans MT", SansSerif; }
+.viewlinks { background-color: #EEEEEE; }
 
 .superheading {font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-style: italic; color: #444444; }
 .heading { font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-weight: bold; margin-top: 20px; margin-bottom: 10px; clear: both; color: #444444 }
@@ -90,20 +89,29 @@
 
 /* Anchors, and especially magic rollover popup anchors for Maps. */
 
-a       { color:#484393; text-decoration:none; }
-a:hover { color:#43436e; text-decoration:underline; }
+.contentleft a       { text-decoration:none; }
+.contentleft a:hover { color: red; text-decoration: underline; }
+
+.topleft a       { text-decoration: none; }
+.topleft a:hover { color: red; text-decoration: underline; }
+
+.contentright a       { text-decoration: none;}
+.contentright a:hover { color: red; text-decoration: underline; }
+
+.topright a       { text-decoration: none; }
+.topright a:hover { color: red; text-decoration: underline; }
 
 a.info{
     position:relative; /*this is the key*/
     z-index:24; background-color: #484393;
     color: white; padding-left: 3px; padding-right: 3px;
-    text-decoration:none}
+    text-decoration: none}
 
-a.info:hover{z-index:25; background-color: red}
+a.info:hover { z-index:25; background-color: red; }
 
-a.info span{display: none}
+a.info span { display: none }
 
-a.info:hover span{ /*the span will display just on :hover state*/
+a.info:hover span { /*the span will display just on :hover state*/
     display: block;
     position: absolute;
     top: 0em; left: 0em; width: 15em;
