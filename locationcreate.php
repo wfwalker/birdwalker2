@@ -15,6 +15,7 @@ array_key_exists('locationid', $_GET) && $locationID = $_GET['locationid'];
 // the POST id determines which record to update
 $postLocationID = "";
 array_key_exists('locationid', $_POST) && $postLocationID = $_POST['locationid'];
+array_key_exists('locationid', $_POST) && $postLocationInfo = getLocationInfo($_POST['locationid']);
 
 // The SAVE and NEW buttons determine whether to update or createa a new record
 $save = "";
@@ -50,7 +51,15 @@ if ($postLocationID != "") {
 					 "LatLongSystem='" . $latLongSystem . "', " .
 					 "Latitude='" . $latitude . "', " .
 					 "Longitude='" . $longitude . "' where objectid='" . $postLocationID . "'");
-	} else if ($new != "") {
+
+		if ($_POST['Name'] != $postLocationInfo['Name'])
+		{
+			performQuery("Update sightings", "UPDATE sighting SET ".
+					 "LocationName='" . $name . "' WHERE LocationName='" . $postLocationInfo['Name'] . "'");
+		}
+	}
+	else if ($new != "")
+	{
 		performQuery("Create new location", "INSERT INTO location VALUES (" . $postLocationID . ", '" .
 					 $name . "', '" .
 					 $referenceURL . "', '" .
@@ -85,7 +94,7 @@ $request->globalMenu();
 <?
 ?>
 
-<form method="post" action="./locationcreate.php?id=<?= $locationID ?>">
+<form method="post" action="./locationcreate.php?locationid=<?= $locationID ?>">
 
 <table class=report-content width=100%>
   <tr>
