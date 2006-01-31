@@ -184,16 +184,17 @@ function getLatestYear()
 function selectDatabase()
 {
 	// MySQL info variables
-	$mysql["host"] = "127.0.0.1";
 	$mysql["database"] = "birdwalker";
 
  	if (getIsLaptop())
  	{
+        $mysql["host"] = "127.0.0.1";
  		$mysql["user"] = "birdwalker";
  		$mysql["pass"] = "birdwalker";
  	}
  	else
  	{
+        $mysql["host"] = "localhost";
  		$mysql["user"] = "walker";
  		$mysql["pass"] = "walker";
  	}
