@@ -68,7 +68,7 @@ INSERT INTO location VALUES (67,'Olompali State Park','','Novato','Marin','CA','
 INSERT INTO location VALUES (68,'Palo Alto Duck Pond','http://www.xymox.palo-alto.ca.us/av/baylands.html','Palo Alto','Santa Clara','CA','our second most visited site; location of bill\'s first birdwalk with Steve Shunk.','mapblast',37.461,-122.115);
 INSERT INTO location VALUES (69,'Panoche Valley','http://www.ca.blm.gov/hollister/panoche_tumeys.html','Panoche','San Benito','CA','','mapblast',36.5969,-120.832);
 INSERT INTO location VALUES (70,'Parcourse Marsh','','Mountain View','Santa Clara','CA','A nice place to work amidst Mountain View office buildings. Home of the bay area\'s alleged Waterthrush, which has so far eluded us.','',0,0);
-INSERT INTO location VALUES (71,'Patricks Point State Park','http://www.parks.ca.gov/allpages/default.asp?page_id=417','Trinidad','Humboldt','CA','','',41.1361,-124.16);
+INSERT INTO location VALUES (71,'Patrick\'s Point State Park','http://www.parks.ca.gov/allpages/default.asp?page_id=417','Trinidad','Humboldt','CA','','',41.1361,-124.16);
 INSERT INTO location VALUES (72,'Pescadero Marsh','http://parks.ca.gov/central/bayarea/psb227.htm','Pescadero','San Mateo','CA','','Unknown',37.2611,-122.403);
 INSERT INTO location VALUES (73,'Philadelphia','','Philadelphia','Philadelphia','PA','','',39.9522,-75.1639);
 INSERT INTO location VALUES (74,'McAllen','','McAllen','Hidalgo','TX','','',26.2031,-98.2297);
@@ -176,7 +176,7 @@ INSERT INTO location VALUES (175,'Fishermans Wharf','','Monterey','Monterey','CA
 INSERT INTO location VALUES (177,'Monterey Beach Resort','','Monterey','Monterey','CA','','',36.6104,-121.858);
 INSERT INTO location VALUES (178,'Lee Road','','Watsonville','Santa Cruz','CA','','',0,0);
 INSERT INTO location VALUES (179,'Upper Stevens Creek County Park','','Cupertino','Santa Clara','CA','','',0,0);
-INSERT INTO location VALUES (180,'Waldos Dike','http://www.nps.gov/pore/','Point Reyes Station','Marin','CA','','Unknown',0,0);
+INSERT INTO location VALUES (180,'Waldo\'s Dike','http://www.nps.gov/pore/','Point Reyes Station','Marin','CA','','Unknown',0,0);
 INSERT INTO location VALUES (181,'Bear Valley Visitors Center','http://www.nps.gov/pore/','Point Reyes Station','Marin','CA','','Unknown',0,0);
 INSERT INTO location VALUES (182,'Bolinas Harbor','','Bolinas','Marin','CA','','Unknown',0,0);
 INSERT INTO location VALUES (183,'Stafford Lake Park','','Novato','Marin','CA','','',0,0);
