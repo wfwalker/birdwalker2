@@ -165,7 +165,7 @@ INSERT INTO location VALUES (164,'Hayward Regional Shoreline','','Hayward','Alam
 INSERT INTO location VALUES (165,'Chevron Meadow','','Yosemite National Park','Mono','CA','The famous meadow behind the Chevron station at Crane Flat','',37.85,-119.567);
 INSERT INTO location VALUES (166,'Bosque del Apache NWR','','San Antonio','Socorro','NM','','',33.805,-106.907);
 INSERT INTO location VALUES (167,'Shoreline Lake','','Mountain View','Santa Clara','CA','','mapblast',37.461,-122.115);
-INSERT INTO location VALUES (168,'Tidelands Park','','San Mateo','San Mateo','CA','','',0,0);
+INSERT INTO location VALUES (168,'Tidelands Park','','San Mateo','San Mateo','CA','','',37.5697,-122.285);
 INSERT INTO location VALUES (169,'Ogier Ponds','','San Jose','Santa Clara','CA','','',0,0);
 INSERT INTO location VALUES (170,'Liberty Island Road','','Yolano','Solano','CA','','',0,0);
 INSERT INTO location VALUES (171,'Flannery Road','','Yolano','Solano','CA','','',0,0);
@@ -177,8 +177,8 @@ INSERT INTO location VALUES (177,'Monterey Beach Resort','','Monterey','Monterey
 INSERT INTO location VALUES (178,'Lee Road','','Watsonville','Santa Cruz','CA','','',0,0);
 INSERT INTO location VALUES (179,'Upper Stevens Creek County Park','','Cupertino','Santa Clara','CA','','',0,0);
 INSERT INTO location VALUES (180,'Waldo\'s Dike','http://www.nps.gov/pore/','Point Reyes Station','Marin','CA','','Unknown',0,0);
-INSERT INTO location VALUES (181,'Bear Valley Visitors Center','http://www.nps.gov/pore/','Point Reyes Station','Marin','CA','','Unknown',0,0);
+INSERT INTO location VALUES (181,'Bear Valley Visitors Center','http://www.nps.gov/pore/','Point Reyes Station','Marin','CA','','Unknown',38.0431,-122.798);
 INSERT INTO location VALUES (182,'Bolinas Harbor','','Bolinas','Marin','CA','','Unknown',0,0);
-INSERT INTO location VALUES (183,'Stafford Lake Park','','Novato','Marin','CA','','',0,0);
-INSERT INTO location VALUES (184,'Five Brooks','','Point Reyes Station','Marin','CA','','',0,0);
+INSERT INTO location VALUES (183,'Stafford Lake Park','','Novato','Marin','CA','','',38.1139,-122.649);
+INSERT INTO location VALUES (184,'Five Brooks','','Point Reyes Station','Marin','CA','','',38.0011,-122.757);
 INSERT INTO location VALUES (185,'Geng Road','','Palo Alto','Santa Clara','CA','','',0,0);

@@ -12438,7 +12438,7 @@ INSERT INTO sighting VALUES (12509,'houfin','Geng Road','','0','0','2006-01-29')
 INSERT INTO sighting VALUES (12510,'nutwoo','Geng Road','','0','0','2006-01-29');
 INSERT INTO sighting VALUES (12511,'annhum','Geng Road','','0','0','2006-01-29');
 INSERT INTO sighting VALUES (12512,'ruckin','Geng Road','','0','0','2006-01-29');
-INSERT INTO sighting VALUES (12513,'bargol','Shoreline Lake','','','1','2006-01-29');
+INSERT INTO sighting VALUES (12513,'comgol','Shoreline Lake','','','1','2006-01-29');
 INSERT INTO sighting VALUES (12514,'thagul','Shoreline Lake','','0','0','2006-01-29');
 INSERT INTO sighting VALUES (12515,'sursco','Shoreline Lake','','0','0','2006-01-29');
 INSERT INTO sighting VALUES (12516,'doccor','Shoreline Lake','','0','0','2006-01-29');
