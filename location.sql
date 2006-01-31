@@ -22,7 +22,7 @@ INSERT INTO location VALUES (21,'Chez Frankel','','Big Sur','Monterey','CA','Bet
 INSERT INTO location VALUES (22,'China Camp State Park','','San Rafael','Marin','CA','','',38.0011,-122.461);
 INSERT INTO location VALUES (23,'Cleveland National Forest','','Julian','San Diego','CA','','',33.3,-116.8);
 INSERT INTO location VALUES (24,'Clifton Court Forebay','','','Contra Costa','CA','','',37.83,-121.556);
-INSERT INTO location VALUES (25,'Coast Guard Wharf','','Monterey','Monterey','CA','','NAD-27',36.5947,-121.881);
+INSERT INTO location VALUES (25,'Coast Guard Pier','','Monterey','Monterey','CA','','NAD-27',36.5947,-121.881);
 INSERT INTO location VALUES (26,'Colusa NWR','http://www.r1.fws.gov/sacnwrc/','Colusa','Colusa','CA','','Unknown',39.2396,-122.074);
 INSERT INTO location VALUES (27,'Coyote Creek County Park','','San Jose','Santa Clara','CA','','',37.2848,-121.811);
 INSERT INTO location VALUES (28,'Coyote Creek Field Station','http://www.sfbbo.org/ccfs01.html','Alviso','Santa Clara','CA','Formerly the Coyote Creek Riparian Station, now part of the San Francisco Bay Bird Observatory','mapblast',37.4202,-121.988);
