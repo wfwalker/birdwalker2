@@ -184,7 +184,7 @@ function getLatestYear()
 function selectDatabase()
 {
 	// MySQL info variables
-	$mysql["host"] = "localhost";
+	$mysql["host"] = "127.0.0.1";
 	$mysql["database"] = "birdwalker";
 
  	if (getIsLaptop())
@@ -199,7 +199,7 @@ function selectDatabase()
  	}
 
 	// Connect to MySQL
-	mysql_connect($mysql["host"], $mysql["user"], $mysql["pass"]) or die("MySQL connection failed. Some info is wrong");
+	mysql_connect($mysql["host"], $mysql["user"], $mysql["pass"]) or die("MySQL connection failed. Some info is wrong (" . mysql_error() . ")");
 
 	// Select database
 	mysql_select_db($mysql["database"]) or die("Could not connect to DataBase");
@@ -229,8 +229,10 @@ function getThumbForSightingInfo($sightingInfo)
 
 	$sizeAttributes = "";
 
-	if ($width != "") { $sizeAttributes = $sizeAttributes . "  width=" . $width; }
-	if ($height != "") { $sizeAttributes = $sizeAttributes . "  height=" . $height; }
+// 	if ($width != "") { $sizeAttributes = $sizeAttributes . "  width=" . $width; }
+// 	if ($height != "") { $sizeAttributes = $sizeAttributes . "  height=" . $height; }
+
+	$sizeAttributes = " width=\"100px\"";
 
 	return
 		"<a href=\"./photodetail.php?sightingid=" . $sightingInfo["sightingid"] . "\">" .
@@ -516,12 +518,12 @@ function locationBrowseButtons($url, $locationID, $viewMode)
 
 	$prevLocationInfo = performOneRowQuery("Get Previous Location", 
       "SELECT objectid, Name FROM location
-        WHERE CONCAT(State,County,Name) < '" . $siteInfo["State"] . $siteInfo["County"] . $siteInfo["Name"] . "'
+        WHERE CONCAT(State,County,Name) < '" . addslashes($siteInfo["State"] . $siteInfo["County"] . $siteInfo["Name"]) . "'
         ORDER BY CONCAT(State,County,Name) DESC LIMIT 1", false);
 
 	$nextLocationInfo = performOneRowQuery("Get Next Location", 
       "SELECT objectid, Name FROM location
-        WHERE CONCAT(State,County,Name) > '" . $siteInfo["State"] . $siteInfo["County"] . $siteInfo["Name"] . "'
+        WHERE CONCAT(State,County,Name) > '" . addslashes($siteInfo["State"] . $siteInfo["County"] . $siteInfo["Name"]) . "'
         ORDER BY CONCAT(State,County,Name) LIMIT 1", false);
 
 	browseButtons("<img src=\"./images/location.gif\" align=\"center\"> Location Detail", $url . "?view=" . $viewMode . "&locationid=", $locationID,
