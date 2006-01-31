@@ -474,6 +474,8 @@ function changeView()
 		</optgroup>
 
 	    </select>
+		</form>
+        </div>
 <?	}
 
 	function globalMenuBirds()
@@ -614,9 +616,9 @@ function changeView()
 	function globalMenu()
 	{ ?>
 		<div class="topleft">
-		    <a href="./index.php" style=" color:#999999; font: 10pt 'Gill Sans', 'Gill Sans MT', SansSerif; font-style: italic;">
+		    <a href="./index.php" style="font: 10pt 'Gill Sans', 'Gill Sans MT', SansSerif; font-style: italic;">
 			  <img src="images/logotype.gif" width="100px" border="0"/>
-			  <div>Birding field notes and photos from William Walker</div>
+			  Birding field notes and photos from William Walker
 		    </a>
 		</div>
 
