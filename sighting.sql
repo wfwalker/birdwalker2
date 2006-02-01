@@ -8370,7 +8370,7 @@ INSERT INTO sighting VALUES (8381,'norsho','McAllen','','0','0','2004-04-18');
 INSERT INTO sighting VALUES (8382,'pibgre','McAllen','','0','0','2004-04-18');
 INSERT INTO sighting VALUES (8383,'miskit','McAllen','We got to watch a kettle of several hundred Mississippi Kites circling around the horizon at sunset. I\'ve never seen so many raptors together in one place!','','','2004-04-18');
 INSERT INTO sighting VALUES (8384,'gryhaw','McAllen','','','1','2004-04-18');
-INSERT INTO sighting VALUES (8385,'elfowl','McAllen','heard and seen at a staked-out nest site','','','2004-04-18');
+INSERT INTO sighting VALUES (8385,'elfowl','Bentsen Rio Grande Valley State Park','heard and seen at a staked-out nest site','','','2004-04-18');
 INSERT INTO sighting VALUES (8386,'chwwid','McAllen','heard only','','','2004-04-18');
 INSERT INTO sighting VALUES (8387,'compau','McAllen','','','','2004-04-18');
 INSERT INTO sighting VALUES (8388,'easowl','McAllen','heard only','','','2004-04-18');
