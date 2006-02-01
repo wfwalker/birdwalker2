@@ -53,19 +53,19 @@ $request->globalMenu();
       <?= $request->viewLinks("species"); ?>
 
 	  <div class="titleblock">
-		<div class="metadata">
-          Led by  <?= $tripInfo["Leader"] ?>
-<?        referenceURL($tripInfo); ?>
-        </div>
+	    <div class="heading">Notes</div>
 
-      </div>
+		  <div class="report-content">Led by <?= $tripInfo["Leader"] ?></div>
+		  <div class="report-content"><? referenceURL($tripInfo); ?></div>
 
 <?
-   if ($tripInfo["Notes"] != "") { ?>
-	<div class="heading">Notes</div>
-    <div class=report-content><?= $tripInfo["Notes"] ?></div>
-<? }
+          if ($tripInfo["Notes"] != "")
+		  { ?>
+            <div class="report-content"><?= $tripInfo["Notes"] ?></div>
+<?        } ?>
 
+
+<?
 if ($request->getView() == "photo")
 {
 	$sightingQuery->formatPhotos();
@@ -109,7 +109,7 @@ else if ($request->getView() == "" || $request->getView() == "species")
 <?
         $speciesQuery->formatTwoColumnSpeciesList();
 	}
-}
+ }
 
 footer();
 
