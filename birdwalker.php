@@ -11,7 +11,7 @@ echo "<!DOCTYPE  HTML PUBLIC  \"-//W3C//DTD HTML 4.01 Transitional//EN\">";
     <link rel="alternate" type="application/atom+xml" title="Atom" href="./indexrss.php" />
     <link rel="SHORTCUT ICON" href="./images/favicon.ico">
     <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-      <title>birdWalker | <?= $title ?></title>
+    <title>birdWalker | <?= $title ?></title>
   </head>
 
 <? if (strstr(getenv("SCRIPT_NAME"), "slideshow")) 
