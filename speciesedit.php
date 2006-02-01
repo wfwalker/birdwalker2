@@ -22,7 +22,7 @@ if (($request->getSpeciesID() != "") && ($save == "Save"))
 	$referenceURL = $_POST['ReferenceURL'];
 	$abaCountable = $_POST['ABACountable'];
 
-	performQuery("update species set CommonName='" . $commonName . 
+    performQuery("save changes to species", "update species set CommonName='" . $commonName . 
 				 "', LatinName='" . $latinName . 
 				 "', Abbreviation='" . $abbreviation . 
 				 "', Notes='" . $notes . 
