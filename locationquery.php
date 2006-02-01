@@ -170,7 +170,7 @@ class LocationQuery extends BirdWalkerQuery
 
 				<tr><td class=subheading colspan=13>
 	<?          if ($lastStateHeading != $info["State"]) { ?>
-				  <a href="./statedetail.php?stateid=<?= $stateInfo["objectid"] ?>"><?= $stateInfo["Name"] ?></a>,
+				  <span class="statename"><a href="./statedetail.php?stateid=<?= $stateInfo["objectid"] ?>"><?= $stateInfo["Name"] ?></a></span>,
 	<?            $lastStateHeading = $info["State"];
 				} ?>
 				  <a href="./countydetail.php?stateid=<?= $stateInfo["objectid"] ?>&county=<?= urlencode($info["County"]) ?>"><?= $info["County"] ?> County</a></td>
@@ -242,7 +242,7 @@ class LocationQuery extends BirdWalkerQuery
 
 				<tr><td class=subheading colspan=13>
 	<?          if ($lastStateHeading != $info["State"]) { ?>
-				  <a href="./statedetail.php?stateid=<?= $stateInfo["objectid"] ?>"><?= $stateInfo["Name"] ?></a>,
+				  <span class="statename"><a href="./statedetail.php?stateid=<?= $stateInfo["objectid"] ?>"><?= $stateInfo["Name"] ?></a></span>,
 	<?            $lastStateHeading = $info["State"];
 				} ?>
 				  <a href="./countydetail.php?stateid=<?= $stateInfo["objectid"] ?>&county=<?= urlencode($info["County"]) ?>"><?= $info["County"] ?> County</a></td>
@@ -302,14 +302,17 @@ class LocationQuery extends BirdWalkerQuery
 			if ($countyHeadingsOK && $divideByCounties && (($prevInfo["State"] != $info["State"]) || ($prevInfo["County"] != $info["County"])))
 			{ ?>
 				<div class="subheading">
-	<?          if ($lastStateHeading != $info["State"]) {
+<?              if ($lastStateHeading != $info["State"])
+				{
 					$stateInfo = getStateInfoForAbbreviation($info["State"]); ?>
-					<a href="./statedetail.php?view=<?= $this->mReq->getView() ?>&stateid=<?= $stateInfo["objectid"]?>"><?= $stateInfo["Name"] ?></a>,
-	<?              $lastStateHeading = $info["State"];
+					<span class="statename"><a href="./statedetail.php?view=<?= $this->mReq->getView() ?>&stateid=<?= $stateInfo["objectid"]?>"><?= $stateInfo["Name"] ?></a></span>,
+<?                  $lastStateHeading = $info["State"];
 				} ?>
-				<a href="./countydetail.php?view=<?= $this->mReq->getView() ?>&stateid=<?= $stateInfo["objectid"]?>&county=<?= $info["County"] ?>"><?= $info["County"] ?> County</a>
+				<a href="./countydetail.php?view=<?= $this->mReq->getView() ?>&stateid=<?= $stateInfo["objectid"]?>&county=<?= $info["County"] ?>">
+			      <?= $info["County"] ?> County
+			    </a>
 				</div>
-		  <?		} // TODO, list below the county and state name if not dividing by county/state ?>
+<?          } // TODO, list below the county and state name if not dividing by county/state ?>
 
 			<div>
 			  <a href="./locationdetail.php?view=species&locationid=<?= $info["objectid"] ?>"><?= $info["Name"] ?></a>
