@@ -131,7 +131,7 @@ class SightingQuery extends BirdWalkerQuery
 			$tripYear =  substr($tripInfo["Date"], 0, 4);
 			$locationInfo = getLocationInfoForName($sightingInfo["LocationName"]);
 	?>
-				<p class=report-content>
+				<p>
 	<?	    if ($sightingInfo["Photo"] == "1")
 			{
 				$photoFilename = getPhotoFilename($sightingInfo);
