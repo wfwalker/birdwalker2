@@ -74,7 +74,7 @@
 .fieldlabel {padding-left: 15px; font: 9pt Courier, Fixed; text-align: right; vertical-align: top}
 .bordered {border-left: solid 1px #DDDDDD; border-bottom: solid 1px #DDDDDD; width: 30px; text-align: right; }
 .yearcell {width: 20px; border-left: solid 1px lightgray; border-bottom: solid 1px lightgray; color: #777777}
-
+.statename { text-transform: uppercase }
 .copyright { font: 8pt "Gill Sans", "Gill Sans MT", SansSerif }
 
 /* Styles for items within lists */
