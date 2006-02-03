@@ -74,12 +74,6 @@ function doubleCountHeading($number1, $name1, $number2, $name2)
 ?>   </div> <?
 }
 
-function disabledBrowseButtons($pageKind)
-{
-	browseButtons($pageKind, "", 0, 0, 0, 0, 0);
-}
-
-
 function browseButtons($pageKind, $urlPrefix, $currentID, $prevID, $prevName, $nextID, $nextName)
 {
 ?>  <table width="100%" padding="0" spacing="0" cellpadding="0"><tr> <?
