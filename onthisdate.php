@@ -7,17 +7,17 @@ require_once("./onthisdatespeciesquery.php");
 
 $localtimearray = localtime(time(), 1);
 $monthNum = $localtimearray["tm_mon"] + 1;
-$dayNum = $localtimearray["tm_yday"] + 1;
+$dayNum = $localtimearray["tm_mday"];
 
 $tripsOnThisDate = performQuery("Find Trips On This Date",
     "SELECT *, " . niceDateColumn() . "
       FROM trip
       WHERE Month(Date)='" . ($localtimearray["tm_mon"] + 1) . "' AND
-        DayOfYear(Date)='" . $dayNum . "'
+        DayOfMonth(Date)='" . $dayNum . "'
         AND Year(Date)<" . getLatestYear() . "
       ORDER BY Date DESC");
 
-$today = performCount("format date", "select date_format(current_date, '%M %D')");
+$today = performCount("format date", "SELECT date_format(current_date, '%M %D')");
 
 htmlHead($today);
 
