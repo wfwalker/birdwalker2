@@ -276,7 +276,7 @@ class Map
 				$clickRequest->setScale(0.5 * $this->mReq->getScale());
  ?>
 			    <div style="position: absolute; left: <?= $left ?>px; top: <?= $top ?>px" nowrap>
-				  <?=  $clickRequest->linkToSelf("+<span>" . $info["Name"] . "</span>", "info") ?>
+				  <?=  $clickRequest->linkToSelf("<img border=\"0\" width=\"15\"  src=\"./images/mapspot.gif\"/><span>" . $info["Name"] . "</span>", "info") ?>
 			    </div>
 <?
 			    $counter++;
