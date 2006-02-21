@@ -295,7 +295,7 @@ class LocationQuery extends BirdWalkerQuery
 		$counter = round($locationCount  * 0.5); ?>
 
 		<table class="report-content" width="100%">
-		  <tr valign="top"><td width="50%" style="padding-left: 30px;">
+		  <tr valign="top"><td width="50%" class="leftcolumn">
 
 	<?	while($info = mysql_fetch_array($dbQuery))
 		{
@@ -329,7 +329,7 @@ class LocationQuery extends BirdWalkerQuery
 			$counter--;
 			if ($counter == 0)
 			{ ?>
-			</td><td width="50%" style="padding-left: 30px;">
+			</td><td width="50%" class="rightcolumn">
 	<?		}
 		} ?>
 

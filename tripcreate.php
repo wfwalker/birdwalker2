@@ -27,7 +27,7 @@ $request = new Request;
 $request->globalMenu();
 ?>
 
-<div class="topright">
+<div class="topright-trip">
   <div class=pagetitle>Create new trip</div>
 </div>
 

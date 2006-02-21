@@ -15,17 +15,13 @@ $request->globalMenu();
 
 ?>
 
-    <div class="topright">
-	  <div class="pagesubtitle">index</div>
+    <div class="topright-species">
+	  <div class="pagekind">index</div>
 	  <div class="pagetitle">Species</div>
+      <? $request->viewLinks("species"); ?>
 	</div>
 
     <div class="contentright">
-
-      <div class="titleblock">	  
-        <? $request->viewLinks("species"); ?>
-      </div>
-
 <?
 
 $request->handleStandardViews();

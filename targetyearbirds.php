@@ -32,7 +32,7 @@ $request = new Request;
 $request->globalMenu();
 ?>
 
-<div class="topright">
+<div class="topright-species">
 	<div class="pagesubtitle">Index</div>
     <div class="pagetitle">Target CA birds for <?= getLatestYear() ?></div>
 </div>

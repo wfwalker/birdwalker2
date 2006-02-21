@@ -30,7 +30,7 @@ htmlHead("Target Year Birds");
 $request->globalMenu();
 ?>
 
-<div class="topright">
+<div class="topright-trip">
 	<? browseButtons("Year List", "./santaclarayearlist.php?year=", $request->getYear(), $request->getYear() - 1, $request->getYear() - 1, $request->getYear() + 1, $request->getYear() + 1); ?> 
     <div class="pagetitle">Target birds for <?= $request->getYear() ?></div>
 </div>

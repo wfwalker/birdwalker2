@@ -27,7 +27,7 @@ htmlHead($siteInfo["Name"]);
 $request->globalMenu();
 ?>
 
-<div class="topright">
+<div class="topright-location">
   <? locationBrowseButtons("./locationdetail.php", $request->getLocationID(), $request->getView()); ?>
 
     <div class="pagetitle">
@@ -37,11 +37,10 @@ $request->globalMenu();
 	<div class="pagesubtitle">
 	    <?= $siteInfo["County"] ?> County, <?= $siteInfo["State"] ?>
 	</div>
+  <? $request->viewLinks("species"); ?>
 </div>
 
 <div class="contentright">
-  <? $request->viewLinks("species"); ?>
-
   <div class="titleblock">
 
 <? referenceURL($siteInfo);

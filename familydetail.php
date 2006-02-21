@@ -49,23 +49,18 @@ htmlHead($familyInfo["LatinName"]);
 $request->globalMenu();
 ?>
 
-  <div class="topright">
-	<? browseButtons("<img align=\"center\" src=\"./images/species.gif\"> Family Detail", "./familydetail.php?view=".$request->getView()."&familyid=", $request->getFamilyID(),
+  <div class="topright-species">
+	<? browseButtons("Family Detail", "./familydetail.php?view=".$request->getView()."&familyid=", $request->getFamilyID(),
 					 $prevFamily, $prevFamilyLinkText,
 					 $nextFamily, $nextFamilyLinkText); ?>
 
 	    <div class=pagetitle><?= $familyInfo["LatinName"] ?></div>
         <div class=pagesubtitle><?= $familyInfo["CommonName"] ?></div>
+<?      $request->viewLinks("species"); ?>
+
   </div>
 
     <div class="contentright">
-	  <div class="titleblock">
- 
-<?      $request->viewLinks("species"); ?>
-
-      </div>
-
-
 <?
 $request->handleStandardViews();
 footer();

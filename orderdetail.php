@@ -46,23 +46,17 @@ else
 
 ?>
 
-    <div class="topright">
-	<? browseButtons("<img align=\"center\" src=\"./images/species.gif\"> Order Detail", "./orderdetail.php?view=" . $request->getView() . "&orderid=", $request->getOrderID(),
+    <div class="topright-species">
+	<? browseButtons("Order Detail", "./orderdetail.php?view=" . $request->getView() . "&orderid=", $request->getOrderID(),
 					 $prevOrder, $prevOrderLinkText,
 					 $nextOrder, $nextOrderLinkText); ?>
 
         <div class="pagetitle"><?= $orderInfo["LatinName"] ?></div>
         <div class="pagesubtitle"> <?= $orderInfo["CommonName"] ?></div>
+<?       $request->viewLinks("species"); ?>
 	</div>
 
     <div class="contentright">
-	  <div class="titleblock">
-
-
-<?       $request->viewLinks("species"); ?>
-
-      </div>
-
 <?
 $request->handleStandardViews();
 footer();

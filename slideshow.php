@@ -50,30 +50,33 @@ $tripYear =  substr($sightingInfo["TripDate"], 0, 4);
 <head>
 <META HTTP-EQUIV=Refresh CONTENT="10; URL=./slideshow.php?<?= $request->getParams() ?>&sightingid=<?= $nextPhotoID ?>">
 <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-<title>birdWalker | Slideshow</title>
+<title>birdWalker | <?= $pageTitle ?> Slideshow</title>
 </head>
 
 <body>
-	<? browseButtons($pageTitle, "./slideshow.php?" . $request->getParams() . "&sightingid=",
+
+<?= $request->globalMenu(); ?>
+
+  <div class="topright-photo">
+	<? browseButtons($pageTitle . " Slide Show", "./slideshow.php?" . $request->getParams() . "&sightingid=",
 					 $sightingInfo["objectid"],
 					 $prevPhotoID, "", $nextPhotoID, ""); ?>
 
-<div class="titleblock">
-<div class="pagetitle"><?= $speciesInfo["CommonName"] ?></div>
-<div class="pagesubtitle">
-	<?= $sightingInfo["niceDate"] ?>, <?= $sightingInfo["LocationName"] ?>
-</div>
-</div>
+    <div class="pagetitle"><?= $speciesInfo["CommonName"] ?></div>
+    <div class="pagesubtitle">
+	    <?= $sightingInfo["niceDate"] ?>, <?= $sightingInfo["LocationName"] ?>
+    </div>
+  </div>
 
-<div>
+  <div class="contentright">
 <?      $photoFilename = getPhotoFilename($sightingInfo);
 
 	    list($width, $height, $type, $attr) = getimagesize("./images/photo/" . $photoFilename); ?>
 
-<center>
+    <center>
 	    <img width=<?= $width ?> height=<?= $height ?> src="<?= getPhotoURLForSightingInfo($sightingInfo) ?>">
         <div class="copyright">@<?= $tripYear ?> W. F. Walker</div>
-</center>
+    </center>
+  </div>
 
-</div>
 </html>

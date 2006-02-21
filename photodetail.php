@@ -60,8 +60,8 @@ htmlHead($speciesInfo["CommonName"] . ", " . $tripInfo["niceDate"]);
 $request->globalMenu();
 ?>
 
-<div class="topright">
-	<? browseButtons("<img align=\"top\" src=\"./images/camera.gif\"/> Photo Detail", "./photodetail.php?sightingid=", $request->getSightingID(),
+<div class="topright-photo">
+	<? browseButtons("Photo Detail", "./photodetail.php?sightingid=", $request->getSightingID(),
 					 $prevPhotoID, $prevPhotoLinkText, $nextPhotoID, $nextPhotoLinkText); ?>
 	  <div class="pagetitle">
           <a href="./speciesdetail.php?speciesid=<?= $speciesInfo["objectid"] ?>"><?= $speciesInfo["CommonName"] ?></a>

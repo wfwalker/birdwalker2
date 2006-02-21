@@ -402,7 +402,8 @@ function changeView()
 	box = document.forms[0].viewChooser;
 	if (box.options[box.selectedIndex].value == "slideshow")
 	{
-		launchSlideshow();
+	    destination = "./slideshow.php?<?= $tempRequest->getParams() ?>&view=species";
+		if (destination) location.href = destination;
 	}
 	else
 	{
@@ -413,9 +414,9 @@ function changeView()
 // -->
 </SCRIPT>
 
-	    <div class="viewlinks">
-	      <form class="viewlinks">
-	        VIEW: <select name="viewChooser" onChange="changeView()"> <?
+	    <div class="prevlink">
+	      <form>
+	        view: <select name="viewChooser" onChange="changeView()"> <?
 
 		if ($this->getTripID() == "")
 		{ ?>
@@ -616,9 +617,8 @@ function changeView()
 	function globalMenu()
 	{ ?>
 		<div class="topleft">
-		    <a href="./index.php" style="font: 10pt 'Gill Sans', 'Gill Sans MT', SansSerif; font-style: italic;">
-			  <img src="images/logotype.gif" width="100px" border="0"/>
-			  Birding field notes and photos from William Walker
+		    <a href="./index.php">
+			  <img src="images/topleft1.jpg" align="right" border="0"/>
 		    </a>
 		</div>
 

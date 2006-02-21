@@ -19,18 +19,15 @@ $request->globalMenu();
 
 ?>
 
-    <div class="topright">
-	  <? browseButtons("<img align=\"center\" src=\"./images/trip.gif\"> Year Detail", "./yeardetail.php?view=" . $request->getView() . "&year=", $request->getYear(),
+    <div class="topright-trip">
+	  <? browseButtons("Year Detail", "./yeardetail.php?view=" . $request->getView() . "&year=", $request->getYear(),
 					 $prevYear, $prevYear, $nextYear, $nextYear); ?>
 
       <div class=pagetitle><?= $request->getYear() ?></div>
+<?    $request->viewLinks("species"); ?>
 	</div>
 
     <div class="contentright">
-
-      <div class="titleblock">	  
-<?        $request->viewLinks("species"); ?>
-	  </div>
 
 <?
 $request->handleStandardViews();

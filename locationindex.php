@@ -14,16 +14,13 @@ htmlHead("Locations");
 $request->globalMenu();
 ?>
 
-    <div class="topright">
-	  <div class="pagesubtitle">index</div>
+    <div class="topright-location">
+	  <div class="pagekind">index</div>
 	  <div class="pagetitle">Locations</div>
+      <? $request->viewLinks("locations"); ?>
 	</div>
 
     <div class="contentright">
-      <div class="titleblock">
-	    <? $request->viewLinks("locations"); ?>
-	  </div>
-
 <?
 	$request->handleStandardViews(); 
 

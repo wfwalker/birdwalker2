@@ -1,43 +1,66 @@
-
-.withcontentleft
+body
 {
-	background-image: url(./images/left.jpg);
-	background-repeat: repeat-y;
+	background-color: #EEEEEE;
 }
 
 .contentleft
 {
     font: 9pt "Gill Sans", "Gill Sans MT", SansSerif;
     font-style: italic;
-	left: 5px; top: 90px; width: 112px;
-	padding-left: 1px;
-	padding-right: 10px;
+	left: 0px; top: 100px; width: 120px;
 	position: absolute;
 	padding-bottom: 60px;
- }
+	padding-top: 10px;
+	padding-left: 0px; padding-right: 0px;
+}
+.contentleft a       { text-decoration:none; }
+.contentleft a:hover { color: red; text-decoration: underline; }
 
-.topright
+.topright-trip
 {
-	left: 150px; width: 640px; top: 5px; height: 90px;
+	left: 120px; width: 640px; top: 0px; height: 100px;
 	position: absolute;
- }
+	background-image: url(./images/trip-banner.jpg);
+}
+.topright-location
+{
+	left: 120px; width: 640px; top: 0px; height: 100px;
+	position: absolute;
+	background-image: url(./images/location-banner.jpg);
+}
+.topright-species
+{
+	left: 120px; width: 640px; top: 0px; height: 100px;
+	position: absolute;
+	background-image: url(./images/species-banner.jpg);
+}
+.topright-home
+{
+	left: 120px; width: 640px; top: 0px; height: 100px;
+	position: absolute;
+	background-image: url(./images/banner3.jpg);
+}
+.topright-photo
+{
+	left: 120px; width: 640px; top: 0px; height: 100px;
+	position: absolute;
+	background-image: url(./images/photo-banner.jpg);
+}
 
 .topleft
 {
-	left: 1px; width: 120; top: 5px; height: 90px; margin-left: 10px;
+	left: 0px; width: 120px; top: 0px; height: 100px;
+	padding: 0px; margin: 0px;
 	position: absolute;
-
-    font: 9pt "Gill Sans", "Gill Sans MT", SansSerif;
-    font-style: italic;
-
     text-align: center;
  }
 
 .contentright
 {
     font: 10pt "Gill Sans", "Gill Sans MT", SansSerif;
-	left: 150px; width: 640px; top: 90px;
+	left: 120px; width: 640px; top: 100px;
 	padding-bottom: 30px;
+	background-color: white;
 	position: absolute;
 }
 
@@ -45,7 +68,6 @@
 {
     border-top: solid 1px #AAAAAA;
     font: 10pt "Gill Sans", "Gill Sans MT", SansSerif;
-	left: 15%; width: 640px;
 	padding-bottom: 30px;
 	margin-top: 60px;
 	position: static;
@@ -53,8 +75,13 @@
 
 /* Styles for section headers, page titles, and overall report content */
 
-.pagetitle {text-align: center; font: 16pt "Gill Sans", "Gill Sans MT", SansSerif; font-weight: bold; color:#444444; padding-top: 2px }
-.pagesubtitle {text-align: center; font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-style: italic; color: #444444; padding-bottom: 7px; padding-left: 3px }
+.pagetitle {text-align: center; font: 16pt "Gill Sans", "Gill Sans MT", SansSerif; font-weight: bold; padding-top: 2px }
+.pagetitle a       { text-decoration: none;}
+.pagetitle a:hover { color: red; text-decoration: underline; }
+
+.pagesubtitle {text-align: center; font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-style: italic; padding-bottom: 7px; padding-left: 3px }
+.pagesubtitle a       { text-decoration: none;}
+.pagesubtitle a:hover { color: red; text-decoration: underline; }
 
 .metadata {font: 9pt "Gill Sans", "Gill Sans MT", SansSerif; padding-left: 4px; }
 .viewlinks { background-color: #EEEEEE; }
@@ -83,14 +110,12 @@
 
 /* textual browse buttons */
 
-.nextlink { text-align: right; font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-style: italic; }
-.prevlink { text-align: left; font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-style: italic; }
-.pagekind { text-align: center; font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-style: italic; }
+.nextlink { padding-right: 10px; text-align: right; font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-style: italic; }
+.prevlink { padding-left: 10px; text-align: left; font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-style: italic; }
+.pagekind { text-transform: lowercase; text-align: center; font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-style: italic; }
 
 /* Anchors, and especially magic rollover popup anchors for Maps. */
 
-.contentleft a       { text-decoration:none; }
-.contentleft a:hover { color: red; text-decoration: underline; }
 
 .topleft a       { text-decoration: none; }
 .topleft a:hover { color: red; text-decoration: underline; }
@@ -98,8 +123,10 @@
 .contentright a       { text-decoration: none;}
 .contentright a:hover { color: red; text-decoration: underline; }
 
-.topright a       { text-decoration: none; }
-.topright a:hover { color: red; text-decoration: underline; }
+.nextlink a       { text-decoration: none; }
+.nextlink a:hover { color: red; text-decoration: underline; }
+.prevlink a       { text-decoration: none; }
+.prevlink a:hover { color: red; text-decoration: underline; }
 
 a.info
 {
@@ -138,14 +165,12 @@ a.info:hover span  /*the span will display just on :hover state*/
 
 .command
 {
-  border-top: solid 1px #BBBBBB;
-  background: #F8F8F8;
-  width: 95px;
+  width: 90px;
   background-image: url(./images/open.gif);
   background-repeat: no-repeat;
   padding-left: 16px; margin-left: 7px; margin-bottom: 7px;
   white-space: nowrap;
 }
 
-.leftcolumn { padding-left: 30px; }
-.rightcolumn { padding-left: 30px; }
+.leftcolumn { padding-left: 20px; }
+.rightcolumn { padding-left: 20px; }

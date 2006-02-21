@@ -18,17 +18,16 @@ $stateInfo =  $request->getStateInfo();
 
 ?>
 
-    <div class="topright">
-	  <div class="pagesubtitle"><img align="center" src="./images/location.gif"> county detail</div>
+    <div class="topright-location">
+	  <div class="pagekind">County Detail</div>
 	  <div class="pagetitle"> <?= $request->getCounty() ?> County</div>
 	  <div class="pagesubtitle"> <?= $stateInfo["Name"] ?></div>
+<?    $request->viewLinks("species"); ?>
 	</div>
 
     <div class=contentright>
       <div class="titleblock">	  
-<?    $request->viewLinks("species"); ?>
       </div>
-
 <?
 
 $request->handleStandardViews();

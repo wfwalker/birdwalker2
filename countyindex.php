@@ -10,8 +10,8 @@ htmlHead("Counties");
 $request->globalMenu();
 ?>
 
-    <div class="topright">
-      <div class="pagesubtitle">Index</div>
+    <div class="topright-location">
+      <div class="pagekind">Index</div>
         <div class="pagetitle">Counties</div>
 	</div>
 

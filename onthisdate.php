@@ -26,7 +26,7 @@ $request->globalMenu();
 
 ?>
 
-    <div class="topright">
+    <div class="topright-trip">
 	    <div class="pagesubtitle">index</div>
 	    <div class="pagetitle"><?= $today ?></div>
       </div>

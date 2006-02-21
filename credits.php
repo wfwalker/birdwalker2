@@ -9,8 +9,7 @@ htmlHead("About");
 $request = new Request;
 $request->globalMenu();
 ?>
-    <div class="topright">
-	  <div class="logotype"><img src="./images/logotype.gif" width="389" height="61" alt="birdWalker"/></div>
+    <div class="topright-home">
 	</div>
 
     <div class="contentright">

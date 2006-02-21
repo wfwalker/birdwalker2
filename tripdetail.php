@@ -40,18 +40,17 @@ $request->globalMenu();
 ?>
 
 
-    <div class="topright">
+    <div class="topright"><div class="topright-trip">
       <? tripBrowseButtons("./tripdetail.php", $request->getTripID(), $request->getView()); ?>
         <div class="pagetitle">
             <?= $tripInfo["Name"] ?>
             <?= editLink("./tripedit.php?tripid=" . $request->getTripID()); ?>
         </div>
         <div class="pagesubtitle"><?= $tripInfo["niceDate"] ?></div>
-	</div>
+      <?= $request->viewLinks("species"); ?>
+	</div></div>
 
     <div class="contentright">
-      <?= $request->viewLinks("species"); ?>
-
 	  <div class="titleblock">
 	    <div class="heading">Notes</div>
 

@@ -31,6 +31,41 @@ function welcomeMessage()
 <?
 }
 
+function dashboard()
+{
+    $yearBirds = performCount("year birds", "
+      SELECT COUNT(DISTINCT species.objectid)
+        FROM species, sighting
+        WHERE species.Abbreviation=sighting.SpeciesAbbreviation
+        AND Year(sighting.TripDate)='2006'");
+
+    $countyYearBirds = performCount("county year birds", "
+      SELECT COUNT(DISTINCT species.objectid)
+        FROM species, sighting, location
+        WHERE species.Abbreviation=sighting.SpeciesAbbreviation
+        AND Year(sighting.TripDate)='2006' AND
+        sighting.LocationName=location.Name AND location.County='Santa Clara'");
+
+    $stateYearBirds = performCount("state year birds", "
+      SELECT COUNT(DISTINCT species.objectid)
+        FROM species, sighting, location
+        WHERE species.Abbreviation=sighting.SpeciesAbbreviation
+        AND Year(sighting.TripDate)='2006' AND
+        sighting.LocationName=location.Name AND location.State='CA'");
+
+
+?>
+	<div class="heading">Latest Counts</div>
+	<div class="summaryblock">
+	   <table class="report-content">
+	     <tr><td>ABA</td><td>State</td><td>County</td></tr>
+	     <tr><td><?= $yearBirds ?></td><td><?= $stateYearBirds ?><td><?= $countyYearBirds ?></td></tr>
+	   </table>
+	</div>
+	  <p>&nbsp;</p>
+<?
+}
+
 function birdOfTheDay()
 {
     $today = performCount("format date", "select date_format(current_date, '%M %D, %Y')");
@@ -124,8 +159,7 @@ htmlHead("Home");
 $request = new Request;
 $request->globalMenu();
 ?>
-    <div class="topright">
-        <div class="logotype"><img src="./images/logotype.gif" width="389" height="61" alt="birdWalker"/></div>
+    <div class="topright-home">
       </div>
 
     <div class="contentright">

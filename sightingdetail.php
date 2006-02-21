@@ -12,17 +12,17 @@ $request = new Request;
 $sightingID = getValue("sightingid");
 
 $sightingInfo = getSightingInfo($sightingID);
-$speciesInfo = performOneRowQuery("select * from species where Abbreviation='" . $sightingInfo["SpeciesAbbreviation"] . "'");
-$tripInfo = performOneRowQuery("select *, " . niceDateColumn() . ",  FROM trip WHERE Date='" . $sightingInfo["TripDate"] . "'");
+$speciesInfo = performOneRowQuery("Find Species", "select * from species where Abbreviation='" . $sightingInfo["SpeciesAbbreviation"] . "'");
+$tripInfo = performOneRowQuery("Find Trip Info", "select *, " . niceDateColumn() . " FROM trip WHERE Date='" . $sightingInfo["TripDate"] . "'");
 $tripYear =  substr($tripInfo["Date"], 0, 4);
-$locationInfo = performOneRowQuery("select * from location where Name='" . $sightingInfo["LocationName"] . "'");
+$locationInfo = performOneRowQuery("Find Location Info", "select * from location where Name='" . $sightingInfo["LocationName"] . "'");
 
 htmlHead($speciesInfo["CommonName"] . ", " . $tripInfo["niceDate"]);
 
 $request->globalMenu();
 ?>
 
-<div class="topright">
+<div class="topright-trip">
 <? browseButtons("Sighting Detail", "./sightingdetail.php?sightingid=", $sightingID, $sightingID - 1, $sightingID - 1, $sightingID + 1, $sightingID + 1); ?>
   <div class="pagetitle"> <?= $speciesInfo["CommonName"] ?></div>
 

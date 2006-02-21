@@ -14,8 +14,8 @@ $request->globalMenu();
 ?>
 
 
-  <div class="topright">
-	  <div class="pagesubtitle">Index</div>
+  <div class="topright-photo">
+	  <div class="pagekind">Index</div>
 	  <div class="pagetitle">Photos</div>
   </div>
 

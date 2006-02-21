@@ -14,7 +14,7 @@ $request->globalMenu();
 
 ?>
 
-    <div class="topright">
+    <div class="topright-trip">
 
 <?
 if ($request->getYear() != "")
@@ -35,7 +35,7 @@ if ($request->getYear() != "")
 	$next = "year=" . $nextYear . "&month=" . $nextMonth;
 	$prev = "year=" . $prevYear . "&month=" . $prevMonth;
 
-	browseButtons("<img align=\"center\" src=\"./images/trip.gif\"> Month Detail", "./monthdetail.php?view=" . $request->getView() . "&", $current,
+	browseButtons("Month Detail", "./monthdetail.php?view=" . $request->getView() . "&", $current,
 				  $prev, getMonthNameForNumber($prevMonth) . ", " . $prevYear,
 				  $next, getMonthNameForNumber($nextMonth) . ", " . $nextYear);
 }
@@ -53,11 +53,12 @@ else
 }
  ?>
 	<div class=pagetitle><?= getMonthNameForNumber($request->getMonth()) ?> <?= $request->getYear() == "" ? getEarliestYear() . " - " . getLatestYear() :  $request->getYear() ?></div>
+
+<?        $request->viewLinks("tripsummaries"); ?>
 	</div>
 
     <div class=contentright>
       <div class="titleblock">	  
-<?        $request->viewLinks("tripsummaries"); ?>
 		</div>
 
 <?

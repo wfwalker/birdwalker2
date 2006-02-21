@@ -14,19 +14,17 @@ $info = $request->getStateInfo();
 htmlHead($info["Name"]);
 
 $request->globalMenu();
-//$request->navTrailLocations();
 
 ?>
 
-    <div class="topright">
+    <div class="topright-location">
       <? stateBrowseButtons($request->getStateID(), $request->getView()); ?>
 	  <div class=pagetitle><?= $info["Name"] ?></div>
+<?    $request->viewLinks("species"); ?>
 	</div>
 
     <div class="contentright">
       <div class="titleblock">	  
-
-<?    $request->viewLinks("species"); ?>
 
     </div>
 

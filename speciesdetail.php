@@ -27,7 +27,7 @@ $request->globalMenu();
 
 ?>
 
-  <div class="topright">
+  <div class="topright-species">
     <? speciesBrowseButtons("./speciesdetail.php", $request->getSpeciesID(), $request->getView()); ?>
 
       <div class="pagetitle">
@@ -37,11 +37,10 @@ $request->globalMenu();
       <div class="pagesubtitle">
         <?= $speciesInfo["LatinName"] ?>
 	  </div>
+      <?= $request->viewLinks("locations"); ?>
   </div>
 
   <div class="contentright">
-    <?= $request->viewLinks("locations"); ?>
-
 	<div class="titleblock">
 	  <div class="metadata">
 <?  if (strlen($speciesInfo["ReferenceURL"]) > 0) { ?>

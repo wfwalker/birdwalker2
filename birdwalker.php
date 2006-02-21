@@ -14,13 +14,7 @@ echo "<!DOCTYPE  HTML PUBLIC  \"-//W3C//DTD HTML 4.01 Transitional//EN\">";
     <title>birdWalker | <?= $title ?></title>
   </head>
 
-<? if (strstr(getenv("SCRIPT_NAME"), "slideshow")) 
-   { ?>
-       <body>
-<? } else { ?>
-       <body class="withcontentleft">
-<? } ?>
-
+  <body>
 <?
 }
 
@@ -87,7 +81,7 @@ function browseButtons($pageKind, $urlPrefix, $currentID, $prevID, $prevName, $n
         ?><td width="33%" valign="top" class="prevlink"><a href="<?= $urlPrefix . $prevID ?>">&lt; prev <?= strtolower($prevName) ?></a></td><?
 	}
 
-    ?> <td width="33%" valign="top" class="pagekind"><?= strtolower($pageKind) ?></td> <?
+    ?> <td width="33%" valign="top" class="pagekind"><?= $pageKind ?></td> <?
 
 	if ($nextID == "")
 	{
@@ -405,7 +399,7 @@ function speciesBrowseButtons($url, $speciesID, $viewMode)
 		$prevSpeciesLinkText = "";
 	}
 
-	browseButtons("<img align=\"center\" src=\"./images/species.gif\"> Species Detail", $url . "?view=" . $viewMode . "&speciesid=", $speciesID,
+	browseButtons("Species Detail", $url . "?view=" . $viewMode . "&speciesid=", $speciesID,
 				  $prevSpeciesID, $prevSpeciesLinkText, $nextSpeciesID, $nextSpeciesLinkText);
 }
 
@@ -489,7 +483,7 @@ function tripBrowseButtons($url, $tripID, $viewMode)
       WHERE Date < '" . $tripInfo["Date"] . "'
       ORDER BY Date DESC LIMIT 1", false);
 
-	browseButtons("<img align=\"center\" src=\"./images/trip.gif\"/> Trip Detail", $url . "?view=" . $viewMode . "&tripid=", $tripID,
+	browseButtons("Trip Detail", $url . "?view=" . $viewMode . "&tripid=", $tripID,
 				  $prevTripInfo["objectid"], $prevTripInfo["niceDate"], $nextTripInfo["objectid"], $nextTripInfo["niceDate"]);
 }
 
@@ -521,7 +515,7 @@ function locationBrowseButtons($url, $locationID, $viewMode)
         WHERE CONCAT(State,County,Name) > '" . addslashes($siteInfo["State"] . $siteInfo["County"] . $siteInfo["Name"]) . "'
         ORDER BY CONCAT(State,County,Name) LIMIT 1", false);
 
-	browseButtons("<img src=\"./images/location.gif\" align=\"center\"> Location Detail", $url . "?view=" . $viewMode . "&locationid=", $locationID,
+	browseButtons("Location Detail", $url . "?view=" . $viewMode . "&locationid=", $locationID,
 				  $prevLocationInfo["objectid"], $prevLocationInfo["Name"], $nextLocationInfo["objectid"], $nextLocationInfo["Name"]);
 }
 
@@ -571,7 +565,7 @@ function stateBrowseButtons($stateID, $viewMode)
 		$prevStateObjectID = "";
 	}
 
-	browseButtons("<img align=\"center\" src=\"./images/location.gif\"> State Detail", "./statedetail.php?view=" . $viewMode . "&stateid=", $stateID,
+	browseButtons("State Detail", "./statedetail.php?view=" . $viewMode . "&stateid=", $stateID,
 				  $prevStateObjectID, $prevStateLinkText, $nextStateObjectID, $nextStateLinkText);
 }
 
