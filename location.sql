@@ -182,3 +182,6 @@ INSERT INTO location VALUES (182,'Bolinas Harbor','','Bolinas','Marin','CA','','
 INSERT INTO location VALUES (183,'Stafford Lake Park','','Novato','Marin','CA','','',38.1139,-122.649);
 INSERT INTO location VALUES (184,'Five Brooks','','Point Reyes Station','Marin','CA','','',38.0011,-122.757);
 INSERT INTO location VALUES (185,'Geng Road','','Palo Alto','Santa Clara','CA','','',0,0);
+INSERT INTO location VALUES (186,'Ralston and 101','','Belmont','San Mateo','CA','The highway interchange includes several seasonal ponds.','',0,0);
+INSERT INTO location VALUES (187,'Sacramento River Delta','','','Sacramento','CA','','',0,0);
+INSERT INTO location VALUES (188,'Drake\'s Estero','','Point Reyes Station','Marin','CA','','',0,0);
