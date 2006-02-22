@@ -91,10 +91,11 @@ function birdOfTheDay()
 
 ?>
 
-		<div class="heading">Bird of the Day for <?= $today ?></div>
+		<div class="heading">Bird of the Day</div>
+
+		<div class="superheading"><?= $today ?></div>
 
 	    <div class="summaryblock">
-
 		  <div class="report-content">
 		    Randomly chosen from among all the species Bill has photographed.
 		    The map below the photograph marks locations where we have observed this species.
