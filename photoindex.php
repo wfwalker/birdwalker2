@@ -21,11 +21,9 @@ $request->globalMenu();
 
   <div class=contentright>
     <div class="titleblock">	  
-      <div class="viewlinks">
         <a href="./photoindextaxo.php">by species</a> |
         <a href="./photoindex.php">by date</a> |
         <a href="./photoindexlocation.php">by location</a>
-      </div>
     </div>
 
   <div class=heading><?= $photoCount . " photos covering " . $photoSpeciesCount . " species"; ?></div>
