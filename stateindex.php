@@ -43,7 +43,11 @@ $request->globalMenu();
 
     <div class="contentright">
 
-<table class=metadata cellpadding=1 cellspacing=0 width=80%>
+    <div class="heading">
+      Species seen in each State by Year
+    </p>
+
+<table class="report-content" cellpadding=1 cellspacing=0 width=80%>
 
   <tr><td></td><? insertYearLabels() ?></tr>
 
@@ -52,10 +56,10 @@ $request->globalMenu();
 	 $info = getStateInfo($id);
      $state = $info["Abbreviation"]; ?>
     <tr>
-      <td class=firstcell><a href="./statedetail.php?stateid=<?= $info["objectid"] ?>"><?= getStateNameForAbbreviation($state) ?></a></td>
+      <td><a href="./statedetail.php?stateid=<?= $info["objectid"] ?>"><?= getStateNameForAbbreviation($state) ?></a></td>
 <?	  for ($year = getEarliestYear(); $year <= getLatestYear(); $year++)
 	  { ?>
-		  <td class=bordered align=right>
+		  <td class="bordered" align="right">
               &nbsp;
 <?
 		if (array_key_exists($year, $table[$state]))
