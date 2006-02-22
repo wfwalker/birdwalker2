@@ -48,13 +48,7 @@ $request->globalMenu();
    {
 	   $lat = $siteInfo["Latitude"];
 	   $long = $siteInfo["Longitude"];
-?>
-<!--   <div class="viewlinks">maps: 
-      <a href="http://www.mapquest.com/maps/map.adp?latlongtype=decimal&latitude=<?= $lat ?>&longitude=<?= $long ?>">mapquest</a> |
-      <a href="http://terraserver.microsoft.com/image.aspx?Lon=<?=$long?>&Lat=<?=$lat?>&w=1">terraserver</a> |
-		<a href="./locationdetail.php?view=map&locationid=<?=$request->getLocationID()?>">opengis</a>
-    </div> -->
-<? }
+   }
 
    if ($siteInfo["Notes"] != "") { ?>
 	<div class="heading">Notes</div>
