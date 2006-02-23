@@ -51,18 +51,15 @@ $request->globalMenu();
 	</div></div>
 
     <div class="contentright">
-	  <div class="titleblock">
 	    <div class="heading">Notes</div>
-
+        <div class="leftcolumn">
 		  <div class="report-content">Led by <?= $tripInfo["Leader"] ?></div>
 		  <div class="report-content"><? referenceURL($tripInfo); ?></div>
-
-<?
-          if ($tripInfo["Notes"] != "")
-		  { ?>
-            <div class="report-content"><?= $tripInfo["Notes"] ?></div>
-<?        } ?>
-
+<?          if ($tripInfo["Notes"] != "")
+		    { ?>
+              <div class="report-content"><?= $tripInfo["Notes"] ?></div>
+<?          } ?>
+        </div>
 
 <?
 if ($request->getView() == "photo")

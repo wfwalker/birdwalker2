@@ -43,15 +43,12 @@ $request->globalMenu();
 <div class="topright-trip">
   <? tripBrowseButtons("./tripedit.php", $tripID, "edit"); ?>
   <a href="./tripdetail.php?tripid=<?= $tripInfo["objectid"] ?>">
-    <div class=pagetitle><?= $tripInfo["Name"] ?></div>
+    <div class="pagetitle"><?= $tripInfo["Name"] ?></div>
+    <div class="pagesubtitle"><?= $tripInfo["niceDate"] ?></div>
 </a>
 </div>
 
 <div class="contentright">
-
-<div class="titleblock">
-<div class="metadata"><?= $tripInfo["niceDate"] ?></div>
-</div>
 
 <form method="post" action="./tripedit.php?tripid=<?= $tripID ?>">
 

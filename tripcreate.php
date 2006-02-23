@@ -32,9 +32,6 @@ $request->globalMenu();
 </div>
 
 <div class="contentright">
-  <div class="titleblock">
-  </div>
-
 <?
 if ($save == "Save")
 {
