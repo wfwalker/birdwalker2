@@ -17,14 +17,14 @@ $request->globalMenu();
   <div class="topright-photo">
 	  <div class="pagekind">Index</div>
 	  <div class="pagetitle">Photos</div>
+      <div class="pagesubtitle">
+      <a href="./photoindextaxo.php">by species</a> |
+      <a href="./photoindex.php">by date</a> |
+      <a href="./photoindexlocation.php">by location</a>
+      </div>
   </div>
 
   <div class=contentright>
-    <div class="titleblock">	  
-        <a href="./photoindextaxo.php">by species</a> |
-        <a href="./photoindex.php">by date</a> |
-        <a href="./photoindexlocation.php">by location</a>
-    </div>
 
   <div class=heading><?= $photoCount . " photos covering " . $photoSpeciesCount . " species"; ?></div>
 
