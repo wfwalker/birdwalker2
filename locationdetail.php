@@ -41,15 +41,7 @@ $request->globalMenu();
 </div>
 
 <div class="contentright">
-  <div class="titleblock">
-
 <? referenceURL($siteInfo);
-   if ($siteInfo["Latitude"] > 0)
-   {
-	   $lat = $siteInfo["Latitude"];
-	   $long = $siteInfo["Longitude"];
-   }
-
    if ($siteInfo["Notes"] != "") { ?>
 	<div class="heading">Notes</div>
     <div class=report-content><?= $siteInfo["Notes"] ?></div>

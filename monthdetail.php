@@ -58,16 +58,10 @@ else
 	</div>
 
     <div class=contentright>
-      <div class="titleblock">	  
-		</div>
-
 <?
-
-$request->handleStandardViews();
-footer();
-
+      $request->handleStandardViews();
+      footer();
 ?>
-
     </div>
 
 <?
