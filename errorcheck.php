@@ -34,10 +34,8 @@ $request->globalMenu();
 ?>
 
     <div class="topright-trip">
-	  <div class="pagesubtitle">Index</div>
-      <div class="titleblock">	  
+	  <div class="pagekind">Index</div>
 	  <div class="pagetitle">Bad Records</div>
-      </div>
 	</div>
 
     <div class="contentright">
