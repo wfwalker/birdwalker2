@@ -49,9 +49,6 @@ $request->globalMenu();
 
 <div class="contentright">
 
-<div class="titleblock">
-</div>
-
 <form method="post" action="./speciesedit.php?speciesid=<?= $request->getSpeciesID() ?>">
 
 <table class="report-content" width=100%>

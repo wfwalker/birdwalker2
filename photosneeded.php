@@ -34,9 +34,7 @@ $request->globalMenu();
 	</div>
 
     <div class="contentright">
-	  <div class=titleblock>
-        <div class="metadata">ABA-countable Birds I have seen at least <?= $threshold ?> times but never photographed</div>
-      </div>
+      <div class="heading">ABA-countable Birds I have seen at least <?= $threshold ?> times but never photographed</div>
 
 <div class="metadata">
 	Sort by <a href="./photosneeded.php?sort=objectid">taxo</a> or <a href="./photosneeded.php?sort=theCount+desc">sighting count</a>
@@ -45,7 +43,7 @@ $request->globalMenu();
 <p>&nbsp;</p>
 
 <table class="report-content">
-<tr class=titleblock><td>Species</td><td>Sightings</td></tr>
+<tr><td>Species</td><td>Sightings</td></tr>
 
 <?php
 
