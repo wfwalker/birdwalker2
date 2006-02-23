@@ -60,7 +60,7 @@ on run
 			
 			set anItemPath to path of anItem
 			tell application "Finder"
-				if (file (birdwalkerFilename & ".jpg") of folder "bw2imagesource" of folder "Photography Miscellany" of folder "walker" of folder "Users" of startup disk exists) then
+				if (file (birdwalkerFilename & ".jpg") of folder "bw2imagesource" of folder "Photography" of folder "walker" of folder "Users" of startup disk exists) then
 					-- do nothing
 				else
 					set anItemFile to file anItemPath
@@ -115,13 +115,15 @@ on run
 				do shell script "echo \"insert into sighting (TripDate, SpeciesAbbreviation, LocationName) values ('" & tripDate & "', '" & abbrev & "', '" & aLocation & "')\" |  /usr/local/mysql/bin/mysql -u birdwalker -pbirdwalker birdwalker"
 			end if
 			
-			set sightingID to do shell script "echo \"select objectid from sighting where TripDate='" & tripDate & "' and SpeciesAbbreviation='" & abbrev & "'\" | /usr/local/mysql/bin/mysql --skip-column-names -u birdwalker -pbirdwalker birdwalker"
+			set sightingID to do shell script "echo \"select objectid from sighting where TripDate='" & tripDate & "' and SpeciesAbbreviation='" & abbrev & "' limit 1\" | /usr/local/mysql/bin/mysql --skip-column-names -u birdwalker -pbirdwalker birdwalker"
+			
+			
+			display dialog "Please double check sighting for " & (name of anItem) & " as " & birdwalkerFilename
 			
 			tell application "Firefox"
 				OpenURL "http://localhost/~walker/birdwalker2/sightingedit.php?sightingid=" & sightingID
+				activate
 			end tell
-			
-			display dialog "Please double check sighting for " & (name of anItem) & " as " & birdwalkerFilename
 		end repeat
 	end tell
 end run
