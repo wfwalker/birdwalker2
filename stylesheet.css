@@ -1,3 +1,9 @@
+
+/* Stylesheet for BirdWalker 2 */
+
+
+/* ************************ The Big Structural Sections ******************************** */
+
 body
 {
 	background-color: #EEEEEE;
@@ -53,7 +59,9 @@ body
 	padding: 0px; margin: 0px;
 	position: absolute;
     text-align: center;
- }
+}
+.topleft a       { text-decoration: none; }
+.topleft a:hover { color: red; text-decoration: underline; }
 
 .contentright
 {
@@ -63,6 +71,8 @@ body
 	background-color: white;
 	position: absolute;
 }
+.contentright a       { text-decoration: none;}
+.contentright a:hover { color: red; text-decoration: underline; }
 
 .footer
 {
@@ -84,21 +94,19 @@ body
 .pagesubtitle a:hover { color: red; text-decoration: underline; }
 
 .metadata {font: 9pt "Gill Sans", "Gill Sans MT", SansSerif; padding-left: 4px; }
-.viewlinks { background-color: #EEEEEE; }
 
 .superheading {font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-style: italic; color: #444444; }
 .heading { font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-weight: bold; margin-top: 20px; margin-bottom: 10px; clear: both; color: #444444 }
 .subheading { font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-weight: bold; margin-top: 7px; margin-bottom: 2px; color: #444444 }
 
 .summaryblock { border-top: solid 1px #AAAAAA; padding-top: 5px; margin-bottom: 5px }
-.titleblock { margin-bottom: 5px }
 
 .inlinepict { margin-left: 10px; margin-bottom: 10px; }
 
 .report-content {font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; padding-left: 3px}
 
-.firstcell {padding-left: 15px; white-space: nowrap; }
-.fieldlabel {padding-left: 15px; font: 9pt Courier, Fixed; text-align: right; vertical-align: top}
+.firstcell { padding-left: 15px; white-space: nowrap; }
+.fieldlabel { padding-left: 15px; font: 9pt Courier, Fixed; text-align: right; vertical-align: top}
 .bordered {border-left: solid 1px #DDDDDD; border-bottom: solid 1px #DDDDDD; width: 30px; text-align: right; }
 .yearcell {width: 20px; border-left: solid 1px lightgray; border-bottom: solid 1px lightgray; color: #777777}
 .statename { text-transform: uppercase }
@@ -111,22 +119,18 @@ body
 /* textual browse buttons */
 
 .nextlink { padding-right: 10px; text-align: right; font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-style: italic; }
+.nextlink a       { text-decoration: none; }
+.nextlink a:hover { color: red; text-decoration: underline; }
+
 .prevlink { padding-left: 10px; text-align: left; font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-style: italic; }
+.prevlink a       { text-decoration: none; }
+.prevlink a:hover { color: red; text-decoration: underline; }
+
 .pagekind { text-transform: lowercase; text-align: center; font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-style: italic; }
 
 /* Anchors, and especially magic rollover popup anchors for Maps. */
 
 
-.topleft a       { text-decoration: none; }
-.topleft a:hover { color: red; text-decoration: underline; }
-
-.contentright a       { text-decoration: none;}
-.contentright a:hover { color: red; text-decoration: underline; }
-
-.nextlink a       { text-decoration: none; }
-.nextlink a:hover { color: red; text-decoration: underline; }
-.prevlink a       { text-decoration: none; }
-.prevlink a:hover { color: red; text-decoration: underline; }
 
 a.info
 {
@@ -143,13 +147,12 @@ a.info span { display: none; }
 a.info:hover span  /*the span will display just on :hover state*/
 {
     display: block;
-     background-color: #484393;
+    background-color: #484393;
     position: absolute;
     top: 0em; left: 0em; width: 15em;
-	color: white; padding-left: 3px; padding-right: 3px;
+	color: white; padding-left: 3px; padding-right: 1px;
+    font: 10pt "Gill Sans", "Gill Sans MT", SansSerif;
 }
-
-.logotype { font: 48pt Courier; color: #484393; text-align: right; }
 
 .command-disabled
 {
@@ -172,5 +175,5 @@ a.info:hover span  /*the span will display just on :hover state*/
   white-space: nowrap;
 }
 
-.leftcolumn { padding-left: 20px; }
-.rightcolumn { padding-left: 20px; }
+.leftcolumn { padding-left: 10px; }
+.rightcolumn { padding-left: 10px; }
