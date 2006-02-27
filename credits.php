@@ -13,6 +13,9 @@ $request->globalMenu();
 	</div>
 
     <div class="contentright">
+    <table>
+	<tr valign="top">
+	<td width="50%" class="leftcolumn">
       <div class="heading">Birding</div>
         <a href="http://spinnity.blogspot.com/"><img src="./images/mary.jpg" border=0 alt="Mary" align="right"></a>
         <p class="report-content">Mary took Bill to a birding class back in 1996, and we&#39;ve been birding ever since.
@@ -22,6 +25,27 @@ $request->globalMenu();
           <a href="http://www.paradisebirding.com/sys-tmpl/door/">Paradise Birding</a>.
           Steve is a very gifted birder, an excellent teacher and naturalist, and a wonderful ambassador for
           birding.</p>
+
+	  <div class="heading"> Field Notes and Listing</div>
+
+		<p class="report-content">Mary and Bill maintain a joint life list, meaning that both of us have to see a particular species
+        before we put it on the life list. When one of us sees a bird the other doesn&#39;t see, we mark that sighting
+        "excluded" so that it doesn&#39;t get added to the life list.</p>
+
+		<p class="report-content">In the field, we use John Shipman&#39;s <a href="http://www.nmt.edu/~shipman/z/nom/6home.html">six letter code</a>
+        of bird abbreviations rather than the usual four letter bird banding codes. We find six letters much easier to remember.</p>
+
+	  <div class="heading">Your Sightings</div>
+
+		<p class="report-content">If you have bird sightings that you&#39;d like to report,
+		  please take a look at Cornell University&#39;s excellent <a href="http://www.ebird.com/">eBird</a> site.</p>
+
+		<p class="report-content">If you are struggling with a particular bird identification, the
+	    <a href="http://www.mbr-pwrc.usgs.gov/Infocenter/infocenter.html">Patuxent Bird Identification InfoCenter</a>
+		is an excellent reference for photos, range maps, and descriptions of field marks.</p>
+
+	  </td>
+	  <td width="50%" class="rightcolumn">
 
 	  <div class="heading">The Photos</div>
        <a href="http://wfwalker.blogspot.com/"><img src="./images/bill.jpg" border=0 alt="Bill" align="right"></a>
@@ -41,24 +65,6 @@ $request->globalMenu();
       <div class="heading">Using the Photos</div>
         <p class="report-content">Interesting in using one of these photographs in your publication or purchasing an 8x10 print?
 	      Email <a href="mailto:walker@shout.net"/>walker@shout.net</a> for more information.</p>
-
-	  <div class="heading"> Field Notes and Listing</div>
-
-		<p class="report-content">Mary and Bill maintain a joint life list, meaning that both of us have to see a particular species
-        before we put it on the life list. When one of us sees a bird the other doesn&#39;t see, we mark that sighting
-        "excluded" so that it doesn&#39;t get added to the life list.</p>
-
-		<p class="report-content">In the field, we use John Shipman&#39;s <a href="http://www.nmt.edu/~shipman/z/nom/6home.html">six letter code</a>
-        of bird abbreviations rather than the usual four letter bird banding codes. We find six letters much easier to remember.</p>
-
-	  <div class="heading">Your Sightings</div>
-
-		<p class="report-content">If you have bird sightings that you&#39;d like to report,
-		  please take a look at Cornell University&#39;s excellent <a href="http://www.ebird.com/">eBird</a> site.</p>
-
-		<p class="report-content">If you are struggling with a particular bird identification, the
-	    <a href="http://www.mbr-pwrc.usgs.gov/Infocenter/infocenter.html">Patuxent Bird Identification InfoCenter</a>
-		is an excellent reference for photos, range maps, and descriptions of field marks.</p>
 
 	  <div class="heading">My favorite photographers</div>
 
@@ -81,6 +87,9 @@ $request->globalMenu();
         and
         <a href="http://www.avesphoto.com/">Mike Danzenbaker</a>.</p>
 
+    </td>
+	</tr>
+	</table>
 <?     footer(); ?>
     </div>
 
