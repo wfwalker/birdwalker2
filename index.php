@@ -167,14 +167,12 @@ $request->globalMenu();
 
 	  <table>
 	    <tr valign="top">
-	      <td width="300px">
+	      <td class="leftcolumn" width="300px">
 	        <? welcomeMessage(); ?>
 	        <? birdOfTheDay(); ?>
 	      </td>
 
-	      <td width="15px"></td>
-
-	      <td width="50%">
+	      <td class="rightcolumn" width="50%">
 	        <? latestTrips(); ?>
           </td>
 	    </tr>
