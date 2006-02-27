@@ -114,15 +114,17 @@ class SightingQuery extends BirdWalkerQuery
 
 	function formatPhotos()
 	{
+	    $numberOfColumns = 4;
+
 		// TODO, the labels here should show values not fixed by the query!
 		$dbQuery = $this->performPhotoQuery();
 
 		countHeading(mysql_num_rows($dbQuery), "photo");
 
-		$counter = round(mysql_num_rows($dbQuery)  * 0.5); ?>
+		$counter = $numberOfColumns; ?>
 
 		<table class="report-content" width="100%">
-		  <tr><td width="50%" valign="top">
+		  <tr>
 
 	<?
 		while ($sightingInfo = mysql_fetch_array($dbQuery))
@@ -130,29 +132,25 @@ class SightingQuery extends BirdWalkerQuery
 			$tripInfo = getTripInfoForDate($sightingInfo["TripDate"]);
 			$tripYear =  substr($tripInfo["Date"], 0, 4);
 			$locationInfo = getLocationInfoForName($sightingInfo["LocationName"]);
-	?>
-				<p>
-	<?	    if ($sightingInfo["Photo"] == "1")
+
+			if ($sightingInfo["Photo"] == "1")
 			{
 				$photoFilename = getPhotoFilename($sightingInfo);
 
 				list($width, $height, $type, $attr) = getimagesize("./images/photo/" . $photoFilename);
 
-				echo "<div style=\"margin-right: 5px; float: left; width: 100px;\">" . getThumbForSightingInfo($sightingInfo) . "</div>";
+				echo "<td width=\"25%\" style=\"text-align: center\"><div>" . getThumbForSightingInfo($sightingInfo) . "</div>";
 			} ?>
 
-					<?= $this->getSightingTitle($sightingInfo) ?>
-	<?              editLink("./sightingedit.php?sightingid=" . $sightingInfo["sightingid"]); ?><br/>
-					<?= $this->getSightingSubtitle($sightingInfo) ?>
-
-			        <br clear="all"/>
-                </p> <?
+					<?= $this->getSightingTitle($sightingInfo) ?><br/>
+			        </td> <?
 
 			$counter--;
 
 			if ($counter == 0)
-			{ ?>
-			</td><td valign="top" width="50%">
+			{
+              $counter = $numberOfColumns; ?>
+			  </tr><tr>
 	<?		}
 		}
 
