@@ -175,5 +175,6 @@ a.info:hover span  /*the span will display just on :hover state*/
   white-space: nowrap;
 }
 
-.leftcolumn { padding-left: 10px; }
-.rightcolumn { padding-left: 10px; }
+.onecolumn { padding-left: 10px; padding-right: 10px; }
+.leftcolumn { padding-left: 10px; padding-right: 7px; }
+.rightcolumn { padding-right: 10px; padding-left: 7px; }
