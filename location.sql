@@ -178,10 +178,11 @@ INSERT INTO location VALUES (178,'Lee Road','','Watsonville','Santa Cruz','CA','
 INSERT INTO location VALUES (179,'Upper Stevens Creek County Park','','Cupertino','Santa Clara','CA','','',0,0);
 INSERT INTO location VALUES (180,'Waldo\'s Dike','http://www.nps.gov/pore/','Point Reyes Station','Marin','CA','','Unknown',0,0);
 INSERT INTO location VALUES (181,'Bear Valley Visitors Center','http://www.nps.gov/pore/','Point Reyes Station','Marin','CA','','Unknown',38.0431,-122.798);
-INSERT INTO location VALUES (182,'Bolinas Harbor','','Bolinas','Marin','CA','','Unknown',0,0);
+INSERT INTO location VALUES (182,'Bolinas Harbor','','Bolinas','Marin','CA','','Unknown',37.9094,-122.685);
 INSERT INTO location VALUES (183,'Stafford Lake Park','','Novato','Marin','CA','','',38.1139,-122.649);
 INSERT INTO location VALUES (184,'Five Brooks','','Point Reyes Station','Marin','CA','','',38.0011,-122.757);
 INSERT INTO location VALUES (185,'Geng Road','','Palo Alto','Santa Clara','CA','','',0,0);
 INSERT INTO location VALUES (186,'Ralston and 101','','Belmont','San Mateo','CA','The highway interchange includes several seasonal ponds.','',0,0);
 INSERT INTO location VALUES (187,'Sacramento River Delta','','','Sacramento','CA','','',0,0);
-INSERT INTO location VALUES (188,'Drake\'s Estero','','Point Reyes Station','Marin','CA','','',0,0);
+INSERT INTO location VALUES (188,'Drake\'s Estero','','Point Reyes Station','Marin','CA','','',38.0475,-122.941);
+INSERT INTO location VALUES (189,'Castle Rock State Park','','Saratoga','Santa Clara','CA','','',37.2317,-122.116);
