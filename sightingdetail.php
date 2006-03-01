@@ -13,7 +13,7 @@ $sightingID = getValue("sightingid");
 
 $sightingInfo = getSightingInfo($sightingID);
 $speciesInfo = performOneRowQuery("Find Species", "select * from species where Abbreviation='" . $sightingInfo["SpeciesAbbreviation"] . "'");
-$tripInfo = performOneRowQuery("Find Trip Info", "select *, " . niceDateColumn() . " FROM trip WHERE Date='" . $sightingInfo["TripDate"] . "'");
+$tripInfo = performOneRowQuery("Find Trip Info", "select *, " . longNiceDateColumn() . " FROM trip WHERE Date='" . $sightingInfo["TripDate"] . "'");
 $tripYear =  substr($tripInfo["Date"], 0, 4);
 $locationInfo = performOneRowQuery("Find Location Info", "select * from location where Name='" . $sightingInfo["LocationName"] . "'");
 

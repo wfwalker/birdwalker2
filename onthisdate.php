@@ -10,7 +10,7 @@ $monthNum = $localtimearray["tm_mon"] + 1;
 $dayNum = $localtimearray["tm_mday"];
 
 $tripsOnThisDate = performQuery("Find Trips On This Date",
-    "SELECT *, " . niceDateColumn() . "
+    "SELECT *, " . longNiceDateColumn() . "
       FROM trip
       WHERE Month(Date)='" . ($localtimearray["tm_mon"] + 1) . "' AND
         DayOfMonth(Date)='" . $dayNum . "'

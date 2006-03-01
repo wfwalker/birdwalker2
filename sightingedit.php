@@ -67,7 +67,7 @@ else
 	$speciesInfo = "";
 }
 
-$tripInfo = performOneRowQuery("Get Trip Info", "SELECT *, " . niceDateColumn() . " FROM trip WHERE Date='" . $sightingInfo["TripDate"] . "'");
+$tripInfo = performOneRowQuery("Get Trip Info", "SELECT *, " . shortNiceDateColumn() . " FROM trip WHERE Date='" . $sightingInfo["TripDate"] . "'");
 $locationInfo = performOneRowQuery("Get Location Info", "SELECT * from location where Name='" . $sightingInfo["LocationName"] . "'");
 $stateInfo = getStateInfoForAbbreviation($locationInfo["State"]);
 

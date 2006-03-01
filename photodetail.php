@@ -12,7 +12,7 @@ $speciesInfo = performOneRowQuery("Get Species Info", "SELECT * FROM species WHE
 
 $tripInfo = performOneRowQuery(
     "Get Trip Info", 
-    "SELECT *, " . niceDateColumn() . "
+    "SELECT *, " . shortNiceDateColumn() . "
       FROM trip WHERE Date='" . $sightingInfo["TripDate"] . "'");
 $tripYear =  substr($tripInfo["Date"], 0, 4);
 

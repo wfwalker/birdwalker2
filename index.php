@@ -123,7 +123,7 @@ function birdOfTheDay()
 function latestTrips()
 {
 	$numberOfTrips = 8;
-	$latestTrips = performQuery("Get Latest Trips", "SELECT *, " . niceDateColumn() . " FROM trip ORDER BY Date DESC LIMIT " . $numberOfTrips);
+	$latestTrips = performQuery("Get Latest Trips", "SELECT *, " . longNiceDateColumn() . " FROM trip ORDER BY Date DESC LIMIT " . $numberOfTrips);
  ?>
 	<div class="heading">Latest Trips</div>
 

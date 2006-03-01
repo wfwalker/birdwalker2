@@ -20,7 +20,7 @@ performQuery("Count Sightings for Species",
       GROUP BY SpeciesAbbreviation;");
 
 $latestSightingQuery = performQuery("Find Latest Sighting",
-    "SELECT *, Year(tripdate) as latestYear, " . niceDateColumn("tripdate") . "
+    "SELECT *, Year(tripdate) as latestYear, " . shortNiceDateColumn("tripdate") . "
       FROM tmp
       ORDER BY tripdate desc;");
 
