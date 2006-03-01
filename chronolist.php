@@ -36,7 +36,7 @@ class ChronoList
 		// TODO count rows in the first sightings table!
 
 		$firstSightingQuery = performQuery("Choose first sightings",
-          "SELECT " . niceDateColumn("sighting.TripDate") . ",
+          "SELECT " . shortNiceDateColumn("sighting.TripDate") . ",
              sighting.*, 
              species.CommonName,
              species.objectid as speciesid,
