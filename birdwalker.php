@@ -102,9 +102,14 @@ function referenceURL($info)
 <?  }
 }
 
-function niceDateColumn($inDateColumnName = "Date")
+function longNiceDateColumn($inDateColumnName = "Date")
 {
 	return "date_format(" . $inDateColumnName . ", '%W,  %M %D, %Y') as niceDate";
+}
+
+function shortNiceDateColumn($inDateColumnName = "Date")
+{
+	return "date_format(" . $inDateColumnName . ", '%M %D, %Y') as niceDate";
 }
 
 function dailyRandomSeedColumn()
@@ -283,7 +288,7 @@ function performOneRowQuery($inDescription, $queryString, $errorChecking = true)
 function getSightingInfo($objectid)
 {
 	return performOneRowQuery("Find sighting info",
-			  "SELECT *, " . niceDateColumn("TripDate") . " FROM sighting where objectid='" . $objectid . "'");
+			  "SELECT *, " . shortNiceDateColumn("TripDate") . " FROM sighting where objectid='" . $objectid . "'");
 }
 
 /**
