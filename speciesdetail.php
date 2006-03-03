@@ -41,27 +41,27 @@ $request->globalMenu();
   </div>
 
   <div class="contentright">
-	<div class="titleblock">
-	  <div class="metadata">
-<?  if (strlen($speciesInfo["ReferenceURL"]) > 0) { ?>
+
+<?  if ($speciesInfo["noteworthy"] != "0")
+    { ?>
+	  <div class="heading">Notes</div>
+	  <div class="leftcolumn">
+<?    if ($speciesInfo["Notes"] != "") { ?>
+        <div class="report-content"><?= $speciesInfo["Notes"] ?></div>
+<?    } ?>
+<?    if (strlen($speciesInfo["ReferenceURL"]) > 0) { ?>
         <div><a href="<?= $speciesInfo["ReferenceURL"] ?>">See also...</a></div>
-<?  }
-    if ($speciesInfo["ABACountable"] == '0') { ?>
+<?    } ?>
+<?    if ($speciesInfo["ABACountable"] == '0') { ?>
         <div>NOT ABA COUNTABLE</div>
-<?  } ?>
+<?    } ?>
       </div>
-   </div>
-<?
-   if ($speciesInfo["Notes"] != "") { ?>
-	<div class="heading">Notes</div>
-    <div class=report-content><?= $speciesInfo["Notes"] ?></div>
-<? }
+<?  }
 
-$request->handleStandardViews();
-footer();
+    $request->handleStandardViews();
+    footer();
 ?>
-
-   </div>
+  </div>
 
 <?
 htmlFoot();
