@@ -200,9 +200,9 @@ class Request
 
 	function command($linkText)
 	{
-		if (strlen($linkText) > 18)
+		if (strlen($linkText) > 16)
 		{
-			return $this->linktoSelf(strtolower(substr($linkText, 0, 18) . "..."), "commandlink");
+			return $this->linktoSelf(strtolower(substr($linkText, 0, 16) . "..."), "commandlink");
 		}
 		else
 		{
@@ -382,20 +382,6 @@ class Request
 
 <SCRIPT LANGUAGE="JavaScript">
 <!--
-function launch(newURL, newName, newFeatures, orgName) {
-  var remote = open(newURL, newName, newFeatures);
-  if (remote.opener == null)
-    remote.opener = window;
-  remote.opener.name = orgName;
-  return remote;
-}
-
-function launchSlideshow() {
-  myRemote = launch("./slideshow.php?<?= $this->getParams() ?>",
-                    "myRemote",
-                    "height=600,width=660,alwaysLowered=0,alwaysRaised=0,channelmode=0,dependent=0,directories=0,fullscreen=0,hotkeys=1,location=0,menubar=0,resizable=0,scrollbars=0,status=0,titlebar=1,toolbar=0,z-lock=0",
-                    "myWindow");
-}
 
 function changeView()
 {
@@ -471,7 +457,7 @@ function changeView()
 
 		<optgroup label="photos"> <?
 		   $this->optionSelectedViewHelper("thumbnails", "photo");
-		   $this->optionSelectedViewHelper("slideshow...", "slideshow"); ?>
+		   $this->optionSelectedViewHelper("slideshow", "slideshow"); ?>
 		</optgroup>
 
 	    </select>
