@@ -41,11 +41,15 @@ $request->globalMenu();
 </div>
 
 <div class="contentright">
-<? referenceURL($siteInfo);
-   if ($siteInfo["Notes"] != "") { ?>
-	<div class="heading">Notes</div>
-    <div class=report-content><?= $siteInfo["Notes"] ?></div>
-<? }
+<? if ($siteInfo["noteworthy"] != 0) { ?>
+      <div class="heading">Notes</div>
+	  <div class="onecolumn">
+<?      referenceURL($siteInfo);
+        if ($siteInfo["Notes"] != "") { ?>
+          <div><?= $siteInfo["Notes"] ?></div>
+<?      } ?>
+      </div> <?
+   }
 
 $request->handleStandardViews();
 footer();
