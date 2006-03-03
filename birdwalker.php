@@ -502,12 +502,18 @@ function tripBrowseButtons($url, $tripID, $viewMode)
 
 function getLocationInfo($objectid)
 {
-	return performOneRowQuery("Get Location Info", "SELECT * FROM location where objectid='" . $objectid . "'");
+	return performOneRowQuery(
+        "Get Location Info",
+		"SELECT *, (char_length(Notes)>0) OR (char_length(ReferenceURL)>0) AS noteworthy
+         FROM location where objectid='" . $objectid . "'");
 }
 
 function getLocationInfoForName($inLocationName)
 {
-	return performOneRowQuery("Get Location Info for Name", "SELECT * FROM location WHERE Name='" . $inLocationName . "'");
+	return performOneRowQuery(
+        "Get Location Info for Name",
+         "SELECT *, (char_length(Notes)>0) OR (char_length(ReferenceURL)>0) AS noteworthy
+          FROM location WHERE Name='" . $inLocationName . "'");
 }
 
 function locationBrowseButtons($url, $locationID, $viewMode)
