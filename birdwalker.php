@@ -367,7 +367,11 @@ function getFirstYearSightings($theYear)
  */
 function getSpeciesInfo($objectid)
 {
-	return performOneRowQuery("Get species info", "SELECT * FROM species where objectid='" . $objectid . "'");
+	return performOneRowQuery(
+	    "Get species info",
+		"SELECT *, (ABACountable=0) OR (char_length(Notes)>0) OR (char_length(ReferenceURL)>0) AS noteworthy
+         FROM species
+         WHERE objectid='" . $objectid . "'");
 }
 
 function speciesBrowseButtons($url, $speciesID, $viewMode)
