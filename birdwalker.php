@@ -74,22 +74,22 @@ function browseButtons($pageKind, $urlPrefix, $currentID, $prevID, $prevName, $n
 
 	if ($prevID == "")
 	{
-        ?><td width="33%" valign="top" class="prevlink">&lt; prev</td><?
+        ?><td width="40%" valign="top" class="prevlink">&lt; prev</td><?
 	}
 	else
 	{
-        ?><td width="33%" valign="top" class="prevlink"><a href="<?= $urlPrefix . $prevID ?>">&lt; prev <?= strtolower($prevName) ?></a></td><?
+        ?><td width="40%" valign="top" class="prevlink"><a href="<?= $urlPrefix . $prevID ?>">&lt; prev <?= strtolower($prevName) ?></a></td><?
 	}
 
-    ?> <td width="33%" valign="top" class="pagekind"><?= $pageKind ?></td> <?
+    ?> <td width="20%" valign="top" class="pagekind"><?= $pageKind ?></td> <?
 
 	if ($nextID == "")
 	{
-        ?><td width="33%" valign="top" class="nextlink">next &gt;</td><?
+        ?><td width="40%" valign="top" class="nextlink">next &gt;</td><?
 	}
 	else
 	{
-        ?><td width="33%" valign="top" class="nextlink"><a href="<?= $urlPrefix . $nextID ?>"><?= strtolower($nextName) ?> next  &gt;</a></td><?
+        ?><td width="40%" valign="top" class="nextlink"><a href="<?= $urlPrefix . $nextID ?>"><?= strtolower($nextName) ?> next  &gt;</a></td><?
 	}
 
 ?>  </tr></table> <?
