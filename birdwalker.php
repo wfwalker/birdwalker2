@@ -97,8 +97,15 @@ function browseButtons($pageKind, $urlPrefix, $currentID, $prevID, $prevName, $n
 
 function referenceURL($info)
 {
-	if (strlen($info["ReferenceURL"]) > 0) { ?>
-		<div><a href="<?= $info["ReferenceURL"] ?>">See also...</a></div>
+	if (strlen($info["ReferenceURL"]) > 0)
+	{
+	  $url = $info["ReferenceURL"];
+	  $linkText="See also...";
+	  if (substr_count($url, "http://www.mbr-pwrc.usgs.gov/") > 0)
+      {
+		$linkText="See also Patuxent Bird ID page...";
+	  }
+?>	  <div><a href="<?= $url ?>"><?= $linkText ?></a></div>
 <?  }
 }
 
@@ -128,12 +135,8 @@ function rightThumbnail($photoQueryString, $addLink)
 	{
 		$photoInfo = mysql_fetch_array($photoQuery);
 		$filename = getPhotoFilename($photoInfo);
-		list($width, $height, $type, $attr) = getimagesize("./images/thumb/" . $filename);
 
 		$sizeAttributes = "";
-
-		if ($width > 0) { $sizeAttributes = $sizeAttributes . " width=" . $width; }
-		if ($height > 0) { $sizeAttributes = $sizeAttributes . "  height=" . $height; }
 
 		if ($addLink == true) { ?> <a href="./photodetail.php?sightingid=<?= $photoInfo["objectid"] ?>">  <? } ?>
            <img <?= $sizeAttributes ?> src="./images/thumb/<?= $filename ?>" width="100" height="100" border=0 align="right" class="inlinepict">
@@ -219,18 +222,9 @@ function getThumbForSightingInfo($sightingInfo)
 {
 	$thumbFilename = getPhotoFilename($sightingInfo);
 
-	list($width, $height, $type, $attr) = getimagesize("./images/thumb/" . $thumbFilename);
-
-	$sizeAttributes = "";
-
-// 	if ($width != "") { $sizeAttributes = $sizeAttributes . "  width=" . $width; }
-// 	if ($height != "") { $sizeAttributes = $sizeAttributes . "  height=" . $height; }
-
-	$sizeAttributes = " width=\"100px\"";
-
 	return
 		"<a href=\"./photodetail.php?sightingid=" . $sightingInfo["sightingid"] . "\">" .
-		"<img " . $sizeAttributes . " src=\"./images/thumb/" . $thumbFilename . "\" width=\"100\" height=\"100\" border=0 alt=\"". $sightingInfo["CommonName"] . "\">" . 
+		"<img  src=\"./images/thumb/" . $thumbFilename . "\" width=\"100\" height=\"100\" border=0 alt=\"". $sightingInfo["CommonName"] . "\">" . 
 		"</a>";
 }
 
