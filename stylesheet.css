@@ -96,7 +96,7 @@ body
 .metadata {font: 9pt "Gill Sans", "Gill Sans MT", SansSerif; padding-left: 4px; }
 
 .superheading {font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-style: italic; color: #444444; }
-.heading { font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-weight: bold; margin-top: 20px; margin-bottom: 10px; clear: both; color: #444444 }
+.heading { font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-weight: bold; margin-top: 10px; margin-bottom: 10px; clear: both; color: #444444 }
 .subheading { font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-weight: bold; margin-top: 7px; margin-bottom: 2px; color: #444444 }
 
 .summaryblock { border-top: solid 1px #AAAAAA; padding-top: 5px; margin-bottom: 5px }
