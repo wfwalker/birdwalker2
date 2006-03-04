@@ -15,28 +15,30 @@ class Map
 		$this->mReq = $inReq;
 		$this->mLocationQuery = new LocationQuery($inReq);
 
-		if ($this->mReq->getLatitude() == "") // get parameters from location query
+        if ($this->mReq->getLatitude() == "0") // special case, show whole united states
 		{
-// 			$extrema = $this->mLocationQuery->findExtrema();
+		    $this->mReq->setLatitude(38);
+		    $this->mReq->setLongitude(-96);
+		    $this->mReq->setBackground($inReq->getBackground());
+		    $this->mReq->setScale(15);
+		}
+		else if ($this->mReq->getLatitude() == "") // get parameters from location query
+		{
+ 			$extrema = $this->mLocationQuery->findExtrema();
 
-// 			// put the map in the center of the extrema
-// 			$this->mReq->setLatitude(($extrema["minLat"] + $extrema["maxLat"]) / 2.0);
-// 			$this->mReq->setLongitude(($extrema["minLong"] + $extrema["maxLong"]) / 2.0);
-// 			$this->mReq->setBackground($inReq->getBackground());
+			// put the map in the center of the extrema
+			$this->mReq->setLatitude(($extrema["minLat"] + $extrema["maxLat"]) / 2.0);
+			$this->mReq->setLongitude(($extrema["minLong"] + $extrema["maxLong"]) / 2.0);
+			$this->mReq->setBackground($inReq->getBackground());
 
-// 			// compute lat and long ranges, with a lower bound in case there's only one location in the set
-// 			$longRange = max(0.25, abs($extrema["maxLong"] - $extrema["minLong"]));
-// 			$latRange = max(0.25, abs($extrema["maxLat"] - $extrema["minLat"]));
+			// compute lat and long ranges, with a lower bound in case there's only one location in the set
+		    $longRange = abs($extrema["maxLong"] - $extrema["minLong"]);
+		    $latRange = abs($extrema["maxLat"] - $extrema["minLat"]);
 
-// 			// using the aspect ratio, decide on how to scale the map so it fits all the points
-// 			$minRange = max(0.25 , min($latRange, $longRange * ($this->mReq->getMapWidth() / $this->mReq->getMapHeight())));
-// 			$this->mReq->setScale(0.75 * $minRange);
-
- 			$this->mReq->setLatitude(38);
- 			$this->mReq->setLongitude(-96);
- 			$this->mReq->setBackground($inReq->getBackground());
-			$this->mReq->setScale(15);
-			// &lat=34.962350845337&long=-97.099552154539&scale=20.466563701631
+			// using the aspect ratio, decide on how to scale the map so it fits all the points
+		    $minRange = min($latRange, $longRange * $this->mReq->getMapheight() / $this->mReq->getMapWidth());
+		    if ($minRange == 0) $minRange = 1;
+			$this->mReq->setScale($minRange);
 		}
 	}
 
