@@ -26,7 +26,7 @@ class SightingQuery extends BirdWalkerQuery
 	{
 		return "SELECT DISTINCT sighting.objectid as sightingid,
             sighting.*,
-            trip.objectid as tripid, " . niceDateColumn("sighting.TripDate") . ", trip.*,
+            trip.objectid as tripid, " . shortNiceDateColumn("sighting.TripDate") . ", trip.*,
             location.objectid as locationid, location.*,
             species.objectid as speciesid, species.*";
 	}
@@ -81,6 +81,37 @@ class SightingQuery extends BirdWalkerQuery
 		return $whereClause;
 	}
 
+	function getOrderByClause($inPrefix = "")
+	{
+		if ($this->isSpeciesSpecified()) {
+		  return "ORDER BY sighting.TripDate";
+		} elseif ($this->isFamilySpecified()) {
+		  return "ORDER BY species.objectid";
+		} elseif ($this->isOrderSpecified()) {
+		  return "ORDER BY species.objectid";
+		}
+
+		if ($this->isLocationSpecified()) {
+		  // by species? by date?
+		  return "ORDER BY species.objectid";
+		} elseif ($this->isCountySpecified()) {
+		  // by species? by date?
+		  return "ORDER BY species.objectid";
+		} elseif ($this->isStateSpecified()) {
+		  // by species?
+		  return "ORDER BY species.objectid";
+		}
+
+		if ($this->mReq->getMonth() != "") {
+		  // by species?
+		  return "ORDER BY species.objectid";
+		}
+		if ($this->mReq->getYear() != "") {
+		  // by species?
+		  return "ORDER BY species.objectid";
+		}
+	}
+
 	function performQuery()
 	{
 		if (($this->mReq->getLocationID() == "") && ($this->mReq->getCounty() == "") && ($this->mReq->getStateID() == "") &&
@@ -99,7 +130,8 @@ class SightingQuery extends BirdWalkerQuery
 		return performQuery("Find sightings with photos", 
 			$this->getSelectClause() . " " .
 			$this->getFromClause() . " " .
-			$this->getWhereClause() . " AND sighting.Photo='1' ORDER BY sighting.TripDate desc");
+			$this->getWhereClause() . " AND sighting.Photo='1' " . 
+			$this->getOrderByClause());
 	}
 
 	function rightThumbnail($anchorFlag)
