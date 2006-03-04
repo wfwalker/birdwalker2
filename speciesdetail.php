@@ -45,13 +45,13 @@ $request->globalMenu();
 <?  if ($speciesInfo["noteworthy"] != "0")
     { ?>
 	  <div class="heading">Notes</div>
-	  <div class="leftcolumn">
+	  <div class="onecolumn">
 <?    if ($speciesInfo["Notes"] != "") { ?>
         <div class="report-content"><?= $speciesInfo["Notes"] ?></div>
 <?    } ?>
-<?    if (strlen($speciesInfo["ReferenceURL"]) > 0) { ?>
-        <div><a href="<?= $speciesInfo["ReferenceURL"] ?>">See also...</a></div>
-<?    } ?>
+
+<?    referenceURL($speciesInfo); ?>
+
 <?    if ($speciesInfo["ABACountable"] == '0') { ?>
         <div>NOT ABA COUNTABLE</div>
 <?    } ?>
