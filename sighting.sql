@@ -12552,7 +12552,7 @@ INSERT INTO sighting VALUES (12623,'daejun','Castle Rock State Park','','0','0',
 INSERT INTO sighting VALUES (12624,'amecro','Castle Rock State Park','','0','0','2006-02-20');
 INSERT INTO sighting VALUES (12625,'acowoo','Castle Rock State Park','','0','0','2006-02-20');
 INSERT INTO sighting VALUES (12626,'reshaw','Grant Ranch County Park','','0','0','2006-02-18');
-INSERT INTO sighting VALUES (12627,'wesblu','Grant Ranch County Park','','0','0','2006-02-18');
+INSERT INTO sighting VALUES (12627,'wesblu','Grant Ranch County Park','','','1','2006-02-18');
 INSERT INTO sighting VALUES (12628,'yerwar','Grant Ranch County Park','','0','0','2006-02-18');
 INSERT INTO sighting VALUES (12629,'calqua','Grant Ranch County Park','','0','0','2006-02-18');
 INSERT INTO sighting VALUES (12630,'amecro','Grant Ranch County Park','','0','0','2006-02-18');
@@ -12570,3 +12570,5 @@ INSERT INTO sighting VALUES (12641,'yelwar','Don Edwards Center','','0','0','200
 INSERT INTO sighting VALUES (12642,'amepip','Don Edwards Center','','0','0','2006-02-16');
 INSERT INTO sighting VALUES (12643,'blkpho','Don Edwards Center','','0','0','2006-02-16');
 INSERT INTO sighting VALUES (12644,'mewgul','Don Edwards Center','','0','0','2006-02-16');
+INSERT INTO sighting VALUES (12645,'amepip','Tidelands Park','','','1','2006-01-05');
+INSERT INTO sighting VALUES (12646,'blkpho','Ralston and 101','','0','0','2006-03-01');
