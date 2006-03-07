@@ -144,11 +144,6 @@ function rightThumbnail($photoQueryString, $addLink)
 	}
 }
 
-function rightThumbnailAll()
-{
-	rightThumbnail("SELECT *, " . dailyRandomSeedColumn() . " FROM sighting WHERE Photo='1' ORDER BY shuffle LIMIT 1", true);
-}
-
 //
 // -------------------------- DATABASE UTILITIES -------------------------------
 //
@@ -576,48 +571,6 @@ function stateBrowseButtons($stateID, $viewMode)
 
 	browseButtons("State Detail", "./statedetail.php?view=" . $viewMode . "&stateid=", $stateID,
 				  $prevStateObjectID, $prevStateLinkText, $nextStateObjectID, $nextStateLinkText);
-}
-
-function rightThumbnailSpecies($abbrev)
-{
-	rightThumbnail(
-    "SELECT sighting.*, " . dailyRandomSeedColumn() . "
-      FROM sighting
-      WHERE sighting.Photo='1' AND sighting.SpeciesAbbreviation='" . $abbrev . "'
-      ORDER BY shuffle
-      LIMIT 1",
-	  true);
-}
-
-function rightThumbnailCounty($countyName)
-{
-	rightThumbnail(
-    "SELECT sighting.*, " . dailyRandomSeedColumn() . "
-      FROM sighting, location
-      WHERE sighting.Photo='1' AND sighting.LocationName=location.Name AND location.County='" . $countyName . "'
-      ORDER BY shuffle
-      LIMIT 1",
-      true);
-}
-
-function rightThumbnailState($stateCode)
-{
-	rightThumbnail(
-      "SELECT sighting.*, " . dailyRandomSeedColumn() . "
-        FROM sighting, location
-        WHERE sighting.Photo='1' AND sighting.LocationName=location.Name AND location.State='" . $stateCode . "'
-        ORDER BY shuffle LIMIT 1",
-        true);
-}
-
-function rightThumbnailLocation($locationName)
-{
-  rightThumbnail("
-    SELECT *, " . dailyRandomSeedColumn() . "
-      FROM sighting
-      WHERE Photo='1' AND LocationName='" . $locationName . "'
-      ORDER BY shuffle LIMIT 1",
-      true);
 }
 
 // -------------------------------------- TIME -----------------------------------

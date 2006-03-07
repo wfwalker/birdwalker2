@@ -132,16 +132,6 @@ class SpeciesQuery extends BirdWalkerQuery
 			$this->getWhereClause() . " AND sighting.Photo='1' ORDER BY shuffle LIMIT 1");
 	}
 
-	function rightThumbnail()
-	{
-		rightThumbnail("
-          SELECT sighting.*, " . dailyRandomSeedColumn() . " " .
-			$this->getFromClause() . "  " .
-			$this->getWhereClause() . "
-            AND sighting.Photo='1'
-            ORDER BY shuffle LIMIT 1", true);
-	}
-
 	/**
 	 * Displays a list of species common names that result from a search over
 	 * species and sighting tables.

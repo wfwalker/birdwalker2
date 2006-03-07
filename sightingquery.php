@@ -134,16 +134,6 @@ class SightingQuery extends BirdWalkerQuery
 			$this->getOrderByClause());
 	}
 
-	function rightThumbnail($anchorFlag)
-	{
-		rightThumbnail("
-          SELECT sighting.*, " . dailyRandomSeedColumn() . " " .
-			$this->getFromClause() . "  " .
-			$this->getWhereClause() . "
-            AND sighting.Photo='1'
-            ORDER BY shuffle LIMIT 1", $anchorFlag);
-	}
-
 	function formatPhotos()
 	{
 	    $numberOfColumns = 4;

@@ -115,16 +115,6 @@ class TripQuery extends BirdWalkerQuery
 			$this->getWhereClause() . "  GROUP BY trip.objectid ORDER BY trip.Date desc");
 	}
 
-	function rightThumbnail()
-	{
-		rightThumbnail("
-          SELECT sighting.*, " . dailyRandomSeedColumn() . " " .
-			$this->getFromClause() . "  " .
-			$this->getWhereClause() . "
-            AND sighting.Photo='1'
-            ORDER BY shuffle LIMIT 1");
-	}
- 
 	function formatPhotos()
 	{
 		formatPhotos($this);

@@ -122,16 +122,6 @@ class LocationQuery extends BirdWalkerQuery
 		return $extrema;
 	}
 
-	function rightThumbnail()
-	{
-		rightThumbnail("
-          SELECT sighting.*, " . dailyRandomSeedColumn() . " " .
-			$this->getFromClause() . "  " .
-			$this->getWhereClause() . "
-            AND sighting.Photo='1'
-            ORDER BY shuffle LIMIT 1", false);
-	}
-
 	function formatPhotos()
 	{
 		formatPhotos($this);
