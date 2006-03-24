@@ -186,3 +186,4 @@ INSERT INTO location VALUES (186,'Ralston and 101','','Belmont','San Mateo','CA'
 INSERT INTO location VALUES (187,'Sacramento River Delta','','','Sacramento','CA','','',0,0);
 INSERT INTO location VALUES (188,'Drake\'s Estero','','Point Reyes Station','Marin','CA','','',38.0475,-122.941);
 INSERT INTO location VALUES (189,'Castle Rock State Park','','Saratoga','Santa Clara','CA','','',37.2317,-122.116);
+INSERT INTO location VALUES (190,'Rocky Mountain National Park','','Estes Park','Grand','CO','','',0,0);

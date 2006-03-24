@@ -473,3 +473,5 @@ INSERT INTO trip VALUES (473,'Ashok and Bill','','Morning Photo Safari','Our fir
 INSERT INTO trip VALUES (474,'Bill','','Morning Photo Safari','Decided to take a chance on iffy weather, and had some really nice, quiet moments with the Golden-crowned Sparrows. Sun came out, but honestly the light of the overcast sky was much more flattering.','2006-03-10');
 INSERT INTO trip VALUES (475,'Mary and Bill','','Home Photo Safari','First, a Townsend\'s Warbler flew right in front of Mary as she got out of the car. Then, we heard the sound of my nemesis bird high overhead. I said, \"I bet those waxwings won\'t come down into this Holly tree and eat the berries.\"','2006-03-12');
 INSERT INTO trip VALUES (476,'Steve Shunk','','Wings over Andrew Molera','Other observers saw Mew Gull, Mourning Dove, White-tailed Kite.','2006-03-18');
+INSERT INTO trip VALUES (477,'Wendy Shattil and Bob Rozinski','','NANPA Photo Safari','','2006-02-12');
+INSERT INTO trip VALUES (478,'Mary and Bill','','Visit the coast','Houseguests Rick and Sherry were a powerful good luck charm today, especially considering the Golden Eagle we saw from our own driveway.','2006-03-23');
