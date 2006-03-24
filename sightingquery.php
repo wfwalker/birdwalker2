@@ -159,8 +159,6 @@ class SightingQuery extends BirdWalkerQuery
 			{
 				$photoFilename = getPhotoFilename($sightingInfo);
 
-				list($width, $height, $type, $attr) = getimagesize("./images/photo/" . $photoFilename);
-
 				echo "<td height=\"130\" width=\"25%\" style=\"text-align: center\"><div>" . getThumbForSightingInfo($sightingInfo) . "</div>";
 			} ?>
 
