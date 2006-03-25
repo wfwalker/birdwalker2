@@ -88,12 +88,14 @@ CREATE TABLE sighting (
   SpeciesAbbreviation varchar(16) default NULL,
   LocationName varchar(255),
   Notes text,
-  Exclude varchar(16) default NULL,
-  Photo varchar(16) default NULL,
+  Exclude varchar(1) default NULL,
+  Photo varchar(1) default NULL,
   TripDate date default NULL,
   PRIMARY KEY  (objectid),
   KEY SpeciesAbbreviationIndex (SpeciesAbbreviation),
   KEY TripDateIndex (TripDate),
+  KEY ExcludeIndex (Exclude),
+  KEY PhotoIndex (Photo),
   KEY LocationNameIndex (LocationName)
 ) TYPE=MyISAM;
 
