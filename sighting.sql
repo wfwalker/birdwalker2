@@ -1234,7 +1234,7 @@ INSERT INTO sighting VALUES (1233,'wesmea','Stevens Creek County Park','','0','0
 INSERT INTO sighting VALUES (1234,'hawk','Stanford University','','1','0','1999-02-20');
 INSERT INTO sighting VALUES (1235,'woospe','Stanford University','','1','0','1999-02-20');
 INSERT INTO sighting VALUES (1236,'kingle','Stanford University','','1','0','1999-02-20');
-INSERT INTO sighting VALUES (1237,'nuthatch','Stanford University','','1','0','1999-02-20');
+INSERT INTO sighting VALUES (1237,'nuthat','Stanford University','','1','','1999-02-20');
 INSERT INTO sighting VALUES (1238,'acowoo','Stanford University','','0','0','1999-02-20');
 INSERT INTO sighting VALUES (1239,'amerob','Stanford University','','0','0','1999-02-20');
 INSERT INTO sighting VALUES (1240,'buffle','Stanford University','','0','0','1999-02-20');
@@ -1843,7 +1843,7 @@ INSERT INTO sighting VALUES (1842,'wesmea','Palo Alto Duck Pond','','0','0','199
 INSERT INTO sighting VALUES (1843,'whcspa','Palo Alto Duck Pond','','0','0','1999-12-12');
 INSERT INTO sighting VALUES (1844,'willet','Palo Alto Duck Pond','','0','0','1999-12-12');
 INSERT INTO sighting VALUES (1845,'yerwar','Palo Alto Duck Pond','','0','0','1999-12-12');
-INSERT INTO sighting VALUES (1846,'humming','Drawbridge','','1','0','1999-12-19');
+INSERT INTO sighting VALUES (1846,'hummin','Drawbridge','','1','','1999-12-19');
 INSERT INTO sighting VALUES (1847,'yelleg','Drawbridge','','','0','1999-12-19');
 INSERT INTO sighting VALUES (1848,'ameavo','Drawbridge','','0','0','1999-12-19');
 INSERT INTO sighting VALUES (1849,'amecoo','Drawbridge','','0','0','1999-12-19');
@@ -2136,7 +2136,7 @@ INSERT INTO sighting VALUES (2135,'sursco','Moss Landing State Beach','','0','0'
 INSERT INTO sighting VALUES (2136,'turvul','Moss Landing State Beach','','0','0','2000-06-10');
 INSERT INTO sighting VALUES (2137,'wesgre','Moss Landing State Beach','','0','0','2000-06-10');
 INSERT INTO sighting VALUES (2138,'whtkit','Moss Landing State Beach','','0','0','2000-06-10');
-INSERT INTO sighting VALUES (2139,'hummingbirds','Phoenecian Resort','','1','0','2000-06-19');
+INSERT INTO sighting VALUES (2139,'hummin','Phoenecian Resort','','1','','2000-06-19');
 INSERT INTO sighting VALUES (2140,'cacwre','Phoenecian Resort','this is one big, loud wren! It stood around in the cactus garden and posed for photos.','1','1','2000-06-19');
 INSERT INTO sighting VALUES (2141,'grtgra','Phoenecian Resort','','1','0','2000-06-19');
 INSERT INTO sighting VALUES (2142,'verdin','Phoenecian Resort','','1','0','2000-06-19');
@@ -2169,7 +2169,7 @@ INSERT INTO sighting VALUES (2168,'rthhum','Pikes Peak','','0','0','2000-08-04')
 INSERT INTO sighting VALUES (2169,'turvul','Pikes Peak','','0','0','2000-08-04');
 INSERT INTO sighting VALUES (2170,'whbnut','Pikes Peak','','0','0','2000-08-04');
 INSERT INTO sighting VALUES (2171,'yelleg','Bolinas Lagoon','','','0','2000-08-26');
-INSERT INTO sighting VALUES (2172,'hummingbird','Bolinas Lagoon','','1','0','2000-08-26');
+INSERT INTO sighting VALUES (2172,'hummin','Bolinas Lagoon','','1','','2000-08-26');
 INSERT INTO sighting VALUES (2173,'ameavo','Bolinas Lagoon','','0','0','2000-08-26');
 INSERT INTO sighting VALUES (2174,'amekes','Bolinas Lagoon','','0','0','2000-08-26');
 INSERT INTO sighting VALUES (2175,'belkin','Bolinas Lagoon','','0','0','2000-08-26');
@@ -2281,7 +2281,7 @@ INSERT INTO sighting VALUES (2280,'norcar','Champaign County','','0','0','2000-1
 INSERT INTO sighting VALUES (2281,'whtspa','Champaign County','','0','0','2000-10-06');
 INSERT INTO sighting VALUES (2282,'yerwar','Champaign County','Probably','1','0','2000-10-06');
 INSERT INTO sighting VALUES (2283,'hawk','Champaign County','','1','0','2000-10-09');
-INSERT INTO sighting VALUES (2284,'kinqlet','Champaign County','','1','0','2000-10-09');
+INSERT INTO sighting VALUES (2284,'kinqle','Champaign County','','1','','2000-10-09');
 INSERT INTO sighting VALUES (2285,'amecro','Champaign County','','0','0','2000-10-09');
 INSERT INTO sighting VALUES (2286,'amegfi','Champaign County','','0','0','2000-10-09');
 INSERT INTO sighting VALUES (2287,'amerob','Champaign County','','0','0','2000-10-09');

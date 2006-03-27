@@ -31,7 +31,7 @@ drop table if exists species;
 
 CREATE TABLE species (
   objectid bigint(20) NOT NULL default '0',
-  Abbreviation varchar(16) default NULL,
+  Abbreviation varchar(6) default NULL,
   LatinName text,
   CommonName text,
   Notes text,
@@ -85,7 +85,7 @@ drop table if exists sighting;
 
 CREATE TABLE sighting (
   objectid mediumint(9) NOT NULL auto_increment,
-  SpeciesAbbreviation varchar(16) default NULL,
+  SpeciesAbbreviation varchar(6) default NULL,
   LocationName varchar(255),
   Notes text,
   Exclude varchar(1) default NULL,
@@ -109,7 +109,7 @@ drop table if exists state;
 CREATE TABLE state (
   objectid mediumint(9) NOT NULL auto_increment,
   Name varchar(16) default NULL,
-  Abbreviation varchar(16) default NULL,
+  Abbreviation varchar(2) default NULL,
   Notes text,
   PRIMARY KEY  (objectid)
 ) TYPE=MyISAM;
