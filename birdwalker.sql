@@ -111,5 +111,6 @@ CREATE TABLE state (
   Name varchar(16) default NULL,
   Abbreviation varchar(2) default NULL,
   Notes text,
-  PRIMARY KEY  (objectid)
+  PRIMARY KEY  (objectid),
+  KEY AbbreviationIndex (Abbreviation)
 ) TYPE=MyISAM;
