@@ -48,7 +48,6 @@ $tripYear =  substr($sightingInfo["TripDate"], 0, 4);
 <html>
 
 <head>
-<META HTTP-EQUIV="Refresh" CONTENT="10; URL=./slideshow.php?<?= $request->getParams() ?>&sightingid=<?= $nextPhotoID ?>">
 <link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
 <title>birdWalker | <?= $pageTitle ?> Slideshow</title>
 </head>
