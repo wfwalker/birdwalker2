@@ -50,7 +50,7 @@ body
 {
 	left: 120px; width: 640px; top: 0px; height: 100px;
 	position: absolute;
-	background-image: url(./images/photo-banner.jpg);
+	background: white;
 }
 
 .topleft
@@ -118,15 +118,16 @@ body
 
 /* textual browse buttons */
 
-.nextlink { padding-right: 10px; text-align: right; font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-style: italic; }
+.nextlink { padding-right: 10px; text-align: right; font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-style: italic; white-space: nowrap; }
 .nextlink a       { text-decoration: none; }
 .nextlink a:hover { color: red; text-decoration: underline; }
 
-.prevlink { padding-left: 10px; text-align: left; font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-style: italic; }
+.prevlink { padding-left: 10px; text-align: left; font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-style: italic; white-space: nowrap; }
 .prevlink a       { text-decoration: none; }
 .prevlink a:hover { color: red; text-decoration: underline; }
 
-.pagekind { text-transform: lowercase; text-align: center; font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-style: italic; }
+.pagekind { text-transform: lowercase; text-align: center; font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-style: italic; white-space: nowrap;
+}
 
 /* Anchors, and especially magic rollover popup anchors for Maps. */
 
