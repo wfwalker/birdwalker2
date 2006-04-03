@@ -12659,7 +12659,7 @@ INSERT INTO sighting VALUES (12730,'yerwar','Andrew Molera','','0','0','2006-03-
 INSERT INTO sighting VALUES (12731,'towwar','Andrew Molera','','0','0','2006-03-18');
 INSERT INTO sighting VALUES (12732,'comrav','Andrew Molera','','0','0','2006-03-18');
 INSERT INTO sighting VALUES (12733,'amedip','Andrew Molera','','0','0','2006-03-18');
-INSERT INTO sighting VALUES (12734,'hutvir','Andrew Molera','','0','0','2006-03-18');
+INSERT INTO sighting VALUES (12734,'hutvir','Andrew Molera','','','1','2006-03-18');
 INSERT INTO sighting VALUES (12735,'belkin','Andrew Molera','','0','0','2006-03-18');
 INSERT INTO sighting VALUES (12736,'ruckin','Andrew Molera','','0','0','2006-03-18');
 INSERT INTO sighting VALUES (12737,'bushti','Andrew Molera','','0','0','2006-03-18');
