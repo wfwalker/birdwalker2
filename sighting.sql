@@ -12710,3 +12710,12 @@ INSERT INTO sighting VALUES (12781,'comloo','Santa Cruz','','0','0','2006-03-23'
 INSERT INTO sighting VALUES (12782,'sursco','Santa Cruz','','0','0','2006-03-23');
 INSERT INTO sighting VALUES (12783,'blktur','Santa Cruz','','0','0','2006-03-23');
 INSERT INTO sighting VALUES (12784,'brnpel','Santa Cruz','','','','2006-03-23');
+INSERT INTO sighting VALUES (12785,'mutswa','Foster City Radio Tower','','0','0','2006-03-30');
+INSERT INTO sighting VALUES (12786,'mallar','Foster City Radio Tower','','0','0','2006-03-30');
+INSERT INTO sighting VALUES (12787,'belkin','Foster City Radio Tower','','','1','2006-03-30');
+INSERT INTO sighting VALUES (12788,'doccor','Foster City Radio Tower','','0','0','2006-03-30');
+INSERT INTO sighting VALUES (12789,'buffle','Foster City Radio Tower','','0','0','2006-03-30');
+INSERT INTO sighting VALUES (12790,'yerwar','Foster City Radio Tower','','0','0','2006-03-30');
+INSERT INTO sighting VALUES (12791,'cedwax','Foster City Radio Tower','','0','0','2006-03-30');
+INSERT INTO sighting VALUES (12792,'amecoo','Foster City Radio Tower','','0','0','2006-03-30');
+INSERT INTO sighting VALUES (12793,'bcnher','Foster City Radio Tower','','0','0','2006-03-30');
