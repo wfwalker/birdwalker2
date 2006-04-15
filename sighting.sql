@@ -12719,3 +12719,10 @@ INSERT INTO sighting VALUES (12790,'yerwar','Foster City Radio Tower','','0','0'
 INSERT INTO sighting VALUES (12791,'cedwax','Foster City Radio Tower','','0','0','2006-03-30');
 INSERT INTO sighting VALUES (12792,'amecoo','Foster City Radio Tower','','0','0','2006-03-30');
 INSERT INTO sighting VALUES (12793,'bcnher','Foster City Radio Tower','','0','0','2006-03-30');
+INSERT INTO sighting VALUES (12794,'eargre','Lake Merritt','','','1','2006-04-06');
+INSERT INTO sighting VALUES (12795,'amwpel','Lake Merritt','','0','0','2006-04-06');
+INSERT INTO sighting VALUES (12796,'gresca','Lake Merritt','','0','0','2006-04-06');
+INSERT INTO sighting VALUES (12797,'bcnher','Lake Merritt','','0','0','2006-04-06');
+INSERT INTO sighting VALUES (12798,'buffle','Lake Merritt','','0','0','2006-04-06');
+INSERT INTO sighting VALUES (12799,'moudov','Lake Merritt','','0','0','2006-04-06');
+INSERT INTO sighting VALUES (12800,'blkpho','Lake Merritt','','0','0','2006-04-06');
