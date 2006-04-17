@@ -12753,14 +12753,14 @@ INSERT INTO sighting VALUES (12824,'normoc','Charleston Slough','','0','0','2006
 INSERT INTO sighting VALUES (12825,'annhum','Charleston Slough','','0','0','2006-04-15');
 INSERT INTO sighting VALUES (12826,'bushti','Charleston Slough','','0','0','2006-04-15');
 INSERT INTO sighting VALUES (12827,'caltow','Charleston Slough','','0','0','2006-04-15');
-INSERT INTO sighting VALUES (12828,'sonspa','Charleston Slough','','0','0','2006-04-15');
+INSERT INTO sighting VALUES (12828,'sonspa','Charleston Slough','','','1','2006-04-15');
 INSERT INTO sighting VALUES (12829,'cangoo','Charleston Slough','','0','0','2006-04-15');
 INSERT INTO sighting VALUES (12830,'rudduc','Charleston Slough','','0','0','2006-04-15');
 INSERT INTO sighting VALUES (12831,'gadwal','Charleston Slough','','0','0','2006-04-15');
 INSERT INTO sighting VALUES (12832,'norsho','Charleston Slough','','0','0','2006-04-15');
 INSERT INTO sighting VALUES (12833,'commoo','Charleston Slough','','0','0','2006-04-15');
 INSERT INTO sighting VALUES (12834,'bcnher','Palo Alto Duck Pond','','','','2006-04-15');
-INSERT INTO sighting VALUES (12892,'goleag','Stevens Creek County Park','','','','2006-04-15');
+INSERT INTO sighting VALUES (12892,'goleag','Stevens Creek County Park','Flew high overhead while being harrassed by a Red-tailed Hawk','','','2006-04-15');
 INSERT INTO sighting VALUES (12836,'moudov','Charleston Slough','','0','0','2006-04-15');
 INSERT INTO sighting VALUES (12837,'rewbla','Charleston Slough','','0','0','2006-04-15');
 INSERT INTO sighting VALUES (12838,'rinphe','Palo Alto Duck Pond','','','','2006-04-15');
@@ -12804,9 +12804,9 @@ INSERT INTO sighting VALUES (12876,'wooduc','McClellan Ranch','','','','2006-04-
 INSERT INTO sighting VALUES (12877,'haiwoo','Stevens Creek County Park','','0','0','2006-04-15');
 INSERT INTO sighting VALUES (12878,'norfli','Stevens Creek County Park','','0','0','2006-04-15');
 INSERT INTO sighting VALUES (12879,'wesblu','Stevens Creek County Park','','0','0','2006-04-15');
-INSERT INTO sighting VALUES (12880,'bkhgro','McClellan Ranch','','','','2006-04-15');
+INSERT INTO sighting VALUES (12880,'bkhgro','McClellan Ranch','','','1','2006-04-15');
 INSERT INTO sighting VALUES (12881,'nrwswa','Stevens Creek County Park','','0','0','2006-04-15');
-INSERT INTO sighting VALUES (12882,'buggna','Stevens Creek County Park','','0','0','2006-04-15');
+INSERT INTO sighting VALUES (12882,'buggna','Stevens Creek County Park','heard only','','','2006-04-15');
 INSERT INTO sighting VALUES (12883,'oaktit','Stevens Creek County Park','','0','0','2006-04-15');
 INSERT INTO sighting VALUES (12884,'chbchi','McClellan Ranch','','','','2006-04-15');
 INSERT INTO sighting VALUES (12885,'turvul','Stevens Creek County Park','','0','0','2006-04-15');
