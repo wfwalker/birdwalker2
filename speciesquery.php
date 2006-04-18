@@ -353,7 +353,7 @@ class SpeciesQuery extends BirdWalkerQuery
 			if ($prevInfo == "" || getFamilyIDFromSpeciesID($prevInfo["speciesid"]) != getFamilyIDFromSpeciesID($info["speciesid"]))
 			{
 				$taxoInfo = getFamilyInfoFromSpeciesID($info["speciesid"]); ?>
-				<tr><td class=subheading colspan=13><?= strtolower($taxoInfo["LatinName"]) ?></td></tr>
+				<tr><td class="subheading" colspan="13"><?= strtolower($taxoInfo["LatinName"]) ?></td></tr>
 	<?		} ?>
 
 			<tr><td width="40%"><a href="./speciesdetail.php?speciesid=<?= $info["speciesid"] ?>"><?= $info["CommonName"] ?></a></td>
