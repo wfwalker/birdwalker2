@@ -4,6 +4,11 @@ error_reporting(E_ALL);
 
 function htmlHead($title)
 {
+  if (getIsLaptop())
+  {
+	$title = "DEVELOPMENT " . $title;
+  }
+
 echo "<!DOCTYPE  HTML PUBLIC  \"-//W3C//DTD HTML 4.01 Transitional//EN\">";
 ?>
 <html>
