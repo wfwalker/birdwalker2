@@ -24,6 +24,18 @@ CREATE TABLE location (
 ) TYPE=MyISAM;
 
 --
+-- Table structure for table 'countyfrequency'
+--
+
+drop table if exists countyfrequency;
+
+CREATE TABLE countyfrequency (
+  CommonName varchar(255),
+  Frequency bigint(2),
+  SpeciesID bigint(20)
+) TYPE=MyISAM;
+
+--
 -- Table structure for table 'species'
 --
 
