@@ -37,7 +37,7 @@ $request->globalMenu();
       <div class="pagesubtitle">
         <?= $speciesInfo["LatinName"] ?>
 	  </div>
-      <?= $request->viewLinks("locations"); ?>
+      <?= $request->viewLinks("trips"); ?>
   </div>
 
   <div class="contentright">
