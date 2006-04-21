@@ -12817,3 +12817,13 @@ INSERT INTO sighting VALUES (12889,'acowoo','Stevens Creek County Park','',0,0,'
 INSERT INTO sighting VALUES (12890,'westan','McClellan Ranch','',0,0,'2006-04-15');
 INSERT INTO sighting VALUES (12891,'daejun','Stevens Creek County Park','',0,0,'2006-04-15');
 INSERT INTO sighting VALUES (12893,'whtswi','Stevens Creek County Park','',0,0,'2006-04-15');
+INSERT INTO sighting VALUES (12894,'dunlin','Foster City Radio Tower','',0,1,'2006-04-19');
+INSERT INTO sighting VALUES (12895,'lobdow','Foster City Radio Tower','',0,0,'2006-04-19');
+INSERT INTO sighting VALUES (12896,'margod','Foster City Radio Tower','',0,0,'2006-04-19');
+INSERT INTO sighting VALUES (12897,'wessan','Foster City Radio Tower','',0,0,'2006-04-19');
+INSERT INTO sighting VALUES (12898,'leasan','Foster City Radio Tower','',0,0,'2006-04-19');
+INSERT INTO sighting VALUES (12899,'forter','Foster City Radio Tower','',0,0,'2006-04-19');
+INSERT INTO sighting VALUES (12900,'moudov','Foster City Radio Tower','',0,0,'2006-04-19');
+INSERT INTO sighting VALUES (12901,'brebla','Foster City Radio Tower','',0,0,'2006-04-19');
+INSERT INTO sighting VALUES (12902,'sonspa','Foster City Radio Tower','',0,0,'2006-04-19');
+INSERT INTO sighting VALUES (12903,'amecro','Foster City Radio Tower','',0,0,'2006-04-19');
