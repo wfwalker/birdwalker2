@@ -297,7 +297,6 @@ class Request
 		if ($this->getView() == 'trips')
 		{
 			$tripQuery = new TripQuery($this);
-			doubleCountHeading($tripQuery->getTripCount(), "trip", $tripQuery->getPhotoCount(), "with photo");
 			$tripQuery->formatTwoColumnTripList();
 		}
 		elseif ($this->getView() == 'tripsummaries')
@@ -309,7 +308,6 @@ class Request
 		elseif ($this->getView() == 'species')
 		{
 			$speciesQuery = new SpeciesQuery($this);
-			doubleCountHeading($speciesQuery->getSpeciesCount(), "species", $speciesQuery->getPhotoCount(), "with photo");
 			$speciesQuery->formatTwoColumnSpeciesList(); 
 		}
 		elseif ($this->getView() == 'speciesbyyear')
@@ -327,7 +325,6 @@ class Request
 		elseif ($this->getView() == 'locations')
 		{
 			$locationQuery = new LocationQuery($this);
-			doubleCountHeading( $locationQuery->getLocationCount(), "location", $locationQuery->getPhotoCount(), "with photo");
 			$locationQuery->formatTwoColumnLocationList($this->getView(), false);
 		}
 		elseif ($this->getView() == 'locationsbyyear')
@@ -405,60 +402,50 @@ function changeView()
 	        view: <select name="viewChooser" onChange="changeView()"> <?
 
 		if ($this->getTripID() == "")
-		{ ?>
-		  <optgroup label="trips">
-<?		    $this->optionSelectedViewHelper("list", "trips"); ?>
-		  </optgroup>
-<?		} ?>
-
-		  <optgroup label="locations"><?
+		{
+		    $this->optionSelectedViewHelper("trip list", "trips");
+		}
 
 		  if ($this->getLocationID() == "")
 		  {
 			  if ($this->getTripID() == "" )
 			  {
-				  $this->optionSelectedViewHelper("list", "locations");
+				  $this->optionSelectedViewHelper("location list", "locations");
 			  }
 			  
 			  if ($this->getMonth() == "" )
 			  {
-				  $this->optionSelectedViewHelper("by month", "locationsbymonth");
+				  $this->optionSelectedViewHelper("locations by month", "locationsbymonth");
 			  }  
 			  if ($this->getYear() == "" )
 			  {
-				  $this->optionSelectedViewHelper("by year", "locationsbyyear");
+				  $this->optionSelectedViewHelper("locations by year", "locationsbyyear");
 			  }
 		  }
 
-	      $this->optionSelectedViewHelper("map", "map"); ?>
+	      $this->optionSelectedViewHelper("location map", "map");
 
-		  </optgroup> <?
-		
 		if ($this->getSpeciesID() == "")
-		{ ?>
-			<optgroup label="species"> <?
-		    $this->optionSelectedViewHelper("by taxonomy", "species");
+		{
+		    $this->optionSelectedViewHelper("species by taxonomy", "species");
+
 		    if ($this->getTripID() == "" )
 			{
-				$this->optionSelectedViewHelper("by date", "chrono");
+				$this->optionSelectedViewHelper("species by date", "chrono");
 			}
 
 			if ($this->getMonth() == "" )
 			{
-				$this->optionSelectedViewHelper("by month", "speciesbymonth");
+				$this->optionSelectedViewHelper("species by month", "speciesbymonth");
 			}
 			if ($this->getYear() == "" )
 			{
-				$this->optionSelectedViewHelper("by year", "speciesbyyear");
+				$this->optionSelectedViewHelper("species by year", "speciesbyyear");
 			}
-			?>
-			</optgroup><?
-		}  ?>
+		}
 
-		<optgroup label="photos"> <?
-		   $this->optionSelectedViewHelper("thumbnails", "photo");
-		   $this->optionSelectedViewHelper("slideshow", "slideshow"); ?>
-		</optgroup>
+	   $this->optionSelectedViewHelper("photo thumbnails", "photo");
+	   $this->optionSelectedViewHelper("photo slideshow", "slideshow"); ?>
 
 	    </select>
 		</form>

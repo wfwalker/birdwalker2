@@ -282,7 +282,9 @@ class LocationQuery extends BirdWalkerQuery
 		$prevInfo=null;
 		$locationCount = mysql_num_rows($dbQuery);
 		$divideByCounties = ($locationCount > 20);
-		$counter = round($locationCount  * 0.5); ?>
+		$counter = round($locationCount  * 0.5);
+
+		doubleCountHeading($locationCount, "location", $this->getPhotoCount(), "with photo"); ?>
 
 		<table class="report-content" width="100%">
 		  <tr valign="top"><td width="50%" class="leftcolumn">

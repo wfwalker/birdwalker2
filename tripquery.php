@@ -122,10 +122,13 @@ class TripQuery extends BirdWalkerQuery
 
 	function formatTwoColumnTripList()
 	{
-		$tripCount = $this->getTripCount();
+	    $dbQuery = $this->performQuery();
+	    $tripCount = mysql_num_rows($dbQuery);
 		$subdivideByYears = ($tripCount > 20) && ($this->mReq->getYear() == "");
 		$prevYear = "";
-		$counter = round($tripCount  * 0.52); ?>
+		$counter = round($tripCount  * 0.52);
+
+		doubleCountHeading($tripCount, "trip", $this->getPhotoCount(), "with photo"); ?>
 
 	   <table class="report-content" width="100%">
 		  <tr valign="top"><td width="50%" class="leftcolumn">

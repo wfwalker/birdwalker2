@@ -153,6 +153,9 @@ class SpeciesQuery extends BirdWalkerQuery
 
 		
 		$speciesCount = mysql_num_rows($dbQuery);
+
+		doubleCountHeading($speciesCount, "species", $this->getPhotoCount(), "with photo");
+			
 		$divideByFamily = ($speciesCount > 30);
 		$counter = round($speciesCount  * 0.52); ?>
 
