@@ -11,17 +11,6 @@ $request = new Request;
 
 $speciesInfo = getSpeciesInfo($request->getSpeciesID());
 
-$locationQuery = new LocationQuery($request);
-$extrema = $locationQuery->findExtrema();
-
-if ($request->getView() != "photo")
-{
-	$tripQuery = new TripQuery($request);
-	$tripCount = $tripQuery->getTripCount();
-	
-	$locationCount = $locationQuery->getLocationCount();
-}
-
 htmlHead($speciesInfo["CommonName"]);
 $request->globalMenu();
 
