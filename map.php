@@ -292,7 +292,6 @@ class Map
 
 <?
      if ($inDrawControls) {
-	   countHeading($this->mLocationQuery->getLocationCount(), "location");
 	   $this->mLocationQuery->formatTwoColumnLocationList("map", true);
      }
    }
