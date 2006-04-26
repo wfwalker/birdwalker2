@@ -14,26 +14,6 @@ $tripInfo = $request->getTripInfo();
 $tripYear = substr($tripInfo["Date"], 0, 4);
 $tripMonth = substr($tripInfo["Date"], 5, 2);
 
-$sightingQuery = new SightingQuery($request);
-
-$locationQuery = new LocationQuery($request);
-$locationCount = $locationQuery->getLocationCount();
-
-$firstSightings = getFirstSightings();
-$firstYearSightings = getFirstYearSightings($tripYear);
-
-// how many  birds were on this trip?
-$tripSightings = $sightingQuery->performQuery();
-
-// total species count for this trip
-$tripSpeciesCount = mysql_num_rows($tripSightings);
-
-// how many life birds were on this trip?
-$tripFirstSightings = 0;
-while($sightingInfo = mysql_fetch_array($tripSightings)) {
-	if (array_key_exists($sightingInfo['objectid'], $firstSightings)) { $tripFirstSightings++; }
-}
-
 htmlHead( $tripInfo["Name"]);
 
 $request->globalMenu();
@@ -62,17 +42,28 @@ $request->globalMenu();
         </div>
 
 <?
-if ($request->getView() == "photo")
+if ($request->getView() == "speciesbylocation")
 {
-	$sightingQuery->formatPhotos();
-}
-else if ($request->getView() == "map")
-{
-	$map = new Map("./tripdetail.php", $request);
-	$map->draw(true);
-}
-else if ($request->getView() == "" || $request->getView() == "species")
-{
+  $sightingQuery = new SightingQuery($request);
+
+  $locationQuery = new LocationQuery($request);
+  $locationCount = $locationQuery->getLocationCount();
+  
+  $firstSightings = getFirstSightings();
+  $firstYearSightings = getFirstYearSightings($tripYear);
+  
+  // how many  birds were on this trip?
+  $tripSightings = $sightingQuery->performQuery();
+  
+  // total species count for this trip
+  $tripSpeciesCount = mysql_num_rows($tripSightings);
+  
+  // how many life birds were on this trip?
+  $tripFirstSightings = 0;
+  while($sightingInfo = mysql_fetch_array($tripSightings)) {
+	if (array_key_exists($sightingInfo['objectid'], $firstSightings)) { $tripFirstSightings++; }
+  }
+
 	if ($locationCount > 1) {
 		doubleCountHeading($tripSpeciesCount, "species", $tripFirstSightings, "life bird");
 	}
@@ -105,7 +96,11 @@ else if ($request->getView() == "" || $request->getView() == "species")
 <?
         $speciesQuery->formatTwoColumnSpeciesList();
 	}
- }
+}
+else
+{
+    $request->handleStandardViews();
+}
 
 footer();
 
