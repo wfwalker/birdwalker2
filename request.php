@@ -406,24 +406,21 @@ function changeView()
 		    $this->optionSelectedViewHelper("trip list", "trips");
 		}
 
-		  if ($this->getLocationID() == "")
-		  {
-			  if ($this->getTripID() == "" )
-			  {
-				  $this->optionSelectedViewHelper("location list", "locations");
-			  }
+		if ($this->getLocationID() == "")
+		{
+		    $this->optionSelectedViewHelper("location list", "locations");
 			  
-			  if ($this->getMonth() == "" )
-			  {
-				  $this->optionSelectedViewHelper("locations by month", "locationsbymonth");
-			  }  
-			  if ($this->getYear() == "" )
-			  {
-				  $this->optionSelectedViewHelper("locations by year", "locationsbyyear");
-			  }
-		  }
+			if ($this->getMonth() == "" )
+			{
+			    $this->optionSelectedViewHelper("locations by month", "locationsbymonth");
+			}  
+			if ($this->getYear() == "" )
+			{
+			    $this->optionSelectedViewHelper("locations by year", "locationsbyyear");
+			}
+		}
 
-	      $this->optionSelectedViewHelper("location map", "map");
+		$this->optionSelectedViewHelper("location map", "map");
 
 		if ($this->getSpeciesID() == "")
 		{
@@ -444,8 +441,8 @@ function changeView()
 			}
 		}
 
-	   $this->optionSelectedViewHelper("photo thumbnails", "photo");
-	   $this->optionSelectedViewHelper("photo slideshow", "slideshow"); ?>
+	    $this->optionSelectedViewHelper("photo thumbnails", "photo");
+	    $this->optionSelectedViewHelper("photo slideshow", "slideshow"); ?>
 
 	    </select>
 		</form>
