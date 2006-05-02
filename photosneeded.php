@@ -3,7 +3,7 @@
 require_once("./birdwalker.php");
 require_once("./request.php");
 
-$threshold = 10;
+$threshold = 5;
 
 $sortCriteria = "";
 array_key_exists("sort", $_GET) && $sortCriteria = $_GET['sort'];
