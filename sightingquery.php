@@ -83,32 +83,25 @@ class SightingQuery extends BirdWalkerQuery
 
 	function getOrderByClause($inPrefix = "")
 	{
-		if ($this->isSpeciesSpecified()) {
-		  return "ORDER BY sighting.TripDate";
-		} elseif ($this->isFamilySpecified()) {
-		  return "ORDER BY species.objectid";
-		} elseif ($this->isOrderSpecified()) {
-		  return "ORDER BY species.objectid";
+	    if ($this->isSpeciesSpecified())
+		{
+		    return "ORDER BY sighting.TripDate DESC";
 		}
-
-		if ($this->isLocationSpecified()) {
-		  // by species? by date?
-		  return "ORDER BY species.objectid";
-		} elseif ($this->isCountySpecified()) {
-		  // by species? by date?
-		  return "ORDER BY species.objectid";
-		} elseif ($this->isStateSpecified()) {
-		  // by species?
-		  return "ORDER BY species.objectid";
+		elseif ($this->isFamilySpecified() || $this->isOrderSpecified())
+		{
+		    return "ORDER BY species.objectid";
 		}
-
-		if ($this->mReq->getMonth() != "") {
-		  // by species?
-		  return "ORDER BY species.objectid";
+		elseif ($this->isLocationSpecified() || $this->isCountySpecified() || $this->isStateSpecified())
+		{
+		    return "ORDER BY species.objectid";
 		}
-		if ($this->mReq->getYear() != "") {
-		  // by species?
-		  return "ORDER BY species.objectid";
+		elseif ($this->mReq->getMonth() != "" || $this->mReq->getYear() != "")
+		{
+		    return "ORDER BY species.objectid";
+		}
+		else
+		{
+			return "ORDER BY sighting.TripDate DESC";
 		}
 	}
 
