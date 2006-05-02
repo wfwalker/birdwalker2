@@ -36,7 +36,6 @@ $request->globalMenu();
 <?
 
 $onthisdatespeciesQuery = new OnThisDateSpeciesQuery($request);
-doubleCountHeading($onthisdatespeciesQuery->getSpeciesCount(), "species", $onthisdatespeciesQuery->getPhotoCount(), "with photo");
 $onthisdatespeciesQuery->formatTwoColumnSpeciesList();
 
       while ($info = mysql_fetch_array($tripsOnThisDate))
