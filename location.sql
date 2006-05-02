@@ -187,3 +187,7 @@ INSERT INTO location VALUES (187,'Sacramento River Delta','','','Sacramento','CA
 INSERT INTO location VALUES (188,'Drake\'s Estero','','Point Reyes Station','Marin','CA','','',38.0475,-122.941);
 INSERT INTO location VALUES (189,'Castle Rock State Park','','Saratoga','Santa Clara','CA','','',37.2317,-122.116);
 INSERT INTO location VALUES (190,'Rocky Mountain National Park','','Estes Park','Grand','CO','','',0,0);
+INSERT INTO location VALUES (191,'Asilomar State Beach','','Pacific Grove','Monterey','CA','','',0,0);
+INSERT INTO location VALUES (192,'Loma Prieta','','','Santa Cruz','CA','','',0,0);
+INSERT INTO location VALUES (193,'Mount Madonna Road','','','Santa Cruz','CA','','',0,0);
+INSERT INTO location VALUES (194,'Garland Ranch State Park','','Carmel Valley','Monterey','CA','','',0,0);
