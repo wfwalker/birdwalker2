@@ -12969,7 +12969,7 @@ INSERT INTO sighting VALUES (13042,'orcwar','Elkhorn Slough','',0,0,'2006-04-30'
 INSERT INTO sighting VALUES (13043,'caster','Elkhorn Slough','',0,0,'2006-04-30');
 INSERT INTO sighting VALUES (13044,'comloo','Moss Landing State Beach','',0,0,'2006-04-30');
 INSERT INTO sighting VALUES (13045,'clagre','Moss Landing State Beach','',0,0,'2006-04-30');
-INSERT INTO sighting VALUES (13046,'semplo','Elkhorn Slough','',0,0,'2006-04-30');
+INSERT INTO sighting VALUES (13046,'semplo','Elkhorn Slough','',0,1,'2006-04-30');
 INSERT INTO sighting VALUES (13047,'barswa','Elkhorn Slough','',0,0,'2006-04-30');
 INSERT INTO sighting VALUES (13048,'wessan','Elkhorn Slough','',0,0,'2006-04-30');
 INSERT INTO sighting VALUES (13049,'bewwre','Garland Ranch State Park','',0,0,'2006-04-30');
@@ -12980,3 +12980,4 @@ INSERT INTO sighting VALUES (13053,'oaktit','Garland Ranch State Park','',0,0,'2
 INSERT INTO sighting VALUES (13054,'cangoo','Garland Ranch State Park','',0,0,'2006-04-30');
 INSERT INTO sighting VALUES (13055,'calqua','Garland Ranch State Park','',0,0,'2006-04-30');
 INSERT INTO sighting VALUES (13056,'sonspa','Garland Ranch State Park','',0,0,'2006-04-30');
+INSERT INTO sighting VALUES (13057,'nrwswa','Moss Landing State Beach','',0,1,'2006-04-30');
