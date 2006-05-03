@@ -144,10 +144,6 @@ class SightingQuery extends BirdWalkerQuery
 	<?
 		while ($sightingInfo = mysql_fetch_array($dbQuery))
 		{
-			$tripInfo = getTripInfoForDate($sightingInfo["TripDate"]);
-			$tripYear =  substr($tripInfo["Date"], 0, 4);
-			$locationInfo = getLocationInfoForName($sightingInfo["LocationName"]);
-
 			if ($sightingInfo["Photo"] == "1")
 			{
 				$photoFilename = getPhotoFilename($sightingInfo);
