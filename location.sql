@@ -26,7 +26,7 @@ INSERT INTO location VALUES (25,'Coast Guard Pier','','Monterey','Monterey','CA'
 INSERT INTO location VALUES (26,'Colusa NWR','http://www.r1.fws.gov/sacnwrc/','Colusa','Colusa','CA','','Unknown',39.2396,-122.074);
 INSERT INTO location VALUES (27,'Coyote Creek County Park','','San Jose','Santa Clara','CA','','',37.2848,-121.811);
 INSERT INTO location VALUES (28,'Coyote Creek Field Station','http://www.sfbbo.org/ccfs01.html','Alviso','Santa Clara','CA','Formerly the Coyote Creek Riparian Station, now part of the San Francisco Bay Bird Observatory','mapblast',37.4202,-121.988);
-INSERT INTO location VALUES (29,'Coyote Hills Regional Park','http://www.ebparks.org/parks/coyote.htm','Fremont','Alameda','CA','a great place for flying RC gliders. There\'s also a lovely boardwalk and some golden hills for walking on','WGS 84',37.5506,-122.086);
+INSERT INTO location VALUES (29,'Coyote Hills Regional Park','http://www.ebparks.org/parks/coyote.htm','Fremont','Alameda','CA','Note to photographers: Slow and cautious walk on the marsh bordwalk can yield good shots of egrets and ducks. On some days, a great place for pelican flight shots. White-tailed kites seen almost every trip, often far away. Early morning access restricted by locked gate approx 1/2 mile from parking lot -- no good parking outside the gate. Entrance fee. Bathrooms available.','WGS 84',37.5506,-122.086);
 INSERT INTO location VALUES (30,'Coyote Point Marina','http://www.cpyc.com/','Burlinghame','San Mateo','CA','First visited here with Steve Shunk  in January 2001.','Unknown',37.567,-122.367);
 INSERT INTO location VALUES (31,'Crittenden Marsh','','Mountain View','Santa Clara','CA','','',37.4369,-122.062);
 INSERT INTO location VALUES (32,'Crown Memorial State Beach','http://www.parks.ca.gov/allpages/default.asp?page_id=526','Alameda','Alameda','CA','','',37.7658,-122.274);
@@ -89,7 +89,7 @@ INSERT INTO location VALUES (87,'Reactivity','http://www.reactivity.com/','Belmo
 INSERT INTO location VALUES (88,'Redwood Creek Horse Trail','','Orick','Humboldt','CA','','',41.285,-124.092);
 INSERT INTO location VALUES (89,'Rohnert Park','','Rohnert Park','Sonoma','CA','','',38.3397,-122.7);
 INSERT INTO location VALUES (90,'Russian Ridge Open Space Preserve','http://www.openspace.org/RRIDGE.html','Saratoga','Santa Cruz','CA','','',37.3181,-122.218);
-INSERT INTO location VALUES (91,'Sacramento NWR','http://www.r1.fws.gov/sacnwrc/','Sacramento','Glenn','CA','','mapblast',39.3715,-122.182);
+INSERT INTO location VALUES (91,'Sacramento NWR','http://www.r1.fws.gov/sacnwrc/','Sacramento','Glenn','CA','Note to photographers: Take the auto tour route in the winter for some great opportunities for close-up shots at overwintering birds. If lighting permits, be prepared to shoot out both sides of the car, preferably by sitting in back and having someone else drive (thanks, Mary!) Also walk the trees near the parking lots for passerines. Check the trees and ponds near the visitor center, and look for rarity sightings in the notebook inside the visitor center. Bathrooms available. Entrance fee (or buy your federal duck stamp at your local post office).','mapblast',39.3715,-122.182);
 INSERT INTO location VALUES (92,'Salton Sea','','Salton City','Imperial','CA','','',33.3333,-115.833);
 INSERT INTO location VALUES (93,'San Antonio Valley','','Larwrence','Alameda','CA','','',37.3436,-121.452);
 INSERT INTO location VALUES (94,'San Diego','','San Diego','San Diego','CA','','',32.7,-117.167);
@@ -137,8 +137,8 @@ INSERT INTO location VALUES (136,'Corpus Christi','','Corpus Christi','Nueces','
 INSERT INTO location VALUES (137,'Palmetto State Park','http://www.tpwd.state.tx.us/park/palmetto/','San Antonio','Gonzales','TX','','',29.5875,-97.5843);
 INSERT INTO location VALUES (138,'Other San Benito','','','San Benito','CA','','',36.6167,-121.083);
 INSERT INTO location VALUES (139,'Big Basin State Park','','Ben Lomond','Santa Cruz','CA','','',37.1853,-122.229);
-INSERT INTO location VALUES (140,'Arrowhead Marsh','http://baytrail.abag.ca.gov/vtour/map5/access/arrow.htm','Oakland','Alameda','CA','','',37.7444,-122.213);
-INSERT INTO location VALUES (141,'Lake Merritt','','Oakland','Alameda','CA','','',37.8064,-122.254);
+INSERT INTO location VALUES (140,'Arrowhead Marsh','http://baytrail.abag.ca.gov/vtour/map5/access/arrow.htm','Oakland','Alameda','CA','Note to photographers: A great place to find rails at high tides in January, but subjects can be frustratingly far away.','',37.7444,-122.213);
+INSERT INTO location VALUES (141,'Lake Merritt','','Oakland','Alameda','CA','Note to photographers: Many subjects here, including grebes, ducks, and night-herons are highly acclimated to people. Morning light tends to be from the side, makind head angle crucial for duck portraits. Active cormorant rookery in the spring makes an interesting feature for landscape shots. Hard to get down to eye level due to steep banks down to the lake. Lake Merritt is in the middle of an urban area, so parking can be tricky.','',37.8064,-122.254);
 INSERT INTO location VALUES (142,'Bair Island','','Redwood City','San Mateo','CA','','',37.53,-122.221);
 INSERT INTO location VALUES (143,'Downtown Palo Alto','','Palo Alto','Santa Clara','CA','','',37.4444,-122.159);
 INSERT INTO location VALUES (144,'Bear Creek Greenway','http://www.bearcreekgreenway.com/','Talent','Jackson','OR','','',42.2458,-122.787);
@@ -161,7 +161,7 @@ INSERT INTO location VALUES (160,'Johnsondale Bridge','','Johnsondale','Tulare',
 INSERT INTO location VALUES (161,'Holey Meadow','','','Tulare','CA','','',35.9533,-118.619);
 INSERT INTO location VALUES (162,'Quaking Aspen Meadow','','','Tulare','CA','','',36.1192,-118.547);
 INSERT INTO location VALUES (163,'Quaking Aspen Campground','','','Tulare','CA','','',36.1192,-118.547);
-INSERT INTO location VALUES (164,'Hayward Regional Shoreline','','Hayward','Alameda','CA','','',37.6689,-122.08);
+INSERT INTO location VALUES (164,'Hayward Regional Shoreline','','Hayward','Alameda','CA','Note to photographers: A good place for morning light on shorebirds, be prepared to walk through some muck to get near the water. You\'ll have to work to exclude culverts and other man-made structures from your backgrounds. Look in the trees on the way to the shore for warblers and accipiters. No restrictions on early morning access.','',37.6689,-122.08);
 INSERT INTO location VALUES (165,'Chevron Meadow','','Yosemite National Park','Mono','CA','The famous meadow behind the Chevron station at Crane Flat','',37.85,-119.567);
 INSERT INTO location VALUES (166,'Bosque del Apache NWR','','San Antonio','Socorro','NM','','',33.805,-106.907);
 INSERT INTO location VALUES (167,'Shoreline Lake','','Mountain View','Santa Clara','CA','','mapblast',37.461,-122.115);
