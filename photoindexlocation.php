@@ -43,12 +43,23 @@ $request->globalMenu();
 		if ($prevInfo == "" || ($prevInfo["State"] != $info["State"]) || ($prevInfo["County"] != $info["County"])) 
 		{ ?>
           <div class=subheading><?
-		  if ($prevInfo == "" || $prevInfo["State"] != $info["State"]) { echo getStateNameForAbbreviation($info["State"]) . ", "; }
-		  if ($prevInfo == "" || $prevInfo["County"] != $info["County"]) { echo $info["County"] . " County"; } ?>
+		  if ($prevInfo == "" || $prevInfo["State"] != $info["State"])
+		  { ?>
+			  <span class="statename"><?= getStateNameForAbbreviation($info["State"]) ?></span>,
+<?		  }
+
+		  if ($prevInfo == "" || $prevInfo["County"] != $info["County"])
+		  {
+			  echo $info["County"] . " County";
+		  } ?>
           </div>
 <?      } ?>
 
-        <div><a href="./locationdetail.php?view=photo&locationid=<?= $info["objectid"] ?>"><?= $info["Name"] ?></a> (<?= $info["photoCount"] ?>)</div>
+        <div>
+		   <a href="./locationdetail.php?view=photo&locationid=<?= $info["objectid"] ?>">
+		   <?= $info["Name"] ?></a> (<?= $info["photoCount"] ?>) <?= editlink("./locationcreate.php?locationid=" . $info["objectid"]) ?>
+		   <div class="sighting-notes"><?= $info["Notes"] ?></div>
+	    </div>
 <?      $prevInfo = $info;
     }
 
