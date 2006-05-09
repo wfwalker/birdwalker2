@@ -37,7 +37,7 @@ INSERT INTO location VALUES (36,'Elkhorn Slough','http://www.elkhornslough.org/'
 INSERT INTO location VALUES (37,'Fairhaven','','Arcata','Humboldt','CA','','',40.7853,-124.202);
 INSERT INTO location VALUES (38,'Farallon Islands','','San Francisco','San Francisco','CA','','',37.7333,-123.033);
 INSERT INTO location VALUES (39,'Filoli','','Meno Park','San Mateo','CA','','NAD-27',37.461,-122.293);
-INSERT INTO location VALUES (40,'Foster City Radio Tower','','Foster City','San Mateo','CA','','',37.5424,-122.229);
+INSERT INTO location VALUES (40,'Foster City Radio Tower','','Foster City','San Mateo','CA','Note to photographers: The pond between the dog park and the sewage treatment plant can be a great place for end-of-day shorebird shots as the sun is going down. A slow and stealthy approach can allow you a pretty close, low angle shot of dowitchers and sandpipers. Flights of terns, ducks, shorebirds, and even skimmers are also possible. The dog park might have a porta potty. No entrance fee. ','',37.5424,-122.229);
 INSERT INTO location VALUES (41,'Golden Gate Park','http://www.nps.gov/goga/','San Francisco','San Francisco','CA','','mapblast',37.7857,-122.421);
 INSERT INTO location VALUES (42,'Grant Ranch County Park','','San Jose','Santa Clara','CA','','',37.3408,-121.721);
 INSERT INTO location VALUES (43,'Hawk Hill','http://www.ggro.org/','Sausalito','Marin','CA','','WGS 84',37.8305,-122.48);
@@ -53,7 +53,7 @@ INSERT INTO location VALUES (52,'Lower Klamath NWR','http://www.klamathnwr.org/l
 INSERT INTO location VALUES (53,'Magic Brush Pile','','San Francisco','San Francisco','CA','Well, this is what Steve and Bob called it!\r\n\r\n(near Harding Park Municipal Golf Course)','',37.7225,-122.488);
 INSERT INTO location VALUES (54,'Malheur NWR','','Burns','Harney','OR','','',43.2658,-118.843);
 INSERT INTO location VALUES (55,'Marin County','','Marin','Marin','CA','denotes birds seen while driving the roads of Marin County.','',38.0667,-122.733);
-INSERT INTO location VALUES (56,'McClellan Ranch','http://www.scvas.org/office.html','Cupertino','Santa Clara','CA','the home of the Santa Clara Valley Audubon Society','',37.3139,-122.062);
+INSERT INTO location VALUES (56,'McClellan Ranch','http://www.scvas.org/office.html','Cupertino','Santa Clara','CA','the home of the Santa Clara Valley Audubon Society.\r\n\r\nNote to photographers: This site in a deep canyon affords little direct light in the morning, but does offer an interesting variety of passerines visiting the feeders at the Audubon society office or the community garden plots. Choose your angles carefully to deliberately include or exclude manmade perches and backgrounds.','',37.3139,-122.062);
 INSERT INTO location VALUES (57,'Merced County','','Los Banos','Merced','CA','','',37.1667,-120.751);
 INSERT INTO location VALUES (58,'Merced NWR','http://www.gorp.com/gorp/resource/us_nwr/ca_merce.htm','Merced','Merced','CA','','mapblast',37.2963,-120.484);
 INSERT INTO location VALUES (59,'Monte Bello Open Space Preserve','http://www.openspace.org/MBELLO.html','Saratoga','Santa Clara','CA','','',37.3167,-122.147);
@@ -65,7 +65,7 @@ INSERT INTO location VALUES (64,'Nortel Networks','','Santa Clara','Santa Clara'
 INSERT INTO location VALUES (65,'Ocean Beach','','San Francisco','San Francisco','CA','','',37.7594,-122.51);
 INSERT INTO location VALUES (66,'Oka Ponds','','San Jose','Santa Clara','CA','','',0,0);
 INSERT INTO location VALUES (67,'Olompali State Park','','Novato','Marin','CA','','',38.1517,-122.574);
-INSERT INTO location VALUES (68,'Palo Alto Duck Pond','http://www.xymox.palo-alto.ca.us/av/baylands.html','Palo Alto','Santa Clara','CA','our second most visited site; location of bill\'s first birdwalk with Steve Shunk.','mapblast',37.461,-122.115);
+INSERT INTO location VALUES (68,'Palo Alto Duck Pond','http://www.xymox.palo-alto.ca.us/av/baylands.html','Palo Alto','Santa Clara','CA','our second most visited site; location of bill\'s first birdwalk with Steve Shunk.\r\n\r\nNote to photographers: This site is now most famous for the egret and night-heron rookery located immediately adjacent to the duck pond parking lot. Here in April and May you can get great morning light shots of nesting egrets and night-herons  squabbling over nest sites, sitting on eggs, perched in the palm trees with their chicks, or flying frequently to and from the nest. Be sure to check the duck pond for interesting and highly acclimated ducks and gulls -- with a 500mm you can get some great portraits here. Be sure to check the trees around the pond for passerines and raptors.','mapblast',37.461,-122.115);
 INSERT INTO location VALUES (69,'Panoche Valley','http://www.ca.blm.gov/hollister/panoche_tumeys.html','Panoche','San Benito','CA','','mapblast',36.5969,-120.832);
 INSERT INTO location VALUES (70,'Parcourse Marsh','','Mountain View','Santa Clara','CA','A nice place to work amidst Mountain View office buildings. Home of the bay area\'s alleged Waterthrush, which has so far eluded us.','',0,0);
 INSERT INTO location VALUES (71,'Patrick\'s Point State Park','http://www.parks.ca.gov/allpages/default.asp?page_id=417','Trinidad','Humboldt','CA','','',41.1361,-124.16);
@@ -161,7 +161,7 @@ INSERT INTO location VALUES (160,'Johnsondale Bridge','','Johnsondale','Tulare',
 INSERT INTO location VALUES (161,'Holey Meadow','','','Tulare','CA','','',35.9533,-118.619);
 INSERT INTO location VALUES (162,'Quaking Aspen Meadow','','','Tulare','CA','','',36.1192,-118.547);
 INSERT INTO location VALUES (163,'Quaking Aspen Campground','','','Tulare','CA','','',36.1192,-118.547);
-INSERT INTO location VALUES (164,'Hayward Regional Shoreline','','Hayward','Alameda','CA','Note to photographers: A good place for morning light on shorebirds, be prepared to walk through some muck to get near the water. You\'ll have to work to exclude culverts and other man-made structures from your backgrounds. Look in the trees on the way to the shore for warblers and accipiters. No restrictions on early morning access.','',37.6689,-122.08);
+INSERT INTO location VALUES (164,'Hayward Regional Shoreline','','Hayward','Alameda','CA','Note to photographers: A good place for morning light on shorebirds, be prepared to walk through some muck to get near the water. You\'ll have to work to exclude culverts and other man-made structures from your backgrounds. Look in the trees on the way to the shore for warblers and accipiters. No restrictions on early morning access. No entrance fee.','',37.6689,-122.08);
 INSERT INTO location VALUES (165,'Chevron Meadow','','Yosemite National Park','Mono','CA','The famous meadow behind the Chevron station at Crane Flat','',37.85,-119.567);
 INSERT INTO location VALUES (166,'Bosque del Apache NWR','','San Antonio','Socorro','NM','','',33.805,-106.907);
 INSERT INTO location VALUES (167,'Shoreline Lake','','Mountain View','Santa Clara','CA','','mapblast',37.461,-122.115);
