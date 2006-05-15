@@ -13011,13 +13011,13 @@ INSERT INTO sighting VALUES (13085,'norsho','Alviso Marina','',0,0,'2006-04-27')
 INSERT INTO sighting VALUES (13086,'canvas','Alviso Marina','',0,0,'2006-04-27');
 INSERT INTO sighting VALUES (13087,'norhar','Alviso Marina','',0,0,'2006-04-27');
 INSERT INTO sighting VALUES (13088,'brnowl','Don Edwards Center','',0,0,'2006-04-27');
-INSERT INTO sighting VALUES (13089,'comyel','Don Edwards Center','',0,0,'2006-04-27');
+INSERT INTO sighting VALUES (13089,'comyel','Don Edwards Center','',0,1,'2006-04-27');
 INSERT INTO sighting VALUES (13090,'eargre','Don Edwards Center','',0,0,'2006-04-27');
 INSERT INTO sighting VALUES (13091,'barswa','Don Edwards Center','',0,0,'2006-04-27');
 INSERT INTO sighting VALUES (13092,'forter','Don Edwards Center','',0,0,'2006-04-27');
 INSERT INTO sighting VALUES (13093,'bracor','Elkhorn Slough','',0,0,'2006-05-13');
 INSERT INTO sighting VALUES (13094,'doccor','Elkhorn Slough','',0,0,'2006-05-13');
-INSERT INTO sighting VALUES (13095,'snoplo','Elkhorn Slough','',0,0,'2006-05-13');
+INSERT INTO sighting VALUES (13095,'snoplo','Elkhorn Slough','',0,1,'2006-05-13');
 INSERT INTO sighting VALUES (13096,'piggui','Elkhorn Slough','',0,1,'2006-05-13');
 INSERT INTO sighting VALUES (13097,'buffle','Elkhorn Slough','',0,0,'2006-05-13');
 INSERT INTO sighting VALUES (13098,'sursco','Elkhorn Slough','',0,0,'2006-05-13');
@@ -13028,5 +13028,5 @@ INSERT INTO sighting VALUES (13102,'ameavo','Elkhorn Slough','',0,0,'2006-05-13'
 INSERT INTO sighting VALUES (13103,'snoegr','Elkhorn Slough','',0,0,'2006-05-13');
 INSERT INTO sighting VALUES (13104,'greegr','Elkhorn Slough','',0,0,'2006-05-13');
 INSERT INTO sighting VALUES (13105,'grbher','Elkhorn Slough','',0,0,'2006-05-13');
-INSERT INTO sighting VALUES (13106,'comloo','Elkhorn Slough','',0,0,'2006-05-13');
+INSERT INTO sighting VALUES (13106,'comloo','Elkhorn Slough','',0,1,'2006-05-13');
 INSERT INTO sighting VALUES (13107,'brnpel','Elkhorn Slough','',0,0,'2006-05-13');
