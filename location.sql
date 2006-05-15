@@ -192,3 +192,5 @@ INSERT INTO location VALUES (192,'Loma Prieta','','','Santa Cruz','CA','','',0,0
 INSERT INTO location VALUES (193,'Mount Madonna Road','','','Santa Cruz','CA','','',0,0);
 INSERT INTO location VALUES (194,'Garland Ranch State Park','','Carmel Valley','Monterey','CA','','',0,0);
 INSERT INTO location VALUES (195,'Hidden Villa','','Los Altos Hills','Santa Clara','CA','','',37.3542,-122.158);
+INSERT INTO location VALUES (196,'Salinas River State Beach','','Santa Cruz','Monterey','CA','','mapblast',0,0);
+INSERT INTO location VALUES (197,'Zmudowski State Beach','','Santa Cruz','Monterey','CA','','mapblast',0,0);

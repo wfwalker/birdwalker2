@@ -12986,7 +12986,7 @@ INSERT INTO sighting VALUES (13075,'oaktit','Hidden Villa','',0,0,'2006-05-11');
 INSERT INTO sighting VALUES (13060,'vigswa','Hidden Villa','',0,0,'2006-05-11');
 INSERT INTO sighting VALUES (13061,'reshaw','Hidden Villa','',0,0,'2006-05-11');
 INSERT INTO sighting VALUES (13062,'amecro','Hidden Villa','',0,0,'2006-05-11');
-INSERT INTO sighting VALUES (13063,'wrenti','Hidden Villa','',0,0,'2006-05-11');
+INSERT INTO sighting VALUES (13063,'wrenti','Hidden Villa','',0,1,'2006-05-11');
 INSERT INTO sighting VALUES (13064,'warvir','Hidden Villa','',0,0,'2006-05-11');
 INSERT INTO sighting VALUES (13065,'daejun','Hidden Villa','',0,0,'2006-05-11');
 INSERT INTO sighting VALUES (13066,'chbchi','Hidden Villa','',0,0,'2006-05-11');
@@ -13017,7 +13017,7 @@ INSERT INTO sighting VALUES (13091,'barswa','Don Edwards Center','',0,0,'2006-04
 INSERT INTO sighting VALUES (13092,'forter','Don Edwards Center','',0,0,'2006-04-27');
 INSERT INTO sighting VALUES (13093,'bracor','Elkhorn Slough','',0,0,'2006-05-13');
 INSERT INTO sighting VALUES (13094,'doccor','Elkhorn Slough','',0,0,'2006-05-13');
-INSERT INTO sighting VALUES (13095,'snoplo','Elkhorn Slough','',0,1,'2006-05-13');
+INSERT INTO sighting VALUES (13095,'snoplo','Salinas River State Beach','',0,1,'2006-05-13');
 INSERT INTO sighting VALUES (13096,'piggui','Elkhorn Slough','',0,1,'2006-05-13');
 INSERT INTO sighting VALUES (13097,'buffle','Elkhorn Slough','',0,0,'2006-05-13');
 INSERT INTO sighting VALUES (13098,'sursco','Elkhorn Slough','',0,0,'2006-05-13');
@@ -13030,3 +13030,4 @@ INSERT INTO sighting VALUES (13104,'greegr','Elkhorn Slough','',0,0,'2006-05-13'
 INSERT INTO sighting VALUES (13105,'grbher','Elkhorn Slough','',0,0,'2006-05-13');
 INSERT INTO sighting VALUES (13106,'comloo','Elkhorn Slough','',0,1,'2006-05-13');
 INSERT INTO sighting VALUES (13107,'brnpel','Elkhorn Slough','',0,0,'2006-05-13');
+INSERT INTO sighting VALUES (13108,'grtgra','Zmudowski State Beach','',0,1,'2006-05-13');
