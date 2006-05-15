@@ -191,3 +191,4 @@ INSERT INTO location VALUES (191,'Asilomar State Beach','','Pacific Grove','Mont
 INSERT INTO location VALUES (192,'Loma Prieta','','','Santa Cruz','CA','','',0,0);
 INSERT INTO location VALUES (193,'Mount Madonna Road','','','Santa Cruz','CA','','',0,0);
 INSERT INTO location VALUES (194,'Garland Ranch State Park','','Carmel Valley','Monterey','CA','','',0,0);
+INSERT INTO location VALUES (195,'Hidden Villa','','Los Altos Hills','Santa Clara','CA','','',37.3542,-122.158);
