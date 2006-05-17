@@ -11236,7 +11236,7 @@ INSERT INTO sighting VALUES (11274,'whtkit','Piute Mountains','',0,0,'2005-06-24
 INSERT INTO sighting VALUES (11275,'rethaw','Piute Mountains','',0,0,'2005-06-24');
 INSERT INTO sighting VALUES (11276,'amekes','Piute Mountains','',0,1,'2005-06-24');
 INSERT INTO sighting VALUES (11277,'calqua','Piute Mountains','',0,1,'2005-06-24');
-INSERT INTO sighting VALUES (11278,'eucdov','Kern River Preserve','',0,0,'2005-06-24');
+INSERT INTO sighting VALUES (11278,'eucdov','Kern River Preserve','',0,1,'2005-06-24');
 INSERT INTO sighting VALUES (11279,'moudov','Piute Mountains','',0,0,'2005-06-24');
 INSERT INTO sighting VALUES (11280,'greroa','Piute Mountains','',0,0,'2005-06-24');
 INSERT INTO sighting VALUES (11281,'whtswi','Piute Mountains','',0,0,'2005-06-24');
