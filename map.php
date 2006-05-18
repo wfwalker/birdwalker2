@@ -76,7 +76,7 @@ class Map
 		// many layers of labels and boundaries
 		$roads =
 			"http://gisdata.usgs.net/servlet/com.esri.wms.Esrimap?" . 
-			"servicename=USGS_WMS_REF&reaspect=True&REQUEST=map&SRS=EPSG:4326&BBOX=" . 
+			"WMTVER=1.1.0&servicename=USGS_WMS_REF&reaspect=True&REQUEST=map&SRS=EPSG:4326&BBOX=" . 
 			$this->getMinimumLongitude() . "," . $this->getMinimumLatitude(). "," . $this->getMaximumLongitude() . "," . $this->getMaximumLatitude() .
 			"&WIDTH=" . $this->mReq->getMapWidth() . "&HEIGHT=" . $this->mReq->getMapHeight() .
 			"&LAYERS=States,State_Labels,County_Labels,County,Route_Numbers,Roads,Streams,Names-Streams,Water_Bodies,Names-Water_Bodies,Urban_Areas,Federal_Lands,Names-Federal_Lands&STYLES=reference&FORMAT=JPEG&BGCOLOR=0xffffff&TRANSPARENT=TRUE&EXCEPTIONS=INIMAGE";
@@ -84,14 +84,14 @@ class Map
 		// nice shaded color relief but low res
 		$relief2 =
 			 "http://gisdata.usgs.net/servlet/com.esri.wms.Esrimap/USGS_WMS_GTOPO?" . 
-			 "LAYERS=GTOPO60%20Color%20Shaded%20Relief&FORMAT=jpeg&REQUEST=GetMap&SRS=EPSG:4326&servicename=WMS&EXCEPTIONS=INIMAGE&BBOX=" . 
+			 "WMTVER=1.0.0&LAYERS=GTOPO60%20Color%20Shaded%20Relief&FORMAT=jpeg&REQUEST=GetMap&SRS=EPSG:4326&servicename=WMS&EXCEPTIONS=INIMAGE&BBOX=" . 
 			 $this->getMinimumLongitude() . "," . $this->getMinimumLatitude(). "," . $this->getMaximumLongitude() . "," . $this->getMaximumLatitude() .
 			 "&WIDTH=" . $this->mReq->getMapWidth() . "&HEIGHT=" . $this->mReq->getMapHeight();
 
 		// higher res elevation but greyscale only
 		$relief =
 			 "http://gisdata.usgs.net/servlet/com.esri.wms.Esrimap?" .
-			 "servicename=USGS_WMS_NED&reaspect=True&REQUEST=map&SRS=EPSG:4326&BBOX=" . 
+			 "WMTVER=1.0.0&servicename=USGS_WMS_NED&reaspect=True&REQUEST=map&SRS=EPSG:4326&BBOX=" . 
 			 $this->getMinimumLongitude() . "," . $this->getMinimumLatitude(). "," . $this->getMaximumLongitude() . "," . $this->getMaximumLatitude() .
 			 "&WIDTH=" . $this->mReq->getMapWidth() . "&HEIGHT=" . $this->mReq->getMapHeight() .
 			 "&LAYERS=US_NED_Shaded_Relief&STYLES=reference&FORMAT=JPEG&BGCOLOR=0xffffff&TRANSPARENT=TRUE&EXCEPTIONS=INIMAGE";
@@ -108,7 +108,7 @@ class Map
 		// medium res landsat
 		$landsat = 
 			 "http://ims.cr.usgs.gov:80/servlet/com.esri.wms.Esrimap/USGS_WMS_LANDSAT7?" . 
-			 "servicename=WMS&reaspect=True&REQUEST=map&SRS=EPSG:4326&BBOX=" . 
+			 "WMTVER=1.0.0&servicename=WMS&reaspect=True&REQUEST=map&SRS=EPSG:4326&BBOX=" . 
 			 $this->getMinimumLongitude() . "," . $this->getMinimumLatitude(). "," . $this->getMaximumLongitude() . "," . $this->getMaximumLatitude() .
 			 "&WIDTH=" . $this->mReq->getMapWidth() . "&HEIGHT=" . $this->mReq->getMapHeight() .
 			 "&LAYERS=LANDSAT7&STYLES=reference&FORMAT=JPEG&BGCOLOR=0xffffff&TRANSPARENT=TRUE&EXCEPTIONS=INIMAGE";
