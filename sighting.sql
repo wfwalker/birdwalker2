@@ -6969,7 +6969,7 @@ INSERT INTO sighting VALUES (6969,'bkcchi','Southwest Wisconsin','',0,0,'2003-11
 INSERT INTO sighting VALUES (6970,'dowwoo','Southwest Wisconsin','',0,0,'2003-11-07');
 INSERT INTO sighting VALUES (6971,'eursta','Southwest Wisconsin','',0,0,'2003-11-07');
 INSERT INTO sighting VALUES (6972,'norcar','Southwest Wisconsin','',0,1,'2003-11-07');
-INSERT INTO sighting VALUES (6973,'rebwoo','Southwest Wisconsin','',0,0,'2003-11-07');
+INSERT INTO sighting VALUES (6973,'rebwoo','Southwest Wisconsin','',0,1,'2003-11-07');
 INSERT INTO sighting VALUES (6974,'rinphe','Southwest Wisconsin','',0,0,'2003-11-07');
 INSERT INTO sighting VALUES (6975,'whbnut','Southwest Wisconsin','',0,1,'2003-11-07');
 INSERT INTO sighting VALUES (6976,'ambduc','Upper Mississippi NWR','',0,0,'2003-11-08');
@@ -8561,7 +8561,7 @@ INSERT INTO sighting VALUES (8578,'rewbla','Leakey','',0,0,'2004-04-20');
 INSERT INTO sighting VALUES (8579,'bnhcow','Leakey','',0,0,'2004-04-20');
 INSERT INTO sighting VALUES (8580,'yehbla','Leakey','',0,0,'2004-04-20');
 INSERT INTO sighting VALUES (8581,'houspa','Leakey','',0,0,'2004-04-20');
-INSERT INTO sighting VALUES (8582,'bkchum','Leakey','',0,0,'2004-04-20');
+INSERT INTO sighting VALUES (8582,'bkchum','Leakey','',0,1,'2004-04-20');
 INSERT INTO sighting VALUES (8584,'fiespa','Leakey','',0,0,'2004-04-21');
 INSERT INTO sighting VALUES (8585,'vesspa','Leakey','',0,0,'2004-04-21');
 INSERT INTO sighting VALUES (8586,'larspa','Leakey','',0,0,'2004-04-21');
@@ -9370,7 +9370,7 @@ INSERT INTO sighting VALUES (9399,'greegr','Charleston Slough','',0,0,'2004-10-0
 INSERT INTO sighting VALUES (9400,'clarai','Charleston Slough','',0,0,'2004-10-09');
 INSERT INTO sighting VALUES (9401,'margod','Charleston Slough','',0,0,'2004-10-09');
 INSERT INTO sighting VALUES (9402,'amecoo','Charleston Slough','',0,0,'2004-10-09');
-INSERT INTO sighting VALUES (9403,'larbun','San Mateo County','',0,0,'2004-10-10');
+INSERT INTO sighting VALUES (9403,'larbun','San Mateo County','',0,1,'2004-10-10');
 INSERT INTO sighting VALUES (9404,'doccor','San Mateo County','',0,0,'2004-10-10');
 INSERT INTO sighting VALUES (9405,'norhar','San Mateo County','',0,0,'2004-10-10');
 INSERT INTO sighting VALUES (9406,'bknsti','San Mateo County','',0,0,'2004-10-10');
@@ -11343,7 +11343,7 @@ INSERT INTO sighting VALUES (11381,'daejun','Chimney Creek Campground','',0,0,'2
 INSERT INTO sighting VALUES (11382,'brebla','Chimney Creek Campground','',0,0,'2005-06-25');
 INSERT INTO sighting VALUES (11383,'bulori','Chimney Creek Campground','',0,0,'2005-06-25');
 INSERT INTO sighting VALUES (11384,'scoori','Chimney Creek Campground','',0,0,'2005-06-25');
-INSERT INTO sighting VALUES (11385,'casfin','Chimney Creek Campground','',0,0,'2005-06-25');
+INSERT INTO sighting VALUES (11385,'purfin','Chimney Creek Campground','',0,1,'2005-06-25');
 INSERT INTO sighting VALUES (11386,'houfin','Chimney Creek Campground','',0,0,'2005-06-25');
 INSERT INTO sighting VALUES (11387,'redcro','Chimney Creek Campground','',0,0,'2005-06-25');
 INSERT INTO sighting VALUES (11388,'lesgol','Chimney Creek Campground','',0,0,'2005-06-25');
