@@ -11654,7 +11654,7 @@ INSERT INTO sighting VALUES (11692,'marwre','Bodega Bay','',0,0,'2005-09-24');
 INSERT INTO sighting VALUES (11693,'ruckin','Bodega Bay','',0,0,'2005-09-24');
 INSERT INTO sighting VALUES (11694,'amerob','Bodega Bay','',0,0,'2005-09-24');
 INSERT INTO sighting VALUES (11695,'eursta','Bodega Bay','',0,0,'2005-09-24');
-INSERT INTO sighting VALUES (11696,'yelwar','Bodega Bay','',0,0,'2005-09-24');
+INSERT INTO sighting VALUES (11696,'yelwar','Bodega Bay','',0,1,'2005-09-24');
 INSERT INTO sighting VALUES (11697,'chswar','Bodega Bay','',0,0,'2005-09-24');
 INSERT INTO sighting VALUES (11698,'macwar','Bodega Bay','',0,0,'2005-09-24');
 INSERT INTO sighting VALUES (11699,'spotow','Bodega Bay','',0,0,'2005-09-24');
