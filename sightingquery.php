@@ -144,17 +144,14 @@ class SightingQuery extends BirdWalkerQuery
 	<?
 		while ($sightingInfo = mysql_fetch_array($dbQuery))
 		{
-			if ($sightingInfo["Photo"] == "1")
-			{
-				$photoFilename = getPhotoFilename($sightingInfo);
+		    $photoFilename = getPhotoFilename($sightingInfo); ?>
 
-				echo "<td height=\"130\" width=\"25%\" style=\"text-align: center\"><div>" . getThumbForSightingInfo($sightingInfo) . "</div>";
-			} ?>
+			<td height="130" width="25%" style="text-align: center">
+			  <div><?= getThumbForSightingInfo($sightingInfo) ?></div>
+			  <?= $this->getSightingTitle($sightingInfo) ?><br/>
+			</td>
 
-					<?= $this->getSightingTitle($sightingInfo) ?><br/>
-			        </td> <?
-
-			$counter--;
+<?			$counter--;
 
 			if ($counter == 0)
 			{
