@@ -38,6 +38,7 @@ if ($postLocationID != "") {
 	$latLongSystem = $_POST['LatLongSystem'];
 	$latitude = $_POST['Latitude'];
 	$longitude = $_POST['Longitude'];
+	$photo = $_POST['Photo'];
 
 	if ($save == "Save")
 	{
@@ -50,7 +51,8 @@ if ($postLocationID != "") {
 					 "Notes='" . $notes . "', " .
 					 "LatLongSystem='" . $latLongSystem . "', " .
 					 "Latitude='" . $latitude . "', " .
-					 "Longitude='" . $longitude . "' where objectid='" . $postLocationID . "'");
+					 "Longitude='" . $longitude . "', " .
+					 "Photo='" . $photo . "' where objectid='" . $postLocationID . "'");
 
 		if ($_POST['Name'] != $postLocationInfo['Name'])
 		{
@@ -69,7 +71,8 @@ if ($postLocationID != "") {
 					 $notes . "', '" .
 					 $latLongSystem . "', '" .
 					 $latitude . "', '" .
-					 $longitude . "');");
+					 $longitude . "', '" .
+					 $photo . "');");
 	}
 
 	$locationID = $postLocationID;
@@ -128,6 +131,10 @@ $request->globalMenu();
   <tr>
 	<td class=fieldlabel>Longitude</td>
 	<td><input type="text" name="Longitude" value="<?= $locationInfo['Longitude'] ?>" size=20/></td>
+  </tr>
+  <tr>
+	<td class=fieldlabel>Photo</td>
+	<td><input type="checkbox" name="Photo" value="1" <?php if ($locationInfo["Photo"] == "1") { echo "checked"; } ?> /></td>
   </tr>
   <tr>
 	<td class=fieldlabel>Notes</td>

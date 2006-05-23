@@ -17,6 +17,7 @@ CREATE TABLE location (
   LatLongSystem text,
   Latitude float(10),
   Longitude float(10),
+  Photo boolean default 0,
   PRIMARY KEY  (objectid),
   KEY NameIndex (Name),
   KEY CountyIndex (County),
