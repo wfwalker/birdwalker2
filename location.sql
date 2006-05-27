@@ -190,7 +190,11 @@ INSERT INTO location VALUES (190,'Rocky Mountain National Park','','Estes Park',
 INSERT INTO location VALUES (191,'Asilomar State Beach','','Pacific Grove','Monterey','CA','','',0,0,0);
 INSERT INTO location VALUES (192,'Loma Prieta','','','Santa Cruz','CA','','',0,0,0);
 INSERT INTO location VALUES (193,'Mount Madonna Road','','','Santa Cruz','CA','','',0,0,0);
-INSERT INTO location VALUES (194,'Garland Ranch State Park','','Carmel Valley','Monterey','CA','','',0,0,0);
+INSERT INTO location VALUES (194,'Garland Ranch State Park','','Carmel Valley','Monterey','CA','','',0,0,1);
 INSERT INTO location VALUES (195,'Hidden Villa','','Los Altos Hills','Santa Clara','CA','','',37.3542,-122.158,0);
 INSERT INTO location VALUES (196,'Salinas River State Beach','','Santa Cruz','Monterey','CA','','mapblast',0,0,0);
 INSERT INTO location VALUES (197,'Zmudowski State Beach','','Santa Cruz','Monterey','CA','','mapblast',0,0,0);
+INSERT INTO location VALUES (198,'Chimney Peak Road','','Kernville','Kern','CA','','',0,0,0);
+INSERT INTO location VALUES (199,'Butterbredt Spring','','Mojave','Kern','CA','','',0,0,0);
+INSERT INTO location VALUES (200,'Canebrake Ecological Reserve','','Kernville','Kern','CA','','',0,0,0);
+INSERT INTO location VALUES (201,'Jawbone Canyon Road','','Mojave','Kern','CA','','',0,0,0);
