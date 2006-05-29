@@ -487,3 +487,5 @@ INSERT INTO trip VALUES (487,'Ashok, Mary, and Bill','','Morning Photo Safari','
 INSERT INTO trip VALUES (488,'Ashok, Mary, and Bill','','Morning Photo Safari','We tried to make the most of the phalaropes at the Marina, but in the morning they are both far away and horribly backlit. We had more fun at Don Edwards, where we had closer subjects and better light angles.','2006-04-27');
 INSERT INTO trip VALUES (489,'Bill Walker','http://www.elkhornslough.com/','Elkhorn Slough Safari','I decided to try taking a photography boat cruise with Yohn Gideon at Elkhorn Slough Safari. He got us really close to some otters and a number of birds. He says the autumn photography trip has even more birds. The close encounter with Pigeon Guillemot was fabulous.','2006-05-13');
 INSERT INTO trip VALUES (490,'Mary and Bill','','Wings over Mojave Day One','','2006-05-26');
+INSERT INTO trip VALUES (491,'Michael McQuerry','','Wings over Mojave, Day Two','','2006-05-27');
+INSERT INTO trip VALUES (492,'Mary and Bill','','Wings over Mojave, Day Three','','2006-05-28');
