@@ -200,5 +200,7 @@ INSERT INTO location VALUES (200,'Canebrake Ecological Reserve','','Kernville','
 INSERT INTO location VALUES (201,'Jawbone Canyon Road','','Mojave','Kern','CA','','',0,0,0);
 INSERT INTO location VALUES (202,'California City Golf Course','','California City','Kern','CA','','',0,0,0);
 INSERT INTO location VALUES (203,'California City Central Park','','California City','Kern','CA','','',0,0,0);
-INSERT INTO location VALUES (204,'Galileo Hill','','California City','Kern','CA','','',0,0,0);
+INSERT INTO location VALUES (204,'Galileo Hill','','California City','Kern','CA','','',35.2122,-117.753,0);
 INSERT INTO location VALUES (205,'Kelso Valley Road','','Kernville','Kern','CA','','',0,0,0);
+INSERT INTO location VALUES (206,'Twin Gates','','Mt Hamilton','Alameda','CA','','',0,0,0);
+INSERT INTO location VALUES (207,'Smith Creek Fire Station','','Mt Hamilton','Alameda','CA','','',0,0,0);

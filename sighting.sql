@@ -13254,3 +13254,17 @@ INSERT INTO sighting VALUES (13328,'macwar','Butterbredt Spring','',0,0,'2006-05
 INSERT INTO sighting VALUES (13329,'bkcspa','Kelso Valley Road','',0,0,'2006-05-28');
 INSERT INTO sighting VALUES (13330,'warvir','Butterbredt Spring','',0,0,'2006-05-29');
 INSERT INTO sighting VALUES (13331,'cliswa','Kern River Preserve','On the road from Kern down to Bakersfield',0,0,'2006-05-29');
+INSERT INTO sighting VALUES (13332,'bulori','Grant Ranch County Park','',0,0,'2006-05-21');
+INSERT INTO sighting VALUES (13333,'weskin','Grant Ranch County Park','',0,0,'2006-05-21');
+INSERT INTO sighting VALUES (13334,'rethaw','Grant Ranch County Park','',0,0,'2006-05-21');
+INSERT INTO sighting VALUES (13335,'sonspa','Grant Ranch County Park','',0,0,'2006-05-21');
+INSERT INTO sighting VALUES (13336,'blkpho','Grant Ranch County Park','',0,0,'2006-05-21');
+INSERT INTO sighting VALUES (13337,'barswa','Grant Ranch County Park','',0,0,'2006-05-21');
+INSERT INTO sighting VALUES (13338,'larspa','Twin Gates','',0,0,'2006-05-21');
+INSERT INTO sighting VALUES (13339,'turvul','Twin Gates','',0,0,'2006-05-21');
+INSERT INTO sighting VALUES (13340,'acowoo','Twin Gates','',0,0,'2006-05-21');
+INSERT INTO sighting VALUES (13341,'bkhgro','Smith Creek Fire Station','',0,0,'2006-05-21');
+INSERT INTO sighting VALUES (13342,'chbchi','Smith Creek Fire Station','',0,0,'2006-05-21');
+INSERT INTO sighting VALUES (13343,'calthr','Smith Creek Fire Station','',0,0,'2006-05-21');
+INSERT INTO sighting VALUES (13344,'lewwoo','San Antonio Valley','',0,0,'2006-05-21');
+INSERT INTO sighting VALUES (13345,'grnher','San Antonio Valley','',0,0,'2006-05-21');
