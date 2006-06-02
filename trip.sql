@@ -489,3 +489,4 @@ INSERT INTO trip VALUES (489,'Bill Walker','http://www.elkhornslough.com/','Elkh
 INSERT INTO trip VALUES (490,'Mary and Bill','','Wings over Mojave Day One','','2006-05-26');
 INSERT INTO trip VALUES (491,'Michael McQuerry','','Wings over Mojave, Day Two','','2006-05-27');
 INSERT INTO trip VALUES (492,'Mary and Bill','','Wings over Mojave, Day Three','','2006-05-28');
+INSERT INTO trip VALUES (493,'Mary and Bill','','Wings over Mojave, Day Four','','2006-05-29');

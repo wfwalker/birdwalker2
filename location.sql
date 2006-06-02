@@ -195,7 +195,7 @@ INSERT INTO location VALUES (195,'Hidden Villa','','Los Altos Hills','Santa Clar
 INSERT INTO location VALUES (196,'Salinas River State Beach','','Santa Cruz','Monterey','CA','','mapblast',0,0,0);
 INSERT INTO location VALUES (197,'Zmudowski State Beach','','Santa Cruz','Monterey','CA','','mapblast',0,0,0);
 INSERT INTO location VALUES (198,'Chimney Peak Road','','Kernville','Kern','CA','','',0,0,0);
-INSERT INTO location VALUES (199,'Butterbredt Spring','','Mojave','Kern','CA','','',0,0,0);
+INSERT INTO location VALUES (199,'Butterbredt Spring','','Mojave','Kern','CA','','',35.3822,-118.112,0);
 INSERT INTO location VALUES (200,'Canebrake Ecological Reserve','','Kernville','Kern','CA','','',0,0,0);
 INSERT INTO location VALUES (201,'Jawbone Canyon Road','','Mojave','Kern','CA','','',0,0,0);
 INSERT INTO location VALUES (202,'California City Golf Course','','California City','Kern','CA','','',0,0,0);
