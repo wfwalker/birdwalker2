@@ -58,7 +58,7 @@ class SpeciesQuery extends BirdWalkerQuery
 		$whereClause = "WHERE species.Abbreviation=sighting.SpeciesAbbreviation";
 
 		if ($this->mReq->getTripID() != "") {
-			$tripInfo = getTripInfo($this->mReq->getTripID());
+			$tripInfo = $this->mReq->getTripInfo();
 			$whereClause = $whereClause . " AND sighting.TripDate='" . $tripInfo["Date"] . "'";
 		}
 

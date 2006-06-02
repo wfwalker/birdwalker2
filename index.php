@@ -109,7 +109,9 @@ function birdOfTheDay()
 			 $photoFilename = getPhotoFilename($photoInfo);
 			 list($width, $height, $type, $attr) = getimagesize("./images/photo/" . $photoFilename); ?>
 
-			 <a href="./speciesdetail.php?speciesid=<?=$info['objectid']?>"><img width="300px" border="0" src="<?= getPhotoURLForSightingInfo($photoInfo) ?>" alt="bird"></a>
+			 <a href="./speciesdetail.php?speciesid=<?=$info['objectid']?>">
+			   <img width="300px" border="0" src="<?= getPhotoURLForSightingInfo($photoInfo) ?>" alt="bird">
+			 </a>
 
 	  <? } ?>
 

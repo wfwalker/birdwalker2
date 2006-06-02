@@ -21,7 +21,7 @@ $request->globalMenu();
 
 
     <div class="topright"><div class="topright-trip">
-      <? tripBrowseButtons("./tripdetail.php", $request->getTripID(), $request->getView()); ?>
+      <? tripBrowseButtons("./tripdetail.php", $request->getTripInfo(), $request->getView()); ?>
         <div class="pagetitle">
             <?= $tripInfo["Name"] ?>
             <?= editLink("./tripedit.php?tripid=" . $request->getTripID()); ?>

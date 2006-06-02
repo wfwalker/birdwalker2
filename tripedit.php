@@ -30,18 +30,17 @@ if (($postTripID != "") && ($save == "Save"))
 	echo "<b>Trip Updated</b>";
 }
 
-$tripInfo = getTripInfo($tripID);
+$request = new Request;
+$tripInfo = $request->getTripInfo();
 
 htmlHead($tripInfo["Name"] . ", " .$tripInfo["niceDate"]);
-
-$request = new Request;
 
 $request->globalMenu();
 
 ?>
 
 <div class="topright-trip">
-  <? tripBrowseButtons("./tripedit.php", $tripID, "edit"); ?>
+  <? tripBrowseButtons("./tripedit.php", $tripInfo, "edit"); ?>
   <a href="./tripdetail.php?tripid=<?= $tripInfo["objectid"] ?>">
     <div class="pagetitle"><?= $tripInfo["Name"] ?></div>
     <div class="pagesubtitle"><?= $tripInfo["niceDate"] ?></div>

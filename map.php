@@ -79,7 +79,7 @@ class Map
 			"WMTVER=1.1.0&servicename=USGS_WMS_REF&reaspect=True&REQUEST=map&SRS=EPSG:4326&BBOX=" . 
 			$this->getMinimumLongitude() . "," . $this->getMinimumLatitude(). "," . $this->getMaximumLongitude() . "," . $this->getMaximumLatitude() .
 			"&WIDTH=" . $this->mReq->getMapWidth() . "&HEIGHT=" . $this->mReq->getMapHeight() .
-			"&LAYERS=States,State_Labels,County_Labels,County,Route_Numbers,Roads,Streams,Names-Streams,Water_Bodies,Names-Water_Bodies,Urban_Areas,Federal_Lands,Names-Federal_Lands&STYLES=reference&FORMAT=JPEG&BGCOLOR=0xffffff&TRANSPARENT=TRUE&EXCEPTIONS=INIMAGE";
+			"&LAYERS=roads&STYLES=reference&FORMAT=JPEG&BGCOLOR=0xffffff&TRANSPARENT=TRUE&EXCEPTIONS=INIMAGE";
 
 		// nice shaded color relief but low res
 		$relief2 =

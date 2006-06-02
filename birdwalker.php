@@ -473,10 +473,8 @@ function getTripInfoForDate($inDate)
               "SELECT *, date_format(Date, '%W,  %M %D, %Y') as niceDate FROM trip where Date='" . $inDate . "'");
 }
 
-function tripBrowseButtons($url, $tripID, $viewMode)
+function tripBrowseButtons($url, $tripInfo, $viewMode)
 {
-	$tripInfo = getTripInfo($tripID);
-
 	$nextTripInfo = performOneRowQuery("Get Next Trip", 
     "SELECT objectid, date_format(Date, '%b %D, %Y') as niceDate FROM trip
       WHERE Date > '" . $tripInfo["Date"] . "'
@@ -486,7 +484,7 @@ function tripBrowseButtons($url, $tripID, $viewMode)
       WHERE Date < '" . $tripInfo["Date"] . "'
       ORDER BY Date DESC LIMIT 1", false);
 
-	browseButtons("Trip Detail", $url . "?view=" . $viewMode . "&tripid=", $tripID,
+	browseButtons("Trip Detail", $url . "?view=" . $viewMode . "&tripid=", $tripInfo["objectid"],
 				  $prevTripInfo["objectid"], $prevTripInfo["niceDate"], $nextTripInfo["objectid"], $nextTripInfo["niceDate"]);
 }
 

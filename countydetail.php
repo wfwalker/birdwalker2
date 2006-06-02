@@ -13,7 +13,6 @@ htmlHead($request->getCounty() . " County");
 $request->globalMenu();
 
 $locationQuery = new LocationQuery($request);
-$extrema = $locationQuery->findExtrema();
 $stateInfo =  $request->getStateInfo();
 
 ?>

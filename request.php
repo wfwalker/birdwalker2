@@ -36,6 +36,8 @@ class Request
 	var $mScale; // map scale
 	var $mBackground; // which map background
 
+	var $mTripInfo; // cached trip info
+
 	//
 	// CONSTRUCTOR
 	//
@@ -65,6 +67,8 @@ class Request
 		array_key_exists("long", $_GET) && $this->setLongitude($_GET["long"]);
 		array_key_exists("scale", $_GET) && $this->setScale($_GET["scale"]);
 		array_key_exists("backgnd", $_GET) && $this->setBackground($_GET["backgnd"]);
+
+		$this->mTripInfo = "";
 	}
 
 	//
@@ -112,6 +116,8 @@ class Request
 
 		if ($inValue != "")
 		{
+		  // TODO this is causing extra queries when doing the lefthand global menu
+		  echo "<!-- calling from inside setTrip ID-->";
 			$tripInfo = $this->getTripInfo();
 			$this->setYear(substr($tripInfo["Date"], 0, 4));
 			$this->setMonth(substr($tripInfo["Date"], 5, 2));
@@ -276,8 +282,12 @@ class Request
 
 	function getTripInfo()
 	{
-		if ($this->getTripID() == '') die("Fatal error: missing Trip ID");
-		return getTripInfo($this->getTripID());
+	    if ($this->mTripInfo == "")
+		{
+		    if ($this->getTripID() == '') die("Fatal error: missing Trip ID");
+		    $this->mTripInfo = getTripInfo($this->getTripID());
+		}
+		return $this->mTripInfo;
 	}
 
 	function getStateInfo()

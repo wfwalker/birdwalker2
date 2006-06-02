@@ -44,7 +44,7 @@ class SightingQuery extends BirdWalkerQuery
             trip.Date=sighting.TripDate ";
 
 		if ($this->mReq->getTripID() != "") {
-			$tripInfo = getTripInfo($this->mReq->getTripID());
+			$tripInfo = $this->mReq->getTripInfo();
 			$whereClause = $whereClause . " AND sighting.TripDate='" . $tripInfo["Date"] . "'";
 		}
 
