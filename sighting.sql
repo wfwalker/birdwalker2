@@ -13123,7 +13123,7 @@ INSERT INTO sighting VALUES (13197,'killde','California City Golf Course','',0,0
 INSERT INTO sighting VALUES (13198,'rocdov','California City Golf Course','',0,0,'2006-05-27');
 INSERT INTO sighting VALUES (13199,'eursta','California City Golf Course','',0,0,'2006-05-27');
 INSERT INTO sighting VALUES (13200,'rewbla','California City Golf Course','',0,0,'2006-05-27');
-INSERT INTO sighting VALUES (13201,'yehbla','California City Golf Course','',0,0,'2006-05-27');
+INSERT INTO sighting VALUES (13201,'yehbla','California City Golf Course','',0,1,'2006-05-27');
 INSERT INTO sighting VALUES (13202,'brebla','California City Golf Course','',0,0,'2006-05-27');
 INSERT INTO sighting VALUES (13203,'grtgra','California City Golf Course','',0,0,'2006-05-27');
 INSERT INTO sighting VALUES (13204,'doccor','Galileo Hill','',0,0,'2006-05-27');
