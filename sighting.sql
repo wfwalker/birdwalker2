@@ -13268,3 +13268,4 @@ INSERT INTO sighting VALUES (13342,'chbchi','Smith Creek Fire Station','',0,0,'2
 INSERT INTO sighting VALUES (13343,'calthr','Smith Creek Fire Station','',0,0,'2006-05-21');
 INSERT INTO sighting VALUES (13344,'lewwoo','San Antonio Valley','',0,0,'2006-05-21');
 INSERT INTO sighting VALUES (13345,'grnher','San Antonio Valley','',0,0,'2006-05-21');
+INSERT INTO sighting VALUES (13346,'vigswa','San Antonio Valley','',0,1,'2006-05-21');
