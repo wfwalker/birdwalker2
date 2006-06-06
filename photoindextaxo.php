@@ -30,11 +30,11 @@ $request->globalMenu();
       </div>
 	</div>
 
-    <div class=contentright>
-      <div class=heading><?= $photoCount ?> photos covering <?= mysql_num_rows($photoSpecies) ?> ABA-countable species</div>
+    <div class="contentright">
+      <div class="heading"><?= $photoCount ?> photos covering <?= mysql_num_rows($photoSpecies) ?> ABA-countable species</div>
 
-<table width="100%">
-<tr valign=top><td width="50%" class=report-content>
+<table width="100%" class="report-content">
+<tr valign=top><td width="50%" class="leftcolumn">
 <?
 $counter = round(mysql_num_rows($photoSpecies)  * 0.6);
 
@@ -46,7 +46,7 @@ while($info = mysql_fetch_array($photoSpecies))
 	if ($prevInfo == "" || getFamilyIDFromSpeciesID($prevInfo["objectid"]) != getFamilyIDFromSpeciesID($info["objectid"]))
 	{
 		$taxoInfo = getFamilyInfoFromSpeciesID($info["objectid"]); ?>
-		<div class="subheading"><?= strtolower($taxoInfo["LatinName"]) ?></div>
+		<div class="subheading"><?= getFamilyDetailLinkFromSpeciesID($info["objectid"], "photo") ?></div>
 <?	} ?>
 
     <div>
@@ -59,7 +59,7 @@ while($info = mysql_fetch_array($photoSpecies))
 
 <?	$prevInfo = $info;
     $counter--;
-    if ($counter == 0) { ?></td><td width="50%" class=report-content> <? }
+    if ($counter == 0) { ?></td><td width="50%" class="rightcolumn"> <? }
 }
 
 ?>
