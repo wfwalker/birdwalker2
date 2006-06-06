@@ -3562,7 +3562,7 @@ INSERT INTO sighting VALUES (3561,'daejun','Mount Hamilton','',0,0,'2002-01-21')
 INSERT INTO sighting VALUES (3562,'greyel','Mount Hamilton','',0,0,'2002-01-21');
 INSERT INTO sighting VALUES (3563,'killde','Mount Hamilton','',0,0,'2002-01-21');
 INSERT INTO sighting VALUES (3564,'lewwoo','Mount Hamilton','',0,0,'2002-01-21');
-INSERT INTO sighting VALUES (3565,'nopowl','Mount Hamilton','Sitting on a small twig next to Smith Creek, behind the fire station. At first, Bill thought it was a pine cone, but it turned out to be this fierce little bird with false eye patches on the back of its head and lovely plumage.',0,1,'2002-01-21');
+INSERT INTO sighting VALUES (3565,'nopowl','Smith Creek Fire Station','Sitting on a small twig next to Smith Creek, behind the fire station. At first, Bill thought it was a pine cone, but it turned out to be this fierce little bird with false eye patches on the back of its head and lovely plumage.',0,1,'2002-01-21');
 INSERT INTO sighting VALUES (3566,'pinsis','Mount Hamilton','',0,0,'2002-01-21');
 INSERT INTO sighting VALUES (3567,'acowoo','San Antonio Valley','',0,0,'2002-01-21');
 INSERT INTO sighting VALUES (3568,'amekes','San Antonio Valley','',0,0,'2002-01-21');
@@ -7205,7 +7205,7 @@ INSERT INTO sighting VALUES (7205,'bcnher','Mount Hamilton','',0,0,'2004-01-10')
 INSERT INTO sighting VALUES (7206,'buffle','Mount Hamilton','',0,0,'2004-01-10');
 INSERT INTO sighting VALUES (7207,'bushti','Mount Hamilton','',0,0,'2004-01-10');
 INSERT INTO sighting VALUES (7208,'calqua','Mount Hamilton','',0,0,'2004-01-10');
-INSERT INTO sighting VALUES (7209,'calthr','Mount Hamilton','',0,1,'2004-01-10');
+INSERT INTO sighting VALUES (7209,'calthr','Grant Ranch County Park','',0,1,'2004-01-10');
 INSERT INTO sighting VALUES (7210,'caltow','Mount Hamilton','',0,0,'2004-01-10');
 INSERT INTO sighting VALUES (7211,'cangoo','Mount Hamilton','',0,0,'2004-01-10');
 INSERT INTO sighting VALUES (7212,'canvas','Mount Hamilton','',0,0,'2004-01-10');
@@ -7246,7 +7246,7 @@ INSERT INTO sighting VALUES (7246,'wesblu','Mount Hamilton','',0,1,'2004-01-10')
 INSERT INTO sighting VALUES (7247,'wesjay','Mount Hamilton','',0,0,'2004-01-10');
 INSERT INTO sighting VALUES (7248,'whbnut','Mount Hamilton','',0,0,'2004-01-10');
 INSERT INTO sighting VALUES (7249,'whcspa','Mount Hamilton','',0,0,'2004-01-10');
-INSERT INTO sighting VALUES (7250,'whtspa','Mount Hamilton','',0,1,'2004-01-10');
+INSERT INTO sighting VALUES (7250,'whtspa','Grant Ranch County Park','',0,1,'2004-01-10');
 INSERT INTO sighting VALUES (7251,'yebmag','Mount Hamilton','',0,1,'2004-01-10');
 INSERT INTO sighting VALUES (7252,'amecoo','Calero Reservoir','',0,0,'2004-01-11');
 INSERT INTO sighting VALUES (7253,'amekes','Calero Reservoir','',0,0,'2004-01-11');
@@ -8799,7 +8799,7 @@ INSERT INTO sighting VALUES (8820,'acowoo','Mount Hamilton','',0,0,'2004-05-15')
 INSERT INTO sighting VALUES (8821,'blkpho','Mount Hamilton','',0,0,'2004-05-15');
 INSERT INTO sighting VALUES (8822,'cangoo','Mount Hamilton','',0,0,'2004-05-15');
 INSERT INTO sighting VALUES (8823,'rudduc','Mount Hamilton','',0,0,'2004-05-15');
-INSERT INTO sighting VALUES (8824,'caster','Mount Hamilton','',0,1,'2004-05-15');
+INSERT INTO sighting VALUES (8824,'caster','Grant Ranch County Park','',0,1,'2004-05-15');
 INSERT INTO sighting VALUES (8825,'forter','Mount Hamilton','',0,0,'2004-05-15');
 INSERT INTO sighting VALUES (8826,'mallar','Mount Hamilton','',0,0,'2004-05-15');
 INSERT INTO sighting VALUES (8827,'grbher','Mount Hamilton','',0,0,'2004-05-15');
@@ -13269,3 +13269,8 @@ INSERT INTO sighting VALUES (13343,'calthr','Smith Creek Fire Station','',0,0,'2
 INSERT INTO sighting VALUES (13344,'lewwoo','San Antonio Valley','',0,0,'2006-05-21');
 INSERT INTO sighting VALUES (13345,'grnher','San Antonio Valley','',0,0,'2006-05-21');
 INSERT INTO sighting VALUES (13346,'vigswa','San Antonio Valley','',0,1,'2006-05-21');
+INSERT INTO sighting VALUES (13347,'wesowl','Rancho San Antonio','',0,1,'2006-06-03');
+INSERT INTO sighting VALUES (13348,'blkpho','Rancho San Antonio','',0,0,'2006-06-03');
+INSERT INTO sighting VALUES (13349,'caltow','Rancho San Antonio','',0,0,'2006-06-03');
+INSERT INTO sighting VALUES (13350,'calqua','Rancho San Antonio','',0,0,'2006-06-03');
+INSERT INTO sighting VALUES (13351,'reshaw','Rancho San Antonio','',0,0,'2006-06-03');

@@ -491,3 +491,4 @@ INSERT INTO trip VALUES (491,'Michael McQuerry','','Wings over Mojave, Day Two',
 INSERT INTO trip VALUES (492,'Mary and Bill','','Wings over Mojave, Day Three','','2006-05-28');
 INSERT INTO trip VALUES (493,'Mary and Bill','','Wings over Mojave, Day Four','','2006-05-29');
 INSERT INTO trip VALUES (494,'Mary and Bill','','Mines Road','We decided to try for Lewis\'s Woodpecker and found one. The rain cut the trip short, but we still had a good time.','2006-05-21');
+INSERT INTO trip VALUES (495,'Mary and Bill','','Owl Quest','On my third try (Mary\'s first), we were treated to an audience by the famous Screech Owl of Rancho San Antonio. The bird stayed around for about 35 minutes this morning, yawning occasionally, looking around a bit, and mostly sleeping. We had several fun opportunities to show the bird to passersby, and the photography was pretty good, given that the bird was in full shade.','2006-06-03');
