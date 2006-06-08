@@ -83,11 +83,6 @@ class SpeciesQuery extends BirdWalkerQuery
               species.objectid >= " . $this->mReq->getOrderID() * pow(10, 9) . " AND
               species.objectid < " . ($this->mReq->getOrderID() + 1) * pow(10, 9);
 		}
-		else
-		{
-			echo "<!-- where clause for species query -->";
-			$this->mReq->debug();
-		}
 
 		if ($this->mReq->getMonth() !="") {
 			$whereClause = $whereClause . " AND Month(TripDate)=" . $this->mReq->getMonth();
