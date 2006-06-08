@@ -33,16 +33,14 @@ $request->globalMenu();
     <div class="contentright">
       <div class="heading"><?= $photoCount ?> photos made at <?= mysql_num_rows($photoLocations) ?> locations</div>
 
-<table width="100%">
-<tr valign=top><td width="50%" class="report-content">
-
+      <div class="onecolumn">
 <?
 	$prevInfo = "";
 	while($info = mysql_fetch_array($photoLocations))
     {
 		if ($prevInfo == "" || ($prevInfo["State"] != $info["State"]) || ($prevInfo["County"] != $info["County"])) 
 		{ ?>
-          <div class=subheading><?
+          <div class="subheading"><?
 		  if ($prevInfo == "" || $prevInfo["State"] != $info["State"])
 		  { ?>
 			  <span class="statename"><?= getStateNameForAbbreviation($info["State"]) ?></span>,
@@ -62,6 +60,8 @@ $request->globalMenu();
 	    </div>
 <?      $prevInfo = $info;
     }
+
+?>   </div> <?
 
 footer();
 ?>
