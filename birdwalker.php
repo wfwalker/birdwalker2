@@ -420,11 +420,11 @@ function getFamilyIDFromSpeciesID($speciesid)
 	return floor($speciesid / pow(10,7)) * pow(10, 7);
 }
 
-function getFamilyDetailLinkFromSpeciesID($speciesid)
+function getFamilyDetailLinkFromSpeciesID($speciesid, $viewMode="species")
 {
 	$taxoInfo = getFamilyInfoFromSpeciesID($speciesid);
 
-	return "<a href=\"./familydetail.php?familyid=" . floor($speciesid / pow(10,7)) . "\">" .
+	return "<a href=\"./familydetail.php?familyid=" . floor($speciesid / pow(10,7)) . "&view=" . $viewMode . "\">" .
 		$taxoInfo["LatinName"] . 
 		"</a>";
 }
