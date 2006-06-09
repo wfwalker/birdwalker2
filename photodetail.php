@@ -10,13 +10,10 @@ $sightingInfo = $request->getSightingInfo();
 
 $speciesInfo = performOneRowQuery("Get Species Info", "SELECT * FROM species WHERE Abbreviation='" . $sightingInfo["SpeciesAbbreviation"] . "'");
 
-$tripInfo = performOneRowQuery(
-    "Get Trip Info", 
-    "SELECT *, " . shortNiceDateColumn() . "
-      FROM trip WHERE Date='" . $sightingInfo["TripDate"] . "'");
+$tripInfo = getTripInfoForDate($sightingInfo["TripDate"]);
 $tripYear =  substr($tripInfo["Date"], 0, 4);
 
-$locationInfo = performOneRowQuery("Get Location Info", "SELECT * FROM location WHERE Name='" . $sightingInfo["LocationName"] . "'");
+$locationInfo = getLocationInfoForName($sightingInfo["LocationName"]);
 
 $nextPhotoID = performCount(
 	"Get Next Photo", 

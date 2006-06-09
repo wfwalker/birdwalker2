@@ -470,7 +470,7 @@ function getTripInfo($objectid)
 function getTripInfoForDate($inDate)
 {
 	return performOneRowQuery("Get Trip Info for Date", 
-              "SELECT *, date_format(Date, '%W,  %M %D, %Y') as niceDate FROM trip where Date='" . $inDate . "'");
+              "SELECT *, date_format(Date, '%W,  %M %D, %Y') as niceDate FROM trip WHERE Date='" . $inDate . "'");
 }
 
 function tripBrowseButtons($url, $tripInfo, $viewMode)
