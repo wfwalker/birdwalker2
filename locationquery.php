@@ -12,7 +12,7 @@ class LocationQuery extends BirdWalkerQuery
 
 	function getSelectClause()
 	{
- 		$selectClause = "SELECT DISTINCT location.objectid, location.*, SUM(sighting.Photo) as locationPhotos";
+ 		$selectClause = "SELECT DISTINCT location.objectid, location.*, SUM(sighting.Photo) as locationPhotos, location.Notes as locationNotes";
 
 		return $selectClause;
 	}
@@ -314,6 +314,10 @@ class LocationQuery extends BirdWalkerQuery
 			      <img border="0" align="bottom" src="./images/camera.gif" alt="photo">
 			  </a>
 <?           } ?>
+
+<?          if (($this->mReq->getTripID() == "") && strlen($info["locationNotes"]) > 0) { ?>
+              <div class="sighting-notes"><?= $info["locationNotes"] ?></div>
+<?          } ?>
 
 			</div>
 
