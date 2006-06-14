@@ -16,7 +16,7 @@ class SpeciesQuery extends BirdWalkerQuery
 
 	function getSelectClause()
 	{
-		$selectClause = "SELECT DISTINCT species.objectid, species.CommonName, species.LatinName, species.ABACountable, sum(sighting.Photo) as speciesPhotos";
+	  $selectClause = "SELECT DISTINCT species.objectid, species.CommonName, species.LatinName, species.ABACountable, SUM(sighting.Photo) as speciesPhotos, species.Notes as speciesNotes";
 
 		if ($this->mReq->getTripID() == "")
 		{
@@ -209,9 +209,13 @@ class SpeciesQuery extends BirdWalkerQuery
 					 }
 				 }
 
-				 if (array_key_exists("Notes", $info) && strlen($info["Notes"]) > 0)
+				 if (array_key_exists("sighting.Notes", $info) && strlen($info["sighting.Notes"]) > 0)
 				 { ?>
-					 <div class="sighting-notes"><?= $info["Notes"] ?></div><?
+					 <div class="sighting-notes"><?= $info["sighting.Notes"] ?></div><?
+				 }
+				 if (($this->mReq->getTripID() == "") && array_key_exists("speciesNotes", $info) && strlen($info["speciesNotes"]) > 0)
+				 { ?>
+					 <div class="sighting-notes"><?= $info["speciesNotes"] ?></div><?
 				 } ?>
 
 		    </div>
