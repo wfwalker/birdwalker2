@@ -154,71 +154,22 @@ class Map
 		}
 	}
 
-	function linkToSelfChangeBackground($background)
-	{
-		$oldBackground = $this->mReq->getBackground();
-		$this->mReq->setBackground($background);
-		$link = $this->mReq->linkToSelf($background);
-		$this->mReq->setBackground($oldBackground);
-		return $link;
-	}
-
-	function linkToSelfZoom($zoomFactor, $anchorText)
-	{
-		$oldScale = $this->mReq->getScale();
-		$this->mReq->setScale($zoomFactor * $oldScale);
-		$link = $this->mReq->linkToSelf($anchorText);
-		$this->mReq->setScale($oldScale);
-		return $link;
-	}
-
-	function linkToSelfPan($latPan, $longPan, $anchorText)
-	{
-		$oldLat = $this->mReq->getLatitude();
-		$oldLong = $this->mReq->getLongitude();
-
-		$this->mReq->setLongitude($oldLong + $longPan);
-		$this->mReq->setLatitude($oldLat + $latPan);
-
-		$link = $this->mReq->linkToSelf($anchorText);
-
-		$this->mReq->setLatitude($oldLat);
-		$this->mReq->setLongitude($oldLong);
-
-		return $link;
-	}
-
-	function drawLayerControls()
-	{ ?>
-		 <?= $this->linkToSelfChangeBackground("relief"); ?> |
-		 <?= $this->linkToSelfChangeBackground("photo"); ?> |
-		 <?= $this->linkToSelfChangeBackground("landcover"); ?> |
-		 <?= $this->linkToSelfChangeBackground("roads"); ?>
-<?	}
-
-	function drawPanControls()
-	{
-		$longPan = -$this->getLongitudeRadius() * 0.25;
-		$latPan = $this->getLatitudeRadius() * 0.25; 
-		echo "<!-- PAN " . $longPan . ", " . $latPan . " -->";
-?>
-	<div style="z-index: 900; text-align: center; width: 20px; height: 20px; border: 1px solid gray; font-weight: bold; background-color: white; position: absolute; left: 26px; top: 5px">
-		 <?= $this->linkToSelfPan($latPan, 0, "N"); ?>
-	</div>
-	<div style="z-index: 900; text-align: center; width: 20px; height: 20px; border: 1px solid gray; font-weight: bold; background-color: white; position: absolute; left: 26px; top: 47px">
-		 <?= $this->linkToSelfPan(-$latPan, 0, "S"); ?>
-	</div>
-	<div style="z-index: 900; text-align: center; width: 20px; height: 20px; border: 1px solid gray; font-weight: bold; background-color: white; position: absolute; left: 5px; top: 26px">
-		 <?= $this->linkToSelfPan(0, $longPan, "W"); ?>
-	</div>
-	<div style="z-index: 900; text-align: center; width: 20px; height: 20px; border: 1px solid gray; font-weight: bold; background-color: white; position: absolute; left: 47px; top: 26px">
-		 <?= $this->linkToSelfPan(0, -$longPan, "E"); ?>
-	</div>
-<?
-	}
-
-
 	function draw($inDrawControls = false)
+	{
+	    $this->mReq
+?>
+
+       <iframe marginwidth="0" marginheight="0" scrolling="no" src="./mapframe.php?<?= $this->mReq->getParams() ?>" style="position: relative; border: 1px solid gray; height:<?= $this->mReq->getMapHeight() ?>px; width: <?= $this->mReq->getMapWidth()?>px;">
+       </iframe>
+
+	   <p>&nbsp;</p>
+<?
+
+	   if ($inDrawControls) $this->mLocationQuery->formatTwoColumnLocationList("map", true);
+   }
+
+
+	function drawInner()
 	{
 		$centerLong = ($this->getMinimumLongitude() + $this->getMaximumLongitude()) / 2.0;
 		$centerLat = ($this->getMinimumLatitude() + $this->getMaximumLatitude()) / 2.0;
@@ -231,15 +182,7 @@ class Map
 
 		$longPan = $longRange * 0.1;
 		$latPan = $latRange * 0.3; 
-?>
-
-	   <? if ($inDrawControls) { ?>
-	      <div style="text-align: right; padding-top: 30px;">
-		    <?= $this->linkToSelfZoom(1.5, "out") ?> | 
-			<?= $this->linkToSelfZoom(0.6, "in") ?> |
-			<?= $this->drawLayerControls() ?>
-          </div>
-	   <? } ?>
+ ?>
 
        <div style="position: relative; border: 1px solid gray; height:<?= $this->mReq->getMapHeight() ?>px; width: <?= $this->mReq->getMapWidth()?>px;">
 
@@ -250,8 +193,6 @@ class Map
        </script>
 
 <?
-		if ($inDrawControls) $this->drawPanControls();
-
 		$dbQuery = $this->performDBQuery();
 
 		$counter = 1;
@@ -287,14 +228,128 @@ class Map
 ?>
 
    </div>
+
+<? }
+
+
+
+
+
+
+    function drawGoogle()
+    {
+      $centerLong = ($this->getMinimumLongitude() + $this->getMaximumLongitude()) / 2.0;
+      $centerLat = ($this->getMinimumLatitude() + $this->getMaximumLatitude()) / 2.0;
+      
+      $minRange = min($this->getMaximumLongitude() - $this->getMinimumLongitude(), $this->getMaximumLatitude() - $this->getMinimumLatitude());
+      $minPixels = min($this->mReq->getMapWidth(), $this->mReq->getMapHeight());
+      
+      $longRange = $minRange * $this->mReq->getMapHeight() / $minPixels;
+      $latRange = $minRange * $this->mReq->getMapWidth() / $minPixels;
+      
+      $longPan = $longRange * 0.1;
+      $latPan = $latRange * 0.3; 
+
+?>
+
+<!-- try http://www.spflrc.org/~walker/googlemap.php?name=pants&lat=35.384&long=-118.115 -->
+
+<html>
+  <head>
+    <script src="http://maps.google.com/maps?file=api&v=1&key=ABQIAAAAHB2OV0S5_ezvt-IsSEgTohRpTu2oewaAZF3JMvnmpq8AtvOtbRRR9bUrae9RcGIgtWO2REdkBQNLwA" type="text/javascript"></script>
+  </head>
+  <body>
   
-   <p>&nbsp;</p>
+  
+  <style type="text/css">
+
+h1	{
+	margin: 0 0 0 0;
+	padding: 0;
+	font: bold 20px Arial, Helvetica, sans-serif;
+	color: white;
+	}
+</style>
+
+</head>
+<body leftmargin="0" topmargin="0" rightmargin="0" bottommargin="0">
+
+
+  
+    <div id="map" style="width: <?= $this->mReq->getMapWidth() ?>; height: <?= $this->mReq->getMapHeight() ?>"></div>
+    <script type="text/javascript">
+    //<![CDATA[
+   
+// Create our "tiny" marker icon
+var icon = new GIcon();
+icon.image = "http://labs.google.com/ridefinder/images/mm_20_red.png";
+icon.shadow = "http://labs.google.com/ridefinder/images/mm_20_shadow.png";
+icon.iconSize = new GSize(12, 20);
+icon.shadowSize = new GSize(22, 20);
+icon.iconAnchor = new GPoint(6, 20);
+icon.infoWindowAnchor = new GPoint(5, 1);
+
+// Center the map on the location
+var map = new GMap(document.getElementById("map"));
+map.addControl(new GSmallMapControl());
+//map.addControl(new GMapTypeControl());
+map.centerAndZoom(new GPoint(<?= $centerLong ?>, <?= $centerLat ?>), 12);
+
+// Creates one of our tiny markers at the given point
+function createMarker(point,name) {
+  var marker = new GMarker(point, icon);
+  map.addOverlay(marker);
+  GEvent.addListener(marker, "click", function() {
+    marker.openInfoWindowHtml(name);
+  });
+}
+
+// Place the icons where they should be
 
 <?
-     if ($inDrawControls) {
-	   $this->mLocationQuery->formatTwoColumnLocationList("map", true);
-     }
-   }
+		$dbQuery = $this->performDBQuery();
+
+		$counter = 1;
+
+		while($info = mysql_fetch_array($dbQuery))
+		{ ?>
+createMarker(new GPoint(<?= $info["Longitude"] ?>, <?= $info["Latitude"] ?>), "<?= $info["Name"] ?>");
+<?		} ?>
+
+
+    
+    //]]>
+    </script>
+	
+
+
+<p>
+	
+</body>
+</html>	
+
+
+
+
+
+
+
+<?
+	  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 ?>
