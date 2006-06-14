@@ -186,6 +186,9 @@ class Request
 		if ($this->mScale !="") { $params[] = "scale=" . $this->mScale; }
 		if ($this->mBackground !="") { $params[] = "backgnd=" . $this->mBackground; }
 
+		if ($this->mMapWidth !="") { $params[] = "width=" . $this->mMapWidth; }
+		if ($this->mMapHeight !="") { $params[] = "height=" . $this->mMapHeight; }
+
 		if (count($params) == 0)
 		{
 			return "";
