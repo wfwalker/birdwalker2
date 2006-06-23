@@ -14,7 +14,7 @@ $request->globalMenu();
 ?>
 
 
-  <div class="topright-photo">
+  <div id="topright-photo">
 	  <div class="pagekind">Index</div>
 	  <div class="pagetitle">Photos</div>
       <div class="pagesubtitle">
@@ -24,9 +24,9 @@ $request->globalMenu();
       </div>
   </div>
 
-  <div class=contentright>
+  <div id="contentright">
 
-  <div class=heading><?= $photoCount . " photos covering " . $photoSpeciesCount . " species"; ?></div>
+  <div class="heading"><?= $photoCount . " photos covering " . $photoSpeciesCount . " species"; ?></div>
 
 <?
 

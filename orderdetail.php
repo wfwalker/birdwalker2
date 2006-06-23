@@ -46,7 +46,7 @@ else
 
 ?>
 
-    <div class="topright-species">
+    <div id="topright-species">
 	<? browseButtons("Order Detail", "./orderdetail.php?view=" . $request->getView() . "&orderid=", $request->getOrderID(),
 					 $prevOrder, $prevOrderLinkText,
 					 $nextOrder, $nextOrderLinkText); ?>

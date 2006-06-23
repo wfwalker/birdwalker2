@@ -33,7 +33,7 @@ $request = new Request;
 $request->globalMenu();
 ?>
 
-    <div class="topright-trip">
+    <div id="topright-trip">
 	  <div class="pagekind">Index</div>
 	  <div class="pagetitle">Bad Records</div>
 	</div>

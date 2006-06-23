@@ -17,7 +17,7 @@ $request->globalMenu();
 
 ?>
 
-    <div class="topright-location">
+    <div id="topright-location">
       <? stateBrowseButtons($request->getStateID(), $request->getView()); ?>
 	  <div class=pagetitle><?= $info["Name"] ?></div>
 <?    $request->viewLinks("species"); ?>

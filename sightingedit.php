@@ -84,7 +84,7 @@ $request = new Request;
 $request->globalMenu();
 ?>
 
-<div class="topright-trip">
+<div id="topright-trip">
 	<? browseButtons("Sighting Detail", "./sightingedit.php?sightingid=", $sightingID,
 					 $sightingID - 1, $sightingID - 1, $sightingID + 1, $sightingID + 1); ?>
 

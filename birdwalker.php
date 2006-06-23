@@ -26,7 +26,7 @@ echo "<!DOCTYPE  HTML PUBLIC  \"-//W3C//DTD HTML 4.01 Transitional//EN\">";
 function footer()
 {
 ?>
-    <div class="footer">
+    <div id="footer">
 	  comments to <a href="mailto:walker@shout.net">walker@shout.net</a><br/>
 		valid <a href="http://validator.w3.org/check/referer">XHTML 1.1</a>,
 		<a href="http://jigsaw.w3.org/css-validator/check/referer">CSS 2.0</a><br>

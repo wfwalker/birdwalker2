@@ -28,7 +28,7 @@ $request = new Request;
 $request->globalMenu();
 ?>
 
-    <div class="topright-photo">
+    <div id="topright-photo">
 	    <div class="pagesubtitle">Index</div>
 	    <div class="pagetitle">Photography Target Species </div>
 	</div>

@@ -22,7 +22,7 @@ htmlHead($speciesInfo["CommonName"] . ", " . $tripInfo["niceDate"]);
 $request->globalMenu();
 ?>
 
-<div class="topright-trip">
+<div id="topright-trip">
 <? browseButtons("Sighting Detail", "./sightingdetail.php?sightingid=", $sightingID, $sightingID - 1, $sightingID - 1, $sightingID + 1, $sightingID + 1); ?>
   <div class="pagetitle"> <?= $speciesInfo["CommonName"] ?></div>
 

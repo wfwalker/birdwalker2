@@ -14,7 +14,7 @@ htmlHead("Locations");
 $request->globalMenu();
 ?>
 
-    <div class="topright-location">
+    <div id="topright-location">
 	  <div class="pagekind">index</div>
 	  <div class="pagetitle">Locations</div>
       <? $request->viewLinks("locations"); ?>

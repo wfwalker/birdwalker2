@@ -16,7 +16,7 @@ $request->globalMenu();
 
 ?>
 
-  <div class="topright-species">
+  <div id="topright-species">
     <? speciesBrowseButtons("./speciesdetail.php", $request->getSpeciesID(), $request->getView()); ?>
 
       <div class="pagetitle">

@@ -27,7 +27,7 @@ htmlHead($siteInfo["Name"]);
 $request->globalMenu();
 ?>
 
-<div class="topright-location">
+<div id="topright-location">
   <? locationBrowseButtons("./locationdetail.php", $request->getLocationID(), $request->getView()); ?>
 
     <div class="pagetitle">

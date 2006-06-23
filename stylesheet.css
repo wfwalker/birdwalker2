@@ -22,46 +22,46 @@ body
 #contentleft a       { text-decoration:none; }
 #contentleft a:hover { color: red; text-decoration: underline; }
 
-.topright-trip
+#topright-trip
 {
 	left: 120px; width: 640px; top: 0px; height: 100px;
 	position: absolute;
 	background-image: url(./images/trip-banner.jpg);
 }
-.topright-location
+#topright-location
 {
 	left: 120px; width: 640px; top: 0px; height: 100px;
 	position: absolute;
 	background-image: url(./images/location-banner.jpg);
 }
-.topright-species
+#topright-species
 {
 	left: 120px; width: 640px; top: 0px; height: 100px;
 	position: absolute;
 	background-image: url(./images/species-banner.jpg);
 }
-.topright-home
+#topright-home
 {
 	left: 120px; width: 640px; top: 0px; height: 100px;
 	position: absolute;
 	background-image: url(./images/banner3.jpg);
 }
-.topright-photo
+#topright-photo
 {
 	left: 120px; width: 640px; top: 0px; height: 100px;
 	position: absolute;
 	background: white;
 }
 
-.topleft
+#topleft
 {
 	left: 0px; width: 120px; top: 0px; height: 100px;
 	padding: 0px; margin: 0px;
 	position: absolute;
     text-align: center;
 }
-.topleft a       { text-decoration: none; }
-.topleft a:hover { color: red; text-decoration: underline; }
+#topleft a       { text-decoration: none; }
+#topleft a:hover { color: red; text-decoration: underline; }
 
 #contentright
 {
@@ -74,7 +74,7 @@ body
 #contentright a       { text-decoration: none;}
 #contentright a:hover { color: red; text-decoration: underline; }
 
-.footer
+#footer
 {
     border-top: solid 1px #AAAAAA;
     font: 10pt "Gill Sans", "Gill Sans MT", SansSerif;

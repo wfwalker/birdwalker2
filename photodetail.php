@@ -57,7 +57,7 @@ htmlHead($speciesInfo["CommonName"] . ", " . $tripInfo["niceDate"]);
 $request->globalMenu();
 ?>
 
-<div class="topright-photo">
+<div id="topright-photo">
 	<? browseButtons("Photo Detail", "./photodetail.php?sightingid=", $request->getSightingID(),
 					 $prevPhotoID, $prevPhotoLinkText, $nextPhotoID, $nextPhotoLinkText); ?>
 	  <div class="pagetitle">

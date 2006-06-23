@@ -17,7 +17,7 @@ $stateInfo =  $request->getStateInfo();
 
 ?>
 
-    <div class="topright-location">
+    <div id="topright-location">
 	  <div class="pagekind">County Detail</div>
 	  <div class="pagetitle"> <?= $request->getCounty() ?> County</div>
 	  <div class="pagesubtitle"> <?= $stateInfo["Name"] ?></div>

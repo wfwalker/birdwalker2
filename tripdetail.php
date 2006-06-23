@@ -20,7 +20,7 @@ $request->globalMenu();
 ?>
 
 
-    <div class="topright-trip">
+    <div id="topright-trip">
       <? tripBrowseButtons("./tripdetail.php", $request->getTripInfo(), $request->getView()); ?>
         <div class="pagetitle">
             <?= $tripInfo["Name"] ?>

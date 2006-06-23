@@ -40,7 +40,7 @@ htmlHead($speciesInfo["CommonName"]);
 $request->globalMenu();
 ?>
 
-<div class="topright-species">
+<div id="topright-species">
     <? speciesBrowseButtons("./speciesedit.php", $request->getSpeciesID(), $request->getView()); ?>
   <a href="./speciesdetail.php?speciesid=<?= $speciesInfo["objectid"] ?>">
     <div class="pagetitle"><?= $speciesInfo["CommonName"] ?></div>

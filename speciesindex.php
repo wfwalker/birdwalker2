@@ -15,7 +15,7 @@ $request->globalMenu();
 
 ?>
 
-    <div class="topright-species">
+    <div id="topright-species">
 	  <div class="pagekind">index</div>
 	  <div class="pagetitle">Species</div>
       <? $request->viewLinks("species"); ?>

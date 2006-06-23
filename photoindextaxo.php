@@ -20,7 +20,7 @@ $request = new Request;
 $request->globalMenu();
 ?>
 
-    <div class="topright-photo">
+    <div id="topright-photo">
 	  <div class="pagekind">Index</div>
 	  <div class="pagetitle">Photos</div>
       <div class="pagesubtitle">

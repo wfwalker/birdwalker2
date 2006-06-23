@@ -162,7 +162,7 @@ htmlHead("Home");
 $request = new Request;
 $request->globalMenu();
 ?>
-    <div class="topright-home">
+    <div id="topright-home">
     </div>
 
     <div id="contentright">

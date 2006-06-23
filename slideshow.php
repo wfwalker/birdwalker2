@@ -56,7 +56,7 @@ $tripYear =  substr($sightingInfo["TripDate"], 0, 4);
 
 <?= $request->globalMenu(); ?>
 
-  <div class="topright-photo">
+  <div id="topright-photo">
 	<? browseButtons($pageTitle . " Slide Show", "./slideshow.php?" . $request->getParams() . "&sightingid=",
 					 $sightingInfo["objectid"],
 					 $prevPhotoID, "", $nextPhotoID, ""); ?>

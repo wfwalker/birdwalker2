@@ -599,7 +599,7 @@ function changeView()
 
 	function globalMenu()
 	{ ?>
-		<div class="topleft">
+		<div id="topleft">
 		    <a href="./index.php">
 			  <img src="images/topleft1.jpg" align="right" border="0"/>
 		    </a>

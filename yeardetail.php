@@ -19,7 +19,7 @@ $request->globalMenu();
 
 ?>
 
-    <div class="topright-trip">
+    <div id="topright-trip">
 	  <? browseButtons("Year Detail", "./yeardetail.php?view=" . $request->getView() . "&year=", $request->getYear(),
 					 $prevYear, $prevYear, $nextYear, $nextYear); ?>
 

@@ -39,7 +39,7 @@ $request->globalMenu();
 
 ?>
 
-<div class="topright-trip">
+<div id="topright-trip">
   <? tripBrowseButtons("./tripedit.php", $tripInfo, "edit"); ?>
   <a href="./tripdetail.php?tripid=<?= $tripInfo["objectid"] ?>">
     <div class="pagetitle"><?= $tripInfo["Name"] ?></div>

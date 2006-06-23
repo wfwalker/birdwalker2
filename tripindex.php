@@ -14,7 +14,7 @@ $request->setView("trips");
 $request->globalMenu();
 ?>
 
-    <div class="topright-trip">
+    <div id="topright-trip">
 	  <div class="pagekind">index</div>
       <div class="pagetitle">Trips</div>
 	</div>

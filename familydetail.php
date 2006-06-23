@@ -49,7 +49,7 @@ htmlHead($familyInfo["LatinName"]);
 $request->globalMenu();
 ?>
 
-  <div class="topright-species">
+  <div id="topright-species">
 	<? browseButtons("Family Detail", "./familydetail.php?view=".$request->getView()."&familyid=", $request->getFamilyID(),
 					 $prevFamily, $prevFamilyLinkText,
 					 $nextFamily, $nextFamilyLinkText); ?>
