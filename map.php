@@ -140,7 +140,7 @@ function createMarker(point,name) {
   var marker = new GMarker(point, icon);
   map.addOverlay(marker);
   GEvent.addListener(marker, "click", function() {
-    marker.openInfoWindowHtml(name);
+    marker.openInfoWindowHtml("<div class=\"report-content\">" + name + "</div>");
   });
 }
 
