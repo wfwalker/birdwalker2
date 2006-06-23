@@ -57,7 +57,7 @@ else
 <?        $request->viewLinks("tripsummaries"); ?>
 	</div>
 
-    <div class=contentright>
+    <div id="contentright">
 <?
       $request->handleStandardViews();
       footer();

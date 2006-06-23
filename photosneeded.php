@@ -33,7 +33,7 @@ $request->globalMenu();
 	    <div class="pagetitle">Photography Target Species </div>
 	</div>
 
-    <div class="contentright">
+    <div id="contentright">
       <div class="heading">ABA-countable Birds I have seen at least <?= $threshold ?> times but never photographed</div>
 
 <div class="metadata">

@@ -30,7 +30,7 @@ $request->globalMenu();
       </div>
 	</div>
 
-    <div class="contentright">
+    <div id="contentright">
       <div class="heading"><?= $photoCount ?> photos covering <?= mysql_num_rows($photoSpecies) ?> ABA-countable species</div>
 
 <table width="100%" class="report-content">

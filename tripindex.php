@@ -19,7 +19,7 @@ $request->globalMenu();
       <div class="pagetitle">Trips</div>
 	</div>
 
-    <div class="contentright">
+    <div id="contentright">
 
 <?
       $request->handleStandardViews();

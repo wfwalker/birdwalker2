@@ -35,7 +35,7 @@ $request->globalMenu();
     <div class="pagetitle">Target birds for <?= $request->getYear() ?></div>
 </div>
 
-<div class="contentright">
+<div id="contentright">
 
 <p>
 This page shows birds not seen in Santa Clara County for the given

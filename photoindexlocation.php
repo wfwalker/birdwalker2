@@ -30,7 +30,7 @@ $request->globalMenu();
       </div>
   </div>
 
-    <div class="contentright">
+    <div id="contentright">
       <div class="heading"><?= $photoCount ?> photos made at <?= mysql_num_rows($photoLocations) ?> locations</div>
 
       <div class="onecolumn">

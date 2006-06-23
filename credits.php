@@ -12,7 +12,7 @@ $request->globalMenu();
     <div class="topright-home">
 	</div>
 
-    <div class="contentright">
+    <div id="contentright">
     <table>
 	<tr valign="top">
 	<td width="50%" class="leftcolumn">

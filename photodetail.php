@@ -70,7 +70,7 @@ $request->globalMenu();
       </div>
 </div>
 
-<div class="contentright">
+<div id="contentright">
 
 <?  if ($sightingInfo["Photo"] == "1")
     {

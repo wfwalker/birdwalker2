@@ -605,7 +605,7 @@ function changeView()
 		    </a>
 		</div>
 
-		<div class="contentleft">
+		<div id="contentleft">
 			
 <?          $this->globalMenuTrips(); ?>
 <?          $this->globalMenuBirds(); ?>

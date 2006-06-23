@@ -103,7 +103,7 @@ $request->globalMenu();
   </div>
 </div>
 
-<div class="contentright">
+<div id="contentright">
 
 <form method="post" action="./sightingedit.php?sightingid=<?= $sightingID ?>">
 

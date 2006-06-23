@@ -20,7 +20,7 @@ $request->globalMenu();
       <? $request->viewLinks("locations"); ?>
 	</div>
 
-    <div class="contentright">
+    <div id="contentright">
 <?
 	$request->handleStandardViews(); 
 

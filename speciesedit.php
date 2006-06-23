@@ -47,7 +47,7 @@ $request->globalMenu();
 </a>
 </div>
 
-<div class="contentright">
+<div id="contentright">
 
 <form method="post" action="./speciesedit.php?speciesid=<?= $request->getSpeciesID() ?>">
 

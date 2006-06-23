@@ -24,7 +24,7 @@ $stateInfo =  $request->getStateInfo();
 <?    $request->viewLinks("species"); ?>
 	</div>
 
-    <div class=contentright>
+    <div id="contentright">
 <?
       $request->handleStandardViews();
       footer();

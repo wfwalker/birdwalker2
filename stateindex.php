@@ -41,7 +41,7 @@ $request->globalMenu();
       <div class="pagetitle">States</div>
 	</div>
 
-    <div class="contentright">
+    <div id="contentright">
 
     <div class="heading">
       Species seen in each State by Year

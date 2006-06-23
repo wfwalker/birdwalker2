@@ -38,7 +38,7 @@ $request->globalMenu();
 	  <div class="pagetitle">Bad Records</div>
 	</div>
 
-    <div class="contentright">
+    <div id="contentright">
 
 <div class="heading">sightings with bad abbreviations</div>
 

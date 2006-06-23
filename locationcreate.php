@@ -92,7 +92,7 @@ $request->globalMenu();
   <div class=pagetitle><?= $locationInfo["Name"] ?></div></a>
 </div>
 
-<div class="contentright">
+<div id="contentright">
 
 <?
 ?>

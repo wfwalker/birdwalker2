@@ -37,7 +37,7 @@ $request->globalMenu();
     <div class="pagetitle">Target CA birds for <?= getLatestYear() ?></div>
 </div>
 
-<div class="contentright">
+<div id="contentright">
 	<p class="metadata">
         Birds we have seen at least <?= $sightingThreshold ?> times, but not seen yet in <?= getLatestYear() ?>
     </p>

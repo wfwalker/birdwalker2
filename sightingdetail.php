@@ -30,7 +30,7 @@ $request->globalMenu();
 </div>
 
 
-<div class="contentright">
+<div id="contentright">
 
 <table class=report-content width=100%>
   <tr><td class=heading colspan=2>Sighting</td></tr>

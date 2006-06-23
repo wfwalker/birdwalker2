@@ -20,7 +20,7 @@ $request->globalMenu();
 ?>
 
 
-    <div class="topright"><div class="topright-trip">
+    <div class="topright-trip">
       <? tripBrowseButtons("./tripdetail.php", $request->getTripInfo(), $request->getView()); ?>
         <div class="pagetitle">
             <?= $tripInfo["Name"] ?>
@@ -28,9 +28,9 @@ $request->globalMenu();
         </div>
         <div class="pagesubtitle"><?= $tripInfo["niceDate"] ?></div>
       <?= $request->viewLinks("species"); ?>
-	</div></div>
+	</div>
 
-    <div class="contentright">
+    <div id="contentright">
 	    <div class="heading">Notes</div>
         <div class="leftcolumn">
 		  <div class="report-content">Led by <?= $tripInfo["Leader"] ?></div>

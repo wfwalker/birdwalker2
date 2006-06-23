@@ -9,7 +9,7 @@ body
 	background-color: #EEEEEE;
 }
 
-.contentleft
+#contentleft
 {
     font: 9pt "Gill Sans", "Gill Sans MT", SansSerif;
     font-style: italic;
@@ -19,8 +19,8 @@ body
 	padding-top: 10px;
 	padding-left: 0px; padding-right: 0px;
 }
-.contentleft a       { text-decoration:none; }
-.contentleft a:hover { color: red; text-decoration: underline; }
+#contentleft a       { text-decoration:none; }
+#contentleft a:hover { color: red; text-decoration: underline; }
 
 .topright-trip
 {
@@ -63,7 +63,7 @@ body
 .topleft a       { text-decoration: none; }
 .topleft a:hover { color: red; text-decoration: underline; }
 
-.contentright
+#contentright
 {
     font: 10pt "Gill Sans", "Gill Sans MT", SansSerif;
 	left: 120px; width: 640px; top: 100px;
@@ -71,8 +71,8 @@ body
 	background-color: white;
 	position: absolute;
 }
-.contentright a       { text-decoration: none;}
-.contentright a:hover { color: red; text-decoration: underline; }
+#contentright a       { text-decoration: none;}
+#contentright a:hover { color: red; text-decoration: underline; }
 
 .footer
 {

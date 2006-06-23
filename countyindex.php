@@ -15,7 +15,7 @@ $request->globalMenu();
         <div class="pagetitle">Counties</div>
 	</div>
 
-    <div class="contentright">
+    <div id="contentright">
 
 <table class="metadata" cellpadding="0" cellspacing="0" width="100%">
 

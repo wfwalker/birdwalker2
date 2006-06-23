@@ -29,7 +29,7 @@ $request->globalMenu();
       <?= $request->viewLinks("trips"); ?>
   </div>
 
-  <div class="contentright">
+  <div id="contentright">
 
 <?  if ($speciesInfo["noteworthy"] != "0")
     { ?>

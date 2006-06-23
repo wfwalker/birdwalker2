@@ -40,7 +40,7 @@ $request->globalMenu();
   <? $request->viewLinks("species"); ?>
 </div>
 
-<div class="contentright">
+<div id="contentright">
 <? if ($siteInfo["noteworthy"] != 0) { ?>
       <div class="heading">Notes</div>
 	  <div class="onecolumn">

@@ -31,7 +31,7 @@ $request->globalMenu();
   <div class=pagetitle>Create new trip</div>
 </div>
 
-<div class="contentright">
+<div id="contentright">
 <?
 if ($save == "Save")
 {

@@ -31,7 +31,7 @@ $request->globalMenu();
 	    <div class="pagetitle"><?= $today ?></div>
       </div>
 
-    <div class="contentright">
+    <div id="contentright">
 
 <?
 

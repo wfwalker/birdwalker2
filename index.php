@@ -163,9 +163,9 @@ $request = new Request;
 $request->globalMenu();
 ?>
     <div class="topright-home">
-      </div>
+    </div>
 
-    <div class="contentright">
+    <div id="contentright">
 
 	  <table>
 	    <tr valign="top">

@@ -67,7 +67,7 @@ $tripYear =  substr($sightingInfo["TripDate"], 0, 4);
     </div>
   </div>
 
-  <div class="contentright">
+  <div id="contentright">
 <?      $photoFilename = getPhotoFilename($sightingInfo);
 
 	    list($width, $height, $type, $attr) = getimagesize("./images/photo/" . $photoFilename); ?>
