@@ -51,7 +51,7 @@ $request->globalMenu();
 
 <form method="post" action="./tripedit.php?tripid=<?= $tripID ?>">
 
-<table class="report-content" width=100%>
+<table class="report-content" width="100%">
   <tr>
 	<td class="fieldlabel">Leader</td>
 	<td><input type="text" name="Leader" value="<?= $tripInfo["Leader"] ?>" size=30/></td>

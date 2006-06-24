@@ -1,6 +1,6 @@
 INSERT INTO location VALUES (1,'2138 King Court','','Santa Clara','Santa Clara','CA','in the back we have a peanut feeder, a thistle feeder, and a general purpose seed feeder','NAD-27',37.3615,-121.994,0);
 INSERT INTO location VALUES (2,'Alviso Marina','http://santaclaracounty.org/parks/prkpages/alviso.htm','Alviso','Santa Clara','CA','the marina parking lot provides access to many miles of levees suitable for biking or walking. the open water right near the parking lot sometimes yields interesting birds.','WGS 84',37.4296,-121.978,0);
-INSERT INTO location VALUES (3,'Andrew Molera','http://parks.ca.gov/central/monterey/amsp.htm','Monterey','Monterey','CA','you can hike in less than a mile to a campground near the beach.','mapblast',36.2727,-121.842,0);
+INSERT INTO location VALUES (3,'Andrew Molera','http://parks.ca.gov/central/monterey/amsp.htm','Monterey','Monterey','CA','you can hike in less than a mile to a campground near the beach.','mapblast',36.2727,-121.842,1);
 INSERT INTO location VALUES (4,'Anza Borrego Desert State Park','http://www.parks.ca.gov/default.asp?page_id=638','Borrego Springs','San Diego','CA','','',33.2692,-116.406,0);
 INSERT INTO location VALUES (5,'Arastradero Preserve','http://www.arastradero.org/','Mountain View','Santa Clara','CA','','mapblast',37.4267,-122.139,0);
 INSERT INTO location VALUES (6,'Arcata Marsh','http://www.arcatacityhall.org/birding.html','Arcata','Humboldt','CA','an amazing artificial marsh created by the City of Arcata to process its sewage.','',40.8578,-124.089,0);

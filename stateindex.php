@@ -47,7 +47,7 @@ $request->globalMenu();
       Species seen in each State by Year
     </p>
 
-<table class="report-content" cellpadding=1 cellspacing=0 width=80%>
+<table class="report-content" cellpadding="1" cellspacing="0" width="80%">
 
   <tr><td></td><? insertYearLabels() ?></tr>
 

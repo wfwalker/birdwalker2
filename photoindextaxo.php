@@ -34,7 +34,7 @@ $request->globalMenu();
       <div class="heading"><?= $photoCount ?> photos covering <?= mysql_num_rows($photoSpecies) ?> ABA-countable species</div>
 
 <table width="100%" class="report-content">
-<tr valign=top><td width="50%" class="leftcolumn">
+<tr valign="top"><td width="50%" class="leftcolumn">
 <?
 $counter = round(mysql_num_rows($photoSpecies)  * 0.6);
 

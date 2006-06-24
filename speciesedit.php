@@ -51,7 +51,7 @@ $request->globalMenu();
 
 <form method="post" action="./speciesedit.php?speciesid=<?= $request->getSpeciesID() ?>">
 
-<table class="report-content" width=100%>
+<table class="report-content" width="100%">
   <tr>
 	<td class="fieldlabel">Common Name</td>
 	<td><input type="text" name="CommonName" value="<?= $speciesInfo["CommonName"] ?>" size=30/></td>

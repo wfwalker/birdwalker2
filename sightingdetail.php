@@ -32,7 +32,7 @@ $request->globalMenu();
 
 <div id="contentright">
 
-<table class="report-content" width=100%>
+<table class="report-content" width="100%">
   <tr><td class="heading" colspan=2>Sighting</td></tr>
   <tr><td class="fieldlabel">SpeciesAbbreviation</td><td><?= $sightingInfo["SpeciesAbbreviation"] ?></td></tr>
   <tr><td class="fieldlabel">LocationName</td><td><?= $sightingInfo["LocationName"] ?></td></tr>

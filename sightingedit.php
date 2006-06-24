@@ -107,7 +107,7 @@ $request->globalMenu();
 
 <form method="post" action="./sightingedit.php?sightingid=<?= $sightingID ?>">
 
-<table class="report-content" width=100%>
+<table class="report-content" width="100%">
   <tr>
 	<td></td>
 	<td><input type="submit" name="New" value="New"/></td>
