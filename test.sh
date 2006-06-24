@@ -71,15 +71,20 @@ tripdetail.php \
 yeardetail.php \
 "
 
-echo "" > detailpages.html
-
 for successURL in $successURLs; do
+
+	# retrieve the web page and stick in temporary file
 	curl -s $baseURL$successURL > detail.html
-	cat detail.html >> detailpages.html
-	egrep "(Notice|404 Not Found|mysql|Fatal error|Parse error|Warning)" detail.html >> testresults.txt
+
+	# look for error messages, show on standard out
+	egrep "(Notice|404 Not Found|mysql|Fatal error|Parse error|Warning)" detail.html
 	ec=$?
 
-	tidy -e detail.html > /dev/null 2>> testresults.txt
+	# look for errors from tidy, show on standard err
+	tidy -q -e detail.html 2>&1 | grep Error
+
+	# look for attributes with unquoted values
+	egrep "<.*=[0-9]" detail.html | grep -v href
 
 	if [ $ec -eq 1 ]; then
 		log "passed $successURL"
@@ -89,11 +94,16 @@ for successURL in $successURLs; do
 done
 
 for failureURL in $failureURLs; do
+
+	# retrieve the web page and stick in temporary file
 	curl -s $baseURL$failureURL > detail.html
-	egrep "(404 Not Found|mysql|Fatal error)" detail.html >> testresults.txt
+
+	# look for error messages, but don't show them since they're expected
+	egrep "(404 Not Found|mysql|Fatal error)" detail.html > /dev/null
 	ec=$?
 
-	tidy -e detail.html > /dev/null 2>> testresults.txt
+	# look for errors from tidy, show on standard err
+	tidy -q -e detail.html 2>&1 | grep Error
 
 	if [ $ec -eq 0 ]; then
 		log "passed $failureURL (NEG test)"

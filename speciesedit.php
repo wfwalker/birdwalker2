@@ -54,29 +54,29 @@ $request->globalMenu();
 <table class="report-content" width="100%">
   <tr>
 	<td class="fieldlabel">Common Name</td>
-	<td><input type="text" name="CommonName" value="<?= $speciesInfo["CommonName"] ?>" size=30/></td>
+	<td><input type="text" name="CommonName" value="<?= $speciesInfo["CommonName"] ?>" size="30"/></td>
   </tr>
   <tr>
 	<td class="fieldlabel">Latin Name</td>
-	<td><input type="text" name="LatinName" value="<?= $speciesInfo["LatinName"] ?>" size=30/></td>
+	<td><input type="text" name="LatinName" value="<?= $speciesInfo["LatinName"] ?>" size="30"/></td>
   </tr>
   <tr>
 	<td class="fieldlabel">Abbreviation</td>
-	<td><input type="text" name="Abbreviation" value="<?= $speciesInfo["Abbreviation"] ?>" size=30/></td>
+	<td><input type="text" name="Abbreviation" value="<?= $speciesInfo["Abbreviation"] ?>" size="30"/></td>
   </tr>
   <tr>
 	<td class="fieldlabel">Notes</td>
-	<td><textarea name="Notes" cols=60 rows=20><?= $speciesInfo["Notes"] ?></textarea></td>
+	<td><textarea name="Notes" cols="60" rows="20"><?= $speciesInfo["Notes"] ?></textarea></td>
   </tr>
 
   <tr>
 	<td class="fieldlabel">ReferenceURL</td>
-	<td><input type="text" name="ReferenceURL" value="<?= $speciesInfo["ReferenceURL"] ?>" size=80/></td>
+	<td><input type="text" name="ReferenceURL" value="<?= $speciesInfo["ReferenceURL"] ?>" size="80"/></td>
   </tr>
 
   <tr>
 	<td class="fieldlabel">ABACountable</td>
-	<td><input type="text" name="ABACountable" value="<?= $speciesInfo["ABACountable"] ?>" size=20/></td>
+	<td><input type="text" name="ABACountable" value="<?= $speciesInfo["ABACountable"] ?>" size="20"/></td>
   </tr>
 
   <tr>

@@ -146,7 +146,7 @@ class LocationQuery extends BirdWalkerQuery
 
 		$gridQuery = performQuery("Location By Year Query", $gridQueryString); ?>
 
-		<table cellpadding=0 cellspacing=0 class="report-content" width="100%">
+		<table cellpadding="0" cellspacing="0" class="report-content" width="100%">
 		<tr><td></td><? insertYearLabels() ?></tr>
 
 	<?  $prevInfo = "";
@@ -158,7 +158,7 @@ class LocationQuery extends BirdWalkerQuery
 			{
 				$stateInfo = getStateInfoForAbbreviation($info["State"]) ?>
 
-				<tr><td class="subheading" colspan=13>
+				<tr><td class="subheading" colspan="13">
 	<?          if ($lastStateHeading != $info["State"]) { ?>
 				  <span class="statename"><a href="./statedetail.php?stateid=<?= $stateInfo["objectid"] ?>"><?= $stateInfo["Name"] ?></a></span>,
 	<?            $lastStateHeading = $info["State"];
@@ -218,7 +218,7 @@ class LocationQuery extends BirdWalkerQuery
 
 		$gridQuery = performQuery("Location By Month Query", $gridQueryString); ?>
 
-		<table cellpadding=0 cellspacing=0 cols=11 class="report-content" width="100%">
+		<table cellpadding="0" cellspacing="0" cols="11" class="report-content" width="100%">
 		<tr><td></td><? insertMonthLabels() ?></tr>
 
 	<?

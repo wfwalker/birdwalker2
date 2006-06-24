@@ -54,24 +54,24 @@ $request->globalMenu();
 <table class="report-content" width="100%">
   <tr>
 	<td class="fieldlabel">Leader</td>
-	<td><input type="text" name="Leader" value="<?= $tripInfo["Leader"] ?>" size=30/></td>
+	<td><input type="text" name="Leader" value="<?= $tripInfo["Leader"] ?>" size="30"/></td>
   </tr>
   <tr>
 	<td class="fieldlabel">ReferenceURL</td>
-	<td><input type="text" name="ReferenceURL" value="<?= $tripInfo["ReferenceURL"] ?>" size=30/></td>
+	<td><input type="text" name="ReferenceURL" value="<?= $tripInfo["ReferenceURL"] ?>" size="30"/></td>
   </tr>
   <tr>
 	<td class="fieldlabel">Name</td>
-	<td><input type="text" name="Name" value="<?= $tripInfo["Name"] ?>" size=30/></td>
+	<td><input type="text" name="Name" value="<?= $tripInfo["Name"] ?>" size="30"/></td>
   </tr>
   <tr>
 	<td class="fieldlabel">Notes</td>
-	<td><textarea name="Notes" cols=60 rows=20><?= $tripInfo["Notes"] ?></textarea></td>
+	<td><textarea name="Notes" cols="60" rows="20"><?= $tripInfo["Notes"] ?></textarea></td>
   </tr>
 
   <tr>
 	<td class="fieldlabel">Date</td>
-	<td><input type="text" name="Date" value="<?= $tripInfo["Date"] ?>" size=20/></td>
+	<td><input type="text" name="Date" value="<?= $tripInfo["Date"] ?>" size="20"/></td>
   </tr>
   <tr>
 	<td><input type="hidden" name="tripid" value="<?= $tripID ?>"/></td>

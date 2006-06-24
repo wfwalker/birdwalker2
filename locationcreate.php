@@ -102,35 +102,35 @@ $request->globalMenu();
 <table class="report-content" width="100%">
   <tr>
 	<td class="fieldlabel">Name</td>
-	<td><input type="text" name="Name" value="<?= $locationInfo['Name'] ?>" size=30/></td>
+	<td><input type="text" name="Name" value="<?= $locationInfo['Name'] ?>" size="30"/></td>
   </tr>
   <tr>
 	<td class="fieldlabel">ReferenceURL</td>
-	<td><input type="text" name="ReferenceURL" value="<?= $locationInfo['ReferenceURL'] ?>" size=60/></td>
+	<td><input type="text" name="ReferenceURL" value="<?= $locationInfo['ReferenceURL'] ?>" size="60"/></td>
   </tr>
   <tr>
 	<td class="fieldlabel">City</td>
-	<td><input type="text" name="City" value="<?= $locationInfo['City'] ?>" size=30/></td>
+	<td><input type="text" name="City" value="<?= $locationInfo['City'] ?>" size="30"/></td>
   </tr>
   <tr>
 	<td class="fieldlabel">County</td>
-	<td><input type="text" name="County" value="<?= $locationInfo['County'] ?>" size=30/></td>
+	<td><input type="text" name="County" value="<?= $locationInfo['County'] ?>" size="30"/></td>
   </tr>
   <tr>
 	<td class="fieldlabel">State</td>
-	<td><input type="text" name="State" value="<?= $locationInfo['State'] ?>" size=30/></td>
+	<td><input type="text" name="State" value="<?= $locationInfo['State'] ?>" size="30"/></td>
   </tr>
   <tr>
 	<td class="fieldlabel">LatLongSystem</td>
-	<td><input type="text" name="LatLongSystem" value="<?= $locationInfo['LatLongSystem'] ?>" size=20/></td>
+	<td><input type="text" name="LatLongSystem" value="<?= $locationInfo['LatLongSystem'] ?>" size="20"/></td>
   </tr>
   <tr>
 	<td class="fieldlabel">Latitude</td>
-	<td><input type="text" name="Latitude" value="<?= $locationInfo['Latitude'] ?>" size=20/></td>
+	<td><input type="text" name="Latitude" value="<?= $locationInfo['Latitude'] ?>" size="20"/></td>
   </tr>
   <tr>
 	<td class="fieldlabel">Longitude</td>
-	<td><input type="text" name="Longitude" value="<?= $locationInfo['Longitude'] ?>" size=20/></td>
+	<td><input type="text" name="Longitude" value="<?= $locationInfo['Longitude'] ?>" size="20"/></td>
   </tr>
   <tr>
 	<td class="fieldlabel">Photo</td>
@@ -138,7 +138,7 @@ $request->globalMenu();
   </tr>
   <tr>
 	<td class="fieldlabel">Notes</td>
-	<td><textarea name="Notes" cols=60 rows=20><?= $locationInfo['Notes'] ?></textarea></td>
+	<td><textarea name="Notes" cols="60" rows="20"><?= $locationInfo['Notes'] ?></textarea></td>
   </tr>
   <tr>
 	<td><input type="hidden" name="locationid" value="<?= $locationID ?>"/></td>

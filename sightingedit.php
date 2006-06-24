@@ -1,4 +1,4 @@
-
+s
 <?php
 
 require_once("./birdwalker.php");
@@ -114,7 +114,7 @@ $request->globalMenu();
   </tr>
   <tr>
 	<td class="fieldlabel">Abbreviation</td>
-	<td><input type="text" name="SpeciesAbbreviation" value="<?= $sightingInfo["SpeciesAbbreviation"] ?>" size=6/></td>
+	<td><input type="text" name="SpeciesAbbreviation" value="<?= $sightingInfo["SpeciesAbbreviation"] ?>" size="6"/></td>
   </tr>
   <tr>
 	<td class="fieldlabel">Location</td>
@@ -132,7 +132,7 @@ $request->globalMenu();
   </tr>
   <tr>
 	<td class="fieldlabel">Notes</td>
-	<td><textarea name="Notes" cols=60 rows=20><?= $sightingInfo["Notes"] ?></textarea></td>
+	<td><textarea name="Notes" cols="60" rows="20"><?= $sightingInfo["Notes"] ?></textarea></td>
   </tr>
   <tr>
 	<td class="fieldlabel">Exclude</td>
@@ -144,7 +144,7 @@ $request->globalMenu();
   </tr>
   <tr>
 	<td class="fieldlabel">TripDate</td>
-	<td><input type="text" name="TripDate" value="<?= $sightingInfo["TripDate"] ?>" size=20/></td>
+	<td><input type="text" name="TripDate" value="<?= $sightingInfo["TripDate"] ?>" size="20"/></td>
   </tr>
   <tr>
 	<td><input type="hidden" name="sightingid" value="<?= $sightingID ?>"/></td>

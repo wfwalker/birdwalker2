@@ -252,7 +252,7 @@ class SpeciesQuery extends BirdWalkerQuery
 
 		$gridQuery = performQuery("Species By Year 2", $gridQueryString); ?>
 
-		<table cellpadding=0 cellspacing=0 class="report-content" width="100%">
+		<table cellpadding="0" cellspacing="0" class="report-content" width="100%">
 			<tr><td></td><? insertYearLabels() ?></tr>
 
 	<?	$prevInfo = "";
@@ -263,7 +263,7 @@ class SpeciesQuery extends BirdWalkerQuery
 			if ($prevInfo == "" || getFamilyIDFromSpeciesID($prevInfo["speciesid"]) != getFamilyIDFromSpeciesID($info["speciesid"]))
 			{
 				$taxoInfo = getFamilyInfoFromSpeciesID($info["speciesid"]); ?>
-				<tr><td class="subheading" colspan=11><?= strtolower($taxoInfo["LatinName"]) ?></td></tr>
+				<tr><td class="subheading" colspan="11"><?= strtolower($taxoInfo["LatinName"]) ?></td></tr>
 	<?		} ?>
 
 			<tr><td><a href="./speciesdetail.php?speciesid=<?= $info["speciesid"] ?>"><?= $info["CommonName"] ?></a></td>
@@ -343,7 +343,7 @@ class SpeciesQuery extends BirdWalkerQuery
 
 		$gridQuery = performQuery("Species by Month Query 2", $gridQueryString); ?>
 
-		<table cellpadding=0 cellspacing=0 class="report-content" width="100%">
+		<table cellpadding="0" cellspacing="0" class="report-content" width="100%">
 			<tr><td></td><? insertMonthLabels() ?></tr>
 
 	<?	

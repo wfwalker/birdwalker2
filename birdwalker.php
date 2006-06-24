@@ -144,7 +144,7 @@ function rightThumbnail($photoQueryString, $addLink)
 		$sizeAttributes = "";
 
 		if ($addLink == true) { ?> <a href="./photodetail.php?sightingid=<?= $photoInfo["objectid"] ?>">  <? } ?>
-           <img <?= $sizeAttributes ?> src="./images/thumb/<?= $filename ?>" width="100" height="100" border=0 align="right" class="inlinepict">
+           <img <?= $sizeAttributes ?> src="./images/thumb/<?= $filename ?>" width="100" height="100" border="0" align="right" class="inlinepict">
 <?		if ($addLink == true) { ?> </a> <? }
 	}
 }
@@ -224,7 +224,7 @@ function getThumbForSightingInfo($sightingInfo)
 
 	return
 		"<a href=\"./photodetail.php?sightingid=" . $sightingInfo["sightingid"] . "\">" .
-		"<img  src=\"./images/thumb/" . $thumbFilename . "\" width=\"100\" height=\"100\" border=0 alt=\"". $sightingInfo["CommonName"] . "\">" . 
+		"<img  src=\"./images/thumb/" . $thumbFilename . "\" width=\"100\" height=\"100\" border=\"0\" alt=\"". $sightingInfo["CommonName"] . "\">" . 
 		"</a>";
 }
 

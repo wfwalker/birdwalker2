@@ -89,7 +89,7 @@ class ChronoList
 		    </tr>
 <?
 		    if ($sightingInfo["Notes"] != "") { ?>
-			    <tr><td></td><td></td><td colspan=2 class="sighting-notes"><?= $sightingInfo["Notes"] ?></td></tr><?
+			    <tr><td></td><td></td><td colspan="2" class="sighting-notes"><?= $sightingInfo["Notes"] ?></td></tr><?
 		    }
 
 		    $prevSightingInfo = $sightingInfo;
