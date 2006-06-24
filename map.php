@@ -96,7 +96,7 @@ class Map
 
 <html>
   <head>
-    <script src="http://maps.google.com/maps?file=api&v=1&key=ABQIAAAAHB2OV0S5_ezvt-IsSEgTohRpTu2oewaAZF3JMvnmpq8AtvOtbRRR9bUrae9RcGIgtWO2REdkBQNLwA" type="text/javascript"></script>
+    <script src="http://maps.google.com/maps?file=api&v=2&key=ABQIAAAAHB2OV0S5_ezvt-IsSEgTohRpTu2oewaAZF3JMvnmpq8AtvOtbRRR9bUrae9RcGIgtWO2REdkBQNLwA" type="text/javascript"></script>
   </head>
   <body>
   
@@ -130,10 +130,14 @@ icon.iconAnchor = new GPoint(6, 20);
 icon.infoWindowAnchor = new GPoint(5, 1);
 
 // Center the map on the location
-var map = new GMap(document.getElementById("map"));
+var swCorner = new GLatLng(<?= $this->getMinimumLatitude() ?>, <?= $this->getMinimumLongitude() ?>);
+var neCorner = new GLatLng(<?= $this->getMaximumLatitude() ?>, <?= $this->getMaximumLongitude() ?>);
+var map = new GMap2(document.getElementById("map"));
 map.addControl(new GSmallMapControl());
 <? if ($this->mReq->getMapWidth() > 300) { ?> map.addControl(new GMapTypeControl()); <? } ?>
-map.centerAndZoom(new GPoint(<?= $centerLong ?>, <?= $centerLat ?>), 14);
+map.setCenter(new GLatLng(<?= $centerLat ?>, <?= $centerLong ?>));
+var bestZoom = map.getBoundsZoomLevel(new GLatLngBounds(swCorner, neCorner));
+map.setZoom(bestZoom);
 
 // Creates one of our tiny markers at the given point
 function createMarker(point,name) {
@@ -152,17 +156,15 @@ function createMarker(point,name) {
 		$counter = 1;
 
 		while($info = mysql_fetch_array($dbQuery))
-		{ ?>
-createMarker(new GPoint(<?= $info["Longitude"] ?>, <?= $info["Latitude"] ?>), "<?= $info["Name"] ?>");
-<?		} ?>
-
-
+		{
+		  if (($info["Longitude"] != 0) && ($info["Latitude"] != 0))
+		  { ?>
+                    createMarker(new GPoint(<?= $info["Longitude"] ?>, <?= $info["Latitude"] ?>), "<?= $info["Name"] ?>");
+<?		  }
+		}?>
     
     //]]>
     </script>
-	
-
-
 <p>
 	
 </body>
