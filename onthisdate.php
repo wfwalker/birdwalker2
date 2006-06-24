@@ -57,7 +57,7 @@ $onthisdatespeciesQuery->formatTwoColumnSpeciesList();
               <div class="subheading"><?= $tripSpeciesCount ?> species</div>
           </div>
 
-          <div class=report-content><?= $info["Notes"] ?><br clear="all"/></div>
+          <div class="report-content"><?= $info["Notes"] ?><br clear="all"/></div>
 <?	  }
 
 footer();

@@ -158,7 +158,7 @@ class LocationQuery extends BirdWalkerQuery
 			{
 				$stateInfo = getStateInfoForAbbreviation($info["State"]) ?>
 
-				<tr><td class=subheading colspan=13>
+				<tr><td class="subheading" colspan=13>
 	<?          if ($lastStateHeading != $info["State"]) { ?>
 				  <span class="statename"><a href="./statedetail.php?stateid=<?= $stateInfo["objectid"] ?>"><?= $stateInfo["Name"] ?></a></span>,
 	<?            $lastStateHeading = $info["State"];
@@ -174,7 +174,7 @@ class LocationQuery extends BirdWalkerQuery
 
 	<?		for ($index = 1; $index <= (1 + getLatestYear() - getEarliestYear()); $index++)
 			{ ?>
-				<td class=bordered align=center>
+				<td class="bordered" align="center">
 	<?			if (($theMask >> $index) & 1)
 				{
 					$clickRequest = new Request; // make a new request from current params and modify
@@ -230,7 +230,7 @@ class LocationQuery extends BirdWalkerQuery
 			if ($prevInfo == "" || $countyHeadingsOK && ($prevInfo["County"] != $info["County"])) {
 				$stateInfo = getStateInfoForAbbreviation($info["State"]) ?>
 
-				<tr><td class=subheading colspan=13>
+				<tr><td class="subheading" colspan="13">
 	<?          if ($lastStateHeading != $info["State"]) { ?>
 				  <span class="statename"><a href="./statedetail.php?stateid=<?= $stateInfo["objectid"] ?>"><?= $stateInfo["Name"] ?></a></span>,
 	<?            $lastStateHeading = $info["State"];
@@ -246,7 +246,7 @@ class LocationQuery extends BirdWalkerQuery
 
 	<?		for ($index = 1; $index <= 12; $index++)
 			{ ?>
-				<td class=bordered align=center>
+				<td class="bordered" align="center">
 	<?			if (($theMask >> $index) & 1)
 				{
 					$clickRequest = new Request; // make a new request from current params and modify

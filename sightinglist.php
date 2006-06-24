@@ -24,7 +24,7 @@ $dbQuery = $sightingQuery->performQuery();
 
       <div class="heading"><?= mysql_num_rows($dbQuery) ?> Sightings</div>
 
-<table class=report-content width="600px">
+<table class="report-content" width="600px">
 <?
 $prevSightingInfo = "";
 while($sightingInfo = mysql_fetch_array($dbQuery)) {
@@ -66,7 +66,7 @@ while($sightingInfo = mysql_fetch_array($dbQuery)) {
 <?	
 	if ($sightingInfo["Notes"] != "") {
 ?>
-    <tr><td></td><td class=report-content><?= $sightingInfo["Notes"] ?></td></tr>
+    <tr><td></td><td class="report-content"><?= $sightingInfo["Notes"] ?></td></tr>
 <?
     }
 

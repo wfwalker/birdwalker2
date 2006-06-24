@@ -159,7 +159,7 @@ class TripQuery extends BirdWalkerQuery
 <?					   } ?>
 					<? if (array_key_exists("Exclude", $info) && $info["Exclude"] == "1") { ?>excluded<? } ?>
 				 </div>
-					<? if (array_key_exists("sightingNotes", $info) && $info["sightingNotes"] != "") { ?> <div class=sighting-notes><?= $info["sightingNotes"] ?></div> <? } ?>
+					<? if (array_key_exists("sightingNotes", $info) && $info["sightingNotes"] != "") { ?> <div class="sighting-notes"><?= $info["sightingNotes"] ?></div> <? } ?>
 
 	<?		$prevYear = $thisYear;
 			$counter--;
@@ -197,7 +197,7 @@ class TripQuery extends BirdWalkerQuery
           </div>
 
 
-          <div class=report-content>
+          <div class="report-content">
 <?		    if (array_key_exists("Notes", $info)) { echo $info["Notes"]; } ?>
             <br clear="all"/>
           </div>

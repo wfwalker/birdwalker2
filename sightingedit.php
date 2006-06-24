@@ -107,7 +107,7 @@ $request->globalMenu();
 
 <form method="post" action="./sightingedit.php?sightingid=<?= $sightingID ?>">
 
-<table class=report-content width=100%>
+<table class="report-content" width=100%>
   <tr>
 	<td></td>
 	<td><input type="submit" name="New" value="New"/></td>
@@ -117,7 +117,7 @@ $request->globalMenu();
 	<td><input type="text" name="SpeciesAbbreviation" value="<?= $sightingInfo["SpeciesAbbreviation"] ?>" size=6/></td>
   </tr>
   <tr>
-	<td class=fieldlabel>Location</td>
+	<td class="fieldlabel">Location</td>
 	<td>
 	  <select name="LocationName">
 <?php
@@ -131,19 +131,19 @@ $request->globalMenu();
 	</td>
   </tr>
   <tr>
-	<td class=fieldlabel>Notes</td>
+	<td class="fieldlabel">Notes</td>
 	<td><textarea name="Notes" cols=60 rows=20><?= $sightingInfo["Notes"] ?></textarea></td>
   </tr>
   <tr>
-	<td class=fieldlabel>Exclude</td>
+	<td class="fieldlabel">Exclude</td>
 	<td><input type="checkbox" name="Exclude" value="1" <?php if ($sightingInfo["Exclude"] == "1") { echo "checked"; } ?> /></td>
   </tr>
   <tr>
-	<td class=fieldlabel>Photo</td>
+	<td class="fieldlabel">Photo</td>
 	<td><input type="checkbox" name="Photo" value="1" <?php if ($sightingInfo["Photo"] == "1") { echo "checked"; } ?> /></td>
   </tr>
   <tr>
-	<td class=fieldlabel>TripDate</td>
+	<td class="fieldlabel">TripDate</td>
 	<td><input type="text" name="TripDate" value="<?= $sightingInfo["TripDate"] ?>" size=20/></td>
   </tr>
   <tr>

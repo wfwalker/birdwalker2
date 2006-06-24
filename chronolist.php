@@ -54,12 +54,12 @@ class ChronoList
 
 		countHeading($speciesCount, "ABA species");
 ?>
-        <p class=report-content>
+        <p class="report-content">
 			 Note: within a single day, the order of sightings is not
 			 preserved.
         </p>
 
-		<table class=report-content width="600px">
+		<table class="report-content" width="600px">
 
 <?
 		$prevSightingInfo = "";
@@ -74,7 +74,7 @@ class ChronoList
 ?>
 	        </td>
 
-            <td align=right>&nbsp;</td>
+            <td align="right">&nbsp;</td>
 
 	        <td><a href="./speciesdetail.php?speciesid=<?= $sightingInfo['speciesid'] ?>"><?= $sightingInfo['CommonName'] ?></a>
 
@@ -89,7 +89,7 @@ class ChronoList
 		    </tr>
 <?
 		    if ($sightingInfo["Notes"] != "") { ?>
-			    <tr><td></td><td></td><td colspan=2 class=sighting-notes><?= $sightingInfo["Notes"] ?></td></tr><?
+			    <tr><td></td><td></td><td colspan=2 class="sighting-notes"><?= $sightingInfo["Notes"] ?></td></tr><?
 		    }
 
 		    $prevSightingInfo = $sightingInfo;

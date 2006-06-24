@@ -54,8 +54,8 @@ $request->globalMenu();
 					 $prevFamily, $prevFamilyLinkText,
 					 $nextFamily, $nextFamilyLinkText); ?>
 
-	    <div class=pagetitle><?= $familyInfo["LatinName"] ?></div>
-        <div class=pagesubtitle><?= $familyInfo["CommonName"] ?></div>
+	    <div class="pagetitle"><?= $familyInfo["LatinName"] ?></div>
+        <div class="pagesubtitle"><?= $familyInfo["CommonName"] ?></div>
 <?      $request->viewLinks("species"); ?>
 
   </div>

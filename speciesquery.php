@@ -263,14 +263,14 @@ class SpeciesQuery extends BirdWalkerQuery
 			if ($prevInfo == "" || getFamilyIDFromSpeciesID($prevInfo["speciesid"]) != getFamilyIDFromSpeciesID($info["speciesid"]))
 			{
 				$taxoInfo = getFamilyInfoFromSpeciesID($info["speciesid"]); ?>
-				<tr><td class=subheading colspan=11><?= strtolower($taxoInfo["LatinName"]) ?></td></tr>
+				<tr><td class="subheading" colspan=11><?= strtolower($taxoInfo["LatinName"]) ?></td></tr>
 	<?		} ?>
 
 			<tr><td><a href="./speciesdetail.php?speciesid=<?= $info["speciesid"] ?>"><?= $info["CommonName"] ?></a></td>
 
 	<?		for ($index = 1; $index <=  (1 + getLatestYear() - getEarliestYear()); $index++)
 			{ ?>
-				<td class=bordered align=center>
+				<td class="bordered" align="center">
 
 	<?			if (($info["mask"] >> $index) & 1)
 				{
@@ -300,7 +300,7 @@ class SpeciesQuery extends BirdWalkerQuery
 		{
 			if ($info["year"] == (getEarliestYear() - 1) + $index)
 			{ ?>
-				<td class=bordered align=center>
+				<td class="bordered" align="center">
 	<?
 					$clickRequest = new Request; // make a new request from current params and modify
 					$clickRequest->setYear(1995 + $index);
@@ -313,7 +313,7 @@ class SpeciesQuery extends BirdWalkerQuery
 			}
 			else
 			{ ?>
-				<td class=bordered align=center>&nbsp;</td>
+				<td class="bordered" align="center">&nbsp;</td>
 	<?		}
 		} ?>
 
@@ -366,7 +366,7 @@ class SpeciesQuery extends BirdWalkerQuery
 
 	<?		for ($index = 1; $index <= 12; $index++)
 			{ ?>
-				<td class=bordered align=center>
+				<td class="bordered" align="center">
 
 	<?			if (($info["mask"] >> $index) & 1)
 				{ 
@@ -396,7 +396,7 @@ class SpeciesQuery extends BirdWalkerQuery
 		{
 			if ($info["month"] == $index)
 			{ ?>
-				<td class=bordered align=center>
+				<td class="bordered" align="center">
 	<?
 					$clickRequest = new Request; // make a new request from current params and modify
 					$clickRequest->setMonth($index);
@@ -409,7 +409,7 @@ class SpeciesQuery extends BirdWalkerQuery
 			}
 			else
 			{ ?>
-				<td class=bordered align=center>&nbsp;</td>
+				<td class="bordered" align="center">&nbsp;</td>
 	<?		}
 		} ?>
 

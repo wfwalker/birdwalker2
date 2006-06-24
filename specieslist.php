@@ -22,7 +22,7 @@ $speciesQuery = new SpeciesQuery($request);
 <body>
 
       <div class="pagetitle"><?= $speciesQuery->getPageTitle() ?></div>
-	  <div class=heading><?= $speciesQuery->getSpeciesCount() ?> Species</div>
+	  <div class="heading"><?= $speciesQuery->getSpeciesCount() ?> Species</div>
 
 <?
 	  if ($request->getView() == "")
@@ -46,7 +46,7 @@ $speciesQuery = new SpeciesQuery($request);
 			  if ($divideByTaxo && (getBestTaxonomyID($prevInfo["objectid"]) != getBestTaxonomyID($info["objectid"])))
 			  {
 				  $taxoInfo = getBestTaxonomyInfo($info["objectid"]); ?>
-				  <div class=subheading><?= strtolower($taxoInfo["LatinName"]) ?></div>
+				  <div class="subheading"><?= strtolower($taxoInfo["LatinName"]) ?></div>
 <?            } ?>
 
 			  <div>

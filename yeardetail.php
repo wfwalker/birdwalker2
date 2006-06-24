@@ -23,7 +23,7 @@ $request->globalMenu();
 	  <? browseButtons("Year Detail", "./yeardetail.php?view=" . $request->getView() . "&year=", $request->getYear(),
 					 $prevYear, $prevYear, $nextYear, $nextYear); ?>
 
-      <div class=pagetitle><?= $request->getYear() ?></div>
+      <div class="pagetitle"><?= $request->getYear() ?></div>
 <?    $request->viewLinks("species"); ?>
 	</div>
 

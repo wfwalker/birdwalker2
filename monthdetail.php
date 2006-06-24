@@ -52,7 +52,7 @@ else
 				  $next, getMonthNameForNumber($nextMonth));
 }
  ?>
-	<div class=pagetitle><?= getMonthNameForNumber($request->getMonth()) ?> <?= $request->getYear() == "" ? getEarliestYear() . " - " . getLatestYear() :  $request->getYear() ?></div>
+	<div class="pagetitle"><?= getMonthNameForNumber($request->getMonth()) ?> <?= $request->getYear() == "" ? getEarliestYear() . " - " . getLatestYear() :  $request->getYear() ?></div>
 
 <?        $request->viewLinks("tripsummaries"); ?>
 	</div>
