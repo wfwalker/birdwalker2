@@ -16,40 +16,7 @@ class Map
 		$this->mLocationQuery = new LocationQuery($inReq);
 	}
 
-	function computeExtrema()
-        {
-                if ($this->mReq->getLatitude() == "0") // special case, show whole united states
-		{
-		    $this->mReq->setLatitude(38);
-		    $this->mReq->setLongitude(-96);
-		    $this->mReq->setScale(15);
-		}
-		else if ($this->mReq->getLatitude() == "") // get parameters from location query
-		{
- 			$extrema = $this->mLocationQuery->findExtrema();
-
-			// put the map in the center of the extrema
-			$this->mReq->setLatitude(($extrema["minLat"] + $extrema["maxLat"]) / 2.0);
-			$this->mReq->setLongitude(($extrema["minLong"] + $extrema["maxLong"]) / 2.0);
-
-			// compute lat and long ranges, with a lower bound in case there's only one location in the set
-		    $longRange = abs($extrema["maxLong"] - $extrema["minLong"]);
-		    $latRange = abs($extrema["maxLat"] - $extrema["minLat"]);
-
-			// using the aspect ratio, decide on how to scale the map so it fits all the points
-		    $minRange = min($latRange, $longRange * $this->mReq->getMapheight() / $this->mReq->getMapWidth());
-		    if ($minRange == 0) $minRange = 1;
-			$this->mReq->setScale($minRange);
-		}
-	}
-
 	function getPageURL() { return $this->mPageURL; }
-	function getMinimumLatitude() { return $this->mReq->getLatitude() - $this->getLatitudeRadius(); }
-	function getMaximumLatitude() { return $this->mReq->getLatitude() + $this->getLatitudeRadius(); }
-	function getMinimumLongitude() { return $this->mReq->getLongitude() - $this->getLongitudeRadius(); }
-	function getMaximumLongitude() { return $this->mReq->getLongitude() + $this->getLongitudeRadius(); }
-	function getLatitudeRadius() { return $this->mReq->getScale(); }
-	function getLongitudeRadius() { return $this->mReq->getScale() * ($this->mReq->getMapWidth() / $this->mReq->getMapHeight()); }
 
 	function performDBQuery()
 	{
@@ -76,23 +43,17 @@ class Map
 
     function drawGoogle()
     {
-      $this->computeExtrema();
-
-      $centerLong = ($this->getMinimumLongitude() + $this->getMaximumLongitude()) / 2.0;
-      $centerLat = ($this->getMinimumLatitude() + $this->getMaximumLatitude()) / 2.0;
+      $extrema = $this->mLocationQuery->findExtrema();
       
-      $minRange = min($this->getMaximumLongitude() - $this->getMinimumLongitude(), $this->getMaximumLatitude() - $this->getMinimumLatitude());
-      $minPixels = min($this->mReq->getMapWidth(), $this->mReq->getMapHeight());
+      $mMinLat = $extrema["minLat"];
+      $mMaxLat = $extrema["maxLat"];
+      $mMinLong = $extrema["minLong"];
+      $mMaxLong = $extrema["maxLong"];
       
-      $longRange = $minRange * $this->mReq->getMapHeight() / $minPixels;
-      $latRange = $minRange * $this->mReq->getMapWidth() / $minPixels;
-      
-      $longPan = $longRange * 0.1;
-      $latPan = $latRange * 0.3; 
-
+      // put the map in the center of the extrema
+      $this->mReq->setLatitude(($mMinLat + $mMaxLat) / 2.0);
+      $this->mReq->setLongitude(($mMinLong + $mMaxLong) / 2.0);
 ?>
-
-<!-- try http://www.spflrc.org/~walker/googlemap.php?name=pants&lat=35.384&long=-118.115 -->
 
 <html>
   <head>
@@ -130,12 +91,12 @@ icon.iconAnchor = new GPoint(6, 20);
 icon.infoWindowAnchor = new GPoint(5, 1);
 
 // Center the map on the location
-var swCorner = new GLatLng(<?= $this->getMinimumLatitude() ?>, <?= $this->getMinimumLongitude() ?>);
-var neCorner = new GLatLng(<?= $this->getMaximumLatitude() ?>, <?= $this->getMaximumLongitude() ?>);
+var swCorner = new GLatLng(<?= $mMinLat ?>, <?= $mMinLong ?>);
+var neCorner = new GLatLng(<?= $mMaxLat ?>, <?= $mMaxLong ?>);
 var map = new GMap2(document.getElementById("map"));
 map.addControl(new GSmallMapControl());
 <? if ($this->mReq->getMapWidth() > 300) { ?> map.addControl(new GMapTypeControl()); <? } ?>
-map.setCenter(new GLatLng(<?= $centerLat ?>, <?= $centerLong ?>));
+map.setCenter(new GLatLng(<?= $this->mReq->getLatitude() ?>, <?= $this->mReq->getLongitude() ?>));
 var bestZoom = map.getBoundsZoomLevel(new GLatLngBounds(swCorner, neCorner));
 map.setZoom(bestZoom);
 
