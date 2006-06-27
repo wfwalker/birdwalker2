@@ -129,32 +129,6 @@ body
 .pagekind { text-transform: lowercase; text-align: center; font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-style: italic; white-space: nowrap;
 }
 
-/* Anchors, and especially magic rollover popup anchors for Maps. */
-
-
-
-a.info
-{
-    position:relative; /*this is the key*/
-    z-index:24;
-    color: white; padding-left: 3px; padding-right: 3px;
-    text-decoration: none;
-}
-
-a.info:hover { z-index:25; text-decoration: none; }
-
-a.info span { display: none; }
-
-a.info:hover span  /*the span will display just on :hover state*/
-{
-    display: block;
-    background-color: #484393;
-    position: absolute;
-    top: 0em; left: 0em; width: 15em;
-	color: white; padding-left: 3px; padding-right: 1px;
-    font: 10pt "Gill Sans", "Gill Sans MT", SansSerif;
-}
-
 .command-disabled
 {
   background-image: url(./images/closed.gif);
