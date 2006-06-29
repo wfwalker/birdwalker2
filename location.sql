@@ -204,3 +204,4 @@ INSERT INTO location VALUES (204,'Galileo Hill','','California City','Kern','CA'
 INSERT INTO location VALUES (205,'Kelso Valley Road','','Kernville','Kern','CA','','',35.3511,-118.218,0);
 INSERT INTO location VALUES (206,'Twin Gates','','Mt Hamilton','Alameda','CA','','',0,0,0);
 INSERT INTO location VALUES (207,'Smith Creek Fire Station','','Mt Hamilton','Alameda','CA','','',0,0,0);
+INSERT INTO location VALUES (208,'Marlin Park','','Redwood City','San Mateo','CA','','',37.5356,-122.247,0);
