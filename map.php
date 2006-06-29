@@ -101,31 +101,38 @@ var bestZoom = map.getBoundsZoomLevel(new GLatLngBounds(swCorner, neCorner));
 map.setZoom(bestZoom);
 
 // Creates one of our tiny markers at the given point
-function createMarker(point,name) {
+function createMarker(point,infoHTML) {
   var marker = new GMarker(point, icon);
   map.addOverlay(marker);
   GEvent.addListener(marker, "click", function() {
-    marker.openInfoWindowHtml("<div class=\"report-content\">" + name + "</div>");
+    marker.openInfoWindowHtml(infoHTML);
   });
 }
 
 // Place the icons where they should be
 
 <?
-		$dbQuery = $this->performDBQuery();
+    $dbQuery = $this->performDBQuery();
+  
+    while($info = mysql_fetch_array($dbQuery))
+    {
+        if (($info["Longitude"] != 0) && ($info["Latitude"] != 0))
+	{ ?>
+           createMarker(new GPoint(<?= $info["Longitude"] ?>, <?= $info["Latitude"] ?>), "\
+               <div class=\"report-content\">\
+	           <a href=\"./locationdetail.php?locationid=<?= $info["objectid"] ?>\" target=\"_top\"><?= $info["Name"] ?></a>\
+<?                 if ($info["locationPhotos"] > 0) { ?>\
+                       <a href=\"./locationdetail.php?view=photo&locationid=<?= $info["objectid"] ?>\" target=\"_top\">\
+                           <img border=\"0\" align=\"bottom\" src=\"./images/camera.gif\" alt=\"photo\">\
+                       </a>\
+<?                 } ?>\
+               </div>");
 
-		$counter = 1;
-
-		while($info = mysql_fetch_array($dbQuery))
-		{
-		  if (($info["Longitude"] != 0) && ($info["Latitude"] != 0))
-		  { ?>
-                    createMarker(new GPoint(<?= $info["Longitude"] ?>, <?= $info["Latitude"] ?>), "<?= $info["Name"] ?>");
-<?		  }
-		}?>
+<?      }
+    }?>
     
-    //]]>
-    </script>
+//]]>
+</script>
 <p>
 	
 </body>
