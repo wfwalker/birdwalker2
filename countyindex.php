@@ -31,14 +31,14 @@ $countyStats = performQuery("Get County Statistics By Year",
       FROM location, sighting, state
       WHERE sighting.LocationName=location.Name AND state.Abbreviation=location.State
       GROUP BY location.County, theyear
-      ORDER BY State, County, theyear");
+      ORDER BY location.State, location.County, theyear");
 
 $countyTotals = performQuery("Get County Totals",
     "SELECT location.County, location.State, state.objectid as StateID, COUNT(DISTINCT sighting.SpeciesAbbreviation) AS SpeciesCount
       FROM location, sighting, state
       WHERE sighting.LocationName=location.Name AND state.Abbreviation=location.State
       GROUP BY location.County
-      ORDER BY State, County"); ?>
+      ORDER BY location.State, location.County"); ?>
 
     <tr><td></td><? insertYearLabels(); ?><td class="bordered">Total</td></tr>
 
@@ -52,7 +52,7 @@ while ($info = mysql_fetch_array($countyStats))
 
 	if ($lastStateAccumulated != $prevState)
 	{
-		$stateInfo = getStateInfo($stateid); ?>
+		$stateInfo = getStateInfo($prevState); ?>
 
 		<tr>
             <td colspan="12" class="heading">
