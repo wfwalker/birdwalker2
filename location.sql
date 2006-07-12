@@ -205,3 +205,6 @@ INSERT INTO location VALUES (205,'Kelso Valley Road','','Kernville','Kern','CA',
 INSERT INTO location VALUES (206,'Twin Gates','','Mt Hamilton','Alameda','CA','','',0.0000000000,0.0000000000,0);
 INSERT INTO location VALUES (207,'Smith Creek Fire Station','','Mt Hamilton','Alameda','CA','','',0.0000000000,0.0000000000,0);
 INSERT INTO location VALUES (208,'Marlin Park','','Redwood City','San Mateo','CA','','',37.5299682617,-122.2497100830,0);
+INSERT INTO location VALUES (209,'Tahoe Meadows','','Incline Village','Washoe','NV','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (210,'Mount Rose Trail','','Incline Village','Washoe','NV','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (211,'State Line Fire Lookout','','Incline Village','Washoe','NV','','',0.0000000000,0.0000000000,0);
