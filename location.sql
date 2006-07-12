@@ -189,7 +189,7 @@ INSERT INTO location VALUES (189,'Castle Rock State Park','','Saratoga','Santa C
 INSERT INTO location VALUES (190,'Rocky Mountain National Park','','Estes Park','Grand','CO','','',40.3333015442,-105.7080001831,0);
 INSERT INTO location VALUES (191,'Asilomar State Beach','','Pacific Grove','Monterey','CA','','',36.6241989136,-121.9380035400,0);
 INSERT INTO location VALUES (192,'Loma Prieta','','','Santa Cruz','CA','','',0.0000000000,0.0000000000,0);
-INSERT INTO location VALUES (193,'Mount Madonna Road','','','Santa Cruz','CA','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (193,'Mount Madonna Road','','','Santa Cruz','CA','','',37.0122184753,-121.7038879395,0);
 INSERT INTO location VALUES (194,'Garland Ranch State Park','','Carmel Valley','Monterey','CA','','',36.5119018555,-121.8209991455,1);
 INSERT INTO location VALUES (195,'Hidden Villa','','Los Altos Hills','Santa Clara','CA','','',37.3541984558,-122.1579971313,0);
 INSERT INTO location VALUES (196,'Salinas River State Beach','','Santa Cruz','Monterey','CA','Note to photographers: This can be a good place to look for Snowy Plovers in late spring, with better light in the afternoon. Most of the birds are banded, however. The beach can be crowded. Porta-potty available. No entrance fee.','mapblast',36.7831001282,-121.7939987183,0);
@@ -203,8 +203,8 @@ INSERT INTO location VALUES (203,'California City Central Park','','California C
 INSERT INTO location VALUES (204,'Galileo Hill','','California City','Kern','CA','','',35.2122001648,-117.7529983521,0);
 INSERT INTO location VALUES (205,'Kelso Valley Road','','Kernville','Kern','CA','','',35.3511009216,-118.2180023193,0);
 INSERT INTO location VALUES (206,'Twin Gates','','Mt Hamilton','Alameda','CA','','',0.0000000000,0.0000000000,0);
-INSERT INTO location VALUES (207,'Smith Creek Fire Station','','Mt Hamilton','Alameda','CA','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (207,'Smith Creek Fire Station','','Mt Hamilton','Alameda','CA','','',37.3224983215,-121.6675033569,0);
 INSERT INTO location VALUES (208,'Marlin Park','','Redwood City','San Mateo','CA','','',37.5299682617,-122.2497100830,0);
-INSERT INTO location VALUES (209,'Tahoe Meadows','','Incline Village','Washoe','NV','','',0.0000000000,0.0000000000,0);
-INSERT INTO location VALUES (210,'Mount Rose Trail','','Incline Village','Washoe','NV','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (209,'Tahoe Meadows','','Incline Village','Washoe','NV','','',39.2994384766,-119.9166717529,0);
+INSERT INTO location VALUES (210,'Mount Rose Trail','','Incline Village','Washoe','NV','','',39.3133316040,-119.8955612183,0);
 INSERT INTO location VALUES (211,'State Line Fire Lookout','','Incline Village','Washoe','NV','','',0.0000000000,0.0000000000,0);
