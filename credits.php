@@ -9,8 +9,8 @@ htmlHead("About");
 $request = new Request;
 $request->globalMenu();
 ?>
-    <div id="topright-home">
-	</div>
+
+<?  topRightBanner(); ?>
 
     <div id="contentright">
     <table>

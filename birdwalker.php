@@ -23,6 +23,15 @@ echo "<!DOCTYPE  HTML PUBLIC  \"-//W3C//DTD HTML 4.01 Transitional//EN\">";
 <?
 }
 
+function topRightBanner()
+{ 
+    $counter = rand(1, 3);
+?>
+    <div id="topright-home<?= $counter ?>">
+	</div>
+<?
+}
+
 function footer()
 {
 ?>

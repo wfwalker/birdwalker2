@@ -40,7 +40,19 @@ body
 	position: absolute;
 	background-image: url(./images/species-banner.jpg);
 }
-#topright-home
+#topright-home1
+{
+	left: 120px; width: 640px; top: 0px; height: 100px;
+	position: absolute;
+	background-image: url(./images/banner1.jpg);
+}
+#topright-home2
+{
+	left: 120px; width: 640px; top: 0px; height: 100px;
+	position: absolute;
+	background-image: url(./images/banner2.jpg);
+}
+#topright-home3
 {
 	left: 120px; width: 640px; top: 0px; height: 100px;
 	position: absolute;
