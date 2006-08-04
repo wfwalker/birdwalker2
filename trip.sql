@@ -496,3 +496,6 @@ INSERT INTO trip VALUES (496,'Ashok and Bill','','Morning Photo Safari','After s
 INSERT INTO trip VALUES (497,'Mary and Bill','','Birding with JB','We headed out to Santa Cruz to try to find a flock of shearwaters JB has been seeing for the last two weeks. No luck on that score, but a pleasant beach cruise was had by all.','2006-06-20');
 INSERT INTO trip VALUES (498,'Mary and Bill','','Knitflix Weekend Day Two','We got up early and went way up to the mountains to find some mountain species, and had a great time wandering around the beautiful alpine meadows awash with snowmelt.','2006-07-03');
 INSERT INTO trip VALUES (499,'Mary and Bill','','Knitflix Weekend Day One','We had a fun stroll uphill to a great view of the lake and the many powerboats cruising all over it.','2006-07-02');
+INSERT INTO trip VALUES (500,'Ashok and Bill','','Morning Photo Safari','Ashok and Bill went out early to beat the heat and find something interesting. We found quite a few interesting shorebirds.','2006-07-21');
+INSERT INTO trip VALUES (501,'Mary and Bill','','Lounging at the beach','','2006-07-23');
+INSERT INTO trip VALUES (502,'Bill Walker','','Morning Photo Safari','','2006-07-13');
