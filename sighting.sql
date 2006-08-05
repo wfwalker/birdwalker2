@@ -13285,7 +13285,7 @@ INSERT INTO sighting VALUES (13359,'snoegr','Palo Alto Duck Pond','',0,0,'2006-0
 INSERT INTO sighting VALUES (13360,'bcnher','Palo Alto Duck Pond','',0,0,'2006-06-15');
 INSERT INTO sighting VALUES (13361,'rewbla','Palo Alto Duck Pond','',0,0,'2006-06-15');
 INSERT INTO sighting VALUES (13362,'mallar','Palo Alto Duck Pond','',0,0,'2006-06-15');
-INSERT INTO sighting VALUES (13363,'rudduc','Palo Alto Duck Pond','',0,0,'2006-06-15');
+INSERT INTO sighting VALUES (13363,'rudduc','Palo Alto Duck Pond','',0,1,'2006-06-15');
 INSERT INTO sighting VALUES (13364,'doccor','Santa Cruz','',0,0,'2006-06-20');
 INSERT INTO sighting VALUES (13365,'bracor','Santa Cruz','',0,0,'2006-06-20');
 INSERT INTO sighting VALUES (13366,'brnpel','Santa Cruz','',0,0,'2006-06-20');
@@ -13329,7 +13329,15 @@ INSERT INTO sighting VALUES (13403,'snoegr','Don Edwards Center','',0,0,'2006-07
 INSERT INTO sighting VALUES (13404,'barswa','Don Edwards Center','',0,0,'2006-07-13');
 INSERT INTO sighting VALUES (13405,'bcnher','Don Edwards Center','',0,0,'2006-07-13');
 INSERT INTO sighting VALUES (13406,'bknsti','Don Edwards Center','',0,0,'2006-07-13');
-INSERT INTO sighting VALUES (13407,'killde','Don Edwards Center','',0,0,'2006-07-13');
+INSERT INTO sighting VALUES (13407,'killde','Don Edwards Center','',0,1,'2006-07-13');
 INSERT INTO sighting VALUES (13408,'brnowl','Don Edwards Center','',0,0,'2006-07-13');
 INSERT INTO sighting VALUES (13409,'savspa','Don Edwards Center','',0,0,'2006-07-13');
 INSERT INTO sighting VALUES (13410,'moudov','Don Edwards Center','',0,0,'2006-07-13');
+INSERT INTO sighting VALUES (13411,'burowl','Shoreline Lake','',0,1,'2006-08-03');
+INSERT INTO sighting VALUES (13412,'lobdow','Shoreline Lake','',0,0,'2006-08-03');
+INSERT INTO sighting VALUES (13413,'blkpho','Shoreline Lake','',0,0,'2006-08-03');
+INSERT INTO sighting VALUES (13414,'whtkit','Shoreline Lake','',0,0,'2006-08-03');
+INSERT INTO sighting VALUES (13415,'grbher','Shoreline Lake','',0,0,'2006-08-03');
+INSERT INTO sighting VALUES (13416,'ameavo','Shoreline Lake','',0,0,'2006-08-03');
+INSERT INTO sighting VALUES (13417,'bknsti','Shoreline Lake','',0,0,'2006-08-03');
+INSERT INTO sighting VALUES (13418,'caster','Shoreline Lake','',0,0,'2006-08-03');

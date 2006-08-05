@@ -498,4 +498,5 @@ INSERT INTO trip VALUES (498,'Mary and Bill','','Knitflix Weekend Day Two','We g
 INSERT INTO trip VALUES (499,'Mary and Bill','','Knitflix Weekend Day One','We had a fun stroll uphill to a great view of the lake and the many powerboats cruising all over it.','2006-07-02');
 INSERT INTO trip VALUES (500,'Ashok and Bill','','Morning Photo Safari','Ashok and Bill went out early to beat the heat and find something interesting. We found quite a few interesting shorebirds.','2006-07-21');
 INSERT INTO trip VALUES (501,'Mary and Bill','','Lounging at the beach','','2006-07-23');
-INSERT INTO trip VALUES (502,'Bill Walker','','Morning Photo Safari','','2006-07-13');
+INSERT INTO trip VALUES (502,'Bill Walker','','Morning Photo Safari','While Ashok was out of town I decided to stop by Don Edwards to see what I could find. I had some nice reflections off the water, and a very cooperative Killdeer on my drive back home.','2006-07-13');
+INSERT INTO trip VALUES (503,'Ashok and Bill','','Morning Photo Safari','We also spent time photographing a gopher, which turns out to be a really weird looking critter.','2006-08-03');
