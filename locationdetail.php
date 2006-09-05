@@ -43,10 +43,10 @@ $request->globalMenu();
 <div id="contentright">
 <? if ($siteInfo["noteworthy"] != 0) { ?>
       <div class="heading">Notes</div>
-	  <div class="onecolumn">
-<?      referenceURL($siteInfo);
-        if ($siteInfo["Notes"] != "") { ?>
-          <div><?= $siteInfo["Notes"] ?></div>
+	  <div class="leftcolumn">
+        <div class="report-content"><? referenceURL($siteInfo); ?></div>
+<?      if ($siteInfo["Notes"] != "") { ?>
+          <div class="report-content"><?= $siteInfo["Notes"] ?></div>
 <?      } ?>
       </div> <?
    }

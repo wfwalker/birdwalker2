@@ -90,7 +90,7 @@ body
 {
     border-top: solid 1px #AAAAAA;
     font: 10pt "Gill Sans", "Gill Sans MT", SansSerif;
-	padding-bottom: 30px;
+	padding-bottom: 30px; margin-left: 9px; margin-right: 9px;
 	margin-top: 60px;
 	position: static;
 }
@@ -108,14 +108,14 @@ body
 .metadata {font: 9pt "Gill Sans", "Gill Sans MT", SansSerif; padding-left: 4px; }
 
 .superheading {font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-style: italic; color: #444444; }
-.heading { font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-weight: bold; margin-top: 15px; margin-bottom: 5px; clear: both; color: #444444 }
+.heading { font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-weight: bold; margin-left: 6px; margin-top: 15px; margin-bottom: 5px; clear: both; color: #444444 }
 .subheading { font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-weight: bold; margin-top: 10px; color: #444444 }
 
 .summaryblock { border-top: solid 1px #AAAAAA; padding-top: 5px; margin-bottom: 5px }
 
 .inlinepict { margin-left: 10px; margin-bottom: 10px; }
 
-.report-content {font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; padding-left: 3px}
+.report-content {font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; margin-left: 3px}
 
 .firstcell { padding-left: 15px; white-space: nowrap; }
 .fieldlabel { padding-left: 15px; font: 9pt Courier, Fixed; text-align: right; vertical-align: top}

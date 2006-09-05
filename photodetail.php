@@ -85,28 +85,28 @@ $request->globalMenu();
 <?  }
 
     if (strlen($sightingInfo["Notes"]) > 0) { ?>
-		<p class="report-content"><?= $sightingInfo["Notes"] ?></p>
+		<div class="leftcolumn"><p class="report-content"><?= $sightingInfo["Notes"] ?></p></a></div>
 <?  }
 
     if (strlen($tripInfo["Notes"]) > 0) { ?>
         <div class="heading">
 			Trip: <a href="./tripdetail.php?tripid=<?= $tripInfo["objectid"] ?>"><?= $tripInfo["Name"] ?></a>
 		</div>
-        <p class="report-content"><?= $tripInfo["Notes"] ?></p>
+        <div class="leftcolumn"><p<p class="report-content"><?= $tripInfo["Notes"] ?></p></div>
 <?  }
 
     if (strlen($locationInfo["Notes"]) > 0) { ?>
 	    <div class="heading">
 			Location: <a href="./locationdetail.php?locationid=<?= $locationInfo["objectid"] ?>"><?= $locationInfo["Name"] ?></a>
 		</div>
-        <p class="report-content"><?= $locationInfo["Notes"] ?></p>
+        <div class="leftcolumn"><p<p class="report-content"><?= $locationInfo["Notes"] ?></p></div>
 <?  }
 
     if (strlen($speciesInfo["Notes"]) > 0) { ?>
 	    <div class="heading">
 			Species: <a href="./speciesdetail.php?speciesid=<?= $speciesInfo["objectid"] ?>"><?= $speciesInfo["CommonName"] ?></a>
 		</div>
-	    <p class="report-content"><?= $speciesInfo["Notes"] ?></p>
+	    <div class="leftcolumn"><p<p class="report-content"><?= $speciesInfo["Notes"] ?></p></div>
 <?  }
 
     footer();

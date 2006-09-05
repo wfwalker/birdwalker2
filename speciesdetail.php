@@ -34,7 +34,7 @@ $request->globalMenu();
 <?  if ($speciesInfo["noteworthy"] != "0")
     { ?>
 	  <div class="heading">Notes</div>
-	  <div class="onecolumn">
+	  <div class="leftcolumn">
 <?    if ($speciesInfo["Notes"] != "") { ?>
         <div class="report-content"><?= $speciesInfo["Notes"] ?></div>
 <?    } ?>

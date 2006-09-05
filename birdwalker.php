@@ -119,7 +119,7 @@ function referenceURL($info)
       {
 		$linkText="See also Patuxent Bird ID page...";
 	  }
-?>	  <div><a href="<?= $url ?>"><?= $linkText ?></a></div>
+?>	  <a href="<?= $url ?>"><?= $linkText ?></a>
 <?  }
 }
 

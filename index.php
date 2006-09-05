@@ -12,7 +12,7 @@ require_once("./speciesquery.php");
 function welcomeMessage()
 {
  ?>
-	  <div class="heading">Welcome</div>
+	  <div class="subheading">Welcome</div>
 
       <div class="summaryblock">
 	  <div class="report-content">
@@ -55,7 +55,7 @@ function dashboard()
 
 
 ?>
-	<div class="heading">Latest Counts</div>
+	<div class="subheading">Latest Counts</div>
 	<div class="summaryblock">
 	   <table class="report-content">
 	     <tr><td>ABA</td><td>State</td><td>County</td></tr>
@@ -91,7 +91,7 @@ function birdOfTheDay()
 
 ?>
 
-		<div class="heading">Bird of the Day</div>
+		<div class="subheading">Bird of the Day</div>
 
 		<div class="superheading"><?= $today ?></div>
 
@@ -101,7 +101,7 @@ function birdOfTheDay()
 		    The map below the photograph marks locations where we have observed this species.
 		  </div>
 
-          <div class="heading"><a href="./speciesdetail.php?speciesid=<?=$info['objectid']?>"><?= $info["CommonName"] ?></a></div>
+          <div class="subheading"><a href="./speciesdetail.php?speciesid=<?=$info['objectid']?>"><?= $info["CommonName"] ?></a></div>
 
 	  <? if (mysql_num_rows($photos) > 0)
 	     {
@@ -115,7 +115,7 @@ function birdOfTheDay()
 
 	  <? } ?>
 
-		   <div class="heading"><a href="./speciesdetail.php?speciesid=<?=$info['objectid']?>">Our Sightings</a></div>
+		   <div class="subheading"><a href="./speciesdetail.php?speciesid=<?=$info['objectid']?>">Our Sightings</a></div>
           <? $map->draw(); ?>
 
 	  </div>
@@ -127,7 +127,7 @@ function latestTrips()
 	$numberOfTrips = 8;
 	$latestTrips = performQuery("Get Latest Trips", "SELECT *, " . longNiceDateColumn() . " FROM trip ORDER BY Date DESC LIMIT " . $numberOfTrips);
  ?>
-	<div class="heading">Latest Trips</div>
+	<div class="subheading">Latest Trips</div>
 
 <?  for ($index = 0; $index < $numberOfTrips; $index++)
 	{
@@ -139,7 +139,7 @@ function latestTrips()
 		<div class="superheading"><?= $info["niceDate"] ?></div>
 
 		<div class="summaryblock">
-		    <span class="heading">
+		    <span class="subheading">
 		        <a href="./tripdetail.php?tripid=<?=$info["objectid"]?>">
 <?                 rightThumbnail("SELECT * FROM sighting WHERE Photo='1' AND TripDate='" . $info["Date"] . "' LIMIT 1", false); ?>
                    <?= $info["Name"] ?>
