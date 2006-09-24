@@ -208,3 +208,4 @@ INSERT INTO location VALUES (208,'Marlin Park','','Redwood City','San Mateo','CA
 INSERT INTO location VALUES (209,'Tahoe Meadows','','Incline Village','Washoe','NV','','',39.2994384766,-119.9166717529,0);
 INSERT INTO location VALUES (210,'Mount Rose Trail','','Incline Village','Washoe','NV','','',39.3133316040,-119.8955612183,0);
 INSERT INTO location VALUES (211,'State Line Fire Lookout','','Incline Village','Washoe','NV','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (212,'Guadalupe Oak Grove Park','','San Jose','Santa Clara','CA','','',37.2355613708,-121.8808288574,0);
