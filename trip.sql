@@ -97,7 +97,7 @@ INSERT INTO trip VALUES (96,'Mary and Bill','','Birding with Parents','Mom and D
 INSERT INTO trip VALUES (97,'Mary and Bill','','Birding with Parents 2','','2000-03-11');
 INSERT INTO trip VALUES (98,'Mary and Bill','','Birding with Parents 3','','2000-03-12');
 INSERT INTO trip VALUES (99,'Mary and Bill','','Coastal Outing','','2000-04-02');
-INSERT INTO trip VALUES (100,'Al Eisner','','Santa Clara Audubon Walk','','2000-05-13');
+INSERT INTO trip VALUES (100,'Al Eisner','','Santa Clara Audubon Walk','We started this walk at Pigeon Point lighthouse, then walked up Gazos Creek road. We ended by walking around Pescadero Marsh','2000-05-13');
 INSERT INTO trip VALUES (101,'Mary and Bill','','Coastal Trip','','2000-06-10');
 INSERT INTO trip VALUES (102,'Bill','','Reactivity Offsite','I saw a Western Whiptail lizard, a Rabbit, and some other mammal.','2000-06-19');
 INSERT INTO trip VALUES (103,'Mary and Bill','','Saturday Stroll','','2000-07-08');

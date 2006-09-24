@@ -209,9 +209,9 @@ INSERT INTO location VALUES (209,'Tahoe Meadows','','Incline Village','Washoe','
 INSERT INTO location VALUES (210,'Mount Rose Trail','','Incline Village','Washoe','NV','','',39.3133316040,-119.8955612183,0);
 INSERT INTO location VALUES (211,'State Line Fire Lookout','','Incline Village','Washoe','NV','','',0.0000000000,0.0000000000,0);
 INSERT INTO location VALUES (212,'Guadalupe Oak Grove Park','','San Jose','Santa Clara','CA','','',37.2355613708,-121.8808288574,0);
-INSERT INTO location VALUES (213,'Gazos Creek','','Pescadero','San Mateo','CA','This location record covers both the beach access at the creek mouth as well as birds seen driving up Gazos Creek Road','',37.1655616760,-122.3616714478,0);
+INSERT INTO location VALUES (213,'Gazos Creek','','Pescadero','San Mateo','CA','This location record covers both the beach access at the creek mouth as well as birds seen driving up Gazos Creek Road. We\'ve been birding here since May of 2000 when Al Eisner took us up Gazos Creek Road.','',37.1655616760,-122.3616714478,0);
 INSERT INTO location VALUES (214,'Bean Hollow State Beach','','Pescadero','San Mateo','CA','','',37.2257194519,-122.4088211060,0);
 INSERT INTO location VALUES (215,'Lake Lucerne','','Pescadero','San Mateo','CA','','',37.2233314514,-122.4049987793,0);
 INSERT INTO location VALUES (216,'Ano Nuevo State Reserve','','Pescadero','San Mateo','CA','','',37.1172218323,-122.3258285522,0);
-INSERT INTO location VALUES (217,'Downtown Pescadero','','Pescadero','San Mateo','CA','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (217,'Downtown Pescadero','','Pescadero','San Mateo','CA','','',37.2556343079,-122.3833694458,0);
 INSERT INTO location VALUES (218,'Stage Road','','Pescadero','San Mateo','CA','Connects Downtown Pescadero with La Honda Road','',37.2809867859,-122.3759765625,0);
