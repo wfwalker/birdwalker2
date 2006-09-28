@@ -58,6 +58,12 @@ body
 	position: absolute;
 	background-image: url(./images/banner3.jpg);
 }
+#topright-home4
+{
+	left: 120px; width: 640px; top: 0px; height: 100px;
+	position: absolute;
+	background-image: url(./images/banner4.jpg);
+}
 #topright-photo
 {
 	left: 120px; width: 640px; top: 0px; height: 100px;
