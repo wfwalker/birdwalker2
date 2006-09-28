@@ -25,7 +25,7 @@ echo "<!DOCTYPE  HTML PUBLIC  \"-//W3C//DTD HTML 4.01 Transitional//EN\">";
 
 function topRightBanner()
 { 
-    $counter = rand(1, 3);
+    $counter = rand(1, 4);
 ?>
     <div id="topright-home<?= $counter ?>">
 	</div>
@@ -46,6 +46,12 @@ function footer()
 function htmlFoot()
 {
 ?>
+    <script src="http://www.google-analytics.com/urchin.js" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+      _uacct = "UA-717974-1";
+      urchinTracker();
+    </script>
   </body>
 </html>
 <?
