@@ -215,3 +215,4 @@ INSERT INTO location VALUES (215,'Lake Lucerne','','Pescadero','San Mateo','CA',
 INSERT INTO location VALUES (216,'Ano Nuevo State Reserve','','Pescadero','San Mateo','CA','','',37.1172218323,-122.3258285522,0);
 INSERT INTO location VALUES (217,'Downtown Pescadero','','Pescadero','San Mateo','CA','','',37.2556343079,-122.3833694458,0);
 INSERT INTO location VALUES (218,'Stage Road','','Pescadero','San Mateo','CA','Connects Downtown Pescadero with La Honda Road','',37.2809867859,-122.3759765625,0);
+INSERT INTO location VALUES (219,'Sutro Heights Park','','San Francisco','San Francisco','CA','','',0.0000000000,0.0000000000,0);
