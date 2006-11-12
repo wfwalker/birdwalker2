@@ -13545,7 +13545,7 @@ INSERT INTO sighting VALUES (13619,'normoc','Golden Gate Park','',0,0,'2006-10-0
 INSERT INTO sighting VALUES (13620,'gockin','Sutro Heights Park','',0,1,'2006-10-08');
 INSERT INTO sighting VALUES (13621,'yerwar','Sutro Heights Park','',0,0,'2006-10-08');
 INSERT INTO sighting VALUES (13622,'towwar','Sutro Heights Park','',0,0,'2006-10-08');
-INSERT INTO sighting VALUES (13623,'hoowar','Sutro Heights Park','',0,0,'2006-10-08');
+INSERT INTO sighting VALUES (13623,'hoowar','Sutro Heights Park','The picture I got today of this bird doesn\'t do it justice. It was bright and beautiful and just magically appeared right where the mailing list said it would be. A fabulous moment.',0,1,'2006-10-08');
 INSERT INTO sighting VALUES (13624,'caltow','Sutro Heights Park','',0,0,'2006-10-08');
 INSERT INTO sighting VALUES (13625,'foxspa','Sutro Heights Park','',0,0,'2006-10-08');
 INSERT INTO sighting VALUES (13626,'sonspa','Golden Gate Park','',0,0,'2006-10-08');
