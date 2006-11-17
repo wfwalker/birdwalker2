@@ -5,6 +5,8 @@ require_once("./birdwalker.php");
 require_once("./request.php");
 require_once("./sightingquery.php");
 
+$originPageScript = $_GET["origin"];
+
 $request = new Request;
 $sightingQuery = new SightingQuery($request);
 $pageTitle =  $sightingQuery->getPageTitle();
@@ -52,30 +54,32 @@ $tripYear =  substr($sightingInfo["TripDate"], 0, 4);
 <title>birdWalker | <?= $pageTitle ?> Slideshow</title>
 </head>
 
-<body>
+<body style="background-color: white; text-align: center">
 
-<?= $request->globalMenu(); ?>
+<center>
+<div style="width: 640px">
 
-  <div id="topright-photo">
-	<? browseButtons($pageTitle . " Slide Show", "./slideshow.php?" . $request->getParams() . "&sightingid=",
+<?     $returnHeading = $pageTitle . " Slide Show   <a href=\"" . $originPageScript . "?" . $request->getParams() . "\">&lt;return&gt;</a>";
+       browseButtons($returnHeading, "./slideshow.php?" . $request->getParams() . "&origin=" . $originPageScript . "&sightingid=",
 					 $sightingInfo["objectid"],
 					 $prevPhotoID, "", $nextPhotoID, ""); ?>
 
-    <div class="pagetitle"><?= $speciesInfo["CommonName"] ?></div>
+    <div class="pagetitle">
+	  <?= $speciesInfo["CommonName"] ?>
+	</div>
+
     <div class="pagesubtitle">
 	    <?= $sightingInfo["niceDate"] ?>, <?= $sightingInfo["LocationName"] ?>
     </div>
-  </div>
 
-  <div id="contentright">
-<?      $photoFilename = getPhotoFilename($sightingInfo);
+<?  $photoFilename = getPhotoFilename($sightingInfo);
 
-	    list($width, $height, $type, $attr) = getimagesize("./images/photo/" . $photoFilename); ?>
+	list($width, $height, $type, $attr) = getimagesize("./images/photo/" . $photoFilename); ?>
 
-    <center>
-	    <img width=<?= $width ?> height=<?= $height ?> src="<?= getPhotoURLForSightingInfo($sightingInfo) ?>">
-        <div class="copyright">@<?= $tripYear ?> W. F. Walker</div>
-    </center>
-  </div>
+	<img width=<?= $width ?> height=<?= $height ?> src="<?= getPhotoURLForSightingInfo($sightingInfo) ?>">
+    <div class="copyright">@<?= $tripYear ?> W. F. Walker</div>
+</div>
+</center>
 
 </html>
+
