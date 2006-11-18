@@ -396,9 +396,10 @@ class Request
 function changeView()
 {
 	box = document.forms[0].viewChooser;
+
 	if (box.options[box.selectedIndex].value == "slideshow")
 	{
-	    destination = "./slideshow.php?<?= $tempRequest->getParams() ?>&view=species";
+	  destination = "./slideshow.php?<?= $tempRequest->getParams() ?>&origin=<?= $tempRequest->getPageScript() ?>";
 		if (destination) location.href = destination;
 	}
 	else
@@ -611,6 +612,7 @@ function changeView()
 <?          $this->globalMenuBirds(); ?>
 <?          $this->globalMenuLocations(); ?>
 
+            <div class="command-spacer">&nbsp;</div>
 			<div class="command-simple"><a href="./speciesindex.php?view=chrono">life list</a></div>
 	        <div class="command-simple"><a href="./credits.php">about</a></div>
 
@@ -622,6 +624,7 @@ function changeView()
 <?	        } ?>
 
 	        <div class="command-simple"><a href="./indexrss.php">RSS</a></div>
+	        <div class="command-simple"><a href="./kmlfile.php?<?= $this->getParams() ?>">KML</a></div>
 
         </div>
 <?  }

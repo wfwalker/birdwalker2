@@ -30,7 +30,6 @@ class Map
 	function draw($inDrawControls = false)
 	{
 ?>
-
        <iframe marginwidth="0" marginheight="0" scrolling="no" src="./mapframe.php?<?= $this->mReq->getParams() ?>" style="position: relative; border: 1px solid gray; height:<?= $this->mReq->getMapHeight() ?>px; width: <?= $this->mReq->getMapWidth()?>px;">
        </iframe>
 
@@ -38,8 +37,8 @@ class Map
 <?
 
 	   if ($inDrawControls) $this->mLocationQuery->formatTwoColumnLocationList("map", true);
-        }
 
+    }
 
     function drawGoogle()
     {
@@ -139,7 +138,39 @@ function createMarker(point,infoHTML) {
 </html>	
 
 <?
-	  }
 }
 
+function emitKML()
+{
+  $locations = $this->performDBQuery();
+  $numberOfLocations = mysql_num_rows($locations);
+?>
+  <kml xmlns="http://earth.google.com/kml/2.0">
+  <Folder>
+    <name><?= $this->mLocationQuery->getPageTitle() ?></name>
+
+<?    for ($index = 0; $index < $numberOfLocations; $index++)
+	  {
+		  $info = mysql_fetch_array($locations); ?>
+
+          <Placemark>
+            <description>
+              <p><a href="http://sven.spflrc.org/~walker/locationdetail.php?locationid=<?=$info["objectid"]?>">Species List</a></p>
+		      <?= htmlentities($info["Notes"]) ?>
+		    </description>
+		    <Snippet><?= htmlentities($info["Notes"]) ?></Snippet>
+		    <name><?= $info["Name"] ?></name>
+
+		    <Point>
+		      <altitudeMode>relativeToGround</altitudeMode>
+		      <coordinates><?= $info["Longitude"] ?>, <?= $info["Latitude"] ?></coordinates>
+		    </Point>
+          </Placemark>
+<?	  } ?>
+
+  </Folder>
+  </kml>
+<?
+}
+}
 ?>

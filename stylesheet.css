@@ -145,13 +145,15 @@ body
 .prevlink a:hover { color: red; text-decoration: underline; }
 
 .pagekind { text-transform: lowercase; text-align: center; font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-style: italic; white-space: nowrap;
+.pagekind a       { text-decoration: none; }
+.pagekind a:hover { color: red; text-decoration: underline; }
 }
 
 .command-disabled
 {
   background-image: url(./images/closed.gif);
   background-repeat: no-repeat;
-  padding-left: 16px; margin-left: 7px; margin-bottom: 7px;
+  padding-left: 16px; margin-left: 7px; margin-bottom: 14px;
 }
 
 .command-simple
@@ -159,12 +161,17 @@ body
   padding-left: 16px; margin-left: 7px; margin-bottom: 7px;
 }
 
+.command-spacer
+{
+  padding-left: 16px; margin-left: 7px; margin-right: 7px; margin-bottom: 1px; margin-top: 7px;
+}
+
 .command
 {
   width: 90px;
   background-image: url(./images/open.gif);
   background-repeat: no-repeat;
-  padding-left: 16px; margin-left: 7px; margin-bottom: 7px;
+  padding-left: 16px; margin-left: 7px; margin-bottom: 14px;
   white-space: nowrap;
 }
 
