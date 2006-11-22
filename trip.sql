@@ -510,3 +510,4 @@ INSERT INTO trip VALUES (510,'Ashok, Mary, and Bill','','Big Photo Day','<p>Satu
 INSERT INTO trip VALUES (511,'Mary and Bill','','Scouting in Hayward','In preparation for our Wild Bird Center trip on November 18th, we visited the Hayward Shoreline Interpretive Center and Frank\'s Dump. The Interpretive Center is a lovely spot, and serves as an excellent demonstration of the dramatic effects of the tide on a shallow slough. It was very gratifying to see so many different ducks around, winter is really here!','2006-11-05');
 INSERT INTO trip VALUES (512,'Ashok and Bill','','Scouting Arrowhead','We had fun trying to photograph rails near the boardwalk at high tide. The clappers were quite cooperative, whereas the virginias were completely uncooperative.','2006-11-16');
 INSERT INTO trip VALUES (513,'Mary and Bill','','Wild Bird Center Field Trip','','2006-11-18');
+INSERT INTO trip VALUES (514,'Mary','','Work at home','','2006-11-21');
