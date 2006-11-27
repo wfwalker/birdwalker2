@@ -202,8 +202,8 @@ INSERT INTO location VALUES (202,'California City Golf Course','','California Ci
 INSERT INTO location VALUES (203,'California City Central Park','','California City','Kern','CA','','',35.1277999878,-117.9459991455,0);
 INSERT INTO location VALUES (204,'Galileo Hill','','California City','Kern','CA','','',35.2122001648,-117.7529983521,0);
 INSERT INTO location VALUES (205,'Kelso Valley Road','','Kernville','Kern','CA','','',35.3511009216,-118.2180023193,0);
-INSERT INTO location VALUES (206,'Twin Gates','','Mt Hamilton','Alameda','CA','','',0.0000000000,0.0000000000,0);
-INSERT INTO location VALUES (207,'Smith Creek Fire Station','','Mt Hamilton','Alameda','CA','','',37.3224983215,-121.6675033569,0);
+INSERT INTO location VALUES (206,'Twin Gates','','Mt Hamilton','Santa Clara','CA','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (207,'Smith Creek Fire Station','','Mt Hamilton','Santa Clara','CA','','',37.3224983215,-121.6675033569,0);
 INSERT INTO location VALUES (208,'Marlin Park','','Redwood City','San Mateo','CA','','',37.5299682617,-122.2497100830,0);
 INSERT INTO location VALUES (209,'Tahoe Meadows','','Incline Village','Washoe','NV','','',39.2994384766,-119.9166717529,0);
 INSERT INTO location VALUES (210,'Mount Rose Trail','','Incline Village','Washoe','NV','','',39.3133316040,-119.8955612183,0);
