@@ -25,7 +25,7 @@ class SpeciesQuery extends BirdWalkerQuery
 
 		if ($this->mReq->getTripID() != "")
 		{
-			$selectClause = $selectClause . ", sighting.Notes, sighting.Exclude, sighting.Photo, sighting.objectid AS sightingid";
+			$selectClause = $selectClause . ", sighting.Notes as sightingNotes, sighting.Exclude, sighting.Photo, sighting.objectid AS sightingid";
 		}
 		else if (($this->mReq->getLocationID() != "") || ($this->mReq->getCounty() != "") || ($this->mReq->getStateID() != ""))
 		{
@@ -209,9 +209,9 @@ class SpeciesQuery extends BirdWalkerQuery
 					 }
 				 }
 
-				 if (array_key_exists("sighting.Notes", $info) && strlen($info["sighting.Notes"]) > 0)
+				 if (array_key_exists("sightingNotes", $info) && strlen($info["sightingNotes"]) > 0)
 				 { ?>
-					 <div class="sighting-notes"><?= $info["sighting.Notes"] ?></div><?
+					 <div class="sighting-notes"><?= $info["sightingNotes"] ?></div><?
 				 }
 				 if (($this->mReq->getTripID() == "") && array_key_exists("speciesNotes", $info) && strlen($info["speciesNotes"]) > 0)
 				 { ?>
