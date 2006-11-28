@@ -146,8 +146,9 @@ class LocationQuery extends BirdWalkerQuery
 
 		$gridQuery = performQuery("Location By Year Query", $gridQueryString); ?>
 
-		<table cellpadding="0" cellspacing="0" class="report-content" width="100%">
-		<tr><td></td><? insertYearLabels() ?></tr>
+		<div class="onecolumn">
+		  <table cellpadding="0" cellspacing="0" class="report-content" width="100%">
+		    <tr><td></td><? insertYearLabels() ?></tr>
 
 	<?  $prevInfo = "";
 		while ($info = mysql_fetch_array($gridQuery))
@@ -158,12 +159,16 @@ class LocationQuery extends BirdWalkerQuery
 			{
 				$stateInfo = getStateInfoForAbbreviation($info["State"]) ?>
 
-				<tr><td class="subheading" colspan="13">
-	<?          if ($lastStateHeading != $info["State"]) { ?>
-				  <span class="statename"><a href="./statedetail.php?stateid=<?= $stateInfo["objectid"] ?>"><?= $stateInfo["Name"] ?></a></span>,
-	<?            $lastStateHeading = $info["State"];
-				} ?>
-				  <a href="./countydetail.php?stateid=<?= $stateInfo["objectid"] ?>&county=<?= urlencode($info["County"]) ?>"><?= $info["County"] ?> County</a></td>
+				<tr>
+				  <td colspan="13">
+                    <div class="subheading">
+	<?                if ($lastStateHeading != $info["State"]) { ?>
+				        <span class="statename"><a href="./statedetail.php?stateid=<?= $stateInfo["objectid"] ?>"><?= $stateInfo["Name"] ?></a></span>,
+	<?                  $lastStateHeading = $info["State"];
+				      } ?>
+				      <a href="./countydetail.php?stateid=<?= $stateInfo["objectid"] ?>&county=<?= urlencode($info["County"]) ?>"><?= $info["County"] ?> County</a>
+                    </div>
+                  </td>
 				</tr>
 	<?		} ?>
 
@@ -196,6 +201,7 @@ class LocationQuery extends BirdWalkerQuery
 		} ?>
 
 		 </table>
+	   </div>
 	<?
 	} 
 
@@ -218,8 +224,9 @@ class LocationQuery extends BirdWalkerQuery
 
 		$gridQuery = performQuery("Location By Month Query", $gridQueryString); ?>
 
-		<table cellpadding="0" cellspacing="0" cols="11" class="report-content" width="100%">
-		<tr><td></td><? insertMonthLabels() ?></tr>
+		<div class="onecolumn">
+		  <table cellpadding="0" cellspacing="0" cols="11" class="report-content" width="100%">
+		  <tr><td></td><? insertMonthLabels() ?></tr>
 
 	<?
 		$prevInfo = "";
@@ -230,13 +237,16 @@ class LocationQuery extends BirdWalkerQuery
 			if ($prevInfo == "" || $countyHeadingsOK && ($prevInfo["County"] != $info["County"])) {
 				$stateInfo = getStateInfoForAbbreviation($info["State"]) ?>
 
-				<tr><td class="subheading" colspan="13">
+				<tr><td colspan="13">
+				  <div class="subheading">
 	<?          if ($lastStateHeading != $info["State"]) { ?>
 				  <span class="statename"><a href="./statedetail.php?stateid=<?= $stateInfo["objectid"] ?>"><?= $stateInfo["Name"] ?></a></span>,
 	<?            $lastStateHeading = $info["State"];
 				} ?>
-				  <a href="./countydetail.php?stateid=<?= $stateInfo["objectid"] ?>&county=<?= urlencode($info["County"]) ?>"><?= $info["County"] ?> County</a></td>
-				</tr>
+				  <a href="./countydetail.php?stateid=<?= $stateInfo["objectid"] ?>&county=<?= urlencode($info["County"]) ?>"><?= $info["County"] ?> County</a>
+				  </div>
+				  </td>
+			    </tr>
 	<?		} ?>
 
 			<tr>
