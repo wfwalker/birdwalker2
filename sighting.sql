@@ -13681,7 +13681,7 @@ INSERT INTO sighting VALUES (13755,'whtkit','Hayward Regional Shoreline','',0,0,
 INSERT INTO sighting VALUES (13756,'norhar','Hayward Regional Shoreline','',0,0,'2006-11-05');
 INSERT INTO sighting VALUES (13757,'bkbplo','Hayward Regional Shoreline','',0,0,'2006-11-05');
 INSERT INTO sighting VALUES (13758,'greyel','Hayward Regional Shoreline','',0,0,'2006-11-05');
-INSERT INTO sighting VALUES (13759,'clarai','Arrowhead Marsh','',0,0,'2006-11-16');
+INSERT INTO sighting VALUES (13759,'clarai','Arrowhead Marsh','',0,1,'2006-11-16');
 INSERT INTO sighting VALUES (13760,'virrai','Arrowhead Marsh','',0,0,'2006-11-16');
 INSERT INTO sighting VALUES (13761,'sora','Arrowhead Marsh','',0,0,'2006-11-16');
 INSERT INTO sighting VALUES (13762,'willet','Arrowhead Marsh','',0,0,'2006-11-16');
@@ -13771,3 +13771,16 @@ INSERT INTO sighting VALUES (13845,'blkpho','2138 King Court','',0,0,'2006-11-21
 INSERT INTO sighting VALUES (13846,'annhum','2138 King Court','',0,0,'2006-11-21');
 INSERT INTO sighting VALUES (13847,'ruckin','2138 King Court','',0,0,'2006-11-21');
 INSERT INTO sighting VALUES (13848,'houfin','2138 King Court','',0,0,'2006-11-21');
+INSERT INTO sighting VALUES (13849,'amecoo','Ogier Ponds','',0,0,'2006-11-24');
+INSERT INTO sighting VALUES (13850,'amewig','Ogier Ponds','',0,0,'2006-11-24');
+INSERT INTO sighting VALUES (13851,'rudduc','Ogier Ponds','',0,0,'2006-11-24');
+INSERT INTO sighting VALUES (13852,'norsho','Ogier Ponds','',0,0,'2006-11-24');
+INSERT INTO sighting VALUES (13853,'turvul','Ogier Ponds','',0,0,'2006-11-24');
+INSERT INTO sighting VALUES (13854,'osprey','Ogier Ponds','',0,0,'2006-11-24');
+INSERT INTO sighting VALUES (13855,'gnttow','Ogier Ponds','Seen by Bill only. It was a very brief look, but I did manage to get my telephoto on the bird and grab one quick image that shows the important field marks, the rufous cap and white facial marks.',0,1,'2006-11-24');
+INSERT INTO sighting VALUES (13856,'rethaw','Ogier Ponds','',0,0,'2006-11-24');
+INSERT INTO sighting VALUES (13857,'shshaw','Ogier Ponds','',0,0,'2006-11-24');
+INSERT INTO sighting VALUES (13858,'ruckin','Ogier Ponds','',0,0,'2006-11-24');
+INSERT INTO sighting VALUES (13859,'yerwar','Ogier Ponds','',0,0,'2006-11-24');
+INSERT INTO sighting VALUES (13860,'doccor','Ogier Ponds','',0,0,'2006-11-24');
+INSERT INTO sighting VALUES (13861,'eargre','Ogier Ponds','',0,0,'2006-11-24');
