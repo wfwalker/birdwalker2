@@ -13784,3 +13784,7 @@ INSERT INTO sighting VALUES (13858,'ruckin','Ogier Ponds','',0,0,'2006-11-24');
 INSERT INTO sighting VALUES (13859,'yerwar','Ogier Ponds','',0,0,'2006-11-24');
 INSERT INTO sighting VALUES (13860,'doccor','Ogier Ponds','',0,0,'2006-11-24');
 INSERT INTO sighting VALUES (13861,'eargre','Ogier Ponds','',0,0,'2006-11-24');
+INSERT INTO sighting VALUES (13862,'bongul','Venice Beach','',0,1,'2006-11-30');
+INSERT INTO sighting VALUES (13863,'glwgul','Venice Beach','',0,0,'2006-11-30');
+INSERT INTO sighting VALUES (13864,'rethaw','Venice Beach','',0,0,'2006-11-30');
+INSERT INTO sighting VALUES (13865,'wesgul','Venice Beach','',0,0,'2006-11-30');

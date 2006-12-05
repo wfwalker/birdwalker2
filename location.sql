@@ -216,3 +216,4 @@ INSERT INTO location VALUES (216,'Ano Nuevo State Reserve','','Pescadero','San M
 INSERT INTO location VALUES (217,'Downtown Pescadero','','Pescadero','San Mateo','CA','','',37.2556343079,-122.3833694458,0);
 INSERT INTO location VALUES (218,'Stage Road','','Pescadero','San Mateo','CA','Connects Downtown Pescadero with La Honda Road','',37.2809867859,-122.3759765625,0);
 INSERT INTO location VALUES (219,'Sutro Heights Park','','San Francisco','San Francisco','CA','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (220,'Venice Beach','','Half Moon Bay','San Mateo','CA','Note to photographers: This is a great place for gulls. Move quietly to the edge of the salt-water pond at the foot of the parking lot and wait quietly in the morning to get close to bathing gulls and, sometimes, a wayward Wood Duck','',0.0000000000,0.0000000000,0);
