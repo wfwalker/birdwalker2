@@ -79,7 +79,7 @@ $request->globalMenu();
         <a href="http://www.johncangphoto.com/">John Cang</a>,
         <a href="http://www.kevinsmithnaturephotos.com/">Kevin Smith</a>,
         <a href="http://www.pbase.com/robpavey/birding">Rob Pavey</a>,
-        Terry Steele,
+        <a href="http://www.terrysteelenaturephotography.com/index.htm">Terry Steele<a/>,
         <a href="http://www.horsewings.com/whoweare.html">Kris Falco</a>,
         Cort Vaughn,
         <a href="http://www.pbase.com/birdervan">Gary and Joy Aspenall</a>,
