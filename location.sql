@@ -221,3 +221,5 @@ INSERT INTO location VALUES (221,'Henkel Circle','','Orlando','Orange','FL','Vac
 INSERT INTO location VALUES (222,'Saddle Creek Park','','Winter Haven','Polk','FL','','',0.0000000000,0.0000000000,0);
 INSERT INTO location VALUES (223,'Polk County','','Winter Haven','Polk','FL','','',0.0000000000,0.0000000000,0);
 INSERT INTO location VALUES (224,'Harry P. Leu Gardens','http://www.leugardens.org/','Orlando','Orange','FL','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (225,'Venice Rookery','','Venice','Sarasota','FL','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (226,'Ding Darling NWR','','Cape Coral','','FL','','',0.0000000000,0.0000000000,0);
