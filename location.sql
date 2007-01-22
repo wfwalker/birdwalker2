@@ -224,3 +224,5 @@ INSERT INTO location VALUES (224,'Harry P. Leu Gardens','http://www.leugardens.o
 INSERT INTO location VALUES (225,'Venice Rookery','','Venice','Sarasota','FL','','',27.0458602905,-82.3999328613,0);
 INSERT INTO location VALUES (226,'Ding Darling NWR','','Cape Coral','','FL','','',0.0000000000,0.0000000000,0);
 INSERT INTO location VALUES (227,'Mead Gardens','','Orlando','Orange','FL','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (228,'Neary Lagoon','http://www.ci.santa-cruz.ca.us/pr/parksrec/parks/neary.html','Santa Cruz','Santa Cruz','CA','','',36.9625015259,-122.0288925171,0);
+INSERT INTO location VALUES (229,'Antonelli Pond','','Santa Cruz','Santa Cruz','CA','','',36.9547195435,-122.0591735840,0);

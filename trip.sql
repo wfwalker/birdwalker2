@@ -522,3 +522,6 @@ INSERT INTO trip VALUES (522,'Arthur Morris','','Christmas in Florida Day Three'
 INSERT INTO trip VALUES (523,'Arthur Morris','','Christmas in Florida Day Four','','2006-12-28');
 INSERT INTO trip VALUES (524,'Mary and Bill','','Birding with the Family','We closed out our time in Florida with a stroll through Mead Gardens, an excellent suburban park where Bill finally got a photograph of the Pileated Woodpecker, a longtime nemesis of his','2006-12-30');
 INSERT INTO trip VALUES (525,'Mary and Bill','','Happy New Year','We started the year with an excellent field trip to Ano Nuevo State Reserve, then did some more birding in San Mateo County to try to build up the year list on day one.','2007-01-01');
+INSERT INTO trip VALUES (526,'Mary and Bill and Seth','','Birding with Seth','','2007-01-07');
+INSERT INTO trip VALUES (527,'Mary and Bill','','Scouting Palo Alto','','2007-01-20');
+INSERT INTO trip VALUES (528,'Mary and Bill','','Monterey Big Day','','2007-01-21');
