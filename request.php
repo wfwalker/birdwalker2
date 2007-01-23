@@ -318,8 +318,10 @@ class Request
 			countHeading( $tripQuery->getTripCount(), "trip");
 			$tripQuery->formatSummaries();
 		}
-		elseif ($this->getView() == 'species')
+		elseif ($this->getView() == 'species' || $this->getView() == 'speciesbylocation')
 		{
+		    // NOTE: the speciesbylocation case is implemented only in tripdetail.php
+		    // it is only for single trip detail pages
 			$speciesQuery = new SpeciesQuery($this);
 			$speciesQuery->formatTwoColumnSpeciesList(); 
 		}
@@ -439,6 +441,11 @@ function changeView()
 		if ($this->getSpeciesID() == "")
 		{
 		    $this->optionSelectedViewHelper("species by taxonomy", "species");
+
+		    if ($this->getTripID() != "")
+			{
+			    $this->optionSelectedViewHelper("species by location", "speciesbylocation");
+			}
 
 		    if ($this->getTripID() == "" )
 			{
@@ -625,6 +632,7 @@ function changeView()
 
 	        <div class="command-simple"><a href="./indexrss.php">RSS</a></div>
 	        <div class="command-simple"><a href="./kmlfile.php?<?= $this->getParams() ?>">KML</a></div>
+	        <div class="command-simple"><a href="./timeline.php?<?= $this->getParams() ?>">timeline</a></div>
 
         </div>
 <?  }
