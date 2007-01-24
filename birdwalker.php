@@ -186,7 +186,7 @@ function getEarliestYear()
 
 function getLatestYear()
 {
-	return 2006;
+	return 2007;
 }
 
 /**
