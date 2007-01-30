@@ -525,3 +525,5 @@ INSERT INTO trip VALUES (525,'Mary and Bill','','Happy New Year','We started the
 INSERT INTO trip VALUES (526,'Mary and Bill and Seth','','Birding with Seth','','2007-01-07');
 INSERT INTO trip VALUES (527,'Mary and Bill','','Scouting Palo Alto','','2007-01-20');
 INSERT INTO trip VALUES (528,'Mary and Bill','','Monterey Big Day','','2007-01-21');
+INSERT INTO trip VALUES (529,'Mary and Bill','','Panoche Valley','','2007-01-26');
+INSERT INTO trip VALUES (530,'Bob Power','','Audubons in Solano','','2007-01-27');
