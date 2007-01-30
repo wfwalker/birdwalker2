@@ -134,7 +134,7 @@ function latestTrips()
 		$info = mysql_fetch_array($latestTrips);
 		$tripSpeciesCount = performCount(
 		  "Count trips",
-		  "SELECT COUNT(DISTINCT(sighting.objectid)) from sighting where sighting.TripDate='" . $info["Date"] . "'"); ?>
+		  "SELECT COUNT(DISTINCT(sighting.SpeciesAbbreviation)) from sighting where sighting.TripDate='" . $info["Date"] . "'"); ?>
 
 		<div class="superheading"><?= $info["niceDate"] ?></div>
 
