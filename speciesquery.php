@@ -212,10 +212,6 @@ class SpeciesQuery extends BirdWalkerQuery
 				 if (array_key_exists("sightingNotes", $info) && strlen($info["sightingNotes"]) > 0)
 				 { ?>
 					 <div class="sighting-notes"><?= $info["sightingNotes"] ?></div><?
-				 }
-				 if (($this->mReq->getTripID() == "") && array_key_exists("speciesNotes", $info) && strlen($info["speciesNotes"]) > 0)
-				 { ?>
-					 <div class="sighting-notes"><?= $info["speciesNotes"] ?></div><?
 				 } ?>
 
 		    </div>
