@@ -215,12 +215,12 @@ INSERT INTO location VALUES (215,'Lake Lucerne','','Pescadero','San Mateo','CA',
 INSERT INTO location VALUES (216,'Ano Nuevo State Reserve','','Pescadero','San Mateo','CA','','',37.1172218323,-122.3258285522,0);
 INSERT INTO location VALUES (217,'Downtown Pescadero','','Pescadero','San Mateo','CA','','',37.2556343079,-122.3833694458,0);
 INSERT INTO location VALUES (218,'Stage Road','','Pescadero','San Mateo','CA','Connects Downtown Pescadero with La Honda Road','',37.2809867859,-122.3759765625,0);
-INSERT INTO location VALUES (219,'Sutro Heights Park','','San Francisco','San Francisco','CA','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (219,'Sutro Heights Park','','San Francisco','San Francisco','CA','','',37.7783317566,-122.5100021362,0);
 INSERT INTO location VALUES (220,'Venice Beach','','Half Moon Bay','San Mateo','CA','Note to photographers: This is a great place for gulls. Move quietly to the edge of the salt-water pond at the foot of the parking lot and wait quietly in the morning to get close to bathing gulls and, sometimes, a wayward Wood Duck','',0.0000000000,0.0000000000,0);
 INSERT INTO location VALUES (221,'Henkel Circle','','Orlando','Orange','FL','Vacation house we rented while visiting John and Susan','',0.0000000000,0.0000000000,0);
 INSERT INTO location VALUES (222,'Saddle Creek Park','','Winter Haven','Polk','FL','','',28.0541706085,-81.8841705322,0);
 INSERT INTO location VALUES (223,'Polk County','','Winter Haven','Polk','FL','','',0.0000000000,0.0000000000,0);
-INSERT INTO location VALUES (224,'Harry P. Leu Gardens','http://www.leugardens.org/','Orlando','Orange','FL','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (224,'Harry P. Leu Gardens','http://www.leugardens.org/','Orlando','Orange','FL','','',28.5666694641,-81.3555603027,0);
 INSERT INTO location VALUES (225,'Venice Rookery','','Venice','Sarasota','FL','','',27.0458602905,-82.3999328613,0);
 INSERT INTO location VALUES (226,'Ding Darling NWR','','Cape Coral','','FL','','',0.0000000000,0.0000000000,0);
 INSERT INTO location VALUES (227,'Mead Gardens','','Orlando','Orange','FL','','',28.5836105347,-81.3586120605,0);
@@ -228,6 +228,6 @@ INSERT INTO location VALUES (228,'Neary Lagoon','http://www.ci.santa-cruz.ca.us/
 INSERT INTO location VALUES (229,'Antonelli Pond','','Santa Cruz','Santa Cruz','CA','','',36.9547195435,-122.0591735840,0);
 INSERT INTO location VALUES (230,'San Benito County Fair Grounds','','Paicines','San Benito','CA','','',0.0000000000,0.0000000000,0);
 INSERT INTO location VALUES (231,'Paicines Reservoir','','Paicines','San Benito','CA','','',0.0000000000,0.0000000000,0);
-INSERT INTO location VALUES (232,'Mercey Hot Springs','','Paicines','Fresno','CA','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (232,'Mercey Hot Springs','','Paicines','Fresno','CA','','',36.7041702271,-120.8591690063,0);
 INSERT INTO location VALUES (233,'Panoche Road','','Panoche','San Benito','CA','','',0.0000000000,0.0000000000,0);
 INSERT INTO location VALUES (234,'Ryer Island','','','Solano','CA','','',38.1866683960,-121.6594390869,0);
