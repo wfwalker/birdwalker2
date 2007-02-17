@@ -101,5 +101,72 @@ class ChronoList
 		</table>
 <?
     }
+
+	function timelineXML()
+	{
+		performQuery("Create Temp Table",
+		  "CREATE TEMPORARY TABLE tmp (
+            SpeciesAbbreviation varchar(16) default NULL,
+            TripDate date default NULL,
+            objectid varchar(16) default NULL);");
+
+        // here's what section 3.6.4 of the mysql manual calls:
+        // "a quite inefficient trick called the MAX-CONCAT trick"
+		// TODO upgrade to mysql 4.1 and use a subquery
+		performQuery("Put Sightings into Temp Table",
+          "INSERT INTO tmp
+            SELECT SpeciesAbbreviation,
+              LEFT(        MIN( CONCAT(TripDate,lpad(sighting.objectid,6,'0')) ), 10) AS TripDate,
+              0+SUBSTRING( MIN( CONCAT(TripDate,lpad(sighting.objectid,6,'0')) ),  11) AS objectid ".
+					 $this->mSightingQuery->getFromClause() . " " . 
+					 $this->mSightingQuery->getWhereClause() . "  AND species.ABACountable='1' AND sighting.Exclude!='1'
+            GROUP BY SpeciesAbbreviation");
+
+		// TODO count rows in the first sightings table!
+
+		$firstSightingQuery = performQuery("Choose first sightings",
+          "SELECT " . shortNiceDateColumn("sighting.TripDate") . ",
+             sighting.*, 
+             trim(group_concat(' ', species.CommonName)) as names,
+             count(species.CommonName) as counts,
+              species.objectid as speciesid,
+             trip.objectid as tripid, location.County, location.State
+          FROM sighting, tmp, species, location, trip
+          WHERE
+             sighting.SpeciesAbbreviation=tmp.SpeciesAbbreviation AND
+             species.Abbreviation=sighting.SpeciesAbbreviation AND
+             sighting.TripDate=tmp.TripDate AND
+             location.Name=sighting.LocationName AND
+             trip.Date=sighting.TripDate
+          group by TripDate ORDER BY TripDate DESC, LocationName, species.objectid;");
+
+		$speciesCount = mysql_num_rows($firstSightingQuery);
+
+?>
+        <timeline>
+		<events>
+<?
+	   while($sightingInfo = mysql_fetch_array($firstSightingQuery))
+	   {
+		 if ($sightingInfo['counts'] > 3)
+		 {?>
+		    <event startTime="<?= $sightingInfo['TripDate'] ?>" label="<?= $sightingInfo['counts'] ?> Species"/>
+<?       }
+		 else
+		 { ?>
+		    <event startTime="<?= $sightingInfo['TripDate'] ?>" label="<?= $sightingInfo['names'] ?>"/>
+<?       }
+	   }
+
+		performQuery("Remove temporary table", "DROP TABLE tmp;");
+?>
+
+		</events>
+		</timeline>
+<?
+    }
+
+
+
 }
 ?>
