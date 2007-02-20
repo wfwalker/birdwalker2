@@ -529,4 +529,4 @@ INSERT INTO trip VALUES (529,'Mary and Bill','','Panoche Valley','Our first time
 INSERT INTO trip VALUES (530,'Bob Power','','Audubons in Solano','Bob introduced us to several excellent new birding spots on this Audubon trip. Although we didn\'t see the elusive Mountain Quail (rapidly becoming a nemesis bird for me), we ended the day with a low-altitude flyover of around a hundred Tundra Swans, their calls mingling with the sound of their wings flapping in the stillness of the sunset.','2007-01-27');
 INSERT INTO trip VALUES (531,'Ashok and Bill','','Looking for Ducks','','2007-01-11');
 INSERT INTO trip VALUES (532,'Ashok and Bill','','Morning Photo Safari','Ashok and I followed directions from Yamil in search of Ring-necked Ducks. We missed them, but we had great looks at Green Heron.','2007-02-01');
-INSERT INTO trip VALUES (533,'Yamil and Bill','','','','2007-02-19');
+INSERT INTO trip VALUES (533,'Yamil and Bill','','Owl Quest','','2007-02-19');
