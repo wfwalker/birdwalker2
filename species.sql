@@ -161,7 +161,7 @@ INSERT INTO species VALUES (7012030301,'branth','Branta bernicla 1','Brant (hrot
 INSERT INTO species VALUES (7012030302,'brantn','Branta bernicla 2','Brant (nigricans)','','',1);
 INSERT INTO species VALUES (7012030400,'bargoo','Branta leucopsis','Barnacle Goose','','',1);
 INSERT INTO species VALUES (7012040100,'mutswa','Cygnus olor','Mute Swan','','http://www.mbr-pwrc.usgs.gov/Infocenter/i1782id.html',1);
-INSERT INTO species VALUES (7012040200,'blkswa','Cygnus atratus','Black Swan','','',1);
+INSERT INTO species VALUES (7012040200,'blkswa','Cygnus atratus','Black Swan','','',0);
 INSERT INTO species VALUES (7012040300,'truswa','Cygnus buccinator','Trumpeter Swan','','http://www.mbr-pwrc.usgs.gov/Infocenter/i1810id.html',1);
 INSERT INTO species VALUES (7012040400,'tunswa','Cygnus columbianus','Tundra Swan','','',1);
 INSERT INTO species VALUES (7012040401,'bewswa','Cygnus columbianus 1','Bewick\'s Swan','','',1);
@@ -1580,7 +1580,7 @@ INSERT INTO species VALUES (22391040100,'redava','Amandava amandava','Red Avadav
 INSERT INTO species VALUES (22391050100,'diafir','Emblema guttata','Diamond Firetail','','',1);
 INSERT INTO species VALUES (22391060100,'warsil','Lonchura malabarica','Warbling Silverbill','','',1);
 INSERT INTO species VALUES (22391060200,'whrmun','Lonchura striata','White-rumped Munia','','',1);
-INSERT INTO species VALUES (22391060300,'nutman','Lonchura punctulata','Nutmeg Mannikin','','',1);
+INSERT INTO species VALUES (22391060300,'nutman','Lonchura punctulata','Nutmeg Mannikin','','',0);
 INSERT INTO species VALUES (22391060400,'cheman','Lonchura malacca','Chestnut Mannikin','','',1);
 INSERT INTO species VALUES (22391070100,'javspa','Padda oryzivora','Java Sparrow','','',1);
 INSERT INTO species VALUES (22392010100,'vilind','Vidua chalybeata','Village Indigobird','','',1);

@@ -231,3 +231,6 @@ INSERT INTO location VALUES (231,'Paicines Reservoir','','Paicines','San Benito'
 INSERT INTO location VALUES (232,'Mercey Hot Springs','','Paicines','Fresno','CA','','',36.7041702271,-120.8591690063,0);
 INSERT INTO location VALUES (233,'Panoche Road','','Panoche','San Benito','CA','','',0.0000000000,0.0000000000,0);
 INSERT INTO location VALUES (234,'Ryer Island','','','Solano','CA','','',38.1866683960,-121.6594390869,0);
+INSERT INTO location VALUES (235,'Union City Library','','Union City','Alameda','CA','','',37.5880584717,-122.0261077881,0);
+INSERT INTO location VALUES (236,'Spring Lakes','','Scotts Valley','Santa Cruz','CA','Trailer park near Scotts Valley','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (237,'Byron Hot Springs Road','','Byron','Contra Costa','CA','','',37.8358306885,-121.6369400024,0);
