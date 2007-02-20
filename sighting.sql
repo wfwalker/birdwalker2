@@ -13496,7 +13496,7 @@ INSERT INTO sighting VALUES (13570,'lesgol','Los Alamitos Water Recharge Pond','
 INSERT INTO sighting VALUES (13571,'amegfi','Los Alamitos Water Recharge Pond','',0,0,'2006-10-07');
 INSERT INTO sighting VALUES (13572,'houspa','Los Alamitos Water Recharge Pond','',0,0,'2006-10-07');
 INSERT INTO sighting VALUES (13573,'nutman','Los Alamitos Water Recharge Pond','This flock has been seen in this location for several years, but they are not ABA countable.',0,0,'2006-10-07');
-INSERT INTO sighting VALUES (14623,'sheowl','Byron Hot Springs Road','',0,0,'2007-02-19');
+INSERT INTO sighting VALUES (14623,'sheowl','Byron Hot Springs Road','',0,1,'2007-02-19');
 INSERT INTO sighting VALUES (13574,'turvul','Hawk Hill','',0,0,'2006-10-08');
 INSERT INTO sighting VALUES (13575,'whtkit','Hawk Hill','',0,0,'2006-10-08');
 INSERT INTO sighting VALUES (13576,'norhar','Hawk Hill','',0,0,'2006-10-08');
