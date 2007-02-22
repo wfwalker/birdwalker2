@@ -479,7 +479,7 @@ function getTaxonomyInfo($objectid, $blankDigits)
 function getTripInfo($objectid)
 {
 	return performOneRowQuery("Get Trip Info",
-			  "SELECT *, date_format(Date, '%W,  %M %D, %Y') as niceDate FROM trip where objectid='" . $objectid . "'");
+			  "SELECT *, Date as startTimestamp,  from_days(to_days(Date) + 1) as stopTimestamp, date_format(Date, '%W,  %M %D, %Y') as niceDate FROM trip where objectid='" . $objectid . "'");
 }
 
 function getTripInfoForDate($inDate)
