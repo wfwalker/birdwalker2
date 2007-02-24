@@ -17,6 +17,9 @@ $request->globalMenu();
 
 
   <div id="topright-species">
+	  <div class="pagekind">Species Checklist</div>
+	  <div class="pagetitle"> <?= $request->getPagetitle() ?></div>
+	  <div class="pagesubtitle"> </div>
   </div>
 
   <div id="contentright">
@@ -29,7 +32,7 @@ $request->globalMenu();
 
 		  while($info = mysql_fetch_array($dbQuery))
 		  {
-			  if ($divideByTaxo && ($prevInfo == "" || getFamilyInfo($prevInfo["objectid"]) != getFamilyInfo($info["objectid"])))
+			  if ($prevInfo == "" || ($divideByTaxo && ($prevInfo["objectid"]) != getFamilyInfo($info["objectid"])))
 			  {
 				  $taxoInfo = getFamilyInfo($info["objectid"]); ?>
 				  <div class="subheading"><?= strtolower($taxoInfo["LatinName"]) ?></div>
