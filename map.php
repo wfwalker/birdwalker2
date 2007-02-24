@@ -1,4 +1,3 @@
-
 <?php
 
 require_once("./locationquery.php");
@@ -42,6 +41,8 @@ class Map
 
     function drawGoogle()
     {
+	  if (getIsLaptop()) return;
+
       $extrema = $this->mLocationQuery->findExtrema();
       
       $mMinLat = $extrema["minLat"];
