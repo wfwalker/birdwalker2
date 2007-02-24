@@ -168,7 +168,7 @@ class ChronoList
 
 
 
-	function timelineGIF()
+	function timelineImage()
 	{
 		performQuery("Create Temp Table",
 		  "CREATE TEMPORARY TABLE tmp (
@@ -227,7 +227,7 @@ class ChronoList
 
 		performQuery("Remove temporary table", "DROP TABLE tmp;");
 
-		imagegif($timelineImage);
+		imagepng($timelineImage);
 		imagedestroy($timelineImage);
     }
 }
