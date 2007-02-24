@@ -183,7 +183,7 @@ class ChronoList
 		$gray    = imagecolorallocate($timelineImage, 128, 128, 128);
 		$white        = imagecolorallocate($timelineImage, 255, 255, 255);
 		imagefill($timelineImage, 0, 0, $white);
-		imagestring($timelineImage, 2, 5, 5, "Hello World!", $black);
+		imagestring($timelineImage, 2, 5, 5, $this->mSightingQuery->getPageTitle("Life List"), $black);
 
 
         // here's what section 3.6.4 of the mysql manual calls:
