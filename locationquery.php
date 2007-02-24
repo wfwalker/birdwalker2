@@ -1,4 +1,3 @@
-
 <?php
 
 require_once("./birdwalkerquery.php");
@@ -344,4 +343,3 @@ class LocationQuery extends BirdWalkerQuery
 	}
 }
 ?>
-
