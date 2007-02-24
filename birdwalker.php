@@ -1,4 +1,9 @@
 <?php
+################################################
+# birdWalker, Copyright 2006 William F Walker
+#
+# birdwalker.php -- general utility routines
+################################################
 
 function getIsLaptop()
 {
