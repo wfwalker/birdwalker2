@@ -1,6 +1,4 @@
-
 <?php
-
 require_once("./birdwalker.php");
 require_once("./request.php");
 require_once("./map.php");
@@ -10,9 +8,7 @@ require_once("./speciesquery.php");
 $request = new Request;
 
 $tripInfo = $request->getTripInfo();
-
 $tripYear = substr($tripInfo["Date"], 0, 4);
-$tripMonth = substr($tripInfo["Date"], 5, 2);
 
 htmlHead( $tripInfo["Name"]);
 
@@ -42,6 +38,10 @@ $request->globalMenu();
         </div>
 
 <?
+
+require_once("flickr.php");
+insertFlickrTripLink($tripInfo);
+
 if ($request->getView() == "speciesbylocation")
 {
   $sightingQuery = new SightingQuery($request);
@@ -55,18 +55,11 @@ if ($request->getView() == "speciesbylocation")
   // how many  birds were on this trip?
   $tripSightings = $sightingQuery->performQuery();
   
-  // total species count for this trip
-  $tripSpeciesCount = mysql_num_rows($tripSightings);
-  
   // how many life birds were on this trip?
   $tripFirstSightings = 0;
   while($sightingInfo = mysql_fetch_array($tripSightings)) {
 	if (array_key_exists($sightingInfo['objectid'], $firstSightings)) { $tripFirstSightings++; }
   }
-
-	if ($locationCount > 1) {
-		doubleCountHeading($tripSpeciesCount, "species", $tripFirstSightings, "life bird");
-	}
 
 	$dbLocation = $locationQuery->performQuery();
 	while($locationInfo = mysql_fetch_array($dbLocation))
@@ -88,13 +81,11 @@ if ($request->getView() == "speciesbylocation")
  ?>
 
     <div class="heading">
-        <a href="./locationdetail.php?locationid=<?= $locationInfo["objectid"]?>"><?= $locationInfo["Name"] ?></a>,
-        <?= $tripLocationCount ?> species<? if ($locationFirstSightings > 0) { ?>,
-        <?= $locationFirstSightings ?> life bird<? if ($locationFirstSightings > 1) echo 's'; } ?>
+        <a href="./locationdetail.php?locationid=<?= $locationInfo["objectid"]?>"><?= $locationInfo["Name"] ?></a>
     </div>
 
 <?
-        $speciesQuery->formatTwoColumnSpeciesList();
+	   $speciesQuery->formatTwoColumnSpeciesList($firstSightings, $firstYearSightings);
 	}
 }
 else
