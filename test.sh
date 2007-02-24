@@ -17,10 +17,10 @@ credits.php \
 santaclarayearlist.php?year=2005 \
 targetyearbirds.php \
 tripcreate.php \
-slideshow.php \
-slideshow.php?speciesid=8012080300 \
-slideshow.php?month=09 \
-slideshow.php?year=2004&month=09 \
+slideshow.php?origin=index.php \
+slideshow.php?speciesid=8012080300&origin=index.php \
+slideshow.php?month=09&origin=index.php \
+slideshow.php?year=2004&month=09&origin=index.php \
 specieslist.php?locationid=131&month=6&year=2000 \
 statedetail.php?view=locationsbymonth&stateid=5 \
 statedetail.php?view=locations&stateid=5 \
@@ -44,7 +44,6 @@ photodetail.php?sightingid=8224 \
 photoindex.php \
 photoindexlocation.php \
 photoindextaxo.php \
-slideshow.php \
 speciesindex.php \
 errorcheck.php \
 statedetail.php?stateid=5 \
