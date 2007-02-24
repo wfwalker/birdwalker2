@@ -75,6 +75,15 @@ class Request
 	// GETTERS AND SETTERS
 	//
 
+ 	function isTripSpecified() { if ($this->getTripID() == '') return false; else return true; }
+ 	function isSpeciesSpecified() { if ($this->getSpeciesID() == "") return false; else return true; }
+ 	function isFamilySpecified() { if ($this->getFamilyID() == '') return false; else return true; }
+ 	function isOrderSpecified() { if ($this->getOrderID() == '') return false; else return true; }
+	function isLocationSpecified() { if ($this->getLocationID() == '') return false; else return true; }
+	function isCountySpecified() { if ($this->getCounty() == '') return false; else return true; }
+	function isStateSpecified() { if ($this->getStateID() == '') return false; else return true; }
+	function isMonthSpecified() { if ($this->getMonth() == '') return false; else return true; }
+	function isYearSpecified() { if ($this->getYear() == '') return false; else return true; }
 
 	// PAGE MANAGEMENT
 
@@ -196,6 +205,53 @@ class Request
 		else 
 		{
 			return implode("&", $params);
+		}
+	}
+
+
+	function getPageTitle($inPrefix = "")
+	{
+		$pageTitleItems = "";
+
+		if ($inPrefix != "") {
+			$pageTitleItems[] = $inPrefix;
+		}
+
+		if ($this->isSpeciesSpecified()) {
+			$speciesInfo = $this->getSpeciesInfo();
+			$pageTitleItems[] = $speciesInfo["CommonName"];
+		} elseif ($this->isFamilySpecified()) {
+			$familyInfo = $this->getFamilyInfo();
+			$pageTitleItems[] = $familyInfo["LatinName"];
+		} elseif ($this->isOrderSpecified()) {
+			$orderInfo = $this->getOrderInfo();
+			$pageTitleItems[] = $orderInfo["LatinName"];
+		}
+
+		if ($this->isLocationSpecified()) {
+			$locationInfo = $this->getLocationInfo();
+			$pageTitleItems[] = $locationInfo["Name"];
+		} elseif ($this->isCountySpecified()) {
+			$pageTitleItems[] = $this->getCounty() . " County";
+		} elseif ($this->isStateSpecified()) {
+			$stateInfo = $this->getStateInfo();
+		    $pageTitleItems[] = $stateInfo["Name"];
+		}
+
+		if ($this->isMonthSpecified()) {
+			$pageTitleItems[] = getMonthNameForNumber($this->getMonth());
+		}
+		if ($this->isYearSpecified()) {
+			$pageTitleItems[] = $this->getYear();
+		}
+
+		if ($pageTitleItems == "")
+		{
+			return "";
+		}
+		else
+		{
+			return implode(", ", $pageTitleItems);
 		}
 	}
 
