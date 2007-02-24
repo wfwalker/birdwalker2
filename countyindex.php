@@ -1,5 +1,4 @@
-
-<?
+<?php
 require_once("./birdwalker.php");
 require_once("./request.php");
 
