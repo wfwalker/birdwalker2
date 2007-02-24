@@ -27,3 +27,5 @@ _$*
 core
 # CVS default ignores end
 .DS_Store
+testresults.txt
+prototypes
