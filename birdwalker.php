@@ -176,7 +176,12 @@ function getIsLaptop()
 
 function getEnableEdit()
 {
-	return getIsLaptop();
+  return getIsLaptop();
+}
+
+function getLogQueries()
+{
+  return getIsLaptop();
 }
 
 function getEarliestYear()
@@ -260,12 +265,19 @@ function performQuery($inDescription, $inQueryString)
 	$start = getmicrotime();
 	selectDatabase();
 	$theQuery = mysql_query($inQueryString) or die("<p>Error during query: " . $inQueryString . "</p><p>" . mysql_error() . "</p>");
-	if (getEnableEdit())
-	{
-		echo "\n\n<!-- " . round(getmicrotime() - $start, 3) . " seconds, " . $inDescription . "\n\n" . $inQueryString . " -->\n\n";
-	}
+	writeLog(round(getmicrotime() - $start, 3) . " seconds, " . $inDescription . " -- " . $inQueryString);
 
 	return $theQuery;
+}
+
+function writeLog($message)
+{
+	if (getLogQueries())
+	{
+	  $fp = fopen("/tmp/birdwalker/sqlqueries.log", "a");
+	  fwrite($fp, date("y-m-d h:m:s -- ", time()) . $message . "\n\n");
+	  fclose($fp);
+	}
 }
 
 /**
