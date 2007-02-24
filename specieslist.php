@@ -1,4 +1,3 @@
-
 <?php
 
 require_once("./birdwalker.php");
@@ -11,41 +10,28 @@ $request = new Request;
 
 $speciesQuery = new SpeciesQuery($request);
 
+htmlHead("thing");
+$request->globalMenu();
+
 ?>
 
-<html>
 
-<link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-<title>birdWalker | Species List</title>
-</head>
+  <div id="topright-species">
+  </div>
 
-<body>
+  <div id="contentright">
+	
 
-      <div class="pagetitle"><?= $speciesQuery->getPageTitle() ?></div>
-	  <div class="heading"><?= $speciesQuery->getSpeciesCount() ?> Species</div>
-
-<?
-	  if ($request->getView() == "")
-	  {
-		  $speciesQuery->formatTwoColumnSpeciesList();
-	  }
-	  else if ($request->getView() == "checklist")
-	  { ?>
-		  <form method="GET" action="./index.php">
-		      <div><input type="text" value="Date"/></div>
-              <div><select name="LocationName">
-                 <?php while($info = mysql_fetch_array($locationList)) { echo "<option>" . $info["Name"] . "</option>\n"; } ?>
-              </select></div>
-		      <div><input type="submit" value="Submit"/></div>
 <?
 		  $dbQuery = $speciesQuery->performQuery();
 		  $divideByTaxo = mysql_num_rows($dbQuery) > 20;
+          $prevInfo = ""; 
 
 		  while($info = mysql_fetch_array($dbQuery))
 		  {
-			  if ($divideByTaxo && (getBestTaxonomyID($prevInfo["objectid"]) != getBestTaxonomyID($info["objectid"])))
+			  if ($divideByTaxo && ($prevInfo == "" || getFamilyInfo($prevInfo["objectid"]) != getFamilyInfo($info["objectid"])))
 			  {
-				  $taxoInfo = getBestTaxonomyInfo($info["objectid"]); ?>
+				  $taxoInfo = getFamilyInfo($info["objectid"]); ?>
 				  <div class="subheading"><?= strtolower($taxoInfo["LatinName"]) ?></div>
 <?            } ?>
 
@@ -54,13 +40,10 @@ $speciesQuery = new SpeciesQuery($request);
                   <?= $info["CommonName"] ?>
               </div>
 <?            $prevInfo = $info;
-          } ?>
-		  </form>
-<?	  }
-
-      footer();
+          }
  ?>
 
+  </div>
 
 <?
 htmlFoot();
