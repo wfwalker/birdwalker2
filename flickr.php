@@ -5,11 +5,13 @@ include_once("XML/Tree.php");
 
 function insertFlickrTripLink($tripInfo)
 {
+  $tripYear = substr($tripInfo["Date"], 0, 4);
+  $tripMonth = substr($tripInfo["Date"], 5, 2);
+  $tripDay = substr($tripInfo["Date"], 8, 2);
 
 # bail if the classes are missing
 
   if (! class_exists("Flickr_API")) return;
-  if (! class_exists("XML::Tree")) return;
 
 # create a new api object
 
@@ -43,8 +45,8 @@ function insertFlickrTripLink($tripInfo)
 
   if ($count > 0)
   {
-	echo "<p><a href=\"http://www.flickr.com/photos/billwalker/archives/date-taken/" .
-	  $tripYear . "/" . $tripMonth . "/" . $tripDay . "/\">" . $count . " flickr photos</a></p>";
+	echo "<div class=\"heading\"><a href=\"http://www.flickr.com/photos/billwalker/archives/date-taken/" .
+	  $tripYear . "/" . $tripMonth . "/" . $tripDay . "/\">" . $count . " flickr photos</a></div>";
   }
 }
 
