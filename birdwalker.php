@@ -275,7 +275,7 @@ function writeLog($message)
 	if (getLogQueries())
 	{
 	  $fp = fopen("/tmp/birdwalker/sqlqueries.log", "a");
-	  fwrite($fp, date("y-m-d h:m:s -- ", time()) . $message . "\n\n");
+	  fwrite($fp, date("Y-m-d h:m:s -- ", time()) . $message . "\n\n");
 	  fclose($fp);
 	}
 }
