@@ -1,6 +1,12 @@
 <?php
 
-error_reporting(E_ALL);
+function getIsLaptop()
+{
+ 	$serverName = getenv("SERVER_NAME");
+ 	return ($serverName != "www.spflrc.org");
+}
+
+if (getIsLaptop()) {error_reporting(E_ALL);} else {error_reporting(E_ERROR);}
 
 function htmlHead($title)
 {
@@ -167,12 +173,6 @@ function rightThumbnail($photoQueryString, $addLink)
 //
 // -------------------------- DATABASE UTILITIES -------------------------------
 //
-
-function getIsLaptop()
-{
- 	$serverName = getenv("SERVER_NAME");
- 	return ($serverName != "www.spflrc.org");
-}
 
 function getEnableEdit()
 {
