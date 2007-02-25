@@ -530,3 +530,4 @@ INSERT INTO trip VALUES (530,'Bob Power','','Audubons in Solano','Bob introduced
 INSERT INTO trip VALUES (531,'Ashok and Bill','','Looking for Ducks','','2007-01-11');
 INSERT INTO trip VALUES (532,'Ashok and Bill','','Morning Photo Safari','Ashok and I followed directions from Yamil in search of Ring-necked Ducks. We missed them, but we had great looks at Green Heron.','2007-02-01');
 INSERT INTO trip VALUES (533,'Yamil and Bill','','Owl Quest','My second trip to Byron was more successful.','2007-02-19');
+INSERT INTO trip VALUES (534,'Mary and Bill','','Birding with Ron','We observed several extremely large fish swimming in the channel north of the levee. The refuge guy confirmed that they were Striped Bass, and that the large ones could easily feed eight people. From what we could see of their backs sticking out of the water, we would have to agree.','2007-02-24');
