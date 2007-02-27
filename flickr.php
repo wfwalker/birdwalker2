@@ -20,12 +20,13 @@ function insertFlickrTripLink($tripInfo)
 							   'api_secret' => '6617d9306f5e7d47',
 							   ));
 
-# $response = $api->callMethod('flickr.auth.getToken', array('frob' => '6787850-db993b0f356a3f2f',));
+#$response = $api->callMethod('flickr.auth.getToken', array('frob' => '7338944-6cf9f7b03ad063cb',));
+#  $response = $api->callMethod('flickr.auth.getFrob');
 
   $tempo = $tripInfo["startTimestamp"] . "," . ($tripInfo["stopTimestamp"]);
 
-  $response = $api->callMethod('flickr.photos.getCounts', array(
-																'auth_token' => '1937122-c58dfbff3a3343ac',
+   $response = $api->callMethod('flickr.photos.getCounts', array(
+																'auth_token' => '2147715-1d3462c2eae2f491',
 																'taken_dates' => $tempo));
 
 # check the response
@@ -40,13 +41,15 @@ function insertFlickrTripLink($tripInfo)
 	$code = $api->getErrorCode();
 	$message = $api->getErrorMessage();
 	echo "<!-- flickr down: " . $code . " " . $message . " -->";
-    # echo "<p><a href=\"". $api->getAuthUrl("read", "") . "\">login</a></p>";
+    echo "<p><a href=\"". $api->getAuthUrl("read", "7338825-f918b78d80dee9a8") . "\">login</a></p>";
   }
 
   if ($count > 0)
   {
-	echo "<div class=\"heading\"><a href=\"http://www.flickr.com/photos/billwalker/archives/date-taken/" .
-	  $tripYear . "/" . $tripMonth . "/" . $tripDay . "/\">" . $count . " flickr photos</a></div>";
+	echo "<div class=\"heading\"><a href=\"http://www.flickr.com/photos/billwalker/archives/date-taken/" . $tripYear . "/" . $tripMonth . "/" . $tripDay . "/\">";
+
+	echo "photo"; if ($count > 1) { echo "s"; }
+	echo " at flickr...</a></div>";
   }
 }
 
