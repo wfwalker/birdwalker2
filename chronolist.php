@@ -13,7 +13,7 @@ class ChronoList
 		$this->mSightingQuery = new SightingQuery($request);
 	}
 
-	function draw()
+	function createAndPopulateFirstSightingsTempTable()
 	{
 		performQuery("Create Temp Table",
 		  "CREATE TEMPORARY TABLE tmp (
@@ -32,6 +32,11 @@ class ChronoList
 					 $this->mSightingQuery->getFromClause() . " " . 
 					 $this->mSightingQuery->getWhereClause() . "  AND species.ABACountable='1' AND sighting.Exclude!='1'
             GROUP BY SpeciesAbbreviation");
+	}
+
+	function draw()
+	{
+	    $this->createAndPopulateFirstSightingsTempTable();
 
 		// TODO count rows in the first sightings table!
 
@@ -104,23 +109,7 @@ class ChronoList
 
 	function timelineXML()
 	{
-		performQuery("Create Temp Table",
-		  "CREATE TEMPORARY TABLE tmp (
-            SpeciesAbbreviation varchar(16) default NULL,
-            TripDate date default NULL,
-            objectid varchar(16) default NULL);");
-
-        // here's what section 3.6.4 of the mysql manual calls:
-        // "a quite inefficient trick called the MAX-CONCAT trick"
-		// TODO upgrade to mysql 4.1 and use a subquery
-		performQuery("Put Sightings into Temp Table",
-          "INSERT INTO tmp
-            SELECT SpeciesAbbreviation,
-              LEFT(        MIN( CONCAT(TripDate,lpad(sighting.objectid,6,'0')) ), 10) AS TripDate,
-              0+SUBSTRING( MIN( CONCAT(TripDate,lpad(sighting.objectid,6,'0')) ),  11) AS objectid ".
-					 $this->mSightingQuery->getFromClause() . " " . 
-					 $this->mSightingQuery->getWhereClause() . "  AND species.ABACountable='1' AND sighting.Exclude!='1'
-            GROUP BY SpeciesAbbreviation");
+	    $this->createAndPopulateFirstSightingsTempTable();
 
 		// TODO count rows in the first sightings table!
 
@@ -166,41 +155,22 @@ class ChronoList
 <?
     }
 
-
-
 	function timelineImage()
 	{
-		performQuery("Create Temp Table",
-		  "CREATE TEMPORARY TABLE tmp (
-            SpeciesAbbreviation varchar(16) default NULL,
-            TripDate date default NULL,
-            objectid varchar(16) default NULL);");
-
-		$imageWidth = 400;
-		$imageHeight = 250;
-		$timelineImage    = imagecreatetruecolor($imageWidth, $imageHeight);
-		$black    = imagecolorallocate($timelineImage, 0, 0, 0);
-		$gray    = imagecolorallocate($timelineImage, 128, 128, 128);
-		$white        = imagecolorallocate($timelineImage, 255, 255, 255);
-		imagefill($timelineImage, 0, 0, $white);
-		imagestring($timelineImage, 2, 5, 5, $this->mSightingQuery->getPageTitle("Life List"), $black);
-
-
-        // here's what section 3.6.4 of the mysql manual calls:
-        // "a quite inefficient trick called the MAX-CONCAT trick"
-		// TODO upgrade to mysql 4.1 and use a subquery
-		performQuery("Put Sightings into Temp Table",
-          "INSERT INTO tmp
-            SELECT SpeciesAbbreviation,
-              LEFT(        MIN( CONCAT(TripDate,lpad(sighting.objectid,6,'0')) ), 10) AS TripDate,
-              0+SUBSTRING( MIN( CONCAT(TripDate,lpad(sighting.objectid,6,'0')) ),  11) AS objectid ".
-					 $this->mSightingQuery->getFromClause() . " " . 
-					 $this->mSightingQuery->getWhereClause() . "  AND species.ABACountable='1' AND sighting.Exclude!='1'
-            GROUP BY SpeciesAbbreviation");
+	    $this->createAndPopulateFirstSightingsTempTable();
 
 		// TODO count rows in the first sightings table!
 		$minDays = performCount("first", "select min(to_days(TripDate)) from sighting");
 		$maxDays = performCount("first", "select max(to_days(TripDate)) from sighting");
+
+ 		$imageWidth = 400;
+ 		$imageHeight = 250;
+ 		$timelineImage    = imagecreatetruecolor($imageWidth, $imageHeight);
+ 		$black    = imagecolorallocate($timelineImage, 0, 0, 0);
+ 		$gray    = imagecolorallocate($timelineImage, 128, 128, 128);
+ 		$white        = imagecolorallocate($timelineImage, 255, 255, 255);
+ 		imagefill($timelineImage, 0, 0, $white);
+ 		imagestring($timelineImage, 2, 5, 5, $this->mSightingQuery->getPageTitle("Life List"), $black);
 
 		$firstSightingQuery = performQuery("Choose first sightings",
           "SELECT to_days(sighting.TripDate) as tripDays
@@ -211,20 +181,27 @@ class ChronoList
              sighting.TripDate=tmp.TripDate AND
              location.Name=sighting.LocationName AND
              trip.Date=sighting.TripDate
-          ORDER BY sighting.TripDate DESC, LocationName, species.objectid;");
+          ORDER BY sighting.TripDate, LocationName, species.objectid;");
 
 		$speciesCount = mysql_num_rows($firstSightingQuery);
 
-		$index = 1;
+		$index = $speciesCount; # start at the bottom of the graphic
+        $points = array(0, $imageHeight + 10, 0, $imageHeight - 1);
+		$x = 0;
+
 	   while($sightingInfo = mysql_fetch_array($firstSightingQuery))
 	   {
 		 $x = $imageWidth * ($sightingInfo["tripDays"] - $minDays) / ($maxDays - $minDays);
-		 $index = $index + 1;
+		 $index = $index - 1; # increment upward for each sighting
 		 $y = $imageHeight * $index / $speciesCount;
-		 imagerectangle($timelineImage, $x - 1, $y - 1, $x + 1, $y + 1, $black);
-		 imageline($timelineImage, $x, $y, $x, $imageHeight, $gray);
+		 array_push($points, $x);
+		 array_push($points, $y);
 	   }
+	   
+	   array_push($points, $imageWidth, $y);
+	   array_push($points, $imageWidth, $imageHeight + 10);
 
+	   imagefilledpolygon($timelineImage, $points, count($points) / 2, $gray);
 		performQuery("Remove temporary table", "DROP TABLE tmp;");
 
 		imagepng($timelineImage);
