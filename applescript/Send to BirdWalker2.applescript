@@ -64,7 +64,7 @@ on run
 					-- do nothing
 				else
 					set anItemFile to file anItemPath
-					open anItemFile using application file "Adobe Photoshop CS2.app" of folder "Adobe Photoshop CS2" of folder "Applications" of startup disk
+					open anItemFile using application file "Adobe Photoshop CS3.app" of folder "Adobe Photoshop CS3" of folder "Applications" of startup disk
 					
 					set the clipboard to birdwalkerFilename
 					
