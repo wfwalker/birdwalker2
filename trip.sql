@@ -535,3 +535,4 @@ INSERT INTO trip VALUES (535,'Mary and Bill','','Great Backyard Bird Count','Ano
 INSERT INTO trip VALUES (536,'Mary and Bill','','Great Backyard Bird Count','I think this was our first Fox Sparrow in the yard. We thank our backyard birds for putting on such a good show for the GBBC.','2007-02-17');
 INSERT INTO trip VALUES (537,'Mary and Bill','','Point Reyes Day Three','On our way out of Point Reyes we looked for raptors at the Visitor Center and ducks at Bolinas Lagoon.','2007-03-06');
 INSERT INTO trip VALUES (538,'Mary and Bill','','Point Reyes Day Two','We started the day with a Tomales Bay kayaking trip led by Blue Water Kayaking, then headed out toward the lighthouse and the owls near chimmney rock.','2007-03-05');
+INSERT INTO trip VALUES (539,'Bob Power','','Audubons at Point Reyes','Bob Power led a fun trip for friends of SCVAS to some beautiful spots up in Marin county.','2007-03-10');
