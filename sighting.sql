@@ -14723,3 +14723,9 @@ INSERT INTO sighting VALUES (14799,'bewwre','Point Reyes National Seashore','',0
 INSERT INTO sighting VALUES (14800,'eurwig','Point Reyes National Seashore','',0,0,'2007-03-10');
 INSERT INTO sighting VALUES (14801,'belkin','Point Reyes National Seashore','',0,0,'2007-03-10');
 INSERT INTO sighting VALUES (14802,'ribgul','Point Reyes National Seashore','',0,0,'2007-03-10');
+INSERT INTO sighting VALUES (14803,'allhum','El Polin Loop','',0,1,'2007-03-15');
+INSERT INTO sighting VALUES (14804,'reshaw','El Polin Loop','',0,0,'2007-03-15');
+INSERT INTO sighting VALUES (14805,'moudov','El Polin Loop','',0,0,'2007-03-15');
+INSERT INTO sighting VALUES (14806,'annhum','El Polin Loop','',0,0,'2007-03-15');
+INSERT INTO sighting VALUES (14807,'blkpho','El Polin Loop','',0,0,'2007-03-15');
+INSERT INTO sighting VALUES (14808,'ruckin','El Polin Loop','',0,0,'2007-03-15');

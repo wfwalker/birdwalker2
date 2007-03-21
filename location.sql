@@ -234,3 +234,4 @@ INSERT INTO location VALUES (234,'Ryer Island','','','Solano','CA','','',38.1866
 INSERT INTO location VALUES (235,'Union City Library','','Union City','Alameda','CA','','',37.5880584717,-122.0261077881,0);
 INSERT INTO location VALUES (236,'Spring Lakes','','Scotts Valley','Santa Cruz','CA','Trailer park near Scotts Valley','',0.0000000000,0.0000000000,0);
 INSERT INTO location VALUES (237,'Byron Hot Springs Road','','Byron','Contra Costa','CA','','',37.8358306885,-121.6369400024,0);
+INSERT INTO location VALUES (238,'El Polin Loop','','San Francisco','San Francisco','CA','','',0.0000000000,0.0000000000,0);
