@@ -368,12 +368,6 @@ class Request
 			$tripQuery = new TripQuery($this);
 			$tripQuery->formatTwoColumnTripList();
 		}
-		elseif ($this->getView() == 'tripsummaries')
-		{
-			$tripQuery = new TripQuery($this);
-			countHeading( $tripQuery->getTripCount(), "trip");
-			$tripQuery->formatSummaries();
-		}
 		elseif ($this->getView() == 'species' || $this->getView() == 'speciesbylocation')
 		{
 		    // NOTE: the speciesbylocation case is implemented only in tripdetail.php
