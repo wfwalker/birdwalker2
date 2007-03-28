@@ -14137,7 +14137,7 @@ INSERT INTO sighting VALUES (14211,'willet','Ding Darling NWR','',0,0,'2006-12-2
 INSERT INTO sighting VALUES (14212,'willet','Venice Rookery','',0,0,'2006-12-27');
 INSERT INTO sighting VALUES (14213,'rebmer','Ding Darling NWR','',0,0,'2006-12-28');
 INSERT INTO sighting VALUES (14214,'redegr','Ding Darling NWR','',0,0,'2006-12-28');
-INSERT INTO sighting VALUES (14215,'rosspo','Ding Darling NWR','',0,0,'2006-12-28');
+INSERT INTO sighting VALUES (14215,'rosspo','Ding Darling NWR','',0,1,'2006-12-28');
 INSERT INTO sighting VALUES (14216,'dowitc','Ding Darling NWR','',0,0,'2006-12-28');
 INSERT INTO sighting VALUES (14217,'blujay','Ding Darling NWR','',0,0,'2006-12-28');
 INSERT INTO sighting VALUES (14218,'burowl','Ding Darling NWR','',0,0,'2006-12-28');
@@ -14538,7 +14538,7 @@ INSERT INTO sighting VALUES (14613,'amewig','Union City Library','',0,0,'2007-01
 INSERT INTO sighting VALUES (14614,'buffle','Union City Library','',0,0,'2007-01-11');
 INSERT INTO sighting VALUES (14615,'amerob','Union City Library','',0,0,'2007-01-11');
 INSERT INTO sighting VALUES (14616,'mallar','Union City Library','',0,0,'2007-01-11');
-INSERT INTO sighting VALUES (14617,'blkswa','Spring Lakes','',0,0,'2007-02-01');
+INSERT INTO sighting VALUES (14617,'blkswa','Spring Lakes','',0,1,'2007-02-01');
 INSERT INTO sighting VALUES (14618,'grnher','Spring Lakes','',0,1,'2007-02-01');
 INSERT INTO sighting VALUES (14619,'amecoo','Spring Lakes','',0,0,'2007-02-01');
 INSERT INTO sighting VALUES (14620,'mutswa','Spring Lakes','',0,0,'2007-02-01');
@@ -14729,3 +14729,7 @@ INSERT INTO sighting VALUES (14805,'moudov','El Polin Loop','',0,0,'2007-03-15')
 INSERT INTO sighting VALUES (14806,'annhum','El Polin Loop','',0,0,'2007-03-15');
 INSERT INTO sighting VALUES (14807,'blkpho','El Polin Loop','',0,0,'2007-03-15');
 INSERT INTO sighting VALUES (14808,'ruckin','El Polin Loop','',0,0,'2007-03-15');
+INSERT INTO sighting VALUES (14809,'wiltur','Rancho San Antonio','',0,1,'2007-03-22');
+INSERT INTO sighting VALUES (14810,'wesjay','Rancho San Antonio','',0,0,'2007-03-22');
+INSERT INTO sighting VALUES (14811,'acowoo','Rancho San Antonio','',0,0,'2007-03-22');
+INSERT INTO sighting VALUES (14812,'caltow','Rancho San Antonio','',0,0,'2007-03-22');
