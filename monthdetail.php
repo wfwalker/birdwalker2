@@ -52,16 +52,42 @@ else
 }
  ?>
 	<div class="pagetitle"><?= getMonthNameForNumber($request->getMonth()) ?> <?= $request->getYear() == "" ? getEarliestYear() . " - " . getLatestYear() :  $request->getYear() ?></div>
-
-<?        $request->viewLinks("tripsummaries"); ?>
 	</div>
 
     <div id="contentright">
-<?
-      $request->handleStandardViews();
-      footer();
-?>
+      <table width="100%">
+        <tr valign="top">
+          <td width="50%" class="leftcolumn">
+            <div class="subheading">Where we went</div>
+            <p/>
+<?            $mapRequest = new Request;
+              $mapRequest->setMapWidth(300);
+              $mapRequest->setMapHeight(300);
+              $map = new Map("./" . $mapRequest->getPageScript(), $mapRequest);
+
+              $map->draw(false); ?>
+          </td>
+        <td  width="50%" class="rightcolumn">
+          <div class="subheading">When we went</div>
+          <p/>
+          <div class="report-content">
+<?	      $tripQuery = new TripQuery($request);
+		  $tripQuery->formatSummaries(); ?>
+          </div>
+        </td>
+      </tr>
+    </table>
+
+    <div style="border-top: solid 1px #AAAAAA; margin-left: 9px; margin-right: 9px"/>
+
+    <div class="report-content">
+<?    $speciesQuery = new SpeciesQuery($request);
+      $speciesQuery->formatTwoColumnSpeciesList(); ?>
     </div>
+
+<?  footer(); ?>
+
+  </div>
 
 <?
 htmlFoot();
