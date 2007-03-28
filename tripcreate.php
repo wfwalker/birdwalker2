@@ -7,6 +7,7 @@ getEnableEdit() or die("Editing disabled");
 
 $save = ""; array_key_exists("Save", $_POST) && $save = $_POST['Save'];
 $abbreviations = ""; array_key_exists("Abbreviations", $_POST) && $abbreviations = $_POST['Abbreviations'];
+$importedAbbreviations = ""; array_key_exists("importedAbbreviations", $_POST) && $importedAbbreviations = $_POST['importedAbbreviations'];
 $notes = ""; array_key_exists("Notes", $_POST) && $notes = $_POST['Notes'];
 $locationName = ""; array_key_exists("LocationName", $_POST) && $locationName = $_POST['LocationName'];
 $leader = ""; array_key_exists("Leader", $_POST) && $leader = $_POST['Leader'];
@@ -24,6 +25,9 @@ htmlHead("Create a trip");
 $request = new Request;
 
 $request->globalMenu();
+
+$speciesQuery = new SpeciesQuery($request);
+
 ?>
 
 <div id="topright-trip">
@@ -34,31 +38,51 @@ $request->globalMenu();
 <?
 if ($save == "Save")
 {
-	// FIRST ensure all abbrevs are valid
-	$abbrev = strtok($abbreviations, " \n");
-	while ($abbrev)
-	{
-		if (trim($abbrev) != "")
+    // insert abbreviations imported from a text memo. FIRST verify them
+    $importedAbbrev = strtok($importedAbbreviations, " \n");
+    while ($importedAbbrev)
+    {
+	  if (trim($importedAbbrev) != "")
 		{
-			// check for valid species abbrev
-			performCount("Verify abbreviation", "SELECT COUNT(*) FROM species WHERE Abbreviation='" . trim($abbrev) . "'") or die ("This is not a valid abbreviation " . $abbrev);
+		  // check for valid species abbrev
+		  performCount("Verify abbreviation",
+					   "SELECT COUNT(*) FROM species WHERE Abbreviation='" . trim($importedAbbrev) . "'")
+			or die ("This is not a valid abbreviation " . $importedAbbrev);
 		}
 
-		$abbrev = strtok(" \n");
+	  $importedAbbrev = strtok(" \n");
 	}
-
-	// SECOND insert them
-	$abbrev = strtok($abbreviations, " \n");
-	while ($abbrev)
+	
+	// actually insert abbreviations imported from a text memo
+	$importedAbbrev = strtok($importedAbbreviations, " \n");
+	while ($importedAbbrev)
 	{
-		if (trim($abbrev) != "")
+		if (trim($importedAbbrev) != "")
 		{
 			// insert this species
 			$sightingID++;
-			performQuery("Insert new sighting", "\nINSERT INTO sighting VALUES (" . $sightingID . ", '" . trim($abbrev) . "', '" . $locationName . "', '', '0', '0', '" . $tripDate . "');\n");
+			performQuery("Insert new sighting",
+						 "\nINSERT INTO sighting VALUES (" . $sightingID . ", '" .
+						 trim($importedAbbrev) . "', '" . $locationName . "', '', '0', '0', '" . $tripDate . "');\n");
 		}
 
-		$abbrev = strtok(" \n");
+	    $importedAbbrev = strtok(" \n");
+	}
+
+	if ($abbreviations != "") 
+    {
+	    // insert abbreviations from checkboxes
+	    foreach ($abbreviations as $abbrev)
+		{
+		  if (trim($abbrev) != "")
+			{
+			  // insert this species
+			  $sightingID++;
+			  performQuery("Insert new sighting",
+						   "\nINSERT INTO sighting VALUES (" . $sightingID . ", '" .
+						   trim($abbrev) . "', '" . $locationName . "', '', '0', '0', '" . $tripDate . "');\n");
+			}
+		}
 	}
 
 	echo "sightings inserted... ";
@@ -68,10 +92,10 @@ if ($save == "Save")
 	if ($todayTripRecordCount == 0)
 	{
 		// FINALLY insert the trip record
-		performQuery("Insert trip record", "INSERT INTO trip VALUES (" . ($tripID + 1) . ", '" . $leader . "', '', '" . $tripName . "', '" . $notes . "', '" . $tripDate . "');");
+		performQuery("Insert trip record",
+					 "INSERT INTO trip VALUES (" . ($tripID + 1) . ", '" . $leader . "', '', '" . $tripName . "', '" . $notes . "', '" . $tripDate . "');");
 		echo "<a href=\"./tripdetail.php?tripid=" . ($tripID + 1) . "\">Trip Created</a>";
 	}
-
 }
 ?>
 
@@ -99,24 +123,48 @@ if ($save == "Save")
 	</td>
   </tr>
   <tr>
-	<td class="fieldlabel">Abbreviations</td>
-	<td><textarea name="Abbreviations" cols="10" rows="20"></textarea></td>
-  </tr>
-  <tr>
 	<td class="fieldlabel">Notes</td>
 	<td><textarea name="Notes" cols="60" rows="20"></textarea></td>
   </tr>
-  <tr>
-	<td><input type="submit" name="Save" value="Save"/></td>
-  </tr>
-</table>
 
-</form>
-
+  <tr><td class="fieldlabel"></td><td>
 <?
-footer();
+		  $dbQuery = $speciesQuery->performQuery();
+		  $divideByTaxo = mysql_num_rows($dbQuery) > 30;
+          $prevInfo = ""; 
+
+		  while($info = mysql_fetch_array($dbQuery))
+		  {
+			  if ($prevInfo == "" || ($divideByTaxo && (getFamilyInfo($prevInfo["objectid"]) != getFamilyInfo($info["objectid"]))))
+			  {
+				  $taxoInfo = getFamilyInfo($info["objectid"]); ?>
+				  <div class="subheading"><?= strtolower($taxoInfo["LatinName"]) ?></div>
+<?            } ?>
+
+			  <div>
+                  <input type="checkbox" name="Abbreviations[]" value="<?= $info["Abbreviation"]?>"/>
+                  <?= $info["CommonName"] ?>
+              </div>
+<?            $prevInfo = $info;
+          }
 ?>
 
+  </td></tr>
+
+  <tr>
+     <td class="fieldlabel">Abbreviations</td>
+     <td><textarea name="importedAbbreviations" cols="10" rows="20"></textarea></td>
+  </tr>
+			
+  <tr>
+	<td></td>
+    <td><input type="submit" name="Save" value="Save"/></td>
+  </tr>
+
+
+
+</table>
+</form>
 </div>
 
 <?
