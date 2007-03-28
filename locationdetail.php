@@ -44,11 +44,16 @@ $request->globalMenu();
       <div class="heading">Notes</div>
 	  <div class="leftcolumn">
         <div class="report-content"><? referenceURL($siteInfo); ?></div>
-<?      if ($siteInfo["Notes"] != "") { ?>
+<?	    if (getEnableEdit()) { ?>
+          <div class="report-content"><a href="./tripcreate.php?locationid=<?=$request->getLocationID()?>">create trip</a></div>
+<?      }
+        if ($siteInfo["Notes"] != "") { ?>
           <div class="report-content"><?= $siteInfo["Notes"] ?></div>
-<?      } ?>
-      </div> <?
-   }
+<?      }
+ ?>
+      </div>
+
+<?   }
 
 $request->handleStandardViews();
 footer();
