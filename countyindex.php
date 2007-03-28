@@ -6,6 +6,8 @@ $request = new Request;
 
 htmlHead("Counties");
 
+$numCounties = performCount("Count the counties", "SELECT COUNT(DISTINCT(County)) FROM location");
+
 $request->globalMenu();
 ?>
 
@@ -16,7 +18,10 @@ $request->globalMenu();
 
     <div id="contentright">
 
-<table class="metadata" cellpadding="0" cellspacing="0" width="100%">
+  <div class="heading"><?= $numCounties ?> Counties</div>
+
+  <div class="onecolumn">
+<table class="report-content" cellpadding="0" cellspacing="0" width="100%">
 
 <?php
 
@@ -55,7 +60,7 @@ while ($info = mysql_fetch_array($countyStats))
 
 		<tr>
             <td colspan="12" class="heading">
-                <a href="statedetail.php?stateid=<?= $prevState ?>"><?= $stateInfo["Name"] ?></a>
+                <span class="statename"><a href="statedetail.php?stateid=<?= $prevState ?>"><?= $stateInfo["Name"] ?></a></span>
             </td>
         </tr>
 
@@ -65,7 +70,7 @@ while ($info = mysql_fetch_array($countyStats))
 	if (($yearArray != null) && ($countyToAccumulate != $county))
 	{ ?>
 
-		<tr><td class="firstcell">
+		<tr><td>
 			<a href="./countydetail.php?stateid=<?= $prevState ?>&county=<?= urlencode($countyToAccumulate) ?>">
 			<?= $countyToAccumulate ?> County
 			</a>
@@ -103,7 +108,7 @@ footer();
 ?>
 
     </div>
-
+</div>
 <?
 htmlFoot();
 ?>
