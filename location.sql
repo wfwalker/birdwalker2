@@ -32,7 +32,7 @@ INSERT INTO location VALUES (31,'Crittenden Marsh','','Mountain View','Santa Cla
 INSERT INTO location VALUES (32,'Crown Memorial State Beach','http://www.parks.ca.gov/allpages/default.asp?page_id=526','Alameda','Alameda','CA','','',37.7658004761,-122.2740020752,0);
 INSERT INTO location VALUES (33,'Don Edwards Center','http://www.r1.fws.gov/sfbnwr/default.htm','Alviso','Santa Clara','CA','Note to photographers: The Don Edwards Center and surrounding area afford many bird photography opportunities. Begin by driving the access road slowly, looking for shorebirds foraging in the marsh next to the road. Sparrows, towhees, thrushes, and some warblers near the parking lot can be fairly cooperative. Walk out on the levee for flight shots of gulls and terns. No entrance fee, Porta potty available. The gate is  often locked in the morning, you can walk in after parking your car off the road.','WGS 84',37.4327011108,-121.9619979858,0);
 INSERT INTO location VALUES (34,'Drawbridge','http://www.slip.net/~bobk/','Fremont','Santa Clara','CA','An abandoned town along the Amtrak tracks in the marshes of Fremont. We got to go there during a San Jose Christmas Bird Count.','mapblast',37.4664001465,-121.9739990234,0);
-INSERT INTO location VALUES (35,'Ed Levin State Park','http://santaclaracounty.org/parks/prkpages/levndch.htm','Milpitas','Santa Clara','CA','','mapblast',37.4458999634,-121.8580017090,0);
+INSERT INTO location VALUES (35,'Ed Levin County Park Sandy Wool','http://santaclaracounty.org/parks/prkpages/levndch.htm','Milpitas','Santa Clara','CA','','mapblast',37.4458999634,-121.8580017090,0);
 INSERT INTO location VALUES (36,'Elkhorn Slough','http://www.elkhornslough.org/','Santa Cruz','Monterey','CA','a lovely estuary south of Santa Cruz. Unfortunately, the slough\'s limited access hours have prevented us from exploring it in depth.','mapblast',36.8044013977,-121.7860031128,0);
 INSERT INTO location VALUES (37,'Fairhaven','','Arcata','Humboldt','CA','','',40.7853012085,-124.2020034790,0);
 INSERT INTO location VALUES (38,'Farallon Islands','','San Francisco','San Francisco','CA','','',37.7332992554,-123.0329971313,0);
@@ -235,3 +235,7 @@ INSERT INTO location VALUES (235,'Union City Library','','Union City','Alameda',
 INSERT INTO location VALUES (236,'Spring Lakes','','Scotts Valley','Santa Cruz','CA','Trailer park near Scotts Valley','',0.0000000000,0.0000000000,0);
 INSERT INTO location VALUES (237,'Byron Hot Springs Road','','Byron','Contra Costa','CA','','',37.8358306885,-121.6369400024,0);
 INSERT INTO location VALUES (238,'El Polin Loop','','San Francisco','San Francisco','CA','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (239,'Calaveras Reservoir','','Milpitas','Santa Clara','CA','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (240,'Marsh Road','','Fremont','Santa Clara','CA','Near Calaveras Reservoir','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (241,'Calaveras Road','','Fremont','Santa Clara','CA','Near Calaveras Reservoir','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (242,'Ed Levin County Park Spring Valley','','Fremont','Santa Clara','CA','Second part of Ed Levin County Park','',0.0000000000,0.0000000000,0);
