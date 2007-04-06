@@ -23,7 +23,7 @@ $request->globalMenu();
             <?= editLink("./tripedit.php?tripid=" . $request->getTripID()); ?>
         </div>
         <div class="pagesubtitle"><?= $tripInfo["niceDate"] ?></div>
-      <?= $request->viewLinks("species"); ?>
+      <?= $request->viewLinks("speciesbylocation"); ?>
 	</div>
 
     <div id="contentright">
