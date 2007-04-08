@@ -239,3 +239,7 @@ INSERT INTO location VALUES (239,'Calaveras Reservoir','','Milpitas','Santa Clar
 INSERT INTO location VALUES (240,'Marsh Road','','Fremont','Santa Clara','CA','Near Calaveras Reservoir','',0.0000000000,0.0000000000,0);
 INSERT INTO location VALUES (241,'Calaveras Road','','Fremont','Santa Clara','CA','Near Calaveras Reservoir','',0.0000000000,0.0000000000,0);
 INSERT INTO location VALUES (242,'Ed Levin County Park Spring Valley','','Fremont','Santa Clara','CA','Second part of Ed Levin County Park','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (243,'Ed Levin County Park Elm Picnic Area','http://santaclaracounty.org/parks/prkpages/levndch.htm','Milpitas','Santa Clara','CA','','mapblast',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (244,'Stevens Creek Reservoir','','Cupterino','Santa Clara','CA','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (245,'Stevens Creek County Park Ranger Station','','Cupterino','Santa Clara','CA','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (246,'Stevens Creek County Park Villa Maria','http://www.parkhere.org/prkpages/stcrk.htm','Cupertino','Santa Clara','CA','','',0.0000000000,0.0000000000,0);
