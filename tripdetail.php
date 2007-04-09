@@ -51,15 +51,6 @@ if ($request->getView() == "speciesbylocation")
   
   $firstSightings = getFirstSightings();
   $firstYearSightings = getFirstYearSightings($tripYear);
-  
-  // how many  birds were on this trip?
-  $tripSightings = $sightingQuery->performQuery();
-  
-  // how many life birds were on this trip?
-  $tripFirstSightings = 0;
-  while($sightingInfo = mysql_fetch_array($tripSightings)) {
-	if (array_key_exists($sightingInfo['objectid'], $firstSightings)) { $tripFirstSightings++; }
-  }
 
 	$dbLocation = $locationQuery->performQuery();
 	while($locationInfo = mysql_fetch_array($dbLocation))
@@ -73,11 +64,6 @@ if ($request->getView() == "speciesbylocation")
 		$dbLocationSightings = $locationSightingQuery->performQuery();
 
 		$tripLocationCount = mysql_num_rows($dbLocationSightings);
-
-		$locationFirstSightings = 0;
-		while($sightingInfo = mysql_fetch_array($dbLocationSightings)) {
-			if (array_key_exists($sightingInfo['sightingid'], $firstSightings)) { $locationFirstSightings++; }
-		}
  ?>
 
     <div class="heading">
