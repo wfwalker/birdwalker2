@@ -41,7 +41,7 @@ function insertFlickrTripLink($tripInfo)
 	$code = $api->getErrorCode();
 	$message = $api->getErrorMessage();
 	echo "<!-- flickr down: " . $code . " " . $message . " -->";
-    echo "<p><a href=\"". $api->getAuthUrl("read", "7338825-f918b78d80dee9a8") . "\">login</a></p>";
+	//    echo "<p><a href=\"". $api->getAuthUrl("read", "7338825-f918b78d80dee9a8") . "\">login</a></p>";
   }
 
   if ($count > 0)
