@@ -14447,7 +14447,7 @@ INSERT INTO sighting VALUES (14522,'herthr','Panoche Road','',0,0,'2007-01-26');
 INSERT INTO sighting VALUES (14523,'lesgol','Panoche Road','',0,0,'2007-01-26');
 INSERT INTO sighting VALUES (14524,'larspa','Panoche Road','',0,0,'2007-01-26');
 INSERT INTO sighting VALUES (14525,'whbnut','Panoche Road','',0,0,'2007-01-26');
-INSERT INTO sighting VALUES (14526,'prafal','Panoche Road','',0,0,'2007-01-26');
+INSERT INTO sighting VALUES (14526,'prafal','Panoche Road','',0,1,'2007-01-26');
 INSERT INTO sighting VALUES (14527,'yerwar','Panoche Road','',0,0,'2007-01-26');
 INSERT INTO sighting VALUES (14528,'coohaw','Panoche Road','',0,0,'2007-01-26');
 INSERT INTO sighting VALUES (14529,'shshaw','Panoche Road','',0,0,'2007-01-26');
