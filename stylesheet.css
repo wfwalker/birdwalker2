@@ -151,7 +151,7 @@ body
 
 .command-disabled
 {
-  background-image: url(./images/closed.gif);
+  background-image: url(./images/command_dim.gif);
   background-repeat: no-repeat;
   padding-left: 16px; margin-left: 7px; margin-bottom: 14px;
 }
@@ -169,7 +169,7 @@ body
 .command
 {
   width: 90px;
-  background-image: url(./images/open.gif);
+  background-image: url(./images/command.gif);
   background-repeat: no-repeat;
   padding-left: 16px; margin-left: 7px; margin-bottom: 14px;
   white-space: nowrap;
