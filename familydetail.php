@@ -22,7 +22,7 @@ $nextFamily = performCount("Find Next Family",
 if ($nextFamily != "")
 {
 	$nextFamilyInfo = getFamilyInfo($nextFamily * pow(10, 7));
-	$nextFamilyLinkText = $nextFamilyInfo["LatinName"];
+	$nextFamilyLinkText = $nextFamilyInfo["CommonName"];
 }
 else
 {
@@ -37,14 +37,14 @@ $prevFamily = performCount("Find Previous Family",
 if ($prevFamily != "")
 {
 	$prevFamilyInfo = getFamilyInfo($prevFamily * pow(10, 7));
-	$prevFamilyLinkText = $prevFamilyInfo["LatinName"];
+	$prevFamilyLinkText = $prevFamilyInfo["CommonName"];
 }
 else
 {
 	$prevFamilyLinkText = "";
 }
 
-htmlHead($familyInfo["LatinName"]);
+htmlHead($familyInfo["CommonName"]);
 $request->globalMenu();
 ?>
 
@@ -53,8 +53,8 @@ $request->globalMenu();
 					 $prevFamily, $prevFamilyLinkText,
 					 $nextFamily, $nextFamilyLinkText); ?>
 
-	    <div class="pagetitle"><?= $familyInfo["LatinName"] ?></div>
-        <div class="pagesubtitle"><?= $familyInfo["CommonName"] ?></div>
+	    <div class="pagetitle"><?= $familyInfo["CommonName"] ?></div>
+        <div class="pagesubtitle"><?= $familyInfo["LatinName"] ?></div>
 <?      $request->viewLinks("species"); ?>
 
   </div>

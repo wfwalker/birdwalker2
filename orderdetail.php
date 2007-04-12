@@ -8,9 +8,9 @@ $request = new Request;
 $speciesQuery = new SpeciesQuery($request);
 $orderInfo = $request->getOrderInfo();
 
-htmlHead($orderInfo["LatinName"]);
+htmlHead($orderInfo["CommonName"]);
 
-$items[] = strtolower($orderInfo["LatinName"]);
+$items[] = strtolower($orderInfo["CommonName"]);
 $request->globalMenu();
 
 $nextOrder = performCount("Find Next Order",
@@ -21,7 +21,7 @@ $nextOrder = performCount("Find Next Order",
 if ($nextOrder != "")
 {
 	$nextOrderInfo = getOrderInfo($nextOrder * pow(10, 9));
-	$nextOrderLinkText = $nextOrderInfo["LatinName"];
+	$nextOrderLinkText = $nextOrderInfo["CommonName"];
 }
 else
 {
@@ -36,7 +36,7 @@ $prevOrder = performCount("Find Previous Order",
 if ($prevOrder != "")
 {
 	$prevOrderInfo = getOrderInfo($prevOrder * pow(10, 9));
-	$prevOrderLinkText = $prevOrderInfo["LatinName"];
+	$prevOrderLinkText = $prevOrderInfo["CommonName"];
 }
 else
 {
@@ -50,8 +50,8 @@ else
 					 $prevOrder, $prevOrderLinkText,
 					 $nextOrder, $nextOrderLinkText); ?>
 
-        <div class="pagetitle"><?= $orderInfo["LatinName"] ?></div>
-        <div class="pagesubtitle"> <?= $orderInfo["CommonName"] ?></div>
+        <div class="pagetitle"><?= $orderInfo["CommonName"] ?></div>
+        <div class="pagesubtitle"> <?= $orderInfo["LatinName"] ?></div>
 <?       $request->viewLinks("species"); ?>
 	</div>
 

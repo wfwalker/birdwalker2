@@ -222,10 +222,10 @@ class Request
 			$pageTitleItems[] = $speciesInfo["CommonName"];
 		} elseif ($this->isFamilySpecified()) {
 			$familyInfo = $this->getFamilyInfo();
-			$pageTitleItems[] = $familyInfo["LatinName"];
+			$pageTitleItems[] = $familyInfo["CommonName"];
 		} elseif ($this->isOrderSpecified()) {
 			$orderInfo = $this->getOrderInfo();
-			$pageTitleItems[] = $orderInfo["LatinName"];
+			$pageTitleItems[] = $orderInfo["CommonName"];
 		}
 
 		if ($this->isLocationSpecified()) {
@@ -540,7 +540,7 @@ function changeView()
 				$orderRequest->setSpeciesID("");
 				$orderRequest->setFamilyID(""); ?>
 			
-				<div><?= $orderRequest->command($orderInfo["LatinName"]) ?></div>
+				<div><?= $orderRequest->command($orderInfo["CommonName"]) ?></div>
 <?		    }
 		
 			if ($this->getFamilyID() != "")
@@ -551,7 +551,7 @@ function changeView()
 				$familyRequest->setPageScript("familydetail.php");
 				$familyRequest->setSpeciesID(""); ?>
 					 
-				<div><?= $familyRequest->command($familyInfo["LatinName"]) ?></div>
+				<div><?= $familyRequest->command($familyInfo["CommonName"]) ?></div>
 <?		    }
 
 			if ($this->getSpeciesID() != "")
