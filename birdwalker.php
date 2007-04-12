@@ -68,6 +68,13 @@ function htmlFoot()
 <?
 }
 
+function toggler($triangleID, $textID)
+{
+?>
+<span onclick='if (document.getElementById("<?= $triangleID ?>").src.match("closed.gif") == "closed.gif") { document.getElementById("<?= $triangleID ?>").src="./images/open.gif"; document.getElementById("<?= $textID ?>").style.display=""; } else { document.getElementById("<?= $triangleID ?>").src="./images/closed.gif";  document.getElementById("<?= $textID ?>").style.display="none"; }'><img id=<?= $triangleID ?> src="./images/closed.gif"/></span>
+<?
+}
+
 function editLink($href)
 { 
     if (getEnableEdit()) { ?>
@@ -457,7 +464,7 @@ function getFamilyDetailLinkFromSpeciesID($speciesid, $viewMode="species")
 	$taxoInfo = getFamilyInfoFromSpeciesID($speciesid);
 
 	return "<a href=\"./familydetail.php?familyid=" . floor($speciesid / pow(10,7)) . "&view=" . $viewMode . "\">" .
-		$taxoInfo["LatinName"] . 
+		$taxoInfo["CommonName"] . 
 		"</a>";
 }
 
