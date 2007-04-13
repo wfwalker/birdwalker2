@@ -75,7 +75,7 @@ $tripYear =  substr($sightingInfo["TripDate"], 0, 4);
 
 	list($width, $height, $type, $attr) = getimagesize("./images/photo/" . $photoFilename); ?>
 
-	<img width=<?= $width ?> height=<?= $height ?> src="<?= getPhotoURLForSightingInfo($sightingInfo) ?>">
+	<img width="<?= $width ?>" height="<?= $height ?>" src="<?= getPhotoURLForSightingInfo($sightingInfo) ?>">
     <div class="copyright">@<?= $tripYear ?> W. F. Walker</div>
 </div>
 </center>
