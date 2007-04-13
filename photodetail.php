@@ -78,10 +78,19 @@ $request->globalMenu();
 	    list($width, $height, $type, $attr) = getimagesize("./images/photo/" . $photoFilename); ?>
 
 		<div style="text-align: center">
-	      <img width=<?= $width ?> height=<?= $height ?> src="<?= getPhotoURLForSightingInfo($sightingInfo) ?>" alt="<?= $speciesInfo['CommonName'] ?>">
+	      <img width="<?= $width ?>" height="<?= $height ?>" src="<?= getPhotoURLForSightingInfo($sightingInfo) ?>" alt="<?= $speciesInfo['CommonName'] ?>">
           <div class="copyright">&copy; <?= $tripYear ?> W. F. Walker</div>
 		</div>
-<?  }
+<?
+		$exif = exif_read_data("./images/photo/" . $photoFilename, "IFD0");
+		if ($exif != "")
+		{ ?>
+		    <div class="heading">Details</div>
+			<div class="leftcolumn">
+			  <p class="report=content"><?= $exif["Model"] . ", ISO " . $exif["ISOSpeedRatings"] . ", " . $exif["ExposureTime"] . "\", " . $exif["FocalLength"] . "mm, " . $exif["COMPUTED"]["ApertureFNumber"] ?><p>
+			</div>
+<?      }
+    }
 
     if (strlen($sightingInfo["Notes"]) > 0) { ?>
 		<div class="leftcolumn"><p class="report-content"><?= $sightingInfo["Notes"] ?></p></a></div>
@@ -91,21 +100,21 @@ $request->globalMenu();
         <div class="heading">
 			Trip: <a href="./tripdetail.php?tripid=<?= $tripInfo["objectid"] ?>"><?= $tripInfo["Name"] ?></a>
 		</div>
-        <div class="leftcolumn"><p<p class="report-content"><?= $tripInfo["Notes"] ?></p></div>
+        <div class="leftcolumn"><p class="report-content"><?= $tripInfo["Notes"] ?></p></div>
 <?  }
 
     if (strlen($locationInfo["Notes"]) > 0) { ?>
 	    <div class="heading">
 			Location: <a href="./locationdetail.php?locationid=<?= $locationInfo["objectid"] ?>"><?= $locationInfo["Name"] ?></a>
 		</div>
-        <div class="leftcolumn"><p<p class="report-content"><?= $locationInfo["Notes"] ?></p></div>
+        <div class="leftcolumn"><p class="report-content"><?= $locationInfo["Notes"] ?></p></div>
 <?  }
 
     if (strlen($speciesInfo["Notes"]) > 0) { ?>
 	    <div class="heading">
 			Species: <a href="./speciesdetail.php?speciesid=<?= $speciesInfo["objectid"] ?>"><?= $speciesInfo["CommonName"] ?></a>
 		</div>
-	    <div class="leftcolumn"><p<p class="report-content"><?= $speciesInfo["Notes"] ?></p></div>
+	    <div class="leftcolumn"><p class="report-content"><?= $speciesInfo["Notes"] ?></p></div>
 <?  }
 
     footer();
