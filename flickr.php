@@ -34,7 +34,6 @@ function insertFlickrTripLink($tripInfo)
   $count = 0;
   
   if ($response) { # response is an XML_Tree root object
-	echo urlencode($response->dump());
 	$obj = $response->getElement(array(1,1));
 	$count = $obj->getAttribute("count");
   } else { # fetch the error
