@@ -14893,7 +14893,7 @@ INSERT INTO sighting VALUES (14970,'yebmag','Ed Levin County Park Sandy Wool',''
 INSERT INTO sighting VALUES (14971,'bushti','Ed Levin County Park Sandy Wool','',0,0,'2007-04-12');
 INSERT INTO sighting VALUES (14972,'amerob','Ed Levin County Park Sandy Wool','',0,0,'2007-04-12');
 INSERT INTO sighting VALUES (14973,'rucspa','Ed Levin County Park Sandy Wool','',0,0,'2007-04-12');
-INSERT INTO sighting VALUES (14974,'graspa','Ed Levin County Park Sandy Wool','',0,0,'2007-04-12');
+INSERT INTO sighting VALUES (14974,'graspa','Ed Levin County Park Sandy Wool','',0,1,'2007-04-12');
 INSERT INTO sighting VALUES (14975,'sonspa','Ed Levin County Park Sandy Wool','',0,0,'2007-04-12');
 INSERT INTO sighting VALUES (14976,'gocspa','Ed Levin County Park Sandy Wool','',0,0,'2007-04-12');
 INSERT INTO sighting VALUES (14977,'rewbla','Ed Levin County Park Sandy Wool','',0,0,'2007-04-12');
