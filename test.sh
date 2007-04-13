@@ -2,6 +2,9 @@
 
 log() { echo "$@"; echo "$@" >> testresults.txt; }
 
+passCount=0
+failCount=0
+
 echo -n "" > testresults.txt
 
 baseURL="http://localhost/~walker/birdwalker2/"
@@ -83,12 +86,19 @@ for successURL in $successURLs; do
 	tidy -q -e detail.html 2>&1 | grep Error
 
 	# look for attributes with unquoted values
-	egrep "<.*=[0-9]" detail.html | grep -v href
+	egrep "<.*=[0-9]" detail.html | grep -v href > unquoted
+	unquoted=$?
+	if [ $unquoted -eq 0 ] ; then
+		echo "UNQUOTED ATTRIBUTES"
+		cat unquoted
+	fi
 
 	if [ $ec -eq 1 ]; then
 		log "passed $successURL"
+		passCount=$((passCount+1))
 	else
 		log "FAILED $successURL"
+		failCount=$((failCount+1))
 	fi		
 done
 
@@ -106,13 +116,16 @@ for failureURL in $failureURLs; do
 
 	if [ $ec -eq 0 ]; then
 		log "passed $failureURL (NEG test)"
+		passCount=$((passCount+1))
 	else
 		log "FAILED $failureURL (NEG test)"
+		failCount=$((failCount+1))
 	fi		
 done
 
 log ""
 log "------------------------------------"
+log "Passed $passCount Failed $failCount"
 log ""
 
 exit 0
