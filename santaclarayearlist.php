@@ -31,7 +31,7 @@ $request->globalMenu();
 
 <div id="topright-trip">
 	<? browseButtons("Year List", "./santaclarayearlist.php?year=", $request->getYear(), $request->getYear() - 1, $request->getYear() - 1, $request->getYear() + 1, $request->getYear() + 1); ?> 
-    <div class="pagetitle">Target birds for <?= $request->isYearSpecified() ? getYear() : "Santa Clara County" ?></div>
+    <div class="pagetitle">Target birds for <?= $request->isYearSpecified() ? $request->getYear() : "Santa Clara County" ?></div>
 </div>
 
 <div id="contentright">
