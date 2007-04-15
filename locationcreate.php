@@ -45,7 +45,7 @@ if ($postLocationID != "") {
 					 "Name='" . $name . "', " .
 					 "ReferenceURL='". $referenceURL . "', " .
 					 "City='" . $city . "', " .
-					 "County='" . $county . "', " .
+					 "County='" . mysql_escape_string($county) . "', " .
 					 "State='". $state . "', " .
 					 "Notes='" . $notes . "', " .
 					 "LatLongSystem='" . $latLongSystem . "', " .
@@ -56,7 +56,7 @@ if ($postLocationID != "") {
 		if ($_POST['Name'] != $postLocationInfo['Name'])
 		{
 			performQuery("Update sightings", "UPDATE sighting SET ".
-					 "LocationName='" . $name . "' WHERE LocationName='" . $postLocationInfo['Name'] . "'");
+						 "LocationName='" . $name . "' WHERE LocationName='" . mysql_escape_string($postLocationInfo['Name']) . "'");
 		}
 	}
 	else if ($new != "")
