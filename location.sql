@@ -235,11 +235,15 @@ INSERT INTO location VALUES (235,'Union City Library','','Union City','Alameda',
 INSERT INTO location VALUES (236,'Spring Lakes','','Scotts Valley','Santa Cruz','CA','Trailer park near Scotts Valley','',0.0000000000,0.0000000000,0);
 INSERT INTO location VALUES (237,'Byron Hot Springs Road','','Byron','Contra Costa','CA','','',37.8358306885,-121.6369400024,0);
 INSERT INTO location VALUES (238,'El Polin Loop','','San Francisco','San Francisco','CA','','',0.0000000000,0.0000000000,0);
-INSERT INTO location VALUES (239,'Calaveras Reservoir','','Milpitas','Santa Clara','CA','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (239,'Calaveras Reservoir','','Milpitas','Santa Clara','CA','','',37.4547996521,-121.8110961914,0);
 INSERT INTO location VALUES (240,'Marsh Road','','Fremont','Santa Clara','CA','Near Calaveras Reservoir','',0.0000000000,0.0000000000,0);
 INSERT INTO location VALUES (241,'Calaveras Road','','Fremont','Santa Clara','CA','Near Calaveras Reservoir','',0.0000000000,0.0000000000,0);
 INSERT INTO location VALUES (242,'Ed Levin County Park Spring Valley','','Fremont','Santa Clara','CA','Second part of Ed Levin County Park','',0.0000000000,0.0000000000,0);
 INSERT INTO location VALUES (243,'Ed Levin County Park Elm Picnic Area','http://santaclaracounty.org/parks/prkpages/levndch.htm','Milpitas','Santa Clara','CA','','mapblast',0.0000000000,0.0000000000,0);
-INSERT INTO location VALUES (244,'Stevens Creek Reservoir','','Cupterino','Santa Clara','CA','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (244,'Stevens Creek Reservoir','','Cupterino','Santa Clara','CA','','',37.2986106873,-122.0761108398,0);
 INSERT INTO location VALUES (245,'Stevens Creek County Park Ranger Station','','Cupterino','Santa Clara','CA','','',0.0000000000,0.0000000000,0);
 INSERT INTO location VALUES (246,'Stevens Creek County Park Villa Maria','http://www.parkhere.org/prkpages/stcrk.htm','Cupertino','Santa Clara','CA','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (247,'Monte Bello Gate 5','http://www.openspace.org/MBELLO.html','Saratoga','Santa Clara','CA','The pond at Gate 05','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (248,'O\'Connor Street','','East Palo Alto','Santa Clara','CA','The county boundary runs through the creek accessible from this location. County listers, be careful.','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (249,'Byxbee Park','','Palo Alto','Santa Clara','CA','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (250,'Jubilee Christian Center','','Alviso','Santa Clara','CA','','',0.0000000000,0.0000000000,0);
