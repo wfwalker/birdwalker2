@@ -3,67 +3,59 @@
 require_once("./birdwalker.php");
 require_once("./request.php");
 require_once("./speciesquery.php");
-require_once("./onthisdatespeciesquery.php");
-
-$localtimearray = localtime(time(), 1);
-$monthNum = $localtimearray["tm_mon"] + 1;
-$dayNum = $localtimearray["tm_mday"];
-
-$tripsOnThisDate = performQuery("Find Trips On This Date",
-    "SELECT *, " . longNiceDateColumn() . "
-      FROM trip
-      WHERE Month(Date)='" . ($localtimearray["tm_mon"] + 1) . "' AND
-        DayOfMonth(Date)='" . $dayNum . "'
-        AND Year(Date)<" . getLatestYear() . "
-      ORDER BY Date DESC");
-
-$today = performCount("format date", "SELECT date_format(current_date, '%M %D')");
-
-htmlHead($today);
 
 $request = new Request;
+
+$request->isDayOfMonthSpecified() || die("Fatal error: Missing day of month");
+$request->isMonthSpecified() || die("Fatal error: Missing month");
+
 $request->globalMenu();
 
-?>
+$tripQuery = new TripQuery($request);
+$speciesQuery = new SpeciesQuery($request);
 
+htmlHead(getMonthNameForNumber($request->getMonth()) . " " . $request->getDayOfMonth());
+
+?>
     <div id="topright-trip">
+  <? /*  browseButtons("On This Date", "./onthisdate.php?month=" . $request->getMonth() . "&dayofmonth=", $request->getDayOfMonth(), $request->getDayOfMonth() - 1, $request->getDayOfMonth() - 1, $request->getDayOfMonth() + 1, $request->getDayOfMonth() + 1); */ ?>
 	    <div class="pagesubtitle">index</div>
-	    <div class="pagetitle"><?= $today ?></div>
+        <div class="pagetitle"><?= $request->getPageTitle() ?></div>
       </div>
 
     <div id="contentright">
 
-<?
+    <table>
+      <tr valign="top">
+        <td class="leftcolumn" width="300px">
+            <div class="subheading">Where we went</div>
+            <p/>
+<?            $mapRequest = new Request;
+              $mapRequest->setMapWidth(300);
+              $mapRequest->setMapHeight(300);
+              $map = new Map("./" . $mapRequest->getPageScript(), $mapRequest);
 
-$onthisdatespeciesQuery = new OnThisDateSpeciesQuery($request);
-$onthisdatespeciesQuery->formatTwoColumnSpeciesList();
+              $map->draw(false); ?>
+        </td>
 
-      while ($info = mysql_fetch_array($tripsOnThisDate))
-      {
-          $tripSpeciesCount = performCount("Count Species For This Trip",
-		      "SELECT COUNT(DISTINCT(sighting.objectid)) from sighting where sighting.TripDate='" . $info["Date"] . "'"); ?>
+        <td class="rightcolumn" width="300px">
+          <div class="subheading">When we went</div>
+          <p/>
+<?        $tripQuery->formatSummaries(); ?>
+        </td>
+      </tr>
+    </table>
 
-		  <p>&nbsp;</p>
+    <div style="border-top: solid 1px #AAAAAA; margin-left: 9px; margin-right: 9px"/>
 
-          <div class="superheading"><?= $info["niceDate"] ?></div>
+    <div class="report-content">
 
-		  <div class="summaryblock">
-              <span class="heading">
-                  <a href="./tripdetail.php?tripid=<?=$info["objectid"]?>">
-<?                    rightThumbnail("SELECT * FROM sighting WHERE Photo='1' AND TripDate='" . $info["Date"] . "' LIMIT 1", false); ?>
-                      <?= $info["Name"] ?>
-                  </a>
-              </span>
-              <div class="subheading"><?= $tripSpeciesCount ?> species</div>
-          </div>
-
-          <div class="report-content"><?= $info["Notes"] ?><br clear="all"/></div>
-<?	  }
-
-footer();
-?>
-
+<?    $speciesQuery->formatTwoColumnSpeciesList(); ?>
     </div>
+<?
+    footer();
+?>
+  </div>
 
 <?
 htmlFoot();

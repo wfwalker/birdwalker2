@@ -84,6 +84,9 @@ class SpeciesQuery extends BirdWalkerQuery
               species.objectid < " . ($this->mReq->getOrderID() + 1) * pow(10, 9);
 		}
 
+		if ($this->mReq->getDayOfMonth() !="") {
+			$whereClause = $whereClause . " AND DayOfMonth(TripDate)=" . $this->mReq->getDayOfMonth();
+		}
 		if ($this->mReq->getMonth() !="") {
 			$whereClause = $whereClause . " AND Month(TripDate)=" . $this->mReq->getMonth();
 		}

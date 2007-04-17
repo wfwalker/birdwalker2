@@ -41,7 +41,7 @@ tripdetail.php?tripid=100 \
 locationdetail.php?locationid=70 \
 locationindex.php \
 monthdetail.php?view=trips&year=2005&month=03 \
-onthisdate.php \
+onthisdate.php?month=4&dayofmonth=16 \
 orderdetail.php?orderid=22 \
 photodetail.php?sightingid=8224 \
 photoindex.php \
@@ -67,6 +67,7 @@ locationdetail.php?locationid=pants \
 orderdetail.php \
 orderdetail.php?order=22 \
 photodetail.php \
+onthisdate.php \
 statedetail.php \
 statedetail.php?ssdftateid=5 \
 tripdetail.php \

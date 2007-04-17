@@ -10,6 +10,10 @@ require_once("./speciesquery.php");
 
 function welcomeMessage()
 {
+  $localtimearray = localtime(time(), 1);
+  $monthNum = $localtimearray["tm_mon"] + 1;
+  $dayNum = $localtimearray["tm_mday"];
+
  ?>
 	  <div class="subheading">Welcome</div>
 
@@ -21,7 +25,7 @@ function welcomeMessage()
 	  <a href="./countyindex.php">county</a>,
 	  <a href="./stateindex.php">state</a>, and
 	  <a href="./speciesindex.php?view=speciesbyyear">year</a> lists.
-	  You can also see what happened <a href="./onthisdate.php">on this date</a>.
+	  You can also see what happened <a href="./onthisdate.php?month=<?= $monthNum ?>&dayofmonth=<?= $dayNum ?>">on this date</a>.
 		   Our latest trips are listed to the right, other indices
 	  are available from the links on the left.
       </div>
@@ -125,32 +129,8 @@ function latestTrips()
 {
 	$numberOfTrips = 8;
 	$latestTrips = performQuery("Get Latest Trips", "SELECT *, " . longNiceDateColumn() . " FROM trip ORDER BY Date DESC LIMIT " . $numberOfTrips);
- ?>
-	<div class="subheading">Latest Trips</div>
 
-<?  for ($index = 0; $index < $numberOfTrips; $index++)
-	{
-		$info = mysql_fetch_array($latestTrips);
-		$tripSpeciesCount = performCount(
-		  "Count trips",
-		  "SELECT COUNT(DISTINCT(sighting.SpeciesAbbreviation)) from sighting where sighting.TripDate='" . $info["Date"] . "'"); ?>
-
-		<div class="superheading"><?= $info["niceDate"] ?></div>
-
-		<div class="summaryblock">
-		    <span class="subheading">
-		        <a href="./tripdetail.php?tripid=<?=$info["objectid"]?>">
-<?                 rightThumbnail("SELECT * FROM sighting WHERE Photo='1' AND TripDate='" . $info["Date"] . "' LIMIT 1", false); ?>
-                   <?= $info["Name"] ?>
-                </a>
-            </span>
-            <div class="subheading"><?= $tripSpeciesCount ?> species</div>
-        </div>
-
-        <div class="report-content"><?= $info["Notes"] ?><br clear="all"/></div>
-		<p>&nbsp;</p>
-
-<?  }
+    TripQuery::formatSummariesForDBQuery($latestTrips);
 }
 
 //

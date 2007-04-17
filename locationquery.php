@@ -69,6 +69,9 @@ class LocationQuery extends BirdWalkerQuery
 			$whereClause = $whereClause . " AND sighting.SpeciesAbbreviation=species.Abbreviation"; 
 		}
 		
+		if ($this->mReq->getDayOfMonth() !="") {
+			$whereClause = $whereClause . " AND DayOfMonth(TripDate)=" . $this->mReq->getDayOfMonth();
+		}
 		if ($this->mReq->getMonth() !="") {
 			$whereClause = $whereClause . " AND Month(TripDate)=" . $this->mReq->getMonth();
 		}

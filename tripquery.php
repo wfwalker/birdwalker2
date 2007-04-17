@@ -77,6 +77,9 @@ class TripQuery extends BirdWalkerQuery
 			$whereClause = $whereClause . " AND sighting.SpeciesAbbreviation=species.Abbreviation"; 
 		}
 		
+		if ($this->mReq->getDayOfMonth() !="") {
+			$whereClause = $whereClause . " AND DayOfMonth(Date)=" . $this->mReq->getDayOfMonth();
+		}
 		if ($this->mReq->getMonth() !="") {
 			$whereClause = $whereClause . " AND Month(Date)=" . $this->mReq->getMonth();
 		}
@@ -173,7 +176,11 @@ class TripQuery extends BirdWalkerQuery
 
 	function formatSummaries()
 	{
-	  $dbQuery = $this->performQuery();
+	  TripQuery::formatSummariesForDBQuery($this->performQuery());
+	}
+
+	function formatSummariesForDBQuery($dbQuery)
+	{
 
       while ($info = mysql_fetch_array($dbQuery))
 	  {

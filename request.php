@@ -22,6 +22,7 @@ class Request
 	var $mStateID; // constrain this query to a particular state
 
 	var $mTripID; // constrain this query to a trip
+	var $mDayOfMonth; // constrain this query to a particular month
 	var $mMonth; // constrain this query to a particular month
 	var $mYear; // constrain this query to a particular year
 
@@ -54,6 +55,7 @@ class Request
 		array_key_exists("locationid", $_GET) && $this->setLocationID($_GET["locationid"]);
 
 		array_key_exists("year", $_GET) && $this->setYear($_GET["year"]);
+		array_key_exists("dayofmonth", $_GET) && $this->setDayOfMonth($_GET["dayofmonth"]);
 		array_key_exists("month", $_GET) && $this->setMonth($_GET["month"]);
 		array_key_exists("tripid", $_GET) && $this->setTripID($_GET["tripid"]);
 
@@ -82,6 +84,7 @@ class Request
 	function isLocationSpecified() { if ($this->getLocationID() == '') return false; else return true; }
 	function isCountySpecified() { if ($this->getCounty() == '') return false; else return true; }
 	function isStateSpecified() { if ($this->getStateID() == '') return false; else return true; }
+	function isDayOfMonthSpecified() { if ($this->getDayOfMonth() == '') return false; else return true; }
 	function isMonthSpecified() { if ($this->getMonth() == '') return false; else return true; }
 	function isYearSpecified() { if ($this->getYear() == '') return false; else return true; }
 
@@ -133,6 +136,8 @@ class Request
 		}
 	}
 	function getTripID() { return $this->mTripID; }
+	function setDayOfMonth($inValue) { $this->mDayOfMonth = $inValue; }
+	function getDayOfMonth() { return $this->mDayOfMonth; }
 	function setMonth($inValue) { $this->mMonth = $inValue; }
 	function getMonth() { return $this->mMonth; }
 	function setYear($inValue) { $this->mYear = $inValue; }
@@ -186,6 +191,7 @@ class Request
 		if ($this->mFamilyID != "") { $params[] = "familyid=" . $this->mFamilyID; } 
 		if ($this->mOrderID != "") { $params[] = "orderid=" . $this->mOrderID; }
 		
+		if ($this->mDayOfMonth !="") { $params[] = "dayofmonth=" . $this->mDayOfMonth; }
 		if ($this->mMonth !="") { $params[] = "month=" . $this->mMonth; }
 		if ($this->mYear !="") { $params[] = "year=" . $this->mYear; }
 
@@ -239,7 +245,11 @@ class Request
 		}
 
 		if ($this->isMonthSpecified()) {
-			$pageTitleItems[] = getMonthNameForNumber($this->getMonth());
+		    if ($this->isDayOfMonthSpecified()) {
+			    $pageTitleItems[] = getMonthNameForNumber($this->getMonth()) . " ". $this->getDayOfMonth();
+			} else {
+			    $pageTitleItems[] = getMonthNameForNumber($this->getMonth());
+			}
 		}
 		if ($this->isYearSpecified()) {
 			$pageTitleItems[] = $this->getYear();
@@ -259,7 +269,7 @@ class Request
 	{
 		echo "\n<!-- view " . $this->mView . " locationid " . $this->mLocationID . " county " . $this->mCounty .
 			" stateid " . $this->mStateID . " tripid " . $this->mTripID .
-			" month " . $this->mMonth . " year " . $this->mYear . 
+			" dayofmonth " . $this->mDayOfMonth . " month " . $this->mMonth . " year " . $this->mYear . 
 			" speciesid " . $this->mSpeciesID . " family " . $this->mFamilyID . " order " . $this->mOrderID . " -->\n\n";
 	}
 
@@ -637,6 +647,7 @@ function changeView()
 			{
 				$monthRequest = new Request;
 				$monthRequest->setPageScript("monthdetail.php");
+			    $monthRequest->setDayOfMonth("");
 				$monthRequest->setTripID(""); ?>
 					 
 				<div><?= $monthRequest->command(getMonthNameForNumber($this->getMonth())) ?></div>
