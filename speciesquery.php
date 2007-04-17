@@ -305,7 +305,7 @@ class SpeciesQuery extends BirdWalkerQuery
 					$clickRequest = new Request; // make a new request from current params and modify
 					$clickRequest->setYear(1995 + $index);
 					$clickRequest->setView("");
-					$clickRequest->setPageScript("specieslist.php");
+					$clickRequest->setPageScript("yeardetail.php");
 					echo $clickRequest->linkToSelf($info["count"]);
 	?>
 				</td>

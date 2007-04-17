@@ -10,27 +10,26 @@ $sightingQuery = new SightingQuery($request);
 
 $dbQuery = $sightingQuery->performQuery();
 
+htmlHead($request->getPageTitle());
+$request->globalMenu();
+
 ?>
 
-<html>
+    <div id="topright-trip">
+        <div class="pagekind">Sighting List</div>
+        <div class="pagetitle"><?= $sightingQuery->getPageTitle() ?></div>
+    </div>
 
-<link title="Style" href="./stylesheet.css" type="text/css" rel="stylesheet">
-<title>birdWalker | Species List</title>
-</head>
-
-<body>
-
-      <div class="pagetitle"><?= $sightingQuery->getPageTitle() ?></div>
-
+    <div id="contentright">
       <div class="heading"><?= mysql_num_rows($dbQuery) ?> Sightings</div>
 
-<table class="report-content" width="600px">
+      <table class="report-content" width="600px">
 <?
-$prevSightingInfo = "";
-while($sightingInfo = mysql_fetch_array($dbQuery)) {
+     $prevSightingInfo = "";
+     while($sightingInfo = mysql_fetch_array($dbQuery)) {
 ?>
-    <tr>
-    <td nowrap> 
+      <tr>
+      <td nowrap> 
 <?
 	if ($prevSightingInfo == "" || $prevSightingInfo["TripDate"] != $sightingInfo["TripDate"]) {
 ?>
