@@ -19,6 +19,7 @@ array_key_exists('locationid', $_POST) && $postLocationInfo = getLocationInfo($_
 // The SAVE and NEW buttons determine whether to update or createa a new record
 $save = "";
 array_key_exists('Save', $_POST) && $save = $_POST['Save'];
+echo "<!-- " . $save . " -->";
 $new = "";
 array_key_exists('New', $_POST) && $new = $_POST['New'];
 
@@ -28,19 +29,30 @@ if ($new == "New") { $postLocationID = 1 + performCount("Find new objectid", "se
 // if we have a POST id and either a new or a save button, then time to update
 if ($postLocationID != "") {
 	
-	$name = $_POST['Name'];
-	$referenceURL = $_POST['ReferenceURL'];
-	$city = $_POST['City'];
-	$county = $_POST['County'];
-	$state = $_POST['State'];
-	$notes = $_POST['Notes'];
-	$latLongSystem = $_POST['LatLongSystem'];
-	$latitude = $_POST['Latitude'];
-	$longitude = $_POST['Longitude'];
-	$photo = $_POST['Photo'];
+	$name = postValue("Name");
+	$referenceURL = postValue("ReferenceURL");
+	$city = postValue("City");
+	$county = postValue("County");
+	$state = postValue("State");
+	$notes = postValue("Notes");
+	$latLongSystem = postValue("LatLongSystem");
+	$latitude = postValue("Latitude");
+	$longitude = postValue("Longitude");
+	$photo = postValue("Photo");
 
-	if ($save == "Save")
+	if ($save == "Save/Rename")
 	{
+	    if ($name != $postLocationInfo['Name'])
+		{
+		    $alreadyHasNewName = performCount("already named that", "SELECT COUNT(*) FROM location WHERE Name='" . mysql_escape_string($name) . "'");
+		    if ($alreadyHasNewName != "0") { die("Location name '" . $name . "' already in use."); }
+
+			performQuery("Update sightings", "UPDATE sighting SET ".
+						 "LocationName='" . $name . "' WHERE LocationName='" . mysql_escape_string($postLocationInfo['Name']) . "'");
+
+			echo "location renamed";
+		}
+
 		performQuery("Update location", "UPDATE location SET ".
 					 "Name='" . $name . "', " .
 					 "ReferenceURL='". $referenceURL . "', " .
@@ -53,11 +65,6 @@ if ($postLocationID != "") {
 					 "Longitude='" . $longitude . "', " .
 					 "Photo='" . $photo . "' where objectid='" . $postLocationID . "'");
 
-		if ($_POST['Name'] != $postLocationInfo['Name'])
-		{
-			performQuery("Update sightings", "UPDATE sighting SET ".
-						 "LocationName='" . $name . "' WHERE LocationName='" . mysql_escape_string($postLocationInfo['Name']) . "'");
-		}
 	}
 	else if ($new != "")
 	{
@@ -141,7 +148,7 @@ $request->globalMenu();
   </tr>
   <tr>
 	<td><input type="hidden" name="locationid" value="<?= $locationID ?>"/></td>
-	<td><input type="submit" name="Save" value="Save"/><input type="submit" name="New" value="New"/></td>
+	<td><input type="submit" name="Save" value="Save/Rename"/><input type="submit" name="New" value="New"/></td>
   </tr>
 </table>
 
