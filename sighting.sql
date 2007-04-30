@@ -15043,3 +15043,16 @@ INSERT INTO sighting VALUES (15120,'hooori','McClellan Ranch','',0,0,'2007-04-14
 INSERT INTO sighting VALUES (15121,'rocdov','Charleston Slough','Seen from the highway',0,0,'2007-04-14');
 INSERT INTO sighting VALUES (15122,'rinduc','Marsh Road','',0,0,'2007-04-14');
 INSERT INTO sighting VALUES (15123,'savspa','Byxbee Park','',0,0,'2007-04-14');
+INSERT INTO sighting VALUES (15136,'annhum','Coyote Point Marina','',0,0,'2007-04-24');
+INSERT INTO sighting VALUES (15135,'daejun','Coyote Point Marina','',0,0,'2007-04-24');
+INSERT INTO sighting VALUES (15134,'comyel','Coyote Point Marina','',0,0,'2007-04-24');
+INSERT INTO sighting VALUES (15133,'blktur','Coyote Point Marina','',0,0,'2007-04-24');
+INSERT INTO sighting VALUES (15132,'willet','Coyote Point Marina','',0,0,'2007-04-24');
+INSERT INTO sighting VALUES (15131,'amecoo','Coyote Point Marina','',0,0,'2007-04-24');
+INSERT INTO sighting VALUES (15130,'comgol','Coyote Point Marina','',0,0,'2007-04-24');
+INSERT INTO sighting VALUES (15129,'wesgre','Coyote Point Marina','',0,0,'2007-04-24');
+INSERT INTO sighting VALUES (15128,'lobdow','Coyote Point Marina','',0,0,'2007-04-24');
+INSERT INTO sighting VALUES (15127,'wessan','Coyote Point Marina','',0,0,'2007-04-24');
+INSERT INTO sighting VALUES (15126,'leasan','Coyote Point Marina','',0,0,'2007-04-24');
+INSERT INTO sighting VALUES (15125,'dunlin','Coyote Point Marina','',0,0,'2007-04-24');
+INSERT INTO sighting VALUES (15124,'caster','Coyote Point Marina','',0,0,'2007-04-24');
