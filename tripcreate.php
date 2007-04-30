@@ -118,7 +118,12 @@ if ($save == "Save")
 	<td class="fieldlabel">Location</td>
 	<td>
 	  <select name="LocationName">
-        <?php while($info = mysql_fetch_array($locationList)) { echo "<option>" . $info["Name"] . "</option>\n"; } ?>
+<?        while($info = mysql_fetch_array($locationList))
+	      { ?>
+		      <option <?= ($request->getLocationID()==$info["objectid"] ? "selected" : "") ?>>
+                  <?= $info["Name"]  ?>
+              </option>
+<?		  } ?>
 	  </select>
 	</td>
   </tr>
