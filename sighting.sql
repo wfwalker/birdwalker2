@@ -15043,6 +15043,11 @@ INSERT INTO sighting VALUES (15120,'hooori','McClellan Ranch','',0,0,'2007-04-14
 INSERT INTO sighting VALUES (15121,'rocdov','Charleston Slough','Seen from the highway',0,0,'2007-04-14');
 INSERT INTO sighting VALUES (15122,'rinduc','Marsh Road','',0,0,'2007-04-14');
 INSERT INTO sighting VALUES (15123,'savspa','Byxbee Park','',0,0,'2007-04-14');
+INSERT INTO sighting VALUES (15141,'daejun','Stevens Creek County Park Villa Maria','',0,0,'2007-04-19');
+INSERT INTO sighting VALUES (15140,'amerob','Stevens Creek County Park Villa Maria','',0,1,'2007-04-19');
+INSERT INTO sighting VALUES (15139,'buggna','Stevens Creek County Park Villa Maria','',0,0,'2007-04-19');
+INSERT INTO sighting VALUES (15138,'stejay','Stevens Creek County Park Villa Maria','',0,0,'2007-04-19');
+INSERT INTO sighting VALUES (15137,'wiltur','Stevens Creek County Park Villa Maria','',0,0,'2007-04-19');
 INSERT INTO sighting VALUES (15136,'annhum','Coyote Point Marina','',0,0,'2007-04-24');
 INSERT INTO sighting VALUES (15135,'daejun','Coyote Point Marina','',0,0,'2007-04-24');
 INSERT INTO sighting VALUES (15134,'comyel','Coyote Point Marina','',0,0,'2007-04-24');
@@ -15056,3 +15061,9 @@ INSERT INTO sighting VALUES (15127,'wessan','Coyote Point Marina','',0,0,'2007-0
 INSERT INTO sighting VALUES (15126,'leasan','Coyote Point Marina','',0,0,'2007-04-24');
 INSERT INTO sighting VALUES (15125,'dunlin','Coyote Point Marina','',0,0,'2007-04-24');
 INSERT INTO sighting VALUES (15124,'caster','Coyote Point Marina','',0,0,'2007-04-24');
+INSERT INTO sighting VALUES (15142,'olsfly','Stevens Creek County Park','',0,0,'2007-04-19');
+INSERT INTO sighting VALUES (15143,'wlswar','Stevens Creek County Park','',0,0,'2007-04-19');
+INSERT INTO sighting VALUES (15144,'bulori','Shoreline Lake','',0,1,'2007-04-05');
+INSERT INTO sighting VALUES (15145,'comgol','Shoreline Lake','',0,0,'2007-04-05');
+INSERT INTO sighting VALUES (15146,'clagre','Palo Alto Duck Pond','',0,0,'2007-04-05');
+INSERT INTO sighting VALUES (15147,'greyel','Palo Alto Duck Pond','',0,0,'2007-04-05');
