@@ -546,3 +546,5 @@ INSERT INTO trip VALUES (546,'Bob Power','http://www.flickr.com/photos/spinnity/
 INSERT INTO trip VALUES (547,'Ashok and Bill','','Morning Photo Safari','We went in search of White-throated Sparrow, but instead had a lot of fun with nearby shorebirds in breeding plumage.','2007-04-24');
 INSERT INTO trip VALUES (548,'Ashok and Bill','','Morning Photo Safari','I promised Ashok a Wilson\'s Warbler that would respond to tapes. We found the bird, but it was too restless to be photographed. Happily we found some Wild Turkeys and a very photogenic Robin.','2007-04-19');
 INSERT INTO trip VALUES (549,'Ashok and Bill','','Morning Photo Safari','','2007-04-05');
+INSERT INTO trip VALUES (550,'Mary and Bill','','Saturday Morning Hike','I wanted to show Mary the buntings that Ashok and I found on Thursday. Happily, they obliged us by putting on a show.','2007-05-05');
+INSERT INTO trip VALUES (551,'Ashok and Bill','','Morning Photo Safari','Ashok said he had read reports about Lazuli Buntins on Stevens Creek Trail in Monte Bello OSP. Boy were those reports correct!','2007-05-03');
