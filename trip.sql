@@ -548,3 +548,4 @@ INSERT INTO trip VALUES (548,'Ashok and Bill','','Morning Photo Safari','I promi
 INSERT INTO trip VALUES (549,'Ashok and Bill','','Morning Photo Safari','','2007-04-05');
 INSERT INTO trip VALUES (550,'Mary and Bill','','Saturday Morning Hike','I wanted to show Mary the buntings that Ashok and I found on Thursday. Happily, they obliged us by putting on a show.','2007-05-05');
 INSERT INTO trip VALUES (551,'Ashok and Bill','','Morning Photo Safari','Ashok said he had read reports about Lazuli Buntins on Stevens Creek Trail in Monte Bello OSP. Boy were those reports correct!','2007-05-03');
+INSERT INTO trip VALUES (552,'Robert Sicular','','Birding at OSF','We got a chance to bird a new spot near Ashland, and thanks to the power of birdJam running on my ancient iPod, we pulled in our very first Dusky Flycatcher. We also got to show Lazuli Bunting to most of our fellow hikers.','2007-05-13');

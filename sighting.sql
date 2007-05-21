@@ -15093,3 +15093,9 @@ INSERT INTO sighting VALUES (15170,'lesgol','Monte Bello Open Space Preserve',''
 INSERT INTO sighting VALUES (15171,'amegfi','Monte Bello Open Space Preserve','',0,0,'2007-05-03');
 INSERT INTO sighting VALUES (15172,'oaktit','Monte Bello Open Space Preserve','',0,0,'2007-05-03');
 INSERT INTO sighting VALUES (15173,'oaktit','Monte Bello Open Space Preserve','',0,0,'2007-05-05');
+INSERT INTO sighting VALUES (15174,'lazbun','Hobart Bluff','',0,0,'2007-05-13');
+INSERT INTO sighting VALUES (15175,'dusfly','Hobart Bluff','',0,0,'2007-05-13');
+INSERT INTO sighting VALUES (15176,'haiwoo','Hobart Bluff','',0,0,'2007-05-13');
+INSERT INTO sighting VALUES (15177,'amerob','Hobart Bluff','',0,0,'2007-05-13');
+INSERT INTO sighting VALUES (15178,'rethaw','Hobart Bluff','',0,0,'2007-05-13');
+INSERT INTO sighting VALUES (15179,'mouchi','Hobart Bluff','',0,0,'2007-05-13');

@@ -247,3 +247,4 @@ INSERT INTO location VALUES (247,'Monte Bello Gate 5','http://www.openspace.org/
 INSERT INTO location VALUES (248,'O\'Connor Street','','East Palo Alto','Santa Clara','CA','The county boundary runs through the creek accessible from this location. County listers, be careful.','',37.4609680176,-122.1242675781,0);
 INSERT INTO location VALUES (249,'Byxbee Park','','Palo Alto','Santa Clara','CA','','',37.4526481628,-122.1054840088,0);
 INSERT INTO location VALUES (250,'Jubilee Christian Center','http://www.jubilee.org/','Alviso','Santa Clara','CA','','',37.4256439209,-121.9599914551,0);
+INSERT INTO location VALUES (251,'Hobart Bluff','','Ashland','Jackson','OR','','',0.0000000000,0.0000000000,0);
