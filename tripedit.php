@@ -11,11 +11,24 @@ getEnableEdit() or die("Editing disabled");
 
 if (($postTripID != "") && ($save == "Save"))
 {
+    $postTripInfo = getTripInfo($postTripID);
+
 	$leader = postValue('Leader');
 	$referenceURL = postValue('ReferenceURL');
 	$date = postValue('Date');
 	$notes = postValue('Notes');
 	$name = postValue('Name');
+
+    if ($date != $postTripInfo['Date'])
+	{
+	    $alreadyHasNewDate = performCount("already dated that", "SELECT COUNT(*) FROM trip WHERE Date='" . mysql_escape_string($date) . "'");
+	    if ($alreadyHasNewDate != "0") { die("Trip date '" . $date . "' already in use."); }
+
+		performQuery("Update sightings", "UPDATE sighting SET ".
+					 "TripDate='" . $date . "' WHERE TripDate='" . mysql_escape_string($postTripInfo['Date']) . "'");
+
+		echo "trip redated";
+	}
 
 	performQuery("Update trip", "update trip set Leader='" . $leader . 
 				 "', ReferenceURL='" . $referenceURL . 
