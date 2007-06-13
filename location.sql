@@ -248,3 +248,11 @@ INSERT INTO location VALUES (248,'O\'Connor Street','','East Palo Alto','Santa C
 INSERT INTO location VALUES (249,'Byxbee Park','','Palo Alto','Santa Clara','CA','','',37.4526481628,-122.1054840088,0);
 INSERT INTO location VALUES (250,'Jubilee Christian Center','http://www.jubilee.org/','Alviso','Santa Clara','CA','','',37.4256439209,-121.9599914551,0);
 INSERT INTO location VALUES (251,'Hobart Bluff','','Ashland','Jackson','OR','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (252,'Bald Mountain Trail','','Los Gatos','Santa Clara','CA','In Sierra Azul Open Space Preserve, where Mt. Umunhum Road ends in a gate.','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (253,'Sacramento','','Sacramento','Glenn','CA','Denotes any birding done in and around Sacramento','mapblast',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (254,'Yuba Pass','','Sierra City','Sierra','CA','On Highway 49 between Highway 89 and Sierra City, elevation 7,123 feet.','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (255,'Bassett\'s','','Sierra City','Sierra','CA','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (256,'Sierra Valley','','Sierra City','Sierra','CA','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (257,'Hariot Lane','','Sierra City','Sierra','CA','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (258,'Antelope Valley Road','','Sierra City','Sierra','CA','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (259,'Sierra City','','Sierra City','Sierra','CA','','',0.0000000000,0.0000000000,0);
