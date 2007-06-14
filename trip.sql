@@ -555,3 +555,4 @@ INSERT INTO trip VALUES (555,'Ashok and Bill','','Morning Photo Safari','This mo
 INSERT INTO trip VALUES (556,'Bill','','Morning Photo Safari','I read with great interest the reports of Black-chinned Sparrows at Loma Prieta, but the \"private property\" signs made me uncomforable the last time I was there. Happily, more of these gorgeous birds were found at a less contentous location, and I was able to find them this morning.','2007-05-31');
 INSERT INTO trip VALUES (557,'Bob Power','','High Sierra Workshop Day One','','2007-06-11');
 INSERT INTO trip VALUES (558,'Bob Power','','High Sierra Workshop Day Two','Others saw Pine Siskin, Lesser Goldfinch, Pygmy Nuthatch, Red-brested Nuthatch, Warbling Vireo','2007-06-12');
+INSERT INTO trip VALUES (559,'Bob Power','','High Sierra Workshop Day Three','','2007-06-13');
