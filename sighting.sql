@@ -15229,7 +15229,7 @@ INSERT INTO sighting VALUES (15308,'bnhcow','Sierra Valley','',0,0,'2007-06-12')
 INSERT INTO sighting VALUES (15309,'houspa','Sierra Valley','',0,0,'2007-06-12');
 INSERT INTO sighting VALUES (15310,'casfin','Yuba Pass','',0,0,'2007-06-12');
 INSERT INTO sighting VALUES (15311,'bkhgro','Sierra City','',0,0,'2007-06-12');
-INSERT INTO sighting VALUES (15312,'compoo','Yuba Pass','Forest Service Road 52',0,0,'2007-06-12');
+INSERT INTO sighting VALUES (15312,'compoo','Yuba Pass','Forest Service Road 52',0,1,'2007-06-12');
 INSERT INTO sighting VALUES (15313,'grhowl','Yuba Pass','Forest Service Road 52',0,0,'2007-06-12');
 INSERT INTO sighting VALUES (15314,'comnig','Yuba Pass','Seen by some trip members in the early morning in Sierra Valley, seen by Bill and Mary flying and calling around 9pm near Overlook on Highway 49.\r\n',0,0,'2007-06-12');
 INSERT INTO sighting VALUES (15315,'herthr','Yuba Pass','Mary heard only',0,0,'2007-06-12');
@@ -15277,11 +15277,11 @@ INSERT INTO sighting VALUES (15356,'whhwoo','Carmen Valley','',0,0,'2007-06-13')
 INSERT INTO sighting VALUES (15357,'barswa','Carmen Valley','',0,0,'2007-06-13');
 INSERT INTO sighting VALUES (15358,'pilwoo','Plumas-Eureka State Park','Heard only in Baja Carmen Valley, but seen in nest hole with evidence of nearby excavation in Carmen Valley',0,0,'2007-06-13');
 INSERT INTO sighting VALUES (15359,'amedip','Plumas-Eureka State Park','',0,0,'2007-06-13');
-INSERT INTO sighting VALUES (15360,'wlswar','Plumas-Eureka State Park','Seen at lunchtime in picnic area, but refound in main park area',0,0,'2007-06-13');
+INSERT INTO sighting VALUES (15360,'wlswar','Plumas-Eureka State Park','',0,0,'2007-06-13');
 INSERT INTO sighting VALUES (15361,'herwar','Plumas-Eureka State Park','',0,0,'2007-06-13');
 INSERT INTO sighting VALUES (15362,'yelwar','Plumas-Eureka State Park','',0,0,'2007-06-13');
 INSERT INTO sighting VALUES (15363,'westan','Plumas-Eureka State Park','',0,0,'2007-06-13');
-INSERT INTO sighting VALUES (15364,'herthr','Plumas-Eureka State Park','',0,0,'2007-06-13');
+INSERT INTO sighting VALUES (15364,'herthr','Plumas-Eureka State Park','Seen at lunchtime in picnic area, but refound in main park area.',0,0,'2007-06-13');
 INSERT INTO sighting VALUES (15365,'brncre','Plumas-Eureka State Park','',0,0,'2007-06-13');
 INSERT INTO sighting VALUES (15366,'rebnut','Plumas-Eureka State Park','',0,0,'2007-06-13');
 INSERT INTO sighting VALUES (15367,'gockin','Plumas-Eureka State Park','',0,0,'2007-06-13');
@@ -15289,4 +15289,4 @@ INSERT INTO sighting VALUES (15368,'stejay','Plumas-Eureka State Park','',0,0,'2
 INSERT INTO sighting VALUES (15369,'olsfly','Plumas-Eureka State Park','Haunted us all day calling incessantly but never seen until Curtis located one in the state park. A very nice look.',0,0,'2007-06-13');
 INSERT INTO sighting VALUES (15370,'haiwoo','Plumas-Eureka State Park','',0,0,'2007-06-13');
 INSERT INTO sighting VALUES (15371,'turvul','Carmen Valley','',0,0,'2007-06-13');
-INSERT INTO sighting VALUES (15372,'perfal','Plumas-Eureka State Park','',0,0,'2007-06-13');
+INSERT INTO sighting VALUES (15372,'perfal','Plumas-Eureka State Park','Bird flying overhead, identified by silhouette and habitat',0,0,'2007-06-13');
