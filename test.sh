@@ -129,6 +129,8 @@ log "------------------------------------"
 log "Passed $passCount Failed $failCount"
 log ""
 
+/usr/local/bin/growlnotify -m "birdWalker unit tests passed $passCount Failed $failCount"
+
 exit 0
 
 # to find delimiters
