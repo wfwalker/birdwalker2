@@ -5,6 +5,8 @@ include_once("XML/Tree.php");
 
 function insertFlickrTripLink($tripInfo)
 {
+  if (getIsLaptop()) { return; }
+
   $tripYear = substr($tripInfo["Date"], 0, 4);
   $tripMonth = substr($tripInfo["Date"], 5, 2);
   $tripDay = substr($tripInfo["Date"], 8, 2);
