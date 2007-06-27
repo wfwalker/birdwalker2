@@ -30,20 +30,20 @@ if ($postSightingID != "") {
 
 	if ($save != "") {
 		performQuery("Update the sighting", 
-					 "UPDATE sighting SET SpeciesAbbreviation='" . $speciesAbbreviation . 
-					 "', LocationName='" . $locationName . 
-					 "', TripDate='" . $tripDate . 
-					 "', Notes='" . $notes . 
-					 "', Photo='" . $photo . 
+					 "UPDATE sighting SET SpeciesAbbreviation='" . mysql_escape_string($speciesAbbreviation) . 
+					 "', LocationName='" . mysql_escape_string($locationName) . 
+					 "', TripDate='" . mysql_escape_string($tripDate) . 
+					 "', Notes='" . mysql_escape_string($notes) . 
+					 "', Photo='" . mysql_escape_string($photo) . 
 					 "', Exclude='" . $exclude . 
 					 "' where objectid='" . $postSightingID . "'");
 	} else if ($new != "") {
 		performQuery("Insert a new sighting",
 					 "insert into sighting values (". $postSightingID .
-					 ", '" . $speciesAbbreviation . 
-					 "', '" . $locationName . 
-					 "', '" . $notes . 
-					 "', '" . $exclude . 
+					 ", '" . mysql_escape_string($speciesAbbreviation) . 
+					 "', '" . mysql_escape_string($locationName) . 
+					 "', '" . mysql_escape_string($notes) . 
+					 "', '" . mysql_escape_string($exclude) . 
 					 "', '" . $photo . 
 					 "', '" . $tripDate . "');");
 	} else if ($delete != "") {
@@ -67,7 +67,7 @@ else
 }
 
 $tripInfo = performOneRowQuery("Get Trip Info", "SELECT *, " . shortNiceDateColumn() . " FROM trip WHERE Date='" . $sightingInfo["TripDate"] . "'");
-$locationInfo = performOneRowQuery("Get Location Info", "SELECT * from location where Name='" . $sightingInfo["LocationName"] . "'");
+$locationInfo = performOneRowQuery("Get Location Info", "SELECT * from location where Name='" . mysql_escape_string($sightingInfo["LocationName"]) . "'");
 $stateInfo = getStateInfoForAbbreviation($locationInfo["State"]);
 
 $locationList = performQuery("Get Location List", "SELECT Name, objectid from location");
