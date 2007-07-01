@@ -31,7 +31,7 @@ if ($postSightingID != "") {
 	if ($save != "") {
 		performQuery("Update the sighting", 
 					 "UPDATE sighting SET SpeciesAbbreviation='" . mysql_escape_string($speciesAbbreviation) . 
-					 "', LocationName='" . mysql_escape_string($locationName) . 
+					 "', LocationName='" . $locationName . 
 					 "', TripDate='" . mysql_escape_string($tripDate) . 
 					 "', Notes='" . mysql_escape_string($notes) . 
 					 "', Photo='" . mysql_escape_string($photo) . 

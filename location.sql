@@ -259,3 +259,4 @@ INSERT INTO location VALUES (259,'Sierra City','','Sierra City','Sierra','CA',''
 INSERT INTO location VALUES (260,'Carmen Valley','','Sierra City','Sierra','CA','','',0.0000000000,0.0000000000,0);
 INSERT INTO location VALUES (261,'Baja Carmen Valley','','Sierra City','Sierra','CA','','',0.0000000000,0.0000000000,0);
 INSERT INTO location VALUES (262,'Plumas-Eureka State Park','','Sierra City','Sierra','CA','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (263,'Sardine Lakes','','Sierra City','Sierra','CA','','',0.0000000000,0.0000000000,0);

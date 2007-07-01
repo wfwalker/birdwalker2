@@ -556,3 +556,4 @@ INSERT INTO trip VALUES (556,'Bill','','Morning Photo Safari','I read with great
 INSERT INTO trip VALUES (557,'Bob Power','','High Sierra Workshop Day One','','2007-06-11');
 INSERT INTO trip VALUES (558,'Bob Power','','High Sierra Workshop Day Two','Others saw Pine Siskin, Lesser Goldfinch, Pygmy Nuthatch, Red-brested Nuthatch, Warbling Vireo','2007-06-12');
 INSERT INTO trip VALUES (559,'Bob Power','','High Sierra Workshop Day Three','','2007-06-13');
+INSERT INTO trip VALUES (560,'Bob Power','','High Sierra Workshop Day Four','','2007-06-14');
