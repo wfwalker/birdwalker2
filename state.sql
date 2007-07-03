@@ -48,3 +48,4 @@ INSERT INTO state VALUES (47,'Washington','WA','');
 INSERT INTO state VALUES (48,'West Virginia','WV','');
 INSERT INTO state VALUES (49,'Wisconsin','WI','');
 INSERT INTO state VALUES (50,'Wyoming','WY','');
+INSERT INTO state VALUES (51,'Alberta','AB',NULL);

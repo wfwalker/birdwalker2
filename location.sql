@@ -260,3 +260,8 @@ INSERT INTO location VALUES (260,'Carmen Valley','','Sierra City','Sierra','CA',
 INSERT INTO location VALUES (261,'Baja Carmen Valley','','Sierra City','Sierra','CA','','',0.0000000000,0.0000000000,0);
 INSERT INTO location VALUES (262,'Plumas-Eureka State Park','','Sierra City','Sierra','CA','','',0.0000000000,0.0000000000,0);
 INSERT INTO location VALUES (263,'Sardine Lakes','','Sierra City','Sierra','CA','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (264,'Leduc','','Edmonton','Alberta','AB','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (265,'Lowden Springs Prairie Preserve','','Stedtler','Alberta','AB','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (266,'Dry Island Buffalo Jump Provincial Park','','Stedtler','Alberta','AB','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (267,'Camrose and environs','','Camrose','Alberta','AB','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (268,'Elnora','','Elnora','Alberta','AB','','',0.0000000000,0.0000000000,0);
