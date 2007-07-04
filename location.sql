@@ -265,3 +265,6 @@ INSERT INTO location VALUES (265,'Lowden Springs Prairie Preserve','','Stedtler'
 INSERT INTO location VALUES (266,'Dry Island Buffalo Jump Provincial Park','','Stedtler','Alberta','AB','','',0.0000000000,0.0000000000,0);
 INSERT INTO location VALUES (267,'Camrose and environs','','Camrose','Alberta','AB','','',0.0000000000,0.0000000000,0);
 INSERT INTO location VALUES (268,'Elnora','','Elnora','Alberta','AB','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (269,'Beaverhill Lake','','Camrose','Alberta','AB','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (270,'Elk Island National Park','http://www.pc.gc.ca/pn-np/ab/elkisland/index_E.asp','Camrose','Alberta','AB','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (271,'Jackpine Forest','','Cold Lake','Alberta','AB','','',0.0000000000,0.0000000000,0);
