@@ -269,3 +269,4 @@ INSERT INTO location VALUES (269,'Beaverhill Lake','','Camrose','Alberta','AB','
 INSERT INTO location VALUES (270,'Elk Island National Park','http://www.pc.gc.ca/pn-np/ab/elkisland/index_E.asp','Camrose','Alberta','AB','','',0.0000000000,0.0000000000,0);
 INSERT INTO location VALUES (271,'Jackpine Forest','','Cold Lake','Alberta','AB','','',0.0000000000,0.0000000000,0);
 INSERT INTO location VALUES (272,'Cold Lake Provincial Park','','Cold Lake','Alberta','AB','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (273,'Lakeland Provincial Park','','Lake La Biche','Alberta','AB','','',0.0000000000,0.0000000000,0);
