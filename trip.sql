@@ -562,3 +562,5 @@ INSERT INTO trip VALUES (562,'Steve Shunk and David Wimpfheimer','','Alberta Day
 INSERT INTO trip VALUES (563,'Steve Shunk and David Wimpfheimer','','Alberta Day Three','Today was our last day for the parklands habitat before really heading north to the boreal forest. <br/>\r\n\r\nMammals: Long-tailed Weasel, White-tailed Deer.','2007-07-03');
 INSERT INTO trip VALUES (564,'Steve Shunk and David Wimpfheimer','','Alberta Day Four','Locations in and around Cold Lake Provincial Park included Cold Lake Campground, mouth of Medley River, Route 432 Fen.<br/>\r\n\r\nMammals: Black Bear, Red Fox, White-tailed Deer, Red Squirrel, Richardson\'s Ground Squirrel','2007-07-04');
 INSERT INTO trip VALUES (565,'Steve Shunk and David Wimpfheimer','','Alberta Day Five','We think we heard and saw Philadelphia Vireo.\r\n\r\nLocations included Ironwood Lake.','2007-07-05');
+INSERT INTO trip VALUES (566,'Steve Shunk and David Wimpfheimer','','Alberta Day Six','We got another lifer!','2007-07-06');
+INSERT INTO trip VALUES (567,'Steve Shunk and David Wimpfheimer','','Alberta Day Seven','','2007-07-07');

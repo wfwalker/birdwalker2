@@ -270,3 +270,6 @@ INSERT INTO location VALUES (270,'Elk Island National Park','http://www.pc.gc.ca
 INSERT INTO location VALUES (271,'Jackpine Forest','','Cold Lake','Alberta','AB','','',0.0000000000,0.0000000000,0);
 INSERT INTO location VALUES (272,'Cold Lake Provincial Park','','Cold Lake','Alberta','AB','','',0.0000000000,0.0000000000,0);
 INSERT INTO location VALUES (273,'Lakeland Provincial Park','','Lake La Biche','Alberta','AB','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (274,'Sir Winston Churchill Provincial Park','','Lac La Biche','Alberta','AB','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (275,'Slave Lake','','Slave Lake','Alberta','AB','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (276,'Athabasca','','Athabasca','Alberta','AB','','',0.0000000000,0.0000000000,0);
