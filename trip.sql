@@ -566,3 +566,4 @@ INSERT INTO trip VALUES (566,'Steve Shunk and David Wimpfheimer','','Alberta Day
 INSERT INTO trip VALUES (567,'Steve Shunk and David Wimpfheimer','','Alberta Day Seven','','2007-07-07');
 INSERT INTO trip VALUES (568,'Steve Shunk and David Wimpfheimer','','Alberta Day Eight','Boreal Centre for Bird Conservation, Slave Lake Campground, Merten Mountain','2007-07-08');
 INSERT INTO trip VALUES (569,'Steve Shunk and David Wimpfheimer','','Alberta Day Nine','','2007-07-09');
+INSERT INTO trip VALUES (570,'Steve Shunk and David Wimpfheimer','','Alberta Day Ten','Base of Jasper Tramway, Summit of The Whistlers','2007-07-10');
