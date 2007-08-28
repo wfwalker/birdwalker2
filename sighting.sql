@@ -15900,7 +15900,7 @@ INSERT INTO sighting VALUES (15981,'purfin','Slave Lake','',0,0,'2007-07-09');
 INSERT INTO sighting VALUES (15982,'whwcro','Slave Lake','',0,0,'2007-07-09');
 INSERT INTO sighting VALUES (15983,'pinsis','Slave Lake','',0,0,'2007-07-09');
 INSERT INTO sighting VALUES (15984,'houspa','Slave Lake','',0,0,'2007-07-09');
-INSERT INTO sighting VALUES (15985,'whtpta','Jasper National Park','',0,0,'2007-07-10');
+INSERT INTO sighting VALUES (15985,'whtpta','Jasper National Park','',0,1,'2007-07-10');
 INSERT INTO sighting VALUES (15986,'comloo','Jasper National Park','',0,0,'2007-07-10');
 INSERT INTO sighting VALUES (15987,'prafal','Jasper National Park','',0,0,'2007-07-10');
 INSERT INTO sighting VALUES (15988,'leafly','Jasper National Park','',0,0,'2007-07-10');
