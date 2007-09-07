@@ -15956,7 +15956,7 @@ INSERT INTO sighting VALUES (16037,'whwcro','Jasper National Park','',0,0,'2007-
 INSERT INTO sighting VALUES (16038,'pinsis','Jasper National Park','',0,0,'2007-07-11');
 INSERT INTO sighting VALUES (16039,'houspa','Jasper National Park','',0,0,'2007-07-11');
 INSERT INTO sighting VALUES (16040,'bkpwar','Jasper National Park','',0,0,'2007-07-12');
-INSERT INTO sighting VALUES (16041,'bkfalb','Monterey Bay','',0,0,'2007-08-26');
+INSERT INTO sighting VALUES (16041,'bkfalb','Monterey Bay','',0,1,'2007-08-26');
 INSERT INTO sighting VALUES (16042,'pifshe','Monterey Bay','',0,0,'2007-08-26');
 INSERT INTO sighting VALUES (16043,'bulshe','Monterey Bay','',0,0,'2007-08-26');
 INSERT INTO sighting VALUES (16044,'sooshe','Monterey Bay','',0,0,'2007-08-26');
