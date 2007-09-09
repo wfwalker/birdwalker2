@@ -274,3 +274,7 @@ INSERT INTO location VALUES (274,'Sir Winston Churchill Provincial Park','','Lac
 INSERT INTO location VALUES (275,'Slave Lake','','Slave Lake','Alberta','AB','','',0.0000000000,0.0000000000,0);
 INSERT INTO location VALUES (276,'Athabasca','','Athabasca','Alberta','AB','','',0.0000000000,0.0000000000,0);
 INSERT INTO location VALUES (277,'Jasper National Park','','Jasper','Alberta','AB','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (278,'Berkeley Marina','','Berkeley','Alameda','CA','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (279,'Garin / Dry Creek Regional Parks','','Hayward','Alameda','CA','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (280,'Berkeley Aquatic Park','','Berkeley','Alameda','CA','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (281,'Redwood Regional Park','','Berkeley','Alameda','CA','','',0.0000000000,0.0000000000,0);
