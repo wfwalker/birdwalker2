@@ -65,7 +65,7 @@ $request->globalMenu();
 <?	
 	if ($sightingInfo["Notes"] != "") {
 ?>
-    <tr><td></td><td class="report-content"><?= $sightingInfo["Notes"] ?></td></tr>
+        <tr><td></td><td class="report-content"><?= stripslashes($sightingInfo["Notes"]) ?></td></tr>
 <?
     }
 
