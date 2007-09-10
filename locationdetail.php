@@ -48,7 +48,7 @@ $request->globalMenu();
           <div class="report-content"><a href="./tripcreate.php?locationid=<?=$request->getLocationID()?>">create trip</a></div>
 <?      }
         if ($siteInfo["Notes"] != "") { ?>
-          <div class="report-content"><?= $siteInfo["Notes"] ?></div>
+		    <div class="report-content"><?= stripslashes($siteInfo["Notes"]) ?></div>
 <?      }
  ?>
       </div>
