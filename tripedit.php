@@ -78,7 +78,7 @@ $request->globalMenu();
   </tr>
   <tr>
 	<td class="fieldlabel">Notes</td>
-	<td><textarea name="Notes" cols="60" rows="20"><?= $tripInfo["Notes"] ?></textarea></td>
+    <td><textarea name="Notes" cols="60" rows="20"><?= stripslashes($tripInfo["Notes"]) ?></textarea></td>
   </tr>
 
   <tr>
