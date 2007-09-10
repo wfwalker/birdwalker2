@@ -144,7 +144,7 @@ $request->globalMenu();
   </tr>
   <tr>
 	<td class="fieldlabel">Notes</td>
-	<td><textarea name="Notes" cols="60" rows="20"><?= $locationInfo['Notes'] ?></textarea></td>
+    <td><textarea name="Notes" cols="60" rows="20"><?= stripslashes($locationInfo['Notes']) ?></textarea></td>
   </tr>
   <tr>
 	<td><input type="hidden" name="locationid" value="<?= $locationID ?>"/></td>
