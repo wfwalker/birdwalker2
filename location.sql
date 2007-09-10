@@ -278,3 +278,5 @@ INSERT INTO location VALUES (278,'Berkeley Marina','','Berkeley','Alameda','CA',
 INSERT INTO location VALUES (279,'Garin / Dry Creek Regional Parks','','Hayward','Alameda','CA','','',0.0000000000,0.0000000000,0);
 INSERT INTO location VALUES (280,'Berkeley Aquatic Park','','Berkeley','Alameda','CA','','',0.0000000000,0.0000000000,0);
 INSERT INTO location VALUES (281,'Redwood Regional Park','','Berkeley','Alameda','CA','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (282,'Sibley Regional Park','','Oakland','Alameda','CA','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (283,'Emeryville Marina','','Emeryville','Alameda','CA','','',0.0000000000,0.0000000000,0);
