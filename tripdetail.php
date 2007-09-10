@@ -33,7 +33,7 @@ $request->globalMenu();
 		  <div class="report-content"><? referenceURL($tripInfo); ?></div>
 <?          if ($tripInfo["Notes"] != "")
 		    { ?>
-              <div class="report-content"><?= $tripInfo["Notes"] ?></div>
+              <div class="report-content"><?= stripslashes($tripInfo["Notes"]) ?></div>
 <?          } ?>
         </div>
 
