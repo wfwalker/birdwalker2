@@ -16131,3 +16131,12 @@ INSERT INTO sighting VALUES (16212,'goleag','Sibley Regional Park','Guess what? 
 INSERT INTO sighting VALUES (16213,'calqua','Sibley Regional Park','',0,0,'2007-09-09');
 INSERT INTO sighting VALUES (16214,'wesjay','Sibley Regional Park','Seen at the \\\'back\\\' entrance to Sibley - not in Alameda County.',0,0,'2007-09-09');
 INSERT INTO sighting VALUES (16215,'daejun','Sibley Regional Park','',0,0,'2007-09-09');
+INSERT INTO sighting VALUES (16216,'caster','Ed Levin County Park Sandy Wool','',0,0,'2007-09-10');
+INSERT INTO sighting VALUES (16217,'greyel','Ed Levin County Park Sandy Wool','',0,0,'2007-09-10');
+INSERT INTO sighting VALUES (16218,'killde','Ed Levin County Park Sandy Wool','',0,0,'2007-09-10');
+INSERT INTO sighting VALUES (16219,'gadwal','Ed Levin County Park Sandy Wool','',0,0,'2007-09-10');
+INSERT INTO sighting VALUES (16220,'cangoo','Ed Levin County Park Sandy Wool','',0,0,'2007-09-10');
+INSERT INTO sighting VALUES (16221,'amecoo','Ed Levin County Park Sandy Wool','',0,0,'2007-09-10');
+INSERT INTO sighting VALUES (16222,'lobdow','Ed Levin County Park Sandy Wool','',0,0,'2007-09-10');
+INSERT INTO sighting VALUES (16223,'pibgre','Ed Levin County Park Sandy Wool','',0,0,'2007-09-10');
+INSERT INTO sighting VALUES (16224,'whfibi','Ed Levin County Park Sandy Wool','',0,0,'2007-09-10');
