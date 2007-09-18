@@ -281,3 +281,6 @@ INSERT INTO location VALUES (281,'Redwood Regional Park','','Berkeley','Alameda'
 INSERT INTO location VALUES (282,'Sibley Regional Park','','Oakland','Alameda','CA','','',0.0000000000,0.0000000000,0);
 INSERT INTO location VALUES (283,'Emeryville Marina','','Emeryville','Alameda','CA','','',0.0000000000,0.0000000000,0);
 INSERT INTO location VALUES (284,'Noyo Canyon','','Fort Bragg','Mendocino','CA','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (285,'Mendocino County Botanical Garden','','Fort Bragg','Mendocino','CA','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (286,'Sea Cave','','Mendocino','Mendocino','CA','At the end of Main Street','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (287,'Van Damme State Park','','Mendocino','Mendocino','CA','','',0.0000000000,0.0000000000,0);
