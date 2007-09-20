@@ -577,4 +577,4 @@ INSERT INTO trip VALUES (577,'Mary and Bill','','Scouting Alameda, part 3','Fran
 INSERT INTO trip VALUES (578,'Bill','','Cisco picnic','My workgroup decided to take a turn around the lake. As I got toward the middle, I baffled them all with my loud exclamation, \"Holy cats, that\'s an IBIS!\"','2007-09-10');
 INSERT INTO trip VALUES (579,'Debi Shearwater','','Pelagic Trip','The weather was absolutely beautiful today, calm seas, sunny weather, warm temperatures.','2007-09-14');
 INSERT INTO trip VALUES (580,'Debi Shearwater','','Fort Bragg Pelagic','Although the morning was bright and sunny, the wind came up more as the day went on, and birds were hard to come by. Still, it was a great chance to work on learning our Jeagers and Shearwaters.','2007-09-16');
-INSERT INTO trip VALUES (581,'Dave and Mary and Bill','','Post-pelagic Birding','After a long night\'s well-deserved night, we did some birding on the way back home.','2007-09-17');
+INSERT INTO trip VALUES (581,'Dave and Mary and Bill','','Post-pelagic Birding','After a long night\'s well-deserved sleep, we did some birding on the way back home.','2007-09-17');
