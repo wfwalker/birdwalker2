@@ -284,3 +284,9 @@ INSERT INTO location VALUES (284,'Noyo Canyon','','Fort Bragg','Mendocino','CA',
 INSERT INTO location VALUES (285,'Mendocino County Botanical Garden','','Fort Bragg','Mendocino','CA','','',0.0000000000,0.0000000000,0);
 INSERT INTO location VALUES (286,'Sea Cave','','Mendocino','Mendocino','CA','At the end of Main Street','',0.0000000000,0.0000000000,0);
 INSERT INTO location VALUES (287,'Van Damme State Park','http://www.gomendo.com/showrecord.asp?id=243','Mendocino','Mendocino','CA','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (288,'Del Valle Regional Park','','','Alameda','CA','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (289,'Rural Areas','','','Alameda','CA','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (290,'Murietta\'s Well','','','Alameda','CA','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (291,'Tassajara Creek Regional Park','','','Alameda','CA','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (292,'San Leandro Marina','','San Leandro','Alameda','CA','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (293,'Chabot Space and Science Center','http://www.chabotspace.org/','Oakland','Alameda','CA','','',0.0000000000,0.0000000000,0);
