@@ -16313,6 +16313,7 @@ INSERT INTO sighting VALUES (16394,'goleag','Rural Areas','',0,0,'2007-09-23');
 INSERT INTO sighting VALUES (16395,'logshr','Rural Areas','',0,0,'2007-09-23');
 INSERT INTO sighting VALUES (16396,'wesmea','Rural Areas','',0,0,'2007-09-23');
 INSERT INTO sighting VALUES (16397,'saypho','Rural Areas','',0,0,'2007-09-23');
+INSERT INTO sighting VALUES (16476,'batpig','Redwood Regional Park','seen only by Mary',0,0,'2007-09-23');
 INSERT INTO sighting VALUES (16408,'annhum','Tassajara Creek Regional Park','',0,0,'2007-09-23');
 INSERT INTO sighting VALUES (16409,'sonspa','Tassajara Creek Regional Park','',0,0,'2007-09-23');
 INSERT INTO sighting VALUES (16410,'btywar','Tassajara Creek Regional Park','',0,0,'2007-09-23');
@@ -16381,3 +16382,5 @@ INSERT INTO sighting VALUES (16472,'comter','Berkeley Marina','',0,0,'2007-09-23
 INSERT INTO sighting VALUES (16473,'caltow','Rural Areas','',0,0,'2007-09-23');
 INSERT INTO sighting VALUES (16474,'greyel','Del Valle Regional Park','',0,0,'2007-09-23');
 INSERT INTO sighting VALUES (16475,'calqua','Del Valle Regional Park','',0,0,'2007-09-23');
+INSERT INTO sighting VALUES (16479,'eleter','Crown Memorial State Beach','seen only by Bob',0,0,'2007-09-23');
+INSERT INTO sighting VALUES (16480,'bkhgro','Coyote Hills Regional Park','seen only by Mary',0,0,'2007-09-23');
