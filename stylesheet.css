@@ -6,88 +6,111 @@
 
 body
 {
-	background-color: #EEEEEE;
+	background-color: white;
 }
+
+#outer
+{
+    background-color: white;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 120px;
+    margin-right: 120px;
+    padding: 0px;
+	border-left: solid 1px lightgray;
+	border-right: solid 1px lightgray;
+}
+
+#topleft
+{
+	left: 0px; width: 120px; top: 8px; height: 100px;
+	padding: 0px; margin: 0px;
+	position: fixed;
+    text-align: center;
+	z-index: 1;
+}
+#topleft a       { text-decoration: none; }
+#topleft a:hover { color: red; text-decoration: underline; }
 
 #contentleft
 {
+	background-color: white;
     font: 9pt "Gill Sans", "Gill Sans MT", SansSerif;
     font-style: italic;
-	left: 0px; top: 100px; width: 120px;
-	position: absolute;
+	left: 0px; top: 108px; width: 120px;
+	position: fixed;	
 	padding-bottom: 60px;
 	padding-top: 10px;
 	padding-left: 0px; padding-right: 0px;
+	z-index: 1;
 }
 #contentleft a       { text-decoration:none; }
 #contentleft a:hover { color: red; text-decoration: underline; }
 
 #topright-trip
 {
-	left: 120px; width: 640px; top: 0px; height: 100px;
-	position: absolute;
+	top: 0px; height: 100px;
+	position: relative;
 	background-image: url(./images/trip-banner.jpg);
+	z-index: 1;
 }
 #topright-location
 {
-	left: 120px; width: 640px; top: 0px; height: 100px;
-	position: absolute;
+	top: 0px; height: 100px;
+	position: relative;
 	background-image: url(./images/location-banner.jpg);
+	z-index: 1;
 }
 #topright-species
 {
-	left: 120px; width: 640px; top: 0px; height: 100px;
-	position: absolute;
+	top: 0px; height: 100px;
+	position: relative;
 	background-image: url(./images/species-banner.jpg);
+	z-index: 1;
 }
 #topright-home1
 {
-	left: 120px; width: 640px; top: 0px; height: 100px;
-	position: absolute;
+	top: 0px; height: 100px;
+	position: relative;
 	background-image: url(./images/banner1.jpg);
+	z-index: 1;
 }
 #topright-home2
 {
-	left: 120px; width: 640px; top: 0px; height: 100px;
-	position: absolute;
+	top: 0px; height: 100px;
+	position: relative;
 	background-image: url(./images/banner2.jpg);
+	z-index: 1;
 }
 #topright-home3
 {
-	left: 120px; width: 640px; top: 0px; height: 100px;
-	position: absolute;
+	top: 0px; height: 100px;
+	position: relative;
 	background-image: url(./images/banner3.jpg);
+	z-index: 1;
 }
 #topright-home4
 {
-	left: 120px; width: 640px; top: 0px; height: 100px;
-	position: absolute;
+	top: 0px; height: 100px;
+	position: relative;
 	background-image: url(./images/banner4.jpg);
+	z-index: 1;
 }
 #topright-photo
 {
-	left: 120px; width: 640px; top: 0px; height: 100px;
-	position: absolute;
+	top: 0px; height: 100px;
+	position: relative;
 	background: white;
+	z-index: 1;
 }
-
-#topleft
-{
-	left: 0px; width: 120px; top: 0px; height: 100px;
-	padding: 0px; margin: 0px;
-	position: absolute;
-    text-align: center;
-}
-#topleft a       { text-decoration: none; }
-#topleft a:hover { color: red; text-decoration: underline; }
 
 #contentright
 {
     font: 10pt "Gill Sans", "Gill Sans MT", SansSerif;
-	left: 120px; width: 640px; top: 100px;
+	top: 0px; bottom: -1px;
 	padding-bottom: 30px;
 	background-color: white;
-	position: absolute;
+	position: relative;
 }
 #contentright a       { text-decoration: none;}
 #contentright a:hover { color: red; text-decoration: underline; }
