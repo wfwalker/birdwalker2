@@ -71,12 +71,13 @@ function dashboard()
 
 function birdOfTheDay()
 {
-    $today = performCount("format date", "select date_format(current_date, '%M %D, %Y')");
+    $today = performCount("format date", "SELECT DATE_FORMAT(CURRENT_DATE, '%M %D, %Y')");
+    $week = performCount("get week of the year", "sELECT WEEK(CURRENT_DATE)");
 
 	// pick a bird
 	$speciesRequest = new Request;
 	$speciesQuery = new SpeciesQuery($speciesRequest);
-	$info = $speciesQuery->getOneRandom();
+	$info = $speciesQuery->getBirdOfTheDay($week);
 
 	// make a small map of sightings for that species
 	$mapRequest = new Request;
@@ -100,7 +101,7 @@ function birdOfTheDay()
 
 	    <div class="summaryblock">
 		  <div class="report-content">
-		    Randomly chosen from among all the species Bill has photographed.
+		    Chosen from among all the species Bill has photographed in week <?= $week ?> of the year.
 		    The map below the photograph marks locations where we have observed this species.
 		  </div>
 
