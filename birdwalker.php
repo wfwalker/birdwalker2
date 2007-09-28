@@ -11,6 +11,11 @@ function getIsLaptop()
  	return ($serverName != "www.spflrc.org");
 }
 
+function getIsIPhone()
+{
+  return (strpos($_SERVER['HTTP_USER_AGENT'], 'iPhone') != FALSE);
+}
+
 if (getIsLaptop()) {error_reporting(E_ALL);} else {error_reporting(E_ERROR);}
 
 function htmlHead($title)
@@ -18,6 +23,11 @@ function htmlHead($title)
   if (getIsLaptop())
   {
 	$title = "DEVELOPMENT " . $title;
+  }
+
+  if (getIsIPhone())
+  {
+	$title = "IPHONE " . $title;
   }
 
 echo "<!DOCTYPE  HTML PUBLIC  \"-//W3C//DTD HTML 4.01 Transitional//EN\">";
@@ -31,6 +41,7 @@ echo "<!DOCTYPE  HTML PUBLIC  \"-//W3C//DTD HTML 4.01 Transitional//EN\">";
   </head>
 
   <body>
+	<div id="outer">
 <?
 }
 
@@ -63,6 +74,7 @@ function htmlFoot()
       _uacct = "UA-717974-1";
       urchinTracker();
     </script>
+	</div>
   </body>
 </html>
 <?
