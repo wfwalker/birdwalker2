@@ -35,7 +35,7 @@ $request->globalMenu();
 	  <div class="heading">Notes</div>
 	  <div class="leftcolumn">
 <?    if ($speciesInfo["Notes"] != "") { ?>
-        <div class="report-content"><?= $speciesInfo["Notes"] ?></div>
+	      <div class="report-content"><?= stripslashes($speciesInfo["Notes"]) ?></div>
 <?    } ?>
 
 <?    referenceURL($speciesInfo); ?>

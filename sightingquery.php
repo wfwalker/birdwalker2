@@ -1,6 +1,6 @@
 <?php
 
-require_once("./birdwalkerquery.php");
+require_once("birdwalkerquery.php");
 
 
 class SightingQuery extends BirdWalkerQuery

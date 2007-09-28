@@ -70,7 +70,7 @@ $tripInfo = performOneRowQuery("Get Trip Info", "SELECT *, " . shortNiceDateColu
 $locationInfo = performOneRowQuery("Get Location Info", "SELECT * from location where Name='" . mysql_escape_string($sightingInfo["LocationName"]) . "'");
 $stateInfo = getStateInfoForAbbreviation($locationInfo["State"]);
 
-$locationList = performQuery("Get Location List", "SELECT Name, objectid from location");
+$locationList = performQuery("Get Location List", "SELECT Name, objectid from location ORDER BY Name");
 
 if ($speciesInfo == "") {
     htmlHead("Invalid Species Abbreivation, " . $tripInfo["niceDate"]);
@@ -131,7 +131,7 @@ $request->globalMenu();
   </tr>
   <tr>
 	<td class="fieldlabel">Notes</td>
-	<td><textarea name="Notes" cols="60" rows="20"><?= $sightingInfo["Notes"] ?></textarea></td>
+    <td><textarea name="Notes" cols="60" rows="20"><?= stripslashes($sightingInfo["Notes"]) ?></textarea></td>
   </tr>
   <tr>
 	<td class="fieldlabel">Exclude</td>
