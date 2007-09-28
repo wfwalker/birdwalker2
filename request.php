@@ -1,10 +1,10 @@
 <?php
 
-require_once("./speciesquery.php");
-require_once("./locationquery.php");
-require_once("./tripquery.php");
-require_once("./map.php");
-require_once("./chronolist.php");
+require_once("speciesquery.php");
+require_once("locationquery.php");
+require_once("tripquery.php");
+require_once("map.php");
+require_once("chronolist.php");
 
 class Request
 {

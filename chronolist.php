@@ -1,7 +1,7 @@
 <?php
 
-require_once("./sightingquery.php");
-require_once("./birdwalker.php");
+require_once("sightingquery.php");
+require_once("birdwalker.php");
 
 
 class ChronoList
