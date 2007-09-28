@@ -1,6 +1,6 @@
 <?php
 
-require_once("./birdwalkerquery.php");
+require_once("birdwalkerquery.php");
 
 class SpeciesQuery extends BirdWalkerQuery
 {
@@ -122,12 +122,12 @@ class SpeciesQuery extends BirdWalkerQuery
 			$this->getWhereClause() . " ORDER BY species.objectid");
 	}
 
-	function getOneRandom()
+	function getBirdOfTheDay($week)
 	{
 		return performOneRowQuery("Find one random bird with photo",
           "SELECT DISTINCT species.objectid, species.*, " . dailyRandomSeedColumn() . " " .
 			$this->getFromClause() . " " .
-			$this->getWhereClause() . " AND sighting.Photo='1' ORDER BY shuffle LIMIT 1");
+			$this->getWhereClause() . " AND WEEK(sighting.TripDate)= '" . $week . "' AND sighting.Photo='1' ORDER BY shuffle LIMIT 1");
 	}
 
 	/**
@@ -214,7 +214,7 @@ class SpeciesQuery extends BirdWalkerQuery
 
 				 if (array_key_exists("sightingNotes", $info) && strlen($info["sightingNotes"]) > 0)
 				 { ?>
-					 <div class="sighting-notes"><?= $info["sightingNotes"] ?></div><?
+				     <div class="sighting-notes"><?= stripslashes($info["sightingNotes"]) ?></div><?
 				 } ?>
 
 		    </div>
