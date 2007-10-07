@@ -1589,3 +1589,5 @@ INSERT INTO species VALUES (6010010101,'chifla','Phoenicopterus chilensis','Chil
 INSERT INTO species VALUES (13023100800,'whfpar','Amazona albifrons','White-Fronted Parrot','','',0);
 INSERT INTO species VALUES (11061160150,'dowitc','Limnodromus species','Dowitcher sp.','','',0);
 INSERT INTO species VALUES (11061010250,'yelleg','Tringa species','Yellowlegs sp.','','',0);
+INSERT INTO species VALUES (22012030850,'wesfly','Empidonax western sp.','Western Flycatcher','','',1);
+INSERT INTO species VALUES (17021170000,'selhum','Selasphorus sp.','Selasphorus Hummingbird','','',1);

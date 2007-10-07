@@ -290,3 +290,7 @@ INSERT INTO location VALUES (290,'Murietta\'s Well','','','Alameda','CA','','',3
 INSERT INTO location VALUES (291,'Tassajara Creek Regional Park','','','Alameda','CA','','',37.6847190857,-121.8894424438,0);
 INSERT INTO location VALUES (292,'San Leandro Marina','','San Leandro','Alameda','CA','','',37.6977806091,-122.1900024414,0);
 INSERT INTO location VALUES (293,'Chabot Space and Science Center','http://www.chabotspace.org/','Oakland','Alameda','CA','','',37.7872200012,-122.1769409180,0);
+INSERT INTO location VALUES (294,'Jacks Peak County Park','','Monterey','Monterey','CA','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (295,'Moonglow Dairy','','Santa Clara','Monterey','CA','','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (296,'Seaside Lagoon','','Seaside','Monterey','CA','Seaside Lagoon sits between highway 1 and the Embassay Suite hotel, which has a peregrine nest box. Be sure to check the large letters of the hotel logo for roosting peregrines.','',0.0000000000,0.0000000000,0);
+INSERT INTO location VALUES (297,'Highway One','','Monterey','Monterey','CA','','',0.0000000000,0.0000000000,0);
