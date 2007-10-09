@@ -16492,3 +16492,5 @@ INSERT INTO sighting VALUES (16585,'grhowl','Moonglow Dairy','last bird of the d
 INSERT INTO sighting VALUES (16586,'houspa','Zmudowski State Beach','Giberson Road',0,0,'2007-10-06');
 INSERT INTO sighting VALUES (16587,'amegfi','Zmudowski State Beach','',0,0,'2007-10-06');
 INSERT INTO sighting VALUES (16588,'selhum','Zmudowski State Beach','A juvenille of either Allen\\\'s or Rufous Hummingbird, completely clear white throat, pale green back, pale orange wash on belly. Unable to determine species',0,0,'2007-10-06');
+INSERT INTO sighting VALUES (16589,'calgul','Seaside Lagoon','',0,0,'2007-10-06');
+INSERT INTO sighting VALUES (16590,'wesgul','Zmudowski State Beach','',0,0,'2007-10-06');
