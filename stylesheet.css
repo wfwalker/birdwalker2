@@ -52,6 +52,7 @@ body
 	top: 0px; height: 100px;
 	position: relative;
 	background-image: url(./images/trip-banner.jpg);
+	background-position: 50%;
 	z-index: 1;
 }
 #topright-location
@@ -59,6 +60,7 @@ body
 	top: 0px; height: 100px;
 	position: relative;
 	background-image: url(./images/location-banner.jpg);
+	background-position: 50%;
 	z-index: 1;
 }
 #topright-species
@@ -66,6 +68,7 @@ body
 	top: 0px; height: 100px;
 	position: relative;
 	background-image: url(./images/species-banner.jpg);
+	background-position: 50%;
 	z-index: 1;
 }
 #topright-home1
@@ -73,6 +76,7 @@ body
 	top: 0px; height: 100px;
 	position: relative;
 	background-image: url(./images/banner1.jpg);
+	background-position: 50%;
 	z-index: 1;
 }
 #topright-home2
@@ -80,6 +84,7 @@ body
 	top: 0px; height: 100px;
 	position: relative;
 	background-image: url(./images/banner2.jpg);
+	background-position: 50%;
 	z-index: 1;
 }
 #topright-home3
@@ -87,6 +92,7 @@ body
 	top: 0px; height: 100px;
 	position: relative;
 	background-image: url(./images/banner3.jpg);
+	background-position: 50%;
 	z-index: 1;
 }
 #topright-home4
@@ -94,6 +100,7 @@ body
 	top: 0px; height: 100px;
 	position: relative;
 	background-image: url(./images/banner4.jpg);
+	background-position: 50%;
 	z-index: 1;
 }
 #topright-photo
