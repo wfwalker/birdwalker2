@@ -28,7 +28,7 @@ $request->globalMenu();
 
     <div id="contentright">
 	    <div class="heading">Notes</div>
-        <div class="leftcolumn">
+        <div class="onecolumn">
 		  <div class="report-content">Led by <?= $tripInfo["Leader"] ?></div>
 		  <div class="report-content"><? referenceURL($tripInfo); ?></div>
 <?          if ($tripInfo["Notes"] != "")
