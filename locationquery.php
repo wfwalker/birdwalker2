@@ -252,7 +252,7 @@ class LocationQuery extends BirdWalkerQuery
 
 			<tr>
 				<td>
-					<a href="./locationdetail.php?locationid=<?= $info["locationid"] ?>"><?= $info["location.Name"] ?></a>
+					<a href="./locationdetail.php?locationid=<?= $info["locationid"] ?>"><?= $info["Name"] ?></a>
 				</td>
 
 	<?		for ($index = 1; $index <= 12; $index++)
