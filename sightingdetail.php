@@ -11,10 +11,10 @@ $request = new Request;
 $sightingID = getValue("sightingid");
 
 $sightingInfo = getSightingInfo($sightingID);
-$speciesInfo = performOneRowQuery("Find Species", "select * from species where Abbreviation='" . $sightingInfo["SpeciesAbbreviation"] . "'");
-$tripInfo = performOneRowQuery("Find Trip Info", "select *, " . longNiceDateColumn() . " FROM trip WHERE Date='" . $sightingInfo["TripDate"] . "'");
+$speciesInfo = getSpeciesInfo($sightingInfo["species_id"]);
+$tripInfo = getTripInfo($sightingInfo["trip_id"]);
 $tripYear =  substr($tripInfo["Date"], 0, 4);
-$locationInfo = performOneRowQuery("Find Location Info", "select * from location where Name='" . $sightingInfo["LocationName"] . "'");
+$locationInfo = getLocationInfo($sightingInfo["location_id"]);
 
 htmlHead($speciesInfo["CommonName"] . ", " . $tripInfo["niceDate"]);
 
@@ -33,12 +33,12 @@ $request->globalMenu();
 
 <table class="report-content" width="100%">
   <tr><td class="heading" colspan="2">Sighting</td></tr>
-  <tr><td class="fieldlabel">SpeciesAbbreviation</td><td><?= $sightingInfo["SpeciesAbbreviation"] ?></td></tr>
-  <tr><td class="fieldlabel">LocationName</td><td><?= $sightingInfo["LocationName"] ?></td></tr>
+  <tr><td class="fieldlabel">Species.Abbreviation</td><td><?= $speciesInfo["Abbreviation"] ?></td></tr>
+  <tr><td class="fieldlabel">Location.Name</td><td><?= $locationInfo["Name"] ?></td></tr>
   <tr><td class="fieldlabel">Notes</td><td><?= $sightingInfo["Notes"] ?></td></tr>
   <tr><td class="fieldlabel">Exclude</td><td><?= $sightingInfo["Exclude"] ?></td></tr>
   <tr><td class="fieldlabel">Photo</td><td><?= $sightingInfo["Photo"] ?></td></tr>
-  <tr><td class="fieldlabel">TripDate</td><td><?= $sightingInfo["TripDate"] ?></td></tr>
+  <tr><td class="fieldlabel">Trip.Date</td><td><?= $tripInfo["Date"] ?></td></tr>
 
   <tr><td class="heading" colspan="2">Species</td></tr>
   <tr><td class="fieldlabel">Abbreviation</td><td><?= $speciesInfo["Abbreviation"] ?></td></tr>

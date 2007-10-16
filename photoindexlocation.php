@@ -4,10 +4,10 @@ require_once("./birdwalker.php");
 require_once("./request.php");
 
 $photoLocations = performQuery("Find Locations with Photos",
-    "SELECT DISTINCT location.*, COUNT(DISTINCT sighting.objectid) AS photoCount
+    "SELECT DISTINCT location.*, COUNT(DISTINCT sighting.id) AS photoCount
       FROM location, sighting
-      WHERE location.Name=sighting.LocationName AND sighting.Photo='1'
-      GROUP BY location.objectid ORDER BY location.State, location.County, location.Name");
+      WHERE location.id=sighting.location_id AND sighting.Photo='1'
+      GROUP BY location.id ORDER BY location.State, location.County, location.Name");
 
 $photoCount = performCount("Count Photos",
     "SELECT COUNT(*) FROM sighting WHERE Photo='1'");
@@ -53,8 +53,8 @@ $request->globalMenu();
 <?      } ?>
 
         <div>
-		   <a href="./locationdetail.php?view=photo&locationid=<?= $info["objectid"] ?>">
-		   <?= $info["Name"] ?></a> (<?= $info["photoCount"] ?>) <?= editlink("./locationcreate.php?locationid=" . $info["objectid"]) ?>
+		   <a href="./locationdetail.php?view=photo&locationid=<?= $info["id"] ?>">
+		   <?= $info["Name"] ?></a> (<?= $info["photoCount"] ?>) <?= editlink("./locationcreate.php?locationid=" . $info["id"]) ?>
 		   <div class="sighting-notes"><?= $info["Notes"] ?></div>
 	    </div>
 <?      $prevInfo = $info;

@@ -27,13 +27,16 @@ $request->globalMenu();
 <?
      $prevSightingInfo = "";
      while($sightingInfo = mysql_fetch_array($dbQuery)) {
+	   $locationInfo = getLocationInfo($sightingInfo["location_id"]);
+	   $speciesInfo = getSpeciesInfo($sightingInfo["species_id"]);
+	   $tripInfo = getTripInfo($sightingInfo["trip_id"]);
 ?>
       <tr>
       <td nowrap> 
 <?
-	if ($prevSightingInfo == "" || $prevSightingInfo["TripDate"] != $sightingInfo["TripDate"]) {
+	if ($prevSightingInfo == "" || $prevSightingInfo["trip_id"] != $sightingInfo["trip_id"]) {
 ?>
-        <a href="./tripdetail.php?tripid=<?= $sightingInfo["tripid"] ?>"><?= $sightingInfo["niceDate"] ?></a>
+        <a href="./tripdetail.php?tripid=<?= $sightingInfo["trip_id"] ?>"><?= $tripInfo["Date"] ?></a>
 <?
 	}
 ?>
@@ -41,9 +44,9 @@ $request->globalMenu();
     <td>
 <?
 
-    if ($request->getSpeciesID() == "") { echo $sightingInfo["CommonName"]; }
+    if ($request->getSpeciesID() == "") { echo $speciesInfo["CommonName"]; }
 
-    editLink("./sightingedit.php?id=" . $sightingInfo["sightingid"]);
+    editLink("./sightingedit.php?id=" . $sightingInfo["id"]);
 
 	if ($sightingInfo["Photo"] == "1") {
 ?>
@@ -54,9 +57,9 @@ $request->globalMenu();
     </td>
     <td nowrap>
 <?
-	  if (($request->getLocationID() == "") && ($prevSightingInfo == "" || $prevSightingInfo["LocationName"] != $sightingInfo["LocationName"])) {
+	  if (($request->getLocationID() == "") && ($prevSightingInfo == "" || $prevSightingInfo["location_id"] != $sightingInfo["location_id"])) {
 ?>
-		<?= $sightingInfo["LocationName"] ?>, <?= $sightingInfo["County"] ?> County, <?= $sightingInfo["State"] ?>
+		<?= $locationInfo["Name"] ?>, <?= $locationInfo["County"] ?> County, <?= $locationInfo["State"] ?>
 <?
 	}
 ?>

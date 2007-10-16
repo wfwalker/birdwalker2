@@ -35,7 +35,7 @@ if (($postTripID != "") && ($save == "Save"))
 				 "', Name='" . $name . 
 				 "', Date='" . $date . 
 				 "', Notes='" . $notes . 
-				 "' where objectid='" . $postTripID . "'");
+				 "' where id='" . $postTripID . "'");
 
 	$tripID = $postTripID;
 
@@ -53,7 +53,7 @@ $request->globalMenu();
 
 <div id="topright-trip">
   <? tripBrowseButtons("./tripedit.php", $tripInfo, "edit"); ?>
-  <a href="./tripdetail.php?tripid=<?= $tripInfo["objectid"] ?>">
+  <a href="./tripdetail.php?tripid=<?= $tripInfo["id"] ?>">
     <div class="pagetitle"><?= $tripInfo["Name"] ?></div>
     <div class="pagesubtitle"><?= $tripInfo["niceDate"] ?></div>
 </a>

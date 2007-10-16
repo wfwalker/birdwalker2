@@ -37,22 +37,22 @@ function welcomeMessage()
 function dashboard()
 {
     $yearBirds = performCount("year birds", "
-      SELECT COUNT(DISTINCT species.objectid)
+      SELECT COUNT(DISTINCT species.id)
         FROM species, sighting
-        WHERE species.Abbreviation=sighting.SpeciesAbbreviation
+        WHERE species.id=sighting.species_id
         AND Year(sighting.TripDate)='2006'");
 
     $countyYearBirds = performCount("county year birds", "
-      SELECT COUNT(DISTINCT species.objectid)
+      SELECT COUNT(DISTINCT species.id)
         FROM species, sighting, location
-        WHERE species.Abbreviation=sighting.SpeciesAbbreviation
+        WHERE sighting.species_id=species.id
         AND Year(sighting.TripDate)='2006' AND
         sighting.LocationName=location.Name AND location.County='Santa Clara'");
 
     $stateYearBirds = performCount("state year birds", "
-      SELECT COUNT(DISTINCT species.objectid)
+      SELECT COUNT(DISTINCT species.id)
         FROM species, sighting, location
-        WHERE species.Abbreviation=sighting.SpeciesAbbreviation
+        WHERE sighting.species_id=species.id
         AND Year(sighting.TripDate)='2006' AND
         sighting.LocationName=location.Name AND location.State='CA'");
 
@@ -87,7 +87,7 @@ function birdOfTheDay()
 	$mapRequest->setLongitude(-98.953048706054);
 	$mapRequest->setScale(28);
 	$mapRequest->setBackground("relief");
-	$mapRequest->setSpeciesID($info["objectid"]);
+	$mapRequest->setSpeciesID($info["id"]);
 	$sightingQuery = new SightingQuery($mapRequest);
 	$map = new Map("pants", $mapRequest);
 	
@@ -105,7 +105,7 @@ function birdOfTheDay()
 		    The map below the photograph marks locations where we have observed this species.
 		  </div>
 
-          <div class="subheading"><a href="./speciesdetail.php?speciesid=<?=$info['objectid']?>"><?= $info["CommonName"] ?></a></div>
+          <div class="subheading"><a href="./speciesdetail.php?speciesid=<?=$info['id']?>"><?= $info["CommonName"] ?></a></div>
 
 	  <? if (mysql_num_rows($photos) > 0)
 	     {
@@ -113,13 +113,13 @@ function birdOfTheDay()
 			 $photoFilename = getPhotoFilename($photoInfo);
 			 list($width, $height, $type, $attr) = getimagesize("./images/photo/" . $photoFilename); ?>
 
-			 <a href="./speciesdetail.php?speciesid=<?=$info['objectid']?>">
+			 <a href="./speciesdetail.php?speciesid=<?=$info['id']?>">
 			   <img width="300px" border="0" src="<?= getPhotoURLForSightingInfo($photoInfo) ?>" alt="bird">
 			 </a>
 
 	  <? } ?>
 
-		   <div class="subheading"><a href="./speciesdetail.php?speciesid=<?=$info['objectid']?>">Our Sightings</a></div>
+		   <div class="subheading"><a href="./speciesdetail.php?speciesid=<?=$info['id']?>">Our Sightings</a></div>
           <? $map->draw(); ?>
 
 	  </div>

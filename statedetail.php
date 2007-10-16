@@ -16,9 +16,9 @@ $request->globalMenu();
 
 
 $biggestStateDay = performOneRowQuery("biggest state day",
-   "SELECT trip.*, year(TripDate) as year, DATE_FORMAT(TripDate, '%M') as month, COUNT(DISTINCT(sighting.SpeciesAbbreviation)) AS count
+   "SELECT trip.*, year(trip.Date) as year, DATE_FORMAT(trip.Date, '%M') as month, COUNT(DISTINCT(sighting.species_id)) AS count
       FROM sighting,trip,location
-      WHERE sighting.TripDate=trip.Date AND sighting.LocationName=location.Name AND location.State='" . $info["Abbreviation"] . "'
+      WHERE sighting.trip_id=trip.id AND sighting.location_id=location.id AND location.State='" . $info["Abbreviation"] . "'
       GROUP BY trip.Date
       ORDER BY count DESC LIMIT 1");
 
@@ -34,7 +34,7 @@ $biggestStateDay = performOneRowQuery("biggest state day",
 
   <div class="heading">Biggest state day: <?= $biggestStateDay["month"]?> <?= $biggestStateDay["year"]?></div>
   <div class="onecolumn">
-    <a href="./tripdetail.php?tripid=<?= $biggestStateDay["objectid"] ?>"><?= $biggestStateDay["Name"]; ?></a>, <?= $biggestStateDay["count"] ?> species
+    <a href="./tripdetail.php?tripid=<?= $biggestStateDay["id"] ?>"><?= $biggestStateDay["Name"]; ?></a>, <?= $biggestStateDay["count"] ?> species
   </div>
 
 

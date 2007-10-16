@@ -1,19 +1,21 @@
 <?php
 
+ini_set("include_path", ".:/usr/lib/php");
 include_once("Flickr/API.php");
 include_once("XML/Tree.php");
 
 function insertFlickrTripLink($tripInfo)
 {
-  if (getIsLaptop()) { return; }
-
   $tripYear = substr($tripInfo["Date"], 0, 4);
   $tripMonth = substr($tripInfo["Date"], 5, 2);
   $tripDay = substr($tripInfo["Date"], 8, 2);
 
 # bail if the classes are missing
 
-  if (! class_exists("Flickr_API")) return;
+  if (! class_exists("Flickr_API"))  {
+	echo "<!-- NO FLICKR API CLASS -->";
+	return;
+  }
 
 # create a new api object
 

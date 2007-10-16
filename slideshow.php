@@ -16,7 +16,7 @@ if ($request->getSightingID() == "")
 	$sightingQuery->getSelectClause() . " " .
 	$sightingQuery->getFromClause() . " " .
 	$sightingQuery->getWhereClause() . "
-      AND sighting.Photo='1' ORDER BY CONCAT(TripDate,sighting.objectid) DESC LIMIT 1"));
+      AND sighting.Photo='1' ORDER BY CONCAT(trip.Date,sighting.id) DESC LIMIT 1"));
 }
 
 if ($request->getSightingID() == "")
@@ -25,24 +25,25 @@ if ($request->getSightingID() == "")
 }
 
 $sightingInfo = $request->getSightingInfo();
-
-$speciesInfo = performOneRowQuery("Get Species Info", "SELECT * FROM species WHERE Abbreviation='" . $sightingInfo["SpeciesAbbreviation"] . "'");
+$speciesInfo = getSpeciesInfo($sightingInfo["species_id"]);
+$tripInfo = getTripInfo($sightingInfo["trip_id"]);
+$locationInfo = getLocationInfo($sightingInfo["location_id"]);
 
 $nextPhotoID = performCount("Get Next Photo Sighting ID",
 	$sightingQuery->getSelectClause() . " " .
 	$sightingQuery->getFromClause() . " " .
 	$sightingQuery->getWhereClause() . "
-      AND sighting.Photo='1' AND CONCAT(TripDate,sighting.objectid) < '" . $sightingInfo["TripDate"] . $sightingInfo["objectid"] . "'
-      ORDER BY CONCAT(TripDate,sighting.objectid) DESC LIMIT 1");
+      AND sighting.Photo='1' AND CONCAT(trip.Date,sighting.id) < '" . $tripInfo["Date"] . $sightingInfo["id"] . "'
+      ORDER BY CONCAT(trip.Date,sighting.id) DESC LIMIT 1");
 
 $prevPhotoID = performCount("Get Prev Photo Sighting ID",
 	$sightingQuery->getSelectClause() . " " .
 	$sightingQuery->getFromClause() . " " .
 	$sightingQuery->getWhereClause() . "
-      AND sighting.Photo='1' AND CONCAT(TripDate,sighting.objectid) > '" . $sightingInfo["TripDate"] . $sightingInfo["objectid"] . "'
-      ORDER BY CONCAT(TripDate,sighting.objectid) LIMIT 1");
+      AND sighting.Photo='1' AND CONCAT(trip.Date,sighting.id) > '" . $tripInfo["Date"] . $sightingInfo["id"] . "'
+      ORDER BY CONCAT(trip.Date,sighting.id) LIMIT 1");
 
-$tripYear =  substr($sightingInfo["TripDate"], 0, 4);
+$tripYear =  substr($tripInfo["Date"], 0, 4);
 
 ?>
 
@@ -60,7 +61,7 @@ $tripYear =  substr($sightingInfo["TripDate"], 0, 4);
 
 <?     $returnHeading = $pageTitle . " Slide Show   <a href=\"" . $originPageScript . "?" . $request->getParams() . "\">&lt;return&gt;</a>";
        browseButtons($returnHeading, "./slideshow.php?" . $request->getParams() . "&origin=" . $originPageScript . "&sightingid=",
-					 $sightingInfo["objectid"],
+					 $sightingInfo["id"],
 					 $prevPhotoID, "", $nextPhotoID, ""); ?>
 
     <div class="pagetitle">
@@ -68,7 +69,7 @@ $tripYear =  substr($sightingInfo["TripDate"], 0, 4);
 	</div>
 
     <div class="pagesubtitle">
-	    <?= $sightingInfo["niceDate"] ?>, <?= $sightingInfo["LocationName"] ?>
+	    <?= $sightingInfo["niceDate"] ?>, <?= $locationInfo["Name"] ?>
     </div>
 
 <?  $photoFilename = getPhotoFilename($sightingInfo);

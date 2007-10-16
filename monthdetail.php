@@ -7,7 +7,7 @@ $request = new Request;
 
 htmlHead(getMonthNameForNumber($request->getMonth()) . ", " . ($request->getYear() == "" ? getEarliestYear() . " - " . getLatestYear() :  $request->getYear()));
 
-$concatenation = "concat(Year(tripdate), lpad(Month(tripdate), 2, '0'))";
+$concatenation = "concat(Year(trip.Date), lpad(Month(trip.Date), 2, '0'))";
 
 $request->globalMenu();
 
@@ -19,13 +19,13 @@ $request->globalMenu();
 if ($request->getYear() != "")
 {
 	$nextMonthInfo = performCount("Find Next Month",
-    "SELECT min(" . $concatenation . ") FROM sighting WHERE " . $concatenation . " > '" . $request->getYear() . $request->getMonth() . "'");
+    "SELECT min(" . $concatenation . ") FROM sighting,trip WHERE sighting.trip_id=trip.id AND " . $concatenation . " > '" . $request->getYear() . $request->getMonth() . "'");
 	
 	$nextYear = substr($nextMonthInfo, 0, 4);
 	$nextMonth = substr($nextMonthInfo, 4, 2);
 	
 	$prevMonthInfo = performCount("Find Previous Month",
-    "SELECT max(" . $concatenation . ") FROM sighting WHERE " . $concatenation . " < '" . $request->getYear() . $request->getMonth() . "'");
+    "SELECT max(" . $concatenation . ") FROM sighting,trip WHERE sighting.trip_id=trip.id AND " . $concatenation . " < '" . $request->getYear() . $request->getMonth() . "'");
 	
 	$prevYear = substr($prevMonthInfo, 0, 4);
 	$prevMonth = substr($prevMonthInfo, 4, 2);

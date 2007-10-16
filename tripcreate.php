@@ -14,11 +14,11 @@ $leader = ""; array_key_exists("Leader", $_POST) && $leader = $_POST['Leader'];
 $tripDate = ""; array_key_exists("TripDate", $_POST) && $tripDate = $_POST['TripDate'];
 $tripName = ""; array_key_exists("TripName", $_POST) && $tripName = $_POST['TripName'];
 
-$locationList = performQuery("Get All Locations", "SELECT Name, objectid FROM location ORDER BY Name");
+$locationList = performQuery("Get All Locations", "SELECT Name, id FROM location ORDER BY Name");
 $dateArray = getdate();
 $dateString = $dateArray["year"] . "-" . $dateArray["mon"] . "-" .  $dateArray["mday"];
-$sightingID = performCount("Get Highest Sighting ID", "SELECT MAX(objectid) from sighting;");
-$tripID = performCount("Get Highest Trip ID", "SELECT MAX(objectid) from trip;");
+$sightingID = performCount("Get Highest Sighting ID", "SELECT MAX(id) from sighting;");
+$tripID = performCount("Get Highest Trip ID", "SELECT MAX(id) from trip;");
 
 htmlHead("Create a trip");
 
@@ -120,7 +120,7 @@ if ($save == "Save")
 	  <select name="LocationName">
 <?        while($info = mysql_fetch_array($locationList))
 	      { ?>
-		      <option <?= ($request->getLocationID()==$info["objectid"] ? "selected" : "") ?>>
+		      <option <?= ($request->getLocationID()==$info["id"] ? "selected" : "") ?>>
                   <?= $info["Name"]  ?>
               </option>
 <?		  } ?>
@@ -140,9 +140,9 @@ if ($save == "Save")
 
 		  while($info = mysql_fetch_array($dbQuery))
 		  {
-			  if ($prevInfo == "" || ($divideByTaxo && (getFamilyInfo($prevInfo["objectid"]) != getFamilyInfo($info["objectid"]))))
+			  if ($prevInfo == "" || ($divideByTaxo && (getFamilyInfo($prevInfo["id"]) != getFamilyInfo($info["id"]))))
 			  {
-				  $taxoInfo = getFamilyInfo($info["objectid"]); ?>
+				  $taxoInfo = getFamilyInfo($info["id"]); ?>
 				  <div class="subheading"><?= strtolower($taxoInfo["LatinName"]) ?></div>
 <?            } ?>
 

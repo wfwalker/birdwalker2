@@ -14,7 +14,7 @@ performQuery("Count Sightings for Species",
     "INSERT INTO tmp
       SELECT species.CommonName, species.objectid, max(TripDate), count(sighting.objectid) as sightingCount
       FROM sighting, species, location
-      WHERE species.Abbreviation=sighting.SpeciesAbbreviation AND
+      WHERE sighting.species_id=species.id AND
         sighting.LocationName=location.Name AND location.State='CA' AND Exclude!='1'
       GROUP BY SpeciesAbbreviation;");
 

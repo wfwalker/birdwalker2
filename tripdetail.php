@@ -56,10 +56,10 @@ if ($request->getView() == "speciesbylocation")
 	while($locationInfo = mysql_fetch_array($dbLocation))
 	{
 		$speciesQuery = new SpeciesQuery($request);
-		$speciesQuery->mReq->setLocationID($locationInfo["objectid"]);
+		$speciesQuery->mReq->setLocationID($locationInfo["id"]);
 
 		$locationSightingQuery = new SightingQuery($request);
-		$locationSightingQuery->mReq->setLocationID($locationInfo["objectid"]);
+		$locationSightingQuery->mReq->setLocationID($locationInfo["id"]);
 
 		$dbLocationSightings = $locationSightingQuery->performQuery();
 
@@ -67,7 +67,7 @@ if ($request->getView() == "speciesbylocation")
  ?>
 
     <div class="heading">
-        <a href="./locationdetail.php?locationid=<?= $locationInfo["objectid"]?>"><?= $locationInfo["Name"] ?></a>
+        <a href="./locationdetail.php?locationid=<?= $locationInfo["id"]?>"><?= $locationInfo["Name"] ?></a>
     </div>
 
 <?

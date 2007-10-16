@@ -27,7 +27,7 @@ if (($request->getSpeciesID() != "") && ($save == "Save"))
 				 "', Notes='" . $notes . 
 				 "', ReferenceURL='" . $referenceURL . 
 				 "', ABACountable='" . $abaCountable . 
-				 "' where objectid='" . $request->getSpeciesID() . "'");
+				 "' where id='" . $request->getSpeciesID() . "'");
 
 	echo "<a href=\"./speciesdetail.php?speciesid=" . $request->getSpeciesID() . "\"><b>Species Updated</b></a>";
 }
@@ -41,7 +41,7 @@ $request->globalMenu();
 
 <div id="topright-species">
     <? speciesBrowseButtons("./speciesedit.php", $request->getSpeciesID(), $request->getView()); ?>
-  <a href="./speciesdetail.php?speciesid=<?= $speciesInfo["objectid"] ?>">
+  <a href="./speciesdetail.php?speciesid=<?= $speciesInfo["id"] ?>">
     <div class="pagetitle"><?= $speciesInfo["CommonName"] ?></div>
 </a>
 </div>

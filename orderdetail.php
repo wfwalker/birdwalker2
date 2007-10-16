@@ -14,9 +14,9 @@ $items[] = strtolower($orderInfo["CommonName"]);
 $request->globalMenu();
 
 $nextOrder = performCount("Find Next Order",
-    "SELECT FLOOR(MIN(species.objectid) / POW(10,9)) FROM species, sighting
-      WHERE sighting.SpeciesAbbreviation=species.Abbreviation
-      AND species.objectid > " . ($request->getOrderID() + 1) * pow(10, 9) . " LIMIT 1");
+    "SELECT FLOOR(MIN(species.id) / POW(10,9)) FROM species, sighting
+      WHERE sighting.species_id=species.id
+      AND species.id > " . ($request->getOrderID() + 1) * pow(10, 9) . " LIMIT 1");
 
 if ($nextOrder != "")
 {
@@ -29,9 +29,9 @@ else
 }
 
 $prevOrder = performCount("Find Previous Order",
-    "SELECT FLOOR(MAX(species.objectid) / POW(10,9)) FROM species, sighting
-      WHERE sighting.SpeciesAbbreviation=species.Abbreviation
-      AND species.objectid < " . $request->getOrderID() * pow(10, 9) . " LIMIT 1");
+    "SELECT FLOOR(MAX(species.id) / POW(10,9)) FROM species, sighting
+      WHERE sighting.species_id=species.id
+      AND species.id < " . $request->getOrderID() * pow(10, 9) . " LIMIT 1");
 
 if ($prevOrder != "")
 {

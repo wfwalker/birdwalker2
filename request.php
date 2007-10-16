@@ -110,7 +110,7 @@ class Request
 		{
 			$locationInfo = $this->getLocationInfo();
 			$stateInfo = getStateInfoForAbbreviation($locationInfo["State"]);
-			$this->setStateID($stateInfo["objectid"]);
+			$this->setStateID($stateInfo["id"]);
 			$this->setCounty($locationInfo["County"]);
 		}
 	}

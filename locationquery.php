@@ -11,7 +11,7 @@ class LocationQuery extends BirdWalkerQuery
 
 	function getSelectClause()
 	{
- 		$selectClause = "SELECT DISTINCT location.objectid, location.*, SUM(sighting.Photo) as locationPhotos, location.Notes as locationNotes";
+ 		$selectClause = "SELECT DISTINCT location.id, location.*, SUM(sighting.Photo) as locationPhotos, location.Notes as locationNotes";
 
 		return $selectClause;
 	}
@@ -29,54 +29,53 @@ class LocationQuery extends BirdWalkerQuery
 		}
 
 		return "
-            FROM sighting, location" . $otherTables . " ";
+            FROM sighting, trip, location" . $otherTables . " ";
 	}
 
 	function getWhereClause()
 	{
-		$whereClause = "WHERE sighting.LocationName=location.Name";
+		$whereClause = "WHERE sighting.location_id=location.id AND sighting.trip_id=trip.id ";
 
 		if ($this->mReq->getTripID() != "") {
 			$tripInfo = $this->mReq->getTripInfo();
-			$whereClause = $whereClause . " AND sighting.TripDate='" . $tripInfo["Date"] . "'";
+			$whereClause = $whereClause . " AND sighting.trip_id='" . $tripInfo["id"] . "'";
 		}
 
 		if ($this->mReq->getLocationID() != "") {
 			echo "<!-- LOCATION " . $this->mReq->getLocationID() . " -->\n";
-			$whereClause = $whereClause . " AND location.objectid='" . $this->mReq->getLocationID() . "'";
-			$whereClause = $whereClause . " AND location.Name=sighting.LocationName"; 
+			$whereClause = $whereClause . " AND location.id='" . $this->mReq->getLocationID() . "'";
 		} elseif ($this->mReq->getCounty() != "") {
 			$whereClause = $whereClause . " AND location.County='" . $this->mReq->getCounty() . "'";
-			$whereClause = $whereClause . " AND location.Name=sighting.LocationName"; 
+			$whereClause = $whereClause . " AND location.id=sighting.location_id"; 
 		} elseif ($this->mReq->getStateID() != "") {
 			$stateInfo = getStateInfo($this->mReq->getStateID());
 			$whereClause = $whereClause . " AND location.State='" . $stateInfo["Abbreviation"] . "'";
-			$whereClause = $whereClause . " AND location.Name=sighting.LocationName"; 
+			$whereClause = $whereClause . " AND location.id=sighting.location_id"; 
 		}
 
 		if ($this->mReq->getSpeciesID() != "") {
-			$whereClause = $whereClause . " AND species.objectid='" . $this->mReq->getSpeciesID() . "'";
-			$whereClause = $whereClause . " AND sighting.SpeciesAbbreviation=species.Abbreviation"; 
+			$whereClause = $whereClause . " AND species.id='" . $this->mReq->getSpeciesID() . "'";
+			$whereClause = $whereClause . " AND sighting.species_id=species.id"; 
 		} elseif ($this->mReq->getFamilyID() != "") {
 			$whereClause = $whereClause . " AND
-              species.objectid >= " . $this->mReq->getFamilyID() * pow(10, 7) . " AND
-              species.objectid < " . ($this->mReq->getFamilyID() + 1) * pow(10, 7);
-			$whereClause = $whereClause . " AND sighting.SpeciesAbbreviation=species.Abbreviation"; 
+              species.id >= " . $this->mReq->getFamilyID() * pow(10, 7) . " AND
+              species.id < " . ($this->mReq->getFamilyID() + 1) * pow(10, 7);
+			$whereClause = $whereClause . " AND sighting.species_id=species.id"; 
 		} elseif ($this->mReq->getOrderID() != "") {
 			$whereClause = $whereClause . " AND
-              species.objectid >= " . $this->mReq->getOrderID() * pow(10, 9) . " AND
-              species.objectid < " . ($this->mReq->getOrderID() + 1) * pow(10, 9);
-			$whereClause = $whereClause . " AND sighting.SpeciesAbbreviation=species.Abbreviation"; 
+              species.id >= " . $this->mReq->getOrderID() * pow(10, 9) . " AND
+              species.id < " . ($this->mReq->getOrderID() + 1) * pow(10, 9);
+			$whereClause = $whereClause . " AND sighting.species_id=species.id"; 
 		}
 		
 		if ($this->mReq->getDayOfMonth() !="") {
-			$whereClause = $whereClause . " AND DayOfMonth(TripDate)=" . $this->mReq->getDayOfMonth();
+			$whereClause = $whereClause . " AND DayOfMonth(trip.Date)=" . $this->mReq->getDayOfMonth();
 		}
 		if ($this->mReq->getMonth() !="") {
-			$whereClause = $whereClause . " AND Month(TripDate)=" . $this->mReq->getMonth();
+			$whereClause = $whereClause . " AND Month(trip.Date)=" . $this->mReq->getMonth();
 		}
 		if ($this->mReq->getYear() !="") {
-			$whereClause = $whereClause . " AND Year(TripDate)=" . $this->mReq->getYear();
+			$whereClause = $whereClause . " AND Year(trip.Date)=" . $this->mReq->getYear();
 		}
 
 		return $whereClause;
@@ -86,7 +85,7 @@ class LocationQuery extends BirdWalkerQuery
 	{
 		return performCount(
 		  "Count Locations",
-          "SELECT COUNT(DISTINCT location.objectid) ".
+          "SELECT COUNT(DISTINCT location.id) ".
 			$this->getFromClause() . " " .
 			$this->getWhereClause());
 	}
@@ -95,7 +94,7 @@ class LocationQuery extends BirdWalkerQuery
 	{
 		return performCount(
 		  "Count Photos",
-          "SELECT COUNT(DISTINCT location.objectid) ".
+          "SELECT COUNT(DISTINCT location.id) ".
 			$this->getFromClause() . " " .
 			$this->getWhereClause() . " AND sighting.Photo='1'");
 	}
@@ -105,7 +104,7 @@ class LocationQuery extends BirdWalkerQuery
 		return performQuery("Perform Query",
 			$this->getSelectClause() . " " . 
 			$this->getFromClause() . " " .
-			$this->getWhereClause() . " GROUP BY location.objectid ORDER BY location.State, location.County, location.Name");
+			$this->getWhereClause() . " GROUP BY location.id ORDER BY location.State, location.County, location.Name");
 	}
 
 	function findExtrema()
@@ -140,10 +139,10 @@ class LocationQuery extends BirdWalkerQuery
 		$lastStateHeading="";
 
 		$gridQueryString="
-        SELECT distinct(LocationName), County, State, location.objectid as locationid, bit_or(1 << (year(TripDate) - 1995)) as mask " . 
+        SELECT distinct(location.Name), County, State, location.id as locationid, bit_or(1 << (year(trip.Date) - 1995)) as mask " . 
 		  $this->getFromClause() . " " .
 		  $this->getWhereClause() . " 
-        GROUP BY sighting.LocationName
+        GROUP BY sighting.location_id
         ORDER BY location.State, location.County, location.Name;";
 
 		$gridQuery = performQuery("Location By Year Query", $gridQueryString); ?>
@@ -165,10 +164,10 @@ class LocationQuery extends BirdWalkerQuery
 				  <td colspan="13">
                     <div class="subheading">
 	<?                if ($lastStateHeading != $info["State"]) { ?>
-				        <span class="statename"><a href="./statedetail.php?stateid=<?= $stateInfo["objectid"] ?>"><?= $stateInfo["Name"] ?></a></span>,
+				        <span class="statename"><a href="./statedetail.php?stateid=<?= $stateInfo["id"] ?>"><?= $stateInfo["Name"] ?></a></span>,
 	<?                  $lastStateHeading = $info["State"];
 				      } ?>
-				      <a href="./countydetail.php?stateid=<?= $stateInfo["objectid"] ?>&county=<?= urlencode($info["County"]) ?>"><?= $info["County"] ?> County</a>
+				      <a href="./countydetail.php?stateid=<?= $stateInfo["id"] ?>&county=<?= urlencode($info["County"]) ?>"><?= $info["County"] ?> County</a>
                     </div>
                   </td>
 				</tr>
@@ -176,7 +175,7 @@ class LocationQuery extends BirdWalkerQuery
 
 			<tr>
 				<td width="40%">
-					<a href="./locationdetail.php?locationid=<?= $info["locationid"] ?>"><?= $info["LocationName"] ?></a>
+					<a href="./locationdetail.php?locationid=<?= $info["locationid"] ?>"><?= $info["Name"] ?></a>
 				</td>
 
 	<?		for ($index = 1; $index <= (1 + getLatestYear() - getEarliestYear()); $index++)
@@ -218,10 +217,10 @@ class LocationQuery extends BirdWalkerQuery
 		$lastStateHeading="";
 
 		$gridQueryString="
-        SELECT distinct(LocationName), County, State, location.objectid AS locationid, bit_or(1 << month(TripDate)) AS mask " .
+        SELECT distinct(location.Name), County, State, location.id AS locationid, bit_or(1 << month(trip.Date)) AS mask " .
 		  $this->getFromClause() . " " .
 		  $this->getWhereClause() . " 
-        GROUP BY sighting.LocationName
+        GROUP BY sighting.location_id
         ORDER BY location.State, location.County, location.Name;";
 
 		$gridQuery = performQuery("Location By Month Query", $gridQueryString); ?>
@@ -242,10 +241,10 @@ class LocationQuery extends BirdWalkerQuery
 				<tr><td colspan="13">
 				  <div class="subheading">
 	<?          if ($lastStateHeading != $info["State"]) { ?>
-				  <span class="statename"><a href="./statedetail.php?stateid=<?= $stateInfo["objectid"] ?>"><?= $stateInfo["Name"] ?></a></span>,
+				  <span class="statename"><a href="./statedetail.php?stateid=<?= $stateInfo["id"] ?>"><?= $stateInfo["Name"] ?></a></span>,
 	<?            $lastStateHeading = $info["State"];
 				} ?>
-				  <a href="./countydetail.php?stateid=<?= $stateInfo["objectid"] ?>&county=<?= urlencode($info["County"]) ?>"><?= $info["County"] ?> County</a>
+				  <a href="./countydetail.php?stateid=<?= $stateInfo["id"] ?>&county=<?= urlencode($info["County"]) ?>"><?= $info["County"] ?> County</a>
 				  </div>
 				  </td>
 			    </tr>
@@ -253,7 +252,7 @@ class LocationQuery extends BirdWalkerQuery
 
 			<tr>
 				<td>
-					<a href="./locationdetail.php?locationid=<?= $info["locationid"] ?>"><?= $info["LocationName"] ?></a>
+					<a href="./locationdetail.php?locationid=<?= $info["locationid"] ?>"><?= $info["location.Name"] ?></a>
 				</td>
 
 	<?		for ($index = 1; $index <= 12; $index++)
@@ -309,20 +308,20 @@ class LocationQuery extends BirdWalkerQuery
 <?              if ($lastStateHeading != $info["State"])
 				{
 					$stateInfo = getStateInfoForAbbreviation($info["State"]); ?>
-					<span class="statename"><a href="./statedetail.php?view=<?= $this->mReq->getView() ?>&stateid=<?= $stateInfo["objectid"]?>"><?= $stateInfo["Name"] ?></a></span>,
+					<span class="statename"><a href="./statedetail.php?view=<?= $this->mReq->getView() ?>&stateid=<?= $stateInfo["id"]?>"><?= $stateInfo["Name"] ?></a></span>,
 <?                  $lastStateHeading = $info["State"];
 				} ?>
-				<a href="./countydetail.php?view=<?= $this->mReq->getView() ?>&stateid=<?= $stateInfo["objectid"]?>&county=<?= $info["County"] ?>">
+				<a href="./countydetail.php?view=<?= $this->mReq->getView() ?>&stateid=<?= $stateInfo["id"]?>&county=<?= $info["County"] ?>">
 			      <?= $info["County"] ?> County
 			    </a>
 				</div>
 <?          } // TODO, list below the county and state name if not dividing by county/state ?>
 
 			<div>
-			  <a href="./locationdetail.php?view=species&locationid=<?= $info["objectid"] ?>"><?= $info["Name"] ?></a>
+			  <a href="./locationdetail.php?view=species&locationid=<?= $info["id"] ?>"><?= $info["Name"] ?></a>
 
 <?          if ($info["locationPhotos"] > 0) { ?>
-              <a href="./locationdetail.php?view=photo&locationid=<?= $info["objectid"] ?>">
+              <a href="./locationdetail.php?view=photo&locationid=<?= $info["id"] ?>">
 			      <img border="0" align="bottom" src="./images/camera.gif" alt="photo">
 			  </a>
 <?           } ?>

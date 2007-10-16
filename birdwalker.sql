@@ -7,7 +7,7 @@ use birdwalker
 drop table if exists location;
 
 CREATE TABLE location (
-  objectid mediumint(9) NOT NULL auto_increment,
+  id mediumint(9) NOT NULL auto_increment,
   Name varchar(255),
   ReferenceURL text,
   City text,
@@ -18,7 +18,7 @@ CREATE TABLE location (
   Latitude float(15,10),
   Longitude float(15,10),
   Photo boolean default 0,
-  PRIMARY KEY  (objectid),
+  PRIMARY KEY  (id),
   KEY NameIndex (Name),
   KEY CountyIndex (County),
   KEY StateIndex (State)
@@ -43,14 +43,14 @@ CREATE TABLE countyfrequency (
 drop table if exists species;
 
 CREATE TABLE species (
-  objectid bigint(20) NOT NULL default '0',
+  id bigint(20) NOT NULL default '0',
   Abbreviation varchar(6) default NULL,
   LatinName text,
   CommonName text,
   Notes text,
   ReferenceURL text,
   ABACountable boolean NOT NULL default 1,
-  PRIMARY KEY  (objectid),
+  PRIMARY KEY  (id),
   KEY AbbreviationIndex (Abbreviation),
   KEY ABACountableIndex (ABACountable)
 ) TYPE=MyISAM;
@@ -62,14 +62,14 @@ CREATE TABLE species (
 drop table if exists taxonomy;
 
 CREATE TABLE taxonomy (
-  objectid bigint(20) NOT NULL default '0',
+  id bigint(20) NOT NULL default '0',
   HierarchyLevel varchar(16) default NULL,
   LatinName text,
   CommonName text,
   Notes text,
   ReferenceURL text,
-  PRIMARY KEY  (objectid),
-  KEY objectidIndex (objectid),
+  PRIMARY KEY  (id),
+  KEY idIndex (id),
   KEY hierarchyLevelIndex (HierarchyLevel)
 ) TYPE=MyISAM;
 
@@ -80,13 +80,13 @@ CREATE TABLE taxonomy (
 drop table if exists trip;
 
 CREATE TABLE trip (
-  objectid mediumint(9) NOT NULL auto_increment,
+  id mediumint(9) NOT NULL auto_increment,
   Leader text,
   ReferenceURL text,
   Name text,
   Notes text,
   Date date default NULL,
-  PRIMARY KEY  (objectid),
+  PRIMARY KEY  (id),
   KEY dateIndex (date)
 ) TYPE=MyISAM;
 
@@ -96,22 +96,21 @@ CREATE TABLE trip (
 
 drop table if exists sighting;
 
-CREATE TABLE sighting (
-  objectid mediumint(9) NOT NULL auto_increment,
-  SpeciesAbbreviation varchar(6) default NULL,
-  LocationName varchar(255),
+CREATE TABLE `sighting` (
+  id mediumint(9) NOT NULL auto_increment,
   Notes text,
-  Exclude boolean  default NULL,
-  Photo boolean default NULL,
-  TripDate date default NULL,
-  PRIMARY KEY  (objectid),
-  KEY SpeciesAbbreviationIndex (SpeciesAbbreviation),
-  KEY TripDateIndex (TripDate),
+  Exclude tinyint(1) default NULL,
+  Photo tinyint(1) default NULL,
+  location_id mediumint(9) default NULL,
+  species_id bigint(9) default NULL,
+  trip_id mediumint(9) default NULL,
+  PRIMARY KEY  (id),
   KEY ExcludeIndex (Exclude),
   KEY PhotoIndex (Photo),
-  KEY LocationNameIndex (LocationName)
-) TYPE=MyISAM;
-
+  KEY LocationIndex (location_id),
+  KEY SpeciesIndex (species_id),
+  KEY TripIndex (trip_id)
+) ENGINE=MyISAM AUTO_INCREMENT=16592 DEFAULT CHARSET=latin1;
 
 --
 -- Table structure for table 'state'
@@ -120,10 +119,10 @@ CREATE TABLE sighting (
 drop table if exists state;
 
 CREATE TABLE state (
-  objectid mediumint(9) NOT NULL auto_increment,
+  id mediumint(9) NOT NULL auto_increment,
   Name varchar(16) default NULL,
   Abbreviation varchar(2) default NULL,
   Notes text,
-  PRIMARY KEY  (objectid),
+  PRIMARY KEY  (id),
   KEY AbbreviationIndex (Abbreviation)
 ) TYPE=MyISAM;

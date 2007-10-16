@@ -9,10 +9,10 @@ $request->getYear() == "" && die("Fatal error: missing year");
 htmlHead($request->getYear());
 
 $prevYear = performCount("Get Previous Year",
-    "SELECT MAX(Year(TripDate)) FROM sighting WHERE Year(TripDate) < " . $request->getYear());
+    "SELECT MAX(Year(trip.Date)) FROM sighting WHERE Year(trip.Date) < " . $request->getYear());
 
 $nextYear = performCount("Get Next Year",
-    "SELECT MIN(Year(TripDate)) FROM sighting WHERE Year(TripDate) > " . $request->getYear());
+    "SELECT MIN(Year(trip.Date)) FROM sighting WHERE Year(trip.Date) > " . $request->getYear());
 
 $request->globalMenu();
 

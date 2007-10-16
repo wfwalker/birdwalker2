@@ -7,24 +7,24 @@ $request = new Request;
 
 $sightingInfo = $request->getSightingInfo();
 
-$speciesInfo = performOneRowQuery("Get Species Info", "SELECT * FROM species WHERE Abbreviation='" . $sightingInfo["SpeciesAbbreviation"] . "'");
+$speciesInfo = getSpeciesInfo($sightingInfo["species_id"]);
 
-$tripInfo = getTripInfoForDate($sightingInfo["TripDate"]);
+$tripInfo = getTripInfo($sightingInfo["trip_id"]);
 $tripYear =  substr($tripInfo["Date"], 0, 4);
 
-$locationInfo = getLocationInfoForName($sightingInfo["LocationName"]);
+$locationInfo = getLocationInfo($sightingInfo["location_id"]);
 
 $nextPhotoID = performCount(
 	"Get Next Photo", 
-    "SELECT objectid FROM sighting
-      WHERE Photo='1' AND CONCAT(TripDate,objectid) > '" . $sightingInfo["TripDate"] . $request->getSightingID() . "'
-      ORDER BY CONCAT(TripDate,objectid) LIMIT 1");
+    "SELECT sighting.id FROM sighting, trip
+      WHERE sighting.trip_id=trip.id AND Photo='1' AND CONCAT(trip.Date,sighting.id) > '" . $tripInfo["Date"] . $request->getSightingID() . "'
+      ORDER BY CONCAT(trip.Date,sighting.id) LIMIT 1");
 
 if ($nextPhotoID != "")
 {
 	$nextPhotoInfo = performOneRowQuery("Get Next Photo Info", 
-       "SELECT objectid, date_format(TripDate, '%b %D, %Y') as niceDate
-         FROM sighting WHERE objectid='" . $nextPhotoID . "'", false);
+       "SELECT sighting.id, date_format(trip.Date, '%b %D, %Y') as niceDate
+         FROM sighting, trip WHERE sighting.trip_id=trip.id AND sighting.id='" . $nextPhotoID . "'", false);
 	//$nextPhotoLinkText = getThumbForSightingInfo($nextPhotoInfo);
 	$nextPhotoLinkText = $nextPhotoInfo["niceDate"];
 }
@@ -35,14 +35,14 @@ else
 
 $prevPhotoID = performCount(
 	"Get Previous Photo",
-    "SELECT objectid FROM sighting
-      WHERE Photo='1' AND CONCAT(TripDate,objectid) < '" . $sightingInfo["TripDate"] . $request->getSightingID() . "'
-      ORDER BY CONCAT(TripDate,objectid) DESC LIMIT 1");
+    "SELECT sighting.id FROM sighting, trip
+      WHERE sighting.trip_id=trip.id AND Photo='1' AND CONCAT(trip.Date,sighting.id) < '" . $tripInfo["Date"] . $request->getSightingID() . "'
+      ORDER BY CONCAT(trip.Date,sighting.id) DESC LIMIT 1");
 
 if ($prevPhotoID != "") {
 	$prevPhotoInfo = performOneRowQuery("Get Previous Photo Info",
-       "SELECT objectid, date_format(TripDate, '%b %D, %Y') as niceDate
-         FROM sighting WHERE objectid='" . $prevPhotoID . "'", false);
+       "SELECT sighting.id, date_format(trip.Date, '%b %D, %Y') as niceDate
+         FROM sighting, trip WHERE sighting.trip_id=trip.id AND sighting.id='" . $prevPhotoID . "'", false);
 	//$prevPhotoLinkText = getThumbForSightingInfo($prevPhotoInfo);
 	$prevPhotoLinkText = $prevPhotoInfo["niceDate"];
 }
@@ -60,12 +60,12 @@ $request->globalMenu();
 	<? browseButtons("Photo Detail", "./photodetail.php?sightingid=", $request->getSightingID(),
 					 $prevPhotoID, $prevPhotoLinkText, $nextPhotoID, $nextPhotoLinkText); ?>
 	  <div class="pagetitle">
-          <a href="./speciesdetail.php?speciesid=<?= $speciesInfo["objectid"] ?>"><?= $speciesInfo["CommonName"] ?></a>
+          <a href="./speciesdetail.php?speciesid=<?= $speciesInfo["id"] ?>"><?= $speciesInfo["CommonName"] ?></a>
 <?        editLink("./sightingedit.php?sightingid=" . $request->getSightingID()); ?>
       </div>
       <div class="pagesubtitle">
-	     <a href="./tripdetail.php?tripid=<?= $tripInfo["objectid"] ?>"><?= $tripInfo["niceDate"] ?></a>,
-         <a href="./locationdetail.php?locationid=<?= $locationInfo["objectid"] ?>"><?= $locationInfo["Name"] ?>, <?= $locationInfo["State"] ?></a>
+	     <a href="./tripdetail.php?tripid=<?= $tripInfo["id"] ?>"><?= $tripInfo["niceDate"] ?></a>,
+         <a href="./locationdetail.php?locationid=<?= $locationInfo["id"] ?>"><?= $locationInfo["Name"] ?>, <?= $locationInfo["State"] ?></a>
       </div>
 </div>
 
@@ -98,21 +98,21 @@ $request->globalMenu();
 
     if (strlen($tripInfo["Notes"]) > 0) { ?>
         <div class="heading">
-			Trip: <a href="./tripdetail.php?tripid=<?= $tripInfo["objectid"] ?>"><?= $tripInfo["Name"] ?></a>
+			Trip: <a href="./tripdetail.php?tripid=<?= $tripInfo["id"] ?>"><?= $tripInfo["Name"] ?></a>
 		</div>
         <div class="leftcolumn"><p class="report-content"><?= $tripInfo["Notes"] ?></p></div>
 <?  }
 
     if (strlen($locationInfo["Notes"]) > 0) { ?>
 	    <div class="heading">
-			Location: <a href="./locationdetail.php?locationid=<?= $locationInfo["objectid"] ?>"><?= $locationInfo["Name"] ?></a>
+			Location: <a href="./locationdetail.php?locationid=<?= $locationInfo["id"] ?>"><?= $locationInfo["Name"] ?></a>
 		</div>
         <div class="leftcolumn"><p class="report-content"><?= $locationInfo["Notes"] ?></p></div>
 <?  }
 
     if (strlen($speciesInfo["Notes"]) > 0) { ?>
 	    <div class="heading">
-			Species: <a href="./speciesdetail.php?speciesid=<?= $speciesInfo["objectid"] ?>"><?= $speciesInfo["CommonName"] ?></a>
+			Species: <a href="./speciesdetail.php?speciesid=<?= $speciesInfo["id"] ?>"><?= $speciesInfo["CommonName"] ?></a>
 		</div>
 	    <div class="leftcolumn"><p class="report-content"><?= $speciesInfo["Notes"] ?></p></div>
 <?  }

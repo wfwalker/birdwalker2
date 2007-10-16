@@ -17,21 +17,21 @@ class ChronoList
 	{
 		performQuery("Create Temp Table",
 		  "CREATE TEMPORARY TABLE tmp (
-            SpeciesAbbreviation varchar(16) default NULL,
-            TripDate date default NULL,
-            objectid varchar(16) default NULL);");
+            species_id varchar(16) default NULL,
+            trip_date date default NULL,
+            id varchar(16) default NULL);");
 
         // here's what section 3.6.4 of the mysql manual calls:
         // "a quite inefficient trick called the MAX-CONCAT trick"
 		// TODO upgrade to mysql 4.1 and use a subquery
 		performQuery("Put Sightings into Temp Table",
           "INSERT INTO tmp
-            SELECT SpeciesAbbreviation,
-              LEFT(        MIN( CONCAT(TripDate,lpad(sighting.objectid,6,'0')) ), 10) AS TripDate,
-              0+SUBSTRING( MIN( CONCAT(TripDate,lpad(sighting.objectid,6,'0')) ),  11) AS objectid ".
+            SELECT species_id,
+              LEFT(        MIN( CONCAT(trip.Date,lpad(sighting.id,6,'0')) ), 10) AS trip_date,
+              0+SUBSTRING( MIN( CONCAT(trip.Date,lpad(sighting.id,6,'0')) ),  11) AS id ".
 					 $this->mSightingQuery->getFromClause() . " " . 
 					 $this->mSightingQuery->getWhereClause() . "  AND species.ABACountable='1' AND sighting.Exclude!='1'
-            GROUP BY SpeciesAbbreviation");
+            GROUP BY species_id");
 	}
 
 	function draw()
@@ -41,19 +41,19 @@ class ChronoList
 		// TODO count rows in the first sightings table!
 
 		$firstSightingQuery = performQuery("Choose first sightings",
-          "SELECT " . shortNiceDateColumn("sighting.TripDate") . ",
+          "SELECT " . shortNiceDateColumn("trip.Date") . ",
              sighting.*, 
              species.CommonName,
-             species.objectid as speciesid,
-             trip.objectid as tripid, location.County, location.State
+             species.id as speciesid,
+             trip.id as tripid, location.County, location.State
           FROM sighting, tmp, species, location, trip
           WHERE
-             sighting.SpeciesAbbreviation=tmp.SpeciesAbbreviation AND
-             species.Abbreviation=sighting.SpeciesAbbreviation AND
-             sighting.TripDate=tmp.TripDate AND
-             location.Name=sighting.LocationName AND
-             trip.Date=sighting.TripDate
-          ORDER BY TripDate DESC, LocationName, species.objectid;");
+             sighting.species_id=tmp.species_id AND
+             species.id=sighting.species_id AND
+             trip.Date=tmp.trip_date AND
+             location.id=sighting.location_id AND
+             trip.id=sighting.trip_id
+          ORDER BY trip.Date DESC, location_id, species.id;");
 
 		$speciesCount = mysql_num_rows($firstSightingQuery);
 
@@ -73,7 +73,7 @@ class ChronoList
 		    <tr>
 		    <td nowrap>
 <?
-		    if ($prevSightingInfo == "" || $prevSightingInfo['TripDate'] != $sightingInfo['TripDate']) { ?>
+		    if ($prevSightingInfo == "" || $prevSightingInfo['trip_id'] != $sightingInfo['trip_id']) { ?>
                 <a href="./tripdetail.php?tripid=<?= $sightingInfo['tripid'] ?>"><?= $sightingInfo['niceDate'] ?></a><?
 		    } 
 ?>
@@ -88,7 +88,7 @@ class ChronoList
 		        <?= getPhotoLinkForSightingInfo($sightingInfo) ?>
 <?          }
 
-		    editLink("./sightingedit.php?sightingid=" . $sightingInfo['objectid']); ?>
+		    editLink("./sightingedit.php?sightingid=" . $sightingInfo['id']); ?>
 
 		    </td>
 		    </tr>
@@ -118,16 +118,16 @@ class ChronoList
              sighting.*, 
              trim(group_concat(' ', species.CommonName)) as names,
              count(species.CommonName) as counts,
-              species.objectid as speciesid,
-             trip.objectid as tripid, location.County, location.State
+              species.id as speciesid,
+             trip.id as tripid, location.County, location.State
           FROM sighting, tmp, species, location, trip
           WHERE
-             sighting.SpeciesAbbreviation=tmp.SpeciesAbbreviation AND
-             species.Abbreviation=sighting.SpeciesAbbreviation AND
-             sighting.TripDate=tmp.TripDate AND
-             location.Name=sighting.LocationName AND
-             trip.Date=sighting.TripDate
-          group by TripDate ORDER BY TripDate DESC, LocationName, species.objectid;");
+             sighting.species_idreviation=tmp.species_id AND
+             species.id=sighting.species_id AND
+             sighting.trip_id=tmp.id AND
+             location.id=sighting.location_id AND
+             trip.id=sighting.trip_id
+          group by trip.Date ORDER BY trip.Date DESC, LocationName, species.id;");
 
 		$speciesCount = mysql_num_rows($firstSightingQuery);
 
@@ -139,11 +139,11 @@ class ChronoList
 	   {
 		 if ($sightingInfo['counts'] > 3)
 		 {?>
-		    <event startTime="<?= $sightingInfo['TripDate'] ?>" label="<?= $sightingInfo['counts'] ?> Species"/>
+		    <event startTime="<?= $sightingInfo['trip.Date'] ?>" label="<?= $sightingInfo['counts'] ?> Species"/>
 <?       }
 		 else
 		 { ?>
-		    <event startTime="<?= $sightingInfo['TripDate'] ?>" label="<?= $sightingInfo['names'] ?>"/>
+		    <event startTime="<?= $sightingInfo['trip.Date'] ?>" label="<?= $sightingInfo['names'] ?>"/>
 <?       }
 	   }
 
@@ -176,12 +176,12 @@ class ChronoList
           "SELECT to_days(sighting.TripDate) as tripDays
           FROM sighting, tmp, species, location, trip
           WHERE
-             sighting.SpeciesAbbreviation=tmp.SpeciesAbbreviation AND
-             species.Abbreviation=sighting.SpeciesAbbreviation AND
+             sighting.species_id=tmp.species_id AND
+             species.id=sighting.species_id AND
              sighting.TripDate=tmp.TripDate AND
-             location.Name=sighting.LocationName AND
-             trip.Date=sighting.TripDate
-          ORDER BY sighting.TripDate, LocationName, species.objectid;");
+             location.id=sighting.location_id AND
+             trip.id=sighting.trip_id
+          ORDER BY sighting.trip_id, species.location_id, species.id;");
 
 		$speciesCount = mysql_num_rows($firstSightingQuery);
 

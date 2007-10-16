@@ -4,10 +4,10 @@ require_once("./birdwalker.php");
 require_once("./request.php");
 
 $photoSpecies = performQuery("Find Species With Photos",
-    "SELECT DISTINCT species.*, COUNT(DISTINCT sighting.objectid) AS photoCount, max(sighting.TripDate) as latestPhoto
-      FROM species, sighting
-      WHERE species.Abbreviation=sighting.SpeciesAbbreviation AND sighting.Photo='1' AND species.ABACountable != '0'
-      GROUP BY sighting.SpeciesAbbreviation ORDER BY species.objectid");
+    "SELECT DISTINCT species.*, COUNT(DISTINCT sighting.id) AS photoCount, max(trip.Date) as latestPhoto
+      FROM species, sighting, trip
+      WHERE trip.id=sighting.trip_id AND species.id=sighting.species_id AND sighting.Photo='1' AND species.ABACountable != '0'
+      GROUP BY sighting.species_id ORDER BY species.id");
 $photoCount = performCount("Count Photos",
     "SELECT COUNT(*) FROM sighting WHERE Photo='1'");
 
@@ -40,16 +40,16 @@ $counter = round(mysql_num_rows($photoSpecies)  * 0.6);
 $prevInfo = "";
 while($info = mysql_fetch_array($photoSpecies))
 {
-	$orderNum =  floor($info["objectid"] / pow(10, 9));
+	$orderNum =  floor($info["id"] / pow(10, 9));
 	
-	if ($prevInfo == "" || getFamilyIDFromSpeciesID($prevInfo["objectid"]) != getFamilyIDFromSpeciesID($info["objectid"]))
+	if ($prevInfo == "" || getFamilyIDFromSpeciesID($prevInfo["id"]) != getFamilyIDFromSpeciesID($info["id"]))
 	{
-		$taxoInfo = getFamilyInfoFromSpeciesID($info["objectid"]); ?>
-		<div class="subheading"><?= getFamilyDetailLinkFromSpeciesID($info["objectid"], "photo") ?></div>
+		$taxoInfo = getFamilyInfoFromSpeciesID($info["id"]); ?>
+		<div class="subheading"><?= getFamilyDetailLinkFromSpeciesID($info["id"], "photo") ?></div>
 <?	} ?>
 
     <div>
-        <a href="./speciesdetail.php?view=photo&speciesid=<?= $info["objectid"] ?>">
+        <a href="./speciesdetail.php?view=photo&speciesid=<?= $info["id"] ?>">
              <?= $info["CommonName"] ?>
         </a>
         <? if ($info["photoCount"] > 1) echo "(" . $info["photoCount"] . ")"; ?>

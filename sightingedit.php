@@ -16,8 +16,8 @@ $save = postValue("Save");
 $new = postValue("New");
 $delete = postValue("Delete");
 
-// if NEW, set the POST id to a new unique sighting objectid
-if ($new == "New") { $postSightingID = 1 + performCount("Find highest sighting ID", "select max(objectid) from sighting"); }
+// if NEW, set the POST id to a new unique sighting id
+if ($new == "New") { $postSightingID = 1 + performCount("Find highest sighting ID", "select max(id) from sighting"); }
 
 // if we have a POST id and either a new or a save button, then time to update
 if ($postSightingID != "") {
@@ -36,7 +36,7 @@ if ($postSightingID != "") {
 					 "', Notes='" . mysql_escape_string($notes) . 
 					 "', Photo='" . mysql_escape_string($photo) . 
 					 "', Exclude='" . $exclude . 
-					 "' where objectid='" . $postSightingID . "'");
+					 "' where id='" . $postSightingID . "'");
 	} else if ($new != "") {
 		performQuery("Insert a new sighting",
 					 "insert into sighting values (". $postSightingID .
@@ -48,7 +48,7 @@ if ($postSightingID != "") {
 					 "', '" . $tripDate . "');");
 	} else if ($delete != "") {
 		performQuery("Delete a sighting",
-					 "delete from sighting where objectid='" . $postSightingID . "'");
+					 "delete from sighting where id='" . $postSightingID . "'");
 		$postSightingID--;
 	}
 
@@ -57,20 +57,20 @@ if ($postSightingID != "") {
 
 $sightingInfo = getSightingInfo($sightingID);
 
-if (performCount("Test for Species Info", "SELECT COUNT(*) from species where Abbreviation='" . $sightingInfo["SpeciesAbbreviation"] . "'")  == 1)
+if (performCount("Test for Species Info", "SELECT COUNT(*) from species where id='" . $sightingInfo["species_id"] . "'")  == 1)
 {
-	$speciesInfo = performOneRowQuery("Get Species Info", "SELECT * from species where Abbreviation='" . $sightingInfo["SpeciesAbbreviation"] . "'");
+	$speciesInfo = getSpeciesInfo($sightingInfo["species_id"]);
 }
 else
 {
 	$speciesInfo = "";
 }
 
-$tripInfo = performOneRowQuery("Get Trip Info", "SELECT *, " . shortNiceDateColumn() . " FROM trip WHERE Date='" . $sightingInfo["TripDate"] . "'");
-$locationInfo = performOneRowQuery("Get Location Info", "SELECT * from location where Name='" . mysql_escape_string($sightingInfo["LocationName"]) . "'");
+$tripInfo = getTripInfo($sightingInfo["trip_id"]);
+$locationInfo = getLocationInfo($sightingInfo["location_id"]);
 $stateInfo = getStateInfoForAbbreviation($locationInfo["State"]);
 
-$locationList = performQuery("Get Location List", "SELECT Name, objectid from location ORDER BY Name");
+$locationList = performQuery("Get Location List", "SELECT Name, id from location ORDER BY Name");
 
 if ($speciesInfo == "") {
     htmlHead("Invalid Species Abbreivation, " . $tripInfo["niceDate"]);
@@ -91,14 +91,14 @@ $request->globalMenu();
 	<? if ($speciesInfo == "") { ?>
 	    Invalid Species Abbreviation
     <? } else { ?>
-        <a href="./speciesdetail.php?speciesid=<?= $speciesInfo["objectid"] ?>"><?= $speciesInfo["CommonName"] ?></a>
+        <a href="./speciesdetail.php?speciesid=<?= $speciesInfo["id"] ?>"><?= $speciesInfo["CommonName"] ?></a>
 	<? } ?>
   </div>
 
   <div class="pagesubtitle">
-    <a href="./countydetail.php?stateid=<?= $stateInfo["objectid"] ?>&county=<?= $locationInfo["County"] ?>"><?= $locationInfo["County"] ?> County</a>, 
-    <a href="./statedetail.php?stateid=<?= $stateInfo["objectid"] ?>"><?= $stateInfo["Name"] ?></a>,
-    <a href="./tripdetail.php?tripid=<?= $tripInfo["objectid"] ?>"><?= $tripInfo["niceDate"] ?></a>
+    <a href="./countydetail.php?stateid=<?= $stateInfo["id"] ?>&county=<?= $locationInfo["County"] ?>"><?= $locationInfo["County"] ?> County</a>, 
+    <a href="./statedetail.php?stateid=<?= $stateInfo["id"] ?>"><?= $stateInfo["Name"] ?></a>,
+    <a href="./tripdetail.php?tripid=<?= $tripInfo["id"] ?>"><?= $tripInfo["niceDate"] ?></a>
   </div>
 </div>
 
@@ -113,7 +113,7 @@ $request->globalMenu();
   </tr>
   <tr>
 	<td class="fieldlabel">Abbreviation</td>
-	<td><input type="text" name="SpeciesAbbreviation" value="<?= $sightingInfo["SpeciesAbbreviation"] ?>" size="6"/></td>
+	<td><input type="text" name="SpeciesAbbreviation" value="<?= $speciesInfo["Abbreviation"] ?>" size="6"/></td>
   </tr>
   <tr>
 	<td class="fieldlabel">Location</td>
@@ -122,7 +122,7 @@ $request->globalMenu();
 <?php
    while($info = mysql_fetch_array($locationList))
    {
-	   if ($info["Name"] == $sightingInfo["LocationName"]) { echo "<option selected>"; } else { echo "<option>"; }
+	   if ($info["id"] == $sightingInfo["location_id"]) { echo "<option selected>"; } else { echo "<option>"; }
 	   echo $info["Name"] . "</option>\n";
    }
 ?>

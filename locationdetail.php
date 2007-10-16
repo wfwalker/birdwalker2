@@ -8,15 +8,15 @@ $request = new Request;
 $siteInfo = $request->getLocationInfo();
 
 $locationSightings = performQuery("Get Location Sightings",
-    "SELECT sighting.objectid FROM sighting, location
-      WHERE sighting.LocationName=location.Name
-      AND location.objectid='" . $request->getLocationID() ."'");
+    "SELECT sighting.id FROM sighting, location
+      WHERE sighting.location_id=location.id
+      AND location.id='" . $request->getLocationID() ."'");
 
 $firstSightings = getFirstSightings();
 $locationFirstSightings = 0;
 
 while($sightingInfo = mysql_fetch_array($locationSightings)) {
-	if (array_key_exists($sightingInfo['objectid'], $firstSightings)) {
+	if (array_key_exists($sightingInfo['id'], $firstSightings)) {
 		$locationFirstSightings++;
 	}
 }

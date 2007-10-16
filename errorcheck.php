@@ -4,22 +4,19 @@ require_once("./birdwalker.php");
 require_once("./request.php");
 
 $badAbbrevs = performQuery("Find Bad Abbreviations",
-    "SELECT species.*,sighting.*, sighting.objectid AS sightingid
+    "SELECT sighting.*, sighting.id AS sightingid
       FROM sighting
-      LEFT JOIN species ON species.Abbreviation=sighting.SpeciesAbbreviation
-      ORDER BY species.CommonName, sighting.SpeciesAbbreviation");
+      WHERE species_id = 0");
 
 $badSightingDates = performQuery("Find Bad Sighting Dates",
-    "SELECT trip.*,sighting.*, sighting.objectid AS sightingid
+    "SELECT sighting.*, sighting.id AS sightingid
       FROM sighting
-      LEFT JOIN trip ON trip.Date=sighting.TripDate
-      ORDER BY trip.Name, sighting.TripDate");
+      WHERE trip_id = 0");
 
 $badSightingLocations = performQuery("Find Bad Sighting Locations",
-    "SELECT location.*,sighting.*, sighting.objectid AS sightingid
+    "SELECT sighting.*, sighting.id AS sightingid
       FROM sighting
-      LEFT JOIN location ON location.Name=sighting.LocationName
-      ORDER BY location.County, sighting.LocationName");
+      WHERE location_id = 0");
 
 
 $missingLatLong = performQuery("Find Missing Lat/Long",
@@ -44,13 +41,12 @@ $request->globalMenu();
 <?
 while($sightingInfo = mysql_fetch_array($badAbbrevs))
 {
-	if ($sightingInfo["CommonName"] == "") { ?>
-        <a href="./sightingedit.php?sightingid=<?= $sightingInfo["sightingid"] ?>">
-        <?= $sightingInfo["SpeciesAbbreviation"] ?> <?= $sightingInfo["LocationName"] ?> <?= $sightingInfo["TripDate"] ?>
-        </a><br>
- <?	} else {
-		break;
-	}
+	$locationInfo = getLocationInfo($sightingInfo["location_id"]);
+	$tripInfo = getTripInfo($sightingInfo["trip_id"]); ?>
+    <a href="./sightingedit.php?sightingid=<?= $sightingInfo["sightingid"] ?>">
+        <?= $locationInfo["Name"] ?> <?= $tripInfo["Date"] ?> sighting #<?= $sightingInfo["id"] ?>
+    </a><br>
+<?	
 }
 ?>
 
@@ -89,7 +85,7 @@ while($sightingInfo = mysql_fetch_array($badSightingLocations))
 <?
 while($locationInfo = mysql_fetch_array($missingLatLong))
 {
-	echo "<a href=\"./locationcreate.php?locationid=" . $locationInfo["objectid"] . "\">" . $locationInfo["Name"] . "</a><br/>\n";
+	echo "<a href=\"./locationcreate.php?locationid=" . $locationInfo["id"] . "\">" . $locationInfo["Name"] . "</a><br/>\n";
 }
 
 footer();

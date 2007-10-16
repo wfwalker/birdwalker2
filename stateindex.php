@@ -7,18 +7,18 @@ $yearArray = null;
 $stateStats = performQuery("Get State Statistics",
   "SELECT
     location.State,
-    count(distinct sighting.SpeciesAbbreviation) AS SpeciesCount,
-    year(sighting.TripDate) AS theyear
-  FROM location, sighting
-  WHERE sighting.LocationName=location.Name
+    count(distinct sighting.species_id) AS SpeciesCount,
+    year(trip.Date) AS theyear
+  FROM location, sighting, trip
+  WHERE sighting.location_id=location.id AND sighting.trip_id=trip.id
   GROUP BY location.State, theyear
   ORDER BY State, theyear");
 
 // todo could build some kind of set of visited states while running through the stateStats?
 $visitedStatesQuery = performQuery("Get List of visited States",
-    "SELECT DISTINCT(state.objectid)
+    "SELECT DISTINCT(state.id)
       FROM state, location, sighting
-      WHERE state.Abbreviation=location.State and location.Name=sighting.LocationName ORDER BY state.Name");
+      WHERE state.Abbreviation=location.State and location.id=sighting.location_id ORDER BY state.Name");
 
 while ($info = mysql_fetch_array($stateStats))
 {
@@ -51,11 +51,11 @@ $request->globalMenu();
   <tr><td></td><? insertYearLabels() ?></tr>
 
 <? while ($info = mysql_fetch_array($visitedStatesQuery))
-   { $id = $info["objectid"];
+   { $id = $info["id"];
 	 $info = getStateInfo($id);
      $state = $info["Abbreviation"]; ?>
     <tr>
-      <td><a href="./statedetail.php?stateid=<?= $info["objectid"] ?>"><?= getStateNameForAbbreviation($state) ?></a></td>
+      <td><a href="./statedetail.php?stateid=<?= $info["id"] ?>"><?= getStateNameForAbbreviation($state) ?></a></td>
 <?	  for ($year = getEarliestYear(); $year <= getLatestYear(); $year++)
 	  { ?>
 		  <td class="bordered" align="right">

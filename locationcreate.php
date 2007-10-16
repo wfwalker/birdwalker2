@@ -23,8 +23,8 @@ echo "<!-- " . $save . " -->";
 $new = "";
 array_key_exists('New', $_POST) && $new = $_POST['New'];
 
-// if NEW, set the POST id to a new unique location objectid
-if ($new == "New") { $postLocationID = 1 + performCount("Find new objectid", "select max(objectid) from location"); }
+// if NEW, set the POST id to a new unique location id
+if ($new == "New") { $postLocationID = 1 + performCount("Find new id", "select max(id) from location"); }
 
 // if we have a POST id and either a new or a save button, then time to update
 if ($postLocationID != "") {
@@ -63,7 +63,7 @@ if ($postLocationID != "") {
 					 "LatLongSystem='" . $latLongSystem . "', " .
 					 "Latitude='" . $latitude . "', " .
 					 "Longitude='" . $longitude . "', " .
-					 "Photo='" . $photo . "' where objectid='" . $postLocationID . "'");
+					 "Photo='" . $photo . "' where id='" . $postLocationID . "'");
 
 	}
 	else if ($new != "")
@@ -94,7 +94,7 @@ $request->globalMenu();
 
 <div id="topright-location">
  <? locationBrowseButtons("./locationcreate.php", $locationID, "lists"); ?>
-  <a href="./locationdetail.php?locationid=<?= $locationInfo["objectid"] ?>">
+  <a href="./locationdetail.php?locationid=<?= $locationInfo["id"] ?>">
   <div class="pagetitle"><?= $locationInfo["Name"] ?></div></a>
 </div>
 

@@ -23,7 +23,7 @@ class Map
 							$this->mLocationQuery->getSelectClause() . ", location.Latitude, location.Longitude" .
 							$this->mLocationQuery->getFromClause() . " " . 
 							$this->mLocationQuery->getWhereClause() .
-							" GROUP BY location.objectid ORDER BY location.Latitude desc, location.Longitude");
+							" GROUP BY location.id ORDER BY location.Latitude desc, location.Longitude");
 	}
 
 	function draw($inDrawControls = false)
@@ -120,9 +120,9 @@ function createMarker(point,infoHTML) {
 	{ ?>
            createMarker(new GPoint(<?= $info["Longitude"] ?>, <?= $info["Latitude"] ?>), "\
                <div class=\"report-content\">\
-	           <a href=\"./locationdetail.php?locationid=<?= $info["objectid"] ?>\" target=\"_top\"><?= $info["Name"] ?></a>\
+	           <a href=\"./locationdetail.php?locationid=<?= $info["id"] ?>\" target=\"_top\"><?= $info["Name"] ?></a>\
 <?                 if ($info["locationPhotos"] > 0) { ?>\
-                       <a href=\"./locationdetail.php?view=photo&locationid=<?= $info["objectid"] ?>\" target=\"_top\">\
+                       <a href=\"./locationdetail.php?view=photo&locationid=<?= $info["id"] ?>\" target=\"_top\">\
                            <img border=\"0\" align=\"bottom\" src=\"./images/camera.gif\" alt=\"photo\">\
                        </a>\
 <?                 } ?>\
@@ -156,7 +156,7 @@ function emitKML()
 
           <Placemark>
             <description>
-              <p><a href="http://sven.spflrc.org/~walker/locationdetail.php?locationid=<?=$info["objectid"]?>">Species List</a></p>
+              <p><a href="http://sven.spflrc.org/~walker/locationdetail.php?locationid=<?=$info["id"]?>">Species List</a></p>
 		      <?= htmlentities($info["Notes"]) ?>
 		    </description>
 		    <Snippet><?= htmlentities($info["Notes"]) ?></Snippet>

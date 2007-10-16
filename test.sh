@@ -27,6 +27,7 @@ slideshow.php?year=2004&month=09&origin=index.php \
 specieslist.php?locationid=131&month=6&year=2000 \
 statedetail.php?view=locationsbymonth&stateid=5 \
 statedetail.php?view=locations&stateid=5 \
+statedetail.php?stateid=9 \
 speciesdetail.php?view=locationsbyyear&speciesid=11061111000 \
 yeardetail.php?view=chrono&year=1999 \
 yeardetail.php?view=photo&year=2004 \

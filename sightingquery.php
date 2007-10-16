@@ -24,11 +24,11 @@ class SightingQuery extends BirdWalkerQuery
 
 	function getSelectClause()
 	{
-		return "SELECT DISTINCT sighting.objectid as sightingid,
+		return "SELECT DISTINCT sighting.id as sightingid,
             sighting.*,
-            trip.objectid as tripid, " . shortNiceDateColumn("sighting.TripDate") . ", trip.*,
-            location.objectid as locationid, location.*,
-            species.objectid as speciesid, species.*";
+            trip.id as tripid, " . shortNiceDateColumn("sighting.trip_id") . ", trip.*,
+            location.id as locationid, location.*,
+            species.id as speciesid, species.*";
 	}
 
 	function getFromClause()
@@ -39,17 +39,17 @@ class SightingQuery extends BirdWalkerQuery
 	function getWhereClause()
 	{
 		$whereClause = "WHERE
-            location.Name=sighting.LocationName AND
-            species.Abbreviation=sighting.SpeciesAbbreviation AND
-            trip.Date=sighting.TripDate ";
+            location.id=sighting.location_id AND
+            species.id=sighting.species_id AND
+            trip.id=sighting.trip_id ";
 
 		if ($this->mReq->getTripID() != "") {
 			$tripInfo = $this->mReq->getTripInfo();
-			$whereClause = $whereClause . " AND sighting.TripDate='" . $tripInfo["Date"] . "'";
+			$whereClause = $whereClause . " AND sighting.trip_id='" . $tripInfo["Date"] . "'";
 		}
 
 		if ($this->mReq->getLocationID() != "") {
-			$whereClause = $whereClause . " AND location.objectid=" . $this->mReq->getLocationID();
+			$whereClause = $whereClause . " AND location.id=" . $this->mReq->getLocationID();
 		} elseif ($this->mReq->getCounty() != "") {
 			$whereClause = $whereClause . " AND location.County='" . $this->mReq->getCounty() . "'";
 		} elseif ($this->mReq->getStateID() != "") {
@@ -60,22 +60,22 @@ class SightingQuery extends BirdWalkerQuery
 		if ($this->mReq->getSpeciesID() != "") {
 			$speciesInfo = getSpeciesInfo($this->mReq->getSpeciesID());
 			$whereClause = $whereClause . " AND
-              sighting.SpeciesAbbreviation='" . $speciesInfo["Abbreviation"] . "'"; 
+              sighting.species_id='" . $speciesInfo["id"] . "'"; 
 		} elseif ($this->mReq->getFamilyID() != "") {
 			$whereClause = $whereClause . " AND
-              species.objectid >= " . $this->mReq->getFamilyID() * pow(10, 7) . " AND
-              species.objectid < " . ($this->mReq->getFamilyID() + 1) * pow(10, 7);
+              species.id >= " . $this->mReq->getFamilyID() * pow(10, 7) . " AND
+              species.id < " . ($this->mReq->getFamilyID() + 1) * pow(10, 7);
 		} elseif ($this->mReq->getOrderID() != "") {
 			$whereClause = $whereClause . " AND
-              species.objectid >= " . $this->mReq->getOrderID() * pow(10, 9) . " AND
-              species.objectid < " . ($this->mReq->getOrderID() + 1) * pow(10, 9);
+              species.id >= " . $this->mReq->getOrderID() * pow(10, 9) . " AND
+              species.id < " . ($this->mReq->getOrderID() + 1) * pow(10, 9);
 		}
 		
 		if ($this->mReq->getMonth() !="") {
-			$whereClause = $whereClause . " AND Month(TripDate)=" . $this->mReq->getMonth();
+			$whereClause = $whereClause . " AND Month(trip.Date)=" . $this->mReq->getMonth();
 		}
 		if ($this->mReq->getYear() !="") {
-			$whereClause = $whereClause . " AND Year(TripDate)=" . $this->mReq->getYear();
+			$whereClause = $whereClause . " AND Year(trip.Date)=" . $this->mReq->getYear();
 		}
 
 		return $whereClause;
@@ -85,23 +85,23 @@ class SightingQuery extends BirdWalkerQuery
 	{
 	    if ($this->isSpeciesSpecified())
 		{
-		    return "ORDER BY sighting.TripDate DESC";
+		    return "ORDER BY sighting.trip_id DESC";
 		}
 		elseif ($this->isFamilySpecified() || $this->isOrderSpecified())
 		{
-		    return "ORDER BY species.objectid";
+		    return "ORDER BY species.id";
 		}
 		elseif ($this->isLocationSpecified() || $this->isCountySpecified() || $this->isStateSpecified())
 		{
-		    return "ORDER BY species.objectid";
+		    return "ORDER BY species.id";
 		}
 		elseif ($this->mReq->getMonth() != "" || $this->mReq->getYear() != "")
 		{
-		    return "ORDER BY species.objectid";
+		    return "ORDER BY species.id";
 		}
 		else
 		{
-			return "ORDER BY sighting.TripDate DESC";
+			return "ORDER BY sighting.trip_id DESC";
 		}
 	}
 
@@ -115,7 +115,7 @@ class SightingQuery extends BirdWalkerQuery
 		return performQuery("Find sightings", 
 			$this->getSelectClause() . " " .
 			$this->getFromClause() . " " .
-			$this->getWhereClause() . " ORDER BY sighting.TripDate desc");
+			$this->getWhereClause() . " ORDER BY sighting.trip_id desc");
 	}
 
 	function performPhotoQuery()

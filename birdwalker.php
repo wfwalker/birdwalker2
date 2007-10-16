@@ -188,7 +188,7 @@ function rightThumbnail($photoQueryString, $addLink)
 
 		$sizeAttributes = "";
 
-		if ($addLink == true) { ?> <a href="./photodetail.php?sightingid=<?= $photoInfo["objectid"] ?>">  <? } ?>
+		if ($addLink == true) { ?> <a href="./photodetail.php?sightingid=<?= $photoInfo["id"] ?>">  <? } ?>
            <img <?= $sizeAttributes ?> src="./images/thumb/<?= $filename ?>" width="100" height="100" border="0" align="right" class="inlinepict">
 <?		if ($addLink == true) { ?> </a> <? }
 	}
@@ -248,10 +248,12 @@ function selectDatabase()
 
 function getPhotoFilename($sightingInfo)
 {
-	return $sightingInfo["TripDate"] . "-" . $sightingInfo["SpeciesAbbreviation"] . ".jpg";
+	$tripInfo = getTripInfo($sightingInfo["trip_id"]);
+	$speciesInfo = getSpeciesInfo($sightingInfo["species_id"]);
+	return $tripInfo["Date"] . "-" . $speciesInfo["Abbreviation"] . ".jpg";
 }
 
-function getPhotoLinkForSightingInfo($sightingInfo, $fieldName="objectid")
+function getPhotoLinkForSightingInfo($sightingInfo, $fieldName="id")
 { ?>
 	<a href="./photodetail.php?sightingid=<?= $sightingInfo[$fieldName] ?>"><img border="0" align="to"p src="./images/camera.gif" alt="photo"></a>
 <?
@@ -330,10 +332,10 @@ function performOneRowQuery($inDescription, $queryString, $errorChecking = true)
 // -------------------------- SIGHTINGS, FIRST -------------------------------
 //
 
-function getSightingInfo($objectid)
+function getSightingInfo($id)
 {
 	return performOneRowQuery("Find sighting info",
-			  "SELECT *, " . shortNiceDateColumn("TripDate") . " FROM sighting where objectid='" . $objectid . "'");
+			  "SELECT sighting.*, " . shortNiceDateColumn("trip.Date") . " FROM sighting, trip where sighting.trip_id=trip.id AND sighting.id='" . $id . "'");
 }
 
 /**
@@ -347,27 +349,27 @@ function buildFirstSightingsTable($whereClause)
 
  	performQuery("Make tmp table",
 	  "CREATE TEMPORARY TABLE tmp (
-        SpeciesAbbreviation varchar(16) default NULL,
-        TripDate date default NULL,
-        objectid varchar(16) default NULL);");
+        species_id varchar(16) default NULL,
+        trip_date date default NULL,
+        id varchar(16) default NULL);");
 
 	// here's what section 3.6.4 of the mysql manual calls:
 	// "a quite inefficient trick called the MAX-CONCAT trick"
 	// TODO upgrade to mysql 4.1 and use a subquery
 	performQuery("Insert into tmp", 
       "INSERT INTO tmp
-        SELECT SpeciesAbbreviation,
-          LEFT(        MIN( CONCAT(TripDate,lpad(objectid,6,'0')) ), 10) AS TripDate,
-          0+SUBSTRING( MIN( CONCAT(TripDate,lpad(objectid,6,'0')) ),  11) AS objectid
-        FROM sighting " .
+        SELECT species_id,
+          LEFT(        MIN( CONCAT(trip.Date,lpad(sighting.id,6,'0')) ), 10) AS trip_date,
+          0+SUBSTRING( MIN( CONCAT(trip.Date,lpad(sighting.id,6,'0')) ),  11) AS id
+        FROM sighting, trip " .
         $whereClause . "
-        GROUP BY SpeciesAbbreviation");
+        GROUP BY species_id");
 }
 
 /**
  * Find the first sighting for each species.
  */
-function getFirstSightings($whereClause="WHERE Exclude!='1'")
+function getFirstSightings($whereClause="WHERE sighting.trip_id=trip.id AND Exclude!='1'")
 {
 	$firstSightings = null;
 
@@ -375,15 +377,15 @@ function getFirstSightings($whereClause="WHERE Exclude!='1'")
 
 	$firstSightingQuery = performQuery(
 	  "Find First Sighting",
-      "SELECT tmp.TripDate, tmp.objectid as objectid, tmp.SpeciesAbbreviation
+      "SELECT tmp.trip_date, tmp.id as id, tmp.species_id
         FROM tmp, species
-        WHERE tmp.SpeciesAbbreviation=species.Abbreviation AND species.ABACountable='1' 
-        ORDER BY tripdate, species.objectid;");
+        WHERE tmp.species_id=species.id AND species.ABACountable='1' 
+        ORDER BY trip_date, species.id;");
 
 	$index = 1;
 	while ($info = mysql_fetch_array($firstSightingQuery))
 	{
-		$firstSightingID = $info["objectid"];
+		$firstSightingID = $info["id"];
 		$firstSightings[$firstSightingID] = $index;
 		//		echo $index . $info["abbrev"] . "\n";
 		$index++;
@@ -399,7 +401,7 @@ function getFirstSightings($whereClause="WHERE Exclude!='1'")
  */
 function getFirstYearSightings($theYear)
 {
-	return getFirstSightings("WHERE Exclude!='1' AND year(TripDate)='" . $theYear . "'");
+	return getFirstSightings("WHERE sighting.trip_id=trip.id AND Exclude!='1' AND year(trip.Date)='" . $theYear . "'");
 }
 
 
@@ -410,22 +412,22 @@ function getFirstYearSightings($theYear)
 /**
  * Get information about a specific species entry.
  */
-function getSpeciesInfo($objectid)
+function getSpeciesInfo($id)
 {
 	return performOneRowQuery(
 	    "Get species info",
 		"SELECT *, (ABACountable=0) OR (char_length(Notes)>0) OR (char_length(ReferenceURL)>0) AS noteworthy
          FROM species
-         WHERE objectid='" . $objectid . "'");
+         WHERE id='" . $id . "'");
 }
 
 function speciesBrowseButtons($url, $speciesID, $viewMode)
 {
 	$nextSpeciesID = performCount("Get Next Species ID",
-    "SELECT min(species.objectid)
+    "SELECT min(species.id)
       FROM species, sighting
-      WHERE sighting.SpeciesAbbreviation=species.Abbreviation
-      AND species.objectid>" . $speciesID . " LIMIT 1", false);
+      WHERE sighting.species_id=species.id
+      AND species.id>" . $speciesID . " LIMIT 1", false);
 
 	if ($nextSpeciesID != "")
 	{
@@ -438,10 +440,10 @@ function speciesBrowseButtons($url, $speciesID, $viewMode)
 	}
 
 	$prevSpeciesID = performCount("Get Previous Species ID",
-    "SELECT max(species.objectid)
+    "SELECT max(species.id)
       FROM species, sighting
-      WHERE sighting.SpeciesAbbreviation=species.Abbreviation
-      AND species.objectid<" . $speciesID . " LIMIT 1", false);
+      WHERE sighting.species_id=species.id
+      AND species.id<" . $speciesID . " LIMIT 1", false);
 
 	if ($prevSpeciesID != "")
 	{
@@ -463,7 +465,7 @@ function speciesBrowseButtons($url, $speciesID, $viewMode)
 
 function getFamilyInfoFromSpeciesID($speciesid)
 {
-	return performOneRowQuery("Get Family Info", "select * from taxonomy where objectid='" . getFamilyIDFromSpeciesID($speciesid) . "'");
+	return performOneRowQuery("Get Family Info", "select * from taxonomy where id='" . getFamilyIDFromSpeciesID($speciesid) . "'");
 }
 
 function getFamilyIDFromSpeciesID($speciesid)
@@ -483,27 +485,27 @@ function getFamilyDetailLinkFromSpeciesID($speciesid, $viewMode="species")
 /**
  * Get information about a specific order.
  */
-function getOrderInfo($objectid)
+function getOrderInfo($id)
 {
-	return getTaxonomyInfo($objectid, 10);
+	return getTaxonomyInfo($id, 10);
 }
 
 /**
  * Get information about a specific family.
  */
-function getFamilyInfo($objectid)
+function getFamilyInfo($id)
 {
-	return getTaxonomyInfo($objectid, 7);
+	return getTaxonomyInfo($id, 7);
 }
 
 /**
  * Get information about a specific element of the taxonomy table by replacing digits with zeroes.
  */
-function getTaxonomyInfo($objectid, $blankDigits)
+function getTaxonomyInfo($id, $blankDigits)
 {
 	$shift = pow(10, $blankDigits - 1);
-	$taxonomyID = floor($objectid / $shift) * $shift;
-	$taxonomyQueryString = "SELECT * FROM taxonomy where objectid='" . $taxonomyID . "'";
+	$taxonomyID = floor($id / $shift) * $shift;
+	$taxonomyQueryString = "SELECT * FROM taxonomy where id='" . $taxonomyID . "'";
 
 	return performOneRowQuery("Get Taxonomy Info", $taxonomyQueryString);
 }
@@ -512,10 +514,10 @@ function getTaxonomyInfo($objectid, $blankDigits)
 // ---------------------- TRIPS ------------------------
 //
 
-function getTripInfo($objectid)
+function getTripInfo($id)
 {
 	return performOneRowQuery("Get Trip Info",
-			  "SELECT *, Date as startTimestamp,  from_days(to_days(Date) + 1) as stopTimestamp, date_format(Date, '%W,  %M %D, %Y') as niceDate FROM trip where objectid='" . $objectid . "'");
+			  "SELECT *, Date as startTimestamp,  from_days(to_days(Date) + 1) as stopTimestamp, date_format(Date, '%W,  %M %D, %Y') as niceDate FROM trip where id='" . $id . "'");
 }
 
 function getTripInfoForDate($inDate)
@@ -527,28 +529,28 @@ function getTripInfoForDate($inDate)
 function tripBrowseButtons($url, $tripInfo, $viewMode)
 {
 	$nextTripInfo = performOneRowQuery("Get Next Trip", 
-    "SELECT objectid, date_format(Date, '%b %D, %Y') as niceDate FROM trip
+    "SELECT id, date_format(Date, '%b %D, %Y') as niceDate FROM trip
       WHERE Date > '" . $tripInfo["Date"] . "'
       ORDER BY Date LIMIT 1", false);
 	$prevTripInfo = performOneRowQuery("Get Previous Trip", 
-    "SELECT objectid, date_format(Date, '%b %D, %Y') as niceDate FROM trip
+    "SELECT id, date_format(Date, '%b %D, %Y') as niceDate FROM trip
       WHERE Date < '" . $tripInfo["Date"] . "'
       ORDER BY Date DESC LIMIT 1", false);
 
-	browseButtons("Trip Detail", $url . "?view=" . $viewMode . "&tripid=", $tripInfo["objectid"],
-				  $prevTripInfo["objectid"], $prevTripInfo["niceDate"], $nextTripInfo["objectid"], $nextTripInfo["niceDate"]);
+	browseButtons("Trip Detail", $url . "?view=" . $viewMode . "&id=", $tripInfo["id"],
+				  $prevTripInfo["id"], $prevTripInfo["niceDate"], $nextTripInfo["id"], $nextTripInfo["niceDate"]);
 }
 
 //
 // ---------------------- LOCATIONS ------------------------
 //
 
-function getLocationInfo($objectid)
+function getLocationInfo($id)
 {
 	return performOneRowQuery(
         "Get Location Info",
 		"SELECT *, (char_length(Notes)>0) OR (char_length(ReferenceURL)>0) AS noteworthy
-         FROM location where objectid='" . $objectid . "'");
+         FROM location where id='" . $id . "'");
 }
 
 function getLocationInfoForName($inLocationName)
@@ -564,22 +566,22 @@ function locationBrowseButtons($url, $locationID, $viewMode)
 	$siteInfo = getLocationInfo($locationID);
 
 	$prevLocationInfo = performOneRowQuery("Get Previous Location", 
-      "SELECT objectid, Name FROM location
+      "SELECT id, Name FROM location
         WHERE CONCAT(State,County,Name) < '" . addslashes($siteInfo["State"] . $siteInfo["County"] . $siteInfo["Name"]) . "'
         ORDER BY CONCAT(State,County,Name) DESC LIMIT 1", false);
 
 	$nextLocationInfo = performOneRowQuery("Get Next Location", 
-      "SELECT objectid, Name FROM location
+      "SELECT id, Name FROM location
         WHERE CONCAT(State,County,Name) > '" . addslashes($siteInfo["State"] . $siteInfo["County"] . $siteInfo["Name"]) . "'
         ORDER BY CONCAT(State,County,Name) LIMIT 1", false);
 
 	browseButtons("Location Detail", $url . "?view=" . $viewMode . "&locationid=", $locationID,
-				  $prevLocationInfo["objectid"], $prevLocationInfo["Name"], $nextLocationInfo["objectid"], $nextLocationInfo["Name"]);
+				  $prevLocationInfo["id"], $prevLocationInfo["Name"], $nextLocationInfo["id"], $nextLocationInfo["Name"]);
 }
 
 function getStateInfo($id)
 {
-	return performOneRowQuery("Get State Info", "SELECT * FROM state where objectid='" . $id . "'");
+	return performOneRowQuery("Get State Info", "SELECT * FROM state where id='" . $id . "'");
 }
 
 function getStateInfoForAbbreviation($abbrev)
@@ -590,41 +592,41 @@ function getStateInfoForAbbreviation($abbrev)
 function stateBrowseButtons($stateID, $viewMode)
 {
 	$nextStateID = performCount("Get Next State", 
-    "SELECT min(state.objectid)
+    "SELECT min(state.id)
       FROM state, sighting, location
-      WHERE sighting.LocationName=location.Name AND location.State=state.Abbreviation and state.objectid>" . $stateID . " LIMIT 1");
+      WHERE sighting.location_id=location.id and state.id>" . $stateID . " LIMIT 1");
 
 	if ($nextStateID != "")
 	{
 		$nextStateInfo = getStateInfo($nextStateID);
 		$nextStateLinkText = $nextStateInfo["Name"];
-		$nextStateObjectID = $nextStateInfo["objectid"];
+		$nextStateid = $nextStateInfo["id"];
 	}
 	else
 	{
 		$nextStateLinkText = "";
-		$nextStateObjectID = "";
+		$nextStateid = "";
 	}
 
 	$prevStateID = performCount("Get Previous State",
-    "SELECT max(state.objectid)
+    "SELECT max(state.id)
       FROM state, sighting, location
-      WHERE sighting.LocationName=location.Name AND location.State=state.Abbreviation and state.objectid<" . $stateID . " LIMIT 1");
+      WHERE sighting.location_id=location.id AND state.id<" . $stateID . " LIMIT 1");
 
 	if ($prevStateID != "" )
 	{
 		$prevStateInfo = getStateInfo($prevStateID);
 		$prevStateLinkText = $prevStateInfo["Name"];
-		$prevStateObjectID = $prevStateInfo["objectid"];
+		$prevStateid = $prevStateInfo["id"];
 	}
 	else
 	{
 		$prevStateLinkText = "";
-		$prevStateObjectID = "";
+		$prevStateid = "";
 	}
 
 	browseButtons("State Detail", "./statedetail.php?view=" . $viewMode . "&stateid=", $stateID,
-				  $prevStateObjectID, $prevStateLinkText, $nextStateObjectID, $nextStateLinkText);
+				  $prevStateid, $prevStateLinkText, $nextStateid, $nextStateLinkText);
 }
 
 // -------------------------------------- TIME -----------------------------------
