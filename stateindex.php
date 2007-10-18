@@ -9,7 +9,7 @@ $stateStats = performQuery("Get State Statistics",
     location.State,
     count(distinct sightings.species_id) AS SpeciesCount,
     year(trips.Date) AS theyear
-  FROM location, sighting, trip
+  FROM location, sighting, trips
   WHERE sightings.location_id=locations.id AND sightings.trip_id=trips.id
   GROUP BY location.State, theyear
   ORDER BY State, theyear");
@@ -53,7 +53,7 @@ $request->globalMenu();
 <? while ($info = mysql_fetch_array($visitedStatesQuery))
    { $id = $info["id"];
 	 $info = getStateInfo($id);
-     $state = $info["Abbreviation"]; ?>
+     $state = $info["abbreviation"]; ?>
     <tr>
       <td><a href="./statedetail.php?stateid=<?= $info["id"] ?>"><?= getStateNameForAbbreviation($state) ?></a></td>
 <?	  for ($year = getEarliestYear(); $year <= getLatestYear(); $year++)

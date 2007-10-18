@@ -9,7 +9,7 @@ drop table if exists location;
 CREATE TABLE location (
   id mediumint(9) NOT NULL auto_increment,
   Name varchar(255),
-  ReferenceURL text,
+  reference_url text,
   City text,
   County varchar(255),
   State char(2),
@@ -31,7 +31,7 @@ CREATE TABLE location (
 drop table if exists countyfrequency;
 
 CREATE TABLE countyfrequency (
-  CommonName varchar(255),
+  common_name varchar(255),
   Frequency tinyint(2),
   SpeciesID bigint(20)
 ) TYPE=MyISAM;
@@ -45,14 +45,14 @@ drop table if exists species;
 CREATE TABLE species (
   id bigint(20) NOT NULL default '0',
   Abbreviation varchar(6) default NULL,
-  LatinName text,
-  CommonName text,
+  latin_name text,
+  common_name text,
   Notes text,
-  ReferenceURL text,
-  ABACountable boolean NOT NULL default 1,
+  reference_url text,
+  aba_countable boolean NOT NULL default 1,
   PRIMARY KEY  (id),
   KEY AbbreviationIndex (Abbreviation),
-  KEY ABACountableIndex (ABACountable)
+  KEY aba_countableIndex (aba_countable)
 ) TYPE=MyISAM;
 
 --
@@ -64,10 +64,10 @@ drop table if exists taxonomy;
 CREATE TABLE taxonomy (
   id bigint(20) NOT NULL default '0',
   HierarchyLevel varchar(16) default NULL,
-  LatinName text,
-  CommonName text,
+  latin_name text,
+  common_name text,
   Notes text,
-  ReferenceURL text,
+  reference_url text,
   PRIMARY KEY  (id),
   KEY idIndex (id),
   KEY hierarchyLevelIndex (HierarchyLevel)
@@ -82,7 +82,7 @@ drop table if exists trip;
 CREATE TABLE trip (
   id mediumint(9) NOT NULL auto_increment,
   Leader text,
-  ReferenceURL text,
+  reference_url text,
   Name text,
   Notes text,
   Date date default NULL,

@@ -61,7 +61,7 @@ $request->globalMenu();
   </tr>
   <tr>
 	<td class="fieldlabel">Abbreviation</td>
-	<td><input type="text" name="Abbreviation" value="<?= $speciesInfo["Abbreviation"] ?>" size="30"/></td>
+	<td><input type="text" name="abbreviation" value="<?= $speciesInfo["abbreviation"] ?>" size="30"/></td>
   </tr>
   <tr>
 	<td class="fieldlabel">Notes</td>

@@ -48,7 +48,7 @@ $request->globalMenu();
 
     editLink("./sightingedit.php?id=" . $sightingInfo["id"]);
 
-	if ($sightingInfo["Photo"] == "1") {
+	if ($sightingInfo["photo"] == "1") {
 ?>
         <?= getPhotoLinkForSightingInfo($sightingInfo, "sightingid") ?>
 <?

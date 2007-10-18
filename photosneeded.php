@@ -16,7 +16,7 @@ $dayStop = $localtimearray["tm_yday"] + 3;
 if ($sortCriteria == "") { $sortCriteria = "id"; }
 
 $photoCount = performQuery("Count Photos", "
-    SELECT species.common_name, species.id, SUM(sightings.Photo) AS theSum, COUNT(sightings.id) as theCount
+    SELECT species.common_name, species.id, SUM(sightings.photo) AS theSum, COUNT(sightings.id) as theCount
       FROM species, sighting WHERE sightings.species_id=species.id AND species.aba_countable != '0'
       GROUP BY species.common_name ORDER BY " . $sortCriteria);
 

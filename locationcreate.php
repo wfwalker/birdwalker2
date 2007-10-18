@@ -38,7 +38,7 @@ if ($postLocationID != "") {
 	$latLongSystem = postValue("LatLongSystem");
 	$latitude = postValue("Latitude");
 	$longitude = postValue("Longitude");
-	$photo = postValue("Photo");
+	$photo = postValue("photo");
 
 	if ($save == "Save/Rename")
 	{
@@ -140,7 +140,7 @@ $request->globalMenu();
   </tr>
   <tr>
 	<td class="fieldlabel">Photo</td>
-	<td><input type="checkbox" name="Photo" value="1" <?php if ($locationInfo["Photo"] == "1") { echo "checked"; } ?> /></td>
+	<td><input type="checkbox" name="photo" value="1" <?php if ($locationInfo["photo"] == "1") { echo "checked"; } ?> /></td>
   </tr>
   <tr>
 	<td class="fieldlabel">Notes</td>

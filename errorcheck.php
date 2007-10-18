@@ -5,22 +5,22 @@ require_once("./request.php");
 
 $badAbbrevs = performQuery("Find Bad Abbreviations",
     "SELECT sightings.*, sightings.id AS sightingid
-      FROM sighting
+      FROM sightings
       WHERE species_id = 0");
 
 $badSightingDates = performQuery("Find Bad Sighting Dates",
     "SELECT sightings.*, sightings.id AS sightingid
-      FROM sighting
+      FROM sightings
       WHERE trip_id = 0");
 
 $badSightingLocations = performQuery("Find Bad Sighting Locations",
     "SELECT sightings.*, sightings.id AS sightingid
-      FROM sighting
+      FROM sightings
       WHERE location_id = 0");
 
 
 $missingLatLong = performQuery("Find Missing Lat/Long",
-    "SELECT * FROM location WHERE Latitude=0 OR Longitude=0");
+    "SELECT * FROM locations WHERE Latitude=0 OR Longitude=0");
 
 htmlHead("Bad Records");
 

@@ -12,7 +12,7 @@ performQuery("Put in defaults for all speciesw", "INSERT INTO tmp SELECT species
 performQuery("Put Santa Clara County Sightings into Tmp",
   "INSERT INTO tmp
     SELECT species.common_name, species.id, count(sightings.id) as sightingCount
-    FROM sightings, species, locations, trip
+    FROM sightings, species, locations, trips
     WHERE species.id=sightings.species_id
 	  AND trips.id=sightings.trip_id
       AND sightings.location_id=locations.id and location.State='CA' AND location.County='Santa Clara'

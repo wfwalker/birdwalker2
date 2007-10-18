@@ -54,7 +54,7 @@ class SightingQuery extends BirdWalkerQuery
 			$whereClause = $whereClause . " AND locations.County='" . $this->mReq->getCounty() . "'";
 		} elseif ($this->mReq->getStateID() != "") {
 			$stateInfo = getStateInfo($this->mReq->getStateID());
-			$whereClause = $whereClause . " AND locations.State='" . $stateInfo["Abbreviation"] . "'";
+			$whereClause = $whereClause . " AND locations.State='" . $stateInfo["abbreviation"] . "'";
 		}
 
 		if ($this->mReq->getSpeciesID() != "") {
@@ -123,7 +123,7 @@ class SightingQuery extends BirdWalkerQuery
 		return performQuery("Find sightings with photos", 
 			$this->getSelectClause() . " " .
 			$this->getFromClause() . " " .
-			$this->getWhereClause() . " AND sightings.Photo='1' " . 
+			$this->getWhereClause() . " AND sightings.photo='1' " . 
 			$this->getOrderByClause());
 	}
 

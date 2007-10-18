@@ -6,7 +6,7 @@ require_once("./request.php");
 $photoSpecies = performQuery("Find Species With Photos",
     "SELECT DISTINCT species.*, COUNT(DISTINCT sightings.id) AS photoCount, max(trips.Date) as latestPhoto
       FROM species, sighting, trip
-      WHERE trips.id=sightings.trip_id AND species.id=sightings.species_id AND sightings.Photo='1' AND species.aba_countable != '0'
+      WHERE trips.id=sightings.trip_id AND species.id=sightings.species_id AND sightings.photo='1' AND species.aba_countable != '0'
       GROUP BY sightings.species_id ORDER BY species.id");
 $photoCount = performCount("Count Photos",
     "SELECT COUNT(*) FROM sighting WHERE Photo='1'");

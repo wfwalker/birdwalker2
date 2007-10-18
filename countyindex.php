@@ -31,7 +31,7 @@ $prevState = "NONE";
 $countyToAccumulate = "NONE";
 $countyStats = performQuery("Get County Statistics By Year",
     "SELECT location.County, location.State, state.objectid as StateID, location.objectid, COUNT(DISTINCT sightings.SpeciesAbbreviation) AS
-      SpeciesCount, year(sightings.TripDate) AS theyear
+      SpeciesCount, year(trips.date) AS theyear
       FROM location, sighting, state
       WHERE locations.id=sightings.location_id AND state.Abbreviation=location.State
       GROUP BY location.County, theyear

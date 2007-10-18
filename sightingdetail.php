@@ -37,7 +37,7 @@ $request->globalMenu();
   <tr><td class="fieldlabel">Location.Name</td><td><?= $locationInfo["name"] ?></td></tr>
   <tr><td class="fieldlabel">Notes</td><td><?= $sightingInfo["notes"] ?></td></tr>
   <tr><td class="fieldlabel">Exclude</td><td><?= $sightingInfo["Exclude"] ?></td></tr>
-  <tr><td class="fieldlabel">Photo</td><td><?= $sightingInfo["Photo"] ?></td></tr>
+  <tr><td class="fieldlabel">Photo</td><td><?= $sightingInfo["photo"] ?></td></tr>
   <tr><td class="fieldlabel">Trip.Date</td><td><?= $tripInfo["date"] ?></td></tr>
 
   <tr><td class="heading" colspan="2">Species</td></tr>

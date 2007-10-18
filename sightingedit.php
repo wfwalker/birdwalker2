@@ -30,7 +30,7 @@ if ($postSightingID != "") {
 
 	if ($save != "") {
 		performQuery("Update the sighting", 
-					 "UPDATE sighting SET SpeciesAbbreviation='" . mysql_escape_string($speciesAbbreviation) . 
+					 "UPDATE sightings SET SpeciesAbbreviation='" . mysql_escape_string($speciesAbbreviation) . 
 					 "', LocationName='" . $locationName . 
 					 "', TripDate='" . mysql_escape_string($tripDate) . 
 					 "', Notes='" . mysql_escape_string($notes) . 
@@ -70,7 +70,7 @@ $tripInfo = getTripInfo($sightingInfo["trip_id"]);
 $locationInfo = getLocationInfo($sightingInfo["location_id"]);
 $stateInfo = getStateInfoForAbbreviation($locationInfo["state"]);
 
-$locationList = performQuery("Get Location List", "SELECT Name, id from location ORDER BY Name");
+$locationList = performQuery("Get Location List", "SELECT name, id from locations ORDER BY name");
 
 if ($speciesInfo == "") {
     htmlHead("Invalid Species Abbreivation, " . $tripInfo["niceDate"]);
@@ -113,7 +113,7 @@ $request->globalMenu();
   </tr>
   <tr>
 	<td class="fieldlabel">Abbreviation</td>
-	<td><input type="text" name="SpeciesAbbreviation" value="<?= $speciesInfo["Abbreviation"] ?>" size="6"/></td>
+	<td><input type="text" name="SpeciesAbbreviation" value="<?= $speciesInfo["abbreviation"] ?>" size="6"/></td>
   </tr>
   <tr>
 	<td class="fieldlabel">Location</td>
@@ -135,11 +135,11 @@ $request->globalMenu();
   </tr>
   <tr>
 	<td class="fieldlabel">Exclude</td>
-	<td><input type="checkbox" name="Exclude" value="1" <?php if ($sightingInfo["Exclude"] == "1") { echo "checked"; } ?> /></td>
+	<td><input type="checkbox" name="Exclude" value="1" <?php if ($sightingInfo["exclude"] == "1") { echo "checked"; } ?> /></td>
   </tr>
   <tr>
 	<td class="fieldlabel">Photo</td>
-	<td><input type="checkbox" name="Photo" value="1" <?php if ($sightingInfo["Photo"] == "1") { echo "checked"; } ?> /></td>
+	<td><input type="checkbox" name="photo" value="1" <?php if ($sightingInfo["photo"] == "1") { echo "checked"; } ?> /></td>
   </tr>
   <tr>
 	<td class="fieldlabel">TripDate</td>

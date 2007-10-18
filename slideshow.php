@@ -16,7 +16,7 @@ if ($request->getSightingID() == "")
 	$sightingQuery->getSelectClause() . " " .
 	$sightingQuery->getFromClause() . " " .
 	$sightingQuery->getWhereClause() . "
-      AND sightings.Photo='1' ORDER BY CONCAT(trips.Date,sightings.id) DESC LIMIT 1"));
+      AND sightings.photo='1' ORDER BY CONCAT(trips.Date,sightings.id) DESC LIMIT 1"));
 }
 
 if ($request->getSightingID() == "")
@@ -33,14 +33,14 @@ $nextPhotoID = performCount("Get Next Photo Sighting ID",
 	$sightingQuery->getSelectClause() . " " .
 	$sightingQuery->getFromClause() . " " .
 	$sightingQuery->getWhereClause() . "
-      AND sightings.Photo='1' AND CONCAT(trips.Date,sightings.id) < '" . $tripInfo["date"] . $sightingInfo["id"] . "'
+      AND sightings.photo='1' AND CONCAT(trips.Date,sightings.id) < '" . $tripInfo["date"] . $sightingInfo["id"] . "'
       ORDER BY CONCAT(trips.Date,sightings.id) DESC LIMIT 1");
 
 $prevPhotoID = performCount("Get Prev Photo Sighting ID",
 	$sightingQuery->getSelectClause() . " " .
 	$sightingQuery->getFromClause() . " " .
 	$sightingQuery->getWhereClause() . "
-      AND sightings.Photo='1' AND CONCAT(trips.Date,sightings.id) > '" . $tripInfo["date"] . $sightingInfo["id"] . "'
+      AND sightings.photo='1' AND CONCAT(trips.Date,sightings.id) > '" . $tripInfo["date"] . $sightingInfo["id"] . "'
       ORDER BY CONCAT(trips.Date,sightings.id) LIMIT 1");
 
 $tripYear =  substr($tripInfo["date"], 0, 4);

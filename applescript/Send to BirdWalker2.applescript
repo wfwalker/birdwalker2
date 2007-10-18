@@ -25,18 +25,18 @@ on run
 			end if
 			
 			-- require a species name
-			set speciesCommonName to custom field "Species Common Name" of anItem as string
-			if (speciesCommonName is "") then
-				set UserReply to display dialog "Common Name" default answer "Name"
+			set speciescommon_name to custom field "Species Common Name" of anItem as string
+			if (speciescommon_name is "") then
+				set UserReply to display dialog "Common Name" default answer "name"
 				set (custom field "Species Common Name" of anItem) to text returned of UserReply
-				set speciesCommonName to text returned of UserReply
+				set speciescommon_name to text returned of UserReply
 			end if
 			
 			-- require a birdwalker filename
 			set birdwalkerFilename to custom field "Birdwalker.Filename" of anItem as string
 			if (birdwalkerFilename is "") then
 				try
-					set proposedAbbrev to do shell script "echo \"select Abbreviation from species where CommonName='" & speciesCommonName & "'\" | /usr/local/mysql/bin/mysql --skip-column-names -u birdwalker -pbirdwalker birdwalker"
+					set proposedAbbrev to do shell script "echo \"select Abbreviation from species where common_name='" & speciescommon_name & "'\" | /usr/local/mysql/bin/mysql --skip-column-names -u birdwalker -pbirdwalker birdwalker"
 				on error
 					set proposedAbbrev to "XXXXXX"
 				end try

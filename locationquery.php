@@ -11,7 +11,7 @@ class LocationQuery extends BirdWalkerQuery
 
 	function getSelectClause()
 	{
- 		$selectClause = "SELECT DISTINCT locations.id, locations.*, SUM(sightings.Photo) as locationPhotos, locations.Notes as locationNotes";
+ 		$selectClause = "SELECT DISTINCT locations.id, locations.*, SUM(sightings.photo) as locationPhotos, locations.Notes as locationNotes";
 
 		return $selectClause;
 	}
@@ -49,7 +49,7 @@ class LocationQuery extends BirdWalkerQuery
 			$whereClause = $whereClause . " AND locations.id=sightings.location_id"; 
 		} elseif ($this->mReq->getStateID() != "") {
 			$stateInfo = getStateInfo($this->mReq->getStateID());
-			$whereClause = $whereClause . " AND locations.State='" . $stateInfo["Abbreviation"] . "'";
+			$whereClause = $whereClause . " AND locations.State='" . $stateInfo["abbreviation"] . "'";
 			$whereClause = $whereClause . " AND locations.id=sightings.location_id"; 
 		}
 
@@ -96,7 +96,7 @@ class LocationQuery extends BirdWalkerQuery
 		  "Count Photos",
           "SELECT COUNT(DISTINCT locations.id) ".
 			$this->getFromClause() . " " .
-			$this->getWhereClause() . " AND sightings.Photo='1'");
+			$this->getWhereClause() . " AND sightings.photo='1'");
 	}
 
 	function performQuery()
@@ -112,13 +112,13 @@ class LocationQuery extends BirdWalkerQuery
 		// TODO, we want both a minimum map dimension, and a minimum margin around the group of points
 		$extrema = performOneRowQuery("Find Location Extrema",
           "SELECT
-            max(locations.Latitude) as maxLat, 
-            min(locations.Latitude) as minLat, 
-            max(locations.Longitude) as maxLong, 
-            min(locations.Longitude) as minLong " .
+            max(locations.latitude) as maxLat, 
+            min(locations.latitude) as minLat, 
+            max(locations.longitude) as maxLong, 
+            min(locations.longitude) as minLong " .
 			$this->getFromClause() . " " .
 			$this->getWhereClause() . " " .
-			"AND locations.Latitude>0 AND locations.Longitude<0"); 
+			"AND locations.latitude>0 AND locations.longitude<0"); 
 
 		return $extrema;
 	}

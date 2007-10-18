@@ -20,10 +20,10 @@ class Map
 	function performDBQuery()
 	{
 		return performQuery("Find map items",
-							$this->mLocationQuery->getSelectClause() . ", location.Latitude, location.Longitude" .
+							$this->mLocationQuery->getSelectClause() . ", location.latitude, location.longitude" .
 							$this->mLocationQuery->getFromClause() . " " . 
 							$this->mLocationQuery->getWhereClause() .
-							" GROUP BY locations.id ORDER BY location.Latitude desc, location.Longitude");
+							" GROUP BY locations.id ORDER BY location.latitude desc, location.longitude");
 	}
 
 	function draw($inDrawControls = false)

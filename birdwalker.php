@@ -361,7 +361,7 @@ function buildFirstSightingsTable($whereClause)
         SELECT species_id,
           LEFT(        MIN( CONCAT(trips.Date,lpad(sightings.id,6,'0')) ), 10) AS trip_date,
           0+SUBSTRING( MIN( CONCAT(trips.Date,lpad(sightings.id,6,'0')) ),  11) AS id
-        FROM sightings, trip " .
+        FROM sightings, trips " .
         $whereClause . "
         GROUP BY species_id");
 }

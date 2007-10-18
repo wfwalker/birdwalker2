@@ -35,7 +35,7 @@ else
 
 $prevPhotoID = performCount(
 	"Get Previous Photo",
-    "SELECT sightings.id FROM sightings, trip
+    "SELECT sightings.id FROM sightings, trips
       WHERE sightings.trip_id=trips.id AND Photo='1' AND CONCAT(trips.Date,sightings.id) < '" . $tripInfo["date"] . $request->getSightingID() . "'
       ORDER BY CONCAT(trips.Date,sightings.id) DESC LIMIT 1");
 
@@ -71,7 +71,7 @@ $request->globalMenu();
 
 <div id="contentright">
 
-<?  if ($sightingInfo["Photo"] == "1")
+<?  if ($sightingInfo["photo"] == "1")
     {
         $photoFilename = getPhotoFilename($sightingInfo);
 

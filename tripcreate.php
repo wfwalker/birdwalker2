@@ -147,7 +147,7 @@ if ($save == "Save")
 <?            } ?>
 
 			  <div>
-                  <input type="checkbox" name="Abbreviations[]" value="<?= $info["Abbreviation"]?>"/>
+                  <input type="checkbox" name="Abbreviations[]" value="<?= $info["abbreviation"]?>"/>
                   <?= $info["common_name"] ?>
               </div>
 <?            $prevInfo = $info;

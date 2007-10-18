@@ -40,20 +40,20 @@ function dashboard()
       SELECT COUNT(DISTINCT species.id)
         FROM species, sightings
         WHERE species.id=sightings.species_id
-        AND Year(sightings.TripDate)='2006'");
+        AND Year(trips.date)='2006'");
 
     $countyYearBirds = performCount("county year birds", "
       SELECT COUNT(DISTINCT species.id)
         FROM species, sightings, locations
         WHERE sightings.species_id=species.id
-        AND Year(sightings.TripDate)='2006' AND
+        AND Year(trips.date)='2006' AND
         sightings.LocationName=location.Name AND location.County='Santa Clara'");
 
     $stateYearBirds = performCount("state year birds", "
       SELECT COUNT(DISTINCT species.id)
         FROM species, sightings, locations
         WHERE sightings.species_id=species.id
-        AND Year(sightings.TripDate)='2006' AND
+        AND Year(trips.date)='2006' AND
         sightings.LocationName=location.Name AND location.State='CA'");
 
 

@@ -28,9 +28,9 @@ $prevState = "NONE";
 $countyToAccumulate = "NONE";
 $countyStats = performQuery("Find species counts per leader", "
     SELECT trips.Leader, COUNT(DISTINCT sightings.SpeciesAbbreviation) AS
-      SpeciesCount, year(sightings.TripDate) AS theyear
+      SpeciesCount, year(trips.date) AS theyear
       FROM trip, sighting
-      WHERE sightings.TripDate=trips.Date
+      WHERE trips.date=trips.Date
       GROUP BY trips.Leader, theyear
       ORDER BY trips.Leader, theyear"); ?>
 
