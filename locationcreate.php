@@ -29,12 +29,12 @@ if ($new == "New") { $postLocationID = 1 + performCount("Find new id", "select m
 // if we have a POST id and either a new or a save button, then time to update
 if ($postLocationID != "") {
 	
-	$name = postValue("Name");
-	$referenceURL = postValue("ReferenceURL");
+	$name = postValue("name");
+	$reference_url = postValue("reference_url");
 	$city = postValue("City");
-	$county = postValue("County");
-	$state = postValue("State");
-	$notes = postValue("Notes");
+	$county = postValue("county");
+	$state = postValue("state");
+	$notes = postValue("notes");
 	$latLongSystem = postValue("LatLongSystem");
 	$latitude = postValue("Latitude");
 	$longitude = postValue("Longitude");
@@ -47,7 +47,7 @@ if ($postLocationID != "") {
 		    $alreadyHasNewName = performCount("already named that", "SELECT COUNT(*) FROM location WHERE Name='" . mysql_escape_string($name) . "'");
 		    if ($alreadyHasNewName != "0") { die("Location name '" . $name . "' already in use."); }
 
-			performQuery("Update sightings", "UPDATE sighting SET ".
+			performQuery("Update sightings", "UPDATE sightings SET ".
 						 "LocationName='" . $name . "' WHERE LocationName='" . mysql_escape_string($postLocationInfo['Name']) . "'");
 
 			echo "location renamed";
@@ -55,7 +55,7 @@ if ($postLocationID != "") {
 
 		performQuery("Update location", "UPDATE location SET ".
 					 "Name='" . $name . "', " .
-					 "ReferenceURL='". $referenceURL . "', " .
+					 "reference_url='". $reference_url . "', " .
 					 "City='" . $city . "', " .
 					 "County='" . mysql_escape_string($county) . "', " .
 					 "State='". $state . "', " .
@@ -70,7 +70,7 @@ if ($postLocationID != "") {
 	{
 		performQuery("Create new location", "INSERT INTO location VALUES (" . $postLocationID . ", '" .
 					 $name . "', '" .
-					 $referenceURL . "', '" .
+					 $reference_url . "', '" .
 					 $city . "', '" .
 					 $county . "', '" .
 					 $state . "', '" .
@@ -86,7 +86,7 @@ if ($postLocationID != "") {
 
 $locationInfo = getLocationInfo($locationID);
 
-htmlHead($locationInfo["Name"] . ", " .  $locationInfo["State"]);
+htmlHead($locationInfo["name"] . ", " .  $locationInfo["state"]);
 
 
 $request->globalMenu();
@@ -95,7 +95,7 @@ $request->globalMenu();
 <div id="topright-location">
  <? locationBrowseButtons("./locationcreate.php", $locationID, "lists"); ?>
   <a href="./locationdetail.php?locationid=<?= $locationInfo["id"] ?>">
-  <div class="pagetitle"><?= $locationInfo["Name"] ?></div></a>
+  <div class="pagetitle"><?= $locationInfo["name"] ?></div></a>
 </div>
 
 <div id="contentright">
@@ -108,11 +108,11 @@ $request->globalMenu();
 <table class="report-content" width="100%">
   <tr>
 	<td class="fieldlabel">Name</td>
-	<td><input type="text" name="Name" value="<?= $locationInfo['Name'] ?>" size="30"/></td>
+	<td><input type="text" name="name" value="<?= $locationInfo['Name'] ?>" size="30"/></td>
   </tr>
   <tr>
-	<td class="fieldlabel">ReferenceURL</td>
-	<td><input type="text" name="ReferenceURL" value="<?= $locationInfo['ReferenceURL'] ?>" size="60"/></td>
+	<td class="fieldlabel">reference_url</td>
+	<td><input type="text" name="reference_url" value="<?= $locationInfo['reference_url'] ?>" size="60"/></td>
   </tr>
   <tr>
 	<td class="fieldlabel">City</td>
@@ -120,11 +120,11 @@ $request->globalMenu();
   </tr>
   <tr>
 	<td class="fieldlabel">County</td>
-	<td><input type="text" name="County" value="<?= $locationInfo['County'] ?>" size="30"/></td>
+	<td><input type="text" name="county" value="<?= $locationInfo['County'] ?>" size="30"/></td>
   </tr>
   <tr>
 	<td class="fieldlabel">State</td>
-	<td><input type="text" name="State" value="<?= $locationInfo['State'] ?>" size="30"/></td>
+	<td><input type="text" name="state" value="<?= $locationInfo['State'] ?>" size="30"/></td>
   </tr>
   <tr>
 	<td class="fieldlabel">LatLongSystem</td>
@@ -144,7 +144,7 @@ $request->globalMenu();
   </tr>
   <tr>
 	<td class="fieldlabel">Notes</td>
-    <td><textarea name="Notes" cols="60" rows="20"><?= stripslashes($locationInfo['Notes']) ?></textarea></td>
+    <td><textarea name="notes" cols="60" rows="20"><?= stripslashes($locationInfo['Notes']) ?></textarea></td>
   </tr>
   <tr>
 	<td><input type="hidden" name="locationid" value="<?= $locationID ?>"/></td>

@@ -14,19 +14,19 @@ getEnableEdit() or die("Editing disabled");
 
 if (($request->getSpeciesID() != "") && ($save == "Save"))
 {
-	$commonName = $_POST['CommonName'];
-	$latinName = $_POST['LatinName'];
+	$common_name = $_POST['common_name'];
+	$latin_name = $_POST['latin_name'];
 	$abbreviation = $_POST['Abbreviation'];
 	$notes = $_POST['Notes'];
-	$referenceURL = $_POST['ReferenceURL'];
-	$abaCountable = $_POST['ABACountable'];
+	$reference_url = $_POST['reference_url'];
+	$aba_countable = $_POST['aba_countable'];
 
-    performQuery("save changes to species", "update species set CommonName='" . $commonName . 
-				 "', LatinName='" . $latinName . 
+    performQuery("save changes to species", "update species set common_name='" . $common_name . 
+				 "', latin_name='" . $latin_name . 
 				 "', Abbreviation='" . $abbreviation . 
 				 "', Notes='" . $notes . 
-				 "', ReferenceURL='" . $referenceURL . 
-				 "', ABACountable='" . $abaCountable . 
+				 "', reference_url='" . $reference_url . 
+				 "', aba_countable='" . $aba_countable . 
 				 "' where id='" . $request->getSpeciesID() . "'");
 
 	echo "<a href=\"./speciesdetail.php?speciesid=" . $request->getSpeciesID() . "\"><b>Species Updated</b></a>";
@@ -34,7 +34,7 @@ if (($request->getSpeciesID() != "") && ($save == "Save"))
 
 $speciesInfo = getSpeciesInfo($request->getSpeciesID());
 
-htmlHead($speciesInfo["CommonName"]);
+htmlHead($speciesInfo["common_name"]);
 
 $request->globalMenu();
 ?>
@@ -42,7 +42,7 @@ $request->globalMenu();
 <div id="topright-species">
     <? speciesBrowseButtons("./speciesedit.php", $request->getSpeciesID(), $request->getView()); ?>
   <a href="./speciesdetail.php?speciesid=<?= $speciesInfo["id"] ?>">
-    <div class="pagetitle"><?= $speciesInfo["CommonName"] ?></div>
+    <div class="pagetitle"><?= $speciesInfo["common_name"] ?></div>
 </a>
 </div>
 
@@ -53,11 +53,11 @@ $request->globalMenu();
 <table class="report-content" width="100%">
   <tr>
 	<td class="fieldlabel">Common Name</td>
-	<td><input type="text" name="CommonName" value="<?= $speciesInfo["CommonName"] ?>" size="30"/></td>
+	<td><input type="text" name="common_name" value="<?= $speciesInfo["common_name"] ?>" size="30"/></td>
   </tr>
   <tr>
 	<td class="fieldlabel">Latin Name</td>
-	<td><input type="text" name="LatinName" value="<?= $speciesInfo["LatinName"] ?>" size="30"/></td>
+	<td><input type="text" name="latin_name" value="<?= $speciesInfo["latin_name"] ?>" size="30"/></td>
   </tr>
   <tr>
 	<td class="fieldlabel">Abbreviation</td>
@@ -65,17 +65,17 @@ $request->globalMenu();
   </tr>
   <tr>
 	<td class="fieldlabel">Notes</td>
-    <td><textarea name="Notes" cols="60" rows="20"><?= stripslashes($speciesInfo["Notes"]) ?></textarea></td>
+    <td><textarea name="notes" cols="60" rows="20"><?= stripslashes($speciesInfo["notes"]) ?></textarea></td>
   </tr>
 
   <tr>
-	<td class="fieldlabel">ReferenceURL</td>
-	<td><input type="text" name="ReferenceURL" value="<?= $speciesInfo["ReferenceURL"] ?>" size="80"/></td>
+	<td class="fieldlabel">reference_url</td>
+	<td><input type="text" name="reference_url" value="<?= $speciesInfo["reference_url"] ?>" size="80"/></td>
   </tr>
 
   <tr>
-	<td class="fieldlabel">ABACountable</td>
-	<td><input type="text" name="ABACountable" value="<?= $speciesInfo["ABACountable"] ?>" size="20"/></td>
+	<td class="fieldlabel">aba_countable</td>
+	<td><input type="text" name="aba_countable" value="<?= $speciesInfo["aba_countable"] ?>" size="20"/></td>
   </tr>
 
   <tr>

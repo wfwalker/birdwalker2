@@ -8,9 +8,9 @@ require_once("./speciesquery.php");
 $request = new Request;
 
 $tripInfo = $request->getTripInfo();
-$tripYear = substr($tripInfo["Date"], 0, 4);
+$tripYear = substr($tripInfo["date"], 0, 4);
 
-htmlHead( $tripInfo["Name"]);
+htmlHead( $tripInfo["name"]);
 
 $request->globalMenu();
 ?>
@@ -19,7 +19,7 @@ $request->globalMenu();
     <div id="topright-trip">
       <? tripBrowseButtons("./tripdetail.php", $request->getTripInfo(), $request->getView()); ?>
         <div class="pagetitle">
-            <?= $tripInfo["Name"] ?>
+            <?= $tripInfo["name"] ?>
             <?= editLink("./tripedit.php?tripid=" . $request->getTripID()); ?>
         </div>
         <div class="pagesubtitle"><?= $tripInfo["niceDate"] ?></div>
@@ -29,11 +29,11 @@ $request->globalMenu();
     <div id="contentright">
 	    <div class="heading">Notes</div>
         <div class="onecolumn">
-		  <div class="report-content">Led by <?= $tripInfo["Leader"] ?></div>
-		  <div class="report-content"><? referenceURL($tripInfo); ?></div>
-<?          if ($tripInfo["Notes"] != "")
+		  <div class="report-content">Led by <?= $tripInfo["leader"] ?></div>
+		  <div class="report-content"><? reference_url($tripInfo); ?></div>
+<?          if ($tripInfo["notes"] != "")
 		    { ?>
-              <div class="report-content"><?= stripslashes($tripInfo["Notes"]) ?></div>
+              <div class="report-content"><?= stripslashes($tripInfo["notes"]) ?></div>
 <?          } ?>
         </div>
 
@@ -67,7 +67,7 @@ if ($request->getView() == "speciesbylocation")
  ?>
 
     <div class="heading">
-        <a href="./locationdetail.php?locationid=<?= $locationInfo["id"]?>"><?= $locationInfo["Name"] ?></a>
+        <a href="./locationdetail.php?locationid=<?= $locationInfo["id"]?>"><?= $locationInfo["name"] ?></a>
     </div>
 
 <?

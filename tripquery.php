@@ -11,11 +11,11 @@ class TripQuery extends BirdWalkerQuery
 
 	function getSelectClause()
 	{
- 		$selectClause = "SELECT DISTINCT trip.id, trip.Name, trip.Notes, trip.Date, date_format(trip.Date, '%M %D') AS niceDate, year(trip.Date) as year, sum(sighting.Photo) as tripPhotos";
+ 		$selectClause = "SELECT DISTINCT trips.id, trips.Name, trips.Notes, trips.Date, date_format(trips.Date, '%M %D') AS niceDate, year(trips.Date) as year, sum(sightings.Photo) as tripPhotos";
 
 		if ($this->mReq->getSpeciesID() != "")
 		{
-			$selectClause = $selectClause . ", sighting.Notes as sightingNotes, sighting.Exclude, sighting.Photo, sighting.id AS sightingid";
+			$selectClause = $selectClause . ", sightings.Notes as sightingNotes, sightings.Exclude, sightings.Photo, sightings.id AS sightingid";
 		}
 
 		return $selectClause;
@@ -34,46 +34,46 @@ class TripQuery extends BirdWalkerQuery
 		}
 
 		if ($this->mReq->getLocationID() != "") {
-			$otherTables = $otherTables . ", location";
+			$otherTables = $otherTables . ", locations";
 		} elseif ($this->mReq->getCounty() != "") {
-			$otherTables = $otherTables . ", location";
+			$otherTables = $otherTables . ", locations";
 		} elseif ($this->mReq->getStateID() != "") {
-			$otherTables = $otherTables . ", location";
+			$otherTables = $otherTables . ", locations";
 		}
 
 		return "
-            FROM sighting, trip" . $otherTables . " ";
+            FROM sightings, trips" . $otherTables . " ";
 	}
 
 
 	function getWhereClause()
 	{
-		$whereClause = "WHERE sighting.trip_id=trip.id";
+		$whereClause = "WHERE sightings.trip_id=trips.id";
 
 		if ($this->mReq->getLocationID() != "") {
-			$whereClause = $whereClause . " AND location.id='" . $this->mReq->getLocationID() . "'";
+			$whereClause = $whereClause . " AND locations.id='" . $this->mReq->getLocationID() . "'";
 		} elseif ($this->mReq->getCounty() != "") {
-			$whereClause = $whereClause . " AND location.County='" . $this->mReq->getCounty() . "'";
-			$whereClause = $whereClause . " AND location.id=sighting.location_id"; 
+			$whereClause = $whereClause . " AND locations.County='" . $this->mReq->getCounty() . "'";
+			$whereClause = $whereClause . " AND locations.id=sightings.location_id"; 
 		} elseif ($this->mReq->getStateID() != "") {
 			$stateInfo = $this->mReq->getStateInfo();
-			$whereClause = $whereClause . " AND location.State='" . $stateInfo["Abbreviation"] . "'";
-			$whereClause = $whereClause . " AND location.id=sighting.location_id"; 
+			$whereClause = $whereClause . " AND locations.State='" . $stateInfo["Abbreviation"] . "'";
+			$whereClause = $whereClause . " AND locations.id=sightings.location_id"; 
 		}
 
 		if ($this->mReq->getSpeciesID() != "") {
 			$whereClause = $whereClause . " AND species.id='" . $this->mReq->getSpeciesID() . "'";
-			$whereClause = $whereClause . " AND sighting.species_id=species.id"; 
+			$whereClause = $whereClause . " AND sightings.species_id=species.id"; 
 		} elseif ($this->mReq->getFamilyID() != "") {
 			$whereClause = $whereClause . " AND
               species.id >= " . $this->mReq->getFamilyID() * pow(10, 7) . " AND
               species.id < " . ($this->mReq->getFamilyID() + 1) * pow(10, 7);
-			$whereClause = $whereClause . " AND sighting.species_id=species.id"; 
+			$whereClause = $whereClause . " AND sightings.species_id=species.id"; 
 		} elseif ($this->mReq->getOrderID() != "") {
 			$whereClause = $whereClause . " AND
               species.id >= " . $this->mReq->getOrderID() * pow(10, 9) . " AND
               species.id < " . ($this->mReq->getOrderID() + 1) * pow(10, 9);
-			$whereClause = $whereClause . " AND sighting.species_id=species.id"; 
+			$whereClause = $whereClause . " AND sightings.species_id=species.id"; 
 		}
 		
 		if ($this->mReq->getDayOfMonth() !="") {
@@ -93,7 +93,7 @@ class TripQuery extends BirdWalkerQuery
 	{
 		return performCount(
 		  "Count Trips", 
-          "SELECT COUNT(DISTINCT trip.id) ".
+          "SELECT COUNT(DISTINCT trips.id) ".
 			$this->getFromClause() . " " .
 			$this->getWhereClause());
 	}
@@ -102,9 +102,9 @@ class TripQuery extends BirdWalkerQuery
 	{
 		return performCount(
 		  "Count Photos",
-          "SELECT COUNT(DISTINCT trip.id) ".
+          "SELECT COUNT(DISTINCT trips.id) ".
 			$this->getFromClause() . " " .
-			$this->getWhereClause() . " AND sighting.Photo='1'");
+			$this->getWhereClause() . " AND sightings.Photo='1'");
 	}
 
 	function performQuery()
@@ -113,7 +113,7 @@ class TripQuery extends BirdWalkerQuery
 			"Query Trips",
 			$this->getSelectClause() . " " .
 			$this->getFromClause() . " " .
-			$this->getWhereClause() . "  GROUP BY trip.id ORDER BY trip.Date desc");
+			$this->getWhereClause() . "  GROUP BY trips.id ORDER BY trips.Date desc");
 	}
 
 	function formatPhotos()
@@ -137,7 +137,7 @@ class TripQuery extends BirdWalkerQuery
 	<?	$dbQuery = $this->performQuery();
 		while($info = mysql_fetch_array($dbQuery))
 		{
-			$thisYear =  substr($info["Date"], 0, 4);
+			$thisYear =  substr($info["date"], 0, 4);
 
 			if (strcmp($thisYear, $prevYear) && $subdivideByYears)
 			{ ?>
@@ -149,7 +149,7 @@ class TripQuery extends BirdWalkerQuery
 
 				 <div>
 					<a href="./tripdetail.php?tripid=<?= $info["id"] ?>">
-					  <?= $info["Name"] ?>, <?= $info["niceDate"] ?><? if (($this->mReq->getYear() == "") && (! $subdivideByYears)) { echo ", " . $info["year"]; } ?>
+					  <?= $info["name"] ?>, <?= $info["niceDate"] ?><? if (($this->mReq->getYear() == "") && (! $subdivideByYears)) { echo ", " . $info["year"]; } ?>
 					</a>
 					<? if (array_key_exists("Photo", $info) && $info["Photo"] == "1") { ?><?= getPhotoLinkForSightingInfo($info, "sightingid") ?><? }
 			           else if (array_key_exists("tripPhotos", $info) && $info["tripPhotos"] > 0)
@@ -185,17 +185,17 @@ class TripQuery extends BirdWalkerQuery
 	  {
           $tripSpeciesCount = performCount(
 			  "Count Sightings", 
-              "SELECT COUNT(DISTINCT(sighting.id))
-                  FROM sighting, trip
-                  WHERE sighting.trip_id=trip.id AND trip.Date='" . $info["Date"] . "'"); ?>
+              "SELECT COUNT(DISTINCT(sightings.id))
+                  FROM sightings, trips
+                  WHERE sightings.trip_id=trips.id AND trips.Date='" . $info["date"] . "'"); ?>
 
           <div class="superheading"><?= $info["niceDate"] ?></div>
 
 		  <div class="summaryblock">
               <span class="subheading">
                   <a href="./tripdetail.php?tripid=<?=$info["id"]?>">
-<?                    rightThumbnail("SELECT * FROM sighting,trip WHERE sighting.trip_id=trip.id AND Photo='1' AND trip.Date='" . $info["Date"] . "' LIMIT 1", false); ?>
-                      <?= $info["Name"] ?>
+<?                    rightThumbnail("SELECT * FROM sightings, trips WHERE sightings.trip_id=trips.id AND Photo='1' AND trips.Date='" . $info["date"] . "' LIMIT 1", false); ?>
+                      <?= $info["name"] ?>
                   </a>
               </span>
               <div class="subheading"><?= $tripSpeciesCount ?> species</div>
@@ -203,7 +203,7 @@ class TripQuery extends BirdWalkerQuery
 
 
           <div class="report-content">
-<?		    if (array_key_exists("Notes", $info)) { echo stripslashes($info["Notes"]); } ?>
+<?		    if (array_key_exists("notes", $info)) { echo stripslashes($info["notes"]); } ?>
             <br clear="all"/>
           </div>
 		  <p>&nbsp;</p>

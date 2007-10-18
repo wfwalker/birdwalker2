@@ -7,22 +7,22 @@ $yearArray = null;
 $stateStats = performQuery("Get State Statistics",
   "SELECT
     location.State,
-    count(distinct sighting.species_id) AS SpeciesCount,
-    year(trip.Date) AS theyear
+    count(distinct sightings.species_id) AS SpeciesCount,
+    year(trips.Date) AS theyear
   FROM location, sighting, trip
-  WHERE sighting.location_id=location.id AND sighting.trip_id=trip.id
+  WHERE sightings.location_id=locations.id AND sightings.trip_id=trips.id
   GROUP BY location.State, theyear
   ORDER BY State, theyear");
 
 // todo could build some kind of set of visited states while running through the stateStats?
 $visitedStatesQuery = performQuery("Get List of visited States",
     "SELECT DISTINCT(state.id)
-      FROM state, location, sighting
-      WHERE state.Abbreviation=location.State and location.id=sighting.location_id ORDER BY state.Name");
+      FROM state, locations, sighting
+      WHERE state.Abbreviation=location.State and locations.id=sightings.location_id ORDER BY state.Name");
 
 while ($info = mysql_fetch_array($stateStats))
 {
-	$state = $info["State"];
+	$state = $info["state"];
 	$year = $info["theyear"];
 	$speciesCount = $info["SpeciesCount"];
 

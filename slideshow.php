@@ -16,7 +16,7 @@ if ($request->getSightingID() == "")
 	$sightingQuery->getSelectClause() . " " .
 	$sightingQuery->getFromClause() . " " .
 	$sightingQuery->getWhereClause() . "
-      AND sighting.Photo='1' ORDER BY CONCAT(trip.Date,sighting.id) DESC LIMIT 1"));
+      AND sightings.Photo='1' ORDER BY CONCAT(trips.Date,sightings.id) DESC LIMIT 1"));
 }
 
 if ($request->getSightingID() == "")
@@ -33,17 +33,17 @@ $nextPhotoID = performCount("Get Next Photo Sighting ID",
 	$sightingQuery->getSelectClause() . " " .
 	$sightingQuery->getFromClause() . " " .
 	$sightingQuery->getWhereClause() . "
-      AND sighting.Photo='1' AND CONCAT(trip.Date,sighting.id) < '" . $tripInfo["Date"] . $sightingInfo["id"] . "'
-      ORDER BY CONCAT(trip.Date,sighting.id) DESC LIMIT 1");
+      AND sightings.Photo='1' AND CONCAT(trips.Date,sightings.id) < '" . $tripInfo["date"] . $sightingInfo["id"] . "'
+      ORDER BY CONCAT(trips.Date,sightings.id) DESC LIMIT 1");
 
 $prevPhotoID = performCount("Get Prev Photo Sighting ID",
 	$sightingQuery->getSelectClause() . " " .
 	$sightingQuery->getFromClause() . " " .
 	$sightingQuery->getWhereClause() . "
-      AND sighting.Photo='1' AND CONCAT(trip.Date,sighting.id) > '" . $tripInfo["Date"] . $sightingInfo["id"] . "'
-      ORDER BY CONCAT(trip.Date,sighting.id) LIMIT 1");
+      AND sightings.Photo='1' AND CONCAT(trips.Date,sightings.id) > '" . $tripInfo["date"] . $sightingInfo["id"] . "'
+      ORDER BY CONCAT(trips.Date,sightings.id) LIMIT 1");
 
-$tripYear =  substr($tripInfo["Date"], 0, 4);
+$tripYear =  substr($tripInfo["date"], 0, 4);
 
 ?>
 
@@ -65,11 +65,11 @@ $tripYear =  substr($tripInfo["Date"], 0, 4);
 					 $prevPhotoID, "", $nextPhotoID, ""); ?>
 
     <div class="pagetitle">
-	  <?= $speciesInfo["CommonName"] ?>
+	  <?= $speciesInfo["common_name"] ?>
 	</div>
 
     <div class="pagesubtitle">
-	    <?= $sightingInfo["niceDate"] ?>, <?= $locationInfo["Name"] ?>
+	    <?= $sightingInfo["niceDate"] ?>, <?= $locationInfo["name"] ?>
     </div>
 
 <?  $photoFilename = getPhotoFilename($sightingInfo);

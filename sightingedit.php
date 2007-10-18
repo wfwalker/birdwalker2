@@ -68,14 +68,14 @@ else
 
 $tripInfo = getTripInfo($sightingInfo["trip_id"]);
 $locationInfo = getLocationInfo($sightingInfo["location_id"]);
-$stateInfo = getStateInfoForAbbreviation($locationInfo["State"]);
+$stateInfo = getStateInfoForAbbreviation($locationInfo["state"]);
 
 $locationList = performQuery("Get Location List", "SELECT Name, id from location ORDER BY Name");
 
 if ($speciesInfo == "") {
     htmlHead("Invalid Species Abbreivation, " . $tripInfo["niceDate"]);
 } else {
-    htmlHead($speciesInfo["CommonName"] . ", " . $tripInfo["niceDate"]);
+    htmlHead($speciesInfo["common_name"] . ", " . $tripInfo["niceDate"]);
 }
 
 $request = new Request;
@@ -91,13 +91,13 @@ $request->globalMenu();
 	<? if ($speciesInfo == "") { ?>
 	    Invalid Species Abbreviation
     <? } else { ?>
-        <a href="./speciesdetail.php?speciesid=<?= $speciesInfo["id"] ?>"><?= $speciesInfo["CommonName"] ?></a>
+        <a href="./speciesdetail.php?speciesid=<?= $speciesInfo["id"] ?>"><?= $speciesInfo["common_name"] ?></a>
 	<? } ?>
   </div>
 
   <div class="pagesubtitle">
-    <a href="./countydetail.php?stateid=<?= $stateInfo["id"] ?>&county=<?= $locationInfo["County"] ?>"><?= $locationInfo["County"] ?> County</a>, 
-    <a href="./statedetail.php?stateid=<?= $stateInfo["id"] ?>"><?= $stateInfo["Name"] ?></a>,
+    <a href="./countydetail.php?stateid=<?= $stateInfo["id"] ?>&county=<?= $locationInfo["county"] ?>"><?= $locationInfo["county"] ?> County</a>, 
+    <a href="./statedetail.php?stateid=<?= $stateInfo["id"] ?>"><?= $stateInfo["name"] ?></a>,
     <a href="./tripdetail.php?tripid=<?= $tripInfo["id"] ?>"><?= $tripInfo["niceDate"] ?></a>
   </div>
 </div>
@@ -123,7 +123,7 @@ $request->globalMenu();
    while($info = mysql_fetch_array($locationList))
    {
 	   if ($info["id"] == $sightingInfo["location_id"]) { echo "<option selected>"; } else { echo "<option>"; }
-	   echo $info["Name"] . "</option>\n";
+	   echo $info["name"] . "</option>\n";
    }
 ?>
 	  </select>
@@ -131,7 +131,7 @@ $request->globalMenu();
   </tr>
   <tr>
 	<td class="fieldlabel">Notes</td>
-    <td><textarea name="Notes" cols="60" rows="20"><?= stripslashes($sightingInfo["Notes"]) ?></textarea></td>
+    <td><textarea name="notes" cols="60" rows="20"><?= stripslashes($sightingInfo["notes"]) ?></textarea></td>
   </tr>
   <tr>
 	<td class="fieldlabel">Exclude</td>

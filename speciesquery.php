@@ -16,20 +16,20 @@ class SpeciesQuery extends BirdWalkerQuery
 
 	function getSelectClause()
 	{
-	  $selectClause = "SELECT DISTINCT species.id, species.CommonName, species.LatinName, species.ABACountable, SUM(sighting.Photo) as speciesPhotos, species.Notes as speciesNotes";
+	  $selectClause = "SELECT DISTINCT species.id, species.common_name, species.latin_name, species.aba_countable, SUM(sightings.Photo) as speciesPhotos, species.Notes as speciesNotes";
 
 		if ($this->mReq->getTripID() == "")
 		{
-			$selectClause = $selectClause . ", min(sighting.Exclude) AS AllExclude";
+			$selectClause = $selectClause . ", min(sightings.exclude) AS AllExclude";
 		}
 
 		if ($this->mReq->getTripID() != "")
 		{
-			$selectClause = $selectClause . ", sighting.Notes as sightingNotes, sighting.Exclude, sighting.Photo, sighting.id AS sightingid";
+			$selectClause = $selectClause . ", sightings.Notes as sightingNotes, sightings.Exclude, sightings.Photo, sightings.id AS sightingid";
 		}
 		else if (($this->mReq->getLocationID() != "") || ($this->mReq->getCounty() != "") || ($this->mReq->getStateID() != ""))
 		{
-			$selectClause = $selectClause . ",  min(concat(sighting.trip_id, lpad(sighting.id, 6, '0'))) as earliestsighting";
+			$selectClause = $selectClause . ",  min(concat(sightings.trip_id, lpad(sightings.id, 6, '0'))) as earliestsighting";
 		}
 
 
@@ -41,37 +41,37 @@ class SpeciesQuery extends BirdWalkerQuery
 		$otherTables = "";
 
 		if ($this->mReq->getLocationID() != "") {
-			$otherTables = $otherTables . ", location";
+			$otherTables = $otherTables . ", locations";
 		} elseif ($this->mReq->getCounty() != "") {
-			$otherTables = $otherTables . ", location";
+			$otherTables = $otherTables . ", locations";
 		} elseif ($this->mReq->getStateID() != "") {
-			$otherTables = $otherTables . ", location";
+			$otherTables = $otherTables . ", locations";
 		}
 
 		return "
-            FROM sighting, trip, species" . $otherTables . " ";
+            FROM sightings, trips, species" . $otherTables . " ";
 	}
 
 
 	function getWhereClause()
 	{
-		$whereClause = "WHERE species.id=sighting.species_id AND sighting.trip_id=trip.id";
+		$whereClause = "WHERE species.id=sightings.species_id AND sightings.trip_id=trips.id";
 
 		if ($this->mReq->getTripID() != "") {
 			$tripInfo = $this->mReq->getTripInfo();
-			$whereClause = $whereClause . " AND sighting.trip_id='" . $tripInfo["id"] . "'";
+			$whereClause = $whereClause . " AND sightings.trip_id='" . $tripInfo["id"] . "'";
 		}
 
 		if ($this->mReq->getLocationID() != "") {
-			$whereClause = $whereClause . " AND location.id=" . $this->mReq->getLocationID();
-			$whereClause = $whereClause . " AND location.id=sighting.location_id"; 
+			$whereClause = $whereClause . " AND locations.id=" . $this->mReq->getLocationID();
+			$whereClause = $whereClause . " AND locations.id=sightings.location_id"; 
 		} elseif ($this->mReq->getCounty() != "") {
-			$whereClause = $whereClause . " AND location.County='" . $this->mReq->getCounty() . "'";
-			$whereClause = $whereClause . " AND location.id=sighting.location_id"; 
+			$whereClause = $whereClause . " AND locations.County='" . $this->mReq->getCounty() . "'";
+			$whereClause = $whereClause . " AND locations.id=sightings.location_id"; 
 		} elseif ($this->mReq->getStateID() != "") {
 			$stateInfo = getStateInfo($this->mReq->getStateID());
-			$whereClause = $whereClause . " AND location.State='" . $stateInfo["Abbreviation"] . "'";
-			$whereClause = $whereClause . " AND location.id=sighting.location_id"; 
+			$whereClause = $whereClause . " AND locations.State='" . $stateInfo["Abbreviation"] . "'";
+			$whereClause = $whereClause . " AND locations.id=sightings.location_id"; 
 		}
 
 		if ($this->mReq->getFamilyID() != "") {
@@ -85,13 +85,13 @@ class SpeciesQuery extends BirdWalkerQuery
 		}
 
 		if ($this->mReq->getDayOfMonth() !="") {
-			$whereClause = $whereClause . " AND DayOfMonth(trip.Date)=" . $this->mReq->getDayOfMonth();
+			$whereClause = $whereClause . " AND DayOfMonth(trips.Date)=" . $this->mReq->getDayOfMonth();
 		}
 		if ($this->mReq->getMonth() !="") {
-			$whereClause = $whereClause . " AND Month(trip.Date)=" . $this->mReq->getMonth();
+			$whereClause = $whereClause . " AND Month(trips.Date)=" . $this->mReq->getMonth();
 		}
 		if ($this->mReq->getYear() !="") {
-			$whereClause = $whereClause . " AND Year(trip.Date)=" . $this->mReq->getYear();
+			$whereClause = $whereClause . " AND Year(trips.Date)=" . $this->mReq->getYear();
 		}
 
 
@@ -111,7 +111,7 @@ class SpeciesQuery extends BirdWalkerQuery
 		return performCount("Count Species With Photos",
           "SELECT COUNT(DISTINCT species.id) ".
 			$this->getFromClause() . " " .
-			$this->getWhereClause() . " AND sighting.Photo='1' ORDER BY species.id");
+			$this->getWhereClause() . " AND sightings.Photo='1' ORDER BY species.id");
 	}
 
 	function performQuery()
@@ -127,7 +127,7 @@ class SpeciesQuery extends BirdWalkerQuery
 		return performOneRowQuery("Find one random bird with photo",
           "SELECT DISTINCT species.id, species.*, " . dailyRandomSeedColumn() . " " .
 			$this->getFromClause() .
-			$this->getWhereClause() . " AND trip.id=sighting.trip_id AND WEEK(trip.Date)= '" . $week . "' AND sighting.Photo='1' ORDER BY shuffle LIMIT 1");
+			$this->getWhereClause() . " AND trips.id=sightings.trip_id AND WEEK(trips.Date)= '" . $week . "' AND sightings.Photo='1' ORDER BY shuffle LIMIT 1");
 	}
 
 	/**
@@ -175,10 +175,10 @@ class SpeciesQuery extends BirdWalkerQuery
 					 <div class="subheading"><?= getFamilyDetailLinkFromSpeciesID($info["id"]) ?></div>
 <?               } ?>
 
-		             <div><a href="./speciesdetail.php?speciesid=<?= $info["id"] ?>"><?= $info["CommonName"] ?></a>
+		             <div><a href="./speciesdetail.php?speciesid=<?= $info["id"] ?>"><?= $info["common_name"] ?></a>
 <?
 				 if (array_key_exists("sightingid", $info)) { editLink("./sightingedit.php?sightingid=" . $info["sightingid"]); }
-				 if (array_key_exists("ABACountable", $info) && $info["ABACountable"] == "0") { echo "NOT ABA COUNTABLE"; }
+				 if (array_key_exists("aba_countable", $info) && $info["aba_countable"] == "0") { echo "NOT ABA COUNTABLE"; }
 				 if (array_key_exists("Exclude", $info) && $info["Exclude"] == "1") { echo "excluded"; }
 				 if (array_key_exists("AllExclude", $info) && $info["AllExclude"] == "1") { echo "excluded"; }
 
@@ -237,16 +237,16 @@ class SpeciesQuery extends BirdWalkerQuery
 	function formatSpeciesByYearTable()
 	{
 		$yearTotals = performQuery("Species By Year 1",
-          "SELECT COUNT(DISTINCT species.id) AS count, year(sighting.trip_id) AS year " .
+          "SELECT COUNT(DISTINCT species.id) AS count, year(sightings.trip_id) AS year " .
 				$this->getFromClause() . " " .
 				$this->getWhereClause() . "
 			GROUP BY year");
 
 		$gridQueryString="
-          SELECT DISTINCT(CommonName), species.id as speciesid, bit_or(1 << (year(trip.Date) - 1995)) AS mask " .
+          SELECT DISTINCT(common_name), species.id as speciesid, bit_or(1 << (year(trips.Date) - 1995)) AS mask " .
 		      $this->getFromClause() . " " .
 		      $this->getWhereClause() . " 
-            GROUP BY sighting.species_id
+            GROUP BY sightings.species_id
             ORDER BY speciesid";
 
 		$gridQuery = performQuery("Species By Year 2", $gridQueryString); ?>
@@ -263,10 +263,10 @@ class SpeciesQuery extends BirdWalkerQuery
 			if ($prevInfo == "" || getFamilyIDFromSpeciesID($prevInfo["speciesid"]) != getFamilyIDFromSpeciesID($info["speciesid"]))
 			{
 				$taxoInfo = getFamilyInfoFromSpeciesID($info["speciesid"]); ?>
-				<tr><td colspan="11"><div class="subheading"><?= $taxoInfo["LatinName"] ?></div></td></tr>
+				<tr><td colspan="11"><div class="subheading"><?= $taxoInfo["latin_name"] ?></div></td></tr>
 	<?		} ?>
 
-			<tr><td><a href="./speciesdetail.php?speciesid=<?= $info["speciesid"] ?>"><?= $info["CommonName"] ?></a></td>
+			<tr><td><a href="./speciesdetail.php?speciesid=<?= $info["speciesid"] ?>"><?= $info["common_name"] ?></a></td>
 
 	<?		for ($index = 1; $index <=  (1 + getLatestYear() - getEarliestYear()); $index++)
 			{ ?>
@@ -330,16 +330,16 @@ class SpeciesQuery extends BirdWalkerQuery
 	function formatSpeciesByMonthTable()
 	{
 		$monthTotals = performQuery("Species by Month Query 1",
-          "SELECT COUNT(DISTINCT species.id) AS count, month(sighting.trip_id) AS month " .
+          "SELECT COUNT(DISTINCT species.id) AS count, month(sightings.trip_id) AS month " .
 				$this->getFromClause() . " " .
 				$this->getWhereClause() . "
 			GROUP BY month");
 
 		$gridQueryString="
-    SELECT DISTINCT(CommonName), species.id AS speciesid, bit_or(1 << month(trip.Date)) AS mask " . 
+    SELECT DISTINCT(common_name), species.id AS speciesid, bit_or(1 << month(trips.Date)) AS mask " . 
 		  $this->getFromClause() . " " .
 		  $this->getWhereClause() . " 
-      GROUP BY sighting.species_id
+      GROUP BY sightings.species_id
       ORDER BY speciesid";
 
 		$gridQuery = performQuery("Species by Month Query 2", $gridQueryString); ?>
@@ -359,7 +359,7 @@ class SpeciesQuery extends BirdWalkerQuery
 			    <tr><td colspan="13"><div class="subheading"><?= getFamilyDetailLinkFromSpeciesID($info["speciesid"]) ?></div></td></tr>
 <?          } ?>
 
-			<tr><td width="40%"><a href="./speciesdetail.php?speciesid=<?= $info["speciesid"] ?>"><?= $info["CommonName"] ?></a></td>
+			<tr><td width="40%"><a href="./speciesdetail.php?speciesid=<?= $info["speciesid"] ?>"><?= $info["common_name"] ?></a></td>
 
 	<?		for ($index = 1; $index <= 12; $index++)
 			{ ?>

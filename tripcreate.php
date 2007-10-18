@@ -8,7 +8,7 @@ getEnableEdit() or die("Editing disabled");
 $save = ""; array_key_exists("Save", $_POST) && $save = $_POST['Save'];
 $abbreviations = ""; array_key_exists("Abbreviations", $_POST) && $abbreviations = $_POST['Abbreviations'];
 $importedAbbreviations = ""; array_key_exists("importedAbbreviations", $_POST) && $importedAbbreviations = $_POST['importedAbbreviations'];
-$notes = ""; array_key_exists("Notes", $_POST) && $notes = $_POST['Notes'];
+$notes = ""; array_key_exists("notes", $_POST) && $notes = $_POST['Notes'];
 $locationName = ""; array_key_exists("LocationName", $_POST) && $locationName = $_POST['LocationName'];
 $leader = ""; array_key_exists("Leader", $_POST) && $leader = $_POST['Leader'];
 $tripDate = ""; array_key_exists("TripDate", $_POST) && $tripDate = $_POST['TripDate'];
@@ -121,7 +121,7 @@ if ($save == "Save")
 <?        while($info = mysql_fetch_array($locationList))
 	      { ?>
 		      <option <?= ($request->getLocationID()==$info["id"] ? "selected" : "") ?>>
-                  <?= $info["Name"]  ?>
+                  <?= $info["name"]  ?>
               </option>
 <?		  } ?>
 	  </select>
@@ -129,7 +129,7 @@ if ($save == "Save")
   </tr>
   <tr>
 	<td class="fieldlabel">Notes</td>
-	<td><textarea name="Notes" cols="60" rows="20"></textarea></td>
+	<td><textarea name="notes" cols="60" rows="20"></textarea></td>
   </tr>
 
   <tr><td class="fieldlabel"></td><td>
@@ -143,12 +143,12 @@ if ($save == "Save")
 			  if ($prevInfo == "" || ($divideByTaxo && (getFamilyInfo($prevInfo["id"]) != getFamilyInfo($info["id"]))))
 			  {
 				  $taxoInfo = getFamilyInfo($info["id"]); ?>
-				  <div class="subheading"><?= strtolower($taxoInfo["LatinName"]) ?></div>
+				  <div class="subheading"><?= strtolower($taxoInfo["latin_name"]) ?></div>
 <?            } ?>
 
 			  <div>
                   <input type="checkbox" name="Abbreviations[]" value="<?= $info["Abbreviation"]?>"/>
-                  <?= $info["CommonName"] ?>
+                  <?= $info["common_name"] ?>
               </div>
 <?            $prevInfo = $info;
           }

@@ -27,10 +27,10 @@ class ChronoList
 		performQuery("Put Sightings into Temp Table",
           "INSERT INTO tmp
             SELECT species_id,
-              LEFT(        MIN( CONCAT(trip.Date,lpad(sighting.id,6,'0')) ), 10) AS trip_date,
-              0+SUBSTRING( MIN( CONCAT(trip.Date,lpad(sighting.id,6,'0')) ),  11) AS id ".
+              LEFT(        MIN( CONCAT(trips.Date,lpad(sightings.id,6,'0')) ), 10) AS trip_date,
+              0+SUBSTRING( MIN( CONCAT(trips.Date,lpad(sightings.id,6,'0')) ),  11) AS id ".
 					 $this->mSightingQuery->getFromClause() . " " . 
-					 $this->mSightingQuery->getWhereClause() . "  AND species.ABACountable='1' AND sighting.Exclude!='1'
+					 $this->mSightingQuery->getWhereClause() . "  AND species.aba_countable='1' AND sightings.Exclude!='1'
             GROUP BY species_id");
 	}
 
@@ -41,19 +41,19 @@ class ChronoList
 		// TODO count rows in the first sightings table!
 
 		$firstSightingQuery = performQuery("Choose first sightings",
-          "SELECT " . shortNiceDateColumn("trip.Date") . ",
-             sighting.*, 
-             species.CommonName,
+          "SELECT " . shortNiceDateColumn("trips.Date") . ",
+             sightings.*, 
+             species.common_name,
              species.id as speciesid,
-             trip.id as tripid, location.County, location.State
-          FROM sighting, tmp, species, location, trip
+             trips.id as tripid, location.County, location.State
+          FROM sightings, tmp, species, locations, trip
           WHERE
-             sighting.species_id=tmp.species_id AND
-             species.id=sighting.species_id AND
-             trip.Date=tmp.trip_date AND
-             location.id=sighting.location_id AND
-             trip.id=sighting.trip_id
-          ORDER BY trip.Date DESC, location_id, species.id;");
+             sightings.species_id=tmp.species_id AND
+             species.id=sightings.species_id AND
+             trips.Date=tmp.trip_date AND
+             locations.id=sightings.location_id AND
+             trips.id=sightings.trip_id
+          ORDER BY trips.Date DESC, location_id, species.id;");
 
 		$speciesCount = mysql_num_rows($firstSightingQuery);
 
@@ -81,7 +81,7 @@ class ChronoList
 
             <td align="right">&nbsp;</td>
 
-	        <td><a href="./speciesdetail.php?speciesid=<?= $sightingInfo['speciesid'] ?>"><?= $sightingInfo['CommonName'] ?></a>
+	        <td><a href="./speciesdetail.php?speciesid=<?= $sightingInfo['speciesid'] ?>"><?= $sightingInfo['common_name'] ?></a>
 
 <? 
 		    if ($sightingInfo["Photo"] == "1") { ?>
@@ -93,8 +93,8 @@ class ChronoList
 		    </td>
 		    </tr>
 <?
-		    if ($sightingInfo["Notes"] != "") { ?>
-			    <tr><td></td><td></td><td colspan="2" class="sighting-notes"><?= $sightingInfo["Notes"] ?></td></tr><?
+		    if ($sightingInfo["notes"] != "") { ?>
+			    <tr><td></td><td></td><td colspan="2" class="sighting-notes"><?= $sightingInfo["notes"] ?></td></tr><?
 		    }
 
 		    $prevSightingInfo = $sightingInfo;
@@ -114,20 +114,20 @@ class ChronoList
 		// TODO count rows in the first sightings table!
 
 		$firstSightingQuery = performQuery("Choose first sightings",
-          "SELECT " . shortNiceDateColumn("sighting.TripDate") . ",
-             sighting.*, 
-             trim(group_concat(' ', species.CommonName)) as names,
-             count(species.CommonName) as counts,
+          "SELECT " . shortNiceDateColumn("sightings.TripDate") . ",
+             sightings.*, 
+             trim(group_concat(' ', species.common_name)) as names,
+             count(species.common_name) as counts,
               species.id as speciesid,
-             trip.id as tripid, location.County, location.State
-          FROM sighting, tmp, species, location, trip
+             trips.id as tripid, location.County, location.State
+          FROM sightings, tmp, species, locations, trip
           WHERE
-             sighting.species_idreviation=tmp.species_id AND
-             species.id=sighting.species_id AND
-             sighting.trip_id=tmp.id AND
-             location.id=sighting.location_id AND
-             trip.id=sighting.trip_id
-          group by trip.Date ORDER BY trip.Date DESC, LocationName, species.id;");
+             sightings.species_idreviation=tmp.species_id AND
+             species.id=sightings.species_id AND
+             sightings.trip_id=tmp.id AND
+             locations.id=sightings.location_id AND
+             trips.id=sightings.trip_id
+          group by trips.Date ORDER BY trips.Date DESC, LocationName, species.id;");
 
 		$speciesCount = mysql_num_rows($firstSightingQuery);
 
@@ -139,11 +139,11 @@ class ChronoList
 	   {
 		 if ($sightingInfo['counts'] > 3)
 		 {?>
-		    <event startTime="<?= $sightingInfo['trip.Date'] ?>" label="<?= $sightingInfo['counts'] ?> Species"/>
+		    <event startTime="<?= $sightingInfo['trips.Date'] ?>" label="<?= $sightingInfo['counts'] ?> Species"/>
 <?       }
 		 else
 		 { ?>
-		    <event startTime="<?= $sightingInfo['trip.Date'] ?>" label="<?= $sightingInfo['names'] ?>"/>
+		    <event startTime="<?= $sightingInfo['trips.Date'] ?>" label="<?= $sightingInfo['names'] ?>"/>
 <?       }
 	   }
 
@@ -173,15 +173,15 @@ class ChronoList
  		imagestring($timelineImage, 2, 5, 5, $this->mSightingQuery->getPageTitle("Life List"), $black);
 
 		$firstSightingQuery = performQuery("Choose first sightings",
-          "SELECT to_days(sighting.TripDate) as tripDays
-          FROM sighting, tmp, species, location, trip
+          "SELECT to_days(sightings.TripDate) as tripDays
+          FROM sightings, tmp, species, locations, trip
           WHERE
-             sighting.species_id=tmp.species_id AND
-             species.id=sighting.species_id AND
-             sighting.TripDate=tmp.TripDate AND
-             location.id=sighting.location_id AND
-             trip.id=sighting.trip_id
-          ORDER BY sighting.trip_id, species.location_id, species.id;");
+             sightings.species_id=tmp.species_id AND
+             species.id=sightings.species_id AND
+             sightings.TripDate=tmp.TripDate AND
+             locations.id=sightings.location_id AND
+             trips.id=sightings.trip_id
+          ORDER BY sightings.trip_id, species.location_id, species.id;");
 
 		$speciesCount = mysql_num_rows($firstSightingQuery);
 

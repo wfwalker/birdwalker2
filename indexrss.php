@@ -24,10 +24,10 @@ $latestTrips = performQuery("Find latest trips", "select *, date_format(Date, '%
 
       <item>
           <pubDate><?= $info["niceDate"] ?></pubDate>
-          <title><?= $info["Name"] ?></title>
+          <title><?= $info["name"] ?></title>
 		   <category>trip</category>
           <link>http://sven.spflrc.org/~walker/tripdetail.php?tripid=<?=$info["id"]?></link>
-          <description><?= htmlentities($info["Notes"]) ?></description>
+          <description><?= htmlentities($info["notes"]) ?></description>
       </item>
 <?	  } ?>
 

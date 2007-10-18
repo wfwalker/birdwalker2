@@ -30,17 +30,17 @@ $lastStateAccumulated = "NONE";
 $prevState = "NONE";
 $countyToAccumulate = "NONE";
 $countyStats = performQuery("Get County Statistics By Year",
-    "SELECT location.County, location.State, state.objectid as StateID, location.objectid, COUNT(DISTINCT sighting.SpeciesAbbreviation) AS
-      SpeciesCount, year(sighting.TripDate) AS theyear
+    "SELECT location.County, location.State, state.objectid as StateID, location.objectid, COUNT(DISTINCT sightings.SpeciesAbbreviation) AS
+      SpeciesCount, year(sightings.TripDate) AS theyear
       FROM location, sighting, state
-      WHERE location.id=sighting.location_id AND state.Abbreviation=location.State
+      WHERE locations.id=sightings.location_id AND state.Abbreviation=location.State
       GROUP BY location.County, theyear
       ORDER BY location.State, location.County, theyear");
 
 $countyTotals = performQuery("Get County Totals",
-    "SELECT location.County, location.State, state.objectid as StateID, COUNT(DISTINCT sighting.SpeciesAbbreviation) AS SpeciesCount
+    "SELECT location.County, location.State, state.objectid as StateID, COUNT(DISTINCT sightings.SpeciesAbbreviation) AS SpeciesCount
       FROM location, sighting, state
-      WHERE location.id=sighting.location_id AND state.Abbreviation=location.State
+      WHERE locations.id=sightings.location_id AND state.Abbreviation=location.State
       GROUP BY location.County
       ORDER BY location.State, location.County"); ?>
 
@@ -49,7 +49,7 @@ $countyTotals = performQuery("Get County Totals",
 <?
 while ($info = mysql_fetch_array($countyStats))
 {
-	$county = $info["County"];
+	$county = $info["county"];
 	$stateid = $info["StateID"];
 	$theYear = $info["theyear"];
 	$speciesCount = $info["SpeciesCount"];
@@ -60,7 +60,7 @@ while ($info = mysql_fetch_array($countyStats))
 
 		<tr>
             <td colspan="12" class="heading">
-                <span class="statename"><a href="statedetail.php?stateid=<?= $prevState ?>"><?= $stateInfo["Name"] ?></a></span>
+                <span class="statename"><a href="statedetail.php?stateid=<?= $prevState ?>"><?= $stateInfo["name"] ?></a></span>
             </td>
         </tr>
 

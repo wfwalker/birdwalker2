@@ -36,7 +36,7 @@ $request->globalMenu();
 <?
 	if ($prevSightingInfo == "" || $prevSightingInfo["trip_id"] != $sightingInfo["trip_id"]) {
 ?>
-        <a href="./tripdetail.php?tripid=<?= $sightingInfo["trip_id"] ?>"><?= $tripInfo["Date"] ?></a>
+        <a href="./tripdetail.php?tripid=<?= $sightingInfo["trip_id"] ?>"><?= $tripInfo["date"] ?></a>
 <?
 	}
 ?>
@@ -44,7 +44,7 @@ $request->globalMenu();
     <td>
 <?
 
-    if ($request->getSpeciesID() == "") { echo $speciesInfo["CommonName"]; }
+    if ($request->getSpeciesID() == "") { echo $speciesInfo["common_name"]; }
 
     editLink("./sightingedit.php?id=" . $sightingInfo["id"]);
 
@@ -59,16 +59,16 @@ $request->globalMenu();
 <?
 	  if (($request->getLocationID() == "") && ($prevSightingInfo == "" || $prevSightingInfo["location_id"] != $sightingInfo["location_id"])) {
 ?>
-		<?= $locationInfo["Name"] ?>, <?= $locationInfo["County"] ?> County, <?= $locationInfo["State"] ?>
+		<?= $locationInfo["name"] ?>, <?= $locationInfo["county"] ?> County, <?= $locationInfo["state"] ?>
 <?
 	}
 ?>
 	</td>
     </tr>
 <?	
-	if ($sightingInfo["Notes"] != "") {
+	if ($sightingInfo["notes"] != "") {
 ?>
-        <tr><td></td><td class="report-content"><?= stripslashes($sightingInfo["Notes"]) ?></td></tr>
+        <tr><td></td><td class="report-content"><?= stripslashes($sightingInfo["notes"]) ?></td></tr>
 <?
     }
 

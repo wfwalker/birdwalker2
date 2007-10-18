@@ -15,10 +15,10 @@ $locationQuery = new LocationQuery($request);
 $stateInfo =  $request->getStateInfo();
 
 $biggestCountyDay = performOneRowQuery("biggest county day",
-   "SELECT trip.*, year(trip.Date) as year, DATE_FORMAT(trip.Date, '%M') as month, COUNT(DISTINCT(sighting.species_id)) AS count
-      FROM sighting,trip,location
-      WHERE sighting.trip_id=trip.id AND sighting.location_id=location.id AND location.County='" . $request->getCounty() . "'
-      GROUP BY trip.Date
+   "SELECT trips.*, year(trips.Date) as year, DATE_FORMAT(trips.Date, '%M') as month, COUNT(DISTINCT(sightings.species_id)) AS count
+      FROM sightings,trips,locations
+      WHERE sightings.trip_id=trips.id AND sightings.location_id=locations.id AND locations.County='" . $request->getCounty() . "'
+      GROUP BY trips.Date
       ORDER BY count DESC LIMIT 1");
 
 ?>
@@ -26,7 +26,7 @@ $biggestCountyDay = performOneRowQuery("biggest county day",
     <div id="topright-location">
 	  <div class="pagekind">County Detail</div>
 	  <div class="pagetitle"> <?= $request->getCounty() ?> County</div>
-	  <div class="pagesubtitle"> <?= $stateInfo["Name"] ?></div>
+	  <div class="pagesubtitle"> <?= $stateInfo["name"] ?></div>
 <?    $request->viewLinks("species"); ?>
 	</div>
 
@@ -34,7 +34,7 @@ $biggestCountyDay = performOneRowQuery("biggest county day",
 
   <div class="heading">Biggest county day: <?= $biggestCountyDay["month"]?> <?= $biggestCountyDay["year"]?></div>
   <div class="onecolumn">
-    <a href="./tripdetail.php?tripid=<?= $biggestCountyDay["id"] ?>"><?= $biggestCountyDay["Name"]; ?></a>, <?= $biggestCountyDay["count"] ?> species
+    <a href="./tripdetail.php?tripid=<?= $biggestCountyDay["id"] ?>"><?= $biggestCountyDay["name"]; ?></a>, <?= $biggestCountyDay["count"] ?> species
   </div>
 
 <?

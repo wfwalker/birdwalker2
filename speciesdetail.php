@@ -10,7 +10,7 @@ $request = new Request;
 
 $speciesInfo = getSpeciesInfo($request->getSpeciesID());
 
-htmlHead($speciesInfo["CommonName"]);
+htmlHead($speciesInfo["common_name"]);
 $request->globalMenu();
 
 ?>
@@ -19,11 +19,11 @@ $request->globalMenu();
     <? speciesBrowseButtons("./speciesdetail.php", $request->getSpeciesID(), $request->getView()); ?>
 
       <div class="pagetitle">
-        <?= $speciesInfo["CommonName"] ?>
+        <?= $speciesInfo["common_name"] ?>
         <?= editlink("./speciesedit.php?speciesid=" . $request->getSpeciesID()) ?>
       </div>
       <div class="pagesubtitle">
-        <?= $speciesInfo["LatinName"] ?>
+        <?= $speciesInfo["latin_name"] ?>
 	  </div>
       <?= $request->viewLinks("trips"); ?>
   </div>
@@ -34,13 +34,13 @@ $request->globalMenu();
     { ?>
 	  <div class="heading">Notes</div>
 	  <div class="leftcolumn">
-<?    if ($speciesInfo["Notes"] != "") { ?>
-	      <div class="report-content"><?= stripslashes($speciesInfo["Notes"]) ?></div>
+<?    if ($speciesInfo["notes"] != "") { ?>
+	      <div class="report-content"><?= stripslashes($speciesInfo["notes"]) ?></div>
 <?    } ?>
 
-<?    referenceURL($speciesInfo); ?>
+<?    reference_url($speciesInfo); ?>
 
-<?    if ($speciesInfo["ABACountable"] == '0') { ?>
+<?    if ($speciesInfo["aba_countable"] == '0') { ?>
         <div>NOT ABA COUNTABLE</div>
 <?    } ?>
       </div>

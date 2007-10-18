@@ -8,9 +8,9 @@ $request = new Request;
 $siteInfo = $request->getLocationInfo();
 
 $locationSightings = performQuery("Get Location Sightings",
-    "SELECT sighting.id FROM sighting, location
-      WHERE sighting.location_id=location.id
-      AND location.id='" . $request->getLocationID() ."'");
+    "SELECT sightings.id FROM sightings, locations
+      WHERE sightings.location_id=locations.id
+      AND locations.id='" . $request->getLocationID() ."'");
 
 $firstSightings = getFirstSightings();
 $locationFirstSightings = 0;
@@ -21,7 +21,7 @@ while($sightingInfo = mysql_fetch_array($locationSightings)) {
 	}
 }
 
-htmlHead($siteInfo["Name"]);
+htmlHead($siteInfo["name"]);
 
 $request->globalMenu();
 ?>
@@ -30,11 +30,11 @@ $request->globalMenu();
   <? locationBrowseButtons("./locationdetail.php", $request->getLocationID(), $request->getView()); ?>
 
     <div class="pagetitle">
-        <?= $siteInfo["Name"] ?>
+        <?= $siteInfo["name"] ?>
 	    <? editLink("./locationcreate.php?locationid=" . $request->getLocationID()); ?>
     </div>
 	<div class="pagesubtitle">
-	    <?= $siteInfo["County"] ?> County, <?= $siteInfo["State"] ?>
+	    <?= $siteInfo["county"] ?> County, <?= $siteInfo["state"] ?>
 	</div>
   <? $request->viewLinks("species"); ?>
 </div>
@@ -43,12 +43,12 @@ $request->globalMenu();
 <? if ($siteInfo["noteworthy"] != 0) { ?>
       <div class="heading">Notes</div>
 	  <div class="leftcolumn">
-        <div class="report-content"><? referenceURL($siteInfo); ?></div>
+        <div class="report-content"><? reference_url($siteInfo); ?></div>
 <?	    if (getEnableEdit()) { ?>
           <div class="report-content"><a href="./tripcreate.php?locationid=<?=$request->getLocationID()?>">create trip</a></div>
 <?      }
-        if ($siteInfo["Notes"] != "") { ?>
-		    <div class="report-content"><?= stripslashes($siteInfo["Notes"]) ?></div>
+        if ($siteInfo["notes"] != "") { ?>
+		    <div class="report-content"><?= stripslashes($siteInfo["notes"]) ?></div>
 <?      }
  ?>
       </div>

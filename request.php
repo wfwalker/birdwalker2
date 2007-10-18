@@ -109,9 +109,9 @@ class Request
 		if ($inValue != "")
 		{
 			$locationInfo = $this->getLocationInfo();
-			$stateInfo = getStateInfoForAbbreviation($locationInfo["State"]);
+			$stateInfo = getStateInfoForAbbreviation($locationInfo["state"]);
 			$this->setStateID($stateInfo["id"]);
-			$this->setCounty($locationInfo["County"]);
+			$this->setCounty($locationInfo["county"]);
 		}
 	}
 	function getLocationID() { return $this->mLocationID; }
@@ -131,8 +131,8 @@ class Request
 		  // TODO this is causing extra queries when doing the lefthand global menu
 		  echo "<!-- calling from inside setTrip ID-->";
 			$tripInfo = $this->getTripInfo();
-			$this->setYear(substr($tripInfo["Date"], 0, 4));
-			$this->setMonth(substr($tripInfo["Date"], 5, 2));
+			$this->setYear(substr($tripInfo["date"], 0, 4));
+			$this->setMonth(substr($tripInfo["date"], 5, 2));
 		}
 	}
 	function getTripID() { return $this->mTripID; }
@@ -225,23 +225,23 @@ class Request
 
 		if ($this->isSpeciesSpecified()) {
 			$speciesInfo = $this->getSpeciesInfo();
-			$pageTitleItems[] = $speciesInfo["CommonName"];
+			$pageTitleItems[] = $speciesInfo["common_name"];
 		} elseif ($this->isFamilySpecified()) {
 			$familyInfo = $this->getFamilyInfo();
-			$pageTitleItems[] = $familyInfo["CommonName"];
+			$pageTitleItems[] = $familyInfo["common_name"];
 		} elseif ($this->isOrderSpecified()) {
 			$orderInfo = $this->getOrderInfo();
-			$pageTitleItems[] = $orderInfo["CommonName"];
+			$pageTitleItems[] = $orderInfo["common_name"];
 		}
 
 		if ($this->isLocationSpecified()) {
 			$locationInfo = $this->getLocationInfo();
-			$pageTitleItems[] = $locationInfo["Name"];
+			$pageTitleItems[] = $locationInfo["name"];
 		} elseif ($this->isCountySpecified()) {
 			$pageTitleItems[] = $this->getCounty() . " County";
 		} elseif ($this->isStateSpecified()) {
 			$stateInfo = $this->getStateInfo();
-		    $pageTitleItems[] = $stateInfo["Name"];
+		    $pageTitleItems[] = $stateInfo["name"];
 		}
 
 		if ($this->isMonthSpecified()) {
@@ -550,7 +550,7 @@ function changeView()
 				$orderRequest->setSpeciesID("");
 				$orderRequest->setFamilyID(""); ?>
 			
-				<div><?= $orderRequest->command($orderInfo["CommonName"]) ?></div>
+				<div><?= $orderRequest->command($orderInfo["common_name"]) ?></div>
 <?		    }
 		
 			if ($this->getFamilyID() != "")
@@ -561,7 +561,7 @@ function changeView()
 				$familyRequest->setPageScript("familydetail.php");
 				$familyRequest->setSpeciesID(""); ?>
 					 
-				<div><?= $familyRequest->command($familyInfo["CommonName"]) ?></div>
+				<div><?= $familyRequest->command($familyInfo["common_name"]) ?></div>
 <?		    }
 
 			if ($this->getSpeciesID() != "")
@@ -571,7 +571,7 @@ function changeView()
 				$speciesRequest = new Request;
 				$speciesRequest->setPageScript("speciesdetail.php"); ?>
 			
-				 <div><?= $speciesRequest->command($speciesInfo["CommonName"]) ?></div>
+				 <div><?= $speciesRequest->command($speciesInfo["common_name"]) ?></div>
 <?		    }
 ?>          </div>
 <?		}
@@ -597,7 +597,7 @@ function changeView()
 				$stateRequest->setLocationID("");
 				$stateRequest->setCounty(""); ?>
 			
-				<div><?= $stateRequest->command($stateInfo["Name"]) ?></div>
+				<div><?= $stateRequest->command($stateInfo["name"]) ?></div>
 <?		    }
 		
 			if ($this->getCounty() != "")
@@ -615,7 +615,7 @@ function changeView()
 				$locationRequest = new Request;
 				$locationRequest->setPageScript("locationdetail.php"); ?>
 			
-				<div><?= $locationRequest->command($locationInfo["Name"]) ?></div>
+				<div><?= $locationRequest->command($locationInfo["name"]) ?></div>
 <?		    }
 ?>          </div><?
 		}
@@ -656,7 +656,7 @@ function changeView()
 			if ($this->getTripID() != "")
 			{
 				$tripInfo = $this->getTripInfo();
-				$dayOfMonth = date("jS", strtotime($tripInfo["Date"]));
+				$dayOfMonth = date("jS", strtotime($tripInfo["date"]));
 				$tripRequest = new Request;
 				$tripRequest->setPageScript("tripdetail.php"); ?>
 			

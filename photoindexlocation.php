@@ -4,10 +4,10 @@ require_once("./birdwalker.php");
 require_once("./request.php");
 
 $photoLocations = performQuery("Find Locations with Photos",
-    "SELECT DISTINCT location.*, COUNT(DISTINCT sighting.id) AS photoCount
+    "SELECT DISTINCT location.*, COUNT(DISTINCT sightings.id) AS photoCount
       FROM location, sighting
-      WHERE location.id=sighting.location_id AND sighting.Photo='1'
-      GROUP BY location.id ORDER BY location.State, location.County, location.Name");
+      WHERE locations.id=sightings.location_id AND sightings.Photo='1'
+      GROUP BY locations.id ORDER BY location.State, location.County, location.Name");
 
 $photoCount = performCount("Count Photos",
     "SELECT COUNT(*) FROM sighting WHERE Photo='1'");
@@ -37,25 +37,25 @@ $request->globalMenu();
 	$prevInfo = "";
 	while($info = mysql_fetch_array($photoLocations))
     {
-		if ($prevInfo == "" || ($prevInfo["State"] != $info["State"]) || ($prevInfo["County"] != $info["County"])) 
+		if ($prevInfo == "" || ($prevInfo["state"] != $info["state"]) || ($prevInfo["county"] != $info["county"])) 
 		{ ?>
           <div class="subheading"><?
-		  if ($prevInfo == "" || $prevInfo["State"] != $info["State"])
+		  if ($prevInfo == "" || $prevInfo["state"] != $info["state"])
 		  { ?>
-			  <span class="statename"><?= getStateNameForAbbreviation($info["State"]) ?></span>,
+			  <span class="statename"><?= getStateNameForAbbreviation($info["state"]) ?></span>,
 <?		  }
 
-		  if ($prevInfo == "" || $prevInfo["County"] != $info["County"])
+		  if ($prevInfo == "" || $prevInfo["county"] != $info["county"])
 		  {
-			  echo $info["County"] . " County";
+			  echo $info["county"] . " County";
 		  } ?>
           </div>
 <?      } ?>
 
         <div>
 		   <a href="./locationdetail.php?view=photo&locationid=<?= $info["id"] ?>">
-		   <?= $info["Name"] ?></a> (<?= $info["photoCount"] ?>) <?= editlink("./locationcreate.php?locationid=" . $info["id"]) ?>
-		   <div class="sighting-notes"><?= $info["Notes"] ?></div>
+		   <?= $info["name"] ?></a> (<?= $info["photoCount"] ?>) <?= editlink("./locationcreate.php?locationid=" . $info["id"]) ?>
+		   <div class="sighting-notes"><?= $info["notes"] ?></div>
 	    </div>
 <?      $prevInfo = $info;
     }

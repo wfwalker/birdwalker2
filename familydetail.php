@@ -16,13 +16,13 @@ $orderInfo = $request->getOrderInfo();
 
 $nextFamily = performCount("Find Next Family",
     "SELECT FLOOR(MIN(species.id)/pow(10,7)) FROM species, sighting
-      WHERE sighting.species_id=species.id
+      WHERE sightings.species_id=species.id
       AND species.id >" . ($request->getFamilyID() + 1) * pow(10, 7) . " LIMIT 1");
 
 if ($nextFamily != "")
 {
 	$nextFamilyInfo = getFamilyInfo($nextFamily * pow(10, 7));
-	$nextFamilyLinkText = $nextFamilyInfo["CommonName"];
+	$nextFamilyLinkText = $nextFamilyInfo["common_name"];
 }
 else
 {
@@ -31,20 +31,20 @@ else
 
 $prevFamily = performCount("Find Previous Family",
     "SELECT FLOOR(MAX(species.id)/POW(10,7)) FROM species, sighting
-      WHERE sighting.species_id=species.id
+      WHERE sightings.species_id=species.id
       AND species.id < " . $request->getFamilyID() * pow(10, 7) . " LIMIT 1");
 
 if ($prevFamily != "")
 {
 	$prevFamilyInfo = getFamilyInfo($prevFamily * pow(10, 7));
-	$prevFamilyLinkText = $prevFamilyInfo["CommonName"];
+	$prevFamilyLinkText = $prevFamilyInfo["common_name"];
 }
 else
 {
 	$prevFamilyLinkText = "";
 }
 
-htmlHead($familyInfo["CommonName"]);
+htmlHead($familyInfo["common_name"]);
 $request->globalMenu();
 ?>
 
@@ -53,8 +53,8 @@ $request->globalMenu();
 					 $prevFamily, $prevFamilyLinkText,
 					 $nextFamily, $nextFamilyLinkText); ?>
 
-	    <div class="pagetitle"><?= $familyInfo["CommonName"] ?></div>
-        <div class="pagesubtitle"><?= $familyInfo["LatinName"] ?></div>
+	    <div class="pagetitle"><?= $familyInfo["common_name"] ?></div>
+        <div class="pagesubtitle"><?= $familyInfo["latin_name"] ?></div>
 <?      $request->viewLinks("species"); ?>
 
   </div>

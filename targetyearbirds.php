@@ -5,17 +5,17 @@ require_once("./request.php");
 
 performQuery("Create Temp Table",
     "CREATE TEMPORARY TABLE tmp (
-      CommonName varchar(32) default NULL,
+      common_name varchar(32) default NULL,
       speciesid varchar(32) default NULL,
       tripdate date default NULL,
       sightingCount varchar(32));");
 
 performQuery("Count Sightings for Species",
     "INSERT INTO tmp
-      SELECT species.CommonName, species.objectid, max(TripDate), count(sighting.objectid) as sightingCount
-      FROM sighting, species, location
-      WHERE sighting.species_id=species.id AND
-        sighting.LocationName=location.Name AND location.State='CA' AND Exclude!='1'
+      SELECT species.common_name, species.objectid, max(TripDate), count(sightings.objectid) as sightingCount
+      FROM sightings, species, location
+      WHERE sightings.species_id=species.id AND
+        sightings.LocationName=location.Name AND location.State='CA' AND Exclude!='1'
       GROUP BY SpeciesAbbreviation;");
 
 $latestSightingQuery = performQuery("Find Latest Sighting",
@@ -52,7 +52,7 @@ while ($info = mysql_fetch_array($latestSightingQuery))
 ?>
 		<tr class="report-content">
 		  <td align="right"><a href="./sightinglist.php?speciesid=<?= $info["speciesid"] ?>"><?= $info["sightingCount"] ?></a></td>
-          <td><a href="./speciesdetail.php?speciesid=<?= $info["speciesid"] ?>"><?= $info["CommonName"] ?></a></td>
+          <td><a href="./speciesdetail.php?speciesid=<?= $info["speciesid"] ?>"><?= $info["common_name"] ?></a></td>
           <td><?= $info["niceDate"] ?></td>
 		</tr>
 <?

@@ -38,23 +38,23 @@ function dashboard()
 {
     $yearBirds = performCount("year birds", "
       SELECT COUNT(DISTINCT species.id)
-        FROM species, sighting
-        WHERE species.id=sighting.species_id
-        AND Year(sighting.TripDate)='2006'");
+        FROM species, sightings
+        WHERE species.id=sightings.species_id
+        AND Year(sightings.TripDate)='2006'");
 
     $countyYearBirds = performCount("county year birds", "
       SELECT COUNT(DISTINCT species.id)
-        FROM species, sighting, location
-        WHERE sighting.species_id=species.id
-        AND Year(sighting.TripDate)='2006' AND
-        sighting.LocationName=location.Name AND location.County='Santa Clara'");
+        FROM species, sightings, locations
+        WHERE sightings.species_id=species.id
+        AND Year(sightings.TripDate)='2006' AND
+        sightings.LocationName=location.Name AND location.County='Santa Clara'");
 
     $stateYearBirds = performCount("state year birds", "
       SELECT COUNT(DISTINCT species.id)
-        FROM species, sighting, location
-        WHERE sighting.species_id=species.id
-        AND Year(sighting.TripDate)='2006' AND
-        sighting.LocationName=location.Name AND location.State='CA'");
+        FROM species, sightings, locations
+        WHERE sightings.species_id=species.id
+        AND Year(sightings.TripDate)='2006' AND
+        sightings.LocationName=location.Name AND location.State='CA'");
 
 
 ?>
@@ -72,7 +72,7 @@ function dashboard()
 function birdOfTheDay()
 {
     $today = performCount("format date", "SELECT DATE_FORMAT(CURRENT_DATE, '%M %D, %Y')");
-    $week = performCount("get week of the year", "sELECT WEEK(CURRENT_DATE)");
+    $week = performCount("get week of the year", "SELECT WEEK(CURRENT_DATE)");
 
 	// pick a bird
 	$speciesRequest = new Request;
@@ -105,7 +105,7 @@ function birdOfTheDay()
 		    The map below the photograph marks locations where we have observed this species.
 		  </div>
 
-          <div class="subheading"><a href="./speciesdetail.php?speciesid=<?=$info['id']?>"><?= $info["CommonName"] ?></a></div>
+          <div class="subheading"><a href="./speciesdetail.php?speciesid=<?=$info['id']?>"><?= $info["common_name"] ?></a></div>
 
 	  <? if (mysql_num_rows($photos) > 0)
 	     {
@@ -129,7 +129,7 @@ function birdOfTheDay()
 function latestTrips()
 {
 	$numberOfTrips = 8;
-	$latestTrips = performQuery("Get Latest Trips", "SELECT *, " . longNiceDateColumn() . " FROM trip ORDER BY Date DESC LIMIT " . $numberOfTrips);
+	$latestTrips = performQuery("Get Latest Trips", "SELECT *, " . longNiceDateColumn() . " FROM trips ORDER BY Date DESC LIMIT " . $numberOfTrips);
 
     TripQuery::formatSummariesForDBQuery($latestTrips);
 }

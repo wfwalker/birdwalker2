@@ -6,9 +6,9 @@ include_once("XML/Tree.php");
 
 function insertFlickrTripLink($tripInfo)
 {
-  $tripYear = substr($tripInfo["Date"], 0, 4);
-  $tripMonth = substr($tripInfo["Date"], 5, 2);
-  $tripDay = substr($tripInfo["Date"], 8, 2);
+  $tripYear = substr($tripInfo["date"], 0, 4);
+  $tripMonth = substr($tripInfo["date"], 5, 2);
+  $tripDay = substr($tripInfo["date"], 8, 2);
 
 # bail if the classes are missing
 

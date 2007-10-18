@@ -14,7 +14,7 @@ if (($postTripID != "") && ($save == "Save"))
     $postTripInfo = getTripInfo($postTripID);
 
 	$leader = postValue('Leader');
-	$referenceURL = postValue('ReferenceURL');
+	$reference_url = postValue('reference_url');
 	$date = postValue('Date');
 	$notes = postValue('Notes');
 	$name = postValue('Name');
@@ -31,7 +31,7 @@ if (($postTripID != "") && ($save == "Save"))
 	}
 
 	performQuery("Update trip", "update trip set Leader='" . $leader . 
-				 "', ReferenceURL='" . $referenceURL . 
+				 "', reference_url='" . $reference_url . 
 				 "', Name='" . $name . 
 				 "', Date='" . $date . 
 				 "', Notes='" . $notes . 
@@ -45,7 +45,7 @@ if (($postTripID != "") && ($save == "Save"))
 $request = new Request;
 $tripInfo = $request->getTripInfo();
 
-htmlHead($tripInfo["Name"] . ", " .$tripInfo["niceDate"]);
+htmlHead($tripInfo["name"] . ", " .$tripInfo["niceDate"]);
 
 $request->globalMenu();
 
@@ -54,7 +54,7 @@ $request->globalMenu();
 <div id="topright-trip">
   <? tripBrowseButtons("./tripedit.php", $tripInfo, "edit"); ?>
   <a href="./tripdetail.php?tripid=<?= $tripInfo["id"] ?>">
-    <div class="pagetitle"><?= $tripInfo["Name"] ?></div>
+    <div class="pagetitle"><?= $tripInfo["name"] ?></div>
     <div class="pagesubtitle"><?= $tripInfo["niceDate"] ?></div>
 </a>
 </div>
@@ -69,21 +69,21 @@ $request->globalMenu();
 	<td><input type="text" name="Leader" value="<?= $tripInfo["Leader"] ?>" size="30"/></td>
   </tr>
   <tr>
-	<td class="fieldlabel">ReferenceURL</td>
-	<td><input type="text" name="ReferenceURL" value="<?= $tripInfo["ReferenceURL"] ?>" size="30"/></td>
+	<td class="fieldlabel">reference_url</td>
+	<td><input type="text" name="reference_url" value="<?= $tripInfo["reference_url"] ?>" size="30"/></td>
   </tr>
   <tr>
 	<td class="fieldlabel">Name</td>
-	<td><input type="text" name="Name" value="<?= $tripInfo["Name"] ?>" size="30"/></td>
+	<td><input type="text" name="name" value="<?= $tripInfo["name"] ?>" size="30"/></td>
   </tr>
   <tr>
 	<td class="fieldlabel">Notes</td>
-    <td><textarea name="Notes" cols="60" rows="20"><?= stripslashes($tripInfo["Notes"]) ?></textarea></td>
+    <td><textarea name="notes" cols="60" rows="20"><?= stripslashes($tripInfo["notes"]) ?></textarea></td>
   </tr>
 
   <tr>
 	<td class="fieldlabel">Date</td>
-	<td><input type="text" name="Date" value="<?= $tripInfo["Date"] ?>" size="20"/></td>
+	<td><input type="text" name="date" value="<?= $tripInfo["date"] ?>" size="20"/></td>
   </tr>
   <tr>
 	<td><input type="hidden" name="tripid" value="<?= $tripID ?>"/></td>

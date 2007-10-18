@@ -5,24 +5,24 @@ require_once("./request.php");
 
 $request = new Request;
 
-performQuery("Make Temp Table", "CREATE TEMPORARY TABLE tmp ( CommonName varchar(32) default NULL, id varchar(32) default NULL, sightingCount varchar(32));");
+performQuery("Make Temp Table", "CREATE TEMPORARY TABLE tmp ( common_name varchar(32) default NULL, id varchar(32) default NULL, sightingCount varchar(32));");
 
-performQuery("Put in defaults for all speciesw", "INSERT INTO tmp SELECT species.CommonName, species.id, 0 FROM species");
+performQuery("Put in defaults for all speciesw", "INSERT INTO tmp SELECT species.common_name, species.id, 0 FROM species");
 
 performQuery("Put Santa Clara County Sightings into Tmp",
   "INSERT INTO tmp
-    SELECT species.CommonName, species.id, count(sighting.id) as sightingCount
-    FROM sighting, species, location, trip
-    WHERE species.id=sighting.species_id
-	  AND trip.id=sighting.trip_id
-      AND sighting.location_id=location.id and location.State='CA' AND location.County='Santa Clara'
-      AND Exclude!='1' " . ($request->isYearSpecified() ? "and Year(trip.Date)='". $request->getYear() . "'" : "" ) . "
+    SELECT species.common_name, species.id, count(sightings.id) as sightingCount
+    FROM sightings, species, locations, trip
+    WHERE species.id=sightings.species_id
+	  AND trips.id=sightings.trip_id
+      AND sightings.location_id=locations.id and location.State='CA' AND location.County='Santa Clara'
+      AND Exclude!='1' " . ($request->isYearSpecified() ? "and Year(trips.Date)='". $request->getYear() . "'" : "" ) . "
     GROUP BY species.id;");
 
 $latestSightingQuery = performQuery("Get Latest Sighting and Frequency",
-    "SELECT countyfrequency.Frequency, tmp.CommonName, tmp.id, max(sightingCount) AS sightingCount
-      FROM tmp, countyfrequency WHERE tmp.CommonName=countyfrequency.CommonName
-      GROUP BY tmp.CommonName
+    "SELECT countyfrequency.Frequency, tmp.common_name, tmp.id, max(sightingCount) AS sightingCount
+      FROM tmp, countyfrequency WHERE tmp.common_name=countyfrequency.common_name
+      GROUP BY tmp.common_name
       ORDER BY countyfrequency.Frequency");
 
 htmlHead("Target Year Birds");
@@ -56,7 +56,7 @@ while ($info = mysql_fetch_array($latestSightingQuery))
 ?>
         <tr class="report-content">
         <td><?= $info["Frequency"] ?></td>
-        <td><a href="./speciesdetail.php?view=locationsbyyear&speciesid=<?= $info["id"] ?>"/><?= $info["CommonName"] ?></a></td>
+        <td><a href="./speciesdetail.php?view=locationsbyyear&speciesid=<?= $info["id"] ?>"/><?= $info["common_name"] ?></a></td>
 		</tr>
 <?
 		$prevInfo = $info;

@@ -10,23 +10,23 @@ $request = new Request;
 
 $info = $request->getStateInfo();
 
-htmlHead($info["Name"]);
+htmlHead($info["name"]);
 
 $request->globalMenu();
 
 
 $biggestStateDay = performOneRowQuery("biggest state day",
-   "SELECT trip.*, year(trip.Date) as year, DATE_FORMAT(trip.Date, '%M') as month, COUNT(DISTINCT(sighting.species_id)) AS count
-      FROM sighting,trip,location
-      WHERE sighting.trip_id=trip.id AND sighting.location_id=location.id AND location.State='" . $info["Abbreviation"] . "'
-      GROUP BY trip.Date
+   "SELECT trips.*, year(trips.Date) as year, DATE_FORMAT(trips.Date, '%M') as month, COUNT(DISTINCT(sightings.species_id)) AS count
+      FROM sightings,trip,location
+      WHERE sightings.trip_id=trips.id AND sightings.location_id=locations.id AND location.State='" . $info["Abbreviation"] . "'
+      GROUP BY trips.Date
       ORDER BY count DESC LIMIT 1");
 
 ?>
 
     <div id="topright-location">
       <? stateBrowseButtons($request->getStateID(), $request->getView()); ?>
-	  <div class="pagetitle"><?= $info["Name"] ?></div>
+	  <div class="pagetitle"><?= $info["name"] ?></div>
 <?    $request->viewLinks("species"); ?>
 	</div>
 
@@ -34,7 +34,7 @@ $biggestStateDay = performOneRowQuery("biggest state day",
 
   <div class="heading">Biggest state day: <?= $biggestStateDay["month"]?> <?= $biggestStateDay["year"]?></div>
   <div class="onecolumn">
-    <a href="./tripdetail.php?tripid=<?= $biggestStateDay["id"] ?>"><?= $biggestStateDay["Name"]; ?></a>, <?= $biggestStateDay["count"] ?> species
+    <a href="./tripdetail.php?tripid=<?= $biggestStateDay["id"] ?>"><?= $biggestStateDay["name"]; ?></a>, <?= $biggestStateDay["count"] ?> species
   </div>
 
 
