@@ -70,7 +70,8 @@ $tripInfo = getTripInfo($sightingInfo["trip_id"]);
 $locationInfo = getLocationInfo($sightingInfo["location_id"]);
 $stateInfo = getStateInfoForAbbreviation($locationInfo["state"]);
 
-$locationList = performQuery("Get Location List", "SELECT name, id from locations ORDER BY name");
+$locationList = performQuery("Get Location List", "SELECT name, id FROM locations ORDER BY name");
+$tripList = performQuery("Get Trip List", "SELECT name, id FROM trips ORDER BY date");
 
 if ($speciesInfo == "") {
     htmlHead("Invalid Species Abbreivation, " . $tripInfo["niceDate"]);
@@ -141,10 +142,22 @@ $request->globalMenu();
 	<td class="fieldlabel">Photo</td>
 	<td><input type="checkbox" name="photo" value="1" <?php if ($sightingInfo["photo"] == "1") { echo "checked"; } ?> /></td>
   </tr>
+
   <tr>
-	<td class="fieldlabel">TripDate</td>
-	<td><input type="text" name="TripDate" value="<?= $sightingInfo["TripDate"] ?>" size="20"/></td>
+	<td class="fieldlabel">Trip</td>
+	<td>
+	  <select name="Trip">
+<?php
+   while($info = mysql_fetch_array($tripList))
+   {
+	   if ($info["id"] == $sightingInfo["trip_id"]) { echo "<option selected>"; } else { echo "<option>"; }
+	   echo $info["name"] . "</option>\n";
+   }
+?>
+	  </select>
+	</td>
   </tr>
+
   <tr>
 	<td><input type="hidden" name="sightingid" value="<?= $sightingID ?>"/></td>
 	<td><input type="submit" name="Save" value="Save"/></td>
