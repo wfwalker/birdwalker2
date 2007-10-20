@@ -139,7 +139,7 @@ class LocationQuery extends BirdWalkerQuery
 		$lastStateHeading="";
 
 		$gridQueryString="
-        SELECT distinct(locations.Name), County, State, locations.id as locationid, bit_or(1 << (year(trips.Date) - 1995)) as mask " . 
+        SELECT distinct(locations.name), county, state, locations.id as locationid, bit_or(1 << (year(trips.date) - 1995)) as mask " . 
 		  $this->getFromClause() . " " .
 		  $this->getWhereClause() . " 
         GROUP BY sightings.location_id
