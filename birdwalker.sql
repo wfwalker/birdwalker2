@@ -4,24 +4,23 @@ use birdwalker
 -- Table structure for table 'location'
 --
 
-drop table if exists location;
+drop table if exists locations;
 
-CREATE TABLE location (
+CREATE TABLE locations (
   id mediumint(9) NOT NULL auto_increment,
-  Name varchar(255),
+  name varchar(255),
   reference_url text,
-  City text,
-  County varchar(255),
-  State char(2),
-  Notes text,
-  LatLongSystem text,
-  Latitude float(15,10),
-  Longitude float(15,10),
-  Photo boolean default 0,
+  city text,
+  county varchar(255),
+  state char(2),
+  notes text,
+  latitude float(15,10),
+  longitude float(15,10),
+  photo boolean default 0,
   PRIMARY KEY  (id),
-  KEY NameIndex (Name),
-  KEY CountyIndex (County),
-  KEY StateIndex (State)
+  KEY NameIndex (name),
+  KEY CountyIndex (county),
+  KEY StateIndex (state)
 ) TYPE=MyISAM;
 
 --
@@ -32,8 +31,8 @@ drop table if exists countyfrequency;
 
 CREATE TABLE countyfrequency (
   common_name varchar(255),
-  Frequency tinyint(2),
-  SpeciesID bigint(20)
+  frequency tinyint(2),
+  species_id bigint(20)
 ) TYPE=MyISAM;
 
 --
@@ -44,14 +43,14 @@ drop table if exists species;
 
 CREATE TABLE species (
   id bigint(20) NOT NULL default '0',
-  Abbreviation varchar(6) default NULL,
+  abbreviation varchar(6) default NULL,
   latin_name text,
   common_name text,
-  Notes text,
+  notes text,
   reference_url text,
   aba_countable boolean NOT NULL default 1,
   PRIMARY KEY  (id),
-  KEY AbbreviationIndex (Abbreviation),
+  KEY AbbreviationIndex (abbreviation),
   KEY aba_countableIndex (aba_countable)
 ) TYPE=MyISAM;
 
@@ -63,29 +62,29 @@ drop table if exists taxonomy;
 
 CREATE TABLE taxonomy (
   id bigint(20) NOT NULL default '0',
-  HierarchyLevel varchar(16) default NULL,
+  hierarchy_level varchar(16) default NULL,
   latin_name text,
   common_name text,
-  Notes text,
+  notes text,
   reference_url text,
   PRIMARY KEY  (id),
   KEY idIndex (id),
-  KEY hierarchyLevelIndex (HierarchyLevel)
+  KEY hierarchyLevelIndex (hierarchy_level)
 ) TYPE=MyISAM;
 
 --
 -- Table structure for table 'trip'
 --
 
-drop table if exists trip;
+drop table if exists trips;
 
-CREATE TABLE trip (
+CREATE TABLE trips (
   id mediumint(9) NOT NULL auto_increment,
-  Leader text,
+  leader text,
   reference_url text,
-  Name text,
-  Notes text,
-  Date date default NULL,
+  name text,
+  notes text,
+  date date default NULL,
   PRIMARY KEY  (id),
   KEY dateIndex (date)
 ) TYPE=MyISAM;
@@ -94,19 +93,19 @@ CREATE TABLE trip (
 -- Table structure for table 'sighting'
 --
 
-drop table if exists sighting;
+drop table if exists sightings;
 
-CREATE TABLE `sighting` (
+CREATE TABLE `sightings` (
   id mediumint(9) NOT NULL auto_increment,
-  Notes text,
-  Exclude tinyint(1) default NULL,
-  Photo tinyint(1) default NULL,
+  notes text,
+  exclude tinyint(1) default NULL,
+  photo tinyint(1) default NULL,
   location_id mediumint(9) default NULL,
   species_id bigint(9) default NULL,
   trip_id mediumint(9) default NULL,
   PRIMARY KEY  (id),
-  KEY ExcludeIndex (Exclude),
-  KEY PhotoIndex (Photo),
+  KEY ExcludeIndex (exclude),
+  KEY PhotoIndex (photo),
   KEY LocationIndex (location_id),
   KEY SpeciesIndex (species_id),
   KEY TripIndex (trip_id)
@@ -116,13 +115,13 @@ CREATE TABLE `sighting` (
 -- Table structure for table 'state'
 --
 
-drop table if exists state;
+drop table if exists states;
 
-CREATE TABLE state (
+CREATE TABLE states (
   id mediumint(9) NOT NULL auto_increment,
-  Name varchar(16) default NULL,
-  Abbreviation varchar(2) default NULL,
-  Notes text,
+  name varchar(16) default NULL,
+  abbreviation varchar(2) default NULL,
+  notes text,
   PRIMARY KEY  (id),
-  KEY AbbreviationIndex (Abbreviation)
+  KEY AbbreviationIndex (abbreviation)
 ) TYPE=MyISAM;
