@@ -66,7 +66,7 @@ $request->globalMenu();
 <table class="report-content" width="100%">
   <tr>
 	<td class="fieldlabel">Leader</td>
-	<td><input type="text" name="Leader" value="<?= $tripInfo["Leader"] ?>" size="30"/></td>
+	<td><input type="text" name="Leader" value="<?= $tripInfo["leader"] ?>" size="30"/></td>
   </tr>
   <tr>
 	<td class="fieldlabel">reference_url</td>
