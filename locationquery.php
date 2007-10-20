@@ -217,11 +217,11 @@ class LocationQuery extends BirdWalkerQuery
 		$lastStateHeading="";
 
 		$gridQueryString="
-        SELECT distinct(locations.Name), County, State, locations.id AS locationid, bit_or(1 << month(trips.Date)) AS mask " .
+        SELECT distinct(locations.name), county, state, locations.id AS locationid, bit_or(1 << month(trips.date)) AS mask " .
 		  $this->getFromClause() . " " .
 		  $this->getWhereClause() . " 
         GROUP BY sightings.location_id
-        ORDER BY locations.State, locations.County, locations.Name;";
+        ORDER BY locations.state, locations.county, locations.name;";
 
 		$gridQuery = performQuery("Location By Month Query", $gridQueryString); ?>
 
