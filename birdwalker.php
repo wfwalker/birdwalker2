@@ -594,7 +594,7 @@ function stateBrowseButtons($stateID, $viewMode)
 	$nextStateID = performCount("Get Next State", 
     "SELECT min(states.id)
       FROM states, sightings, locations
-      WHERE sightings.location_id=locations.id and state.id>" . $stateID . " LIMIT 1");
+      WHERE sightings.location_id=locations.id and states.id>" . $stateID . " LIMIT 1");
 
 	if ($nextStateID != "")
 	{
@@ -611,7 +611,7 @@ function stateBrowseButtons($stateID, $viewMode)
 	$prevStateID = performCount("Get Previous State",
     "SELECT max(states.id)
       FROM states, sightings, locations
-      WHERE sightings.location_id=locations.id AND state.id<" . $stateID . " LIMIT 1");
+      WHERE sightings.location_id=locations.id AND states.id<" . $stateID . " LIMIT 1");
 
 	if ($prevStateID != "" )
 	{

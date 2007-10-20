@@ -54,7 +54,7 @@ function dashboard()
         FROM species, sightings, locations
         WHERE sightings.species_id=species.id
         AND Year(trips.date)='2006' AND
-        sightings.LocationName=location.Name AND location.State='CA'");
+        sightings.LocationName=location.Name AND locations.state='CA'");
 
 
 ?>

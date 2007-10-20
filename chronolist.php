@@ -119,7 +119,7 @@ class ChronoList
              trim(group_concat(' ', species.common_name)) as names,
              count(species.common_name) as counts,
               species.id as speciesid,
-             trips.id as tripid, location.County, location.State
+             trips.id as tripid, location.County, locations.state
           FROM sightings, tmp, species, locations, trip
           WHERE
              sightings.species_idreviation=tmp.species_id AND

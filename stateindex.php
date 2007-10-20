@@ -6,19 +6,19 @@ require_once("./request.php");
 $yearArray = null;
 $stateStats = performQuery("Get State Statistics",
   "SELECT
-    location.State,
+    locations.state,
     count(distinct sightings.species_id) AS SpeciesCount,
     year(trips.Date) AS theyear
   FROM location, sighting, trips
   WHERE sightings.location_id=locations.id AND sightings.trip_id=trips.id
-  GROUP BY location.State, theyear
+  GROUP BY locations.state, theyear
   ORDER BY State, theyear");
 
 // todo could build some kind of set of visited states while running through the stateStats?
 $visitedStatesQuery = performQuery("Get List of visited States",
-    "SELECT DISTINCT(state.id)
+    "SELECT DISTINCT(states.id)
       FROM state, locations, sighting
-      WHERE state.Abbreviation=location.State and locations.id=sightings.location_id ORDER BY state.Name");
+      WHERE state.Abbreviation=locations.state and locations.id=sightings.location_id ORDER BY state.Name");
 
 while ($info = mysql_fetch_array($stateStats))
 {

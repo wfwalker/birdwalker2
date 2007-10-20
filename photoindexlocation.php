@@ -7,7 +7,7 @@ $photoLocations = performQuery("Find Locations with Photos",
     "SELECT DISTINCT location.*, COUNT(DISTINCT sightings.id) AS photoCount
       FROM location, sighting
       WHERE locations.id=sightings.location_id AND sightings.photo='1'
-      GROUP BY locations.id ORDER BY location.State, location.County, location.Name");
+      GROUP BY locations.id ORDER BY locations.state, location.County, location.Name");
 
 $photoCount = performCount("Count Photos",
     "SELECT COUNT(*) FROM sighting WHERE Photo='1'");

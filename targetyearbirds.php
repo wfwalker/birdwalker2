@@ -15,7 +15,7 @@ performQuery("Count Sightings for Species",
       SELECT species.common_name, species.objectid, max(TripDate), count(sightings.objectid) as sightingCount
       FROM sightings, species, location
       WHERE sightings.species_id=species.id AND
-        sightings.LocationName=location.Name AND location.State='CA' AND Exclude!='1'
+        sightings.LocationName=location.Name AND locations.state='CA' AND Exclude!='1'
       GROUP BY SpeciesAbbreviation;");
 
 $latestSightingQuery = performQuery("Find Latest Sighting",

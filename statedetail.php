@@ -18,7 +18,7 @@ $request->globalMenu();
 $biggestStateDay = performOneRowQuery("biggest state day",
    "SELECT trips.*, year(trips.Date) as year, DATE_FORMAT(trips.Date, '%M') as month, COUNT(DISTINCT(sightings.species_id)) AS count
       FROM sightings, trips, locations
-      WHERE sightings.trip_id=trips.id AND sightings.location_id=locations.id AND location.State='" . $info["abbreviation"] . "'
+      WHERE sightings.trip_id=trips.id AND sightings.location_id=locations.id AND locations.state='" . $info["abbreviation"] . "'
       GROUP BY trips.Date
       ORDER BY count DESC LIMIT 1");
 
