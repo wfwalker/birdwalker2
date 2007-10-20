@@ -15,7 +15,7 @@ $request->globalMenu();
     <table>
 	<tr valign="top">
 	<td width="50%" class="leftcolumn">
-      <div class="heading">Birding</div>
+      <div class="subheading">Birding</div>
         <a href="http://spinnity.blogspot.com/"><img src="./images/mary.jpg" border="0" alt="Mary" align="right"></a>
         <p class="report-content">Mary took Bill to a birding class back in 1996, and we&#39;ve been birding ever since.
           We really enjoy the chance to be outside in nature together, meeting other birders and learning
@@ -25,7 +25,7 @@ $request->globalMenu();
           Steve is a very gifted birder, an excellent teacher and naturalist, and a wonderful ambassador for
           birding.</p>
 
-	  <div class="heading"> Field Notes and Listing</div>
+	  <div class="subheading"> Field Notes and Listing</div>
 
 		<p class="report-content">Mary and Bill maintain a joint life list, meaning that both of us have to see a particular species
         before we put it on the life list. When one of us sees a bird the other doesn&#39;t see, we mark that sighting
@@ -34,7 +34,7 @@ $request->globalMenu();
 		<p class="report-content">In the field, we use John Shipman&#39;s <a href="http://www.nmt.edu/~shipman/z/nom/6home.html">six letter code</a>
         of bird abbreviations rather than the usual four letter bird banding codes. We find six letters much easier to remember.</p>
 
-	  <div class="heading">Your Sightings</div>
+	  <div class="subheading">Your Sightings</div>
 
 		<p class="report-content">If you have bird sightings that you&#39;d like to report,
 		  please take a look at Cornell University&#39;s excellent <a href="http://www.ebird.com/">eBird</a> site.</p>
@@ -46,7 +46,7 @@ $request->globalMenu();
 	  </td>
 	  <td width="50%" class="rightcolumn">
 
-	  <div class="heading">The Photos</div>
+	  <div class="subheading">The Photos</div>
        <a href="http://wfwalker.blogspot.com/"><img src="./images/bill.jpg" border="0" alt="Bill" align="right"></a>
  	   <p class="report-content">I use Canon <a href="http://www.fredmiranda.com/reviews/showproduct.php?product=39&sort=7&thecat=2">300mm f/4L IS</a> and
 		<a href="http://consumer.usa.canon.com/ir/controller?act=ModelDetailAct&fcategoryid=154&modelid=7318">500mm f/4L</a> lenses bought at <a href="http://www.kspphoto.com/">Keeble and Shuchat</a>
@@ -61,11 +61,11 @@ $request->globalMenu();
      	process them using Adobe Photoshop CS2 and its <a href="http://www.adobe.com/products/photoshop/cameraraw.html">Camera Raw</a> plug-in.
         I print using an <a href="http://www.luminous-landscape.com/reviews/printers/epson-r800.shtml">Epson R800 printer</a> onto various Epson papers.</p>
 
-      <div class="heading">Using the Photos</div>
+      <div class="subheading">Using the Photos</div>
         <p class="report-content">Interesting in using one of these photographs in your publication or purchasing an 8x10 print?
 	      Email <a href="mailto:walker@shout.net"/>walker@shout.net</a> for more information.</p>
 
-	  <div class="heading">My favorite photographers</div>
+	  <div class="subheading">My favorite photographers</div>
 
 		<p class="report-content">
         Big thanks for the kind words and encouragement I have gotten from
