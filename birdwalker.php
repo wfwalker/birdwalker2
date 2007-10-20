@@ -566,14 +566,14 @@ function locationBrowseButtons($url, $locationID, $viewMode)
 	$siteInfo = getLocationInfo($locationID);
 
 	$prevLocationInfo = performOneRowQuery("Get Previous Location", 
-      "SELECT id, Name FROM locations
-        WHERE CONCAT(State,County,Name) < '" . addslashes($siteInfo["state"] . $siteInfo["county"] . $siteInfo["name"]) . "'
-        ORDER BY CONCAT(State,County,Name) DESC LIMIT 1", false);
+      "SELECT id, name FROM locations
+        WHERE CONCAT(state,county,name) < '" . addslashes($siteInfo["state"] . $siteInfo["county"] . $siteInfo["name"]) . "'
+        ORDER BY CONCAT(state,county,name) DESC LIMIT 1", false);
 
 	$nextLocationInfo = performOneRowQuery("Get Next Location", 
-      "SELECT id, Name FROM locations
-        WHERE CONCAT(State,County,Name) > '" . addslashes($siteInfo["state"] . $siteInfo["county"] . $siteInfo["name"]) . "'
-        ORDER BY CONCAT(State,County,Name) LIMIT 1", false);
+      "SELECT id, name FROM locations
+        WHERE CONCAT(state,county,name) > '" . addslashes($siteInfo["state"] . $siteInfo["county"] . $siteInfo["name"]) . "'
+        ORDER BY CONCAT(state,county,name) LIMIT 1", false);
 
 	browseButtons("Location Detail", $url . "?view=" . $viewMode . "&locationid=", $locationID,
 				  $prevLocationInfo["id"], $prevLocationInfo["name"], $nextLocationInfo["id"], $nextLocationInfo["name"]);
