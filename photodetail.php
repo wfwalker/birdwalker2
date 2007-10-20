@@ -16,15 +16,15 @@ $locationInfo = getLocationInfo($sightingInfo["location_id"]);
 
 $nextPhotoID = performCount(
 	"Get Next Photo", 
-    "SELECT sightings.id FROM sightings, trip
-      WHERE sightings.trip_id=trips.id AND Photo='1' AND CONCAT(trips.Date,sightings.id) > '" . $tripInfo["date"] . $request->getSightingID() . "'
-      ORDER BY CONCAT(trips.Date,sightings.id) LIMIT 1");
+    "SELECT sightings.id FROM sightings, trips
+      WHERE sightings.trip_id=trips.id AND Photo='1' AND CONCAT(trips.date,sightings.id) > '" . $tripInfo["date"] . $request->getSightingID() . "'
+      ORDER BY CONCAT(trips.date,sightings.id) LIMIT 1");
 
 if ($nextPhotoID != "")
 {
 	$nextPhotoInfo = performOneRowQuery("Get Next Photo Info", 
-       "SELECT sightings.id, date_format(trips.Date, '%b %D, %Y') as niceDate
-         FROM sightings, trip WHERE sightings.trip_id=trips.id AND sightings.id='" . $nextPhotoID . "'", false);
+       "SELECT sightings.id, date_format(trips.date, '%b %D, %Y') as niceDate
+         FROM sightings, trips WHERE sightings.trip_id=trips.id AND sightings.id='" . $nextPhotoID . "'", false);
 	//$nextPhotoLinkText = getThumbForSightingInfo($nextPhotoInfo);
 	$nextPhotoLinkText = $nextPhotoInfo["niceDate"];
 }
@@ -36,13 +36,13 @@ else
 $prevPhotoID = performCount(
 	"Get Previous Photo",
     "SELECT sightings.id FROM sightings, trips
-      WHERE sightings.trip_id=trips.id AND Photo='1' AND CONCAT(trips.Date,sightings.id) < '" . $tripInfo["date"] . $request->getSightingID() . "'
-      ORDER BY CONCAT(trips.Date,sightings.id) DESC LIMIT 1");
+      WHERE sightings.trip_id=trips.id AND Photo='1' AND CONCAT(trips.date,sightings.id) < '" . $tripInfo["date"] . $request->getSightingID() . "'
+      ORDER BY CONCAT(trips.date,sightings.id) DESC LIMIT 1");
 
 if ($prevPhotoID != "") {
 	$prevPhotoInfo = performOneRowQuery("Get Previous Photo Info",
-       "SELECT sightings.id, date_format(trips.Date, '%b %D, %Y') as niceDate
-         FROM sightings, trip WHERE sightings.trip_id=trips.id AND sightings.id='" . $prevPhotoID . "'", false);
+       "SELECT sightings.id, date_format(trips.date, '%b %D, %Y') as niceDate
+         FROM sightings, trips WHERE sightings.trip_id=trips.id AND sightings.id='" . $prevPhotoID . "'", false);
 	//$prevPhotoLinkText = getThumbForSightingInfo($prevPhotoInfo);
 	$prevPhotoLinkText = $prevPhotoInfo["niceDate"];
 }
