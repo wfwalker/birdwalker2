@@ -109,9 +109,9 @@ class Request
 		if ($inValue != "")
 		{
 			$locationInfo = $this->getLocationInfo();
-			$stateInfo = getStateInfoForAbbreviation($locationInfo["state"]);
-			$this->setStateID($stateInfo["id"]);
-			$this->setCounty($locationInfo["county"]);
+			$countyInfo = getCountyInfo($locationInfo["county_id"]);
+			$this->setStateID($countyInfo["id"]);
+			$this->setCounty($countyInfo["name"]);
 		}
 	}
 	function getLocationID() { return $this->mLocationID; }

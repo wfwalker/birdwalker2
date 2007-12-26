@@ -29,12 +29,12 @@ class LocationQuery extends BirdWalkerQuery
 		}
 
 		return "
-            FROM sightings, trips, locations" . $otherTables . " ";
+            FROM sightings, trips, counties, locations" . $otherTables . " ";
 	}
 
 	function getWhereClause()
 	{
-		$whereClause = "WHERE sightings.location_id=locations.id AND sightings.trip_id=trips.id ";
+		$whereClause = "WHERE sightings.location_id=locations.id AND locations.county_id=counties.id AND sightings.trip_id=trips.id ";
 
 		if ($this->mReq->getTripID() != "") {
 			$tripInfo = $this->mReq->getTripInfo();
@@ -49,8 +49,7 @@ class LocationQuery extends BirdWalkerQuery
 			$whereClause = $whereClause . " AND locations.id=sightings.location_id"; 
 		} elseif ($this->mReq->getStateID() != "") {
 			$stateInfo = getStateInfo($this->mReq->getStateID());
-			$whereClause = $whereClause . " AND locations.State='" . $stateInfo["abbreviation"] . "'";
-			$whereClause = $whereClause . " AND locations.id=sightings.location_id"; 
+			$whereClause = $whereClause . " AND counties.state_id='" . $stateInfo["id"] . "'";
 		}
 
 		if ($this->mReq->getSpeciesID() != "") {
@@ -104,7 +103,7 @@ class LocationQuery extends BirdWalkerQuery
 		return performQuery("Perform Query",
 			$this->getSelectClause() . " " . 
 			$this->getFromClause() . " " .
-			$this->getWhereClause() . " GROUP BY locations.id ORDER BY locations.State, locations.County, locations.Name");
+			$this->getWhereClause() . " GROUP BY locations.id ORDER BY locations.county_id, locations.Name");
 	}
 
 	function findExtrema()

@@ -584,6 +584,11 @@ function getStateInfo($id)
 	return performOneRowQuery("Get State Info", "SELECT * FROM states where id='" . $id . "'");
 }
 
+function getCountyInfo($id)
+{
+	return performOneRowQuery("Get County Info", "SELECT * FROM counties where id='" . $id . "'");
+}
+
 function getStateInfoForAbbreviation($abbrev)
 {
 	return performOneRowQuery("Get State Info for Abbreviation", "SELECT * FROM states where abbreviation='" . $abbrev . "'");

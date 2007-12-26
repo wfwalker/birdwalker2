@@ -11,16 +11,14 @@ CREATE TABLE locations (
   name varchar(255),
   reference_url text,
   city text,
-  county varchar(255),
-  state char(2),
+  county_id mediumint(9),
   notes text,
   latitude float(15,10),
   longitude float(15,10),
   photo boolean default 0,
   PRIMARY KEY  (id),
   KEY NameIndex (name),
-  KEY CountyIndex (county),
-  KEY StateIndex (state)
+  KEY CountyIndex (county_id)
 ) TYPE=MyISAM;
 
 --
@@ -49,9 +47,11 @@ CREATE TABLE species (
   notes text,
   reference_url text,
   aba_countable boolean NOT NULL default 1,
+  family_id mediumint(9),
   PRIMARY KEY  (id),
   KEY AbbreviationIndex (abbreviation),
-  KEY aba_countableIndex (aba_countable)
+  KEY aba_countableIndex (aba_countable),
+  KEY family_idIndex (family_id)
 ) TYPE=MyISAM;
 
 --
