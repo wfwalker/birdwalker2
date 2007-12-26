@@ -9,16 +9,16 @@ $save = ""; array_key_exists("Save", $_POST) && $save = $_POST['Save'];
 $abbreviations = ""; array_key_exists("Abbreviations", $_POST) && $abbreviations = $_POST['Abbreviations'];
 $importedAbbreviations = ""; array_key_exists("importedAbbreviations", $_POST) && $importedAbbreviations = $_POST['importedAbbreviations'];
 $notes = ""; array_key_exists("notes", $_POST) && $notes = $_POST['Notes'];
-$locationName = ""; array_key_exists("LocationName", $_POST) && $locationName = $_POST['LocationName'];
+$locationID = ""; array_key_exists("LocationID", $_POST) && $locationName = $_POST['LocationID'];
 $leader = ""; array_key_exists("Leader", $_POST) && $leader = $_POST['Leader'];
 $tripDate = ""; array_key_exists("TripDate", $_POST) && $tripDate = $_POST['TripDate'];
 $tripName = ""; array_key_exists("TripName", $_POST) && $tripName = $_POST['TripName'];
 
-$locationList = performQuery("Get All Locations", "SELECT Name, id FROM location ORDER BY Name");
+$locationList = performQuery("Get All Locations", "SELECT name, id FROM locations ORDER BY name");
 $dateArray = getdate();
 $dateString = $dateArray["year"] . "-" . $dateArray["mon"] . "-" .  $dateArray["mday"];
-$sightingID = performCount("Get Highest Sighting ID", "SELECT MAX(id) from sighting;");
-$tripID = performCount("Get Highest Trip ID", "SELECT MAX(id) from trip;");
+$sightingID = performCount("Get Highest Sighting ID", "SELECT MAX(id) from sightings;");
+$tripID = performCount("Get Highest Trip ID", "SELECT MAX(id) from trips;");
 
 htmlHead("Create a trip");
 
@@ -38,7 +38,17 @@ $speciesQuery = new SpeciesQuery($request);
 <?
 if ($save == "Save")
 {
-    // insert abbreviations imported from a text memo. FIRST verify them
+	$todayTripRecordCount = performCount("Trip record already for today", "SELECT count(*) from trips WHERE date='" . $tripDate . "';");
+
+	if ($todayTripRecordCount == 0)
+	{
+		// FINALLY insert the trip record
+		performQuery("Insert trip record",
+					 "INSERT INTO trip VALUES (" . ($tripID + 1) . ", '" . $leader . "', '', '" . $tripName . "', '" . $notes . "', '" . $tripDate . "');");
+		echo "<a href=\"./tripdetail.php?tripid=" . ($tripID + 1) . "\">Trip Created</a>";
+	}
+	
+    // validate abbreviations imported from a text memo. FIRST verify them
     $importedAbbrev = strtok($importedAbbreviations, " \n");
     while ($importedAbbrev)
     {
@@ -46,7 +56,7 @@ if ($save == "Save")
 		{
 		  // check for valid species abbrev
 		  performCount("Verify abbreviation",
-					   "SELECT COUNT(*) FROM species WHERE Abbreviation='" . trim($importedAbbrev) . "'")
+					   "SELECT COUNT(*) FROM species WHERE abbbreviation='" . trim($importedAbbrev) . "'")
 			or die ("This is not a valid abbreviation " . $importedAbbrev);
 		}
 
@@ -61,9 +71,13 @@ if ($save == "Save")
 		{
 			// insert this species
 			$sightingID++;
+			
+			// check for valid species abbrev
+		    $species_id = performCount("Lookup ID for species", "SELECT id FROM species WHERE abbbreviation='" . trim($importedAbbrev) . "'");
+		  
 			performQuery("Insert new sighting",
-						 "\nINSERT INTO sighting VALUES (" . $sightingID . ", '" .
-						 trim($importedAbbrev) . "', '" . $locationName . "', '', '0', '0', '" . $tripDate . "');\n");
+						 "\nINSERT INTO sightings VALUES (" . $sightingID . ", '" .
+						 $species_id . "', '" . $locationID . "', '', '0', '0', '" . $tripID . "');\n");
 		}
 
 	    $importedAbbrev = strtok(" \n");
@@ -86,16 +100,6 @@ if ($save == "Save")
 	}
 
 	echo "sightings inserted... ";
-
-	$todayTripRecordCount = performCount("Trip recoprd already for today", "SELECT count(*) from trip WHERE Date='" . $tripDate . "';");
-
-	if ($todayTripRecordCount == 0)
-	{
-		// FINALLY insert the trip record
-		performQuery("Insert trip record",
-					 "INSERT INTO trip VALUES (" . ($tripID + 1) . ", '" . $leader . "', '', '" . $tripName . "', '" . $notes . "', '" . $tripDate . "');");
-		echo "<a href=\"./tripdetail.php?tripid=" . ($tripID + 1) . "\">Trip Created</a>";
-	}
 }
 ?>
 
@@ -117,10 +121,10 @@ if ($save == "Save")
   <tr>
 	<td class="fieldlabel">Location</td>
 	<td>
-	  <select name="LocationName">
+	  <select name="LocationID">
 <?        while($info = mysql_fetch_array($locationList))
 	      { ?>
-		      <option <?= ($request->getLocationID()==$info["id"] ? "selected" : "") ?>>
+		      <option value="<?= $info['id'] ?>" <?= ($request->getLocationID()==$info["id"] ? "selected" : "") ?>>
                   <?= $info["name"]  ?>
               </option>
 <?		  } ?>

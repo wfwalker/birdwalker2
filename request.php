@@ -694,7 +694,9 @@ function changeView()
 	        <div class="command-simple"><a href="./indexrss.php">RSS</a></div>
 	        <div class="command-simple"><a href="./kmlfile.php?<?= $this->getParams() ?>">KML</a></div>
 	        <div class="command-simple"><a href="./timeline.php?<?= $this->getParams() ?>">timeline</a></div>
-
+	
+	        <br/>
+			<div class="command-simple"><a href="http://sven.spflrc.org:3000/bird_walker/index">NEW V.3 BETA</a></div>
         </div>
 <?  }
 
