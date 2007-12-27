@@ -8,6 +8,7 @@ OTHERFLAGS="--extended-insert=FALSE --quote-names=FALSE"
 
 $EXECUTABLE $OTHERFLAGS $AUTHFLAGS states | grep INSERT > state.sql
 $EXECUTABLE $OTHERFLAGS $AUTHFLAGS locations | grep INSERT > location.sql
+$EXECUTABLE $OTHERFLAGS $AUTHFLAGS counties | grep INSERT > county.sql
 $EXECUTABLE $OTHERFLAGS $AUTHFLAGS sightings | grep INSERT > sighting.sql
 $EXECUTABLE $OTHERFLAGS $AUTHFLAGS trips | grep INSERT > trip.sql
 $EXECUTABLE $OTHERFLAGS $AUTHFLAGS species | grep INSERT > species.sql

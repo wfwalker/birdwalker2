@@ -21,6 +21,21 @@ CREATE TABLE locations (
   KEY CountyIndex (county_id)
 ) TYPE=MyISAM;
 
+
+--
+-- Counties
+--
+
+drop table if exists counties;
+
+CREATE TABLE counties (
+  `id` int(11) NOT NULL auto_increment,
+  `name` tinytext,
+  `state_id` int(11) default NULL,
+  PRIMARY KEY  (`id`)
+) TYPE=MyISAM;
+
+
 --
 -- Table structure for table 'countyfrequency'
 --

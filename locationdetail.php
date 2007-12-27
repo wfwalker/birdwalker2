@@ -34,7 +34,9 @@ $request->globalMenu();
 	    <? editLink("./locationcreate.php?locationid=" . $request->getLocationID()); ?>
     </div>
 	<div class="pagesubtitle">
-	    <?= $siteInfo["county"] ?> County, <?= $siteInfo["state"] ?>
+		<? $countyInfo = getCountyInfo($siteInfo["county_id"]) ?>
+		<? $stateInfo = getStateInfo($countyInfo["state_id"]) ?>
+	    <?= $countyInfo["name"] ?> County, <?= $stateInfo["name"] ?>
 	</div>
   <? $request->viewLinks("species"); ?>
 </div>

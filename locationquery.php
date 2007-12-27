@@ -11,7 +11,7 @@ class LocationQuery extends BirdWalkerQuery
 
 	function getSelectClause()
 	{
- 		$selectClause = "SELECT DISTINCT locations.id, locations.*, SUM(sightings.photo) as locationPhotos, locations.Notes as locationNotes";
+ 		$selectClause = "SELECT DISTINCT locations.id, locations.*, SUM(sightings.photo) as locationPhotos, locations.notes as locationNotes";
 
 		return $selectClause;
 	}
@@ -68,13 +68,13 @@ class LocationQuery extends BirdWalkerQuery
 		}
 		
 		if ($this->mReq->getDayOfMonth() !="") {
-			$whereClause = $whereClause . " AND DayOfMonth(trips.Date)=" . $this->mReq->getDayOfMonth();
+			$whereClause = $whereClause . " AND DayOfMonth(trips.date)=" . $this->mReq->getDayOfMonth();
 		}
 		if ($this->mReq->getMonth() !="") {
-			$whereClause = $whereClause . " AND Month(trips.Date)=" . $this->mReq->getMonth();
+			$whereClause = $whereClause . " AND Month(trips.date)=" . $this->mReq->getMonth();
 		}
 		if ($this->mReq->getYear() !="") {
-			$whereClause = $whereClause . " AND Year(trips.Date)=" . $this->mReq->getYear();
+			$whereClause = $whereClause . " AND Year(trips.date)=" . $this->mReq->getYear();
 		}
 
 		return $whereClause;
@@ -103,7 +103,7 @@ class LocationQuery extends BirdWalkerQuery
 		return performQuery("Perform Query",
 			$this->getSelectClause() . " " . 
 			$this->getFromClause() . " " .
-			$this->getWhereClause() . " GROUP BY locations.id ORDER BY locations.county_id, locations.Name");
+			$this->getWhereClause() . " GROUP BY locations.id ORDER BY locations.county_id, locations.name");
 	}
 
 	function findExtrema()
@@ -138,11 +138,11 @@ class LocationQuery extends BirdWalkerQuery
 		$lastStateHeading="";
 
 		$gridQueryString="
-        SELECT distinct(locations.name), county, state, locations.id as locationid, bit_or(1 << (year(trips.date) - 1995)) as mask " . 
+        SELECT distinct(locations.name), county_id, locations.id as locationid, bit_or(1 << (year(trips.date) - 1995)) as mask " . 
 		  $this->getFromClause() . " " .
 		  $this->getWhereClause() . " 
         GROUP BY sightings.location_id
-        ORDER BY locations.State, locations.County, locations.Name;";
+        ORDER BY locations.county_id, locations.name;";
 
 		$gridQuery = performQuery("Location By Year Query", $gridQueryString); ?>
 
@@ -216,11 +216,11 @@ class LocationQuery extends BirdWalkerQuery
 		$lastStateHeading="";
 
 		$gridQueryString="
-        SELECT distinct(locations.name), county, state, locations.id AS locationid, bit_or(1 << month(trips.date)) AS mask " .
+        SELECT distinct(locations.name), county_id, locations.id AS locationid, bit_or(1 << month(trips.date)) AS mask " .
 		  $this->getFromClause() . " " .
 		  $this->getWhereClause() . " 
         GROUP BY sightings.location_id
-        ORDER BY locations.state, locations.county, locations.name;";
+        ORDER BY locations.county_id, locations.name;";
 
 		$gridQuery = performQuery("Location By Month Query", $gridQueryString); ?>
 
