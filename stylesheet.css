@@ -174,7 +174,7 @@ body
 .prevlink a       { text-decoration: none; }
 .prevlink a:hover { color: red; text-decoration: underline; }
 
-.pagekind { text-transform: lowercase; text-align: center; font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-style: italic; white-space: nowrap; }
+.pagekind { text-transform: lowercase; text-align: center; font: 10pt "Gill Sans", "Gill Sans MT", SansSerif; font-style: italic; white-space: nowrap; } 
 .pagekind a       { text-decoration: none; }
 .pagekind a:hover { color: red; text-decoration: underline; }
 }

@@ -13,6 +13,8 @@ $tripInfo = getTripInfo($sightingInfo["trip_id"]);
 $tripYear =  substr($tripInfo["date"], 0, 4);
 
 $locationInfo = getLocationInfo($sightingInfo["location_id"]);
+$countyInfo = getCountyInfo($locationInfo["county_id"]);
+$stateInfo = getStateInfo($countyInfo["state_id"]);
 
 $nextPhotoID = performCount(
 	"Get Next Photo", 
@@ -65,7 +67,7 @@ $request->globalMenu();
       </div>
       <div class="pagesubtitle">
 	     <a href="./tripdetail.php?tripid=<?= $tripInfo["id"] ?>"><?= $tripInfo["niceDate"] ?></a>,
-         <a href="./locationdetail.php?locationid=<?= $locationInfo["id"] ?>"><?= $locationInfo["name"] ?>, <?= $locationInfo["state"] ?></a>
+         <a href="./locationdetail.php?locationid=<?= $locationInfo["id"] ?>"><?= $locationInfo["name"] ?>, <?= $stateInfo["name"] ?></a>
       </div>
 </div>
 

@@ -155,18 +155,19 @@ class LocationQuery extends BirdWalkerQuery
 		{
 			$theMask = $info["mask"];
 
-			if ($countyHeadingsOK && ($prevInfo == "" || $prevInfo["county"] != $info["county"]))
+			if ($countyHeadingsOK && ($prevInfo == "" || $prevInfo["county_id"] != $info["county_id"]))
 			{
-				$stateInfo = getStateInfoForAbbreviation($info["state"]) ?>
+				$countyInfo = getCountyInfo($info["county_id"]);
+				$stateInfo = getStateInfo($countyInfo["state_id"]) ?>
 
 				<tr>
 				  <td colspan="13">
                     <div class="subheading">
-	<?                if ($lastStateHeading != $info["state"]) { ?>
+	<?                if ($lastStateHeading != $countyInfo["state_id"]) { ?>
 				        <span class="statename"><a href="./statedetail.php?stateid=<?= $stateInfo["id"] ?>"><?= $stateInfo["name"] ?></a></span>,
-	<?                  $lastStateHeading = $info["state"];
+	<?                  $lastStateHeading = $countyInfo["state_id"];
 				      } ?>
-				      <a href="./countydetail.php?stateid=<?= $stateInfo["id"] ?>&county=<?= urlencode($info["county"]) ?>"><?= $info["county"] ?> County</a>
+				      <a href="./countydetail.php?stateid=<?= $stateInfo["id"] ?>&countyid=<?= urlencode($info["county_id"]) ?>"><?= $info["county_id"] ?> County</a>
                     </div>
                   </td>
 				</tr>
@@ -301,17 +302,19 @@ class LocationQuery extends BirdWalkerQuery
 
 	<?	while($info = mysql_fetch_array($dbQuery))
 		{
-			if ($countyHeadingsOK && $divideByCounties && (($prevInfo["state"] != $info["state"]) || ($prevInfo["county"] != $info["county"])))
-			{ ?>
+			if ($countyHeadingsOK && $divideByCounties && ($prevInfo["county_id"] != $info["county_id"]))
+			{
+				$countyInfo = getCountyInfo($info['county_id']);
+				$stateInfo = getStateInfo($countyInfo['state_id']); ?>
 				<div class="subheading">
-<?              if ($lastStateHeading != $info["state"])
+<?              if ($lastStateHeading != $countyInfo["state_id"])
 				{
-					$stateInfo = getStateInfoForAbbreviation($info["state"]); ?>
+					$stateInfo = getStateInfo($countyInfo["state_id"]); ?>
 					<span class="statename"><a href="./statedetail.php?view=<?= $this->mReq->getView() ?>&stateid=<?= $stateInfo["id"]?>"><?= $stateInfo["name"] ?></a></span>,
-<?                  $lastStateHeading = $info["state"];
+<?                  $lastStateHeading = $countyInfo["state_id"];
 				} ?>
-				<a href="./countydetail.php?view=<?= $this->mReq->getView() ?>&stateid=<?= $stateInfo["id"]?>&county=<?= $info["county"] ?>">
-			      <?= $info["county"] ?> County
+				<a href="./countydetail.php?view=<?= $this->mReq->getView() ?>&stateid=<?= $stateInfo["id"]?>&county=<?= $info["county_id"] ?>">
+			      <?= $countyInfo["name"] ?> County
 			    </a>
 				</div>
 <?          } // TODO, list below the county and state name if not dividing by county/state ?>

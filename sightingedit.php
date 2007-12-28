@@ -68,7 +68,8 @@ else
 
 $tripInfo = getTripInfo($sightingInfo["trip_id"]);
 $locationInfo = getLocationInfo($sightingInfo["location_id"]);
-$stateInfo = getStateInfoForAbbreviation($locationInfo["state"]);
+$countyInfo = getCountyInfo($locationInfo["county_id"]);
+$stateInfo = getStateInfo($countyInfo["state_id"]);
 
 $locationList = performQuery("Get Location List", "SELECT name, id FROM locations ORDER BY name");
 $tripList = performQuery("Get Trip List", "SELECT name, id FROM trips ORDER BY date");
@@ -97,7 +98,7 @@ $request->globalMenu();
   </div>
 
   <div class="pagesubtitle">
-    <a href="./countydetail.php?stateid=<?= $stateInfo["id"] ?>&county=<?= $locationInfo["county"] ?>"><?= $locationInfo["county"] ?> County</a>, 
+    <a href="./countydetail.php?stateid=<?= $stateInfo["id"] ?>&county=<?= $locationInfo["county_id"] ?>"><?= $countyInfo["name"] ?> County</a>, 
     <a href="./statedetail.php?stateid=<?= $stateInfo["id"] ?>"><?= $stateInfo["name"] ?></a>,
     <a href="./tripdetail.php?tripid=<?= $tripInfo["id"] ?>"><?= $tripInfo["niceDate"] ?></a>
   </div>
