@@ -45,7 +45,7 @@ class ChronoList
              sightings.*, 
              species.common_name,
              species.id as speciesid,
-             trips.id as tripid, locations.county, locations.state
+             trips.id as tripid, locations.county_id
           FROM sightings, tmp, species, locations, trips
           WHERE
              sightings.species_id=tmp.species_id AND
