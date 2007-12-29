@@ -15,7 +15,7 @@ performQuery("Put Santa Clara County Sightings into Tmp",
     FROM sightings, species, locations, trips
     WHERE species.id=sightings.species_id
 	  AND trips.id=sightings.trip_id
-      AND sightings.location_id=locations.id and locations.state='CA' AND location.County='Santa Clara'
+      AND sightings.location_id=locations.id and locations.county_id='2'
       AND Exclude!='1' " . ($request->isYearSpecified() ? "and Year(trips.Date)='". $request->getYear() . "'" : "" ) . "
     GROUP BY species.id;");
 
