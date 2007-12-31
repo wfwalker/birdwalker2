@@ -32,8 +32,8 @@ speciesdetail.php?view=locationsbyyear&speciesid=11061111000 \
 yeardetail.php?view=chrono&year=1999 \
 yeardetail.php?view=photo&year=2004 \
 speciesindex.php?view=chrono \
-countydetail.php?county=Santa+Clara&stateid=5 \
-countydetail.php?view=photo&county=Santa+Clara&stateid=5 \
+countydetail.php?countyid=2 \
+countydetail.php?view=photo&countyid=2 \
 countyindex.php \
 familydetail.php?familyid=2227 \
 index.php \
