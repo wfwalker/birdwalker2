@@ -5,27 +5,28 @@ require_once("./request.php");
 
 $request = new Request;
 
-$request->getCounty() == "" && die("Fatal error: missing county");
+$request->getCountyID() == "" && die("Fatal error: missing countyid");
 
-htmlHead($request->getCounty() . " County");
+$countyInfo = getCountyInfo($request->getCountyID());
+htmlHead($countyInfo["name"] . " County");
 
 $request->globalMenu();
 
 $locationQuery = new LocationQuery($request);
-$stateInfo =  $request->getStateInfo();
+$stateInfo =  getStateInfo($countyInfo["state_id"]);
 
 $biggestCountyDay = performOneRowQuery("biggest county day",
-   "SELECT trips.*, year(trips.Date) as year, DATE_FORMAT(trips.Date, '%M') as month, COUNT(DISTINCT(sightings.species_id)) AS count
+   "SELECT trips.*, year(trips.date) as year, DATE_FORMAT(trips.date, '%M') as month, COUNT(DISTINCT(sightings.species_id)) AS count
       FROM sightings,trips,locations
-      WHERE sightings.trip_id=trips.id AND sightings.location_id=locations.id AND locations.County='" . $request->getCounty() . "'
-      GROUP BY trips.Date
+      WHERE sightings.trip_id=trips.id AND sightings.location_id=locations.id AND locations.county_id='" . $request->getCountyID() . "'
+      GROUP BY trips.date
       ORDER BY count DESC LIMIT 1");
 
 ?>
 
     <div id="topright-location">
 	  <div class="pagekind">County Detail</div>
-	  <div class="pagetitle"> <?= $request->getCounty() ?> County</div>
+	  <div class="pagetitle"> <?= $countyInfo["name"] ?> County</div>
 	  <div class="pagesubtitle"> <?= $stateInfo["name"] ?></div>
 <?    $request->viewLinks("species"); ?>
 	</div>
