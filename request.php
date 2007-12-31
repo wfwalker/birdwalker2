@@ -110,10 +110,9 @@ class Request
 		{
 			$locationInfo = $this->getLocationInfo();
 
-			$countyInfo = $this->getCountyInfo($locationInfo["county_id"]);
-			$stateInfo = $this->getStateInfo($countyInfo["state_id"]);
-			$this->setStateID($stateInfo["id"]);
+			$countyInfo = getCountyInfo($locationInfo["county_id"]);
 			$this->setCountyID($countyInfo["id"]);
+			$this->setStateID($countyInfo["state_id"]);
 		}
 	}
 	function getLocationID() { return $this->mLocationID; }
