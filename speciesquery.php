@@ -27,7 +27,7 @@ class SpeciesQuery extends BirdWalkerQuery
 		{
 			$selectClause = $selectClause . ", sightings.Notes as sightingNotes, sightings.Exclude, sightings.photo, sightings.id AS sightingid";
 		}
-		else if (($this->mReq->getLocationID() != "") || ($this->mReq->getCounty() != "") || ($this->mReq->getStateID() != ""))
+		else if (($this->mReq->getLocationID() != "") || ($this->mReq->getCountyID() != "") || ($this->mReq->getStateID() != ""))
 		{
 			$selectClause = $selectClause . ",  min(concat(sightings.trip_id, lpad(sightings.id, 6, '0'))) as earliestsighting";
 		}
@@ -42,10 +42,10 @@ class SpeciesQuery extends BirdWalkerQuery
 
 		if ($this->mReq->getLocationID() != "") {
 			$otherTables = $otherTables . ", locations";
-		} elseif ($this->mReq->getCounty() != "") {
+		} elseif ($this->mReq->getCountyID() != "") {
 			$otherTables = $otherTables . ", locations";
 		} elseif ($this->mReq->getStateID() != "") {
-			$otherTables = $otherTables . ", locations";
+			$otherTables = $otherTables . ", locations, counties";
 		}
 
 		return "
@@ -65,12 +65,12 @@ class SpeciesQuery extends BirdWalkerQuery
 		if ($this->mReq->getLocationID() != "") {
 			$whereClause = $whereClause . " AND locations.id=" . $this->mReq->getLocationID();
 			$whereClause = $whereClause . " AND locations.id=sightings.location_id"; 
-		} elseif ($this->mReq->getCounty() != "") {
-			$whereClause = $whereClause . " AND locations.County='" . $this->mReq->getCounty() . "'";
+		} elseif ($this->mReq->getCountyID() != "") {
+			$whereClause = $whereClause . " AND locations.county_id='" . $this->mReq->getCountyID() . "'";
 			$whereClause = $whereClause . " AND locations.id=sightings.location_id"; 
 		} elseif ($this->mReq->getStateID() != "") {
 			$stateInfo = getStateInfo($this->mReq->getStateID());
-			$whereClause = $whereClause . " AND locations.State='" . $stateInfo["abbreviation"] . "'";
+			$whereClause = $whereClause . " AND counties.state_id='" . $stateInfo["id"] . "'";
 			$whereClause = $whereClause . " AND locations.id=sightings.location_id"; 
 		}
 

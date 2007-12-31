@@ -33,13 +33,14 @@ class SightingQuery extends BirdWalkerQuery
 
 	function getFromClause()
 	{
-		return " FROM sightings, species, locations, trips";
+		return " FROM sightings, species, locations, counties, trips";
 	}
 
 	function getWhereClause()
 	{
 		$whereClause = "WHERE
             locations.id=sightings.location_id AND
+			locations.county_id=counties.id AND
             species.id=sightings.species_id AND
             trips.id=sightings.trip_id ";
 
@@ -50,11 +51,11 @@ class SightingQuery extends BirdWalkerQuery
 
 		if ($this->mReq->getLocationID() != "") {
 			$whereClause = $whereClause . " AND locations.id=" . $this->mReq->getLocationID();
-		} elseif ($this->mReq->getCounty() != "") {
-			$whereClause = $whereClause . " AND locations.County='" . $this->mReq->getCounty() . "'";
+		} elseif ($this->mReq->getCountyID() != "") {
+			$whereClause = $whereClause . " AND locations.county_id='" . $this->mReq->getCountyID() . "'";
 		} elseif ($this->mReq->getStateID() != "") {
 			$stateInfo = getStateInfo($this->mReq->getStateID());
-			$whereClause = $whereClause . " AND locations.State='" . $stateInfo["abbreviation"] . "'";
+			$whereClause = $whereClause . " AND counties.state_id='" . $stateInfo["id"] . "'";
 		}
 
 		if ($this->mReq->getSpeciesID() != "") {
@@ -107,7 +108,7 @@ class SightingQuery extends BirdWalkerQuery
 
 	function performQuery()
 	{
-		if (($this->mReq->getLocationID() == "") && ($this->mReq->getCounty() == "") && ($this->mReq->getStateID() == "") &&
+		if (($this->mReq->getLocationID() == "") && ($this->mReq->getCountyID() == "") && ($this->mReq->getStateID() == "") &&
 			($this->mReq->getTripID() == "") && ($this->mReq->getMonth() == "") && ($this->mReq->getYear() == "") &&
 			($this->mReq->getFamilyID() == "") && ($this->mReq->getOrderID() == "") && ($this->mReq->getSpeciesID() == ""))
 			die("No query parameters for sighting query");
