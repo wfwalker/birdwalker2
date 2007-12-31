@@ -4,7 +4,7 @@ require_once("./birdwalker.php");
 require_once("./request.php");
 require_once("./speciesquery.php");
 
-$locationList = performQuery("Get All Locations", "SELECT Name, id FROM location ORDER BY Name");
+$locationList = performQuery("Get All Locations", "SELECT name, id FROM locations ORDER BY Name");
 
 $request = new Request;
 
