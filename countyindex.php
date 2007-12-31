@@ -6,7 +6,7 @@ $request = new Request;
 
 htmlHead("Counties");
 
-$numCounties = performCount("Count the counties", "SELECT COUNT(DISTINCT(County)) FROM location");
+$numCounties = performCount("Count the counties", "SELECT COUNT(DISTINCT(county_id)) FROM locations");
 
 $request->globalMenu();
 ?>
@@ -30,26 +30,29 @@ $lastStateAccumulated = "NONE";
 $prevState = "NONE";
 $countyToAccumulate = "NONE";
 $countyStats = performQuery("Get County Statistics By Year",
-    "SELECT location.County, locations.state, state.objectid as StateID, location.objectid, COUNT(DISTINCT sightings.SpeciesAbbreviation) AS
+    "SELECT locations.county_id, states.id as StateID, locations.id, COUNT(DISTINCT sightings.species_id) AS
       SpeciesCount, year(trips.date) AS theyear
-      FROM location, sighting, state
-      WHERE locations.id=sightings.location_id AND state.Abbreviation=locations.state
-      GROUP BY location.County, theyear
-      ORDER BY locations.state, location.County, theyear");
+      FROM locations, sightings, counties, states, trips
+      WHERE locations.id=sightings.location_id
+		AND sightings.trip_id=trips.id
+		AND locations.county_id=counties.id
+		AND counties.state_id=states.id
+      GROUP BY locations.county_id, theyear
+      ORDER BY locations.county_id, locations.county_id, theyear");
 
 $countyTotals = performQuery("Get County Totals",
-    "SELECT location.County, locations.state, state.objectid as StateID, COUNT(DISTINCT sightings.SpeciesAbbreviation) AS SpeciesCount
-      FROM location, sighting, state
-      WHERE locations.id=sightings.location_id AND state.Abbreviation=locations.state
-      GROUP BY location.County
-      ORDER BY locations.state, location.County"); ?>
+    "SELECT locations.county_id, states.id as StateID, COUNT(DISTINCT sightings.species_id) AS SpeciesCount
+      FROM locations, counties, sightings, states
+      WHERE locations.id=sightings.location_id and locations.county_id=counties.id AND counties.state_id=states.id
+      GROUP BY locations.county_id
+      ORDER BY locations.county_id"); ?>
 
     <tr><td></td><? insertYearLabels(); ?><td class="bordered">Total</td></tr>
 
 <?
 while ($info = mysql_fetch_array($countyStats))
 {
-	$county = $info["county"];
+	$countyInfo = getCountyInfo($info["county_id"]);
 	$stateid = $info["StateID"];
 	$theYear = $info["theyear"];
 	$speciesCount = $info["SpeciesCount"];
@@ -67,19 +70,19 @@ while ($info = mysql_fetch_array($countyStats))
 <?		$lastStateAccumulated = $prevState;
 	}
 		
-	if (($yearArray != null) && ($countyToAccumulate != $county))
+	if (($yearArray != null) && ($countyToAccumulate["id"] != $countyInfo["id"]))
 	{ ?>
 
 		<tr><td>
-			<a href="./countydetail.php?stateid=<?= $prevState ?>&county=<?= urlencode($countyToAccumulate) ?>">
-			<?= $countyToAccumulate ?> County
+			<a href="./countydetail.php?id=<?= $countyToAccumulate['id'] ?>">
+			<?= $countyToAccumulate["name"] ?> County
 			</a>
 			</td>
 
 <?	for ($year = getEarliestYear(); $year <= getLatestYear(); $year++)
 	{ ?>
         <td class="bordered">
-            <a href="./specieslist.php?stateid=<?= $stateid ?>&county=<?= urlEncode($countyToAccumulate) ?>&year=<?= $year ?>">
+            <a href="./specieslist.php?countyid=<?= $countyToAccumulate['id'] ?>&year=<?= $year ?>">
 	          &nbsp; <? if (array_key_exists($year, $yearArray)) echo $yearArray[$year]; ?>
             </a>
         </td>
@@ -95,7 +98,7 @@ while ($info = mysql_fetch_array($countyStats))
 	}
 
 	$prevState = $stateid;	
-	$countyToAccumulate = $county;
+	$countyToAccumulate = $countyInfo;
 	$yearArray[$theYear] = $speciesCount;
 }
 

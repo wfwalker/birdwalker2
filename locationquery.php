@@ -44,12 +44,12 @@ class LocationQuery extends BirdWalkerQuery
 		if ($this->mReq->getLocationID() != "") {
 			echo "<!-- LOCATION " . $this->mReq->getLocationID() . " -->\n";
 			$whereClause = $whereClause . " AND locations.id='" . $this->mReq->getLocationID() . "'";
-		} elseif ($this->mReq->getCounty() != "") {
-			$whereClause = $whereClause . " AND locations.County='" . $this->mReq->getCounty() . "'";
+		} elseif ($this->mReq->getCountyID() != "") {
+			$whereClause = $whereClause . " AND locations.county_id='" . $this->mReq->getCountyID() . "'";
 			$whereClause = $whereClause . " AND locations.id=sightings.location_id"; 
 		} elseif ($this->mReq->getStateID() != "") {
-			$stateInfo = getStateInfo($this->mReq->getStateID());
-			$whereClause = $whereClause . " AND counties.state_id='" . $stateInfo["id"] . "'";
+			$whereClause = $whereClause . " AND counties.state_id='" . $this->mReq->getStateID() . "'";
+			$whereClause = $whereClause . " AND locations.id=sightings.location_id AND locations.county_id=counties.id";
 		}
 
 		if ($this->mReq->getSpeciesID() != "") {
@@ -133,7 +133,7 @@ class LocationQuery extends BirdWalkerQuery
 	 */
 	function formatLocationByYearTable()
 	{
-		$countyHeadingsOK = ($this->mReq->getCounty() == "");
+		$countyHeadingsOK = ($this->mReq->getCountyID() == "");
 
 		$lastStateHeading="";
 
@@ -212,7 +212,7 @@ class LocationQuery extends BirdWalkerQuery
 	 */
 	function formatLocationByMonthTable()
 	{
-		$countyHeadingsOK = ($this->mReq->getCounty() == "");
+		$countyHeadingsOK = ($this->mReq->getCountyID() == "");
 
 		$lastStateHeading="";
 
@@ -285,7 +285,7 @@ class LocationQuery extends BirdWalkerQuery
 
 	function formatTwoColumnLocationList()
 	{
-		$countyHeadingsOK = ($this->mReq->getCounty() == "");
+		$countyHeadingsOK = ($this->mReq->getCountyID() == "");
 
 		$dbQuery = $this->performQuery("Two Column Location List");
 

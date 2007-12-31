@@ -6,6 +6,7 @@ require_once("./birdwalker.php");
 $request = new Request;
 
 $siteInfo = $request->getLocationInfo();
+$countyInfo = getCountyInfo($siteInfo["county_id"]);
 
 $locationSightings = performQuery("Get Location Sightings",
     "SELECT sightings.id FROM sightings, locations
@@ -34,8 +35,8 @@ $request->globalMenu();
 	    <? editLink("./locationcreate.php?locationid=" . $request->getLocationID()); ?>
     </div>
 	<div class="pagesubtitle">
-		<? $countyInfo = getCountyInfo($siteInfo["county_id"]) ?>
-		<? $stateInfo = getStateInfo($countyInfo["state_id"]) ?>
+	    <? $countyInfo = getCountyInfo($siteInfo["county_id"]) ?>
+	    <? $stateInfo = getStateInfo($countyInfo["state_id"]) ?>
 	    <?= $countyInfo["name"] ?> County, <?= $stateInfo["name"] ?>
 	</div>
   <? $request->viewLinks("species"); ?>
