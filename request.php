@@ -18,7 +18,7 @@ class Request
 	var $mSightingID; // which sighting is this page about
 
 	var $mLocationID; // constrain this query to a particular location
-	var $mCounty; // constrain this query to a particular county
+	var $mCountyID; // constrain this query to a particular county
 	var $mStateID; // constrain this query to a particular state
 
 	var $mTripID; // constrain this query to a trip
@@ -51,7 +51,7 @@ class Request
 		array_key_exists("sightingid", $_GET) && $this->setSightingID($_GET["sightingid"]);
 		
 		array_key_exists("stateid", $_GET) && $this->setStateID($_GET["stateid"]);
-		array_key_exists("county", $_GET) && $this->setCounty($_GET["county"]);
+		array_key_exists("countyid", $_GET) && $this->setCountyID($_GET["countyid"]);
 		array_key_exists("locationid", $_GET) && $this->setLocationID($_GET["locationid"]);
 
 		array_key_exists("year", $_GET) && $this->setYear($_GET["year"]);
@@ -82,7 +82,7 @@ class Request
  	function isFamilySpecified() { if ($this->getFamilyID() == '') return false; else return true; }
  	function isOrderSpecified() { if ($this->getOrderID() == '') return false; else return true; }
 	function isLocationSpecified() { if ($this->getLocationID() == '') return false; else return true; }
-	function isCountySpecified() { if ($this->getCounty() == '') return false; else return true; }
+	function isCountySpecified() { if ($this->getCountyID() == '') return false; else return true; }
 	function isStateSpecified() { if ($this->getStateID() == '') return false; else return true; }
 	function isDayOfMonthSpecified() { if ($this->getDayOfMonth() == '') return false; else return true; }
 	function isMonthSpecified() { if ($this->getMonth() == '') return false; else return true; }
@@ -109,14 +109,16 @@ class Request
 		if ($inValue != "")
 		{
 			$locationInfo = $this->getLocationInfo();
-			$countyInfo = getCountyInfo($locationInfo["county_id"]);
-			$this->setStateID($countyInfo["id"]);
-			$this->setCounty($countyInfo["name"]);
+
+			$countyInfo = $this->getCountyInfo($locationInfo["county_id"]);
+			$stateInfo = $this->getStateInfo($countyInfo["state_id"]);
+			$this->setStateID($stateInfo["id"]);
+			$this->setCountyID($countyInfo["id"]);
 		}
 	}
 	function getLocationID() { return $this->mLocationID; }
-	function setCounty($inValue) { $this->mCounty = $inValue; }
-	function getCounty() { return $this->mCounty; }
+	function setCountyID($inValue) { $this->mCountyID = $inValue; }
+	function getCountyID() { return $this->mCountyID; }
 	function setStateID($inValue) { $this->mStateID = $inValue; }
 	function getStateID() { return $this->mStateID; }
 
@@ -182,7 +184,7 @@ class Request
 		if ($this->mView != "") { $params[] = "view=" . $this->mView; }
 
 		if ($this->mLocationID != "") { $params[] = "locationid=" . $this->mLocationID; }
-		if ($this->mCounty != "") { $params[] = "county=" . $this->mCounty; }
+		if ($this->mCountyID != "") { $params[] = "countyid=" . $this->mCountyID; }
 		if ($this->mStateID != "") { $params[] = "stateid=" . $this->mStateID; }
 
 		if ($this->mTripID != "") { $params[] = "tripid=" . $this->mTripID; }
@@ -238,7 +240,8 @@ class Request
 			$locationInfo = $this->getLocationInfo();
 			$pageTitleItems[] = $locationInfo["name"];
 		} elseif ($this->isCountySpecified()) {
-			$pageTitleItems[] = $this->getCounty() . " County";
+			$countyInfo = getCountyInfo($this->getCountyID());
+			$pageTitleItems[] = $countyInfo["name"] . " County";
 		} elseif ($this->isStateSpecified()) {
 			$stateInfo = $this->getStateInfo();
 		    $pageTitleItems[] = $stateInfo["name"];
@@ -267,7 +270,7 @@ class Request
 
 	function debug()
 	{
-		echo "\n<!-- view " . $this->mView . " locationid " . $this->mLocationID . " county " . $this->mCounty .
+		echo "\n<!-- view " . $this->mView . " locationid " . $this->mLocationID . " countyid " . $this->mCountyID .
 			" stateid " . $this->mStateID . " tripid " . $this->mTripID .
 			" dayofmonth " . $this->mDayOfMonth . " month " . $this->mMonth . " year " . $this->mYear . 
 			" speciesid " . $this->mSpeciesID . " family " . $this->mFamilyID . " order " . $this->mOrderID . " -->\n\n";
@@ -341,6 +344,12 @@ class Request
 	{
 		if ($this->getLocationID() == '') die("Fatal error: missing Location ID");
 		return getLocationInfo($this->getLocationID());
+	}
+
+	function getCountyInfo()
+	{
+		if ($this->getCountyID() == '') die("Fatal error: missing County ID");
+		return getCountyInfo($this->getCountyID());
 	}
 
 	function getFamilyInfo()
@@ -581,7 +590,7 @@ function changeView()
 	function globalMenuLocations()
 	{
 		if (! strstr(getenv("SCRIPT_NAME"), "location") &&
-			$this->getStateID() == "" && $this->getCounty() == "" && $this->getLocationID() == "")
+			$this->getStateID() == "" && $this->getCountyID() == "" && $this->getLocationID() == "")
 		{ ?>
 			<div class="command-disabled"><a href="./locationindex.php">locations</a></div>
 <?		}
@@ -595,18 +604,19 @@ function changeView()
 				$stateRequest = new Request;
 				$stateRequest->setPageScript("statedetail.php");
 				$stateRequest->setLocationID("");
-				$stateRequest->setCounty(""); ?>
+				$stateRequest->setCountyID(""); ?>
 			
 				<div><?= $stateRequest->command($stateInfo["name"]) ?></div>
 <?		    }
 		
-			if ($this->getCounty() != "")
+			if ($this->getCountyID() != "")
 			{
+				$countyInfo = $this->getCountyInfo();
 				$countyRequest = new Request;
 				$countyRequest->setPageScript("countydetail.php");
 				$countyRequest->setLocationID(""); ?>
 					 
-				<div><?= $countyRequest->command($this->getCounty() . " county") ?></div>
+				<div><?= $countyRequest->command($countyInfo["name"] . " county") ?></div>
 <?		    }
 
 			if ($this->getLocationID() != "")
