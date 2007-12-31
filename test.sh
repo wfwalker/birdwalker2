@@ -7,7 +7,7 @@ failCount=0
 
 echo -n "" > testresults.txt
 
-baseURL="http://localhost/~walker/birdwalker2/"
+baseURL="http://localhost/~wilwalke/birdwalker2/"
 
 successURLs="\
 indexrss.php \

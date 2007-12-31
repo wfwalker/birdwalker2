@@ -35,7 +35,7 @@ class TripQuery extends BirdWalkerQuery
 
 		if ($this->mReq->getLocationID() != "") {
 			$otherTables = $otherTables . ", locations";
-		} elseif ($this->mReq->getCounty() != "") {
+		} elseif ($this->mReq->getCountyID() != "") {
 			$otherTables = $otherTables . ", locations";
 		} elseif ($this->mReq->getStateID() != "") {
 			$otherTables = $otherTables . ", locations";
@@ -52,8 +52,8 @@ class TripQuery extends BirdWalkerQuery
 
 		if ($this->mReq->getLocationID() != "") {
 			$whereClause = $whereClause . " AND locations.id='" . $this->mReq->getLocationID() . "'";
-		} elseif ($this->mReq->getCounty() != "") {
-			$whereClause = $whereClause . " AND locations.County='" . $this->mReq->getCounty() . "'";
+		} elseif ($this->mReq->getCountyID() != "") {
+			$whereClause = $whereClause . " AND locations.county_id='" . $this->mReq->getCountyID() . "'";
 			$whereClause = $whereClause . " AND locations.id=sightings.location_id"; 
 		} elseif ($this->mReq->getStateID() != "") {
 			$stateInfo = $this->mReq->getStateInfo();
