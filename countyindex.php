@@ -74,7 +74,7 @@ while ($info = mysql_fetch_array($countyStats))
 	{ ?>
 
 		<tr><td>
-			<a href="./countydetail.php?id=<?= $countyToAccumulate['id'] ?>">
+			<a href="./countydetail.php?countyid=<?= $countyToAccumulate['id'] ?>">
 			<?= $countyToAccumulate["name"] ?> County
 			</a>
 			</td>
