@@ -235,16 +235,17 @@ class LocationQuery extends BirdWalkerQuery
 		{
 			$theMask = $info["mask"];
 
-			if ($prevInfo == "" || $countyHeadingsOK && ($prevInfo["county"] != $info["county"])) {
-				$stateInfo = getStateInfoForAbbreviation($info["state"]) ?>
+			if ($prevInfo == "" || $countyHeadingsOK && ($prevInfo["county_id"] != $info["county_id"])) {
+				$countyInfo = getCountyInfo($info["county_id"]);
+				$stateInfo = getStateInfo($countyInfo["state_id"]) ?>
 
 				<tr><td colspan="13">
 				  <div class="subheading">
-	<?          if ($lastStateHeading != $info["state"]) { ?>
+	<?          if ($lastStateHeading != $countyInfo["state_id"]) { ?>
 				  <span class="statename"><a href="./statedetail.php?stateid=<?= $stateInfo["id"] ?>"><?= $stateInfo["name"] ?></a></span>,
-	<?            $lastStateHeading = $info["state"];
+	<?            $lastStateHeading = $countyInfo["state_id"];
 				} ?>
-				  <a href="./countydetail.php?stateid=<?= $stateInfo["id"] ?>&county=<?= urlencode($info["county"]) ?>"><?= $info["county"] ?> County</a>
+				  <a href="./countydetail.php?stateid=<?= $stateInfo["id"] ?>&county=<?= urlencode($info["county"]) ?>"><?= $countyInfo["name"] ?> County</a>
 				  </div>
 				  </td>
 			    </tr>
