@@ -53,6 +53,12 @@ class Map
       // put the map in the center of the extrema
       $this->mReq->setLatitude(($mMinLat + $mMaxLat) / 2.0);
       $this->mReq->setLongitude(($mMinLong + $mMaxLong) / 2.0);
+
+
+		// 11/17/2007 accidentally signed up for this key
+		
+		// ABQIAAAAHB2OV0S5_ezvt-IsSEgTohT2yXp_ZAY8_ufC3CFXhHIE1NvwkxRNztm5yFJSae2XMBAkJuTJEI0uAw
+		// for "http://localhost/", can be used here?
 ?>
 
 <html>
