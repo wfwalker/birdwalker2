@@ -1591,3 +1591,4 @@ INSERT INTO species VALUES (11061160150,'dowitc','Limnodromus species','Dowitche
 INSERT INTO species VALUES (11061010250,'yelleg','Tringa species','Yellowlegs sp.','','',0,32);
 INSERT INTO species VALUES (22012030850,'wesfly','Empidonax western sp.','Western Flycatcher','','',0,50);
 INSERT INTO species VALUES (17021170000,'selhum','Selasphorus sp.','Selasphorus Hummingbird','','',0,45);
+INSERT INTO species VALUES (8012080000,'accipi','Accipiter sp.','Accipiter sp.','','',0,18);
