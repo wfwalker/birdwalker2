@@ -3,8 +3,8 @@
 require_once("./birdwalker.php");
 require_once("./request.php");
 
-$photoCount = performCount("Count Photos", "SELECT COUNT(*) FROM sighting WHERE Photo='1'");
-$photoSpeciesCount = performCount("Count Species with Photos", "SELECT COUNT(DISTINCT(sightings.SpeciesAbbreviation)) FROM sighting WHERE Photo='1'");
+$photoCount = performCount("Count Photos", "SELECT COUNT(*) FROM sightings WHERE Photo='1'");
+$photoSpeciesCount = performCount("Count Species with Photos", "SELECT COUNT(DISTINCT(sightings.species_id)) FROM sightings WHERE Photo='1'");
 
 htmlHead("Photo List");
 
