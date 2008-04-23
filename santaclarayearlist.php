@@ -7,7 +7,7 @@ $request = new Request;
 
 performQuery("Make Temp Table", "CREATE TEMPORARY TABLE tmp ( common_name varchar(32) default NULL, id varchar(32) default NULL, sightingCount varchar(32));");
 
-performQuery("Put in defaults for all speciesw", "INSERT INTO tmp SELECT species.common_name, species.id, 0 FROM species");
+performQuery("Put in defaults for all species", "INSERT INTO tmp SELECT species.common_name, species.id, 0 FROM species");
 
 performQuery("Put Santa Clara County Sightings into Tmp",
   "INSERT INTO tmp
@@ -17,13 +17,13 @@ performQuery("Put Santa Clara County Sightings into Tmp",
 	  AND trips.id=sightings.trip_id
       AND sightings.location_id=locations.id and locations.county_id='2'
       AND Exclude!='1' " . ($request->isYearSpecified() ? "and Year(trips.Date)='". $request->getYear() . "'" : "" ) . "
-    GROUP BY species.id;");
+    GROUP BY species.id ORDER BY species.id;");
 
 $latestSightingQuery = performQuery("Get Latest Sighting and Frequency",
     "SELECT countyfrequency.Frequency, tmp.common_name, tmp.id, max(sightingCount) AS sightingCount
       FROM tmp, countyfrequency WHERE tmp.common_name=countyfrequency.common_name
       GROUP BY tmp.common_name
-      ORDER BY countyfrequency.Frequency");
+      ORDER BY countyfrequency.Frequency, tmp.id");
 
 htmlHead("Target Year Birds");
 
