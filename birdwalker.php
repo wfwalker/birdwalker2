@@ -30,8 +30,10 @@ function htmlHead($title)
 	$title = "IPHONE " . $title;
   }
 
-echo "<!DOCTYPE  HTML PUBLIC  \"-//W3C//DTD HTML 4.01 Transitional//EN\">";
+  header("Location: http://www.spflrc.org:3000/bird_walker/index"); /* Redirect browser */
+  exit;
 ?>
+
 <html>
   <head>
     <link rel="alternate" type="application/atom+xml" title="Atom" href="./indexrss.php" />
